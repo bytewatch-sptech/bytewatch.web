@@ -1,17 +1,33 @@
-*{
+* {
     font-family: "League Spartan";
 }
 
-.navbar{
+.navbar {
     padding: 20px;
-    background-color: #000 !important;
+    background-color: transparent !important;
 }
 
-.navbar-nav{
+.navbar.scrolled {
+    background-color: #fff !important;
+
+    a {
+        color: #000 !important;
+    }
+
+    .nav-link:hover {
+        color: #FE2C55 !important;
+    }
+
+    #link_inicio {
+        color: #FE2C55 !important;
+    }
+}
+
+.navbar-nav {
     gap: 30px;
 }
 
-.banner{
+.banner {
     background-image: url("assets/fundo.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -24,34 +40,34 @@
     object-fit: contain;
 }
 
-.banner h1{
+.banner h1 {
     font-weight: bold;
 }
 
-.nav-link{
+.nav-link {
     font-weight: bold;
 }
 
-.nav-link:hover{
+.nav-link:hover {
     color: #FE2C55 !important;
 }
 
-#link_inicio{
+#link_inicio {
     color: #FE2C55;
 }
 
-.imagem-cd{
+.imagem-cd {
     display: flex;
     justify-content: end;
     margin-top: 20px;
     margin-right: 20px;
 }
 
-.imagem-cd img{
+.imagem-cd img {
     width: 80px;
 }
 
-.quem-somos{
+.quem-somos {
     color: #000;
     display: flex;
     gap: 20px;
@@ -61,11 +77,11 @@
     text-align: center;
 }
 
-.quem-somos h1{
+.quem-somos h1 {
     font-weight: bold;
 }
 
-.valores{
+.valores {
     background-color: #FE2C55;
     margin: 60px;
     border-radius: 20px;
@@ -73,7 +89,7 @@
     gap: 50px;
 }
 
-.card{
+.card {
     padding: 50px 30px;
     margin: 0;
     color: #000;
@@ -83,6 +99,6 @@
     justify-content: flex-end;
 }
 
-.card h2{
+.card h2 {
     font-weight: bold;
 }
