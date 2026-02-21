@@ -1,0 +1,56 @@
+body{
+    border: solid 20px red;
+    max-width: 100%;
+    font-size: 14px;
+}
+
+@media only screen and (min-width: 600px) {
+    body{
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    body{
+        font-size: 16px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    body{
+        font-size: 17px
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    body{
+        font-size:18px
+    }
+}
+
+
+nav{
+    border: solid pink 10px; 
+}
+
+main{
+    border: solid 10px blue;
+    display: flex;
+    flex-direction: column;
+}
+
+article{
+    border: solid 10px yellow;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+section{
+    border: solid 10px green;
+}
+
+
+footer{
+    border: solid 10px orange;
+}

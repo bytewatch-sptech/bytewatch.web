@@ -1,0 +1,106 @@
+* {
+    font-family: "League Spartan";
+}
+
+.navbar {
+    padding: 20px;
+    background-color: transparent !important;
+}
+
+.navbar.scrolled {
+    background-color: #fff !important;
+
+    a {
+        color: #000 !important;
+    }
+
+    .nav-link:hover {
+        color: #FE2C55 !important;
+    }
+
+    #link_inicio {
+        color: #FE2C55 !important;
+    }
+}
+
+.navbar-nav {
+    gap: 30px;
+}
+
+.banner {
+    background-image: url("assets/fundo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    padding: 0 5%;
+    object-fit: contain;
+}
+
+.banner h1 {
+    font-weight: bold;
+}
+
+.nav-link {
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #FE2C55 !important;
+}
+
+#link_inicio {
+    color: #FE2C55;
+}
+
+.imagem-cd {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.imagem-cd img {
+    width: 80px;
+}
+
+.quem-somos {
+    color: #000;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.quem-somos h1 {
+    font-weight: bold;
+}
+
+.valores {
+    background-color: #FE2C55;
+    margin: 60px;
+    border-radius: 20px;
+    padding: 60px 30px;
+    gap: 50px;
+}
+
+.card {
+    padding: 50px 30px;
+    margin: 0;
+    color: #000;
+    text-align: center;
+    gap: 20px;
+    border-radius: 20px;
+    justify-content: flex-end;
+}
+
+.card h2 {
+    font-weight: bold;
+}
+
+
