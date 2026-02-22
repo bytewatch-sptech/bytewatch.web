@@ -41,18 +41,6 @@
     background-position: bottom;
 }
 
-/* body {
-    background-image: url("assets/fundo.png");
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
 .banner h1 {
     font-weight: bold;
 }
