@@ -23,7 +23,7 @@ body {
     height: 70vh;
     width: 50vw;
     display: flex;
-    overflow: hidden;
+    overflow: hidden; 
 }
 
 .bloco-branco {
@@ -41,6 +41,7 @@ body {
 .logo {
     text-align: center;
     margin: 10%;
+    margin-top: 30%;
 }
 
 .voltar {
