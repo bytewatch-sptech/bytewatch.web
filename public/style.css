@@ -9,6 +9,7 @@
 
 .navbar.scrolled {
     background-color: #fff !important;
+    transition: 1s;
 
     a {
         color: #000 !important;
@@ -117,3 +118,28 @@
 }
 
 
+
+   @media (max-width: 991.98px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;         
+        right: 0;         
+        width: 250px;  
+        background-color: black;
+        padding: 20px;
+        border-radius: 0 0 0 10px;
+    }
+    .navbar {
+        background-color: black !important;
+        transition: 1s;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+     .scrolled .navbar-collapse {
+        background-color: white;
+        transition: 1s ;
+    }
+
+}
