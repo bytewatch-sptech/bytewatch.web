@@ -62,9 +62,19 @@ body {
     gap: 8px;
 }
 
+a {
+    text-decoration: none; 
+    color: #FE2C55;         
+}
+
 .voltar img {
     width: 15px;
     margin-bottom: 5%;
+}
+
+a:hover {
+    color: #da1139;
+    text-decoration: underline;
 }
 
 .entrar {
@@ -78,7 +88,7 @@ body {
     border-color: #da1139 !important;
 }
 
-/* .lado-esquerdo {
+/* .bem-vindo {
     background-color: aquamarine;
 } */
 

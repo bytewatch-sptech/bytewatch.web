@@ -1,5 +1,6 @@
 * {
     font-family: "League Spartan";
+    scroll-behavior: smooth;
 }
 
 .navbar {
