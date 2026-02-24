@@ -97,6 +97,14 @@
     gap: 50px;
 }
 
+@media (min-width: 1200px) {
+  .valores {
+    max-width: 70vw; 
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .card {
     padding: 50px 30px;
     margin: 0;
