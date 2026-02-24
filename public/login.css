@@ -60,6 +60,7 @@ body {
     padding: 20px 20px;
     margin-right: 5%;
     gap: 8px;
+    /* background-color: aquamarine; */
 }
 
 a {
@@ -119,4 +120,15 @@ input {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.cadastrar {
+    height: 45vh;
+    padding: 50px 50px;
+}
+
+.welcome {
+    /* background-color: yellow; */
+    padding: 50px 50px;
+    height: 20vh;
 }
