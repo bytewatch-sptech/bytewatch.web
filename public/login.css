@@ -60,7 +60,9 @@ body {
     padding: 20px 20px;
     margin-right: 5%;
     gap: 8px;
-    /* background-color: aquamarine; */
+    /* background-color: pink; */
+    z-index: 10;
+    position: relative;
 }
 
 a {
@@ -131,4 +133,33 @@ input {
     /* background-color: yellow; */
     padding: 50px 50px;
     height: 20vh;
+}
+
+@media (min-height: 768px) {
+    .bem-vindo {
+        height: 5vh;
+    }
+    .welcome {
+        height: 15vh;
+    }
+}
+
+/* @media (max-width:767px) {
+    .welcome {
+        background-color: yellow;
+    }
+
+    .bem-vindo {
+        background-color: aquamarine;
+    }
+
+    .welcome .voltar {
+        background-color: pink;
+    }
+} */
+
+@media (max-width: 1199.98px) {
+  .voltar {
+    width: 100% !important;
+  }
 }
