@@ -3,6 +3,10 @@
     scroll-behavior: smooth;
 }
 
+.deslocamdento-navbar{
+     scroll-margin-top: 100px;
+}
+
 .navbar {
     padding: 20px;
     background-color: transparent !important;
