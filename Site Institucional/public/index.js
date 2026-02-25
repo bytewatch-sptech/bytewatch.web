@@ -19,4 +19,3 @@ window.addEventListener('scroll', function() {
     logo.src = "assets/logo-versao2.png";
   }
 });
-

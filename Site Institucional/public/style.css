@@ -169,3 +169,8 @@
 .custom-border-footer{
     border-color: #FE2C55 !important;
 }
+
+
+footer p {
+    margin-bottom: 8px;
+}
