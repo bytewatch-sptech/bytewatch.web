@@ -1,42 +1,47 @@
 body{
-    border: solid 20px red;
     max-width: 100%;
     font-size: 14px;
+    margin: 0;
 }
 
-@media only screen and (min-width: 600px) {
-    body{
-        font-size: 15px;
-    }
+header{
+    background-image: url(img/05_04-7-dicas-de-como-melhorar-a-performance-do-servidor-da-sua-empresa-2.jpg);
+    background-size: 100% 100%;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
 }
 
-@media only screen and (min-width: 768px) {
-    body{
-        font-size: 16px;
-    }
+header > img{
+    max-width: auto;
+    height: 10%;
 }
 
-@media only screen and (min-width: 992px) {
-    body{
-        font-size: 17px
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    body{
-        font-size:18px
-    }
-}
-
-
-nav{
+header > nav{
     border: solid pink 10px; 
+    width: 50%;
+}
+
+header > nav > ul{
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+header > nav > ul > li{
+    list-style-type: none;
 }
 
 main{
     border: solid 10px blue;
     display: flex;
     flex-direction: column;
+}
+
+figure{
+    border: solid 10px black;
 }
 
 article{
