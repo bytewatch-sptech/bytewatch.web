@@ -1,0 +1,165 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    font-family: "League Spartan";
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("assets/fundo.png");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width:767px) {
+    .caixa {
+        min-height: 100vh;
+    }
+}
+
+@media (min-width:768px) {
+    .caixa {
+    background-color: #fff;
+    border-radius: 20px;
+    height: 80vh;
+    width: 50vw;
+    display: flex;
+    overflow: hidden;
+    }
+}
+
+.bloco-branco {
+    background-color: #fff;
+    padding: 60px 50px;
+}
+
+.bloco-cinza {
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} 
+
+.logo {
+    text-align: center;
+    margin: 10%;
+    margin-top: 30%;
+}
+
+.voltar {
+    justify-content: flex-end;
+    align-items: center;
+    color: #FE2C55;
+    font-weight: bold;
+    padding: 20px 20px;
+    margin-right: 5%;
+    gap: 8px;
+    /* background-color: pink; */
+    z-index: 10;
+    position: relative;
+}
+
+a {
+    text-decoration: none; 
+    color: #FE2C55;         
+}
+
+.voltar img {
+    width: 15px;
+    margin-bottom: 5%;
+}
+
+a:hover {
+    color: #da1139;
+    text-decoration: underline;
+}
+
+.entrar {
+    background-color: #FE2C55 !important;
+    color: white !important;
+    border-color: #FE2C55 !important;
+}
+
+.entrar:hover {
+    background-color: #da1139  !important;
+    border-color: #da1139 !important;
+}
+
+/* .bem-vindo {
+    background-color: aquamarine;
+} */
+
+input {
+    border-radius: 5px;
+    height: 50px; 
+    border-style: none;
+    border: 1px solid #8f8f8f;
+}
+
+.inputs {
+    margin-bottom: 25px;
+}
+
+.login {
+    display: flex;
+    height: 50%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30%;
+}
+
+.mensagem {
+    color: #FE2C55;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cadastrar {
+    height: 45vh;
+    padding: 50px 50px;
+}
+
+.welcome {
+    /* background-color: yellow; */
+    padding: 50px 50px;
+    height: 20vh;
+}
+
+@media (min-height: 768px) {
+    .bem-vindo {
+        height: 5vh;
+    }
+    .welcome {
+        height: 15vh;
+    }
+}
+
+/* @media (max-width:767px) {
+    .welcome {
+        background-color: yellow;
+    }
+
+    .bem-vindo {
+        background-color: aquamarine;
+    }
+
+    .welcome .voltar {
+        background-color: pink;
+    }
+} */
+
+@media (max-width: 1199.98px) {
+  .voltar {
+    width: 100% !important;
+  }
+}

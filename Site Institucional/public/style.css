@@ -1,0 +1,171 @@
+* {
+    font-family: "League Spartan";
+    scroll-behavior: smooth;
+}
+
+.deslocamdento-navbar{
+     scroll-margin-top: 100px;
+}
+
+.navbar {
+    padding: 20px;
+    background-color: transparent !important;
+    transition: 1s;
+}
+
+.navbar.scrolled {
+    background-color: #fff !important;
+    transition: 1s;
+
+    a {
+        color: #000 !important;
+    }
+
+    .nav-link:hover {
+        color: #FE2C55 !important;
+    }
+
+    #link_inicio {
+        color: #FE2C55 !important;
+    }
+}
+
+.navbar-nav {
+    gap: 30px;
+}
+
+.banner {
+    background-image: url("assets/fundo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    padding: 0 5%;
+    object-fit: contain;
+    background-position: bottom;
+}
+
+.banner h1 {
+    font-weight: bold;
+}
+
+.nav-link {
+    font-weight: bold;
+}
+
+.nav-link:hover {
+    color: #FE2C55 !important;
+}
+
+#link_inicio {
+    color: #FE2C55;
+}
+
+.imagem-cd {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.imagem-cd img {
+    width: 80px;
+}
+
+.quem-somos {
+    color: #000;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.quem-somos h1 {
+    font-weight: bold;
+}
+
+.valores {
+    background-color: #FE2C55;
+    margin: 60px;
+    border-radius: 20px;
+    padding: 60px 30px;
+    gap: 50px;
+}
+
+@media (min-width: 1200px) {
+  .valores {
+    max-width: 70vw; 
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.card {
+    padding: 50px 30px;
+    margin: 0;
+    color: #000;
+    text-align: center;
+    gap: 20px;
+    border-radius: 20px;
+    justify-content: flex-end;
+}
+
+.card h2 {
+    font-weight: bold;
+}
+
+
+
+   @media (max-width: 991.98px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;         
+        right: 0;         
+        width: 250px;  
+        background-color: black;
+        padding: 20px;
+        border-radius: 0 0 0 10px;
+    }
+    .navbar {
+        background-color: black !important;
+        transition: 1s;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+     .scrolled .navbar-collapse {
+        background-color: white;
+        transition: 1s ;
+    }
+
+}
+
+.icon-circle {
+    width: 45px;
+    height: 45px;
+    background-color: #00ffff;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.icon-circle:hover {
+    transform: scale(1.1);
+}
+.custom-border{
+    border-color: #00ffff !important;
+}
+.custom-border-footer{
+    border-color: #FE2C55 !important;
+}
