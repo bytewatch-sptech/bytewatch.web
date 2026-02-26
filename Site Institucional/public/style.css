@@ -99,7 +99,7 @@
 
 @media (min-width: 1200px) {
   .valores {
-    max-width: 70vw; 
+    max-width: 90vw; 
     margin-left: auto;
     margin-right: auto;
   }
@@ -167,10 +167,38 @@
     border-color: #00ffff !important;
 }
 .custom-border-footer{
-    border-color: #FE2C55 !important;
+    border-top: 5px solid #FE2C55 !important;
 }
 
 
 footer p {
     margin-bottom: 8px;
+}
+
+.rodape{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px 0;
+}
+
+.rodape-info{
+    display: flex;
+}
+
+.rodape-contato{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+@media (max-width: 750px) {
+    .rodape-apresentacao{
+        display: none;
+    }
+
+    .rodape-info{
+        flex-direction: column;
+        gap: 20px;
+    }
 }
