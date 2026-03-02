@@ -194,3 +194,25 @@ input {
     width: 100% !important;
   }
 }
+
+@media (height: 600px){
+    .caixa {
+        display: block !important;
+        height: 600px;
+        padding: 0px;
+        background-image: none;
+    }
+
+    .bloco-branco {
+        padding: 0px 50px;
+        margin: 0px;
+    }
+
+    .login {
+        margin: 0px;
+    }
+
+    .bem-vindo {
+        margin: 0px;
+    }
+}
