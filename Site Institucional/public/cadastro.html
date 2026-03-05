@@ -87,10 +87,7 @@
   // Array para armazenar empresas cadastradas para validação de código de ativação 
 
   function cadastrar() {
-    // aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
@@ -98,16 +95,44 @@
     var cpfVar = cpf_input.value;
     var fk_tipo_usuarioVar = fk_tipo_usuario_input.value;
 
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      cpfVar == "") {
-      alert('Mensagem de erro para todos os campos em branco');
-      return false;
+    var senhaMaiuscula = senhaVar.toUpperCase();
+    var incluiMaiuscula = senhaVar != senhaMaiuscula;
+    var senhaMinuscula = senhaVar.toLowerCase();
+    var incluiMinuscula = senhaVar != senhaMinuscula;
+
+    var especiais = ['!', '@', '#', '$', '%', '&', '*'];
+    var temEspecial = false;
+
+    // Autenticação do Cadastro
+
+    for(var i = 0; i < especiais.length; i++) {
+      if(senhaVar.includes(especiais[i])) {
+        temEspecial = true;
+        break;
+      }
     }
+
+    if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" || cpfVar == "") {
+      alert("Todos os campos devem estar preenchidos!");
+      return false;
+
+    } else if (!emailVar.includes('@') || !emailVar.endsWith('.com')) {
+      alert("O email deve incluir '@' e finalizar com '.com'");
+      return false;
+
+    } else if (senhaVar.length < 14 || incluiMaiuscula == false || incluiMinuscula == false) { 
+      alert("Coloque uma senha forte. A senha deve ter 14 ou mais caracteres, além de conter ao menos uma letra maiúscula e uma letra minúscula.");
+      return false; 
+
+    } else if (confirmacaoSenhaVar != senhaVar) {
+      alert("Verifique se a confirmação da senha está igual a senha insirida!");
+      return false;
+
+    } else if (!temEspecial){
+      alert ("A senha precisa conter ao menos um caracter especial!")
+      return false; 
+    }
+
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
