@@ -88,12 +88,12 @@
 
   function cadastrar() {
 
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var cpfVar = cpf_input.value;
-    var fk_tipo_usuarioVar = fk_tipo_usuario_input.value;
+    var nomeVar = nome_input.value.trim();
+    var emailVar = email_input.value.trim();
+    var senhaVar = senha_input.value.trim();
+    var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
+    var cpfVar = cpf_input.value.trim();
+    var fk_tipo_usuarioVar = fk_tipo_usuario_input.value.trim();
 
     var senhaMaiuscula = senhaVar.toUpperCase();
     var incluiMaiuscula = senhaVar != senhaMaiuscula;
@@ -103,11 +103,21 @@
     var especiais = ['!', '@', '#', '$', '%', '&', '*'];
     var temEspecial = false;
 
-    // Autenticação do Cadastro
+    var numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var temNumero = false;
 
+    // Autenticação do Cadastro
+  
     for(var i = 0; i < especiais.length; i++) {
       if(senhaVar.includes(especiais[i])) {
         temEspecial = true;
+        break;
+      }
+    }
+
+    for(var i = 0; i < numeros.length; i++) {
+      if(senhaVar.includes(numeros[i])) {
+        temNumero = true;
         break;
       }
     }
@@ -128,8 +138,8 @@
       alert("Verifique se a confirmação da senha está igual a senha insirida!");
       return false;
 
-    } else if (!temEspecial){
-      alert ("A senha precisa conter ao menos um caracter especial!")
+    } else if (!temEspecial || !temNumero){
+      alert ("A senha precisa conter ao menos um caracter especial e no mínimo um número!")
       return false; 
     }
 
