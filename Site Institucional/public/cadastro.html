@@ -143,6 +143,42 @@
       return false; 
     }
 
+    //Validação de CPF
+    var soma = 0;
+    var index = 0;
+
+    //Primeiro dígito
+    for (var i = 10; i >= 2; i--) {
+      soma += Number(cpfVar[index]) * i;
+      index++;
+    }
+
+    var verificador1 = (soma * 10) % 11;
+    if (verificador1 == 10) {
+      verificador1 = 0;
+    }
+
+    //Segundo dígito
+    soma = 0;
+    index = 0;
+
+    for (var i = 11; i >= 2; i--) {
+      soma += Number(cpfVar[index]) * i;
+      index++;
+    }
+
+    var verificador2 = (soma * 10) % 11;
+    if (verificador2 == 10) {
+      verificador2 = 0;
+    }
+
+    //Validação final
+    if (cpfVar[9] != verificador1 || cpfVar[10] != verificador2) {
+      alert("CPF Inválido");
+      return false;
+    }
+
+
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
@@ -178,5 +214,6 @@
 
     return false;
   }
+
 
 </script>
