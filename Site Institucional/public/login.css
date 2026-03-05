@@ -125,7 +125,8 @@ input {
     height: 50%;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30%;
+    margin-bottom: 20%;
+    /* background-color: #da1139; */
 }
 
 .mensagem {
