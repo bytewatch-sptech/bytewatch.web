@@ -15,9 +15,14 @@ body {
     align-items: center;
 }
 
-.sair a {
+a {
     text-decoration: none;
     color: #FE2C55;
+}
+
+a:hover {
+    color: #da1139;
+    text-decoration: underline;
 }
 
 .cadastro-box {
