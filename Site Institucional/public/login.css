@@ -103,10 +103,10 @@ a:hover {
     border-color: #da1139 !important;
 }
 
-.bem-vindo {
+/* .bem-vindo {
     margin-top: 10% !important;
     margin-bottom: 10% !important;
-}
+} */
 
 input {
     border-radius: 5px;
@@ -204,7 +204,7 @@ input {
     }
 
     .bloco-branco {
-        padding: 0px 50px;
+        /* padding: 0px 50px; */
         margin: 0px;
     }
 
