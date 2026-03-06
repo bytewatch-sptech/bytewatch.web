@@ -94,6 +94,15 @@ input {
     height: 35px; 
     border-style: none;
     border: 1px solid #8f8f8f;
+    padding-left: 10px;
+}
+
+.inputs img {
+    position: absolute;
+    right: 10px;
+    top: 55%;
+    width: 20px;
+    cursor: pointer;
 }
 
 .login {

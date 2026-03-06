@@ -51,13 +51,15 @@
             <span>Código do Funcionário</span>
             <input id="fk_tipo_usuario_input" type="text">
           </div>
-          <div class="campo">
+          <div class="campo position-relative">
             <span>Senha</span>
-            <input id="senha_input" type="password">
+            <input id="senha_input" type="password" maxlenght="30">
+            <img src="assets/olho-fechado.png" id="img1">
           </div>
-          <div class="campo">
+          <div class="campo position-relative">
             <span>Confirmar Senha</span>
-            <input id="confirmacao_senha_input" type="password">
+            <input id="confirmacao_senha_input" type="password" maxlength="30">
+            <img src="assets/olho-fechado.png" id="img2">
           </div>
         </div>
       </div>
@@ -74,6 +76,34 @@
 </html>
 
 <script>
+
+  // pega os elementos de acordo com o id (input e a img) e guarda em uma variável
+    var senha = document.getElementById("senha_input");
+    var confirmacao = document.getElementById("confirmacao_senha_input");
+    var trocarImg = document.getElementById("img1");
+    var trocarImg2 = document.getElementById("img2");
+
+    // adiciona um evento de clique (quando o usuário clicar no icone de "olho" vai executar o código abaixo)
+    // === (serve para fazer uma comparação entre o valor e o tipo)
+    trocarImg.addEventListener("click", () => {
+        if (senha.type === "password") { // valida se o tipo do input é password 
+            senha.type = "text";
+            trocarImg.src = "assets/olho-aberto.png";
+        } else {
+            senha.type = "password"; 
+            trocarImg.src = "assets/olho-fechado.png";
+        }
+    });
+
+    trocarImg2.addEventListener("click", () => {
+      if (confirmacao.type === "password") {
+          confirmacao.type = "text";
+          trocarImg2.src = "assets/olho-aberto.png";
+        } else {
+          confirmacao.type = "password";
+          trocarImg2.src = "assets/olho-fechado.png";
+        }
+    });
 
   // Array para armazenar empresas cadastradas para validação de código de ativação 
 

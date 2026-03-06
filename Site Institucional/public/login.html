@@ -31,10 +31,11 @@
                             <input id="email_input"  type="text">
                         </div>
 
-                        <div class="inputs d-grid col-12">
+                        <div class="inputs position-relative d-grid col-12">
                             <span>Senha</span> 
-                            <input id="senha_input" type="password">
-                        </div> <!--adicionar "olho"-->
+                            <input id="senha_input" type="password" maxlength="30">
+                            <img src="assets/olho-fechado.png" id="img">
+                        </div>
 
                         <div class="entrar d-flex flex-column gap-1 align-items-center text-center">
                             <button class="botao-entrar">Entrar</button>
@@ -75,6 +76,22 @@
 </html>
 
 <script>
+
+    // pega os elementos de acordo com o id (input e a img) e guarda em uma variável
+    var senha = document.getElementById("senha_input");
+    var trocarImg = document.getElementById("img");
+
+    // adiciona um evento de clique (quando o usuário clicar no icone de "olho" vai executar o código abaixo)
+    // === (serve para fazer uma comparação entre o valor e o tipo)
+    trocarImg.addEventListener("click", () => {
+        if (senha.type === "password") { // valida se o tipo do input é password 
+            senha.type = "text";
+            trocarImg.src = "assets/olho-aberto.png";
+        } else {
+            senha.type = "password"; 
+            trocarImg.src = "assets/olho-fechado.png";
+        }
+    });
 
     function entrar() {
         var emailVar = email_input.value;
