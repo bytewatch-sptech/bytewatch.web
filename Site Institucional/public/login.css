@@ -67,8 +67,8 @@ body {
     align-items: center;
     color: #FE2C55;
     font-weight: bold;
-    padding: 30px 10px;
-    margin-right: 2%;
+    padding: 30px 15px;
+    /* margin-right: 10%; */
     gap: 8px;
     z-index: 10;
     position: relative;
@@ -102,12 +102,6 @@ input {
     align-items: center; 
     gap: 15px;
 }
-
-/* @media (max-width: 1199.98px) {
-  .voltar {
-    width: 100% !important;
-  }
-} */
 
 @media (max-width: 700px) {
     body{
