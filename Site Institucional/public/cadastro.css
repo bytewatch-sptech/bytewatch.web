@@ -66,10 +66,16 @@ a:hover {
     font-size: 13px;
 }
 
+.botao-criar:hover {
+    background-color: #da1139  !important;
+    border-color: #da1139 !important;
+}
+
 input{
     width: 280px;
     border: 1px solid #8f8f8f;
     border-radius: 5px;
+    height: 35px;
 }
 
 @media (max-width: 700px) {
