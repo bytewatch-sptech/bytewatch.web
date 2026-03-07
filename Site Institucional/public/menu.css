@@ -1,0 +1,142 @@
+* {
+    font-family: "League Spartan", sans-serif;
+    scroll-behavior: smooth;
+    margin: 0;
+}
+
+body {
+    background: linear-gradient(to bottom, #23c3bf,#19a7a4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 110px;
+    background-color: #ffff;
+    justify-content: space-between;
+    border-bottom: 1px #333;
+}
+
+.navbar .nav {
+    align-items: center;
+    padding: 80px;
+    gap: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar a {
+    color: #333;
+    font-size: 1.2em;
+}
+
+.perfil {
+    display: flex;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background-color: #ff5a5f;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: #ffff;
+}
+
+.container-principal {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: #ffff;
+    gap: 20px;
+    padding: 30px;
+    width: 90%;
+    height: 700px;
+    margin-top: 40px;
+    border-radius: 4px;
+}
+
+.container-principal .topo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#nome {
+    font-size: 2em;
+    margin-top: 50px;
+}
+
+#cargo {
+    font-size: 1.2em;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    gap: 60px;
+}
+
+.container img {
+    width: 70px;
+}
+
+.container .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    width: 280px;
+    height: 140px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.3;
+}
+
+.container .box:hover {
+    background-color: #d3d3d3;
+    transition: 0.3s;
+}
+
+.container .box-acoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    background-color: #f8f8f8;
+    width: 280px;
+    height: 540px;
+    border-radius: 4px;
+    gap: 30px;
+}
+
+.box-acoes h2 {
+    margin-bottom: 40px;
+}
+
+.box-acoes .opcao {
+    background-color: white;
+    border: 1px solid #e2e2e2;
+    text-align: center;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s; 
+    width: 180px;
+}
+
+.box-acoes .opcao:hover {
+    background-color: rgb(219, 219, 219);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
