@@ -24,4 +24,22 @@ function cadastrar(razaoSocial, cnpj) {
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+function cadastrarServidor(nome, endereco, sistemaOperacional, localizacao, ambiente, fkEmpresa) {
+  console.log('Entrei no model')
+
+  var instrucaoSql = `
+  INSERT INTO servidor 
+  (nome, endereco_ip, sistema_operacional, localizacao, ambiente, fk_id_empresa)
+  VALUES
+  ('${nome}', '${endereco}', '${sistemaOperacional}', '${localizacao}', '${ambiente}', '${fkEmpresa}')
+  `;
+  return database.executar(instrucaoSql);
+}
+
+module.exports = { 
+  buscarPorCnpj, 
+  buscarPorId, 
+  cadastrar, 
+  listar,
+  cadastrarServidor
+ };

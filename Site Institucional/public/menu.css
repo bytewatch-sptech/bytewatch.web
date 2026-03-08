@@ -19,7 +19,6 @@ body {
     height: 110px;
     background-color: #ffff;
     justify-content: space-between;
-    border-bottom: 1px #333;
 }
 
 .navbar .nav {
@@ -139,4 +138,74 @@ a {
 
 ul {
     list-style: none;
+}
+
+.popup {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+.popupCadastroServidor {
+    display: flex;
+    flex-direction: column;
+    background-color: #dfdfdf;
+    width: 30%;
+    height: 80%;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.popup h1 {
+    margin-bottom: 30px;
+}
+
+.popup .formulario {
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    border-radius: 2px;
+}
+
+.popup .box input {
+    border: none;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    width: 340px;
+    height: 45px;
+    text-align: center;
+}
+
+.popup button {
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 2px;
+    background-color: #19a7a4;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.popup button:hover {
+    background-color: #257e7c;
+    transition: 0.2s;
+}
+
+#botaoCancelar {
+    background-color: rgb(117, 117, 117)
+}
+
+#botaoCancelar:hover {
+    background-color: rgb(78, 78, 78)
 }

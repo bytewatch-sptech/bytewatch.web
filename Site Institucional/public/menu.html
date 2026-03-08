@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <link rel="stylesheet" href="menu.css">
 </head>
+
 <body>
     <nav id="navbar" class="navbar">
         <div id="nav">
@@ -23,19 +25,58 @@
                 </li>
             </ul>
         </div>
-        
+
         <div id="nav">
             <ul class="nav">
                 <li>
                     <img src="assets/alerta.png" alt="" width="40px">
                 </li>
-                
+
                 <li>
                     <div class="perfil">V</div>
                 </li>
             </ul>
         </div>
     </nav>
+
+    <div id="popup" class="popup" style="display:none">
+        <div class="popupCadastroServidor">
+            <h1>Cadastre um servidor aqui!</h1>
+
+            <div class="formulario">
+                <div class="box">
+                    <p>Nome</p>
+                    <input type="text" id="nome_input" placeholder="Digite o nome do servidor">
+                </div>
+
+                <div class="box">
+                    <p>Endereço</p>
+                    <input type="text" id="endereco_input" placeholder="Digite o endereço do servidor">
+                </div>
+
+                <div class="box">
+                    <p>Sistema Operacional</p>
+                    <input type="text" id="sistemaOperacional_input" placeholder="Digite o SO do servidor">
+                </div>
+
+                <div class="box">
+                    <p>Localização</p>
+                    <input type="text" id="localizacao_input" placeholder="Digite a localização do servidor">  
+                </div>
+
+                <div class="box">
+                    <p>Ambiente</p>
+                    <input type="text" id="ambiente_input" placeholder="Digite o ambiente do servidor">    
+                </div>
+
+                <div class="botoes">
+                    <button id="botaoCancelar" onclick="fecharPopup()">Cancelar</button>
+
+                    <button onclick="cadastrarServidor()">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container-principal">
 
@@ -68,25 +109,84 @@
             </div>
 
             <div class="box-acoes">
-                <div><h2>Ações Rápidas</h2></div>
+                <div>
+                    <h2>Ações Rápidas</h2>
+                </div>
 
-                <div class="opcao">
-                  <p>Cadastrar novo servidor</p>
+                <div class="opcao" onclick="abrirPopup()">
+                    <p>Cadastrar novo servidor</p>
                 </div>
 
                 <div class="opcao">
-                  <p>Cadastrar novo usuário</p>
+                    <p>Cadastrar novo usuário</p>
                 </div>
 
                 <div class="opcao">
-                  <p>Ver servidores</p>
+                    <p>Ver servidores</p>
                 </div>
 
                 <div class="opcao">
-                  <p>Gerar relatório</p>
+                    <p>Gerar relatório</p>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
+<script>
+    function abrirPopup() {
+        popup.style='display:flex'
+    }
+
+    function fecharPopup() {
+        popup.style='display:none'
+    }
+
+    function cadastrarServidor() {
+    var fkEmpresaVar = 1;
+    var nomeVar = nome_input.value;
+    var enderecoVar = endereco_input.value;
+    var sistemaOperacionalVar = sistemaOperacional_input.value;
+    var localizacaoVar = localizacao_input.value;
+    var ambienteVar = ambiente_input.value;
+    
+    if (
+      nomeVar == "" ||
+      enderecoVar == "" ||
+      localizacaoVar == "" ||
+      sistemaOperacionalVar == "" ||
+      ambienteVar == "") {
+      alert('Mensagem de erro para todos os campos em branco');
+      return false;
+    }
+    fetch("/empresas/cadastrarServidor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeServer: nomeVar,
+        enderecoServer: enderecoVar,
+        localizacaoServer: localizacaoVar,
+        sistemaOperacionalServer: sistemaOperacionalVar,
+        ambienteServer: ambienteVar,
+        fkEmpresaServer: fkEmpresaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("Entrei no fetch");
+
+        if (resposta.ok) {
+          alert("Servidor cadastrado com sucesso!");
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+</script>

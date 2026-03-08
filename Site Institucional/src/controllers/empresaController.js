@@ -39,9 +39,32 @@ function cadastrar(req, res) {
   });
 }
 
+function cadastrarServidor(req, res) {
+  var fkEmpresa = req.body.fkEmpresaServer;
+  var nome = req.body.nomeServer;
+  var endereco = req.body.enderecoServer;
+  var sistemaOperacional = req.body.sistemaOperacionalServer;
+  var localizacao = req.body.localizacaoServer;
+  var ambiente = req.body.ambienteServer;
+
+  console.log('Entrei no controller')
+  console.log(nome, endereco, sistemaOperacional, localizacao, ambiente, fkEmpresa);
+
+    empresaModel.cadastrarServidor(nome, endereco, sistemaOperacional, localizacao, ambiente, fkEmpresa).then((resposta) => {
+      console.log('Entrei no controller')
+      res.status(201).json(resposta);
+
+    }).catch((erro) => {
+      console.log('Erro no controller')
+      console.log('Erro no controller: ', erro.sqlMessage)
+      res.status(500).json(erro)
+    })
+}
+
 module.exports = {
   buscarPorCnpj,
   buscarPorId,
   cadastrar,
   listar,
+  cadastrarServidor
 };
