@@ -1,0 +1,99 @@
+* {
+    margin: 0 !important;
+    font-family: "League Spartan";
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("assets/fundo.png");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #FE2C55;
+}
+
+a:hover {
+    color: #da1139;
+    text-decoration: underline;
+}
+
+.cadastro-box {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cadastro-corpo {
+    padding: 0 30px 40px 30px;
+}
+
+.cadastro-parte{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cadastro-parte span{
+    font-size: 14px;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+}
+
+.botao-criar{
+    background-color: #FE2C55;
+    color: #fff;
+    border: none;
+    padding: 5px 0;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.criar span{
+    color: #FE2C55;
+    font-size: 13px;
+}
+
+.botao-criar:hover {
+    background-color: #da1139  !important;
+    border-color: #da1139 !important;
+}
+
+input{
+    width: 280px;
+    border: 1px solid #8f8f8f;
+    border-radius: 5px;
+    height: 35px;
+    padding-left: 10px;
+}
+
+.campo img {
+    position: absolute;
+    right: 10px;
+    top: 55%;
+    width: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    body{
+        background-image: none;
+    }
+
+    .cadastro-campos{
+        display: flex;
+        flex-direction: column !important;
+    }
+}
