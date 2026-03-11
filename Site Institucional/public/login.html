@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="entrar d-flex flex-column gap-1 align-items-center text-center">
-                            <button class="botao-entrar">Entrar</button>
+                            <button class="botao-entrar" onclick="entrar()">Entrar</button>
                             <div class="mensagem d-flex flex-column">
                                 <span>Esqueceu a senha? <a href="">Clique aqui.</a></span>
                                 <span>Ainda não possui uma conta? <a href="cadastro.html">Clique aqui.</a></span>
@@ -134,7 +134,7 @@
                     console.log('Autenticação com sucesso.')
 
                     setTimeout(function () {
-                        window.location = "./index.html";
+                        window.location = "./menu.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
