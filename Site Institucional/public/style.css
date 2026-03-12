@@ -201,6 +201,9 @@ footer p {
         flex-direction: column;
         gap: 20px;
     }
+   .sessaoFaleConosco{
+     display: none;
+   }
 }
 
 #carrosel .carousel-item{
