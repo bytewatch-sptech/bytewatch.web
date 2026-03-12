@@ -2,6 +2,7 @@
     font-family: "League Spartan", sans-serif;
     scroll-behavior: smooth;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -9,24 +10,26 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .navbar {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 110px;
-    background-color: #ffff;
+    min-height: 110px;
+    background-color: #fff;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .navbar .nav {
     align-items: center;
-    padding: 80px;
+    padding: 40px;
     gap: 50px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .navbar a {
@@ -43,18 +46,18 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 2em;
-    color: #ffff;
+    color: #fff;
 }
 
 .container-principal {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    background-color: #ffff;
+    background-color: #fff;
     gap: 20px;
     padding: 30px;
-    width: 90%;
-    height: 700px;
+    width: min(1200px, 90%);
+    min-height: 700px;
     margin-top: 40px;
     border-radius: 4px;
 }
@@ -63,6 +66,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 #nome {
@@ -78,6 +82,7 @@ body {
     display: flex;
     width: 100%;
     gap: 60px;
+    flex-wrap: wrap;
 }
 
 .container img {
@@ -89,16 +94,16 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f8f8f8;
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
     height: 140px;
     border-radius: 4px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: 0.3;
+    transition: 0.3s;
 }
 
 .container .box:hover {
     background-color: #d3d3d3;
-    transition: 0.3s;
 }
 
 .container .box-acoes {
@@ -107,8 +112,9 @@ body {
     align-items: center;
     padding-top: 30px;
     background-color: #f8f8f8;
-    width: 280px;
-    height: 540px;
+    width: 100%;
+    max-width: 280px;
+    min-height: 540px;
     border-radius: 4px;
     gap: 30px;
 }
@@ -154,12 +160,13 @@ ul {
     display: flex;
     flex-direction: column;
     background-color: #dfdfdf;
-    width: 30%;
-    height: 80%;
+    width: min(500px, 90%);
+    min-height: 500px;
     position: fixed;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
+    padding: 20px;
 }
 
 .popup h1 {
@@ -172,15 +179,17 @@ ul {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    min-height: 400px;
     border-radius: 2px;
+    padding: 20px;
 }
 
 .popup .box input {
     border: none;
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-    width: 340px;
+    width: 100%;
+    max-width: 340px;
     height: 45px;
     text-align: center;
 }
@@ -199,7 +208,6 @@ ul {
 
 .popup button:hover {
     background-color: #257e7c;
-    transition: 0.2s;
 }
 
 #botaoCancelar {
@@ -208,4 +216,41 @@ ul {
 
 #botaoCancelar:hover {
     background-color: rgb(78, 78, 78)
+}
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .navbar .nav {
+        padding: 0;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .container .box {
+        max-width: 90%;
+    }
+
+    .container .box-acoes {
+        max-width: 90%;
+        min-height: auto;
+        padding-bottom: 30px;
+    }
+
+    #nome {
+        font-size: 1.6em;
+        margin-top: 20px;
+    }
 }
