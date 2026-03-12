@@ -213,3 +213,19 @@ footer p {
 .carousel-control-next-icon{
     filter: invert(1) brightness(0);
 }
+
+.texto-sobre{
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+.texto-principal-cliente{
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding: 0 20px;
+}
