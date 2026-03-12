@@ -62,8 +62,8 @@
         <h1>QUEM SOMOS NÓS?</h1>
         <p style="width: 60%; font-size: x-large;">A ByteWatch é uma empresa especializada no monitoramento inteligente de servidores, com foco na análise contínua e em tempo real dos componentes computacionais. Nossa missão é garantir desempenho, estabilidade e eficiência operacional por meio da coleta e interpretação de métricas essenciais, alertas preventivos e relatórios estratéticos. Atuamos de forma proativa para identificar possíveis falhas e otimizar a performance dos servidores monitorados, assegurando operações digitais seguras e a continuidade do negócio.</p>
     </div>
-
-    <div id="valores" class="valores row d-flex justify-content-center deslocamdento-navbar">
+    <!--Sessão responsiva para computadores-->
+    <div id="valores" class="valores row d-none d-md-flex justify-content-center deslocamdento-navbar">
         <div class="card d-flex align-items-center" style="width: 14rem;">
             <img width="120px" src="assets/eficiencia.png" alt="...">
             <div>
@@ -96,7 +96,44 @@
             </div>
         </div>
     </div>
-    <div class="container py-5">
+    <!--sessao responsiva para celulares -->
+
+<div id="carrosel" class="p-5 mb-5 carousel slide d-block d-md-none">
+  <div class="carousel-inner">
+    <div class="carousel-item active text-center p-4">
+      <img src="assets/eficiencia.png" class="d-block mx-auto mb-3 w-70" alt="eficiencia">
+        <h2 class="fs-3">EFICIÊNCIA</h2>
+        <p class="card-text">Garantimos alto desempenho e uso inteligente de todos recursos.</p>
+    </div>
+    <div class="carousel-item text-center p-4">
+      <img src="assets/seguranca.png" class="d-block mx-auto mb-3 w-70" alt="seguranca">
+       <h2 class="fs-3">SEGURANÇA</h2>
+        <p class="card-text">Protegemos dados e sistemas com responsabilidade e confiabilidade.</p>
+    </div>
+    <div class="carousel-item text-center p-4">
+      <img src="assets/inovacao.png" class="d-block mx-auto mb-3 w-70" alt="inovacao">
+       <h2 class="fs-3">INOVAÇÃO</h2>
+        <p class="card-text">Criamos soluções modernas para acompanhar a evolução tecnológica.</p>
+    </div>
+    <div class="carousel-item text-center p-4">
+      <img src="assets/compromisso.png" class="d-block mx-auto mb-3 w-70" alt="compromisso">
+       <h2 class="fs-3">COMPROMISSO</h2>
+        <p class="card-text">Atuamos com muita dedicação, transparência e foco em qualidade nos processos.</p>
+    </div>
+  </div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carrosel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+ <button class="carousel-control-next" type="button" data-bs-target="#carrosel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+    <!---->
+
+    <div class=" container py-5">
         <h2 class="text-center mb-5" style="font-weight: bold;"> NOSSO PRINCIPAL CLIENTE</h2>
         <div class="row align-items-center justify-content-center g-5">
             <div class="col-12 col-md-5 text-center mx-auto">
