@@ -1,200 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
-    <link rel="stylesheet" href="menu.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu</title>
+<link rel="stylesheet" href="menu.css">
 </head>
 
 <body>
-    <nav id="navbar" class="navbar">
-        <div id="nav">
-            <ul class="nav">
-                <li>
-                    <a href=""><b>Início</b></a>
-                </li>
 
-                <li>
-                    <a href="">Servidores</a>
-                </li>
+<nav class="navbar">
 
-                <li>
-                    <a href="">Usuários</a>
-                </li>
-            </ul>
-        </div>
+<ul class="nav">
+<li><a href=""><b>Início</b></a></li>
+<li><a href="">Servidores</a></li>
+<li><a href="">Usuários</a></li>
+</ul>
 
-        <div id="nav">
-            <ul class="nav">
-                <li>
-                    <img src="assets/alerta.png" alt="" width="40px">
-                </li>
+<div class="nav-direita">
+<img src="assets/alerta.png" width="35">
+<div class="perfil">V</div>
+</div>
 
-                <li>
-                    <div class="perfil">V</div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+</nav>
 
-    <div id="popup" class="popup" style="display:none">
-        <div class="popupCadastroServidor">
-            <h1>Cadastre um servidor aqui!</h1>
 
-            <div class="formulario">
-                <div class="box">
-                    <p>Nome</p>
-                    <input type="text" id="nome_input" placeholder="Digite o nome do servidor">
-                </div>
+<div id="popupServidor" class="popup" style="display:none">
 
-                <div class="box">
-                    <p>Endereço</p>
-                    <input type="text" id="endereco_input" placeholder="Digite o endereço do servidor">
-                </div>
+<div class="popupCadastroServidor">
 
-                <div class="box">
-                    <p>Sistema Operacional</p>
-                    <input type="text" id="sistemaOperacional_input" placeholder="Digite o SO do servidor">
-                </div>
+<h1>Cadastre um servidor aqui!</h1>
 
-                <div class="box">
-                    <p>Localização</p>
-                    <input type="text" id="localizacao_input" placeholder="Digite a localização do servidor">  
-                </div>
+<div class="formulario">
 
-                <div class="box">
-                    <p>Ambiente</p>
-                    <input type="text" id="ambiente_input" placeholder="Digite o ambiente do servidor">    
-                </div>
+<div class="box-form">
+<p>Nome</p>
+<input type="text" id="nome_input">
+</div>
 
-                <div class="botoes">
-                    <button id="botaoCancelar" onclick="fecharPopup()">Cancelar</button>
+<div class="box-form">
+<p>Endereço</p>
+<input type="text" id="endereco_input">
+</div>
 
-                    <button onclick="cadastrarServidor()">Cadastrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="box-form">
+<p>Sistema Operacional</p>
+<input type="text" id="sistemaOperacional_input">
+</div>
 
-    <div class="container-principal">
+<div class="box-form">
+<p>Localização</p>
+<input type="text" id="localizacao_input">
+</div>
 
-        <div class="topo">
-            <div id="nome">
-                <p>Olá, Vitória!</p>
-            </div>
+<div class="box-form">
+<p>Ambiente</p>
+<input type="text" id="ambiente_input">
+</div>
 
-            <div id="cargo">
-                <p>Analista de TI - TikTok</p>
-            </div>
-        </div>
+<div class="botoes">
+<button id="botaoCancelar" onclick="fecharPopupServidor()">Cancelar</button>
+<button onclick="cadastrarServidor()">Cadastrar</button>
+</div>
 
-        <div class="container">
+</div>
+</div>
+</div>
 
-            <div class="box">
-                <img src="assets/servidor.png" alt="">
-            </div>
 
-            <div class="box">
-                <img src="assets/torre-de-cpu.png" alt="">
-            </div>
+<div id="popupUsuario" class="popup" style="display:none">
 
-            <div class="box">
-                <img src="assets/pasta.png" alt="">
-            </div>
+<div class="popupCadastroServidor">
 
-            <div class="box">
-                <img src="assets/internet.png" alt="">
-            </div>
+<h1>Cadastre um componente aqui!</h1>
 
-            <div class="box-acoes">
-                <div>
-                    <h2>Ações Rápidas</h2>
-                </div>
+<div class="formulario">
 
-                <div class="opcao" onclick="abrirPopup()">
-                    <p>Cadastrar novo servidor</p>
-                </div>
+<div class="box-form">
+<p>Tipo</p>
+<input type="text" id="tipo_input">
+</div>
 
-                <div class="opcao">
-                    <p>Cadastrar novo usuário</p>
-                </div>
+<div class="box-form">
+<p>Unidade</p>
+<input type="text" id="unidade_input">
+</div>
 
-                <div class="opcao">
-                    <p>Ver servidores</p>
-                </div>
+<div class="box-form">
+<p>Descrição</p>
+<input type="text" id="descricao_input">
+</div>
 
-                <div class="opcao">
-                    <p>Gerar relatório</p>
-                </div>
-                <div class="opcao">
-                   <a href="./index.html"><p>Sair</p></a>
-                </div>
+<div class="box-form">
+<p>Limite</p>
+<input type="number" id="limite_input">
+</div>
 
-            </div>
-        </div>
-    </div>
-</body>
+<div class="botoes">
+<button id="botaoCancelar" onclick="fecharPopupUsuario()">Cancelar</button>
+<button onclick="cadastrarUsuario()">Cadastrar</button>
+</div>
 
-</html>
+</div>
+</div>
+</div>
+
+
+<div class="container-principal">
+
+<div class="topo">
+<div id="nome">Olá, Vitória!</div>
+<div id="cargo">Analista de TI - TikTok</div>
+</div>
+
+<div class="container">
+
+<div class="boxes">
+<div class="box"><img src="assets/servidor.png"></div>
+<div class="box"><img src="assets/torre-de-cpu.png"></div>
+<div class="box"><img src="assets/pasta.png"></div>
+<div class="box"><img src="assets/internet.png"></div>
+</div>
+
+
+<div class="box-acoes">
+
+<div class="acoes-titulo" onclick="toggleAcoes()">
+Ações Rápidas ▼
+</div>
+
+<div id="acoesMenu" class="acoes-menu">
+
+<div class="opcao" onclick="abrirPopupServidor()">
+Cadastrar novo servidor
+</div>
+
+<div class="opcao" onclick="abrirPopupUsuario()">
+Cadastrar novo componente
+</div>
+
+<div class="opcao">
+Ver servidores
+</div>
+
+<div class="opcao">
+Gerar relatório
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+
 <script>
-    function abrirPopup() {
-        popup.style='display:flex'
-    }
 
-    function fecharPopup() {
-        popup.style='display:none'
-    }
+function toggleAcoes(){
+document.getElementById("acoesMenu").classList.toggle("abrir")
+}
 
-    function sair(){
-        window.location = "./index.html"
-    }
+function abrirPopupServidor(){
+document.getElementById("popupServidor").style.display="flex"
+}
 
-    function cadastrarServidor() {
-    var fkEmpresaVar = 1;
-    var nomeVar = nome_input.value;
-    var enderecoVar = endereco_input.value;
-    var sistemaOperacionalVar = sistemaOperacional_input.value;
-    var localizacaoVar = localizacao_input.value;
-    var ambienteVar = ambiente_input.value;
-    
-    if (
-      nomeVar == "" ||
-      enderecoVar == "" ||
-      localizacaoVar == "" ||
-      sistemaOperacionalVar == "" ||
-      ambienteVar == "") {
-      alert('Mensagem de erro para todos os campos em branco');
-      return false;
-    }
-    fetch("/empresas/cadastrarServidor", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        nomeServer: nomeVar,
-        enderecoServer: enderecoVar,
-        localizacaoServer: localizacaoVar,
-        sistemaOperacionalServer: sistemaOperacionalVar,
-        ambienteServer: ambienteVar,
-        fkEmpresaServer: fkEmpresaVar
-      }),
-    })
-      .then(function (resposta) {
-        console.log("Entrei no fetch");
+function fecharPopupServidor(){
+document.getElementById("popupServidor").style.display="none"
+}
 
-        if (resposta.ok) {
-          alert("Servidor cadastrado com sucesso!");
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
+function abrirPopupUsuario(){
+document.getElementById("popupUsuario").style.display="flex"
+}
 
-    return false;
-  }
+function fecharPopupUsuario(){
+document.getElementById("popupUsuario").style.display="none"
+}
+
+function cadastrarServidor(){
+
+var fkEmpresaVar = 1;
+var nomeVar = nome_input.value;
+var enderecoVar = endereco_input.value;
+var sistemaOperacionalVar = sistemaOperacional_input.value;
+var localizacaoVar = localizacao_input.value;
+var ambienteVar = ambiente_input.value;
+
+if(nomeVar==""||enderecoVar==""||localizacaoVar==""||sistemaOperacionalVar==""||ambienteVar==""){
+alert("Preencha todos os campos")
+return
+}
+
+fetch("/empresas/cadastrarServidor",{
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify({
+nomeServer:nomeVar,
+enderecoServer:enderecoVar,
+localizacaoServer:localizacaoVar,
+sistemaOperacionalServer:sistemaOperacionalVar,
+ambienteServer:ambienteVar,
+fkEmpresaServer:fkEmpresaVar
+})
+})
+
+.then(res=>{
+if(res.ok){
+alert("Servidor cadastrado com sucesso!")
+fecharPopupServidor()
+}
+})
+
+.catch(err=>{
+console.log(err)
+})
+
+}
+
+function cadastrarComponente(){
+
+var tipoVar = tipo_input.value;
+var unidadeVar = unidade_input.value;
+var descricaoVar = descricao_input.value;
+var limiteVar = limite_input.value;
+
+if(tipoVar==""||unidadeVar==""||descricaoVar==""||limiteVar==""){
+alert("Preencha todos os campos")
+return
+}
+
+fetch("/usuarios/cadastrar",{
+method:"POST",
+headers:{ "Content-Type":"application/json"},
+body:JSON.stringify({
+tipo:tipoVar,
+unidade:unidadeVar,
+descricao:descricaoVar,
+limite:limiteVar
+})
+})
+
+.then(res=>{
+if(res.ok){
+alert("Usuário cadastrado com sucesso!")
+fecharPopupUsuario()
+}
+})
+
+.catch(err=>{
+console.log(err)
+})
+
+}
+
 </script>
+
+</body>
+</html>
