@@ -1,0 +1,35 @@
+name: Telegram Notifications
+
+on:
+  push:
+  pull_request:
+    types: [opened, closed, reopened]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Telegram message
+        run: |
+          EVENT="${{ github.event_name }}"
+          MESSAGE=""
+
+          if [ "$EVENT" == "push" ]; then
+            MESSAGE="🚀 *Novo commit!*\n\n👤 *Autor:* ${{ github.actor }}\n📂 *Repo:* ${{ github.repository }}\n🌿 *Branch:* ${GITHUB_REF#refs/heads/}\n\n💬 *Mensagem:*\n\"${{ github.event.head_commit.message }}\"\n\n🔗 [Ver commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }})"
+          fi
+
+          if [ "$EVENT" == "pull_request" ]; then
+            MESSAGE="📦 *Pull Request ${{ github.event.action }}*\n\n👤 *Autor:* ${{ github.actor }}\n📂 *Repo:* ${{ github.repository }}\n\n🔗 [Ver PR](${{ github.event.pull_request.html_url }})"
+          fi
+
+          if [ "$EVENT" == "pull_request_review" ]; then
+            MESSAGE="✅ *Review de PR*\n\n👤 *Revisor:* ${{ github.actor }}\n📊 *Status:* ${{ github.event.review.state }}\n\n🔗 [Ver PR](${{ github.event.pull_request.html_url }})"
+          fi
+
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
+            -d text="$MESSAGE" \
+            -d parse_mode=Markdown
