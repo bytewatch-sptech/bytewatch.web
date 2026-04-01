@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteWatch | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./css/dashboards.css">
+    <link rel="shortcut icon" href="assets/logo-cd.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="home container-fluid vh-100 p-0">
+        <div class="row g-0 h-100 flex-nowrap">
+
+            <nav class=" sidebar d-flex flex-column p-3">
+                <div class="d-flex justify-content-center"><img id="logo" width="150" src="assets/logo-versao2.png"
+                        alt=""></div>
+                <ul class="nav mt-5 nav-pills flex-column mb-auto gap-2">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active bg-success">
+                            <div class="icon_side d-flex align-items-center"><img src="./assets/Icon_home.svg" alt="">
+                            </div>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <div class="icon_side d-flex justify-content-center"><img src="./assets/Icon_Servidores.svg"
+                                    alt=""></div>Servidores
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <div class="icon_side d-flex justify-content-center"><img src="./assets/Icon_Gestao.svg"
+                                    alt=""></div>Gestão Equipe
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <div class="icon_side d-flex justify-content-center"><img src="./assets/Icon_alerta.svg"
+                                    alt=""></div>Logs de Alerta
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="user-profile mt-auto d-flex flex-column">
+                    <div class="container_user d-flex gap-2">
+                        <a class="d-flex gap-3" href="">
+                            <div class="icon-profile">FB</div>
+                            <div class="box">
+
+                                <p style="font-size: 16px; font-weight: 500; margin: 0;">Fernando Brandão</p>
+                                <p style="font-size: 13px;">Admin Técnico</p>
+
+                            </div>
+                    </div>
+                    </a>
+                    <div class="button-sair">
+                        <p style="margin: 0;">Sair</p>
+                    </div>
+                </div>
+            </nav>
+
+            <!--Adicione os Elementos da Dashboard na Main-->
+
+            <main class="col-md-9 col-lg-10 p-4 overflow-auto">
+                <div class="container">
+                    <div class="box">
+
+                    </div>
+                </div>
+            </main>
+        </div>
+
+
+
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
