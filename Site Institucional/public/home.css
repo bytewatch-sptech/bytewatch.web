@@ -180,3 +180,98 @@ main {
     border-color: var(--cor00);
 }
 }
+
+/* Servidores */
+
+.secao-servidores {
+    & .titulo-secao {
+        color: var(--cor03);
+        font-weight: 600;
+        margin-top: 24px;
+    }
+
+    & .btn-ver-todos {
+        background: transparent;
+        border: 1px solid var(--cor00);
+        color: var(--cor00);
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 0.85rem;
+
+        &:hover {
+            background-color: var(--cor00);
+            color: #000;
+        }
+    }
+
+    & .cartao-servidor {
+        background-color: #22252b;
+        border-radius: 20px;
+        border: 2px solid transparent;
+        overflow: hidden;
+    }
+        & .borda-amarela {
+        border-color: var(--cor01);
+    }
+
+    & .borda-vermelha {
+        border-color: var(--cor02);
+    }
+  }
+
+    & .cabecalho-do-card {
+
+        & .nome-servidor {
+            color: var(--cor03);
+            font-weight: 500;
+        }
+
+        & .localizacao-servidor {
+            color: var(--cor05);
+            font-size: 0.8rem;
+        }
+    }
+
+    & .bolinha-status {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+    }
+
+    & .status-amarelo {
+        background-color: var(--cor01);
+        box-shadow: 0 0 6px var(--cor01);
+    }
+
+    & .status-vermelho {
+        background-color: var(--cor02);
+        box-shadow: 0 0 6px var(--cor02);
+    }
+
+    & .area-metricas {
+        & .label-metrica {
+            color: var(--cor05);
+            font-size: 0.8rem;
+        }
+
+        & .valor-metrica {
+            color: var(--cor03);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* hr gradiente, ui ui */
+        & .barra-placeholder {
+            height: 4px;
+            border-radius: 4px;
+            background: linear-gradient(
+                to right,
+                var(--cor00),
+                var(--cor01),
+                var(--cor02)
+            );
+            border: none;
+            opacity: 1;
+        }
+    }
+
