@@ -50,3 +50,78 @@ main {
     font-size: 0.85rem;   
     }
 }
+
+/* Cartões de alerta!*/
+
+.cartao-resumo {
+    background-color: #1D1D1D;
+    border: 2px solid;
+    border-radius: 15px;
+    overflow: hidden;
+    /* border: 2px solid green; */
+
+    & .conteudo-cartao{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 12px 24px;
+    }
+
+}
+.icone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.textos-do-cartao {
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid green; */
+
+    & .titulo-pequeno {
+    color: var(--cor05);
+    font-size: 0.85rem; 
+    font-weight: 500;
+    white-space: nowrap;
+    }
+
+    & .numero-gigante {
+    font-size: 2.2rem;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: 4px;
+    /* border: 2px solid green; */
+}
+}
+
+.borda-ciano {
+    border-color: var(--cor00);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+
+    & .icone-ciano {
+        border-color: var(--cor00);
+    }
+
+    & .texto-ciano {
+        color: var(--cor00);
+    }
+}
+
+.borda-vermelha {
+    border-color: var(--cor02);
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+
+    & .icone-vermelho {
+        border-color: var(--cor02);
+    }
+
+    & .texto-vermelho {
+        color: var(--cor02);
+    }
+}
