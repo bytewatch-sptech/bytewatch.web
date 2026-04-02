@@ -3,3 +3,50 @@ main {
   width: 100%;
   margin-right: 50px;   
 }
+
+* {
+  background-color: var(--cor04);
+}
+
+:root {
+  --cor00: #22F1E7;
+  --cor01: #FFD600;
+  --cor02: #FF2D56;
+  --cor03: #FFFFFF;
+  --cor04: #0D0D0D;
+  --cor05: #6c757d;
+}
+
+.cabecalho-pagina {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px;
+    /* border: 2px solid red; */
+
+    & .icone-cabecalho{
+    width: 70px; 
+    height: 70px;
+    padding: 10px;
+    /* border: 2px solid red; */
+    }
+
+    & .textos-cabecalho{
+    display: flex;
+    flex-direction: column;  
+    }
+
+    & .titulo-pagina{
+    color: var(--cor03);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;   
+    /* border: 2px solid red; */
+    }
+
+    & .subtitulo-pagina {
+    /* border: 2px solid red; */
+    color: var(--cor05); 
+    font-size: 0.85rem;   
+    }
+}
