@@ -125,3 +125,58 @@ main {
         color: var(--cor02);
     }
 }
+
+/* Filtros */ 
+
+.barra-ferramentas-filtros {
+    background-color: var(--cor04);
+    padding: 16px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--cor05);
+}
+
+.icone-filtro-simulado {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--cor00);
+    border-radius: 4px;
+}
+
+.texto-filtro {
+    color: var(--cor03);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.btn-filtro {
+    background-color: #272a33;
+    color: var(--cor03);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    &:hover {
+    background-color: var(--cor05);
+    color: #ffffff76;
+}
+}
+
+.container-switch{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & .label-switch {
+    color: var(--cor00);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-top: 2px;
+}
+  & .switch-customizado:checked {
+    background-color: var(--cor00);
+    border-color: var(--cor00);
+}
+}
