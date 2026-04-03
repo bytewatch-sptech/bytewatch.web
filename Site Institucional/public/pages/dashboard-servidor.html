@@ -80,13 +80,90 @@
             </nav>
 
             <main style="min-height: 200vh;" class="col ps-md-4 pt-3">
-                <h1>Conteúdo Principal</h1>
-                <p>Agora o conteúdo começará após a sidebar.</p>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row justify-content-center gap-3" style="border: 2px solid red;">
+                            <div class="col-md card-kpi px-4 py-3">
+                                <div class="row align-items-center flex-nowrap">
+                                    <div class="col-6">
+                                    </div>
+
+                                    <div class="col-6 p-0" style="position: relative;">
+                                        <canvas id="doughnut_ram"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md card-kpi px-4 py-3">
+                                <div class="row align-items-center flex-nowrap">
+                                    <div class="col-6">
+                                    </div>
+
+                                    <div class="col-6 p-0" style="position: relative;">
+                                        <canvas id="doughnut_cpu"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md card-kpi px-4 py-3">
+                                <div class="row align-items-center flex-nowrap">
+                                    <div class="col-6">
+                                    </div>
+
+                                    <div class="col-6 p-0" style="position: relative;">
+                                        <canvas id="doughnut_disco"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4" style="border: 2px solid blue;"></div>
+                </div>
             </main>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ram = document.getElementById('doughnut_ram');
+        const cpu = document.getElementById('doughnut_cpu');
+        const disco = document.getElementById('doughnut_disco');
 
+        const data = {
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 100],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                ],
+                hoverOffset: 4
+            }]
+        };
 
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 0
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                }
+            }
+        };
+
+        new Chart(ram, config);
+        new Chart(cpu, config);
+        new Chart(disco, config);
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
