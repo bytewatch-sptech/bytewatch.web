@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByteWatch | Home</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -21,71 +22,347 @@
     <div class="home container-fluid vh-100 p-0">
         <div class="row g-0 h-100 flex-nowrap">
 
-            <nav class=" sidebar d-flex flex-column p-3">
-                <div class="d-flex justify-content-center"><img id="logo" width="150" src="assets/logo-versao2.png"
-                        alt=""></div>
+            <nav class="sidebar d-flex flex-column p-3">
+                <div class="d-flex justify-content-center">
+                    <img id="logo" width="150" src="assets/logo-versao2.png" alt="">
+                </div>
+
                 <ul class="nav mt-5 nav-pills flex-column mb-auto gap-2">
                     <li class="nav-item">
                         <a href="#" class="nav-link active bg-success">
-                            <div class="icon_side d-flex align-items-center"><img src="./assets/Icon_home.svg" alt="">
+                            <div class="icon_side d-flex align-items-center">
+                                <img src="./assets/Icon_home.svg" alt="">
                             </div>Home
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <div class="icon_side d-flex justify-content-center"><img src="./assets/Icon_Servidores.svg"
-                                    alt=""></div>Servidores
+                            <div class="icon_side d-flex justify-content-center">
+                                <img src="./assets/Icon_Servidores.svg" alt="">
+                            </div>Servidores
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <div class="icon_side d-flex justify-content-center"><img src="./assets/Icon_Gestao.svg"
-                                    alt=""></div>Gestão Equipe
+                            <div class="icon_side d-flex justify-content-center">
+                                <img src="./assets/Icon_Gestao.svg" alt="">
+                            </div>Gestão Equipe
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <div class="icon_side d-flex justify-content-center"><img src="./assets/Icon_alerta.svg"
-                                    alt=""></div>Logs de Alerta
+                            <div class="icon_side d-flex justify-content-center">
+                                <img src="./assets/Icon_alerta.svg" alt="">
+                            </div>Logs de Alerta
                         </a>
                     </li>
-
                 </ul>
+
                 <div class="user-profile mt-auto d-flex flex-column">
                     <div class="container_user d-flex gap-2">
                         <a class="d-flex gap-3" href="">
                             <div class="icon-profile">FB</div>
                             <div class="box">
-
                                 <p style="font-size: 16px; font-weight: 500; margin: 0;">Fernando Brandão</p>
                                 <p style="font-size: 13px;">Admin Técnico</p>
-
                             </div>
+                        </a>
                     </div>
-                    </a>
                     <div class="button-sair">
                         <p style="margin: 0;">Sair</p>
                     </div>
                 </div>
             </nav>
 
-            <!--Adicione os Elementos da Dashboard na Main-->
+            <main class="col-md-8 d-flex flex-column gap-4
+            col-lg-12 p-4">
+                <div class="container-fluid vh-100 painel-principal">
+                    <div class="row h-100 linha-layout-global">
 
-            <main class="col-md-9 col-lg-10 p-4 overflow-auto">
-                <div class="container">
-                    <div class="box">
+                        <main class="col col-md-10 h-100 conteudo-principal">
+                            <div class="row h-100 justify-content-start linha-divisao-conteudo">
 
-                    </div>
-                </div>
-            </main>
-        </div>
+                                <div class="col-lg-9 d-flex flex-column gap-4 coluna-central">
+                                    <section class="secao-visao-geral">
+                                        <header class="cabecalho-pagina mb-4">
+                                            <img src="../public/assets/Icon.png" class="icone-cabecalho">
+                                            <div class="textos-cabecalho">
+                                                <h2 class="titulo-pagina">Home</h2>
+                                                <span class="subtitulo-pagina">Veja os insights iniciais</span>
+                                            </div>
+                                        </header>
 
+                                        <div class="row g-3 grade-cards-resumo">
+                                            <div class="col-md-4">
+                                                <div class="card h-100 cartao-resumo borda-ciano">
+                                                    <div class="card-body conteudo-cartao">
+                                                        <div class="icone icone-ciano"></div>
+                                                        <div class="textos-do-cartao">
+                                                            <span class="titulo-pequeno">Total de Máquinas</span>
+                                                            <span class="numero-gigante texto-ciano">8</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                            <div class="col-md-4">
+                                                <div class="card h-100 cartao-resumo borda-vermelha">
+                                                    <div class="card-body conteudo-cartao">
+                                                        <div class="icone icone-vermelho"></div>
+                                                        <div class="textos-do-cartao">
+                                                            <span class="titulo-pequeno">Máquinas em Risco</span>
+                                                            <span class="numero-gigante texto-vermelho">3</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                            <div class="col-md-4">
+                                                <div class="card h-100 cartao-resumo borda-ciano">
+                                                    <div class="card-body conteudo-cartao">
+                                                        <div class="icone icone-ciano"></div>
+                                                        <div class="textos-do-cartao">
+                                                            <span class="titulo-pequeno">Componentes em Risco</span>
+                                                            <span class="numero-gigante texto-ciano">5</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-    </div>
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="icone-filtro"></div>
+                                                <span class="texto-filtro">Filtros:</span>
+                                                <button class="btn btn-filtro">Críticos</button>
+                                                <button class="btn btn-filtro">Alerta</button>
+                                                <button class="btn btn-filtro">Normal</button>
+                                            </div>
 
+                                            <div class="form-check form-switch container-switch">
+                                                <input class="form-check-input switch-customizado" type="checkbox"
+                                                    id="mostrarTodos">
+                                                <label class="form-check-label label-switch" for="mostrarTodos">
+                                                    Mostrar todos
+                                                </label>
+                                            </div>
+                                        </div>
 
+                                        <section class="secao-servidores">
+                                            <div
+                                                class="d-flex justify-content-between align-items-end mb-3 cabecalho-secao-servidores">
+                                                <div>
+                                                    <h4 class="titulo-secao">Servidores em Risco</h4>
+                                                </div>
+                                                <button class="btn btn-ver-todos">Ver Todos</button>
+                                            </div>
+
+                                            <div class="row g-3">
+                                                <div class="col-12 col-md-6 col-xl-4">
+                                                    <div class="card h-100 cartao-servidor borda-amarela">
+                                                        <div class="card-body d-flex flex-column gap-3">
+                                                            <div class="cabecalho-do-card">
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <span class="nome-servidor">TikTok US-West-1</span>
+                                                                    <span class="bolinha-status status-amarelo"></span>
+                                                                </div>
+                                                                <span class="localizacao-servidor">California,
+                                                                    USA</span>
+                                                            </div>
+
+                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">CPU</span>
+                                                                        <span class="valor-metrica">25%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">RAM</span>
+                                                                        <span class="valor-metrica">72%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">DISCO</span>
+                                                                        <span class="valor-metrica">55%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">REDE</span>
+                                                                        <span class="valor-metrica">82%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-md-6 col-xl-4">
+                                                    <div class="card h-100 cartao-servidor borda-vermelha">
+                                                        <div class="card-body d-flex flex-column gap-3">
+                                                            <div class="cabecalho-do-card">
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <span class="nome-servidor">TikTok
+                                                                        EU-Central-1</span>
+                                                                    <span class="bolinha-status status-vermelho"></span>
+                                                                </div>
+                                                                <span class="localizacao-servidor">Frankfurt,
+                                                                    Germany</span>
+                                                            </div>
+
+                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">CPU</span>
+                                                                        <span class="valor-metrica">95%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">RAM</span>
+                                                                        <span class="valor-metrica">91%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">DISCO</span>
+                                                                        <span class="valor-metrica">88%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">REDE</span>
+                                                                        <span class="valor-metrica">78%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-md-6 col-xl-4">
+                                                    <div class="card h-100 cartao-servidor borda-amarela">
+                                                        <div class="card-body d-flex flex-column gap-3">
+                                                            <div class="cabecalho-do-card">
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <span class="nome-servidor">TikTok SA-East-1</span>
+                                                                    <span class="bolinha-status status-amarelo"></span>
+                                                                </div>
+                                                                <span class="localizacao-servidor">São Paulo,
+                                                                    Brazil</span>
+                                                            </div>
+
+                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">CPU</span>
+                                                                        <span class="valor-metrica">78%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">RAM</span>
+                                                                        <span class="valor-metrica">86%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">DISCO</span>
+                                                                        <span class="valor-metrica">62%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica">REDE</span>
+                                                                        <span class="valor-metrica">85%</span>
+                                                                    </div>
+                                                                    <hr class="barra-placeholder m-0">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </section>
+                                    </section>
+                                </div>
+
+                                <aside class="col-lg-3 d-flex flex-column gap-3 barra-lateral-direita conteudo-aside">
+
+                                    <div class="card cartao-acao-lateral">
+                                        <div class="card-body conteudo-cartao d-flex flex-column gap-2">
+                                            <span class="titulo-lateral text-white fw-bold">Último Alerta</span>
+
+                                            <div class="d-flex align-items-center gap-2 mt-1">
+                                                <span class="bolinha-status status-vermelho"></span>
+                                                <span class="text-white fw-semibold">CPU crítico</span>
+                                            </div>
+
+                                            <span class="texto-secundario ps-3 ms-1">TikTok EU-Central-1</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="card cartao-acao-lateral">
+                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
+                                            <span class="titulo-lateral text-white fw-bold">Ações Rápidas</span>
+
+                                            <div class="d-flex flex-column gap-2">
+                                                <button class="btn btn-acao btn-acao-adicionar">
+                                                    <i class="fa-solid fa-plus"></i> Adicionar Servidor
+                                                </button>
+
+                                                <button class="btn btn-acao btn-acao-editar">
+                                                    <i class="fa-solid fa-pen"></i> Editar Servidor
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card cartao-acao-lateral">
+                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
+                                            <span class="titulo-lateral text-white fw-bold">Exportar Logs</span>
+
+                                            <button class="btn btn-relatorio w-100">
+                                                <i class="fa-solid fa-download"></i> Baixar CSV
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </aside>
+
+                            </div>
+                        </main
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
