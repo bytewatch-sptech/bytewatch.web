@@ -79,11 +79,11 @@
                 </div>
             </nav>
 
-            <main style="min-height: 200vh;" class="col ps-md-4 pt-3">
+            <main class="col ps-md-4 pt-3">
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="row justify-content-center gap-3">
-                            <div class="col-md card-kpi px-4 py-3">
+                            <div class="col-md col-11 card-kpi px-4 py-3">
                                 <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
                                     <div class="col-6 coluna-kpi">
                                         <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md card-kpi px-4 py-3">
+                            <div class="col-md col-11 card-kpi px-4 py-3">
                                 <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
                                     <div class="col-6 coluna-kpi">
                                         <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
@@ -167,7 +167,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md card-kpi px-4 py-3">
+                            <div class="col-md col-11 card-kpi px-4 py-3">
                                 <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
                                     <div class="col-6 coluna-kpi">
                                         <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
@@ -208,6 +208,12 @@
                                         <canvas id="doughnut_disco"></canvas>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h1 class="dashboard-title">Uso dos componentes</h1>
+                                <canvas id="dashboardComponentes"></canvas>
                             </div>
                         </div>
                     </div>
@@ -332,3 +338,186 @@
 </body>
 
 </html>
+<script>
+    // obterDadosGrafico(idSensor)
+
+    function obterDadosGrafico(id_registro) {
+
+        fetch(`/medidas/ultimas/${id_registro}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    plotarGrafico(resposta, id_registro);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    plotarGrafico([], 2)
+    function plotarGrafico(resposta, id_registro) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        labels = ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+
+        let dadosDashboard = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'CPU',
+                    data: [70, 80, 35, 62, 95, 49, 32],
+                    fill: true,
+                    borderColor: '#C167C7',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: "+2",
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+                {
+                    label: 'RAM',
+                    data: [66, 89, 43, 93, 69, 51, 84],
+                    fill: true,
+                    borderColor: '#FFD500',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+                {
+                    label: 'DISCO',
+                    data: [55, 58, 65, 72, 69, 71, 74],
+                    fill: true,
+                    borderColor: '#00F2EA',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+            ]
+        }
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            var momentoGrafico = registro.momento_grafico
+            labels.push(momentoGrafico);
+
+
+            dadosDashboard.datasets[1].data.push(registro.dado);
+        }
+
+        const configDashboard = {
+            type: 'line',
+            data: dadosDashboard,
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Horário",
+                            color: '#5A5A5A',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Consumo (%)',
+                            color: '#5A5A5A',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+
+        let dashboard_componentes = new Chart(
+            document.getElementById(`dashboardComponentes`),
+            configDashboard
+        );
+
+        // setTimeout(() => atualizarGrafico(id_registro, dadosDashboard, dashboard_componentes), 2000);
+    }
+
+    function atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade) {
+        fetch(`/medidas/tempo-real/${id_registro}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico de temperatura:`);
+                    console.log(dadosTemperatura);
+
+                    console.log(`Dados atuais do gráfico de umidade:`);
+                    console.log(dadosUmidade);
+
+                    var momentoGrafico = novoRegistro[0].momento_grafico
+                    var momentoGraficoFormatado = novoRegistro[0].momento_grafico.split(':')
+                    momentoGraficoFormatado = `${momentoGraficoFormatado[0]}:${momentoGraficoFormatado[1]}`
+                    if (momentoGrafico == labels[labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(momentoGrafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(labels[labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+
+                        dadosTemperatura.labels.shift(); // apagar o primeiro
+                        dadosTemperatura.labels.push(momentoGraficoFormatado); // incluir um novo momento
+
+                        dadosUmidade.labels.shift(); // apagar o primeiro
+                        dadosUmidade.labels.push(momentoGraficoFormatado); // incluir um novo momento
+
+                        labels.shift()
+                        labelsFormatado.shift()
+                        labels.push(momentoGrafico)
+                        labelsFormatado.push(momentoGraficoFormatado)
+
+                        dadosUmidade.datasets[1].data.shift();  // apagar o primeiro de umidade
+                        dadosUmidade.datasets[1].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                    }
+
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+</script>
