@@ -8,11 +8,74 @@ body {
     border-radius: 9.83px;
 }
 
-#doughnut_ram {
-}
-
 canvas {
     display: block;
     width: 100% !important;
     height: 100% !important;
+}
+
+.icon-label {
+    color: #CECECE; 
+    font-weight: bolder; 
+    font-size: 18px;
+}
+
+.status-percent {
+    color: #FFFFFF;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 35px;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+}
+
+.coluna-kpi {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 0px;
+    padding-right: 0px;
+    gap: 15px;
+}
+
+.div-legends {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.legend-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 5px;
+}
+
+
+.legend-container div {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.span-legend {
+    color: #FFFFFF;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.span-percent {
+    color: #FFFFFF;
+    font-size: 14px;
+
+}
+
+.span-circle {
+    height: 12px;
+    padding: 0px 6px;
+    border-radius: 100px;
+    background-color: #FF0050;
 }

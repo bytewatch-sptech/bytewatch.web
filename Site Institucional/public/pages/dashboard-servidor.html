@@ -81,21 +81,43 @@
 
             <main style="min-height: 200vh;" class="col ps-md-4 pt-3">
                 <div class="row">
-                    <div class="col-8">
-                        <div class="row justify-content-center gap-3" style="border: 2px solid red;">
+                    <div class="col-lg-8">
+                        <div class="row justify-content-center gap-3">
                             <div class="col-md card-kpi px-4 py-3">
-                                <div class="row align-items-center flex-nowrap">
-                                    <div class="col-6">
-                                    </div>
-
-                                    <div class="col-6 p-0" style="position: relative;">
-                                        <canvas id="doughnut_ram"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md card-kpi px-4 py-3">
-                                <div class="row align-items-center flex-nowrap">
-                                    <div class="col-6">
+                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                    <div class="col-6 coluna-kpi">
+                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                            style="padding-left: 0px;">
+                                            <div class="col-lg-6 d-flex justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <img src="../assets/icons/cpu.svg" style="height: 40px;" alt="">
+                                            </div>
+                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <span class="display-7 icon-label">CPU</span>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex justify-content-lg-start justify-content-around">
+                                            <div class="col-6" style="padding-left: 0px; padding-right: 0px;">
+                                                <span class="display-6 status-percent">75%</span>
+                                            </div>
+                                        </div>
+                                        <div class="div-legends">
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle" style="background-color: #C167C7;"></span>
+                                                    <span class="span-legend">Em uso</span>
+                                                </div>
+                                                <span class="span-percent">75%</span>
+                                            </div>
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle"></span>
+                                                    <span class="span-legend">Restante</span>
+                                                </div>
+                                                <span class="span-percent">15%</span>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="col-6 p-0" style="position: relative;">
@@ -104,8 +126,82 @@
                                 </div>
                             </div>
                             <div class="col-md card-kpi px-4 py-3">
-                                <div class="row align-items-center flex-nowrap">
-                                    <div class="col-6">
+                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                    <div class="col-6 coluna-kpi">
+                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                            style="padding-left: 0px;">
+                                            <div class="col-lg-6 d-flex justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <img src="../assets/icons/ram.svg" style="height: 40px;" alt="">
+                                            </div>
+                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <span class="display-7 icon-label">RAM</span>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex justify-content-lg-start justify-content-around">
+                                            <div class="col-6" style="padding-left: 0px; padding-right: 0px;">
+                                                <span class="display-6 status-percent">75%</span>
+                                            </div>
+                                        </div>
+                                        <div class="div-legends">
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle" style="background-color: #FFD500;"></span>
+                                                    <span class="span-legend">Em uso</span>
+                                                </div>
+                                                <span class="span-percent">75%</span>
+                                            </div>
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle"></span>
+                                                    <span class="span-legend">Restante</span>
+                                                </div>
+                                                <span class="span-percent">15%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 p-0" style="position: relative;">
+                                        <canvas id="doughnut_ram"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md card-kpi px-4 py-3">
+                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                    <div class="col-6 coluna-kpi">
+                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                            style="padding-left: 0px;">
+                                            <div class="col-lg-6 d-flex justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <img src="../assets/icons/disco.svg" style="height: 40px;" alt="">
+                                            </div>
+                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <span class="display-7 icon-label">DISCO</span>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex justify-content-lg-start justify-content-around">
+                                            <div class="col-6" style="padding-left: 0px; padding-right: 0px;">
+                                                <span class="display-6 status-percent">75%</span>
+                                            </div>
+                                        </div>
+                                        <div class="div-legends">
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle" style="background-color: #00F2EA;"></span>
+                                                    <span class="span-legend">Em uso</span>
+                                                </div>
+                                                <span class="span-percent">75%</span>
+                                            </div>
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle"></span>
+                                                    <span class="span-legend">Restante</span>
+                                                </div>
+                                                <span class="span-percent">15%</span>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="col-6 p-0" style="position: relative;">
@@ -115,7 +211,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-4" style="border: 2px solid blue;"></div>
+                    <div class="col-lg-4" style="border: 2px solid blue;"></div>
                 </div>
             </main>
         </div>
@@ -126,21 +222,21 @@
         const cpu = document.getElementById('doughnut_cpu');
         const disco = document.getElementById('doughnut_disco');
 
-        const data = {
+        const ramData = {
             datasets: [{
                 label: 'My First Dataset',
                 data: [300, 100],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
+                    "#FFD500",
+                    "#FF0050",
                 ],
                 hoverOffset: 4
             }]
         };
 
-        const config = {
+        const ramConfig = {
             type: 'doughnut',
-            data: data,
+            data: ramData,
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
@@ -159,9 +255,75 @@
             }
         };
 
-        new Chart(ram, config);
-        new Chart(cpu, config);
-        new Chart(disco, config);
+        const cpuData = {
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 100],
+                backgroundColor: [
+                    '#C167C7',
+                    "#FF0050",
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const cpuConfig = {
+            type: 'doughnut',
+            data: cpuData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 0
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                }
+            }
+        };
+
+        const discoData = {
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 100],
+                backgroundColor: [
+                    '#00F2EA',
+                    "#FF0050",
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const discoConfig = {
+            type: 'doughnut',
+            data: discoData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 0
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                }
+            }
+        };
+
+        new Chart(ram, ramConfig);
+        new Chart(cpu, cpuConfig);
+        new Chart(disco, discoConfig);
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
