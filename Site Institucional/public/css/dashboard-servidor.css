@@ -84,3 +84,32 @@ canvas {
     font-size: 20px;
     margin-top: 20px;
 }
+
+.information-container {
+    border: 1px solid #FFFFFF14;
+    border-radius: 7px;
+    padding: 15px;
+}
+
+.information-container h1 {
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.information-container label {
+    color: #A0A0A0;
+    font-size: 14px;
+}
+
+.information-container span {
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.div-line {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FFFFFF14;
+    margin-top: 14px;
+    padding-bottom: 5px;
+}
