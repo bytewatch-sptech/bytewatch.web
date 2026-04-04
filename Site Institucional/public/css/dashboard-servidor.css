@@ -24,9 +24,8 @@ canvas {
     color: #FFFFFF;
     font-weight: bolder;
     text-align: center;
-    font-size: 35px;
-    padding-right: calc(var(--bs-gutter-x) * .5);
-    padding-left: calc(var(--bs-gutter-x) * .5);
+    /* font-size: 35px; */
+    /* padding-left: 10px; */
 }
 
 .coluna-kpi {
