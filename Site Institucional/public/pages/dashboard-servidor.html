@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteWatch | Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/dashboard-servidor.css">
+    <link rel="shortcut icon" href="../assets/logo-cd.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body style="overflow: auto;">
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <nav class="sidebar col-auto col-md-3 col-xl-2 d-flex flex-column p-3 bg-dark">
+
+                <div class="d-flex justify-content-center mb-5">
+                    <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
+                    <i class="bi bi-cpu fs-2 text-success d-block d-sm-none"></i>
+                </div>
+
+                <ul class="nav nav-pills flex-column mb-auto gap-2">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active bg-success d-flex align-items-center">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_home.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_Servidores.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Servidores</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_Gestao.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Gestão Equipe</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_alerta.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Logs de Alerta</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                    <div class="container_user d-flex gap-2">
+                        <a class="d-flex gap-3" href="">
+                            <div class="icon-profile">FB</div>
+
+                            <div class="box d-none d-md-block">
+                                <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
+                                <p style="font-size: 13px;">Admin Técnico</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="button-sair mt-2 text-center">
+                        <p style="margin: 0;">Sair</p>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="col ps-md-4 pt-3">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="row justify-content-center gap-3">
+                            <div class="col-md col-11 card-kpi px-4 py-3">
+                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                    <div class="col-6 coluna-kpi">
+                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                            style="padding-left: 0px;">
+                                            <div class="col-lg-6 d-flex justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <img src="../assets/icons/cpu.svg" style="height: 40px;" alt="">
+                                            </div>
+                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <span class="display-7 icon-label">CPU</span>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex justify-content-lg-start justify-content-around">
+                                            <div class="col" style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                                <span class="display-6 status-percent">75%</span>
+                                            </div>
+                                        </div>
+                                        <div class="div-legends">
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle" style="background-color: #C167C7;"></span>
+                                                    <span class="span-legend">Em uso</span>
+                                                </div>
+                                                <span class="span-percent">75%</span>
+                                            </div>
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle"></span>
+                                                    <span class="span-legend">Restante</span>
+                                                </div>
+                                                <span class="span-percent">15%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 p-0" style="position: relative;">
+                                        <canvas id="doughnut_cpu"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md col-11 card-kpi px-4 py-3">
+                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                    <div class="col-6 coluna-kpi">
+                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                            style="padding-left: 0px;">
+                                            <div class="col-lg-6 d-flex justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <img src="../assets/icons/ram.svg" style="height: 40px;" alt="">
+                                            </div>
+                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <span class="display-7 icon-label">RAM</span>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex justify-content-lg-start justify-content-around">
+                                            <div class="col" style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                                <span class="display-6 status-percent">75%</span>
+                                            </div>
+                                        </div>
+                                        <div class="div-legends">
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle" style="background-color: #FFD500;"></span>
+                                                    <span class="span-legend">Em uso</span>
+                                                </div>
+                                                <span class="span-percent">75%</span>
+                                            </div>
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle"></span>
+                                                    <span class="span-legend">Restante</span>
+                                                </div>
+                                                <span class="span-percent">15%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 p-0" style="position: relative;">
+                                        <canvas id="doughnut_ram"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md col-11 card-kpi px-4 py-3">
+                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                    <div class="col-6 coluna-kpi">
+                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                            style="padding-left: 0px;">
+                                            <div class="col-lg-6 d-flex justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <img src="../assets/icons/disco.svg" style="height: 40px;" alt="">
+                                            </div>
+                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                style="padding-left: 0px; padding-right: 0px;">
+                                                <span class="display-7 icon-label">DISCO</span>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex justify-content-lg-start justify-content-around">
+                                            <div class="col" style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                                <span class="display-md-1 display-6 status-percent">75%</span>
+                                            </div>
+                                        </div>
+                                        <div class="div-legends">
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle" style="background-color: #00F2EA;"></span>
+                                                    <span class="span-legend">Em uso</span>
+                                                </div>
+                                                <span class="span-percent">75%</span>
+                                            </div>
+                                            <div class="legend-container">
+                                                <div>
+                                                    <span class="span-circle"></span>
+                                                    <span class="span-legend">Restante</span>
+                                                </div>
+                                                <span class="span-percent">15%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 p-0" style="position: relative;">
+                                        <canvas id="doughnut_disco"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h1 class="dashboard-title">Uso dos componentes</h1>
+                                <canvas style="border: 1px solid #FFFFFF14; border-radius: 9.8px;" id="dashboardComponentes"></canvas>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="container-alertaa"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col">
+                                <div class="information-container">
+                                    <h1>Informações</h1>
+                                    <div class="div-line">
+                                        <label>Status</label>
+                                        <span>Alerta</span>
+                                    </div>
+                                    <div class="div-line">
+                                        <label>Última Coleta</label>
+                                        <span>29/03/2026</span>
+                                    </div>
+                                    <div class="div-line">
+                                        <label>Localização</label>
+                                        <span>California, USA</span>
+                                    </div>
+                                    <div class="div-line">
+                                        <label>Tipo</label>
+                                        <span>Processamento de vídeo</span>
+                                    </div>
+                                    <div class="div-line">
+                                        <label>IP Externo</label>
+                                        <span>192.1.1.0</span>
+                                    </div>
+                                    <div class="div-line">
+                                        <label>IP Interno</label>
+                                        <span>10.128.0.5</span>
+                                    </div>
+                                    <div class="div-line">
+                                        <label>RAM</label>
+                                        <span>512GB</span>
+                                    </div>
+                                    <div class="div-line">
+                                        <label>CPU</label>
+                                        <span>Xeon E5-2697 v4</span>
+                                    </div>
+                                    <div class="div-line">
+                                        <label>DISCO</label>
+                                        <span>3OT NVMe</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ram = document.getElementById('doughnut_ram');
+        const cpu = document.getElementById('doughnut_cpu');
+        const disco = document.getElementById('doughnut_disco');
+
+        const ramData = {
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 100],
+                backgroundColor: [
+                    "#FFD500",
+                    "#FF0050",
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const ramConfig = {
+            type: 'doughnut',
+            data: ramData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 0
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                }
+            }
+        };
+
+        const cpuData = {
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 100],
+                backgroundColor: [
+                    '#C167C7',
+                    "#FF0050",
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const cpuConfig = {
+            type: 'doughnut',
+            data: cpuData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 0
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                }
+            }
+        };
+
+        const discoData = {
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 100],
+                backgroundColor: [
+                    '#00F2EA',
+                    "#FF0050",
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const discoConfig = {
+            type: 'doughnut',
+            data: discoData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 0
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                }
+            }
+        };
+
+        new Chart(ram, ramConfig);
+        new Chart(cpu, cpuConfig);
+        new Chart(disco, discoConfig);
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+<script>
+    // obterDadosGrafico(idSensor)
+
+    function obterDadosGrafico(id_registro) {
+
+        fetch(`/medidas/ultimas/${id_registro}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    plotarGrafico(resposta, id_registro);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    plotarGrafico([], 2)
+    function plotarGrafico(resposta, id_registro) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        labels = ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+
+        let dadosDashboard = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'CPU',
+                    data: [70, 80, 35, 62, 95, 49, 32],
+                    fill: true,
+                    borderColor: '#C167C7',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: "+2",
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+                {
+                    label: 'RAM',
+                    data: [66, 89, 43, 93, 69, 51, 84],
+                    fill: true,
+                    borderColor: '#FFD500',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+                {
+                    label: 'DISCO',
+                    data: [55, 58, 65, 72, 69, 71, 74],
+                    fill: true,
+                    borderColor: '#00F2EA',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+            ]
+        }
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            var momentoGrafico = registro.momento_grafico
+            labels.push(momentoGrafico);
+
+
+            dadosDashboard.datasets[1].data.push(registro.dado);
+        }
+
+        const configDashboard = {
+            type: 'line',
+            data: dadosDashboard,
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Horário",
+                            color: '#5A5A5A',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Consumo (%)',
+                            color: '#5A5A5A',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+
+        let dashboard_componentes = new Chart(
+            document.getElementById(`dashboardComponentes`),
+            configDashboard
+        );
+
+        // setTimeout(() => atualizarGrafico(id_registro, dadosDashboard, dashboard_componentes), 2000);
+    }
+
+    function atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade) {
+        fetch(`/medidas/tempo-real/${id_registro}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico de temperatura:`);
+                    console.log(dadosTemperatura);
+
+                    console.log(`Dados atuais do gráfico de umidade:`);
+                    console.log(dadosUmidade);
+
+                    var momentoGrafico = novoRegistro[0].momento_grafico
+                    var momentoGraficoFormatado = novoRegistro[0].momento_grafico.split(':')
+                    momentoGraficoFormatado = `${momentoGraficoFormatado[0]}:${momentoGraficoFormatado[1]}`
+                    if (momentoGrafico == labels[labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(momentoGrafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(labels[labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+
+                        dadosTemperatura.labels.shift(); // apagar o primeiro
+                        dadosTemperatura.labels.push(momentoGraficoFormatado); // incluir um novo momento
+
+                        dadosUmidade.labels.shift(); // apagar o primeiro
+                        dadosUmidade.labels.push(momentoGraficoFormatado); // incluir um novo momento
+
+                        labels.shift()
+                        labelsFormatado.shift()
+                        labels.push(momentoGrafico)
+                        labelsFormatado.push(momentoGraficoFormatado)
+
+                        dadosUmidade.datasets[1].data.shift();  // apagar o primeiro de umidade
+                        dadosUmidade.datasets[1].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                    }
+
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+</script>
