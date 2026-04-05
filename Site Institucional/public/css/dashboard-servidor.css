@@ -174,3 +174,37 @@ canvas {
     height: 18px;
     margin-right: 5px;
 }
+
+.container-info-local {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.container-info-local button {
+    border: 1px solid #FFFFFF14;
+    border-radius: 7px;
+    padding: 3px 10px;
+    color: #FFFFFF;
+    background-color: #151515;
+    margin-right: 20px;
+    font-weight: 600;
+    max-height: 60px;
+}
+
+.servidor-title {
+    color: #FFFFFF;
+    margin: 0px;
+    padding: 0px;
+    font-weight: 600;
+}
+
+.middle-line {
+    border-left: 2px solid #FFFFFF14;
+    height: 100%;
+}
+
+.local-servidor {
+    color: #A0A0A0;
+    font-size: 12px;
+}
