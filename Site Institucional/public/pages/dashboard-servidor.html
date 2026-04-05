@@ -210,15 +210,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
+                        <div class="row mb-4">
+                            <div class="col mb-5">
                                 <h1 class="dashboard-title">Uso dos componentes</h1>
                                 <canvas style="border: 1px solid #FFFFFF14; border-radius: 9.8px;" id="dashboardComponentes"></canvas>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="container-alertaa"></div>
+                                <div class="container-alerta"></div>
                             </div>
                         </div>
                     </div>
@@ -264,6 +264,12 @@
                                         <span>3OT NVMe</span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col mb-5">
+                                <h1 class="dashboard-title">Rede</h1>
+                                <canvas style="border: 1px solid #FFFFFF14; border-radius: 9.8px;" id="dashboardRede"></canvas>
                             </div>
                         </div>
                     </div>
@@ -416,6 +422,39 @@
 
         labels = ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
 
+        let dadosRede = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Recebido',
+                    data: [70, 80, 35, 62, 95, 49, 32],
+                    fill: true,
+                    borderColor: '#C167C7',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: "+2",
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+                {
+                    label: 'Enviado',
+                    data: [66, 89, 43, 93, 69, 51, 84],
+                    fill: true,
+                    borderColor: '#FFD500',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+            ]
+        }
+
         let dadosDashboard = {
             labels: labels,
             datasets: [
@@ -507,10 +546,46 @@
             }
         };
 
+        const configDashboardRede = {
+            type: 'line',
+            data: dadosRede,
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Horário",
+                            color: '#5A5A5A',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Mb/s',
+                            color: '#5A5A5A',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
 
         let dashboard_componentes = new Chart(
             document.getElementById(`dashboardComponentes`),
             configDashboard
+        );
+
+        let dashboard_rede = new Chart(
+            document.getElementById(`dashboardRede`),
+            configDashboardRede
         );
 
         // setTimeout(() => atualizarGrafico(id_registro, dadosDashboard, dashboard_componentes), 2000);
