@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByteWatch | Home</title>
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
@@ -30,7 +30,7 @@
                     <i class="bi bi-cpu fs-2 text-success d-block d-sm-none"></i>
                 </div>
 
-                <ul class="nav nav-pills flex-column mb-auto gap-2">
+                <ul class="nav mt-5 nav-pills flex-column mb-auto gap-2">
                     <li class="nav-item">
                         <a href="#" class="nav-link active bg-success d-flex align-items-center">
                             <div class="icon_side d-flex align-items-center justify-content-center">
@@ -83,12 +83,13 @@
                 </div>
             </nav>
 
-            <main class="col-md-9 col-lg-10 p-4">
+            <main class="col-md-8 d-flex flex-column gap-4
+            col-lg-12 p-4">
                 <div class="container-fluid painel-principal">
                     <div class="row h-100 linha-layout-global">
-                        
+
                         <main class="col col-md-10 h-100 conteudo-principal">
-                            <div class="row h-100 linha-divisao-conteudo">
+                            <div class="row h-100 justify-content-start linha-divisao-conteudo">
 
                                 <div class="col-lg-9 d-flex flex-column gap-4 coluna-central">
                                     <section class="secao-visao-geral">
@@ -138,7 +139,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros">
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros">
                                             <div class="d-flex align-items-center gap-3">
                                                 <div class="icone-filtro"></div>
                                                 <span class="texto-filtro">Filtros:</span>
@@ -148,7 +150,8 @@
                                             </div>
 
                                             <div class="form-check form-switch container-switch">
-                                                <input class="form-check-input switch-customizado" type="checkbox" id="mostrarTodos">
+                                                <input class="form-check-input switch-customizado" type="checkbox"
+                                                    id="mostrarTodos">
                                                 <label class="form-check-label label-switch" for="mostrarTodos">
                                                     Mostrar todos
                                                 </label>
@@ -156,10 +159,11 @@
                                         </div>
 
                                         <section class="secao-servidores">
-                                            <div class="d-flex justify-content-between align-items-end mb-3 cabecalho-secao-servidores">
+                                            <div
+                                                class="d-flex justify-content-between align-items-end mb-3 cabecalho-secao-servidores">
                                                 <div>
                                                     <h4 class="titulo-secao">Servidores em Risco</h4>
-                                                    </div>
+                                                </div>
                                                 <button class="btn btn-ver-todos">Ver Todos</button>
                                             </div>
 
@@ -168,37 +172,43 @@
                                                     <div class="card h-100 cartao-servidor borda-amarela">
                                                         <div class="card-body d-flex flex-column gap-3">
                                                             <div class="cabecalho-do-card">
-                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
                                                                     <span class="nome-servidor">TikTok US-West-1</span>
                                                                     <span class="bolinha-status status-amarelo"></span>
                                                                 </div>
-                                                                <span class="localizacao-servidor">California, USA</span>
+                                                                <span class="localizacao-servidor">California,
+                                                                    USA</span>
                                                             </div>
 
                                                             <div class="area-metricas d-flex flex-column gap-3 mt-2">
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">CPU</span>
                                                                         <span class="valor-metrica">25%</span>
                                                                     </div>
                                                                     <hr class="barra-placeholder m-0">
                                                                 </div>
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">RAM</span>
                                                                         <span class="valor-metrica">72%</span>
                                                                     </div>
                                                                     <hr class="barra-placeholder m-0">
                                                                 </div>
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">DISCO</span>
                                                                         <span class="valor-metrica">55%</span>
                                                                     </div>
                                                                     <hr class="barra-placeholder m-0">
                                                                 </div>
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">REDE</span>
                                                                         <span class="valor-metrica">82%</span>
                                                                     </div>
@@ -213,37 +223,44 @@
                                                     <div class="card h-100 cartao-servidor borda-vermelha">
                                                         <div class="card-body d-flex flex-column gap-3">
                                                             <div class="cabecalho-do-card">
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <span class="nome-servidor">TikTok EU-Central-1</span>
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <span class="nome-servidor">TikTok
+                                                                        EU-Central-1</span>
                                                                     <span class="bolinha-status status-vermelho"></span>
                                                                 </div>
-                                                                <span class="localizacao-servidor">Frankfurt, Germany</span>
+                                                                <span class="localizacao-servidor">Frankfurt,
+                                                                    Germany</span>
                                                             </div>
 
                                                             <div class="area-metricas d-flex flex-column gap-3 mt-2">
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">CPU</span>
                                                                         <span class="valor-metrica">95%</span>
                                                                     </div>
                                                                     <hr class="barra-placeholder m-0">
                                                                 </div>
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">RAM</span>
                                                                         <span class="valor-metrica">91%</span>
                                                                     </div>
                                                                     <hr class="barra-placeholder m-0">
                                                                 </div>
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">DISCO</span>
                                                                         <span class="valor-metrica">88%</span>
                                                                     </div>
                                                                     <hr class="barra-placeholder m-0">
                                                                 </div>
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">REDE</span>
                                                                         <span class="valor-metrica">78%</span>
                                                                     </div>
@@ -258,37 +275,43 @@
                                                     <div class="card h-100 cartao-servidor borda-amarela">
                                                         <div class="card-body d-flex flex-column gap-3">
                                                             <div class="cabecalho-do-card">
-                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
                                                                     <span class="nome-servidor">TikTok SA-East-1</span>
                                                                     <span class="bolinha-status status-amarelo"></span>
                                                                 </div>
-                                                                <span class="localizacao-servidor">São Paulo, Brazil</span>
+                                                                <span class="localizacao-servidor">São Paulo,
+                                                                    Brazil</span>
                                                             </div>
 
                                                             <div class="area-metricas d-flex flex-column gap-3 mt-2">
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">CPU</span>
                                                                         <span class="valor-metrica">78%</span>
                                                                     </div>
                                                                     <hr class="barra-placeholder m-0">
                                                                 </div>
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">RAM</span>
                                                                         <span class="valor-metrica">86%</span>
                                                                     </div>
                                                                     <hr class="barra-placeholder m-0">
                                                                 </div>
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">DISCO</span>
                                                                         <span class="valor-metrica">62%</span>
                                                                     </div>
                                                                     <hr class="barra-placeholder m-0">
                                                                 </div>
                                                                 <div class="item-metrica">
-                                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
                                                                         <span class="label-metrica">REDE</span>
                                                                         <span class="valor-metrica">85%</span>
                                                                     </div>
@@ -304,34 +327,49 @@
                                     </section>
                                 </div>
 
-                                <aside class="col-lg-3 d-flex flex-column gap-3 barra-lateral-direita">
+                                <aside class="col-lg-3 d-flex flex-column gap-3 barra-lateral-direita conteudo-aside">
+
                                     <div class="card cartao-acao-lateral">
                                         <div class="card-body conteudo-cartao d-flex flex-column gap-2">
-                                            <span class="fw-bold">Último Alerta</span>
-                                            <div class="d-flex justify-content-between align-items-center">
+                                            <span class="titulo-lateral text-white fw-bold">Último Alerta</span>
+
+                                            <div class="d-flex align-items-center gap-2 mt-1">
                                                 <span class="bolinha-status status-vermelho"></span>
-                                                <span class="label-ultimo-aviso">CPU crítico</span>
+                                                <span class="text-white fw-semibold">CPU crítico</span>
                                             </div>
-                                            <span class="nome-servidor">TikTok EU-Central-1</span>
+
+                                            <span class="texto-secundario ps-3 ms-1">TikTok EU-Central-1</span>
                                         </div>
                                     </div>
 
                                     <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-2">
-                                            <span class="fw-bold">Ações Rápidas</span>
-                                            <button class="btn btn-filtro">Adicionar Servidor</button>
-                                            <button class="btn btn-filtro">Editar Servidor</button>
+                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
+                                            <span class="titulo-lateral text-white fw-bold">Ações Rápidas</span>
+
+                                            <div class="d-flex flex-column gap-2">
+                                                <button class="btn btn-acao btn-acao-adicionar">
+                                                    <i class="fa-solid fa-plus"></i> Adicionar Servidor
+                                                </button>
+
+                                                <button class="btn btn-acao btn-acao-editar">
+                                                    <i class="fa-solid fa-pen"></i> Editar Servidor
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-2">
-                                            <span class="fw-bold">Exportar Logs</span>
-                                            <button class="btn btn-filtro">Baixar relatório</button>
+                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
+                                            <span class="titulo-lateral text-white fw-bold">Exportar Logs</span>
+
+                                            <button class="btn btn-relatorio w-100">
+                                                <i class="fa-solid fa-download"></i> Baixar CSV
+                                            </button>
                                         </div>
                                     </div>
+
                                 </aside>
-                                
+
                             </div>
                         </main>
 

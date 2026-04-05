@@ -1,15 +1,16 @@
 main {
-  flex: 2;
-  width: 100%;
-  margin-right: 50px;   
+    width: 100%;
+    overflow: hidden !important;
+
+  
 }
 
-* {
+body {
   background-color: var(--cor04);
 }
 
 :root {
-  --cor00: #22F1E7;
+  --cor00: #00f2ea;
   --cor01: #FFD600;
   --cor02: #FF2D56;
   --cor03: #FFFFFF;
@@ -175,7 +176,7 @@ main {
     font-size: 0.95rem;
     margin-top: 2px;
 }
-  & .switch-customizado:checked {
+    & .switch-customizado:checked {
     background-color: var(--cor00);
     border-color: var(--cor00);
 }
@@ -275,3 +276,65 @@ main {
         }
     }
 
+/* Barra lateral */ 
+
+.cartao-acao-lateral {
+    background-color: #1D1D1D;
+    border-radius: 12px;
+    border: 1px solid #2a2a2a;
+
+    & .titulo-lateral {
+    font-size: 1.1rem;
+    /* border: 2px solid red; */
+}
+    & .texto-secundario {
+    color: var(--cor05); 
+    font-size: 0.85rem;
+}
+}
+
+.btn-acao {
+    display: flex;
+    position: relative; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    /* border: 2px solid red; */
+}
+
+.btn-acao i {
+    position: absolute;
+    left: 15px; 
+}
+
+.btn-acao-adicionar{
+    background-color: var(--cor00);
+    color: var(--cor04);
+}
+
+.btn-acao-editar {
+    color: var(--cor03);
+    border: 1px solid #383c47;
+}
+
+
+.btn-relatorio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 229, 255, 0.05);
+    border: 1px solid var(--cor00);
+    color: var(--cor00);
+    border-radius: 8px;
+    padding: 10px;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.conteudo-aside {
+    margin-top: 100px;
+}
