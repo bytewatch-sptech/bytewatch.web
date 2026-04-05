@@ -17,6 +17,8 @@ body {
   --cor03: #FFFFFF;
   --cor04: #0D0D0D;
   --cor05: #6c757d;
+  --cor06: #262626;
+  --cor07: #b3b3b3;
 }
 
 .cabecalho-pagina {
@@ -338,4 +340,53 @@ body {
 
 .conteudo-aside {
     margin-top: 100px;
+}
+
+/* Modal*/
+
+.modal-adicionar-servidor {
+    background-color: var(--cor04);
+    border: 1px solid #333333;
+    border-radius: 12px;
+}
+
+.input-escuro {
+    background-color: var(--cor06); 
+    border: 1px solid #333333;
+    border-radius: 8px;
+    color: var(--cor03);
+
+    /* brilhinho, uiuiuiui */
+    &:focus {
+        background-color: var(--cor06);
+        border-color: var(--cor00);
+        color: var(--cor03);
+        box-shadow: 0 0 0 0.25rem rgba(0, 242, 234, 0.25);
+        outline: none;
+    }
+}
+
+.cartao-componente {
+    background-color: var(--cor06);
+    border: 1px solid #333333;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: var(--cor03);
+
+    &:hover {
+        border-color: var(--cor00);
+        color: var(--cor00);
+    }
+}
+
+.cartao-componente-ativo {
+    background-color: var(--cor07); 
+    border: 1px solid var(--cor07);
+    cursor: pointer;
+    color: var(--cor04);
+}
+
+.label-pequena {
+    font-size: 0.85rem;
+    color: var(--cor05);
 }
