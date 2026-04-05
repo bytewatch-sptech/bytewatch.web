@@ -10,6 +10,7 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./css/dashboards.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="shortcut icon" href="assets/logo-cd.png" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,63 +20,71 @@
 </head>
 
 <body>
-    <div class="home container-fluid vh-100 p-0">
+    <div class="home container-fluid p-0">
         <div class="row g-0 h-100 flex-nowrap">
 
-            <nav class="sidebar d-flex flex-column p-3">
-                <div class="d-flex justify-content-center">
-                    <img id="logo" width="150" src="assets/logo-versao2.png" alt="">
+            <nav class="sidebar col-auto col-md-3 col-xl-2 d-flex flex-column p-3 bg-dark">
+
+                <div class="d-flex justify-content-center mb-5">
+                    <img id="logo" class="d-none d-sm-block" width="150" src="./assets/logo-versao2.png" alt="Logo">
+                    <i class="bi bi-cpu fs-2 text-success d-block d-sm-none"></i>
                 </div>
-                
-                <ul class="nav mt-5 nav-pills flex-column mb-auto gap-2">
+
+                <ul class="nav nav-pills flex-column mb-auto gap-2">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active bg-success">
-                            <div class="icon_side d-flex align-items-center">
-                                <img src="./assets/Icon_home.svg" alt="">
-                            </div>Home
+                        <a href="#" class="nav-link active bg-success d-flex align-items-center">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="./assets/Icon_home.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Home</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <div class="icon_side d-flex justify-content-center">
-                                <img src="./assets/Icon_Servidores.svg" alt="">
-                            </div>Servidores
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="./assets/Icon_Servidores.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Servidores</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <div class="icon_side d-flex justify-content-center">
-                                <img src="./assets/Icon_Gestao.svg" alt="">
-                            </div>Gestão Equipe
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="./assets/Icon_Gestao.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Gestão Equipe</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <div class="icon_side d-flex justify-content-center">
-                                <img src="./assets/Icon_alerta.svg" alt="">
-                            </div>Logs de Alerta
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="./assets/Icon_alerta.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Logs de Alerta</span>
                         </a>
                     </li>
                 </ul>
 
-                <div class="user-profile mt-auto d-flex flex-column">
-                    <div class="container_user d-flex gap-2">
-                        <a class="d-flex gap-3" href="">
+                <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                    <div style="background-color: transparent;" class="container_user d-flex gap-2">
+                        <a style="background-color: transparent;" class="d-flex gap-3" href="">
                             <div class="icon-profile">FB</div>
-                            <div class="box">
-                                <p style="font-size: 16px; font-weight: 500; margin: 0;">Fernando Brandão</p>
-                                <p style="font-size: 13px;">Admin Técnico</p>
+
+                            <div style="background-color: transparent;" class="box d-none d-md-block">
+                                <p  style="font-size: 16px; margin: 0; background-color: transparent;">Fernando Brandão</p>
+                                <p style="font-size: 13px; background-color: transparent;">Admin Técnico</p>
                             </div>
                         </a>
                     </div>
-                    <div class="button-sair">
-                        <p style="margin: 0;">Sair</p>
+
+                    <div class="button-sair mt-2 text-center">
+                        <p style="margin: 0; background-color: transparent;">Sair</p>
                     </div>
                 </div>
             </nav>
 
             <main class="col-md-9 col-lg-10 p-4">
-                <div class="container-fluid vh-100 painel-principal">
+                <div class="container-fluid painel-principal">
                     <div class="row h-100 linha-layout-global">
                         
                         <main class="col col-md-10 h-100 conteudo-principal">
@@ -326,7 +335,7 @@
                             </div>
                         </main>
 
-                        <div class="container-fluid vh-100 painel-lateral">
+                        <div class="container-fluid painel-lateral">
                         </div>
 
                     </div>
