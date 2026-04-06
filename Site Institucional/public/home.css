@@ -369,7 +369,6 @@ body {
 .cartao-componente {
     background-color: var(--cor06);
     border: 1px solid #333333;
-    transition: all 0.3s ease;
     cursor: pointer;
     color: var(--cor03);
 
