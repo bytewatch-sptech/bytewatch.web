@@ -344,7 +344,7 @@ body {
 
 /* Modal*/
 
-.modal-adicionar-servidor {
+.modal-dash {
     background-color: var(--cor04);
     border: 1px solid #333333;
     border-radius: 12px;
@@ -377,13 +377,6 @@ body {
         border-color: var(--cor00);
         color: var(--cor00);
     }
-}
-
-.cartao-componente-ativo {
-    background-color: var(--cor07); 
-    border: 1px solid var(--cor07);
-    cursor: pointer;
-    color: var(--cor04);
 }
 
 .label-pequena {
