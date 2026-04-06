@@ -106,8 +106,7 @@ body {
 }
 
 .icon-profile {
-  height: 50px;
-  width: 50px;
+  padding: 8px 10px;
   border-radius: 50px;
   border: 1px solid var(--tok);
   display: flex;
@@ -124,6 +123,7 @@ body {
     #ff0050 100%
   );
 }
+
 .button-sair {
   justify-content: center;
   text-align: center;

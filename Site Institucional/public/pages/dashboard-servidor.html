@@ -63,12 +63,12 @@
 
                 <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
                     <div class="container_user d-flex gap-2">
-                        <a class="d-flex gap-3" href="">
+                        <a class="d-flex gap-3 align-items-center" href="">
                             <div class="icon-profile">FB</div>
 
-                            <div class="box d-none d-md-block">
+                            <div class="box ms-2 d-none d-sm-inline">
                                 <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
-                                <p style="font-size: 13px;">Admin Técnico</p>
+                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Admin Técnico</p>
                             </div>
                         </a>
                     </div>
@@ -81,6 +81,17 @@
 
             <main class="col ps-md-4 pt-3">
                 <div class="row">
+                    <div class="container-info-local">
+                        <button>← Voltar</button>
+                        <div class="middle-line"></div>
+                        <div style="display: flex; align-items: center; margin-left: 20px; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                            <img src="../assets/icons/servidor.svg" alt="">
+                            <div style="display: flex; flex-direction: column;">
+                                <span class="servidor-title">Tiktok US-West-1</span>
+                                <span class="local-servidor">Califórnia, USA</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-8">
                         <div class="row justify-content-center gap-3">
                             <div class="col-md col-11 card-kpi px-4 py-3">
@@ -98,7 +109,8 @@
                                             </div>
                                         </div>
                                         <div class="row d-flex justify-content-lg-start justify-content-around">
-                                            <div class="col" style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                            <div class="col"
+                                                style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
                                                 <span class="display-6 status-percent">75%</span>
                                             </div>
                                         </div>
@@ -140,7 +152,8 @@
                                             </div>
                                         </div>
                                         <div class="row d-flex justify-content-lg-start justify-content-around">
-                                            <div class="col" style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                            <div class="col"
+                                                style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
                                                 <span class="display-6 status-percent">75%</span>
                                             </div>
                                         </div>
@@ -182,7 +195,8 @@
                                             </div>
                                         </div>
                                         <div class="row d-flex justify-content-lg-start justify-content-around">
-                                            <div class="col" style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                            <div class="col"
+                                                style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
                                                 <span class="display-md-1 display-6 status-percent">75%</span>
                                             </div>
                                         </div>
@@ -210,15 +224,67 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
+                        <div class="row mb-4">
+                            <div class="col mb-5">
                                 <h1 class="dashboard-title">Uso dos componentes</h1>
-                                <canvas style="border: 1px solid #FFFFFF14; border-radius: 9.8px;" id="dashboardComponentes"></canvas>
+                                <canvas
+                                    style="border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px;"
+                                    id="dashboardComponentes"></canvas>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <div class="container-alertaa"></div>
+                                <div class="container-alertas mb-3">
+                                    <div class="row d-flex justify-content-between">
+                                        <div class="col-6">
+                                            <span class="title-alertas">Histórico alertas - 10</span>
+                                        </div>
+                                        <div class="col-6 d-flex justify-content-end">
+                                            <span class="ver-todos-alertas">
+                                                <img src="../assets/icons/eye.svg" alt="">
+                                                Ver Todos
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-md-6 col-11">
+                                            <div class="card-alerta">
+                                                <div class="row d-flex justify-content-between">
+                                                    <div class="col-6">
+                                                        <span class="icone-alerta">CPU</span>
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        <span class="hora-alerta">21:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="conteudo-alerta">Uso de CPU excedeu 90%</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="data-alerta">29/03/2026</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-11">
+                                            <div class="card-alerta">
+                                                <div class="row d-flex justify-content-between">
+                                                    <div class="col-6">
+                                                        <span class="icone-alerta">RAM</span>
+                                                    </div>
+                                                    <div class="col-6 d-flex justify-content-end">
+                                                        <span class="hora-alerta">21:30</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="conteudo-alerta">Uso de RAM excedeu 95%</span>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="data-alerta">29/03/2026</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -264,6 +330,14 @@
                                         <span>3OT NVMe</span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col mb-5">
+                                <h1 class="dashboard-title">Rede</h1>
+                                <canvas
+                                    style="border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px; "
+                                    id="dashboardRede"></canvas>
                             </div>
                         </div>
                     </div>
@@ -416,6 +490,39 @@
 
         labels = ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
 
+        let dadosRede = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Recebido',
+                    data: [70, 80, 35, 62, 95, 49, 32],
+                    fill: true,
+                    borderColor: '#C167C7',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: "+2",
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+                {
+                    label: 'Enviado',
+                    data: [66, 89, 43, 93, 69, 51, 84],
+                    fill: true,
+                    borderColor: '#FFD500',
+                    borderWidth: 1.9,
+                    tension: 0.3,
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+            ]
+        }
+
         let dadosDashboard = {
             labels: labels,
             datasets: [
@@ -507,10 +614,46 @@
             }
         };
 
+        const configDashboardRede = {
+            type: 'line',
+            data: dadosRede,
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Horário",
+                            color: '#5A5A5A',
+                            font: {
+                                size: 10,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Mb/s',
+                            color: '#5A5A5A',
+                            font: {
+                                size: 10,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
 
         let dashboard_componentes = new Chart(
             document.getElementById(`dashboardComponentes`),
             configDashboard
+        );
+
+        let dashboard_rede = new Chart(
+            document.getElementById(`dashboardRede`),
+            configDashboardRede
         );
 
         // setTimeout(() => atualizarGrafico(id_registro, dadosDashboard, dashboard_componentes), 2000);
