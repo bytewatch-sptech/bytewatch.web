@@ -8,14 +8,17 @@ function cadastrar(req, res) {
   var so = req.body.soServer;
   var fkEmpresa = req.body.fkEmpresa
 
-  if (descricao == undefined) {
-    res.status(400).send("descricao está undefined!");
-  } else if (idUsuario == undefined) {
-    res.status(400).send("idUsuario está undefined!");
+  if (nome == undefined) {
+    res.status(400).send("nome está undefined!");
+  } else if (localizacao == undefined) {
+    res.status(400).send("ip está undefined!");
+  } else if(ip == undefined){
+    res.status(400).send("ip está undefined!");
+  } else if (fkEmpresa == undefined) {
+    res.status(400).send("fkEmpres está undefined")
   } else {
 
-
-    aquarioModel.cadastrar(descricao, idUsuario)
+    addMaquinaModel.cadastrar(nome, localizacao, ip, fkEmpresa)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -28,9 +31,12 @@ function cadastrar(req, res) {
         res.status(500).json(erro.sqlMessage);
       });
   }
+
+
+    
+  
 }
 
 module.exports = {
-  buscarAquariosPorEmpresa,
   cadastrar
 }
