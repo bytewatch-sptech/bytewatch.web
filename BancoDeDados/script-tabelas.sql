@@ -63,6 +63,24 @@ CREATE TABLE componente (
         REFERENCES servidor(id_servidor, fk_empresa)
 );
 
+CREATE TABLE componente_servidor(
+	fk_servidor INT,
+    fk_empresa_componente INT,
+    fk_componente_servidores INT,
+    limite INT,
+		CONSTRAINT pk_componente_servidor
+			PRIMARY KEY (fk_servidor, fk_empresa_componente, fk_componente_servidores),
+		CONSTRAINT fk_servidor
+			FOREIGN KEY (fk_servidor)
+				REFERENCES servidor(id_servidor),
+		CONSTRAINT fk_empresa_componente
+			FOREIGN KEY (fk_empresa_componente)
+				REFERENCES empresa(id_empresa),
+		CONSTRAINT fk_componente_servidores
+			FOREIGN KEY (fk_componente_servidores)
+				REFERENCES componente(id_componente)
+);
+
 CREATE TABLE responsavel (
     fk_id_usuario INT NOT NULL,
     fk_id_servidor INT NOT NULL,
