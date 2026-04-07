@@ -19,7 +19,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
-var aquariosRouter = require("./src/routes/aquarios");
+var aquariosRouter = require("./src/routes/addMaquina");
 var empresasRouter = require("./src/routes/empresas");
 
 app.use(express.json());
