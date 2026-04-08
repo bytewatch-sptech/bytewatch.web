@@ -9,8 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="./css/sidebar.css">
-        <link rel="stylesheet" href="./css/dashboards.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/dashboards.css">
     <link rel="shortcut icon" href="assets/logo-cd.png" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,7 +71,8 @@
                             <div class="icon-profile">FB</div>
 
                             <div style="background-color: transparent;" class="box d-none d-md-block">
-                                <p  style="font-size: 16px; margin: 0; background-color: transparent;">Fernando Brandão</p>
+                                <p style="font-size: 16px; margin: 0; background-color: transparent;">Fernando Brandão
+                                </p>
                                 <p style="font-size: 13px; background-color: transparent;">Admin Técnico</p>
                             </div>
                         </a>
@@ -96,8 +97,9 @@
                                         <header class="cabecalho-pagina mb-4">
                                             <img src="../public/assets/Icon.png" class="icone-cabecalho">
                                             <div class="textos-cabecalho">
-                                                <h2 class="titulo-pagina">Home</h2>
-                                                <span class="subtitulo-pagina">Veja os insights iniciais</span>
+                                                <h2 class="titulo-pagina">Gestão de Equipe</h2>
+                                                <span class="subtitulo-pagina">Gerencie analistas e suas atribuições de
+                                                    servidores</span>
                                             </div>
                                         </header>
 
@@ -107,8 +109,8 @@
                                                     <div class="card-body conteudo-cartao">
                                                         <div class="icone icone-ciano"></div>
                                                         <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Total de Máquinas</span>
-                                                            <span class="numero-gigante texto-ciano">8</span>
+                                                            <span class="titulo-pequeno">Total de Analistas</span>
+                                                            <span class="numero-gigante texto-ciano">5</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -119,8 +121,8 @@
                                                     <div class="card-body conteudo-cartao">
                                                         <div class="icone icone-vermelho"></div>
                                                         <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Máquinas em Risco</span>
-                                                            <span class="numero-gigante texto-vermelho">3</span>
+                                                            <span class="titulo-pequeno">Servidores Atribuídos</span>
+                                                            <span class="numero-gigante texto-vermelho">5</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -131,8 +133,9 @@
                                                     <div class="card-body conteudo-cartao">
                                                         <div class="icone icone-ciano"></div>
                                                         <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Componentes em Risco</span>
-                                                            <span class="numero-gigante texto-ciano">5</span>
+                                                            <span class="titulo-pequeno">Servidores Não
+                                                                Atribuídos</span>
+                                                            <span class="numero-gigante texto-ciano">3</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -141,21 +144,143 @@
 
                                         <div
                                             class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros">
-                                            <div class="d-flex align-items-center gap-3">
-                                                <div class="icone-filtro"></div>
-                                                <span class="texto-filtro">Filtros:</span>
-                                                <button class="btn btn-filtro">Críticos</button>
-                                                <button class="btn btn-filtro">Alerta</button>
-                                                <button class="btn btn-filtro">Normal</button>
+                                            <div class="d-flex flex-column align-items-center gap-3">
+                                                <h4 class="mb-4">Equipe de Analistas</h4>
+                                                <div
+                                                    class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros2">
+
+                                                    <table class="table align-middle text-white tabela-analistas">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Analista</th>
+                                                                <th>Cargo</th>
+                                                                <th class="text-center">Servidores</th>
+                                                                <th class="text-center">Ações</th>
+                                                            </tr>
+                                                        </thead>
+
+
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">VM</div>
+                                                                    <span>Vinicius Cordeiro</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>Analista de SRC</td>
+                                                            <td class="text-center">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">VM</div>
+                                                                    <span>Vinicius Cordeiro</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>Analista de SRC</td>
+                                                            <td class="text-center">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">VM</div>
+                                                                    <span>Vinicius Cordeiro</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>Analista de SRC</td>
+                                                            <td class="text-center">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">VM</div>
+                                                                    <span>Vinicius Cordeiro</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>Analista de SRC</td>
+                                                            <td class="text-center">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">VM</div>
+                                                                    <span>Vinicius Cordeiro</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>Analista de SRC</td>
+                                                            <td class="text-center">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">VM</div>
+                                                                    <span>Vinicius Cordeiro</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>Analista de SRC</td>
+                                                            <td class="text-center">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                </div>
                                             </div>
 
-                                            <div class="form-check form-switch container-switch">
-                                                <input class="form-check-input switch-customizado" type="checkbox"
-                                                    id="mostrarTodos">
-                                                <label class="form-check-label label-switch" for="mostrarTodos">
-                                                    Mostrar todos
-                                                </label>
-                                            </div>
+
                                         </div>
 
                                         <section class="secao-servidores">
@@ -329,44 +454,20 @@
 
                                 <aside class="col-lg-3 d-flex flex-column gap-3 barra-lateral-direita conteudo-aside">
 
-                                    <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-2">
-                                            <span class="titulo-lateral text-white fw-bold">Último Alerta</span>
 
-                                            <div class="d-flex align-items-center gap-2 mt-1">
-                                                <span class="bolinha-status status-vermelho"></span>
-                                                <span class="text-white fw-semibold">CPU crítico</span>
-                                            </div>
 
-                                            <span class="texto-secundario ps-3 ms-1">TikTok EU-Central-1</span>
-                                        </div>
+
+
+                                    <div class="d-flex flex-column gap-2">
+                                        <button class="btn btn-acao btn-acao-adicionar">
+                                            <i class="fa-solid fa-plus"></i> Adicionar Servidor
+                                        </button>
+
+
+
                                     </div>
 
-                                    <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
-                                            <span class="titulo-lateral text-white fw-bold">Ações Rápidas</span>
 
-                                            <div class="d-flex flex-column gap-2">
-                                                <button class="btn btn-acao btn-acao-adicionar">
-                                                    <i class="fa-solid fa-plus"></i> Adicionar Servidor
-                                                </button>
-
-                                                <button class="btn btn-acao btn-acao-editar">
-                                                    <i class="fa-solid fa-pen"></i> Editar Servidor
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
-                                            <span class="titulo-lateral text-white fw-bold">Exportar Logs</span>
-
-                                            <button class="btn btn-relatorio w-100">
-                                                <i class="fa-solid fa-download"></i> Baixar CSV
-                                            </button>
-                                        </div>
-                                    </div>
 
                                 </aside>
 
@@ -376,13 +477,12 @@
                         <div class="container-fluid painel-lateral">
                         </div>
 
-                            </div>
-                        </main
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script src="index.js"></script>
+                    </div>
+            </main <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous">
+            </script>
+            <script src="index.js"></script>
 </body>
 
 </html>
