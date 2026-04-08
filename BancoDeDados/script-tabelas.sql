@@ -26,12 +26,12 @@ CREATE TABLE usuario (
     email VARCHAR(100) NOT NULL,
     cpf VARCHAR(11) NOT NULL,
     fk_tipo_usuario INT NOT NULL,
-    fk_empresa INT NOT NULL,
+    fk_usuario_empresa INT NOT NULL,
     CONSTRAINT fk_usuario_tipo
         FOREIGN KEY (fk_tipo_usuario)
         REFERENCES tipo_usuario(id_tipo_usuario),
-    CONSTRAINT fk_usuario_empresa
-        FOREIGN KEY (fk_empresa)
+    CONSTRAINT fk_usuarioEmpresa
+        FOREIGN KEY (fk_usuario_empresa)
         REFERENCES empresa(id_empresa)
 );
 
@@ -53,15 +53,17 @@ CREATE TABLE servidor (
 
 CREATE TABLE componente (
     id_componente INT AUTO_INCREMENT PRIMARY KEY,
-    fk_servidor INT NOT NULL,
-    fk_empresa INT NOT NULL,
-    tipo ENUM('CPU', 'RAM', 'DISCO') NOT NULL,
+    tipo VARCHAR(45) NOT NULL,
     unidade VARCHAR(10) NOT NULL,
-    descricao VARCHAR(200),
-    CONSTRAINT fk_componente_servidor
-        FOREIGN KEY (fk_servidor, fk_empresa)
-        REFERENCES servidor(id_servidor, fk_empresa)
+    descricao VARCHAR(200)
 );
+
+INSERT INTO componente VALUES
+(1, "CPU", "Ghz", "Unidade Central de Processamento"),
+(2, "RAM", "Mb", "Memoria RAM"),
+(3, "Disco", "Gb", "Armazenamento de Disco"),
+(4, "Rede", "Mb", "Componente de Rede");
+
 
 CREATE TABLE componente_servidor(
 	fk_servidor INT,
