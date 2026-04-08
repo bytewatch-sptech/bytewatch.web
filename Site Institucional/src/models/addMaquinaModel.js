@@ -20,8 +20,11 @@ function cadastrar(nome, localizacao, ip, fkEmpresa, componentes) {
 
         promessas.push(database.executar(sqlComp));
         promessas.push(database.executar(sqlAlerta));
+        
+        console.log(sqlAlerta + "//" + sqlComp)
       }
     }
+    return Promise.all(promessas);
   })
 }
 
