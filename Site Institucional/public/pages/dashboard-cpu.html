@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteWatch | Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/dashboard-servidor.css">
+    <link rel="shortcut icon" href="../assets/logo-cd.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body style="overflow: auto;">
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <nav class="sidebar col-auto col-md-3 col-xl-2 d-flex flex-column p-3 bg-dark">
+
+                <div class="d-flex justify-content-center mb-5">
+                    <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
+                    <i class="bi bi-cpu fs-2 text-success d-block d-sm-none"></i>
+                </div>
+
+                <ul class="nav nav-pills flex-column mb-auto gap-2">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active bg-success d-flex align-items-center">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_home.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_Servidores.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Servidores</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_Gestao.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Gestão Equipe</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_alerta.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Logs de Alerta</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                    <div class="container_user d-flex gap-2">
+                        <a class="d-flex gap-3 align-items-center" href="">
+                            <div class="icon-profile">FB</div>
+
+                            <div class="box ms-2 d-none d-sm-inline">
+                                <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
+                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Admin Técnico</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="button-sair mt-2 text-center">
+                        <p style="margin: 0;">Sair</p>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="col ps-md-4 pt-3">
+                <div class="row">
+
+                    <div class="container-info-local">
+                        <button>← Voltar</button>
+                        <div class="middle-line"></div>
+                        <div
+                            style="display: flex; align-items: center; margin-left: 20px; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                            <img src="../assets/icons/servidor.svg" alt="">
+                            <div style="display: flex; flex-direction: column;">
+                                <span class="servidor-title">Tiktok US-West-1</span>
+                                <span class="local-servidor">Califórnia, USA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-auto d-flex">
+                            <div class="colum justify-content-center gap-3">
+                                <div class="col-md col-11 card-kpi px-4 py-3">
+                                    <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                        <div class="col-6 coluna-kpi">
+                                            <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                                style="padding-left: 0px;">
+                                                <div class="col-lg-6 d-flex justify-content-center"
+                                                    style="padding-left: 0px; padding-right: 0px;">
+                                                    <img src="../assets/icons/cpu.svg" style="height: 40px;" alt="">
+                                                </div>
+                                                <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                    style="padding-left: 0px; padding-right: 0px;">
+                                                    <span class="display-7 icon-label">CPU</span>
+                                                </div>
+                                            </div>
+                                            <div class="row d-flex justify-content-lg-start justify-content-around">
+                                                <div class="col"
+                                                    style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                                    <span class="display-6 status-percent">75%</span>
+                                                </div>
+                                            </div>
+                                            <div class="div-legends">
+                                                <div class="legend-container">
+                                                    <div>
+                                                        <span class="span-circle"
+                                                            style="background-color: #C167C7;"></span>
+                                                        <span class="span-legend">Em uso</span>
+                                                    </div>
+                                                    <span class="span-percent">75%</span>
+                                                </div>
+                                                <div class="legend-container">
+                                                    <div>
+                                                        <span class="span-circle"></span>
+                                                        <span class="span-legend">Restante</span>
+                                                    </div>
+                                                    <span class="span-percent">15%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6 p-0" style="position: relative;">
+                                            <canvas id="doughnut_cpu"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-auto">
+                            <p>a</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+
+                const cpu = document.getElementById('doughnut_cpu');
+
+                const cpuData = {
+                    datasets: [{
+                        label: 'My First Dataset',
+                        data: [300, 100],
+                        backgroundColor: [
+                            '#C167C7',
+                            "#FF0050",
+                        ],
+                        hoverOffset: 4
+                    }]
+                };
+                const cpuConfig = {
+                    type: 'doughnut',
+                    data: cpuData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: {
+                            padding: 0
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: { enabled: false }
+                        },
+                        elements: {
+                            arc: {
+                                borderWidth: 0
+                            }
+                        }
+                    }
+                };
+
+
+                new Chart(cpu, cpuConfig);
+
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>
