@@ -1,11 +1,11 @@
 function cadastrarMaquina() {
-    var idEmpresaVar = sessionStorage.ID_EMPRESA;
-    var nomeVar = document.getElementById("nomeServer").value;
-    var localVar = document.getElementById("localServer").value;
-    var ipVar = document.getElementById("ipServerInt").value;
-    var soVar = document.getElementById("TipoServer").value;
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+    var nome = document.getElementById("nomeServer").value;
+    var local = document.getElementById("localServer").value;
+    var ip = document.getElementById("ipServerInt").value;
+    var so = document.getElementById("TipoServer").value;
 
-    var componentesVar = [
+    var componentes = [
         { 
             idComponente: 1, 
             qtd: document.getElementById("qtd_cpu").value, 
@@ -28,7 +28,7 @@ function cadastrarMaquina() {
         }
     ];
 
-    if (nomeVar == "" || ipVar == "" || idEmpresaVar == undefined) {
+    if (nome == "" || ip == "" || idEmpresa == undefined) {
         alert("Preencha os campos obrigatórios");
         return false;
     }
@@ -37,11 +37,11 @@ function cadastrarMaquina() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            nome: nomeVar,
-            local: localVar,
-            ip: ipVar,
-            so: soVar,
-            idEmpresa: idEmpresaVar,
+            nome: nome,
+            local: local,
+            ip: ip,
+            so: so,
+            idEmpresa: idEmpresa,
             componentes: componentesVar
         })
     }).then(function (resposta) {
