@@ -1,3 +1,2 @@
-function enviarDados() {
-    var 
+function enviarDados() { 
 }
