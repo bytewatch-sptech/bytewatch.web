@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/dashboard-cpu.css">
     <link rel="stylesheet" href="../css/dashboard-servidor.css">
     <link rel="shortcut icon" href="../assets/logo-cd.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -145,11 +146,72 @@
                             </div>
                         </div>
 
-                        <div class="col-auto">
-                            <p>a</p>
+                        <div class="col">
+                            <div class="row g-3">
+                                <div class="col-lg-8">
+                                    <canvas
+                                        style="border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px;"
+                                        id="dashboardComponentes"></canvas>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="information-container">
+                                                <h1>Informações</h1>
+                                                <div class="div-line">
+                                                    <label>Status</label>
+                                                    <span>Alerta</span>
+                                                </div>
+                                                <div class="div-line">
+                                                    <label>Última Coleta</label>
+                                                    <span>29/03/2026</span>
+                                                </div>
+                                                <div class="div-line">
+                                                    <label>Localização</label>
+                                                    <span>California, USA</span>
+                                                </div>
+                                                <div class="div-line">
+                                                    <label>Tipo</label>
+                                                    <span>Processamento de vídeo</span>
+                                                </div>
+                                                <div class="div-line">
+                                                    <label>IP Externo</label>
+                                                    <span>192.1.1.0</span>
+                                                </div>
+                                                <div class="div-line">
+                                                    <label>IP Interno</label>
+                                                    <span>10.128.0.5</span>
+                                                </div>
+                                                <div class="div-line">
+                                                    <label>RAM</label>
+                                                    <span>512GB</span>
+                                                </div>
+                                                <div class="div-line">
+                                                    <label>CPU</label>
+                                                    <span>Xeon E5-2697 v4</span>
+                                                </div>
+                                                <div class="div-line">
+                                                    <label>DISCO</label>
+                                                    <span>3OT NVMe</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-lg-4">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="process-container">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
             </main>
 
 
@@ -198,6 +260,236 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
                 crossorigin="anonymous"></script>
+
+
+
+            <script>
+                // obterDadosGrafico(idSensor)
+
+                function obterDadosGrafico(id_registro) {
+
+                    fetch(`/medidas/ultimas/${id_registro}`, { cache: 'no-store' }).then(function (response) {
+                        if (response.ok) {
+                            response.json().then(function (resposta) {
+                                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                                resposta.reverse();
+                                plotarGrafico(resposta, id_registro);
+
+                            });
+                        } else {
+                            console.error('Nenhum dado encontrado ou erro na API');
+                        }
+                    })
+                        .catch(function (error) {
+                            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                        });
+                }
+
+                plotarGrafico([], 2)
+                function plotarGrafico(resposta, id_registro) {
+
+                    console.log('iniciando plotagem do gráfico...');
+
+                    labels = ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
+
+                    let dadosRede = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Recebido',
+                                data: [70, 80, 35, 62, 95, 49, 32],
+                                fill: true,
+                                borderColor: '#C167C7',
+                                borderWidth: 1.9,
+                                tension: 0.3,
+                                fill: "+2",
+                                fill: false,
+                                interaction: {
+                                    intersect: false
+                                },
+                                radius: 0,
+                            },
+                            {
+                                label: 'Enviado',
+                                data: [66, 89, 43, 93, 69, 51, 84],
+                                fill: true,
+                                borderColor: '#FFD500',
+                                borderWidth: 1.9,
+                                tension: 0.3,
+                                fill: false,
+                                interaction: {
+                                    intersect: false
+                                },
+                                radius: 0,
+                            },
+                        ]
+                    }
+
+                    let dadosDashboard = {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'CPU',
+                                data: [70, 80, 35, 62, 95, 49, 32],
+                                fill: true,
+                                borderColor: '#C167C7',
+                                borderWidth: 1.9,
+                                backgroundColor: '#C167C740',
+                                tension: 0.3,
+                                fill: "+2",
+                                fill: true,
+                                interaction: {
+                                    intersect: false
+                                },
+                                radius: 0,
+                            },
+                        ]
+                    }
+
+                    console.log('----------------------------------------------')
+                    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+                    console.log(resposta)
+
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+
+                        var momentoGrafico = registro.momento_grafico
+                        labels.push(momentoGrafico);
+
+
+                        dadosDashboard.datasets[1].data.push(registro.dado);
+                    }
+
+                    const configDashboard = {
+                        type: 'line',
+                        data: dadosDashboard,
+                        options: {
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: "Horário",
+                                        color: '#5A5A5A',
+                                        font: {
+                                            size: 14,
+                                            weight: 'bold'
+                                        }
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Consumo (%)',
+                                        color: '#5A5A5A',
+                                        font: {
+                                            size: 14,
+                                            weight: 'bold'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    };
+
+                    const configDashboardRede = {
+                        type: 'line',
+                        data: dadosRede,
+                        options: {
+                            scales: {
+                                x: {
+                                    title: {
+                                        display: true,
+                                        text: "Horário",
+                                        color: '#5A5A5A',
+                                        font: {
+                                            size: 10,
+                                            weight: 'bold'
+                                        }
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Mb/s',
+                                        color: '#5A5A5A',
+                                        font: {
+                                            size: 10,
+                                            weight: 'bold'
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    };
+
+
+                    let dashboard_componentes = new Chart(
+                        document.getElementById(`dashboardComponentes`),
+                        configDashboard
+                    );
+
+                    let dashboard_rede = new Chart(
+                        document.getElementById(`dashboardRede`),
+                        configDashboardRede
+                    );
+
+                    // setTimeout(() => atualizarGrafico(id_registro, dadosDashboard, dashboard_componentes), 2000);
+                }
+
+                function atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade) {
+                    fetch(`/medidas/tempo-real/${id_registro}`, { cache: 'no-store' }).then(function (response) {
+                        if (response.ok) {
+                            response.json().then(function (novoRegistro) {
+
+                                console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                                console.log(`Dados atuais do gráfico de temperatura:`);
+                                console.log(dadosTemperatura);
+
+                                console.log(`Dados atuais do gráfico de umidade:`);
+                                console.log(dadosUmidade);
+
+                                var momentoGrafico = novoRegistro[0].momento_grafico
+                                var momentoGraficoFormatado = novoRegistro[0].momento_grafico.split(':')
+                                momentoGraficoFormatado = `${momentoGraficoFormatado[0]}:${momentoGraficoFormatado[1]}`
+                                if (momentoGrafico == labels[labels.length - 1]) {
+                                    console.log("---------------------------------------------------------------")
+                                    console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                                    console.log("Horário do novo dado capturado:")
+                                    console.log(momentoGrafico)
+                                    console.log("Horário do último dado capturado:")
+                                    console.log(labels[labels.length - 1])
+                                    console.log("---------------------------------------------------------------")
+                                } else {
+
+                                    dadosTemperatura.labels.shift(); // apagar o primeiro
+                                    dadosTemperatura.labels.push(momentoGraficoFormatado); // incluir um novo momento
+
+                                    dadosUmidade.labels.shift(); // apagar o primeiro
+                                    dadosUmidade.labels.push(momentoGraficoFormatado); // incluir um novo momento
+
+                                    labels.shift()
+                                    labelsFormatado.shift()
+                                    labels.push(momentoGrafico)
+                                    labelsFormatado.push(momentoGraficoFormatado)
+
+                                    dadosUmidade.datasets[1].data.shift();  // apagar o primeiro de umidade
+                                    dadosUmidade.datasets[1].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                                }
+
+                                proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade), 2000);
+                            });
+                        } else {
+                            console.error('Nenhum dado encontrado ou erro na API');
+                            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                            proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dados, myChart), 2000);
+                        }
+                    })
+                        .catch(function (error) {
+                            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                        });
+                }
+            </script>
 </body>
 
 </html>
