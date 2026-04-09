@@ -129,17 +129,20 @@ body {
 /* Filtros */
 
 .barra-ferramentas-filtros {
-    background-color: var(--cor04);
+    background: linear-gradient(125deg, #393939 0%, #1D1D1D 0%, #121212 100%);
     padding: 16px 24px;
     border-radius: 12px;
-    border: 1px solid var(--cor05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .barra-ferramentas-filtros2 {
-    background-color: var(--cor04);
-    padding: 10px 20px;
-    border-radius: 12px;
+    width: 100%;
     border: 1px solid var(--cor05);
+    border-radius: 12px;
+
+
 }
 
 .icone-filtro-simulado {
@@ -348,34 +351,15 @@ body {
     color: white;
 }
 
-/* Card da tabela */
-.card-custom {
-    background: rgba(17, 25, 40, 0.75);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-}
 
 /* Tabela */
 .tabela-analistas {
-    border-collapse: separate;
-    border-spacing: 0 10px;
+    border-collapse: collapse;
+    background-color: transparent !important;
+    color: white;
 }
 
-.tabela-analistas thead th {
-    color: #64748b;
-    font-weight: 500;
-    border: none;
-    font-size: 0.85rem;
-}
 
-.tabela-analistas tbody tr {
-    background: rgba(255, 255, 255, 0.03);
-    transition: 0.2s;
-}
-
-.tabela-analistas tbody tr:hover {
-    background: rgba(255, 255, 255, 0.06);
-}
 
 .tabela-analistas td {
     border: none;
@@ -386,13 +370,25 @@ body {
 .avatar {
     width: 38px;
     height: 38px;
-    background: linear-gradient(135deg, #06b6d4, #ec4899);
+    background: linear-gradient(125deg,
+            #00F2EA 0%,
+            #B30038 54%,
+            #A60034 75%,
+            #9F0032 88%,
+            #FF0050 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     font-size: 0.8rem;
+    color: #00F2EA;
+}
+
+.avatar {
+    border-style: solid;
+    border: 1px solid;
+    box-shadow: 0 0 10px rgba(255, 0, 80, 0.3);
 }
 
 /* Botões */
@@ -404,18 +400,43 @@ body {
 }
 
 .btn-view {
-    background: #0891b2;
+    background: #00F2EA;
 }
 
 .btn-edit {
-    background: #1e293b;
+    background: #A60034;
 }
 
 .btn-delete {
-    background: #be123c;
+    background: #FF0050;
 }
 
 .btn-action:hover {
     transform: scale(1.1);
     transition: 0.2s;
+}
+
+tr {
+    background-color: #1D1D1D;
+}
+
+.table-head {
+    background-color: #1D1D1D;
+}
+
+.tabela-analistas,
+.tabela-analistas * {
+    background-color: transparent !important;
+}
+
+.head-table th {
+    color: #99A1AF;
+}
+
+.serv-nao-atribuidos {
+    border: 1px solid rgba(255, 214, 0, 0.3);
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(255, 214, 0, 0.08) 0%, transparent 60%), #121212;
 }

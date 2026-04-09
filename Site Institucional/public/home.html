@@ -87,12 +87,12 @@
             <main class="col-md-8 d-flex flex-column gap-4
             col-lg-12 p-4">
                 <div class="container-fluid painel-principal">
-                    <div class="row h-100 linha-layout-global">
+                    <div class=" row h-100 linha-layout-global">
 
                         <main class="col col-md-10 h-100 conteudo-principal">
                             <div class="row h-100 justify-content-start linha-divisao-conteudo">
 
-                                <div class="col-lg-9 d-flex flex-column gap-4 coluna-central">
+                                <div class="col-lg-12 d-flex flex-column gap-4 coluna-central">
                                     <section class="secao-visao-geral">
                                         <header class="cabecalho-pagina mb-4">
                                             <img src="../public/assets/Icon.png" class="icone-cabecalho">
@@ -103,55 +103,72 @@
                                             </div>
                                         </header>
 
-                                        <div class="row g-3 grade-cards-resumo">
-                                            <div class="col-md-4">
-                                                <div class="card h-100 cartao-resumo borda-ciano">
-                                                    <div class="card-body conteudo-cartao">
-                                                        <div class="icone icone-ciano"></div>
-                                                        <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Total de Analistas</span>
-                                                            <span class="numero-gigante texto-ciano">5</span>
+                                        <div class="col-lg-9 d-flex flex-column gap-4 coluna-central2">
+                                            <div class="row g-3 grade-cards-resumo">
+                                                <div class="col-md-4">
+                                                    <div class="card h-100 cartao-resumo borda-ciano">
+                                                        <div class="card-body conteudo-cartao">
+                                                            <div class="icone icone-ciano"></div>
+                                                            <div class="textos-do-cartao">
+                                                                <span class="titulo-pequeno">Total de Analistas</span>
+                                                                <span class="numero-gigante texto-ciano">5</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="card h-100 cartao-resumo borda-vermelha">
+                                                        <div class="card-body conteudo-cartao">
+                                                            <div class="icone icone-vermelho"></div>
+                                                            <div class="textos-do-cartao">
+                                                                <span class="titulo-pequeno">Servidores
+                                                                    Atribuídos</span>
+                                                                <span class="numero-gigante texto-vermelho">5</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="card h-100 cartao-resumo borda-ciano">
+                                                        <div class="card-body conteudo-cartao">
+                                                            <div class="icone icone-ciano"></div>
+                                                            <div class="textos-do-cartao">
+                                                                <span class="titulo-pequeno">Servidores Não
+                                                                    Atribuídos</span>
+                                                                <span class="numero-gigante texto-ciano">3</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4">
-                                                <div class="card h-100 cartao-resumo borda-vermelha">
-                                                    <div class="card-body conteudo-cartao">
-                                                        <div class="icone icone-vermelho"></div>
-                                                        <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Servidores Atribuídos</span>
-                                                            <span class="numero-gigante texto-vermelho">5</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-3 d-flex justify-content-end">
+                                                <button class="btn btn-acao-adicionar"
+                                                    style="width: max-content; padding-inline: 20px;">
+                                                    <i class="fa-solid fa-plus"></i> Adicionar Analista
+                                                </button>
                                             </div>
 
-                                            <div class="col-md-4">
-                                                <div class="card h-100 cartao-resumo borda-ciano">
-                                                    <div class="card-body conteudo-cartao">
-                                                        <div class="icone icone-ciano"></div>
-                                                        <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Servidores Não
-                                                                Atribuídos</span>
-                                                            <span class="numero-gigante texto-ciano">3</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
+
+
+
+
 
                                         <div
                                             class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros">
-                                            <div class="d-flex flex-column align-items-center gap-3">
-                                                <h4 class="mb-4">Equipe de Analistas</h4>
+                                            <div class="d-flex flex-column align-items-start gap-3 w-100">
+                                                <h4 class="mb-2 mt-2 text-white fs-3">Equipe de Analistas</h4>
                                                 <div
-                                                    class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros2">
+                                                    class="d-flex justify-content-between align-items-center w-100 mt-2 barra-ferramentas-filtros2">
 
-                                                    <table class="table align-middle text-white tabela-analistas">
-                                                        <thead>
-                                                            <tr>
+                                                    <table
+                                                        class="table bg-transparent align-middle text-white tabela-analistas w-100">
+
+                                                        <thead class="table-head">
+                                                            <tr class="head-table">
                                                                 <th>Analista</th>
                                                                 <th>Cargo</th>
                                                                 <th class="text-center">Servidores</th>
@@ -161,15 +178,93 @@
 
 
 
+
+
                                                         <tr>
                                                             <td>
                                                                 <div class="d-flex align-items-center gap-2">
-                                                                    <div class="avatar">VM</div>
-                                                                    <span>Vinicius Cordeiro</span>
+                                                                    <div class="avatar">VC</div>
+                                                                    <span class="text-white">Vinicius Cordeiro</span>
                                                                 </div>
                                                             </td>
-                                                            <td>Analista de SRC</td>
-                                                            <td class="text-center">3</td>
+                                                            <td class="text-white">Analista de SRC</td>
+                                                            <td class="text-center text-white">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">BL</div>
+                                                                    <span class="text-white">Beatriz Leandro</span>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-white">Analista de SRC</td>
+                                                            <td class="text-center text-white">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">LF</div>
+                                                                    <span class="text-white">Luiz Felipe</span>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-white">Analista de SRC</td>
+                                                            <td class="text-center text-white">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">LI</div>
+                                                                    <span class="text-white">Luan Iada</span>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-white">Analista de SRC</td>
+                                                            <td class="text-center text-white">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-action btn-view"><i
+                                                                        class="bi bi-list"></i></button>
+                                                                <button class="btn btn-action btn-edit"><i
+                                                                        class="bi bi-pencil"></i></button>
+                                                                <button class="btn btn-action btn-delete"><i
+                                                                        class="bi bi-trash"></i></button>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">RO</div>
+                                                                    <span class="text-white">Rian Oliveira</span>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-white">Analista de SRC</td>
+                                                            <td class="text-center text-white">3</td>
                                                             <td class="text-center">
                                                                 <button class="btn btn-action btn-view"><i
                                                                         class="bi bi-list"></i></button>
@@ -184,87 +279,11 @@
                                                             <td>
                                                                 <div class="d-flex align-items-center gap-2">
                                                                     <div class="avatar">VM</div>
-                                                                    <span>Vinicius Cordeiro</span>
+                                                                    <span class="text-white">Vinicius Cordeiro</span>
                                                                 </div>
                                                             </td>
-                                                            <td>Analista de SRC</td>
-                                                            <td class="text-center">3</td>
-                                                            <td class="text-center">
-                                                                <button class="btn btn-action btn-view"><i
-                                                                        class="bi bi-list"></i></button>
-                                                                <button class="btn btn-action btn-edit"><i
-                                                                        class="bi bi-pencil"></i></button>
-                                                                <button class="btn btn-action btn-delete"><i
-                                                                        class="bi bi-trash"></i></button>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div class="avatar">VM</div>
-                                                                    <span>Vinicius Cordeiro</span>
-                                                                </div>
-                                                            </td>
-                                                            <td>Analista de SRC</td>
-                                                            <td class="text-center">3</td>
-                                                            <td class="text-center">
-                                                                <button class="btn btn-action btn-view"><i
-                                                                        class="bi bi-list"></i></button>
-                                                                <button class="btn btn-action btn-edit"><i
-                                                                        class="bi bi-pencil"></i></button>
-                                                                <button class="btn btn-action btn-delete"><i
-                                                                        class="bi bi-trash"></i></button>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div class="avatar">VM</div>
-                                                                    <span>Vinicius Cordeiro</span>
-                                                                </div>
-                                                            </td>
-                                                            <td>Analista de SRC</td>
-                                                            <td class="text-center">3</td>
-                                                            <td class="text-center">
-                                                                <button class="btn btn-action btn-view"><i
-                                                                        class="bi bi-list"></i></button>
-                                                                <button class="btn btn-action btn-edit"><i
-                                                                        class="bi bi-pencil"></i></button>
-                                                                <button class="btn btn-action btn-delete"><i
-                                                                        class="bi bi-trash"></i></button>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div class="avatar">VM</div>
-                                                                    <span>Vinicius Cordeiro</span>
-                                                                </div>
-                                                            </td>
-                                                            <td>Analista de SRC</td>
-                                                            <td class="text-center">3</td>
-                                                            <td class="text-center">
-                                                                <button class="btn btn-action btn-view"><i
-                                                                        class="bi bi-list"></i></button>
-                                                                <button class="btn btn-action btn-edit"><i
-                                                                        class="bi bi-pencil"></i></button>
-                                                                <button class="btn btn-action btn-delete"><i
-                                                                        class="bi bi-trash"></i></button>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div class="avatar">VM</div>
-                                                                    <span>Vinicius Cordeiro</span>
-                                                                </div>
-                                                            </td>
-                                                            <td>Analista de SRC</td>
-                                                            <td class="text-center">3</td>
+                                                            <td class="text-white">Analista de SRC</td>
+                                                            <td class="text-center text-white">3</td>
                                                             <td class="text-center">
                                                                 <button class="btn btn-action btn-view"><i
                                                                         class="bi bi-list"></i></button>
@@ -283,198 +302,38 @@
 
                                         </div>
 
-                                        <section class="secao-servidores">
-                                            <div
-                                                class="d-flex justify-content-between align-items-end mb-3 cabecalho-secao-servidores">
-                                                <div>
-                                                    <h4 class="titulo-secao">Servidores em Risco</h4>
-                                                </div>
-                                                <button class="btn btn-ver-todos">Ver Todos</button>
+                                        <div class="w-100 mt-4 serv-nao-atribuidos">
+                                            <div class="d-flex flex-column align-items-start gap-3 w-100">
+                                                <h4 class="mb-4 text-white fs-3">Equipe de Analistas</h4>
                                             </div>
 
-                                            <div class="row g-3">
-                                                <div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-amarela">
-                                                        <div class="card-body d-flex flex-column gap-3">
-                                                            <div class="cabecalho-do-card">
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center">
-                                                                    <span class="nome-servidor">TikTok US-West-1</span>
-                                                                    <span class="bolinha-status status-amarelo"></span>
-                                                                </div>
-                                                                <span class="localizacao-servidor">California,
-                                                                    USA</span>
-                                                            </div>
-
-                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">CPU</span>
-                                                                        <span class="valor-metrica">25%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">RAM</span>
-                                                                        <span class="valor-metrica">72%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">DISCO</span>
-                                                                        <span class="valor-metrica">55%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">REDE</span>
-                                                                        <span class="valor-metrica">82%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="card h-100 cartao-resumo borda-vermelha">
+                                                    <div class="card-body conteudo-cartao">
+                                                        <div class="textos-do-cartao">
+                                                            <span class="titulo-pequeno">Servidores
+                                                                Atribuídos</span>
+                                                            <span class="numero-gigante texto-vermelho">5</span>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-vermelha">
-                                                        <div class="card-body d-flex flex-column gap-3">
-                                                            <div class="cabecalho-do-card">
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center">
-                                                                    <span class="nome-servidor">TikTok
-                                                                        EU-Central-1</span>
-                                                                    <span class="bolinha-status status-vermelho"></span>
-                                                                </div>
-                                                                <span class="localizacao-servidor">Frankfurt,
-                                                                    Germany</span>
-                                                            </div>
-
-                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">CPU</span>
-                                                                        <span class="valor-metrica">95%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">RAM</span>
-                                                                        <span class="valor-metrica">91%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">DISCO</span>
-                                                                        <span class="valor-metrica">88%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">REDE</span>
-                                                                        <span class="valor-metrica">78%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-amarela">
-                                                        <div class="card-body d-flex flex-column gap-3">
-                                                            <div class="cabecalho-do-card">
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center">
-                                                                    <span class="nome-servidor">TikTok SA-East-1</span>
-                                                                    <span class="bolinha-status status-amarelo"></span>
-                                                                </div>
-                                                                <span class="localizacao-servidor">São Paulo,
-                                                                    Brazil</span>
-                                                            </div>
-
-                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">CPU</span>
-                                                                        <span class="valor-metrica">78%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">RAM</span>
-                                                                        <span class="valor-metrica">86%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">DISCO</span>
-                                                                        <span class="valor-metrica">62%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica">REDE</span>
-                                                                        <span class="valor-metrica">85%</span>
-                                                                    </div>
-                                                                    <hr class="barra-placeholder m-0">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                             </div>
-                                        </section>
+
+                                        </div>
+
+
                                     </section>
                                 </div>
 
-                                <aside class="col-lg-3 d-flex flex-column gap-3 barra-lateral-direita conteudo-aside">
 
-
-
-
-
-                                    <div class="d-flex flex-column gap-2">
-                                        <button class="btn btn-acao btn-acao-adicionar">
-                                            <i class="fa-solid fa-plus"></i> Adicionar Servidor
-                                        </button>
-
-
-
-                                    </div>
-
-
-
-                                </aside>
 
                             </div>
                         </main>
 
                         <div class="container-fluid painel-lateral">
+
+
+
                         </div>
 
                     </div>
