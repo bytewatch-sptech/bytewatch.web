@@ -1,6 +1,54 @@
-.process{
+.process-container{
     border: 1px solid #FFFFFF14;
     border-radius: 7px;
-    padding: 15px;
+    width: 100%;
+    padding-top: 15px;
     background-color: #151515;
+    
+}
+.process-table{
+    width: 100%;
+}
+.process-table tr{
+    
+    border-bottom: 1px solid #FFFFFF14;
+}
+.process-container h1 {
+    font-size: 18px;
+    color: #FFFFFF;
+    margin-left: 15px;
+}
+
+.process-container .line{
+    border-bottom: solid 1px;
+    padding: 10px;
+}
+
+.progress-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.progress-bg {
+    background-color: #222;
+    height: 10px;
+    flex-grow: 1; border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill{
+    background-color: #C167C7;
+    height: 100%;
+    border-radius: 10px;
+}
+.percent{
+    color: #fff;
+    font-size: 14px;
+    min-width: 45px;
+    text-align: right;
+}
+.process-container .critical{
+color: #ff0050;
 }

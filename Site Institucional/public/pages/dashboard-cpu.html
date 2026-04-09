@@ -81,7 +81,7 @@
             </nav>
 
             <main class="col ps-md-4 pt-3">
-                <div class="row">
+                <div class="row ">
 
                     <div class="container-info-local">
                         <button>← Voltar</button>
@@ -95,8 +95,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-auto d-flex">
+                    <div class="row g-3">
+                        <div class="col-lg-3 d-flex">
                             <div class="colum justify-content-center gap-3">
                                 <div class="col-md col-11 card-kpi px-4 py-3">
                                     <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
@@ -150,29 +150,25 @@
                             <div class="row g-3">
                                 <div class="col-lg-8">
                                     <canvas
-                                        style="border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px;"
+                                        style="max-height: 255px; border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px;"
                                         id="dashboardComponentes"></canvas>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="row">
+                                    <div class="row g-3">
                                         <div class="col">
                                             <div class="information-container">
                                                 <h1>Informações</h1>
-                                                <div class="div-line">
-                                                    <label>Status</label>
-                                                    <span>Alerta</span>
-                                                </div>
                                                 <div class="div-line">
                                                     <label>Última Coleta</label>
                                                     <span>29/03/2026</span>
                                                 </div>
                                                 <div class="div-line">
-                                                    <label>Localização</label>
-                                                    <span>California, USA</span>
+                                                    <label>Nome</label>
+                                                    <span>Xeon E5-2697 v4</span>
                                                 </div>
                                                 <div class="div-line">
-                                                    <label>Tipo</label>
-                                                    <span>Processamento de vídeo</span>
+                                                    <label>Cores Lógicos</label>
+                                                    <span>36</span>
                                                 </div>
                                                 <div class="div-line">
                                                     <label>IP Externo</label>
@@ -182,30 +178,56 @@
                                                     <label>IP Interno</label>
                                                     <span>10.128.0.5</span>
                                                 </div>
-                                                <div class="div-line">
-                                                    <label>RAM</label>
-                                                    <span>512GB</span>
-                                                </div>
-                                                <div class="div-line">
-                                                    <label>CPU</label>
-                                                    <span>Xeon E5-2697 v4</span>
-                                                </div>
-                                                <div class="div-line">
-                                                    <label>DISCO</label>
-                                                    <span>3OT NVMe</span>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row g-3">
-                                <div class="col-lg-4">
+                                <div class="col-lg-8">
                                     <div class="row">
                                         <div class="col">
                                             <div class="process-container">
-
-                                            </div>
+    <h1>Processos Ativos</h1>
+    <table class="process-table">
+        <thead>
+            <tr>
+                <th>PID</th>
+                <th>NOME</th>
+                <th>CPU%</th>
+                <th>STATUS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1239</td>
+                <td>cdn-edge</td>
+                <td>
+                    <div class="progress-item-table">
+                        <div class="progress-bg">
+                            <div class="progress-fill" style="width: 88.5%;"></div>
+                        </div>
+                        <span class="percent critical">88.5%</span>
+                    </div>
+                </td>
+                <td>Ativo</td>
+            </tr>
+            <tr>
+                <td>4562</td>
+                <td>nginx-proxy</td>
+                <td>
+                    <div class="progress-item-table">
+                        <div class="progress-bg">
+                            <div class="progress-fill" style="width: 42.1%;"></div>
+                        </div>
+                        <span class="percent">42.1%</span>
+                    </div>
+                </td>
+                <td>Ativo</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
                                         </div>
                                     </div>
                                 </div>
