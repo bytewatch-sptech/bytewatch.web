@@ -178,7 +178,7 @@ canvas {
 .container-info-local {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    /* margin-bottom: 15px; */
 }
 
 .container-info-local button {

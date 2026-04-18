@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </nav>
-            
+
             <main class="col ps-md-4 pt-3">
                 <div class="row ">
 
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row g-3 align-items-start">
+                    <div class="row g-3 align-items-start" style="margin-top: 0;">
                         <div class="col-lg-3 d-flex">
                             <div class="colum gap-3">
                                 <div class="col-md col-11 card-kpi px-4 py-3">
@@ -140,7 +140,27 @@
                                         <div class="col-6 p-0" style="position: relative;">
                                             <canvas id="doughnut_cpu"></canvas>
                                         </div>
+
                                     </div>
+
+                                </div>
+                                <div class="col-6 card-kpi">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <p style="color: #ffff;">Gráfico de Tendência</p>
+                                    </div>
+                                    <canvas id="scatterPlotCPU">
+
+                                    </canvas>
+
+                                </div>
+
+                                <div class="col-6 card-kpi">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <p style="color: #ffff;">Uso dos Processos</p>
+                                    </div>
+                                    <canvas id="lollipopCPU">
+
+                                    </canvas>
                                 </div>
 
                             </div>
@@ -188,46 +208,48 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="process-container">
-    <h1>Processos Ativos</h1>
-    <table class="process-table">
-        <thead>
-            <tr>
-                <th>PID</th>
-                <th>NOME</th>
-                <th>CPU%</th>
-                <th>STATUS</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1239</td>
-                <td>cdn-edge</td>
-                <td>
-                    <div class="progress-item-table">
-                        <div class="progress-bg">
-                            <div class="progress-fill" style="width: 88.5%;"></div>
-                        </div>
-                        <span class="percent critical">88.5%</span>
-                    </div>
-                </td>
-                <td>Ativo</td>
-            </tr>
-            <tr>
-                <td>4562</td>
-                <td>nginx-proxy</td>
-                <td>
-                    <div class="progress-item-table">
-                        <div class="progress-bg">
-                            <div class="progress-fill" style="width: 42.1%;"></div>
-                        </div>
-                        <span class="percent">42.1%</span>
-                    </div>
-                </td>
-                <td>Ativo</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                                                <h1>Processos Ativos</h1>
+                                                <table class="process-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>PID</th>
+                                                            <th>NOME</th>
+                                                            <th>CPU%</th>
+                                                            <th>STATUS</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1239</td>
+                                                            <td>cdn-edge</td>
+                                                            <td>
+                                                                <div class="progress-item-table">
+                                                                    <div class="progress-bg">
+                                                                        <div class="progress-fill"
+                                                                            style="width: 88.5%;"></div>
+                                                                    </div>
+                                                                    <span class="percent critical">88.5%</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>Ativo</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4562</td>
+                                                            <td>nginx-proxy</td>
+                                                            <td>
+                                                                <div class="progress-item-table">
+                                                                    <div class="progress-bg">
+                                                                        <div class="progress-fill"
+                                                                            style="width: 42.1%;"></div>
+                                                                    </div>
+                                                                    <span class="percent">42.1%</span>
+                                                                </div>
+                                                            </td>
+                                                            <td>Ativo</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -279,6 +301,124 @@
                 new Chart(cpu, cpuConfig);
 
             </script>
+
+
+            <script>
+                //GRÁFICO DE TENDÊNCIA
+
+                const scatterCpu = document.getElementById('scatterPlotCPU');
+
+                const dataPoints = [
+                    { x: 2, y: 25 }, { x: 3, y: 20 }, { x: 5, y: 50 },
+                    { x: 8, y: 70 }, { x: 12, y: 120 }, { x: 15, y: 140 }
+
+                ]
+
+                function calcularRegressao(data) {
+                    const n = data.length
+                    let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0
+
+                    data.forEach(p => {
+                        sumX += p.x
+                        sumY += p.y
+                        sumXY += p.x * p.y
+                        sumXX += p.x * p.x
+                    })
+
+                    const m = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX)
+                    const b = (sumY - m * sumX) / n
+                    return { m, b }
+                }
+
+                const { m, b } = calcularRegressao(dataPoints)
+                const minX = Math.min(...dataPoints.map(p => p.x))
+                const maxX = Math.max(...dataPoints.map(p => p.x))
+                const linePoints = [
+                    { x: minX, y: m * minX + b },
+                    { x: maxX, y: m * maxX + b }
+                ]
+
+                const dataScatter = [
+                    {
+                        label: 'Uso de CPU',
+                        data: dataPoints,
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)'
+
+                    },
+                    {
+                        label: 'Tendência',
+                        data: linePoints,
+                        type: 'line',
+                        borderColor: 'red',
+                        showLine: true,
+                        fill: false,
+                        pointRadius: 0
+                    }
+                ]
+
+                const scatterCpuConfig = {
+                    type: 'scatter',
+                    data: {
+                        datasets: dataScatter
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                type: 'linear',
+                                position: 'bottom',
+                                border: {
+                                    color: 'white'
+                                },
+                                grid:{
+                                    display: true,
+                                    color: 'rgba(255, 255, 255, 0.1)',
+                                    tickColor: 'white'
+                                },
+                                ticks:{
+                                    color: 'white'
+                                }
+                            },
+                            y: {
+                                border: {
+                                    color: 'white'
+                                },
+                                grid:{
+                                    display: true,
+                                    color: 'rgba(255, 255, 255, 0.1)',
+                                    tickColor: 'white'
+                                },
+                                ticks:{
+                                    color: 'white'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    usePointStyle: true,
+                                    pointStyle: 'circle',
+                                    font: {
+                                        size: 8
+                                    }
+                                }
+                            }
+                        },
+                        tooltip: {
+                            displayColors: false,
+                            callbacks: {
+                                label: (context) => `CPU: ${context.parsed.x} GB | Processos: ${context.parsed.y.toFixed(0)}`
+                            }
+                        }
+                    }
+                }
+
+                new Chart(scatterCpu, scatterCpuConfig);
+            </script>
+
+            <script>
+
+            </script>
+
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
                 crossorigin="anonymous"></script>
