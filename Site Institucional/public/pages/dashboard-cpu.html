@@ -154,7 +154,7 @@
 
                                 </div>
 
-                                <div class="col-6 card-kpi">
+                                <div class="card-kpi">
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p style="color: #ffff;">Uso dos Processos</p>
                                     </div>
@@ -167,95 +167,88 @@
                         </div>
 
                         <div class="col">
-                            <div class="row g-3">
-                                <div class="col-lg-8">
-                                    <canvas
-                                        style="max-height: 255px; border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px;"
-                                        id="dashboardComponentes"></canvas>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="row g-3">
-                                        <div class="col">
-                                            <div class="information-container">
-                                                <h1>Informações</h1>
-                                                <div class="div-line">
-                                                    <label>Última Coleta</label>
-                                                    <span>29/03/2026</span>
-                                                </div>
-                                                <div class="div-line">
-                                                    <label>Nome</label>
-                                                    <span>Xeon E5-2697 v4</span>
-                                                </div>
-                                                <div class="div-line">
-                                                    <label>Cores Lógicos</label>
-                                                    <span>36</span>
-                                                </div>
-                                                <div class="div-line">
-                                                    <label>IP Externo</label>
-                                                    <span>192.1.1.0</span>
-                                                </div>
-                                                <div class="div-line">
-                                                    <label>IP Interno</label>
-                                                    <span>10.128.0.5</span>
-                                                </div>
-                                            </div>
-                                        </div>
+    <div class="row g-3">
+        
+        <div class="col-lg-8">
+            
+            <canvas style="max-height: 255px; border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px;" id="dashboardComponentes"></canvas>
+            
+            <div class="process-container mt-4">
+                <h1>Processos Ativos</h1>
+                <table class="process-table">
+                    <thead>
+                        <tr>
+                            <th>PID</th>
+                            <th>NOME</th>
+                            <th>CPU%</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1239</td>
+                            <td>cdn-edge</td>
+                            <td>
+                                <div class="progress-item-table">
+                                    <div class="progress-bg">
+                                        <div class="progress-fill" style="width: 88.5%;"></div>
                                     </div>
+                                    <span class="percent critical">88.5%</span>
                                 </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col-lg-8">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="process-container">
-                                                <h1>Processos Ativos</h1>
-                                                <table class="process-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>PID</th>
-                                                            <th>NOME</th>
-                                                            <th>CPU%</th>
-                                                            <th>STATUS</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>1239</td>
-                                                            <td>cdn-edge</td>
-                                                            <td>
-                                                                <div class="progress-item-table">
-                                                                    <div class="progress-bg">
-                                                                        <div class="progress-fill"
-                                                                            style="width: 88.5%;"></div>
-                                                                    </div>
-                                                                    <span class="percent critical">88.5%</span>
-                                                                </div>
-                                                            </td>
-                                                            <td>Ativo</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>4562</td>
-                                                            <td>nginx-proxy</td>
-                                                            <td>
-                                                                <div class="progress-item-table">
-                                                                    <div class="progress-bg">
-                                                                        <div class="progress-fill"
-                                                                            style="width: 42.1%;"></div>
-                                                                    </div>
-                                                                    <span class="percent">42.1%</span>
-                                                                </div>
-                                                            </td>
-                                                            <td>Ativo</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+                            </td>
+                            <td>Ativo</td>
+                        </tr>
+                        <tr>
+                            <td>4562</td>
+                            <td>nginx-proxy</td>
+                            <td>
+                                <div class="progress-item-table">
+                                    <div class="progress-bg">
+                                        <div class="progress-fill" style="width: 42.1%;"></div>
                                     </div>
+                                    <span class="percent">42.1%</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </td>
+                            <td>Ativo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div> <div class="col-lg-4">
+            
+            <div class="information-container">
+                <h1>Informações</h1>
+                <div class="div-line">
+                    <label>Última Coleta</label>
+                    <span>29/03/2026</span>
+                </div>
+                <div class="div-line">
+                    <label>Nome</label>
+                    <span>Xeon E5-2697 v4</span>
+                </div>
+                <div class="div-line">
+                    <label>Cores Lógicos</label>
+                    <span>36</span>
+                </div>
+                <div class="div-line">
+                    <label>IP Externo</label>
+                    <span>192.1.1.0</span>
+                </div>
+                <div class="div-line">
+                    <label>IP Interno</label>
+                    <span>10.128.0.5</span>
+                </div>
+            </div>
+
+            <div class="card-kpi mt-3">
+                <div class="d-flex align-items-center justify-content-center mb-2">
+                    <p style="color: #ffff; margin: 0;">Uso dos Processos</p>
+                </div>
+                <canvas id="histCPU"></canvas> 
+            </div>
+            
+        </div> </div> </div>
             </main>
 
 
