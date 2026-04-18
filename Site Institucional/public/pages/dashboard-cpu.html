@@ -145,8 +145,14 @@
 
                                 </div>
                                 <div class="col-6 card-kpi">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p style="color: #ffff;">Gráfico de Tendência</p>
+                                    <div class="d-flex flex-direction-row align-items-center justify-content-left"
+                                        style="color: white; gap: 10px;">
+                                        <button type="button" class=" btn btn-link p-0 border-0" data-bs-toggle="modal"
+                                            data-bs-target="#modalAmpliado" data-tipo-grafico="tendencia">
+                                            <img src="../assets/Icon-info.svg" alt="" width="20" height="20"
+                                                style="cursor: pointer; filter: invert(1);">
+                                        </button>
+                                        Gráfico de Tendência
                                     </div>
                                     <canvas id="scatterPlotCPU">
 
@@ -154,21 +160,26 @@
 
                                 </div>
 
-                                 <div class="card-kpi d-flex flex-column" style="min-height: 218px;">
+                                <div class="card-kpi d-flex flex-column" style="min-height: 218px;">
 
-                                        <div class="d-flex align-items-center justify-content-center mb-2">
-                                            <p style="color: #ffff; margin: 0;">Uso dos Processos</p>
-                                        </div>
+                                    <div class="d-flex align-items-center justify-content-left mb-2" style="gap: 10px;">
+                                        <button type="button" class=" btn btn-link p-0 border-0" data-bs-toggle="modal"
+                                            data-bs-target="#modalAmpliado" data-tipo-grafico="tendencia">
+                                            <img src="../assets/Icon-info.svg" alt="" width="20" height="20"
+                                                style="cursor: pointer; filter: invert(1);">
+                                        </button>
+                                        <p style="color: #ffff; margin: 0;">Uso dos Processos</p>
+                                    </div>
 
-                                        <div style="position: relative; flex: 1; min-height: 0;">
+                                    <div style="position: relative; flex: 1; min-height: 0;">
 
-                                            <div style="position: absolute; top: 0; left: 0; right: 10px; bottom: 10px;">
-                                                <canvas id="lollipopCPU"></canvas>
-                                            </div>
-
+                                        <div style="position: absolute; top: 0; left: 0; right: 10px; bottom: 10px;">
+                                            <canvas id="lollipopCPU"></canvas>
                                         </div>
 
                                     </div>
+
+                                </div>
 
                             </div>
                         </div>
@@ -185,170 +196,181 @@
                                     <div class="process-container mt-4">
                                         <h1>Processos Ativos</h1>
                                         <div class="table-wrapper">
-                                        <table class="process-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>PID</th>
-                                                    <th>NOME</th>
-                                                    <th>CPU%</th>
-                                                    <th>STATUS</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1239</td>
-                                                    <td>cdn-edge</td>
-                                                    <td class="tdCenter">
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 88.5%;"></div>
+                                            <table class="process-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>PID</th>
+                                                        <th>NOME</th>
+                                                        <th>CPU%</th>
+                                                        <th>STATUS</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1239</td>
+                                                        <td>cdn-edge</td>
+                                                        <td class="tdCenter">
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 88.5%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent critical">88.5%</span>
                                                             </div>
-                                                            <span class="percent critical">88.5%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                
-                                                <tr>
-                                                    <td>4562</td>
-                                                    <td>nginx-proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>4562</td>
+                                                        <td>nginx-proxy</td>
+                                                        <td>
+                                                            <div class="progress-item-table">
+                                                                <div class="progress-bg">
+                                                                    <div class="progress-fill" style="width: 42.1%;">
+                                                                    </div>
+                                                                </div>
+                                                                <span class="percent">42.1%</span>
                                                             </div>
-                                                            <span class="percent">42.1%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                        </td>
+                                                        <td>Ativo</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
 
@@ -378,7 +400,8 @@
                                             <span>10.128.0.5</span>
                                         </div>
                                     </div>
-                                    <div class="card-kpi mt-3 d-flex flex-column" style="height: 100%; max-height: 320px;">
+                                    <div class="card-kpi mt-3 d-flex flex-column"
+                                        style="height: 100%; max-height: 320px;">
 
                                         <div class="d-flex align-items-center justify-content-center mb-2">
                                             <p style="color: #ffff; margin: 0;">Uso dos Processos</p>
@@ -386,7 +409,8 @@
 
                                         <div style="position: relative; flex: 1; min-height: 0;">
 
-                                            <div style="position: absolute; top: 0; left: 0; right: 10px; bottom: 10px;">
+                                            <div
+                                                style="position: absolute; top: 0; left: 0; right: 10px; bottom: 10px;">
                                                 <canvas id="histCPU"></canvas>
                                             </div>
 
@@ -399,6 +423,27 @@
                         </div>
             </main>
 
+            <div class="modal fade" id="modalAmpliado" tabindex="-1" data-bs-theme="dark">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header border-0 pb-0">
+                            <h5 class="modal-title">Detalhes de Consumo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body text-center">
+                            <canvas id="canvasGrande"></canvas>
+
+                            <p class="text-secondary mt-3 mb-1">
+                                Gráfico que relaciona processos com o consumo de CPU, Se a linha subir junto com as
+                                bolas fica bom
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -541,7 +586,7 @@
                                     font: {
                                         size: 8
                                     },
-                                    color: '#dddddd' 
+                                    color: '#dddddd'
                                 }
                             }
                         },
@@ -555,6 +600,17 @@
                 }
 
                 new Chart(scatterCpu, scatterCpuConfig);
+
+                const modalTendencia = document.getElementById('modalAmpliado')
+                let chartAmpliado = null
+
+                modalTendencia.addEventListener('shown.bs.modal', () => {
+                    if (!chartAmpliado) {
+                        const tendenciaGrande = document.getElementById('canvasGrande')
+                        chartAmpliado =
+                            new Chart(tendenciaGrande, scatterCpuConfig);
+                    }
+                })
             </script>
 
 
@@ -598,16 +654,16 @@
                         plugins: {
                             legend: {
                                 display: false,
-                                
+
                             },
                             tooltip: {
                                 displayColors: false,
                                 callbacks: {
                                     label: (context) => `Uso: ${context.raw}%`
                                 },
-                                
+
                             },
-                        
+
                         },
                         scales: {
                             y: {
@@ -618,7 +674,7 @@
                                 },
                                 ticks: {
                                     color: '#dddddd',
-                                    font: {size: 8}
+                                    font: { size: 8 }
                                 }
 
                             },
@@ -626,8 +682,10 @@
                                 grid: {
                                     display: false
                                 },
-                                ticks: { color: '#dddddd',
-                                    font: {size: 7} }
+                                ticks: {
+                                    color: '#dddddd',
+                                    font: { size: 7 }
+                                }
                             }
                         }
                     }
@@ -801,7 +859,7 @@
                                 },
                                 radius: 0,
                             },
-                            
+
                         ]
                     }
 
