@@ -154,101 +154,121 @@
 
                                 </div>
 
-                                <div class="card-kpi">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <p style="color: #ffff;">Uso dos Processos</p>
-                                    </div>
-                                    <canvas id="lollipopCPU">
+                                 <div class="card-kpi mt-3 d-flex flex-column" style="height: 100%; max-height: 230px;">
 
-                                    </canvas>
-                                </div>
+                                        <div class="d-flex align-items-center justify-content-center mb-2">
+                                            <p style="color: #ffff; margin: 0;">Uso dos Processos</p>
+                                        </div>
+
+                                        <div style="position: relative; flex: 1; min-height: 0;">
+
+                                            <div style="position: absolute; top: 0; left: 0; right: 10px; bottom: 10px;">
+                                                <canvas id="lollipopCPU"></canvas>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
 
                             </div>
                         </div>
 
                         <div class="col">
-    <div class="row g-3">
-        
-        <div class="col-lg-8">
-            
-            <canvas style="max-height: 255px; border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px;" id="dashboardComponentes"></canvas>
-            
-            <div class="process-container mt-4">
-                <h1>Processos Ativos</h1>
-                <table class="process-table">
-                    <thead>
-                        <tr>
-                            <th>PID</th>
-                            <th>NOME</th>
-                            <th>CPU%</th>
-                            <th>STATUS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1239</td>
-                            <td>cdn-edge</td>
-                            <td>
-                                <div class="progress-item-table">
-                                    <div class="progress-bg">
-                                        <div class="progress-fill" style="width: 88.5%;"></div>
-                                    </div>
-                                    <span class="percent critical">88.5%</span>
-                                </div>
-                            </td>
-                            <td>Ativo</td>
-                        </tr>
-                        <tr>
-                            <td>4562</td>
-                            <td>nginx-proxy</td>
-                            <td>
-                                <div class="progress-item-table">
-                                    <div class="progress-bg">
-                                        <div class="progress-fill" style="width: 42.1%;"></div>
-                                    </div>
-                                    <span class="percent">42.1%</span>
-                                </div>
-                            </td>
-                            <td>Ativo</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-        </div> <div class="col-lg-4">
-            
-            <div class="information-container">
-                <h1>Informações</h1>
-                <div class="div-line">
-                    <label>Última Coleta</label>
-                    <span>29/03/2026</span>
-                </div>
-                <div class="div-line">
-                    <label>Nome</label>
-                    <span>Xeon E5-2697 v4</span>
-                </div>
-                <div class="div-line">
-                    <label>Cores Lógicos</label>
-                    <span>36</span>
-                </div>
-                <div class="div-line">
-                    <label>IP Externo</label>
-                    <span>192.1.1.0</span>
-                </div>
-                <div class="div-line">
-                    <label>IP Interno</label>
-                    <span>10.128.0.5</span>
-                </div>
-            </div>
+                            <div class="row g-3">
 
-            <div class="card-kpi mt-3">
-                <div class="d-flex align-items-center justify-content-center mb-2">
-                    <p style="color: #ffff; margin: 0;">Uso dos Processos</p>
-                </div>
-                <canvas id="histCPU"></canvas> 
-            </div>
-            
-        </div> </div> </div>
+                                <div class="col-lg-8">
+
+                                    <canvas
+                                        style="max-height: 255px; border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px;"
+                                        id="dashboardComponentes"></canvas>
+
+                                    <div class="process-container mt-4">
+                                        <h1>Processos Ativos</h1>
+                                        <table class="process-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>PID</th>
+                                                    <th>NOME</th>
+                                                    <th>CPU%</th>
+                                                    <th>STATUS</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1239</td>
+                                                    <td>cdn-edge</td>
+                                                    <td>
+                                                        <div class="progress-item-table">
+                                                            <div class="progress-bg">
+                                                                <div class="progress-fill" style="width: 88.5%;"></div>
+                                                            </div>
+                                                            <span class="percent critical">88.5%</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>Ativo</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4562</td>
+                                                    <td>nginx-proxy</td>
+                                                    <td>
+                                                        <div class="progress-item-table">
+                                                            <div class="progress-bg">
+                                                                <div class="progress-fill" style="width: 42.1%;"></div>
+                                                            </div>
+                                                            <span class="percent">42.1%</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>Ativo</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-4">
+
+                                    <div class="information-container">
+                                        <h1>Informações</h1>
+                                        <div class="div-line">
+                                            <label>Última Coleta</label>
+                                            <span>29/03/2026</span>
+                                        </div>
+                                        <div class="div-line">
+                                            <label>Nome</label>
+                                            <span>Xeon E5-2697 v4</span>
+                                        </div>
+                                        <div class="div-line">
+                                            <label>Cores Lógicos</label>
+                                            <span>36</span>
+                                        </div>
+                                        <div class="div-line">
+                                            <label>IP Externo</label>
+                                            <span>192.1.1.0</span>
+                                        </div>
+                                        <div class="div-line">
+                                            <label>IP Interno</label>
+                                            <span>10.128.0.5</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-kpi mt-3 d-flex flex-column" style="height: 100%; max-height: 320px;">
+
+                                        <div class="d-flex align-items-center justify-content-center mb-2">
+                                            <p style="color: #ffff; margin: 0;">Uso dos Processos</p>
+                                        </div>
+
+                                        <div style="position: relative; flex: 1; min-height: 0;">
+
+                                            <div style="position: absolute; top: 0; left: 0; right: 10px; bottom: 10px;">
+                                                <canvas id="histCPU"></canvas>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
             </main>
 
 
@@ -445,6 +465,7 @@
                     },
                     options: {
                         responsive: false,
+                        maintainAspectRatio: false,
                         plugins: {
                             legend: {
                                 display: false
@@ -482,6 +503,81 @@
 
 
                 new Chart(lollipopCPU, lollipopCPUConfig);
+            </script>
+
+            <script>
+                // GRAFICO HSITORGRAMA CPU
+
+                const histCPU = document.getElementById('histCPU');
+
+                const dadosFrequencia = [15, 10, 16, 12, 32, 58, 24, 8, 15]
+                const labelsIntervalo = ['0-10', '10-20', '20-30', '30-40', '40-50', '50-60', '60-70', '70-80', '80-90']
+
+                const configHist = {
+                    type: 'bar',
+                    data: {
+                        labels: labelsIntervalo,
+                        datasets: [
+                            {
+                                label: 'Frequência',
+                                data: dadosFrequencia,
+                                backgroundColor: 'rgba(128, 64, 128, 0.8)',
+                                borderColor: 'rgba(218, 112, 214, 1)',
+                                borderWidth: 1,
+                                barPercentage: 1.0,
+                                categoryPercentage: 1.0
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                displayColors: false,
+                                callbacks: {
+                                    title: (context) => `Percentual: ${context[0].label}%`,
+                                    label: (context) => `Frequência: ${context.raw}%`
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 90,
+                                title: {
+                                    display: true,
+                                    text: 'Frequência',
+                                    color: '#ccc',
+                                    font: { size: 14 }
+                                },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.05)'
+                                },
+                                ticks: { color: '#ccc' }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Percentual',
+                                    color: '#ccc',
+                                    font: { size: 14 }
+                                },
+                                grid: {
+                                    display: false
+                                },
+                                ticks: { color: '#ccc' }
+
+                            }
+                        }
+                    }
+                }
+
+                new Chart(histCPU, configHist);
             </script>
 
 
