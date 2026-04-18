@@ -369,12 +369,12 @@
                                 border: {
                                     color: 'white'
                                 },
-                                grid:{
+                                grid: {
                                     display: true,
                                     color: 'rgba(255, 255, 255, 0.1)',
                                     tickColor: 'white'
                                 },
-                                ticks:{
+                                ticks: {
                                     color: 'white'
                                 }
                             },
@@ -382,12 +382,12 @@
                                 border: {
                                     color: 'white'
                                 },
-                                grid:{
+                                grid: {
                                     display: true,
                                     color: 'rgba(255, 255, 255, 0.1)',
                                     tickColor: 'white'
                                 },
-                                ticks:{
+                                ticks: {
                                     color: 'white'
                                 }
                             }
@@ -415,9 +415,82 @@
                 new Chart(scatterCpu, scatterCpuConfig);
             </script>
 
-            <script>
 
+
+
+            <script>
+                // GRAFICO DE LOLIPOP
+                const lollipopCPU = document.getElementById('lollipopCPU');
+
+                const labelsLollipop = ['ffmpeg', 'h265', 'thumbnail', 'watermark', 'nginx']
+                const dadosLollipop = [50, 81, 21, 91, 31]
+
+                const lollipopCPUConfig = {
+                    type: 'bar',
+                    data: {
+                        labels: labelsLollipop,
+                        datasets: [
+                            {
+                                type: 'line',
+                                label: 'bolinha',
+                                data: dadosLollipop,
+                                backgroundColor: '#FF1493',
+                                borderColor: '#FF1493',
+                                pointRadius: 6,
+                                showLine: false,
+                                order: 1
+                            },
+                            {
+                                type: 'bar',
+                                label: 'Uso de CPU',
+                                data: dadosLollipop,
+                                backgroundColor: '#FF1493',
+                                barThickness: 2,
+                                order: 2
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                displayColors: false,
+                                callbacks: {
+                                    label: (context) => `Uso: ${context.raw}%`
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.05)'
+                                },
+                                ticks: {
+                                    color: '#ccc'
+                                }
+
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                },
+                                ticks: { color: '#ccc' }
+                            }
+                        }
+                    }
+                }
+
+
+
+
+                new Chart(lollipopCPU, lollipopCPUConfig);
             </script>
+
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
