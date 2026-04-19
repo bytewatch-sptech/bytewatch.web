@@ -130,3 +130,11 @@
   -webkit-box-shadow: -4px 5px 0px 0px rgba(193, 103, 199, 0.75);
   -moz-box-shadow: -4px 5px 0px 0px rgba(193, 103, 199, 0.75);
 }
+
+.status{
+    background-color: #212121;
+    color: #a0a0a0;
+    padding: 5px 20px;
+    margin-left: 0 !important;
+
+}
