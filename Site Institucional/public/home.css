@@ -366,6 +366,60 @@ body {
     padding: 14px;
 }
 
+.tabela-analistas {
+    border-collapse: separate !important;
+    border-spacing: 0;
+}
+
+.tabela-analistas thead th {
+    position: sticky;
+    top: 0;
+    background-color: #141414 !important;
+    /* Mantenha a cor do seu fundo */
+    z-index: 10;
+    padding-bottom: 12px !important;
+
+    /* Substituímos a border por box-shadow. 
+       Ele desenha a linha branca transparente para dentro (inset), sem bugar a altura */
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.tabela-analistas tbody tr td {
+    border-bottom: none !important;
+}
+
+.tabela-analistas tbody td {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+}
+
+.table-responsive {
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 4px;
+    padding-bottom: 12px;
+}
+
+.table-responsive::-webkit-scrollbar {
+    width: 8px !important;
+
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #00f2ea !important;
+    border-radius: 10px !important;
+    border: 2px solid #141414 !important;
+}
+
+.table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #00f2ea transparent;
+}
+
 /* Avatar */
 .avatar {
     width: 38px;
@@ -392,29 +446,52 @@ body {
 }
 
 /* Botões */
-.btn-action {
+.btn {
     width: 36px;
     height: 36px;
     border-radius: 8px;
-    border: 1px;
+    cursor: pointer;
+    vertical-align: middle;
 }
 
 .btn-view {
-    background: #00f2ea2f;
+    background-color: rgba(0, 242, 234, 0.2);
+    border: 2px solid rgba(0, 242, 234, 0.5);
+    border-radius: 12px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .btn-edit {
-    background: #ffffff3c;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-delete {
-    background: #ff005139;
+    background-color: rgba(255, 0, 81, 0.2);
+    border: 2px solid rgba(255, 0, 81, 0.5);
+    border-radius: 12px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn-action:hover {
-    transform: scale(1.1);
-    filter: brightness(1.1);
+.btn-view img {
+    width: 16px;
+    height: 16px;
 }
+
+.btn-edit img {
+    width: 16px;
+    height: 16px;
+}
+
 
 tr {
     background-color: #1D1D1D;
