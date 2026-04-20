@@ -98,10 +98,48 @@
                             <div class="middle-line"></div>
                             <div
                                 style="display: flex; align-items: center; margin-left: 20px; flex-wrap: wrap; justify-content: center; gap: 10px;">
-                                <img src="../assets/icons/servidor.svg" alt="">
+                                <div class="icon-box d-flex align-items-center justify-content-center"
+                                    style=" border-color: #C167C7; background-color: #C167C730;">
+                                    <svg width="25" height="25" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_372_547)">
+                                            <path
+                                                d="M14.9997 3.33325H4.99967C4.0792 3.33325 3.33301 4.07944 3.33301 4.99992V14.9999C3.33301 15.9204 4.0792 16.6666 4.99967 16.6666H14.9997C15.9201 16.6666 16.6663 15.9204 16.6663 14.9999V4.99992C16.6663 4.07944 15.9201 3.33325 14.9997 3.33325Z"
+                                                stroke="#C167C7" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M11.6667 7.5H8.33333C7.8731 7.5 7.5 7.8731 7.5 8.33333V11.6667C7.5 12.1269 7.8731 12.5 8.33333 12.5H11.6667C12.1269 12.5 12.5 12.1269 12.5 11.6667V8.33333C12.5 7.8731 12.1269 7.5 11.6667 7.5Z"
+                                                stroke="#C167C7" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M12.5 1.66675V3.33341" stroke="#C167C7" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M12.5 16.6666V18.3333" stroke="#C167C7" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M1.66699 12.5H3.33366" stroke="#C167C7" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M1.66699 7.5H3.33366" stroke="#C167C7" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M16.667 12.5H18.3337" stroke="#C167C7" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M16.667 7.5H18.3337" stroke="#C167C7" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M7.5 1.66675V3.33341" stroke="#C167C7" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M7.5 16.6666V18.3333" stroke="#C167C7" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_372_547">
+                                                <rect width="20" height="20" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </div>
+
                                 <div style="display: flex; flex-direction: column;">
-                                    <span class="servidor-title">Tiktok US-West-1</span>
-                                    <span class="local-servidor">Califórnia, USA</span>
+                                    <span class="servidor-title"
+                                        style="color: #C167C7; font-size: 20px; font-weight: 700;">CPU</span>
+
                                 </div>
                             </div>
                         </div>
@@ -141,18 +179,23 @@
                             <div class="card-kpi px-4 py-3">
                                 <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
                                     <div class="col-6 coluna-kpi">
-                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
-                                            style="padding-left: 0px;">
-                                            <div class="col-lg-6 d-flex justify-content-center"
-                                                style="padding-left: 0px; padding-right: 0px;">
-                                                <img src="../assets/icons/cpu.svg" style="height: 40px;" alt="">
-                                            </div>
-                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
-                                                style="padding-left: 0px; padding-right: 0px;">
-                                                <span class="display-7 icon-label">CPU</span>
-                                            </div>
-                                        </div>
+
                                         <div class="row d-flex justify-content-lg-start justify-content-around">
+                                            <div class="d-flex align-items-center justify-content-center"
+                                                style="color: white; gap: 10px;">
+                                                <button type="button" class=" btn btn-link d-flex p-0 border-0"
+                                                    data-bs-toggle="modal" data-bs-target="#modalAmpliado"
+                                                    onclick="grafico = 'tendencia'">
+                                                    <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z"
+                                                            fill="#A0A0A0" />
+                                                    </svg>
+
+                                                </button>
+                                                Consumo
+                                            </div>
                                             <div class="col"
                                                 style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
                                                 <span class="display-6 status-percent">75%</span>
@@ -205,7 +248,7 @@
 
                             </div>
 
-                            <div class="card-kpi d-flex flex-column" style="min-height: 231px;">
+                            <div class="card-kpi d-flex flex-column" style="min-height: 249px;">
 
                                 <div class="d-flex align-items-center justify-content-center"
                                     style="color: white; gap: 10px;">
@@ -243,23 +286,21 @@
 
                                 <div class="card-kpi">
                                     <div class="d-flex align-items-center justify-content-center"
-                                    style="color: white; gap: 10px;">
-                                    <button type="button" class=" btn btn-link d-flex p-0 border-0"
-                                        data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                        onclick="grafico = 'tendencia'">
-                                        <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z"
-                                                fill="#A0A0A0" />
-                                        </svg>
+                                        style="color: white; gap: 10px;">
+                                        <button type="button" class=" btn btn-link d-flex p-0 border-0"
+                                            data-bs-toggle="modal" data-bs-target="#modalAmpliado"
+                                            onclick="grafico = 'usoTempo'">
+                                            <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z"
+                                                    fill="#A0A0A0" />
+                                            </svg>
 
-                                    </button>
-                                    Linha do Tempo de Uso 
-                                </div>
-                                <canvas
-                                    style=""
-                                    id="dashboardComponentes"></canvas>
+                                        </button>
+                                        Linha do Tempo de Uso
+                                    </div>
+                                    <canvas style="" id="dashboardComponentes"></canvas>
                                 </div>
 
                                 <div class="process-container mt-3">
@@ -1255,7 +1296,12 @@
                             }
 
                             plotarGrafico([], 2)
+
+
                             function plotarGrafico(resposta, id_registro) {
+                                let graficoAberto = null;
+                                let grafico = '';
+                                let configuracaoAtivaDashboard = null;
 
                                 console.log('iniciando plotagem do gráfico...');
 
@@ -1316,6 +1362,7 @@
                                     ]
                                 }
 
+
                                 console.log('----------------------------------------------')
                                 console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
                                 console.log(resposta)
@@ -1363,36 +1410,7 @@
                                     }
                                 };
 
-                                const configDashboardRede = {
-                                    type: 'line',
-                                    data: dadosRede,
-                                    options: {
-                                        scales: {
-                                            x: {
-                                                title: {
-                                                    display: true,
-                                                    text: "Horário",
-                                                    color: '#5A5A5A',
-                                                    font: {
-                                                        size: 10,
-                                                        weight: 'bold'
-                                                    }
-                                                }
-                                            },
-                                            y: {
-                                                title: {
-                                                    display: true,
-                                                    text: 'Mb/s',
-                                                    color: '#5A5A5A',
-                                                    font: {
-                                                        size: 10,
-                                                        weight: 'bold'
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                };
+                            
 
 
                                 let dashboard_componentes = new Chart(
@@ -1400,10 +1418,23 @@
                                     configDashboard
                                 );
 
-                                let dashboard_rede = new Chart(
-                                    document.getElementById(`dashboardRede`),
-                                    configDashboardRede
-                                );
+                               
+
+                                
+                                configuracaoAtivaDashboard = JSON.parse(JSON.stringify(configDashboard));
+                                
+                                const ctxModal = document.getElementById('canvasGrande')
+                                document.getElementById('modalAmpliado').addEventListener('shown.bs.modal', function () {
+
+                                    if (grafico == 'usoTempo') {
+                                        document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
+                                        document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
+                                        
+                                        if(configuracaoAtivaDashboard){
+                                            graficoAberto = new Chart(ctxModal, configuracaoAtivaDashboard)
+                                        }
+                                    }
+                                })
 
                                 // setTimeout(() => atualizarGrafico(id_registro, dadosDashboard, dashboard_componentes), 2000);
                             }
@@ -1492,7 +1523,7 @@
                                     graficoAberto = new Chart(ctxModal, configHist)
 
                                 } else if (grafico == 'usoTempo') {
-                                    document.getElementById('tituloModal').innerText = 'Tendencia'
+                                    document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
                                     document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
                                     graficoAberto = new Chart(ctxModal, configDashboard)
 
