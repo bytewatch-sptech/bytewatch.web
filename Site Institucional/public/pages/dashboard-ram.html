@@ -146,8 +146,75 @@
 
                         <div class="d-flex align-items-center" style="gap: 15px;">
 
-                            <div class="icon-bell">
-                                <img src="../assets/icon-bell.svg" alt="">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"
+                                    data-bs-auto-close="outside"><img src="../assets/icon-bell.svg" alt=""></button>
+                                <div class="dropdown-menu" style="padding-bottom: 0;">
+                                    <div class=" flex-column" style="width: 350px; height: 450px;">
+                                        <div class="text-center">
+                                            Histórico de Alertas <span id="alertNotifications">4</span>
+                                        </div>
+                                        <div class="box-notification critical  p-2 d-flex gap-1">
+                                            <div class="mb-3 pt-1 pb-1 p-2 critical" style="border-radius: 5px;">
+                                                CPU</div>
+                                            <div class="d-flex flex-column">
+                                                <span>Uso da <span>CPU</span> excedeu <span>90%</span></span>
+                                                <span style="font-size: 12px;">29/03/2026</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="box-notification risk  p-2 d-flex gap-1">
+                                            <div class="mb-3 pt-1 pb-1 p-2 risk" style="border-radius: 5px;">
+                                                RAM</div>
+                                            <div class="d-flex flex-column">
+                                                <span>Uso da <span>RAM</span> excedeu <span>90%</span></span>
+                                                <span style="font-size: 12px;">29/03/2026</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="box-notification critical  p-2 d-flex gap-1">
+                                            <div class="mb-3 pt-1 pb-1 p-2 critical" style="border-radius: 5px;">
+                                                CPU</div>
+                                            <div class="d-flex flex-column">
+                                                <span>Uso da <span>CPU</span> excedeu <span>90%</span></span>
+                                                <span style="font-size: 12px;">29/03/2026</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="box-notification risk  p-2 d-flex gap-1">
+                                            <div class="mb-3 pt-1 pb-1 p-2 risk" style="border-radius: 5px;">
+                                                RAM</div>
+                                            <div class="d-flex flex-column">
+                                                <span>Uso da <span>RAM</span> excedeu <span>90%</span></span>
+                                                <span style="font-size: 12px;">29/03/2026</span>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="dropdown-item align-items-center justify-content-center d-flex py-2 h-100 gap-1">
+                                        <svg width="18" height="18" viewBox="0 0 14 14" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_557_1121)">
+                                                <path
+                                                    d="M1.18784 7.10946C1.13986 6.9802 1.13986 6.838 1.18784 6.70873C1.65519 5.57556 2.44847 4.60667 3.46714 3.92489C4.4858 3.24311 5.68396 2.87915 6.90972 2.87915C8.13548 2.87915 9.33365 3.24311 10.3523 3.92489C11.371 4.60667 12.1643 5.57556 12.6316 6.70873C12.6796 6.838 12.6796 6.9802 12.6316 7.10946C12.1643 8.24264 11.371 9.21153 10.3523 9.89331C9.33365 10.5751 8.13548 10.939 6.90972 10.939C5.68396 10.939 4.4858 10.5751 3.46714 9.89331C2.44847 9.21153 1.65519 8.24264 1.18784 7.10946Z"
+                                                    stroke="currentColor" stroke-width="1.15152" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M6.9094 8.63637C7.86335 8.63637 8.63667 7.86304 8.63667 6.9091C8.63667 5.95515 7.86335 5.18182 6.9094 5.18182C5.95546 5.18182 5.18213 5.95515 5.18213 6.9091C5.18213 7.86304 5.95546 8.63637 6.9094 8.63637Z"
+                                                    stroke="currentColor" stroke-width="1.15152" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_557_1121">
+                                                    <rect width="13.8182" height="13.8182" fill="currentColor" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        Mostrar Todos
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="d-flex align-items-center" style="gap: 0;">
@@ -322,7 +389,8 @@
                                                     <td class="tdCenter">
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 88.5%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 88.5%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent critical">88.5%</span>
@@ -336,7 +404,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -351,7 +420,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -366,7 +436,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -381,7 +452,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -396,7 +468,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -411,7 +484,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -426,7 +500,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -441,7 +516,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -456,7 +532,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -471,7 +548,8 @@
                                                     <td>
                                                         <div class="progress-item-table">
                                                             <div class="progress-bg">
-                                                                <div class="progress-fill ram-fill" style="width: 42.1%;">
+                                                                <div class="progress-fill ram-fill"
+                                                                    style="width: 42.1%;">
                                                                 </div>
                                                             </div>
                                                             <span class="percent">42.1%</span>
@@ -1410,7 +1488,7 @@
                                     }
                                 };
 
-                            
+
 
 
                                 let dashboard_componentes = new Chart(
@@ -1418,19 +1496,19 @@
                                     configDashboard
                                 );
 
-                               
 
-                                
+
+
                                 configuracaoAtivaDashboard = JSON.parse(JSON.stringify(configDashboard));
-                                
+
                                 const ctxModal = document.getElementById('canvasGrande')
                                 document.getElementById('modalAmpliado').addEventListener('shown.bs.modal', function () {
 
                                     if (grafico == 'usoTempo') {
                                         document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
                                         document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-                                        
-                                        if(configuracaoAtivaDashboard){
+
+                                        if (configuracaoAtivaDashboard) {
                                             graficoAberto = new Chart(ctxModal, configuracaoAtivaDashboard)
                                         }
                                     }
