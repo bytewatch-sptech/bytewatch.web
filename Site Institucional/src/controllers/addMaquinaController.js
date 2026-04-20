@@ -18,15 +18,13 @@ function cadastrar(req, res) {
     res.status(400).send("localização está undefined!");
   } else if(ip == undefined){
     res.status(400).send("ip está undefined!");
-  } else if (tipo == undefined) {
-    res.status(400).send("Tipo está undefined")
   } else if (fkEmpresa == undefined) {
     res.status(400).send("fkEmpres está undefined")
   }else if (mac_address == undefined) {
     res.status(400).send("Mac_adress está undefined")
   }else {
 
-    addMaquinaModel.cadastrar(nome, localizacao, ip, fkEmpresa,tipo, componentes)
+    addMaquinaModel.cadastrar(nome, localizacao, ip, fkEmpresa, tipo, mac_address, componentes)
       .then((resultado) => {
         res.status(201).json(resultado);
       }

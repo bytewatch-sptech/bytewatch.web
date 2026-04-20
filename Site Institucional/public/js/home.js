@@ -9,22 +9,26 @@ function cadastrarMaquina() {
         { 
             idComponente: 1, 
             qtd: document.getElementById("qtd_cpu").value, 
-            limiteAlerta: document.getElementById("limite_cpu").value 
+            limiteAlerta: document.getElementById("limite_cpu").value,
+            capacidade_limite: document.getElementById("capacidade").value
         },
         { 
             idComponente: 2, 
             qtd: document.getElementById("qtd_ram").value, 
-            limiteAlerta: document.getElementById("limite_ram").value 
+            limiteAlerta: document.getElementById("limite_ram").value,
+            capacidade_limite: document.getElementById("capacidade").value
         },
         { 
             idComponente: 3, 
             qtd: document.getElementById("qtd_disco").value, 
-            limiteAlerta: document.getElementById("limite_disco").value 
+            limiteAlerta: document.getElementById("limite_disco").value,
+            capacidade_limite: document.getElementById("capacidade").value 
         },
         { 
             idComponente: 4, 
             qtd: document.getElementById("qtd_rede").value, 
-            limiteAlerta: document.getElementById("limite_rede").value 
+            limiteAlerta: document.getElementById("limite_rede").value,
+            capacidade_limite: document.getElementById("capacidade").value
         }
     ];
 
