@@ -195,7 +195,8 @@
                                                             <td class="text-white">Analista de SRC</td>
                                                             <td class="text-center text-white">3</td>
                                                             <td class="text-center">
-                                                                <button class="btn btn-view"><img
+                                                                <button class="btn btn-view" data-bs-toggle="modal"
+                                                                    data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
                                                                 <button class="btn btn-edit"><img
@@ -216,7 +217,8 @@
                                                             <td class="text-white">Analista de SRC</td>
                                                             <td class="text-center text-white">3</td>
                                                             <td class="text-center">
-                                                                <button class="btn btn-view"><img
+                                                                <button class="btn btn-view" data-bs-toggle="modal"
+                                                                    data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
                                                                 <button class="btn btn-edit"><img
@@ -237,7 +239,8 @@
                                                             <td class="text-white">Analista de SRC</td>
                                                             <td class="text-center text-white">3</td>
                                                             <td class="text-center">
-                                                                <button class="btn btn-view"><img
+                                                                <button class="btn btn-view" data-bs-toggle="modal"
+                                                                    data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
                                                                 <button class="btn btn-edit"><img
@@ -258,30 +261,8 @@
                                                             <td class="text-white">Analista de SRC</td>
                                                             <td class="text-center text-white">3</td>
                                                             <td class="text-center">
-                                                                <button class="btn btn-view"><img
-                                                                        src="assets/servidor_correto_correto.png"
-                                                                        alt=""></button>
-                                                                <button class="btn btn-edit"><img
-                                                                        src="assets/botao-editar.png" alt=""></button>
-                                                                <button class="btn btn-delete" data-bs-toggle="modal"
-                                                                    data-bs-target="#modalExcluir"><img
-                                                                        src="assets/botao-apagar.png" alt=""></button>
-                                                            </td>
-                                                        </tr>
-
-
-
-                                                        <tr>
-                                                            <td>
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div class="avatar">LI</div>
-                                                                    <span class="text-white">Luan Iada</span>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-white">Analista de SRC</td>
-                                                            <td class="text-center text-white">3</td>
-                                                            <td class="text-center">
-                                                                <button class="btn btn-view"><img
+                                                                <button class="btn btn-view" data-bs-toggle="modal"
+                                                                    data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
                                                                 <button class="btn btn-edit"><img
@@ -304,7 +285,32 @@
                                                             <td class="text-white">Analista de SRC</td>
                                                             <td class="text-center text-white">3</td>
                                                             <td class="text-center">
-                                                                <button class="btn btn-view"><img
+                                                                <button class="btn btn-view" data-bs-toggle="modal"
+                                                                    data-bs-target="#modalSelecionarServidor"><img
+                                                                        src="assets/servidor_correto_correto.png"
+                                                                        alt=""></button>
+                                                                <button class="btn btn-edit"><img
+                                                                        src="assets/botao-editar.png" alt=""></button>
+                                                                <button class="btn btn-delete" data-bs-toggle="modal"
+                                                                    data-bs-target="#modalExcluir"><img
+                                                                        src="assets/botao-apagar.png" alt=""></button>
+                                                            </td>
+                                                        </tr>
+
+
+
+                                                        <tr>
+                                                            <td>
+                                                                <div class="d-flex align-items-center gap-2">
+                                                                    <div class="avatar">LI</div>
+                                                                    <span class="text-white">Luan Iada</span>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-white">Analista de SRC</td>
+                                                            <td class="text-center text-white">3</td>
+                                                            <td class="text-center">
+                                                                <button class="btn btn-view" data-bs-toggle="modal"
+                                                                    data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
                                                                 <button class="btn btn-edit"><img
@@ -420,6 +426,100 @@
                                 </button>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- modal servidores  -->
+
+            <div class="modal fade" id="modalSelecionarServidor" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content custom-modal-servidor">
+
+                        <div
+                            class="modal-header d-flex justify-content-between align-items-center border-0 px-4 pt-4 pb-3">
+                            <h2 class="modal-title text-white fw-bold fs-3">Selecione um servidor</h2>
+                            <button type="button" class="btn btn-voltar-modal" data-bs-dismiss="modal">
+                                &#10094; Voltar
+                            </button>
+                        </div>
+
+                        <div class="modal-body px-4 pb-4">
+                            <div class="row g-4">
+
+                                <div class="col-md-4">
+                                    <div class="card-servidor alerta">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5 class="titulo-card mb-0">TikTok US-West-1</h5>
+                                            <span class="badge-alerta">Sem Analista</span>
+                                        </div>
+                                        <p class="subtitulo-card">California, USA</p>
+                                        <button class="btn btn-card-acao btn-amarelo mt-auto">Atribuir Analista</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card-servidor desabilitado">
+                                        <h5 class="titulo-card">TikTok US-West-1</h5>
+                                        <p class="subtitulo-card">California, USA</p>
+                                        <button class="btn btn-card-acao" disabled>Entrou</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card-servidor desabilitado">
+                                        <h5 class="titulo-card">TikTok SA-East-1</h5>
+                                        <p class="subtitulo-card">São Paulo, Brazil</p>
+                                        <button class="btn btn-card-acao" disabled>Entrou</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card-servidor desabilitado">
+                                        <h5 class="titulo-card">TikTok AP-Southeast-1</h5>
+                                        <p class="subtitulo-card">Sydney, Australia</p>
+                                        <button class="btn btn-card-acao" disabled>Entrou</button>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="card-servidor normal">
+                                        <h5 class="titulo-card">TikTok SA-East-1</h5>
+                                        <p class="subtitulo-card">São Paulo, Brazil</p>
+                                        <button class="btn btn-card-acao btn-ciano">Atribuir Analista</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card-servidor normal">
+                                        <h5 class="titulo-card">TikTok AP-Southeast-1</h5>
+                                        <p class="subtitulo-card">Sydney, Australia</p>
+                                        <button class="btn btn-card-acao btn-ciano">Atribuir Analista</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card-servidor normal">
+                                        <h5 class="titulo-card">TikTok US-West-1</h5>
+                                        <p class="subtitulo-card">California, USA</p>
+                                        <button class="btn btn-card-acao btn-ciano">Atribuir Analista</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card-servidor normal">
+                                        <h5 class="titulo-card">TikTok SA-East-1</h5>
+                                        <p class="subtitulo-card">São Paulo, Brazil</p>
+                                        <button class="btn btn-card-acao btn-ciano">Atribuir Analista</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card-servidor normal">
+                                        <h5 class="titulo-card">TikTok AP-Southeast-1</h5>
+                                        <p class="subtitulo-card">Sydney, Australia</p>
+                                        <button class="btn btn-card-acao btn-ciano">Atribuir Analista</button>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>

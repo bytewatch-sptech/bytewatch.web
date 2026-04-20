@@ -589,3 +589,104 @@ tr {
     background-color: #ff0051;
     color: #ffffff;
 }
+
+/* modal servidores  */
+
+.custom-modal-servidor {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+}
+
+.btn-voltar-modal {
+    background-color: #2a2a2a;
+    color: #a0a0a0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+    display: inline-flex;
+}
+
+.btn-voltar-modal:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.card-servidor {
+    background-color: #222222;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s;
+}
+
+.titulo-card {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.subtitulo-card {
+    color: #888888;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.btn-card-acao {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+.card-servidor.desabilitado {
+    opacity: 0.6;
+}
+
+.card-servidor.desabilitado .btn-card-acao {
+    background-color: #111111;
+    color: #555555;
+    border: none;
+}
+
+.card-servidor.alerta {
+    border: 1px solid #d4b232;
+    background-color: rgba(212, 178, 50, 0.03);
+
+}
+
+.badge-alerta {
+    color: #d4b232;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn-card-acao.btn-amarelo {
+    background-color: transparent;
+    border: 1px solid rgba(212, 178, 50, 0.5);
+    color: #d4b232;
+}
+
+.btn-card-acao.btn-amarelo:hover {
+    background-color: rgba(212, 178, 50, 0.1);
+}
+
+.btn-card-acao.btn-ciano {
+    background-color: rgba(0, 242, 234, 0.05);
+    border: 1px solid rgba(0, 242, 234, 0.4);
+    color: #00f2ea;
+}
+
+.btn-card-acao.btn-ciano:hover {
+    background-color: rgba(0, 242, 234, 0.15);
+}
