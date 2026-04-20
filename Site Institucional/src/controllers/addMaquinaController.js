@@ -5,8 +5,9 @@ function cadastrar(req, res) {
   var nome = req.body.nomeServer;
   var localizacao = req.body.localServer;
   var ip = req.body.ipServer;
-  var so = req.body.soServer;
+  var tipo = req.body.tipoServer
   var fkEmpresa = req.body.fkEmpresa
+  var mac_address = req.body.mac_addressServer
   var componentes = req.body.componentes
 
 
@@ -14,16 +15,18 @@ function cadastrar(req, res) {
   if (nome == undefined) {
     res.status(400).send("nome está undefined!");
   } else if (localizacao == undefined) {
-    res.status(400).send("ip está undefined!");
+    res.status(400).send("localização está undefined!");
   } else if(ip == undefined){
     res.status(400).send("ip está undefined!");
+  } else if (tipo == undefined) {
+    res.status(400).send("Tipo está undefined")
   } else if (fkEmpresa == undefined) {
     res.status(400).send("fkEmpres está undefined")
-  } else if (fkEmpresa == undefined) {
-    res.status(400).send("fkEmpres está undefined")
+  }else if (mac_address == undefined) {
+    res.status(400).send("Mac_adress está undefined")
   }else {
 
-    addMaquinaModel.cadastrar(nome, localizacao, ip, fkEmpresa, componentes)
+    addMaquinaModel.cadastrar(nome, localizacao, ip, fkEmpresa,tipo, componentes)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
