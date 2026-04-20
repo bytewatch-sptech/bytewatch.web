@@ -125,16 +125,40 @@
 }
 
 .modal-content {
-    background-color: #151515;
+  background-color: #151515;
   box-shadow: -4px 5px 0px 0px rgba(193, 103, 199, 0.75);
   -webkit-box-shadow: -4px 5px 0px 0px rgba(193, 103, 199, 0.75);
   -moz-box-shadow: -4px 5px 0px 0px rgba(193, 103, 199, 0.75);
 }
 
-.status{
-    background-color: #212121;
-    color: #a0a0a0;
-    padding: 5px 20px;
-    margin-left: 0 !important;
+.info-alert {
+  background-color: #212121;
+  color: #a0a0a0;
+  padding: 5px 20px;
+  margin-left: 0 !important;
+  border: 1px solid #ffffff00;
+}
 
+#statusInfo {
+  cursor: pointer;
+  box-shadow: 2px 0 6.4px 0 rgba(0, 0, 0, 0.5);
+  gap: 5px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+#statusInfo:hover{
+  border: 1px solid #99a1af;
+}
+
+.icon-box{
+  background-color: #00F2EA20;
+  border: 1px solid #00F2EA50;
+  padding: 10px;
+  width: 50px;
+  border-radius: 5px;
+}
+.card-legend{
+  border: 1px solid red;
 }
