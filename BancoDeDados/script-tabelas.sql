@@ -23,11 +23,11 @@ CREATE TABLE usuario (
   email VARCHAR(100) NOT NULL,
   cpf VARCHAR(11) NOT NULL,
   fk_tipo_usuario INT NOT NULL,
-  fk_id_empresa INT NOT NULL,
+  fk_usuario_empresa INT NOT NULL,
   CONSTRAINT fk_usuario_tipo_usuario 
     FOREIGN KEY (fk_tipo_usuario) REFERENCES tipo_usuario (id_tipo_usuario),
-  CONSTRAINT fk_usuario_empresa 
-    FOREIGN KEY (fk_id_empresa) REFERENCES empresa (id_empresa)
+  CONSTRAINT usuario_empresa 
+    FOREIGN KEY (fk_usuario_empresa) REFERENCES empresa (id_empresa)
 );
 
 CREATE TABLE componente (
