@@ -534,3 +534,58 @@ tr {
     overflow: hidden;
 
 }
+
+
+/* pop up para excluir analista */
+
+.custom-modal {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+}
+
+.btn-sim {
+    background-color: #104c54;
+    border: 2px solid #00f2ea;
+    color: #00f2ea;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 20px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-sim p {
+    font-size: 20px;
+    margin: 0;
+}
+
+.btn-sim:hover {
+    background-color: #00f2ea;
+    color: #141414;
+}
+
+.btn-nao {
+    background-color: #4a1528;
+    border: 2px solid #ff0051;
+    color: #ff0051;
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 20px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-nao p {
+    font-size: 20px;
+    margin: 0;
+}
+
+.btn-nao:hover {
+    background-color: #ff0051;
+    color: #ffffff;
+}
