@@ -80,6 +80,9 @@
   height: 100%;
   border-radius: 10px;
 }
+.ram-fill{
+  background-color: #B0DB43;
+}
 .percent {
   color: #fff;
   font-size: 10px;
