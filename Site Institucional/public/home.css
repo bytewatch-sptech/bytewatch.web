@@ -396,24 +396,24 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 8px;
-    border: none;
+    border: 1px;
 }
 
 .btn-view {
-    background: #00F2EA;
+    background: #00f2ea2f;
 }
 
 .btn-edit {
-    background: #A60034;
+    background: #ffffff3c;
 }
 
 .btn-delete {
-    background: #FF0050;
+    background: #ff005139;
 }
 
 .btn-action:hover {
     transform: scale(1.1);
-    transition: 0.2s;
+    filter: brightness(1.1);
 }
 
 tr {
@@ -424,8 +424,13 @@ tr {
     background-color: #1D1D1D;
 }
 
-.tabela-analistas,
-.tabela-analistas * {
+.tabela-analistas {
+    --bs-table-bg: transparent;
+    background-color: transparent !important;
+}
+
+.tabela-analistas th,
+.tabela-analistas td {
     background-color: transparent !important;
 }
 
@@ -439,4 +444,16 @@ tr {
     border-radius: 10px;
     width: 100%;
     background: linear-gradient(135deg, rgba(255, 214, 0, 0.08) 0%, transparent 60%), #121212;
+}
+
+.texto-local {
+    color: #99A1AF;
+}
+
+.cartao-infos {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    overflow: hidden;
+
 }
