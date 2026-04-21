@@ -86,14 +86,14 @@
 
                     <div class="container-info-local flex-wrap justify-content-between w-100 mb-2">
                         <div class="d-flex align-items-center gap-2 gap-md-3">
-                        <button class="btn btn-link text-white p-0 me-3 d-lg-none border-0" type="button"
-                            data-bs-toggle="offcanvas" data-bs-target="#menuMobile">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
-                                class="bi bi-list" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                            </svg>
-                        </button>
+                            <button class="btn btn-link text-white p-0 me-3 d-lg-none border-0" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#menuMobile">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                                    class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                                </svg>
+                            </button>
                             <button>← Voltar</button>
                             <div class="middle-line"></div>
                             <div
@@ -260,7 +260,7 @@
                                                 style="color: white; gap: 10px;">
                                                 <button type="button" class=" btn btn-link d-flex p-0 border-0"
                                                     data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                                    onclick="grafico = 'tendencia'">
+                                                    onclick="grafico = 'doughnut'">
                                                     <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -301,12 +301,12 @@
                                 </div>
 
                             </div>
-                            <div class="col-6 card-kpi">
+                            <div class="col-6 card-kpi d-flex flex-column" style="min-height: 0;">
                                 <div class="d-flex align-items-center justify-content-center"
                                     style="color: white; gap: 10px;">
                                     <button type="button" class=" btn btn-link d-flex p-0 border-0"
                                         data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                        onclick="grafico = 'tendencia'">
+                                        onclick="grafico = 'dist'">
                                         <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -315,15 +315,17 @@
                                         </svg>
 
                                     </button>
-                                    Tendência dos Processos
+                                    Distribuição de Memória
                                 </div>
-                                <canvas id="scatterPlotCPU">
-
-                                </canvas>
+                                <div class="flex-grow-1 position-relative mt-2" style="min-height: 0; height: 380px;">
+                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+                                        <canvas id="distribuicaoDisco"></canvas>
+                                    </div>
+                                </div>
 
                             </div>
 
-                            
+
 
                         </div>
                     </div>
@@ -349,7 +351,7 @@
                                         </button>
                                         Linha do Tempo de Uso
                                     </div>
-                                    <canvas style="" id="dashboardComponentes"></canvas>
+                                    <canvas id="dashboardComponentes"></canvas>
                                 </div>
 
                                 <div class="process-container mt-3">
@@ -571,11 +573,11 @@
                                     </div>
                                 </div>
 
-                                </div>
-
                             </div>
+
                         </div>
                     </div>
+                </div>
             </main>
 
 
@@ -1042,6 +1044,9 @@
 
                             //GRÁFICO DE DISTRIBUICAO
 
+                            const distribuicao = document.getElementById('distribuicaoDisco');
+
+
                             const configDisco = {
                                 type: 'bar',
                                 data: {
@@ -1058,22 +1063,41 @@
                                             backgroundColor: '#2196F3'
                                         }
                                     ]
+                                },
+                                options: {
+                                    indexAxis: 'x',
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        x: {
+                                            stacked: true,
+                                            max: 100,
+                                            title: {
+                                                display: true,
+                                                text: 'Porcentagem'
+                                            }
+                                        },
+                                        y: {
+                                            stacked: true
+                                        }
+                                    }
                                 }
                             }
 
-                            
+                            new Chart(distribuicao, configDisco);
 
 
 
 
 
-                            
+
+
 
 
 
                             // GRAFICO HSITORGRAMA CPU
 
-                        
+
 
                             // obterDadosGrafico(idSensor)
 
@@ -1318,11 +1342,16 @@
                                     document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
                                     graficoAberto = new Chart(ctxModal, scatterCpuConfig)
 
-                                
-                                } else if (grafico == 'usoTempo') {
-                                    document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
+
+                                } else if (grafico == 'dist') {
+                                    document.getElementById('tituloModal').innerText = 'Distribuicao'
                                     document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-                                    graficoAberto = new Chart(ctxModal, configDashboard)
+                                    graficoAberto = new Chart(ctxModal, configDisco)
+
+                                }else if (grafico == 'doughnut') {
+                                    document.getElementById('tituloModal').innerText = 'Distribuicao'
+                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
+                                    graficoAberto = new Chart(ctxModal, cpuConfig)
 
                                 }
                             })
