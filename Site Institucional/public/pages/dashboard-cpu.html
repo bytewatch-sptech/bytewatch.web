@@ -84,16 +84,16 @@
             <main class="col ps-md-4 pt-3">
                 <div class="d-flex ">
 
-                    <div class="container-info-local d-flex justify-content-between w-100 mb-2">
-                        <button class="btn btn-link text-white p-0 me-3 d-lg-none border-0" type="button"
-                            data-bs-toggle="offcanvas" data-bs-target="#menuMobile">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
-                                class="bi bi-list" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                            </svg>
-                        </button>
-                        <div class="d-flex align-items-center">
+                    <div class="container-info-local flex-wrap justify-content-between w-100 mb-2">
+                        <div class="d-flex align-items-center gap-2 gap-md-3">
+                            <button class="btn btn-link text-white p-0 me-3 d-lg-none border-0" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#menuMobile">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                                    class="bi bi-list" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                                </svg>
+                            </button>
                             <button>← Voltar</button>
                             <div class="middle-line"></div>
                             <div
@@ -146,9 +146,7 @@
 
                         <div class="d-flex align-items-center" style="gap: 15px;">
 
-                            <div class="icon-bell">
-                                <img src="../assets/icon-bell.svg" alt="">
-                            </div>
+
 
                             <div class="d-flex align-items-center" style="gap: 0;">
 
@@ -168,6 +166,83 @@
                                     <span id="serverAlert">Critíco</span>
                                 </div>
 
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle m-0" data-bs-toggle="dropdown" aria-expanded="false"
+                                    data-bs-auto-close="outside"><svg width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M19 17V11.8C18.5 11.9 18 12 17.5 12H17V18H7V11C7 8.2 9.2 6 12 6C12.1 4.7 12.7 3.6 13.5 2.7C13.2 2.3 12.6 2 12 2C10.9 2 10 2.9 10 4V4.3C7 5.2 5 7.9 5 11V17L3 19V20H21V19L19 17ZM10 21C10 22.1 10.9 23 12 23C13.1 23 14 22.1 14 21H10ZM21 6.5C21 8.4 19.4 10 17.5 10C15.6 10 14 8.4 14 6.5C14 4.6 15.6 3 17.5 3C19.4 3 21 4.6 21 6.5Z"
+                                            fill="#FFD500" />
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu" style="padding-bottom: 0;">
+                                    <div class=" flex-column" style="width: 350px; height: 450px;">
+                                        <div class="text-center">
+                                            Histórico de Alertas <span id="alertNotifications">4</span>
+                                        </div>
+                                        <div class="box-notification critical  p-2 d-flex gap-1">
+                                            <div class="mb-3 pt-1 pb-1 p-2 critical" style="border-radius: 5px;">
+                                                CPU</div>
+                                            <div class="d-flex flex-column">
+                                                <span>Uso da <span>CPU</span> excedeu <span>90%</span></span>
+                                                <span style="font-size: 12px;">29/03/2026</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="box-notification risk  p-2 d-flex gap-1">
+                                            <div class="mb-3 pt-1 pb-1 p-2 risk" style="border-radius: 5px;">
+                                                DISCO</div>
+                                            <div class="d-flex flex-column">
+                                                <span>Uso da <span>DISCO</span> excedeu <span>90%</span></span>
+                                                <span style="font-size: 12px;">29/03/2026</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="box-notification critical  p-2 d-flex gap-1">
+                                            <div class="mb-3 pt-1 pb-1 p-2 critical" style="border-radius: 5px;">
+                                                CPU</div>
+                                            <div class="d-flex flex-column">
+                                                <span>Uso da <span>CPU</span> excedeu <span>90%</span></span>
+                                                <span style="font-size: 12px;">29/03/2026</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="box-notification risk  p-2 d-flex gap-1">
+                                            <div class="mb-3 pt-1 pb-1 p-2 risk" style="border-radius: 5px;">
+                                                DISCO</div>
+                                            <div class="d-flex flex-column">
+                                                <span>Uso da <span>DISCO</span> excedeu <span>90%</span></span>
+                                                <span style="font-size: 12px;">29/03/2026</span>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <a href="#"
+                                        class="dropdown-item align-items-center justify-content-center d-flex py-2 h-100 gap-1">
+                                        <svg width="18" height="18" viewBox="0 0 14 14" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_557_1121)">
+                                                <path
+                                                    d="M1.18784 7.10946C1.13986 6.9802 1.13986 6.838 1.18784 6.70873C1.65519 5.57556 2.44847 4.60667 3.46714 3.92489C4.4858 3.24311 5.68396 2.87915 6.90972 2.87915C8.13548 2.87915 9.33365 3.24311 10.3523 3.92489C11.371 4.60667 12.1643 5.57556 12.6316 6.70873C12.6796 6.838 12.6796 6.9802 12.6316 7.10946C12.1643 8.24264 11.371 9.21153 10.3523 9.89331C9.33365 10.5751 8.13548 10.939 6.90972 10.939C5.68396 10.939 4.4858 10.5751 3.46714 9.89331C2.44847 9.21153 1.65519 8.24264 1.18784 7.10946Z"
+                                                    stroke="currentColor" stroke-width="1.15152" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M6.9094 8.63637C7.86335 8.63637 8.63667 7.86304 8.63667 6.9091C8.63667 5.95515 7.86335 5.18182 6.9094 5.18182C5.95546 5.18182 5.18213 5.95515 5.18213 6.9091C5.18213 7.86304 5.95546 8.63637 6.9094 8.63637Z"
+                                                    stroke="currentColor" stroke-width="1.15152" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_557_1121">
+                                                    <rect width="13.8182" height="13.8182" fill="currentColor" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                        Mostrar Todos
+                                    </a>
+                                </div>
                             </div>
 
                         </div>
