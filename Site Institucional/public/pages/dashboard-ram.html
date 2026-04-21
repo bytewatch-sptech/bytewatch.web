@@ -84,7 +84,8 @@
             <main class="col ps-md-4 pt-3">
                 <div class="d-flex ">
 
-                    <div class="container-info-local d-flex justify-content-between w-100 mb-2">
+                    <div class="container-info-local flex-wrap justify-content-between w-100 mb-2">
+                        <div class="d-flex align-items-center gap-2 gap-md-3">
                         <button class="btn btn-link text-white p-0 me-3 d-lg-none border-0" type="button"
                             data-bs-toggle="offcanvas" data-bs-target="#menuMobile">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
@@ -93,7 +94,6 @@
                                     d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                             </svg>
                         </button>
-                        <div class="d-flex align-items-center">
                             <button>← Voltar</button>
                             <div class="middle-line"></div>
                             <div
@@ -146,7 +146,7 @@
 
                         <div class="d-flex align-items-center" style="gap: 15px;">
 
-                            
+
 
                             <div class="d-flex align-items-center" style="gap: 0;">
 
@@ -282,7 +282,7 @@
                                                     <span class="span-circle" style="background-color: #B0DB43;"></span>
                                                     <span class="span-legend">Em uso</span>
                                                 </div>
-                                                <span class="span-percent">75%</span>
+                                                <span class="span-percent ">75%</span>
                                             </div>
                                             <div class="legend-container">
                                                 <div>
@@ -386,7 +386,7 @@
                                                 <tr>
                                                     <th>PID</th>
                                                     <th>NOME</th>
-                                                    <th>CPU%</th>
+                                                    <th>RAM%</th>
                                                     <th>STATUS</th>
                                                 </tr>
                                             </thead>
@@ -752,7 +752,7 @@
                         </div>
 
                         <div class="modal-body text-center">
-                            <div style="position: relative; height: 400px; width: 100%;">
+                            <div style="position: relative; height: 100%; width: 100%;">
                                 <div class="row g-5">
                                     <div class="col-lg-6 ">
                                         <div class="card-legend p-2 gap-3 h-100"
@@ -1039,7 +1039,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center">
+                            <div class="text-center mt-2">
                                 Você consegue alterar os parâmetros do <br> componente na tela de adição e <br> edição
                                 de servidor.
                             </div>
@@ -1127,7 +1127,7 @@
 
                             const dataScatter = [
                                 {
-                                    label: 'Uso de CPU',
+                                    label: 'Uso de RAM',
                                     data: dataPoints,
                                     backgroundColor: '#B0DB43'
 
@@ -1194,7 +1194,7 @@
                                     tooltip: {
                                         displayColors: false,
                                         callbacks: {
-                                            label: (context) => `CPU: ${context.parsed.x} GB | Processos: ${context.parsed.y.toFixed(0)}`
+                                            label: (context) => `RAM: ${context.parsed.x} GB | Processos: ${context.parsed.y.toFixed(0)}`
                                         }
                                     }
                                 }
@@ -1229,7 +1229,7 @@
                                         },
                                         {
                                             type: 'bar',
-                                            label: 'Uso de CPU',
+                                            label: 'Uso de RAM',
                                             data: dadosLollipop,
                                             backgroundColor: '#B0DB43',
                                             barThickness: 2,
@@ -1253,6 +1253,15 @@
 
                                         },
 
+                                    },
+                                    animation: {
+                                        delay: (context) => {
+                                            let delay = 0;
+                                            if (context.type === 'data' && context.mode === 'default') {
+                                                delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                                            }
+                                            return delay;
+                                        },
                                     },
                                     scales: {
                                         y: {
@@ -1326,6 +1335,15 @@
                                             }
                                         }
                                     },
+                                    animation: {
+                                        delay: (context) => {
+                                            let delay = 0;
+                                            if (context.type === 'data' && context.mode === 'default') {
+                                                delay = context.dataIndex * 300 + context.datasetIndex * 100;
+                                            }
+                                            return delay;
+                                        },
+                                    },
                                     scales: {
                                         y: {
                                             beginAtZero: true,
@@ -1357,6 +1375,8 @@
                                     }
                                 }
                             }
+
+                            
 
                             new Chart(histCPU, configHist);
 
@@ -1430,7 +1450,7 @@
                                     labels: labels,
                                     datasets: [
                                         {
-                                            label: 'CPU',
+                                            label: 'RAM',
                                             data: [70, 80, 35, 62, 95, 49, 32],
                                             fill: true,
                                             borderColor: '#B0DB43',
