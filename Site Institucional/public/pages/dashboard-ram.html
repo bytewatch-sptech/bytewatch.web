@@ -260,7 +260,7 @@
                                                 style="color: white; gap: 10px;">
                                                 <button type="button" class=" btn btn-link d-flex p-0 border-0"
                                                     data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                                    onclick="grafico = 'tendencia'">
+                                                    onclick="grafico = 'doughnut'">
                                                     <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -1632,6 +1632,11 @@
                                     document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
                                     document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
                                     graficoAberto = new Chart(ctxModal, configDashboard)
+
+                                }else if (grafico == 'doughnut') {
+                                    document.getElementById('tituloModal').innerText = 'Distribuicao'
+                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
+                                    graficoAberto = new Chart(ctxModal, cpuConfig)
 
                                 }
                             })
