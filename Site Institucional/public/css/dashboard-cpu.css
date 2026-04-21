@@ -80,6 +80,13 @@
   height: 100%;
   border-radius: 10px;
 }
+.ram-fill{
+  background-color: #B0DB43;
+}
+.disc-fill{
+  background-color: #588FFF;
+}
+
 .percent {
   color: #fff;
   font-size: 10px;
@@ -161,4 +168,54 @@
 }
 .card-legend{
   border: 1px solid red;
+}
+
+
+.box-notification.critical{
+  background-color: #ff005005;
+  border-bottom: 1px solid #ff005040;
+}
+.box-notification.critical .critical{
+  background-color: #ff005015;
+  color: #ff0050;
+}
+.dropdown-menu{
+  background-color: #222;
+  color: white;
+}
+.box-notification.risk{
+  background-color: #FFD60005;
+  border-bottom: 1px solid #FFD60040;
+  
+}
+.box-notification.risk .risk{
+  background-color: #FFD60015;
+  color: #FFD600;
+}
+
+.dropdown-item{
+  cursor: pointer;
+  background-color: #132B2A;
+  color: #00F2EA;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: 0.2s ease-in;
+}
+
+.dropdown-item:hover{
+  background-color: #00f2ea8e;
+  color: #151515;
+  
+}
+
+.dropdown-toggle:hover{
+  background-color: #FFD60020;
+
+}
+.dropdown-toggle:focus{
+  background-color: #FFD60020;
+
+}
+.dropdown-toggle:after{
+  color: #FFD600;
 }
