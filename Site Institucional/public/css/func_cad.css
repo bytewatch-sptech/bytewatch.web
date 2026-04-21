@@ -1,0 +1,206 @@
+main {
+    width: 100%;
+    overflow: hidden !important;
+
+
+}
+
+body {
+    background-color: #141414;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+
+    /* Força o conteúdo pro topo caso haja flex no body */
+}
+
+:root {
+    --cor00: #00f2ea;
+    --cor01: #FFD600;
+    --cor02: #FF2D56;
+    --cor03: #FFFFFF;
+    --cor04: #0D0D0D;
+    --cor05: #6c757d;
+}
+
+
+/* página de cadastro do funcionário  */
+
+
+
+.conteudo-pagina {
+    margin-left: 280px;
+    padding: 0 2rem 2rem 2rem;
+    min-height: 100vh;
+    width: calc(100% - 280px);
+    margin-top: 0;
+    padding: 1rem 2rem;
+}
+
+/* Estilização dos Cards Principais */
+.card-customisado {
+    background-color: #0d0d0d;
+    border-radius: 12px;
+    position: relative;
+}
+
+.fundo-ciano {
+    border: 1px solid transparent;
+    border-bottom: 2px solid #00f2fe;
+    border-left: 2px solid #00f2fe;
+    box-shadow: -4px 4px 15px rgba(0, 242, 254, 0.05);
+}
+
+.fundo-rosa {
+    border: 1px solid transparent;
+    border-bottom: 2px solid #ff0844;
+    border-left: 2px solid #ff0844;
+    box-shadow: -4px 4px 15px rgba(255, 8, 68, 0.05);
+}
+
+/* ---------------------------------------------------
+           NOVO: SCROLLBAR CUSTOMIZADA PARA OS SERVIDORES
+        --------------------------------------------------- */
+.scroll-funcionario {
+    max-height: 420px;
+    /* Define a altura limite antes de scrollar */
+    overflow-y: auto;
+    /* Habilita o scroll vertical */
+    overflow-x: hidden;
+    padding-right: 12px;
+    /* Espaço para o texto não colar na barra */
+}
+
+/* Estilo da barra (Chrome, Edge, Safari) */
+.scroll-funcionario::-webkit-scrollbar {
+    width: 8px;
+    /* Largura da barra */
+}
+
+.scroll-funcionario::-webkit-scrollbar-track {
+    background: #141414;
+    /* Fundo do trilho da barra */
+    border-radius: 10px;
+}
+
+.scroll-funcionario::-webkit-scrollbar-thumb {
+    background: #ff0844;
+    /* Cor vermelha/rosa do design */
+    border-radius: 10px;
+}
+
+.scroll-funcionario::-webkit-scrollbar-thumb:hover {
+    background: #cc0033;
+    /* Cor levemente mais escura ao passar o mouse */
+}
+
+/* --------------------------------------------------- */
+
+/* Inputs de Formulário */
+.form-funcionario {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    color: #ffffff !important;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+}
+
+.form-funcionario:focus {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(0, 242, 254, 0.3);
+    border-color: transparent;
+}
+
+.form-label {
+    font-size: 0.85rem;
+    color: #aaaaaa;
+    margin-bottom: 0.3rem;
+}
+
+/* Cards Internos (Servidores) */
+.card-servidor-cad {
+    background-color: #1c1c1c;
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-servidor-cad.warning-border {
+    border: 1px solid #ffc107;
+    box-shadow: inset 0 0 10px rgba(255, 193, 7, 0.1);
+}
+
+.card-servidor-cad-titulo {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.card-servidor-cad-titulo-lugar {
+    font-size: 0.75rem;
+    color: #888888;
+}
+
+.texto-servidor {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+/* Botões */
+.btn-verde {
+    background-color: #064e3b;
+    border: 1px solid #059669;
+    color: #fff;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    cursor: pointer;
+}
+
+.btn-verde:hover {
+    background-color: #059669;
+    color: white;
+}
+
+.btn-diferente-verde {
+    border: 1px solid #059669;
+    color: #059669;
+    background: transparent;
+}
+
+.btn-diferente-verde:hover {
+    background-color: rgba(5, 150, 105, 0.1);
+    color: #059669;
+}
+
+.btn-amarelo {
+    border: 1px solid #ffc107;
+    color: #ffc107;
+    background: transparent;
+}
+
+.btn-amarelo:hover {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+.btn-voltar {
+    border: 1px solid #333333;
+    color: #cccccc;
+    background: transparent;
+    white-space: nowrap;
+}
+
+.btn-voltar:hover {
+    background-color: #333333;
+    color: white;
+}
+
+.header-title {
+    color: #ffffff;
+}
