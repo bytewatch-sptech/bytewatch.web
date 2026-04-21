@@ -25,7 +25,6 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    padding-bottom: 10px;
     /* border: 2px solid red; */
 
     & .icone-cabecalho{
@@ -99,7 +98,7 @@ body {
     font-size: 2.2rem;
     font-weight: bold;
     line-height: 1;
-    margin-top: 4px;
+    margin-top: 0px;
     /* border: 2px solid green; */
 }
 }
@@ -107,10 +106,6 @@ body {
 .borda-ciano {
     border-color: var(--cor00);
     box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
-
-    & .icone-ciano {
-        border-color: var(--cor00);
-    }
 
     & .texto-ciano {
         color: var(--cor00);
@@ -120,10 +115,6 @@ body {
 .borda-vermelha {
     border-color: var(--cor02);
     box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
-
-    & .icone-vermelho {
-        border-color: var(--cor02);
-    }
 
     & .texto-vermelho {
         color: var(--cor02);
@@ -191,7 +182,7 @@ body {
     & .titulo-secao {
         color: var(--cor03);
         font-weight: 600;
-        margin-top: 24px;
+        margin-top: 0px;
     }
 
     & .btn-ver-todos {
@@ -324,6 +315,11 @@ body {
     border: 1px solid #383c47;
 }
 
+.btn-acao-excluir {
+    color: var(--cor03);
+    border: 1px solid #383c47;
+}
+
 
 .btn-relatorio {
     display: flex;
@@ -339,7 +335,7 @@ body {
 }
 
 .conteudo-aside {
-    margin-top: 100px;
+    margin-top: 0px;
 }
 
 /* Modal*/
