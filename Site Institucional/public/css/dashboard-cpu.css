@@ -83,6 +83,10 @@
 .ram-fill{
   background-color: #B0DB43;
 }
+.disc-fill{
+  background-color: #588FFF;
+}
+
 .percent {
   color: #fff;
   font-size: 10px;
