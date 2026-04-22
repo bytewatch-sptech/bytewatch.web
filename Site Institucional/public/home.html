@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteWatch | Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/dashboards.css">
+    <link rel="shortcut icon" href="assets/logo-cd.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="home container-fluid p-0">
+        <div class="row g-0 h-100 flex-nowrap">
+
+            <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
+                style="min-height: 100vh; transition: 0.3s;">
+
+                <div class="d-flex justify-content-center mb-5 mt-2">
+                    <img id="logo" class="d-none d-sm-block" width="130" src="./assets/logo-versao2.png" alt="Logo">
+                    <i class="bi bi-cpu fs-2 text-success d-block d-sm-none"></i>
+                </div>
+
+                <ul class="nav nav-pills flex-column mb-auto gap-2">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active bg-success d-flex align-items-center">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="./assets/Icon_home.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="./assets/Icon_Servidores.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Servidores</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="./assets/Icon_Gestao.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Gestão Equipe</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="./assets/Icon_alerta.svg" alt="" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Logs de Alerta</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                    <div class="container_user d-flex gap-2">
+                        <a class="d-flex gap-3 align-items-center text-decoration-none text-white" href="">
+                            <div class="icon-profile">FB</div>
+                            <div class="box ms-2 d-none d-sm-inline">
+                                <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
+                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px; color: #aaa;">Admin
+                                    Técnico</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="button-sair mt-3 text-center"
+                        style="cursor: pointer; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px;">
+                        <p style="margin: 0; color: #ff0050;">Sair</p>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="col d-flex flex-column gap-4 p-4 overflow-hidden" style="max-height: 100vh; overflow-y: auto;">
+                <button class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#menuMobile">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div class="container-fluid painel-principal p-0">
+                    <div class="row g-0 h-100 linha-layout-global">
+
+                        <main class="col-12 h-100 conteudo-principal p-0">
+
+                            <div class="row h-100 gx-4 justify-content-start linha-divisao-conteudo m-0">
+
+                                <div class="col-lg-9 d-flex flex-column gap-4 coluna-central">
+                                    <section class="secao-visao-geral">
+
+                                        <header class="cabecalho-pagina mb-4 d-flex align-items-center gap-3 w-100">
+                                            <div class="icone-cabecalho">
+                                                <svg width="56" height="56" viewBox="0 0 48 48" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <rect x="4" width="40" height="40" rx="10" fill="#00F2EA"
+                                                        fill-opacity="0.1" shape-rendering="crispEdges" />
+                                                    <rect x="4.5" y="0.5" width="39" height="39" rx="9.5"
+                                                        stroke="#00F2EA" stroke-opacity="0.3"
+                                                        shape-rendering="crispEdges" />
+                                                    <path
+                                                        d="M27 30V21.1111C27 20.8164 26.8771 20.5338 26.6583 20.3254C26.4395 20.1171 26.1428 20 25.8333 20H21.1667C20.8572 20 20.5605 20.1171 20.3417 20.3254C20.1229 20.5338 20 20.8164 20 21.1111V30"
+                                                        stroke="#00F2EA" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M14 18.4207C13.9999 18.1145 14.0669 17.8119 14.1961 17.5341C14.3254 17.2563 14.5138 17.01 14.7484 16.8123L22.1373 10.4974C22.5183 10.1762 23.0011 10 23.5 10C23.9989 10 24.4817 10.1762 24.8627 10.4974L32.2516 16.8123C32.4862 17.01 32.6746 17.2563 32.8039 17.5341C32.9331 17.8119 33.0001 18.1145 33 18.4207V27.8947C33 28.453 32.7776 28.9885 32.3817 29.3834C31.9858 29.7782 31.4488 30 30.8889 30H16.1111C15.5512 30 15.0142 29.7782 14.6183 29.3834C14.2224 28.9885 14 28.453 14 27.8947V18.4207Z"
+                                                        stroke="#00F2EA" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </div>
+                                            <div class="textos-cabecalho">
+                                                <h2 class="titulo-pagina m-0 text-white fw-bold">Home</h2>
+                                                <span class="subtitulo-pagina text-secondary"
+                                                    style="font-size: 0.9rem">Veja os insights iniciais</span>
+                                            </div>
+                                        </header>
+
+                                        <div class="row g-3 grade-cards-resumo">
+                                            <div class="col-md-4">
+                                                <div class="card h-100 cartao-resumo borda-ciano">
+                                                    <div class="card-body conteudo-cartao">
+                                                        <div class="icone icone-ciano">
+                                                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                    fill="#00F2EA" fill-opacity="0.2" />
+                                                                <path
+                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                    stroke="#00F2EA" />
+                                                                <path
+                                                                    d="M24.6665 9.66663H11.3332C10.4127 9.66663 9.6665 10.4128 9.6665 11.3333V14.6666C9.6665 15.5871 10.4127 16.3333 11.3332 16.3333H24.6665C25.587 16.3333 26.3332 15.5871 26.3332 14.6666V11.3333C26.3332 10.4128 25.587 9.66663 24.6665 9.66663Z"
+                                                                    stroke="#00F2EA" stroke-width="1.66667"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M24.6665 19.6666H11.3332C10.4127 19.6666 9.6665 20.4128 9.6665 21.3333V24.6666C9.6665 25.5871 10.4127 26.3333 11.3332 26.3333H24.6665C25.587 26.3333 26.3332 25.5871 26.3332 24.6666V21.3333C26.3332 20.4128 25.587 19.6666 24.6665 19.6666Z"
+                                                                    stroke="#00F2EA" stroke-width="1.66667"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M13 13H13.0083" stroke="#00F2EA"
+                                                                    stroke-width="1.66667" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                                <path d="M13 23H13.0083" stroke="#00F2EA"
+                                                                    stroke-width="1.66667" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </div>
+                                                        <div class="textos-do-cartao">
+                                                            <span class="titulo-pequeno">Total de Máquinas</span>
+                                                            <span class="numero-gigante texto-ciano">8</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="card h-100 cartao-resumo borda-vermelha">
+                                                    <div class="card-body conteudo-cartao">
+                                                        <div class="icone icone-vermelho">
+                                                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                    fill="#FF0050" fill-opacity="0.2" />
+                                                                <path
+                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                    stroke="#FF3366" />
+                                                                <path
+                                                                    d="M26.1085 23L19.4419 11.3333C19.2965 11.0768 19.0857 10.8635 18.831 10.715C18.5762 10.5666 18.2867 10.4884 17.9919 10.4884C17.697 10.4884 17.4075 10.5666 17.1527 10.715C16.898 10.8635 16.6872 11.0768 16.5419 11.3333L9.87519 23C9.72825 23.2544 9.65121 23.5432 9.65186 23.8371C9.65251 24.1309 9.73083 24.4194 9.87889 24.6732C10.0269 24.927 10.2395 25.1371 10.4949 25.2823C10.7504 25.4275 11.0397 25.5026 11.3335 25.5H24.6669C24.9593 25.4997 25.2465 25.4225 25.4996 25.2761C25.7527 25.1297 25.9629 24.9192 26.1089 24.6659C26.255 24.4126 26.3319 24.1253 26.3318 23.8329C26.3317 23.5405 26.2547 23.2532 26.1085 23Z"
+                                                                    stroke="#FF0050" stroke-width="1.66667"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M18 15.5V18.8333" stroke="#FF0050"
+                                                                    stroke-width="1.66667" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                                <path d="M18 22.1666H18.0083" stroke="#FF0050"
+                                                                    stroke-width="1.66667" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                            </svg>
+                                                        </div>
+                                                        <div class="textos-do-cartao">
+                                                            <span class="titulo-pequeno">Máquinas em Risco</span>
+                                                            <span class="numero-gigante texto-vermelho">3</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="card h-100 cartao-resumo borda-ciano">
+                                                    <div class="card-body conteudo-cartao">
+                                                        <div class="icone icone-ciano">
+                                                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                    fill="#00F2EA" fill-opacity="0.2" />
+                                                                <path
+                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                    stroke="#00F2EA" />
+                                                                <path
+                                                                    d="M26.3332 18H24.2665C23.9023 17.9992 23.5479 18.1177 23.2574 18.3374C22.967 18.5572 22.7565 18.866 22.6582 19.2166L20.6998 26.1833C20.6872 26.2266 20.6609 26.2646 20.6248 26.2916C20.5888 26.3187 20.5449 26.3333 20.4998 26.3333C20.4548 26.3333 20.4109 26.3187 20.3748 26.2916C20.3388 26.2646 20.3125 26.2266 20.2998 26.1833L15.6998 9.81663C15.6872 9.77335 15.6609 9.73534 15.6248 9.70829C15.5888 9.68125 15.5449 9.66663 15.4998 9.66663C15.4548 9.66663 15.4109 9.68125 15.3748 9.70829C15.3388 9.73534 15.3125 9.77335 15.2998 9.81663L13.3415 16.7833C13.2436 17.1326 13.0343 17.4404 12.7456 17.66C12.4568 17.8796 12.1043 17.9989 11.7415 18H9.6665"
+                                                                    stroke="#00F2EA" stroke-width="1.66667"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+                                                        </div>
+                                                        <div class="textos-do-cartao">
+                                                            <span class="titulo-pequeno">Componentes em Risco</span>
+                                                            <span class="numero-gigante texto-ciano">5</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="icone-filtro"></div>
+                                                <span class="texto-filtro">Filtros:</span>
+                                                <button class="btn btn-filtro">Críticos</button>
+                                                <button class="btn btn-filtro">Alerta</button>
+                                                <button class="btn btn-filtro">Normal</button>
+                                            </div>
+
+                                            <div class="form-check form-switch container-switch">
+                                                <input class="form-check-input switch-customizado" type="checkbox"
+                                                    id="mostrarTodos">
+                                                <label class="form-check-label label-switch" for="mostrarTodos">Mostrar
+                                                    todos</label>
+                                            </div>
+                                        </div>
+
+                                        <section class="secao-servidores mt-4">
+                                            <div
+                                                class="d-flex justify-content-between align-items-end mb-3 cabecalho-secao-servidores">
+                                                <div>
+                                                    <h4 class="titulo-secao text-white">Servidores em Risco</h4>
+                                                </div>
+                                                <button class="btn btn-ver-todos">Ver Todos</button>
+                                            </div>
+
+                                            <div class="row g-3">
+                                                <div class="col-12 col-md-6 col-xl-4">
+                                                    <div class="card h-100 cartao-servidor borda-amarela">
+                                                        <div class="card-body d-flex flex-column gap-3">
+                                                            <div class="cabecalho-do-card">
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <span
+                                                                        class="nome-servidor fw-bold text-white">TikTok
+                                                                        US-West-1</span>
+                                                                    <span class="bolinha-status status-amarelo"></span>
+                                                                </div>
+                                                                <span class="localizacao-servidor text-secondary"
+                                                                    style="font-size: 0.85rem">California, USA</span>
+                                                            </div>
+
+                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">CPU</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">25%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">RAM</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">72%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">DISCO</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">55%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">REDE</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">82%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-md-6 col-xl-4">
+                                                    <div class="card h-100 cartao-servidor borda-vermelha">
+                                                        <div class="card-body d-flex flex-column gap-3">
+                                                            <div class="cabecalho-do-card">
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <span
+                                                                        class="nome-servidor fw-bold text-white">TikTok
+                                                                        EU-Central-1</span>
+                                                                    <span class="bolinha-status status-vermelho"></span>
+                                                                </div>
+                                                                <span class="localizacao-servidor text-secondary"
+                                                                    style="font-size: 0.85rem">Frankfurt, Germany</span>
+                                                            </div>
+
+                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">CPU</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">95%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">RAM</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">91%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">DISCO</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">88%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">REDE</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">78%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-md-6 col-xl-4">
+                                                    <div class="card h-100 cartao-servidor borda-amarela">
+                                                        <div class="card-body d-flex flex-column gap-3">
+                                                            <div class="cabecalho-do-card">
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <span
+                                                                        class="nome-servidor fw-bold text-white">TikTok
+                                                                        SA-East-1</span>
+                                                                    <span class="bolinha-status status-amarelo"></span>
+                                                                </div>
+                                                                <span class="localizacao-servidor text-secondary"
+                                                                    style="font-size: 0.85rem">São Paulo, Brazil</span>
+                                                            </div>
+
+                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">CPU</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">78%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">RAM</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">86%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">DISCO</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">62%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">REDE</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">85%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #FFD500; height: 4px">
+                                                                        </div>
+                                                                        <div class="line-component w-100"
+                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </section>
+
+                                    </section>
+                                </div>
+
+                                <aside class="col-lg-3 d-flex flex-column gap-3 barra-lateral-direita conteudo-aside">
+
+                                    <div class="d-flex justify-content-end w-100 mb-4"
+                                        style="transform: translateY(12px)">
+                                        <div id="statusInfo"
+                                            class="info-alert d-flex align-items-center gap-2 px-3 py-2"
+                                            data-bs-toggle="modal" data-bs-target="#modalLegenda"
+                                            style="cursor: pointer; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; transition: all 0.3s ease">
+                                            <div class="icon d-flex">
+                                                <i class="fa-solid fa-circle-info text-secondary fs-5"></i>
+                                            </div>
+                                            <span class="text-white fw-medium" style="font-size: 0.9rem">Legenda</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="card cartao-acao-lateral">
+                                        <div class="card-body conteudo-cartao d-flex flex-column gap-2">
+                                            <span class="titulo-lateral text-white fw-bold">Último Alerta</span>
+                                            <div class="d-flex align-items-center gap-2 mt-1">
+                                                <span class="bolinha-status status-vermelho"></span>
+                                                <span class="text-white fw-semibold">CPU crítico</span>
+                                            </div>
+                                            <span class="texto-secundario ps-3 ms-1">TikTok EU-Central-1</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="card cartao-acao-lateral">
+                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
+                                            <span class="titulo-lateral text-white fw-bold">Ações Rápidas</span>
+                                            <div class="d-flex flex-column gap-2">
+                                                <a href="./adicionar-servidor.html"
+                                                    class="btn btn-acao btn-acao-adicionar text-decoration-none">
+                                                    <i class="fa-solid fa-plus"></i> Adicionar Servidor
+                                                </a>
+                                                <a href="" class="btn btn-acao btn-acao-editar text-decoration-none">
+                                                    <i class="fa-solid fa-pen"></i> Editar Servidor
+                                                </a>
+
+                                                <button class="btn btn-acao btn-acao-excluir" data-bs-toggle="modal"
+                                                    data-bs-target="#modalExcluirServidor">
+                                                    <i class="fa-solid fa-trash"></i> Excluir Servidor
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card cartao-acao-lateral">
+                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
+                                            <span class="titulo-lateral text-white fw-bold">Exportar Logs</span>
+                                            <button class="btn btn-relatorio w-100">
+                                                <i class="fa-solid fa-download"></i> Baixar CSV
+                                            </button>
+                                        </div>
+                                    </div>
+                                </aside>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalExcluirServidor" tabindex="-1" aria-labelledby="modalExcluirLabel"
+        aria-hidden="true" data-bs-theme="dark">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content"
+                style="background-color: #121212; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px">
+                <div class="modal-body p-4 p-md-5">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <i class="fa-solid fa-server fs-1 text-white"></i>
+                        <h3 class="m-0 fw-bold text-white" id="modalExcluirLabel">Excluir um servidor</h3>
+                    </div>
+
+                    <div class="d-flex flex-column gap-2 mb-5">
+                        <label for="nomeExcluir" class="form-label text-white fw-medium m-0">Digite o Nome</label>
+                        <input type="text" id="nomeExcluir" class="form-control"
+                            style="background-color: #1f1f1f; border: 1px solid #333; color: #fff; padding: 10px 14px; border-radius: 8px">
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-4">
+                        <button type="button" class="btn px-4 py-2 fw-medium" data-bs-dismiss="modal"
+                            style="background-color: transparent; color: #00F2EA; border: 1px solid #00F2EA; border-radius: 8px; transition: 0.3s"
+                            onmouseover="this.style.backgroundColor='rgba(0, 242, 234, 0.1)'"
+                            onmouseout="this.style.backgroundColor='transparent'">
+                            Cancelar
+                        </button>
+                        <button type="button" id="btnConfirmarExclusao" class="btn px-4 py-2 fw-medium"
+                            style="background-color: #800020; color: #ff2d56; border: 1px solid #ff2d56; border-radius: 8px; transition: 0.3s"
+                            onmouseover="this.style.backgroundColor='#5c0017'"
+                            onmouseout="this.style.backgroundColor='#800020'">
+                            Excluir
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCertezaExcluir" tabindex="-1" aria-hidden="true" data-bs-theme="dark">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content"
+                style="background-color: #141414; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px">
+                <div class="modal-body p-5 text-center d-flex flex-column align-items-center">
+                    <i class="fa-solid fa-triangle-exclamation mb-4" style="color: #FF2D56; font-size: 4.5rem"></i>
+                    <h4 class="text-white mb-5 fw-normal" style="font-size: 1.6rem">
+                        Deseja mesmo <b class="fw-bold">excluir</b> esse Servidor?
+                    </h4>
+                    <div class="d-flex justify-content-center gap-4 w-100 px-2">
+                        <button type="button" id="btnSimExcluir" class="btn w-50 py-2 fw-bold"
+                            style="background-color: #0c4d42; border: 1px solid #00F2EA; color: #00F2EA; border-radius: 8px; font-size: 1.2rem; transition: 0.3s"
+                            onmouseover="this.style.backgroundColor='rgba(0, 242, 234, 0.1)'"
+                            onmouseout="this.style.backgroundColor='#0c4d42'">
+                            Sim
+                        </button>
+                        <button type="button" class="btn w-50 py-2 fw-bold" data-bs-dismiss="modal"
+                            style="background-color: #5c0017; border: 1px solid #FF2D56; color: #FF2D56; border-radius: 8px; font-size: 1.2rem; transition: 0.3s"
+                            onmouseover="this.style.backgroundColor='rgba(255, 45, 86, 0.1)'"
+                            onmouseout="this.style.backgroundColor='#5c0017'">
+                            Não
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalLegenda" tabindex="-1" data-bs-theme="dark">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content text-white"
+                style="background-color: #121212; border: 1px solid rgba(255,255,255,0.1)">
+                <div class="modal-header d-flex flex-column border-0 pb-0 position-relative mt-3">
+                    <h1 class="modal-title w-100 d-flex justify-content-center align-items-center gap-2 m-0 text-white"
+                        style="font-size: 1.5rem">
+                        <svg width="24" height="24" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.0641 13.2312C10.2156 13.0792 10.2913 12.891 10.2913 12.6667V9.50004C10.2913 9.27573 10.2153 9.08785 10.0633 8.93637C9.91134 8.7849 9.72345 8.7089 9.49967 8.70837C9.2759 8.70785 9.08801 8.78385 8.93601 8.93637C8.78401 9.0889 8.70801 9.27679 8.70801 9.50004V12.6667C8.70801 12.891 8.78401 13.0792 8.93601 13.2312C9.08801 13.3832 9.2759 13.4589 9.49967 13.4584C9.72345 13.4578 9.91161 13.3826 10.0641 13.2312ZM10.0641 6.89704C10.2156 6.74557 10.2913 6.55768 10.2913 6.33337C10.2913 6.10907 10.2153 5.92118 10.0633 5.76971C9.91134 5.61824 9.72345 5.54223 9.49967 5.54171C9.2759 5.54118 9.08801 5.61718 8.93601 5.76971C8.78401 5.92224 8.70801 6.11012 8.70801 6.33337C8.70801 6.55662 8.78401 6.74478 8.93601 6.89783C9.08801 7.05089 9.2759 7.12662 9.49967 7.12504C9.72345 7.12346 9.91161 7.04746 10.0641 6.89704ZM9.49967 17.4167C8.40454 17.4167 7.37537 17.2088 6.41218 16.7929C5.44898 16.377 4.61113 15.8131 3.89863 15.1011C3.18613 14.3891 2.6222 13.5513 2.20684 12.5875C1.79148 11.6238 1.58354 10.5947 1.58301 9.50004C1.58248 8.40543 1.79043 7.37626 2.20684 6.41254C2.62326 5.44882 3.18719 4.61097 3.89863 3.899C4.61008 3.18703 5.44793 2.6231 6.41218 2.20721C7.37643 1.79132 8.40559 1.58337 9.49967 1.58337C10.5938 1.58337 11.6229 1.79132 12.5872 2.20721C13.5514 2.6231 14.3893 3.18703 15.1007 3.899C15.8122 4.61097 16.3764 5.44882 16.7933 6.41254C17.2102 7.37626 17.4179 8.40543 17.4163 9.50004C17.4148 10.5947 17.2068 11.6238 16.7925 12.5875C16.3782 13.5513 15.8143 14.3891 15.1007 15.1011C14.3872 15.8131 13.5493 16.3772 12.5872 16.7937C11.625 17.2101 10.5959 17.4178 9.49967 17.4167Z"
+                                fill="white" />
+                        </svg>
+                        Legenda
+                    </h1>
+                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-4"
+                        data-bs-dismiss="modal"></button>
+                    <p class="text-center text-secondary mt-2 mb-0" style="font-weight: 300">São os parâmetros de
+                        alertas dos componentes e do servidor.</p>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="card-legend p-4 d-flex flex-column gap-4 h-100"
+                                style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05)">
+                                <h5 class="text-center text-light m-0" style="font-weight: 500">Servidor</h5>
+                                <div class="d-flex flex-column gap-4 text-start mt-2">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                                            style="width: 56px; height: 56px; border: 1px solid #00F2EA; border-radius: 12px; background-color: rgba(0, 242, 234, 0.1)">
+                                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
+                                                    stroke="#00F2EA" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
+                                                    stroke="#00F2EA" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 6.37256H6.38356" stroke="#00F2EA"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 19.1179H6.38356" stroke="#00F2EA"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-light fw-medium">Todos os Componentes</span>
+                                            <span style="color: #00F2EA">Estáveis</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                                            style="width: 56px; height: 56px; border: 1px solid #FFD700; border-radius: 12px; background-color: rgba(255, 215, 0, 0.1)">
+                                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
+                                                    stroke="#FFD700" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
+                                                    stroke="#FFD700" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 6.37256H6.38356" stroke="#FFD700"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 19.1179H6.38356" stroke="#FFD700"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-light fw-medium">Pelo menos um componente</span>
+                                            <span style="color: #FFD700">Em Risco</span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                                            style="width: 56px; height: 56px; border: 1px solid #ff0050; border-radius: 12px; background-color: rgba(255, 20, 147, 0.1)">
+                                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
+                                                    stroke="#FF1493" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
+                                                    stroke="#FF1493" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 6.37256H6.38356" stroke="#FF1493"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 19.1179H6.38356" stroke="#FF1493"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-light fw-medium">Dois componentes em risco ou um</span>
+                                            <span style="color: #ff0050">Em Crítico</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card-legend p-4 d-flex flex-column gap-4 h-100"
+                                style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05)">
+                                <h5 class="text-center text-light m-0" style="font-weight: 500">Componente</h5>
+                                <div class="d-flex flex-column gap-4 text-start mt-2">
+                                    <div class="d-flex flex-column box-componente gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M15.647 3.47668H5.21686C4.2568 3.47668 3.47852 4.25497 3.47852 5.21503V15.6451C3.47852 16.6052 4.2568 17.3835 5.21686 17.3835H15.647C16.607 17.3835 17.3853 16.6052 17.3853 15.6451V5.21503C17.3853 4.25497 16.607 3.47668 15.647 3.47668Z"
+                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M12.1701 7.82251H8.69339C8.21336 7.82251 7.82422 8.21165 7.82422 8.69168V12.1684C7.82422 12.6484 8.21336 13.0376 8.69339 13.0376H12.1701C12.6501 13.0376 13.0393 12.6484 13.0393 12.1684V8.69168C13.0393 8.21165 12.6501 7.82251 12.1701 7.82251Z"
+                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M13.0381 1.7384V3.47675" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M13.0381 17.3835V19.1219" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.73926 13.0377H3.47761" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.73926 7.82251H3.47761" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M17.3838 13.0377H19.1221" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M17.3838 7.82251H19.1221" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M7.82422 1.7384V3.47675" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M7.82422 17.3835V19.1219" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                            <h6 style="margin: 0; color: #A0A0A0">CPU</h6>
+                                        </div>
+                                        <div class="d-flex w-100 gap-1 text-center" style="font-size: 0.8rem">
+                                            <div class="col d-flex flex-column align-items-center">
+                                                <span class="text-secondary mb-1">Estável</span>
+                                                <div class="line-component w-100 mb-1"
+                                                    style="background-color: #00F2EA; height: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px">
+                                                </div>
+                                                <span style="color: #00F2EA">10%</span>
+                                            </div>
+                                            <div class="col d-flex flex-column align-items-center">
+                                                <span class="text-secondary mb-1">Risco</span>
+                                                <div class="line-component w-100 mb-1"
+                                                    style="background-color: #FFD500; height: 6px"></div>
+                                                <span style="color: #FFD500">10%</span>
+                                            </div>
+                                            <div class="col d-flex flex-column align-items-center">
+                                                <span class="text-secondary mb-1">Crítico</span>
+                                                <div class="line-component w-100 mb-1"
+                                                    style="background-color: #ff0050; height: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px">
+                                                </div>
+                                                <span style="color: #ff0050">10%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column box-componente gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.21582 16.5143V13.9067" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M8.69238 16.5143V13.9067" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M12.1699 16.5143V13.9067" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M15.6465 16.5143V13.9067" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.9541 9.56086V7.82251" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M13.9072 9.56086V7.82251" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M10.4307 9.56086V7.82251" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.73926 13.0375H19.1227" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M1.73926 6.0843C1.73926 5.62326 1.9224 5.1811 2.24841 4.8551C2.57441 4.52909 3.01657 4.34595 3.47761 4.34595H17.3844C17.8454 4.34595 18.2876 4.52909 18.6136 4.8551C18.9396 5.1811 19.1227 5.62326 19.1227 6.0843V7.04039C18.7627 7.14644 18.4467 7.36618 18.2219 7.66674C17.9971 7.96731 17.8756 8.33256 17.8756 8.7079C17.8756 9.08323 17.9971 9.44848 18.2219 9.74905C18.4467 10.0496 18.7627 10.2694 19.1227 10.3754V14.776C19.1227 15.2371 18.9396 15.6792 18.6136 16.0052C18.2876 16.3312 17.8454 16.5144 17.3844 16.5144H3.47761C3.01657 16.5144 2.57441 16.3312 2.24841 16.0052C1.9224 15.6792 1.73926 15.2371 1.73926 14.776V10.3432C2.0993 10.2372 2.41534 10.0175 2.64014 9.71689C2.86494 9.41632 2.98642 9.05107 2.98642 8.67574C2.98642 8.3004 2.86494 7.93515 2.64014 7.63458C2.41534 7.33402 2.0993 7.11428 1.73926 7.00823V6.0843Z"
+                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                            <h6 style="margin: 0; color: #A0A0A0">RAM</h6>
+                                        </div>
+                                        <div class="d-flex w-100 gap-1 text-center" style="font-size: 0.8rem">
+                                            <div class="col d-flex flex-column align-items-center">
+                                                <span class="text-secondary mb-1">Estável</span>
+                                                <div class="line-component w-100 mb-1"
+                                                    style="background-color: #00F2EA; height: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px">
+                                                </div>
+                                                <span style="color: #00F2EA">10%</span>
+                                            </div>
+                                            <div class="col d-flex flex-column align-items-center">
+                                                <span class="text-secondary mb-1">Risco</span>
+                                                <div class="line-component w-100 mb-1"
+                                                    style="background-color: #FFD500; height: 6px"></div>
+                                                <span style="color: #FFD500">10%</span>
+                                            </div>
+                                            <div class="col d-flex flex-column align-items-center">
+                                                <span class="text-secondary mb-1">Crítico</span>
+                                                <div class="line-component w-100 mb-1"
+                                                    style="background-color: #ff0050; height: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px">
+                                                </div>
+                                                <span style="color: #ff0050">10%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column box-componente gap-2">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19.1227 10.4302H1.73926" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M4.73791 4.44159L1.73926 10.4302V15.6452C1.73926 16.1063 1.9224 16.5484 2.24841 16.8744C2.57441 17.2004 3.01657 17.3836 3.47761 17.3836H17.3844C17.8454 17.3836 18.2876 17.2004 18.6136 16.8744C18.9396 16.5484 19.1227 16.1063 19.1227 15.6452V10.4302L16.1241 4.44159C15.9802 4.15197 15.7583 3.90824 15.4835 3.7378C15.2086 3.56736 14.8917 3.47698 14.5683 3.47681H6.29373C5.97032 3.47698 5.65338 3.56736 5.37853 3.7378C5.10368 3.90824 4.88182 4.15197 4.73791 4.44159Z"
+                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M5.21582 13.907H5.22278" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M8.69238 13.907H8.69935" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                            <h6 style="margin: 0; color: #A0A0A0">DISCO</h6>
+                                        </div>
+                                        <div class="d-flex w-100 gap-1 text-center" style="font-size: 0.8rem">
+                                            <div class="col d-flex flex-column align-items-center">
+                                                <span class="text-secondary mb-1">Estável</span>
+                                                <div class="line-component w-100 mb-1"
+                                                    style="background-color: #00F2EA; height: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px">
+                                                </div>
+                                                <span style="color: #00F2EA">10%</span>
+                                            </div>
+                                            <div class="col d-flex flex-column align-items-center">
+                                                <span class="text-secondary mb-1">Risco</span>
+                                                <div class="line-component w-100 mb-1"
+                                                    style="background-color: #FFD500; height: 6px"></div>
+                                                <span style="color: #FFD500">10%</span>
+                                            </div>
+                                            <div class="col d-flex flex-column align-items-center">
+                                                <span class="text-secondary mb-1">Crítico</span>
+                                                <div class="line-component w-100 mb-1"
+                                                    style="background-color: #ff0050; height: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px">
+                                                </div>
+                                                <span style="color: #ff0050">10%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4 text-secondary pb-2" style="font-size: 0.9rem">
+                        Você consegue alterar os parâmetros do componente<br>na tela de adição e edição de servidor.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-start text-white bg-dark border-end border-secondary" tabindex="-1" id="menuMobile"
+        style="width: 280px">
+        <div class="offcanvas-header border-bottom border-secondary pb-3 mb-3 mt-2">
+            <img width="130" src="../assets/logo-versao2.png" alt="Logo">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column p-0 px-3">
+            <ul class="nav nav-pills flex-column mb-auto gap-2">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active bg-success d-flex align-items-center">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <img src="../assets/Icon_home.svg" alt="" width="24">
+                        </div>
+                        <span class="ms-2">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link d-flex align-items-center text-white">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <img src="../assets/Icon_Servidores.svg" alt="" width="24">
+                        </div>
+                        <span class="ms-2">Servidores</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link d-flex align-items-center text-white">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <img src="../assets/Icon_Gestao.svg" alt="" width="24">
+                        </div>
+                        <span class="ms-2">Gestão Equipe</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link d-flex align-items-center text-white">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <img src="../assets/Icon_alerta.svg" alt="" width="24">
+                        </div>
+                        <span class="ms-2">Logs de Alerta</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary mb-3">
+                <div class="container_user d-flex gap-2">
+                    <a class="d-flex gap-3 align-items-center text-decoration-none text-white" href="">
+                        <div class="icon-profile">FB</div>
+                        <div class="box ms-2">
+                            <p style="font-size: 16px; margin: 0">Fernando Brandão</p>
+                            <p style="font-size: 13px; margin-bottom: 0px; color: #aaa">Admin Técnico</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="button-sair mt-3 text-center"
+                    style="cursor: pointer; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px">
+                    <p style="margin: 0; color: #ff0050">Sair</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+    <script src="./js/home.js"></script>
+</body>
+
+</html>
