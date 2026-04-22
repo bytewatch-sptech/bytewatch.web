@@ -1,4 +1,5 @@
 function cadastrarMaquina() {
+    console.log('cadastrando')
     var idEmpresa = sessionStorage.ID_EMPRESA;
     var nome = document.getElementById("nomeServer").value;
     var local = document.getElementById("localServer").value;

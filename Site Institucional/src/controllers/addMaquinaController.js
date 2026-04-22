@@ -7,8 +7,8 @@ function cadastrar(req, res) {
   var ip = req.body.ipServer;
   var tipo = req.body.tipoServer
   var fkEmpresa = req.body.fkEmpresa
-  var mac_address = req.body.mac_addressServer
-  var componentes = req.body.componentes
+  var mac_address = req.body.macServer
+  var componentes = req.body.componentesServer
 
 
 
