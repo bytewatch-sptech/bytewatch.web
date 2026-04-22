@@ -5,6 +5,7 @@ function cadastrarMaquina() {
     var ip = document.getElementById("ipServerInt").value;
     var so = document.getElementById("TipoServer").value;
 
+    
     var componentes = [
         { 
             idComponente: 1, 
