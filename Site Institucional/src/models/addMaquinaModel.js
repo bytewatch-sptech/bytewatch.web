@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function cadastrar(nome, localizacao, ip, fkEmpresa, tipo, mac_address, componentes) {
 
-  var instrucaoSql = `INSERT INTO servidor (nome, endereco_ip, localizacao, tipo, mac_address, fk_id_empresa) VALUES ('${nome}', '${ip}', '${localizacao}', ''${tipo} '${mac_address}', '${fkEmpresa}');`;
+  var instrucaoSql = `INSERT INTO servidor (nome, endereco_ip, localizacao, tipo, mac_address, fk_id_empresa) VALUES ('${nome}', '${ip}', '${localizacao}', '${tipo}', '${mac_address}', '${fkEmpresa}');`;
 
   return database.executar(instrucaoSql).then(function (resultadoServidor) {
     var idServidor = resultadoServidor.insertId;

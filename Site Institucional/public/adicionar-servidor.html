@@ -158,22 +158,26 @@
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
                                             style="font-size: 0.9rem;">Nome *</label>
-                                        <input type="text" class="form-control input-escuro input-form-compacto">
+                                        <input id="nomeServer" type="text"
+                                            class="form-control input-escuro input-form-compacto">
                                     </div>
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
                                             style="font-size: 0.9rem;">Localização *</label>
-                                        <input type="text" class="form-control input-escuro input-form-compacto">
+                                        <input id="localServer" type="text"
+                                            class="form-control input-escuro input-form-compacto">
                                     </div>
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
                                             style="font-size: 0.9rem;">MAC</label>
-                                        <input type="text" class="form-control input-escuro input-form-compacto">
+                                        <input id="ipServerInt" type="text"
+                                            class="form-control input-escuro input-form-compacto">
                                     </div>
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
                                             style="font-size: 0.9rem;">Tipo de Servidor</label>
-                                        <input type="text" class="form-control input-escuro input-form-compacto">
+                                        <input id="TipoServer" type="text"
+                                            class="form-control input-escuro input-form-compacto">
                                     </div>
                                 </div>
                             </div>
@@ -257,7 +261,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center mt-4 flex-shrink-0">
-                        <button type="submit" class="btn-submit-teal d-flex align-items-center gap-2">
+                        <button onclick="cadastrarMaquina()" type="button" class="btn-submit-teal d-flex align-items-center gap-2">
                             <i class="fa-solid fa-plus"></i> Adicionar Servidor
                         </button>
                     </div>
@@ -367,6 +371,85 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
+
 </body>
+<script>
+    function cadastrarMaquina() {
+        console.log('cadastrando')
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        var nome = document.getElementById("nomeServer").value;
+        var local = document.getElementById("localServer").value;
+        var ip = document.getElementById("ipServerInt").value;
+        var so = document.getElementById("TipoServer").value;
+
+        console.log(nome)
+        console.log(local)
+        console.log(ip)
+        console.log(so)
+        console.log(idEmpresa)
+
+        
+        var componentes = [
+            {
+                idComponente: 1,
+                qtd:  1,// document.getElementById("qtd_cpu").value,
+                limiteAlerta: 90, // document.getElementById("limite_cpu").value,
+                capacidade_limite: 2 // document.getElementById("capacidade").value
+            },
+            {
+                idComponente: 2,
+                qtd: 1, // document.getElementById("qtd_ram").value,
+                limiteAlerta: 90,// document.getElementById("limite_ram").value,
+                capacidade_limite: 2 // document.getElementById("capacidade").value
+            },
+            {
+                idComponente: 3,
+                qtd: 1, //document.getElementById("qtd_disco").value,
+                limiteAlerta: 90, // document.getElementById("limite_disco").value,
+                capacidade_limite: 2 //document.getElementById("capacidade").value
+            },
+            {
+                idComponente: 4,
+                qtd: 1, //document.getElementById("qtd_rede").value,
+                limiteAlerta: 90,// document.getElementById("limite_rede").value,
+                capacidade_limite: 2 // document.getElementById("capacidade").value
+            }
+        ];
+
+        // if (nome == "" || ip == "" || idEmpresa == undefined) {
+        //     alert("Preencha os campos obrigatórios");
+        //     return false;
+        // }
+
+        try {
+            fetch("/maquina/cadastrar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    nomeServer: nome,
+                    localServer: local,
+                    macServer: ip,
+                    tipoServer: so,
+                    fkEmpresa: idEmpresa,
+                    componentesServer: componentes
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Cadastro realizado!");
+                    window.location = "dashboard.html";
+                } else {
+                    alert("Erro ao cadastrar");
+                }
+            });
+        } catch(erro) {
+            alert("erroooo")
+            console.log(erro);
+            
+        }
+
+        return false;
+    }
+</script>
 
 </html>

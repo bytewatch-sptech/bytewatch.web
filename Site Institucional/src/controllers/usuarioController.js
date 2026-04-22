@@ -21,7 +21,8 @@ function autenticar(req, res) {
                         res.json({
                             id_usuario: resultadoAutenticar[0].id_usuario,
                             email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome
+                            nome: resultadoAutenticar[0].nome,
+                            fk_usuario_empresa: resultadoAutenticar[0].fk_usuario_empresa
                         });
 
 
