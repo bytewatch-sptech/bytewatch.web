@@ -236,6 +236,64 @@
         </div>
     </div>
 
+     <!-- MENU OFFCANVAS DO BOOTSTRAP HAMBURGUER -->
+    <div class="offcanvas offcanvas-start text-white sidebar" tabindex="-1" id="menuMobile"
+                style="width: 280px; position: fixed;">
+
+                <div class="offcanvas-header border-bottom border-secondary pb-3 mb-3">
+                    <img width="130" src="../assets/logo-versao2.png" alt="Logo">
+                    <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body d-flex flex-column p-0 px-3">
+
+                    <ul class="nav nav-pills flex-column mb-auto gap-2">
+                        <li class="nav-item">
+                            <a href="./home.html" class="nav-link active bg-success d-flex align-items-center">
+                                <div class="icon_side d-flex align-items-center justify-content-center">
+                                    <img src="../assets/Icon_home.svg" alt="" width="24">
+                                </div>
+                                <span class="ms-2">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
+                                <div class="icon_side d-flex align-items-center justify-content-center">
+                                    <img src="../assets/Icon_Gestao.svg" alt="" width="24">
+                                </div>
+                                <span class="ms-2">Gestão Equipe</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./pages/alertas.html" class="nav-link d-flex align-items-center text-white">
+                                <div class="icon_side d-flex align-items-center justify-content-center">
+                                    <img src="../assets/Icon_alerta.svg" alt="" width="24">
+                                </div>
+                                <span class="ms-2">Logs de Alerta</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                        <div class="container_user d-flex gap-2">
+                            <a class="d-flex gap-3 align-items-center text-decoration-none text-white" href="">
+                                <div class="icon-profile">FB</div>
+                                <div class="box ms-2">
+                                    <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
+                                    <p style="font-size: 13px; margin-bottom: 0px; color: #aaa;">Admin Técnico</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="button-sair mt-3 mb-2 text-center"
+                            style="cursor: pointer; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px;">
+                            <p style="margin: 0; color: #ff0050;">Sair</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
