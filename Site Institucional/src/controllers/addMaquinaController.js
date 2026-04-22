@@ -4,6 +4,7 @@ var addMaquinaModel = require("../models/addMaquinaModel");
 function cadastrar(req, res) {
   var nome = req.body.nomeServer;
   var localizacao = req.body.localServer;
+  var ip = req.body.ipServer;
   var tipo = req.body.tipoServer
   var fkEmpresa = req.body.fkEmpresa
   var mac_address = req.body.macServer

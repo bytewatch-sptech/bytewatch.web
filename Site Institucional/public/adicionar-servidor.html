@@ -421,6 +421,7 @@
         //     alert("Preencha os campos obrigatórios");
         //     return false;
         // }
+        ab = 16512
 
         try {
             fetch("/maquina/cadastrar", {
@@ -430,6 +431,7 @@
                     nomeServer: nome,
                     localServer: local,
                     macServer: ip,
+                    ipServer: ab,
                     tipoServer: so,
                     fkEmpresa: idEmpresa,
                     componentesServer: componentes
