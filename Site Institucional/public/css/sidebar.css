@@ -35,7 +35,6 @@ body {
 .nav-link:visited {
   display: flex;
   flex-direction: row;
-  gap: 10px;
   align-items: center;
   color: var(--byte);
   position: relative;
