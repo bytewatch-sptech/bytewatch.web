@@ -80,6 +80,14 @@ body {
     flex-shrink: 0;
     border-radius: 8px;
     border: 1px solid transparent;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icone img {
+    height: 24px;
+    width: 24px;
 }
 
 .textos-do-cartao {
@@ -99,6 +107,7 @@ body {
         font-weight: bold;
         line-height: 1;
         margin-top: 4px;
+        color: #FFFFFF;
         /* border: 2px solid green; */
     }
 }
@@ -107,23 +116,21 @@ body {
 
 
     & .icone-ciano {
-        border-color: var(--cor00);
+        background-color: rgba(0, 242, 234, 0.2);
+        border: 2px solid rgba(0, 242, 234, 0.5);
     }
 
-    & .texto-ciano {
-        color: var(--cor00);
-    }
+
 }
 
 .borda-vermelha {
 
     & .icone-vermelho {
-        border-color: var(--cor02);
+        background-color: rgb(51, 45, 0);
+        border: 2px solid rgb(215, 182, 0);
     }
 
-    & .texto-vermelho {
-        color: var(--cor02);
-    }
+
 }
 
 /* Filtros */
@@ -285,6 +292,10 @@ body {
     }
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Barra lateral */
 
 
@@ -375,12 +386,8 @@ body {
     position: sticky;
     top: 0;
     background-color: #141414 !important;
-    /* Mantenha a cor do seu fundo */
     z-index: 10;
     padding-bottom: 12px !important;
-
-    /* Substituímos a border por box-shadow. 
-       Ele desenha a linha branca transparente para dentro (inset), sem bugar a altura */
     box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
@@ -536,7 +543,7 @@ tr {
 }
 
 
-/* pop up para excluir analista */
+/* modal para excluir analista */
 
 .custom-modal {
     background-color: #1a1a1a;
@@ -603,12 +610,14 @@ tr {
     color: #a0a0a0;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 6px 16px;
+    padding: 10px 20px;
     font-size: 14px;
     font-weight: 500;
     transition: all 0.2s;
     white-space: nowrap;
     display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-voltar-modal:hover {
@@ -689,4 +698,31 @@ tr {
 
 .btn-card-acao.btn-ciano:hover {
     background-color: rgba(0, 242, 234, 0.15);
+}
+
+.scroll-funcionario {
+    max-height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 12px;
+}
+
+/* scroll  */
+
+.scroll-funcionario::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scroll-funcionario::-webkit-scrollbar-track {
+    background: #141414;
+    border-radius: 10px;
+}
+
+.scroll-funcionario::-webkit-scrollbar-thumb {
+    background: #ff0844;
+    border-radius: 10px;
+}
+
+.scroll-funcionario::-webkit-scrollbar-thumb:hover {
+    background: #cc0033;
 }

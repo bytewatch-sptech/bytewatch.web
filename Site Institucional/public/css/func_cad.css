@@ -11,8 +11,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow-x: hidden;
     margin: 0;
-
-    /* Força o conteúdo pro topo caso haja flex no body */
 }
 
 :root {
@@ -26,9 +24,6 @@ body {
 
 
 /* página de cadastro do funcionário  */
-
-
-
 .conteudo-pagina {
     margin-left: 280px;
     padding: 0 2rem 2rem 2rem;
@@ -38,11 +33,15 @@ body {
     padding: 1rem 2rem;
 }
 
-/* Estilização dos Cards Principais */
+/* estilização cards principais */
 .card-customisado {
     background-color: #0d0d0d;
     border-radius: 12px;
     position: relative;
+}
+
+a {
+    text-decoration: none;
 }
 
 .fundo-ciano {
@@ -59,45 +58,35 @@ body {
     box-shadow: -4px 4px 15px rgba(255, 8, 68, 0.05);
 }
 
-/* ---------------------------------------------------
-           NOVO: SCROLLBAR CUSTOMIZADA PARA OS SERVIDORES
-        --------------------------------------------------- */
+
 .scroll-funcionario {
     max-height: 420px;
-    /* Define a altura limite antes de scrollar */
     overflow-y: auto;
-    /* Habilita o scroll vertical */
     overflow-x: hidden;
     padding-right: 12px;
-    /* Espaço para o texto não colar na barra */
 }
 
-/* Estilo da barra (Chrome, Edge, Safari) */
+/* scroll  */
+
 .scroll-funcionario::-webkit-scrollbar {
     width: 8px;
-    /* Largura da barra */
 }
 
 .scroll-funcionario::-webkit-scrollbar-track {
     background: #141414;
-    /* Fundo do trilho da barra */
     border-radius: 10px;
 }
 
 .scroll-funcionario::-webkit-scrollbar-thumb {
     background: #ff0844;
-    /* Cor vermelha/rosa do design */
     border-radius: 10px;
 }
 
 .scroll-funcionario::-webkit-scrollbar-thumb:hover {
     background: #cc0033;
-    /* Cor levemente mais escura ao passar o mouse */
 }
 
-/* --------------------------------------------------- */
-
-/* Inputs de Formulário */
+/* Inputs formulário */
 .form-funcionario {
     background-color: #1a1a1a;
     border: 1px solid #2a2a2a;
@@ -119,7 +108,7 @@ body {
     margin-bottom: 0.3rem;
 }
 
-/* Cards Internos (Servidores) */
+/* Cards Servidores */
 .card-servidor-cad {
     background-color: #1c1c1c;
     border-radius: 8px;
@@ -150,7 +139,7 @@ body {
     color: #666;
 }
 
-/* Botões */
+/* botão */
 .btn-verde {
     background-color: #064e3b;
     border: 1px solid #059669;
@@ -158,7 +147,7 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 30px;
+    padding: 10px;
     cursor: pointer;
 }
 

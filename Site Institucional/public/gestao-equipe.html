@@ -110,11 +110,27 @@
                                                     <div class="col-md-4">
                                                         <div class="card h-100 cartao-resumo borda-ciano">
                                                             <div class="card-body conteudo-cartao">
-                                                                <div class="icone icone-ciano"></div>
+                                                                <div class="icone icone-ciano"><img
+                                                                        src="assets/pessoas.png" alt=""></div>
                                                                 <div class="textos-do-cartao">
                                                                     <span class="titulo-pequeno">Total de
                                                                         Analistas</span>
-                                                                    <span class="numero-gigante texto-ciano">5</span>
+                                                                    <span class="numero-gigante">5</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <div class="card h-100 cartao-resumo  borda-ciano">
+                                                            <div class="card-body conteudo-cartao">
+                                                                <div class="icone icone-ciano"><img
+                                                                        src="assets/servidor_correto_correto.png"
+                                                                        alt=""></div>
+                                                                <div class="textos-do-cartao">
+                                                                    <span class="titulo-pequeno">Servidores
+                                                                        Atribuídos</span>
+                                                                    <span class="numero-gigante">5</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -123,24 +139,12 @@
                                                     <div class="col-md-4">
                                                         <div class="card h-100 cartao-resumo borda-vermelha">
                                                             <div class="card-body conteudo-cartao">
-                                                                <div class="icone icone-vermelho"></div>
-                                                                <div class="textos-do-cartao">
-                                                                    <span class="titulo-pequeno">Servidores
-                                                                        Atribuídos</span>
-                                                                    <span class="numero-gigante texto-vermelho">5</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-4">
-                                                        <div class="card h-100 cartao-resumo borda-ciano">
-                                                            <div class="card-body conteudo-cartao">
-                                                                <div class="icone icone-ciano"></div>
+                                                                <div class="icone icone-vermelho"><img
+                                                                        src="assets/servidor_amarelo.png" alt=""></div>
                                                                 <div class="textos-do-cartao">
                                                                     <span class="titulo-pequeno">Servidores Não
                                                                         Atribuídos</span>
-                                                                    <span class="numero-gigante texto-ciano">3</span>
+                                                                    <span class="numero-gigante">3</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -150,10 +154,13 @@
 
 
                                             <div class="col-md-3 d-flex justify-content-end">
-                                                <button class="btn btn-acao-adicionar"
-                                                    style="width: max-content; padding-inline: 20px;">
-                                                    <i class="fa-solid fa-plus"></i> Adicionar Analista
-                                                </button>
+                                                <a href="funcionario-cad.html">
+                                                    <button class="btn btn-acao-adicionar"
+                                                        style="width: max-content; padding-inline: 20px;">
+                                                        <i class="fa-solid fa-plus"></i> Adicionar Analista
+                                                    </button>
+                                                </a>
+
                                             </div>
 
                                         </div>
@@ -279,8 +286,8 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="d-flex align-items-center gap-2">
-                                                                    <div class="avatar">LI</div>
-                                                                    <span class="text-white">Luan Iada</span>
+                                                                    <div class="avatar">VM</div>
+                                                                    <span class="text-white">Vinicius Mendes</span>
                                                                 </div>
                                                             </td>
                                                             <td class="text-white">Analista de SRC</td>
@@ -297,33 +304,6 @@
                                                                         src="assets/botao-apagar.png" alt=""></button>
                                                             </td>
                                                         </tr>
-
-
-
-                                                        <tr>
-                                                            <td>
-                                                                <div class="d-flex align-items-center gap-2">
-                                                                    <div class="avatar">LI</div>
-                                                                    <span class="text-white">Luan Iada</span>
-                                                                </div>
-                                                            </td>
-                                                            <td class="text-white">Analista de SRC</td>
-                                                            <td class="text-center text-white">3</td>
-                                                            <td class="text-center">
-                                                                <button class="btn btn-view" data-bs-toggle="modal"
-                                                                    data-bs-target="#modalSelecionarServidor"><img
-                                                                        src="assets/servidor_correto_correto.png"
-                                                                        alt=""></button>
-                                                                <button class="btn btn-edit"><img
-                                                                        src="assets/botao-editar.png" alt=""></button>
-                                                                <button class="btn btn-delete"><img
-                                                                        src="assets/botao-apagar.png" alt=""></button>
-                                                            </td>
-                                                        </tr>
-
-
-
-
                                                     </table>
 
 
@@ -434,6 +414,7 @@
 
             <!-- modal servidores  -->
 
+
             <div class="modal fade" id="modalSelecionarServidor" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl">
                     <div class="modal-content custom-modal-servidor">
@@ -456,7 +437,8 @@
                                             <span class="badge-alerta">Sem Analista</span>
                                         </div>
                                         <p class="subtitulo-card">California, USA</p>
-                                        <button class="btn btn-card-acao btn-amarelo mt-auto">Atribuir Analista</button>
+                                        <button class="btn btn-card-acao btn-amarelo mt-auto">Atribuir
+                                            Analista</button>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -525,6 +507,7 @@
                     </div>
                 </div>
             </div>
+
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
