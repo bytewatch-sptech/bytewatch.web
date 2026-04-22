@@ -195,18 +195,18 @@
                     <div class="row gy-3 gy-md-0">
                         <div class="col-md-6">
                             <p>Tipo de Componente</p>
-                            <button class="pill ativo">Todos</button>
-                            <button class="pill">CPU</button>
-                            <button class="pill">RAM</button>
-                            <button class="pill">Disco</button>
-                            <button class="pill">Rede</button>
+                            <button class="pill ativo" id="filterTODOS" onclick="filtrar('TODOS')">Todos</button>
+                            <button class="pill" id="filterCPU" onclick="filtrar('CPU')">Cpu</button>
+                            <button class="pill" id="filterRAM" onclick="filtrar('RAM')">Ram</button>
+                            <button class="pill" id="filterDISCO" onclick="filtrar('DISCO')">Disco</button>
+                            <button class="pill" id="filterREDE" onclick="filtrar('REDE')">Rede</button>
                         </div>
 
                         <div class="col-md-6">
                             <p>Nível de Risco</p>
-                            <button class="pill ativo">Todos</button>
-                            <button class="pill">Alerta</button>
-                            <button class="pill">Crítico</button>
+                            <button class="pill ativo-risco" id="filterRiskTodos" onclick="filtrarRisco('TODOS')">Todos</button>
+                            <button class="pill" id="filterRiskAlerta" onclick="filtrarRisco('ALERTA')">Alerta</button>
+                            <button class="pill" id="filterRiskCritico" onclick="filtrarRisco('CRÍTICO')">Crítico</button>
                         </div>
                     </div>
                 </div>
@@ -265,7 +265,7 @@
                                 <div class="linha-topo">
                                     <strong>TikTok US-West-1</strong>
                                     <span class="badge bg-warning text-dark">ALERTA</span>
-                                    <span class="badge bg-secondary">CPU</span>
+                                    <span class="badge bg-secondary cpu">CPU</span>
                                 </div>
 
                                 <p>Uso de CPU próximo a 70%</p>
@@ -418,5 +418,17 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
+<script>
+
+    function filtrar(tipo) {
+        document.querySelector('.pill.ativo')?.classList.remove('ativo');
+        document.getElementById('filter' + tipo).classList.add('ativo');
+    }
+
+    function filtrarRisco(risco) {
+        document.querySelector('.pill.ativo-risco')?.classList.remove('ativo-risco');
+        event.target.classList.add('ativo-risco');
+    }
+
+</script>

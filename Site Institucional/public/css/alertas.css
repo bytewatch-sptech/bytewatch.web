@@ -140,7 +140,13 @@ body {
     background: rgba(255, 255, 255, 0.04);
 }
 
-.pill.ativo {
+/* .pill:focus {
+    background: #00f2ea2b;
+    color: #00F2EA;
+    border-color: #00f2ea;
+} */
+
+.ativo, .ativo-risco {
     background: #00f2ea2b;
     color: #00F2EA;
     border-color: #00f2ea;
