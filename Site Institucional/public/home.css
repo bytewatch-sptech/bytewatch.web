@@ -65,6 +65,7 @@ body {
 
     & .conteudo-cartao{
     display: flex;
+    
     align-items: center;
     gap: 13px;
     padding: 12px 24px;
@@ -204,6 +205,7 @@ body {
         border-radius: 20px;
         border: 2px solid transparent;
         overflow: hidden;
+        cursor: pointer;
     }
         & .borda-amarela {
         border-color: var(--cor01);
@@ -378,3 +380,5 @@ body {
     font-size: 0.85rem;
     color: var(--cor05);
 }
+
+

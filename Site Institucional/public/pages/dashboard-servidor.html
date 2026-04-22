@@ -124,7 +124,7 @@
                                         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                                 </svg>
                             </button>
-                            <button>← Voltar</button>
+                            <button onclick="history.back()">← Voltar</button>
                             <div class="middle-line"></div>
                             <div
                                 style="display: flex; align-items: center; margin-left: 20px; flex-wrap: wrap; justify-content: center; gap: 10px;">
@@ -280,133 +280,144 @@
                     <div class="col-lg-8">
                         <div class="row justify-content-center gap-3">
                             <div class="col-md col-11 card-kpi px-4 py-3">
-                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
-                                    <div class="col-6 coluna-kpi">
-                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
-                                            style="padding-left: 0px;">
-                                            <div class="col-lg-6 d-flex justify-content-center"
-                                                style="padding-left: 0px; padding-right: 0px;">
-                                                <img src="../assets/icons/cpu.svg" style="height: 40px;" alt="">
-                                            </div>
-                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
-                                                style="padding-left: 0px; padding-right: 0px;">
-                                                <span class="display-7 icon-label">CPU</span>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex justify-content-lg-start justify-content-around">
-                                            <div class="col"
-                                                style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
-                                                <span class="display-6 status-percent">75%</span>
-                                            </div>
-                                        </div>
-                                        <div class="div-legends">
-                                            <div class="legend-container">
-                                                <div>
-                                                    <span class="span-circle" style="background-color: #C167C7;"></span>
-                                                    <span class="span-legend">Em uso</span>
+                                <a href="dashboard-cpu.html" style="text-decoration: none;">
+                                    <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                        <div class="col-6 coluna-kpi">
+                                            <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                                style="padding-left: 0px;">
+                                                <div class="col-lg-6 d-flex justify-content-center"
+                                                    style="padding-left: 0px; padding-right: 0px;">
+                                                    <img src="../assets/icons/cpu.svg" style="height: 40px;" alt="">
                                                 </div>
-                                                <span class="span-percent">75%</span>
-                                            </div>
-                                            <div class="legend-container">
-                                                <div>
-                                                    <span class="span-circle"></span>
-                                                    <span class="span-legend">Restante</span>
+                                                <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                    style="padding-left: 0px; padding-right: 0px;">
+                                                    <span class="display-7 icon-label">CPU</span>
                                                 </div>
-                                                <span class="span-percent">15%</span>
+                                            </div>
+                                            <div class="row d-flex justify-content-lg-start justify-content-around">
+                                                <div class="col"
+                                                    style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                                    <span class="display-6 status-percent">75%</span>
+                                                </div>
+                                            </div>
+                                            <div class="div-legends">
+                                                <div class="legend-container">
+                                                    <div>
+                                                        <span class="span-circle"
+                                                            style="background-color: #C167C7;"></span>
+                                                        <span class="span-legend">Em uso</span>
+                                                    </div>
+                                                    <span class="span-percent">75%</span>
+                                                </div>
+                                                <div class="legend-container">
+                                                    <div>
+                                                        <span class="span-circle"></span>
+                                                        <span class="span-legend">Restante</span>
+                                                    </div>
+                                                    <span class="span-percent">15%</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-6 p-0" style="position: relative;">
-                                        <canvas id="doughnut_cpu"></canvas>
+                                        <div class="col-6 p-0" style="position: relative;">
+                                            <canvas id="doughnut_cpu"></canvas>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md col-11 card-kpi px-4 py-3">
-                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
-                                    <div class="col-6 coluna-kpi">
-                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
-                                            style="padding-left: 0px;">
-                                            <div class="col-lg-6 d-flex justify-content-center"
-                                                style="padding-left: 0px; padding-right: 0px;">
-                                                <img src="../assets/icons/ram.svg" style="height: 40px;" alt="">
-                                            </div>
-                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
-                                                style="padding-left: 0px; padding-right: 0px;">
-                                                <span class="display-7 icon-label">RAM</span>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex justify-content-lg-start justify-content-around">
-                                            <div class="col"
-                                                style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
-                                                <span class="display-6 status-percent">75%</span>
-                                            </div>
-                                        </div>
-                                        <div class="div-legends">
-                                            <div class="legend-container">
-                                                <div>
-                                                    <span class="span-circle" style="background-color: #FFD500;"></span>
-                                                    <span class="span-legend">Em uso</span>
-                                                </div>
-                                                <span class="span-percent">75%</span>
-                                            </div>
-                                            <div class="legend-container">
-                                                <div>
-                                                    <span class="span-circle"></span>
-                                                    <span class="span-legend">Restante</span>
-                                                </div>
-                                                <span class="span-percent">15%</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <a href="dashboard-ram.html" style="text-decoration: none;">
 
-                                    <div class="col-6 p-0" style="position: relative;">
-                                        <canvas id="doughnut_ram"></canvas>
+                                    <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                        <div class="col-6 coluna-kpi">
+                                            <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                                style="padding-left: 0px;">
+                                                <div class="col-lg-6 d-flex justify-content-center"
+                                                    style="padding-left: 0px; padding-right: 0px;">
+                                                    <img src="../assets/icons/ram.svg" style="height: 40px;" alt="">
+                                                </div>
+                                                <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                    style="padding-left: 0px; padding-right: 0px;">
+                                                    <span class="display-7 icon-label">RAM</span>
+                                                </div>
+                                            </div>
+                                            <div class="row d-flex justify-content-lg-start justify-content-around">
+                                                <div class="col"
+                                                    style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                                    <span class="display-6 status-percent">75%</span>
+                                                </div>
+                                            </div>
+                                            <div class="div-legends">
+                                                <div class="legend-container">
+                                                    <div>
+                                                        <span class="span-circle"
+                                                            style="background-color: #FFD500;"></span>
+                                                        <span class="span-legend">Em uso</span>
+                                                    </div>
+                                                    <span class="span-percent">75%</span>
+                                                </div>
+                                                <div class="legend-container">
+                                                    <div>
+                                                        <span class="span-circle"></span>
+                                                        <span class="span-legend">Restante</span>
+                                                    </div>
+                                                    <span class="span-percent">15%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6 p-0" style="position: relative;">
+                                            <canvas id="doughnut_ram"></canvas>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="col-md col-11 card-kpi px-4 py-3">
-                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
-                                    <div class="col-6 coluna-kpi">
-                                        <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
-                                            style="padding-left: 0px;">
-                                            <div class="col-lg-6 d-flex justify-content-center"
-                                                style="padding-left: 0px; padding-right: 0px;">
-                                                <img src="../assets/icons/disco.svg" style="height: 40px;" alt="">
-                                            </div>
-                                            <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
-                                                style="padding-left: 0px; padding-right: 0px;">
-                                                <span class="display-7 icon-label">DISCO</span>
-                                            </div>
-                                        </div>
-                                        <div class="row d-flex justify-content-lg-start justify-content-around">
-                                            <div class="col"
-                                                style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
-                                                <span class="display-md-1 display-6 status-percent">75%</span>
-                                            </div>
-                                        </div>
-                                        <div class="div-legends">
-                                            <div class="legend-container">
-                                                <div>
-                                                    <span class="span-circle" style="background-color: #00F2EA;"></span>
-                                                    <span class="span-legend">Em uso</span>
-                                                </div>
-                                                <span class="span-percent">75%</span>
-                                            </div>
-                                            <div class="legend-container">
-                                                <div>
-                                                    <span class="span-circle"></span>
-                                                    <span class="span-legend">Restante</span>
-                                                </div>
-                                                <span class="span-percent">15%</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <a href="dashboard-disco.html" style="text-decoration: none;">
 
-                                    <div class="col-6 p-0" style="position: relative;">
-                                        <canvas id="doughnut_disco"></canvas>
+                                    <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                                        <div class="col-6 coluna-kpi">
+                                            <div class="row d-flex align-items-center justify-content-around flex-lg-row flex-column-reverse"
+                                                style="padding-left: 0px;">
+                                                <div class="col-lg-6 d-flex justify-content-center"
+                                                    style="padding-left: 0px; padding-right: 0px;">
+                                                    <img src="../assets/icons/disco.svg" style="height: 40px;" alt="">
+                                                </div>
+                                                <div class="col-lg-6 d-flex justify-content-lg-start justify-content-center"
+                                                    style="padding-left: 0px; padding-right: 0px;">
+                                                    <span class="display-7 icon-label">DISCO</span>
+                                                </div>
+                                            </div>
+                                            <div class="row d-flex justify-content-lg-start justify-content-around">
+                                                <div class="col"
+                                                    style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                                    <span class="display-md-1 display-6 status-percent">75%</span>
+                                                </div>
+                                            </div>
+                                            <div class="div-legends">
+                                                <div class="legend-container">
+                                                    <div>
+                                                        <span class="span-circle"
+                                                            style="background-color: #00F2EA;"></span>
+                                                        <span class="span-legend">Em uso</span>
+                                                    </div>
+                                                    <span class="span-percent">75%</span>
+                                                </div>
+                                                <div class="legend-container">
+                                                    <div>
+                                                        <span class="span-circle"></span>
+                                                        <span class="span-legend">Restante</span>
+                                                    </div>
+                                                    <span class="span-percent">15%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6 p-0" style="position: relative;">
+                                            <canvas id="doughnut_disco"></canvas>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="row mb-4">
