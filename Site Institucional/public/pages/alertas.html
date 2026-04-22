@@ -322,63 +322,101 @@
 
     <!-- MENU OFFCANVAS DO BOOTSTRAP HAMBURGUER -->
     <div class="offcanvas offcanvas-start text-white sidebar" tabindex="-1" id="menuMobile"
-                style="width: 280px; position: fixed;">
+        style="width: 280px; position: fixed;">
 
-                <div class="offcanvas-header border-bottom border-secondary pb-3 mb-3">
-                    <img width="130" src="../assets/logo-versao2.png" alt="Logo">
-                    <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas"
-                        aria-label="Close"></button>
+        <div class="offcanvas-header border-bottom border-secondary pb-3 mb-3">
+            <img width="130" src="../assets/logo-versao2.png" alt="Logo">
+            <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body d-flex flex-column p-0 px-3">
+
+            <ul class="nav nav-pills flex-column mb-auto gap-2">
+                <li class="nav-item">
+                    <a href="../home.html" class="nav-link active bg-success d-flex align-items-center">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 14V8.66667C10 8.48986 9.92976 8.32029 9.80474 8.19526C9.67971 8.07024 9.51014 8 9.33333 8H6.66667C6.48986 8 6.32029 8.07024 6.19526 8.19526C6.07024 8.32029 6 8.48986 6 8.66667V14"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M2 6.66673C1.99995 6.47277 2.04222 6.28114 2.12386 6.1052C2.20549 5.92927 2.32453 5.77326 2.47267 5.64806L7.13933 1.64873C7.37999 1.44533 7.6849 1.33374 8 1.33374C8.3151 1.33374 8.62001 1.44533 8.86067 1.64873L13.5273 5.64806C13.6755 5.77326 13.7945 5.92927 13.8761 6.1052C13.9578 6.28114 14 6.47277 14 6.66673V12.6667C14 13.0203 13.8595 13.3595 13.6095 13.6095C13.3594 13.8596 13.0203 14.0001 12.6667 14.0001H3.33333C2.97971 14.0001 2.64057 13.8596 2.39052 13.6095C2.14048 13.3595 2 13.0203 2 12.6667V6.66673Z"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="ms-2">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <svg width="18" height="18  " viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="ms-2">Gestão Equipe</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="./alertas.html" class="nav-link d-flex align-items-center text-white">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.4866 12L9.15329 2.66665C9.037 2.46146 8.86836 2.29078 8.66457 2.17203C8.46078 2.05329 8.22914 1.99072 7.99329 1.99072C7.75743 1.99072 7.52579 2.05329 7.322 2.17203C7.11822 2.29078 6.94958 2.46146 6.83329 2.66665L1.49995 12C1.38241 12.2036 1.32077 12.4346 1.32129 12.6697C1.32181 12.9047 1.38447 13.1355 1.50292 13.3385C1.62136 13.5416 1.79138 13.7097 1.99575 13.8259C2.20011 13.942 2.43156 14.0021 2.66662 14H13.3333C13.5672 13.9997 13.797 13.938 13.9995 13.8208C14.202 13.7037 14.3701 13.5354 14.487 13.3327C14.6038 13.1301 14.6653 12.9002 14.6653 12.6663C14.6652 12.4324 14.6036 12.2026 14.4866 12Z"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M8 6V8.66667" stroke="currentColor" stroke-width="1.33333"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M8 11.3334H8.00667" stroke="currentColor" stroke-width="1.33333"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="ms-2">Logs de Alerta</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                <div class="container_user d-flex gap-2">
+                    <a class="d-flex gap-3 align-items-center text-decoration-none text-white" href="">
+                        <div class="icon-profile">FB</div>
+                        <div class="box ms-2">
+                            <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
+                            <p style="font-size: 13px; margin-bottom: 0px; color: #aaa;">Admin Técnico</p>
+                        </div>
+                    </a>
                 </div>
-
-                <div class="offcanvas-body d-flex flex-column p-0 px-3">
-
-                    <ul class="nav nav-pills flex-column mb-auto gap-2">
-                        <li class="nav-item">
-                            <a href="../home.html" class="nav-link active bg-success d-flex align-items-center">
-                                <div class="icon_side d-flex align-items-center justify-content-center">
-                                    <img src="../assets/Icon_home.svg" alt="" width="24">
-                                </div>
-                                <span class="ms-2">Home</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="../gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
-                                <div class="icon_side d-flex align-items-center justify-content-center">
-                                    <img src="../assets/Icon_Gestao.svg" alt="" width="24">
-                                </div>
-                                <span class="ms-2">Gestão Equipe</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./alertas.html" class="nav-link d-flex align-items-center text-white">
-                                <div class="icon_side d-flex align-items-center justify-content-center">
-                                    <img src="../assets/Icon_alerta.svg" alt="" width="24">
-                                </div>
-                                <span class="ms-2">Logs de Alerta</span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
-                        <div class="container_user d-flex gap-2">
-                            <a class="d-flex gap-3 align-items-center text-decoration-none text-white" href="">
-                                <div class="icon-profile">FB</div>
-                                <div class="box ms-2">
-                                    <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
-                                    <p style="font-size: 13px; margin-bottom: 0px; color: #aaa;">Admin Técnico</p>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="button-sair mt-3 mb-2 text-center"
-                            style="cursor: pointer; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px;">
-                            <p style="margin: 0; color: #ff0050;">Sair</p>
-                        </div>
-                    </div>
-
+                <div class="button-sair mt-3 mb-2 text-center"
+                    style="cursor: pointer; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px;">
+                    <p style="margin: 0; color: #ff0050;">Sair</p>
                 </div>
             </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script></body>
+        crossorigin="anonymous"></script>
+</body>
 
 </html>
