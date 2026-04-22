@@ -1,0 +1,220 @@
+body {
+    background: #121212 !important;
+    color: #fff;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.conteudo {
+    background: #121212           ;
+    min-height: 100vh;
+}
+
+.linha-topo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.linha-topo strong {
+    font-size: 16px;
+    text-align: center;
+    align-self: center;
+    margin: 0;
+}
+
+.topo h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.topo p {
+    color: #9ca3af;
+    margin: 0;
+}
+
+.card-box {
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 5px 10px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.card-box div {
+    display: flex;
+    color: #A0A0A0;
+    font-weight: 600;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.card-box div p {
+    margin-bottom: 0px;
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.red-icon {
+    background: #ff005133;
+    border-color: #FF0050;
+}
+
+.yellow-icon {
+    background: #ffd5004c;
+    border-color: #FFD500;
+}
+
+.icon img {
+    width: 24px;
+    height: auto;
+}
+
+.title-icon img {
+    width: 24px;
+    height: auto;
+}
+
+.card-box h3,
+.card-box h6 {
+    margin: 0;
+    color: #A0A0A0;
+}
+
+.card-box.red {
+    border-color: #ff004c;
+    color: orange;
+    box-shadow: 0 0 18px rgba(255, 0, 76, 0.25);
+}
+
+.icon.red {
+    background: rgba(255, 0, 76, 0.04);
+    border-color: rgba(255, 0, 76, 0.08);
+}
+
+.card-box.yellow {
+    border-color: #ffc400;
+    box-shadow: 0 0 18px rgba(255, 196, 0, 0.25);
+}
+
+.filtros {
+    background: #111;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.filtros p {
+    color: #9ca3af;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.pill {
+    background: #ffffff05;
+    border: 1px solid #ffffff10;
+    color: #99A1AF;
+    padding: 8px 18px;
+    border-radius: 999px;
+    margin-right: 0.75rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pill:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.pill.ativo {
+    background: #00f2ea2b;
+    color: #00F2EA;
+    border-color: #00f2ea;
+}
+
+.alerta {
+    background: #111;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.alerta.red {
+    border-color: #ff004c;
+    box-shadow: 0 0 18px rgba(255, 0, 76, 0.2);
+}
+
+.alerta.yellow {
+    border-color: #ffc400;
+    box-shadow: 0 0 18px rgba(255, 196, 0, 0.2);
+}
+
+.conteudo-alerta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.alert-left {
+    max-width: calc(100% - 150px);
+}
+
+.conteudo-alerta p {
+    margin: 0 0 0.75rem;
+    color: #c1c1c1;
+    line-height: 1.5;
+}
+
+.conteudo-alerta small {
+    color: #7c7c7c;
+}
+
+.btn-visualizar {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 0.8rem 1.4rem;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+}
+
+.btn-visualizar:hover {
+    background: #222;
+}
+
+.badge {
+    font-size: 0.75rem;
+    padding: 0.55em 0.85em;
+    letter-spacing: 0.02em;
+}
+
+@media (max-width: 767px) {
+    .conteudo-alerta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .conteudo-alerta > div {
+        max-width: 100%;
+    }
+
+    .btn-visualizar {
+        width: 100%;
+    }
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs de Alerta | ByteWatch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/alertas.css">
+    <link rel="shortcut icon" href="../assets/logo-cd.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body style="overflow: auto;">
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <nav class="sidebar col-auto col-md-3 col-xl-2 d-flex flex-column p-3 bg-dark">
+                <div class="d-flex justify-content-center mb-5">
+                    <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
+                    <i class="d-block d-sm-none fas fa-bell fa-2x text-success"></i>
+                </div>
+
+                <ul class="nav nav-pills flex-column mb-auto gap-2">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_home.svg" alt="Home" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_Servidores.svg" alt="Servidores" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Servidores</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_Gestao.svg" alt="Gestão de Equipe" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Gestão de Equipe</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active bg-success d-flex align-items-center">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <img src="../assets/Icon_alerta.svg" alt="Logs de Alerta" width="24">
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Logs de Alerta</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                    <div class="container_user d-flex gap-2">
+                        <a class="d-flex gap-3 align-items-center" href="#">
+                            <div class="icon-profile">FB</div>
+                            <div class="box ms-2 d-none d-sm-inline">
+                                <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
+                                <p style="font-size: 13px; margin-bottom: 0;">Admin Técnico</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="button-sair mt-2 text-center">
+                        <p style="margin: 0;">Sair</p>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="col ps-md-4 pt-3 conteudo">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="topo d-flex align-items-center gap-3">
+                            <div class="icon red-icon">
+                                <img src="../assets/icons/alert/red-risk.svg" alt="Alertas" />
+                            </div>
+                            <div>
+                                <h2>Logs de Alerta</h2>
+                                <p>Monitore todos os alertas e eventos do sistema</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card-box">
+                            <div class="icon">
+                                <img class="" src="../assets/icons/alert/exclamation.svg" alt="" width="30px">
+                            </div>
+                            <div>
+                                <p>Total de alertas:</p>
+                                <h2 class="red">8</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card-box">
+                            <div class="icon">
+                                <img class="" src="../assets/Icon_Servidores.svg" alt="" width="30px">
+                            </div>
+                            <div>
+                                <p>Servidor com mais Alertas</p>
+                                <h6>TikTok SA-East-1</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card-box red">
+                            <div class="icon red-icon">
+                                <img class="red" src="../assets/icons/alert/siren.svg" alt="" width="30px">
+                            </div>
+                            <div>
+                                <p>Críticos</p>
+                                <h2 style="color: #FF0050;">5</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="card-box yellow">
+                            <div class="icon yellow-icon">
+                                <img class="" src="../assets/icons/alert/risk.svg" alt="" width="30px">
+                            </div>
+                            <div>
+                                <p>Riscos</p>
+                                <h2 style="color: #FFD500;">3</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filtros p-4 mb-4">
+
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <div class="icon">
+                            <img src="../assets/icons/alert/filtro.svg" alt="Filtro" width="18">
+                        </div>
+                        <h6 class="m-0">Filtros</h6>
+                    </div>  
+
+                    <div class="row gy-3 gy-md-0">
+                        <div class="col-md-6">
+                            <p>Tipo de Componente</p>
+                            <button class="pill ativo">Todos</button>
+                            <button class="pill">CPU</button>
+                            <button class="pill">RAM</button>
+                            <button class="pill">Disco</button>
+                            <button class="pill">Rede</button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <p>Nível de Risco</p>
+                            <button class="pill ativo">Todos</button>
+                            <button class="pill">Alerta</button>
+                            <button class="pill">Crítico</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h5 class="mb-3">Lista de Alertas (5)</h5>
+
+                <div class="alerta red">
+                    <div class="conteudo-alerta">
+                        <div class="alert-left d-flex gap-3 align-items-start">
+                            <div class="icon red-icon">
+                                <img src="../assets/icons/alert/cpu-critic.svg" alt="CPU" />
+                            </div>
+                            <div>
+                                <div class="linha-topo ">
+                                    <strong>TikTok EU-Central-1</strong>
+                                    <span class="badge bg-danger">CRÍTICO</span>
+                                    <span class="badge bg-secondary">CPU</span>
+                                </div>
+
+                                <p>CPU ultrapassou o limite de 90%</p>
+                                <small>24 de Abril de 2026 às 14:30</small>
+                            </div>
+                        </div>
+                        <button class="btn-visualizar">Visualizar</button>
+                    </div>
+                </div>
+
+                <div class="alerta red">
+                    <div class="conteudo-alerta">
+                        <div class="alert-left d-flex gap-3 align-items-start">
+                            <div class="icon red-icon">
+                                <img src="../assets/icons/alert/ram-critic.svg" alt="RAM" />
+                            </div>
+                            <div>
+                                <div class="linha-topo">
+                                    <strong>TikTok EU-Central-1</strong>
+                                    <span class="badge bg-danger">CRÍTICO</span>
+                                    <span class="badge bg-secondary">RAM</span>
+                                </div>
+
+                                <p>Uso de memória em 91%</p>
+                                <small>24 de Abril de 2026 às 14:25</small>
+                            </div>
+                        </div>
+                        <button class="btn-visualizar">Visualizar</button>
+                    </div>
+                </div>
+
+                <div class="alerta yellow">
+                    <div class="conteudo-alerta">
+                        <div class="alert-left d-flex gap-3 align-items-start">
+                            <div class="icon yellow-icon">
+                                <img src="../assets/icons/alert/cpu-risk.svg" alt="CPU" />
+                            </div>
+                            <div>
+                                <div class="linha-topo">
+                                    <strong>TikTok US-West-1</strong>
+                                    <span class="badge bg-warning text-dark">ALERTA</span>
+                                    <span class="badge bg-secondary">CPU</span>
+                                </div>
+
+                                <p>Uso de CPU próximo a 70%</p>
+                                <small>24 de Abril de 2026 às 13:45</small>
+                            </div>
+                        </div>
+                        <button class="btn-visualizar">Visualizar</button>
+                    </div>
+                </div>
+
+                <div class="alerta yellow">
+                    <div class="conteudo-alerta">
+                        <div class="alert-left d-flex gap-3 align-items-start">
+                            <div class="icon yellow-icon">
+                                <img src="../assets/icons//alert/ram-risk.svg" alt="RAM" />
+                            </div>
+                            <div>
+                                <div class="linha-topo">
+                                    <strong>TikTok SA-East-1</strong>
+                                    <span class="badge bg-warning text-dark">ALERTA</span>
+                                    <span class="badge bg-secondary">RAM</span>
+                                </div>
+
+                                <p>Uso de memória 75%</p>
+                                <small>24 de Abril de 2026 às 12:15</small>
+                            </div>
+                        </div>
+                        <button class="btn-visualizar">Visualizar</button>
+                    </div>
+                </div>
+
+                <div class="alerta yellow">
+                    <div class="conteudo-alerta">
+                        <div class="alert-left d-flex gap-3 align-items-start">
+                            <div class="icon yellow-icon">
+                                <img src="../assets/icons/alert/rede.svg" alt="Rede" />
+                            </div>
+                            <div>
+                                <div class="linha-topo">
+                                    <strong>TikTok SA-East-1</strong>
+                                    <span class="badge bg-warning text-dark">ALERTA</span>
+                                    <span class="badge bg-secondary">REDE</span>
+                                </div>
+                                <p>Latência de rede com redução de 25%</p>
+                                <small>24 de Abril de 2026 às 11:30</small>
+                            </div>
+                        </div>
+                        <button class="btn-visualizar">Visualizar</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
