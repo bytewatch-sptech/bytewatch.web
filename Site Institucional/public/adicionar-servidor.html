@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteWatch | Adicionar Servidor</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/dashboards.css">
+    <link rel="stylesheet" href="./adicionar-servidor.css">
+    <link rel="shortcut icon" href="assets/logo-cd.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="home container-fluid p-0 h-100">
+        <div class="row g-0 h-100 flex-nowrap">
+
+            <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
+                style="min-height: 100vh; transition: 0.3s;">
+
+                <div class="d-flex justify-content-center mb-5">
+                    <img id="logo" class="d-none d-sm-block" width="150" src="./assets/logo-versao2.png" alt="Logo">
+                    <i class="bi bi-cpu fs-2 text-success d-block d-sm-none"></i>
+                </div>
+
+                <ul class="nav nav-pills flex-column mb-auto gap-2">
+                    <li class="nav-item">
+                        <a href="./home.html" class="nav-link active bg-success d-flex align-items-center">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10 14V8.66667C10 8.48986 9.92976 8.32029 9.80474 8.19526C9.67971 8.07024 9.51014 8 9.33333 8H6.66667C6.48986 8 6.32029 8.07024 6.19526 8.19526C6.07024 8.32029 6 8.48986 6 8.66667V14"
+                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M2 6.66673C1.99995 6.47277 2.04222 6.28114 2.12386 6.1052C2.20549 5.92927 2.32453 5.77326 2.47267 5.64806L7.13933 1.64873C7.37999 1.44533 7.6849 1.33374 8 1.33374C8.3151 1.33374 8.62001 1.44533 8.86067 1.64873L13.5273 5.64806C13.6755 5.77326 13.7945 5.92927 13.8761 6.1052C13.9578 6.28114 14 6.47277 14 6.66673V12.6667C14 13.0203 13.8595 13.3595 13.6095 13.6095C13.3594 13.8596 13.0203 14.0001 12.6667 14.0001H3.33333C2.97971 14.0001 2.64057 13.8596 2.39052 13.6095C2.14048 13.3595 2 13.0203 2 12.6667V6.66673Z"
+                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <svg width="18" height="18  " viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14"
+                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z"
+                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867"
+                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334"
+                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Gestão Equipe</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./pages/alertas.html" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side d-flex align-items-center justify-content-center">
+                                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M14.4866 12L9.15329 2.66665C9.037 2.46146 8.86836 2.29078 8.66457 2.17203C8.46078 2.05329 8.22914 1.99072 7.99329 1.99072C7.75743 1.99072 7.52579 2.05329 7.322 2.17203C7.11822 2.29078 6.94958 2.46146 6.83329 2.66665L1.49995 12C1.38241 12.2036 1.32077 12.4346 1.32129 12.6697C1.32181 12.9047 1.38447 13.1355 1.50292 13.3385C1.62136 13.5416 1.79138 13.7097 1.99575 13.8259C2.20011 13.942 2.43156 14.0021 2.66662 14H13.3333C13.5672 13.9997 13.797 13.938 13.9995 13.8208C14.202 13.7037 14.3701 13.5354 14.487 13.3327C14.6038 13.1301 14.6653 12.9002 14.6653 12.6663C14.6652 12.4324 14.6036 12.2026 14.4866 12Z"
+                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M8 6V8.66667" stroke="currentColor" stroke-width="1.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8 11.3334H8.00667" stroke="currentColor" stroke-width="1.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <span class="ms-2 d-none d-sm-inline">Logs de Alerta</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                    <div class="container_user d-flex gap-2">
+                        <a class="d-flex gap-3 align-items-center" href="">
+                            <div class="icon-profile">FB</div>
+
+                            <div class="box ms-2 d-none d-sm-inline">
+                                <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
+                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Admin Técnico</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="button-sair mt-2 text-center">
+                        <p style="margin: 0;">Sair</p>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="col d-flex flex-column painel-principal">
+
+                <div class="d-flex">
+                    <button class="btn btn-link text-white p-0 me-3 d-lg-none border-0" type="button"
+                        data-bs-toggle="offcanvas" data-bs-target="#menuMobile">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div
+                    class="position-relative d-flex justify-content-center align-items-center mb-4 w-100 flex-shrink-0">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="fa-solid fa-server fs-2 text-white"></i>
+                        <h2 class="m-0 fw-bold text-white">Adicione um servidor</h2>
+                    </div>
+                    <a href="home.html"
+                        class="btn btn-outline-light rounded-pill px-3 py-1 d-flex align-items-center gap-2 position-absolute end-0"
+                        style="font-size: 0.9rem;">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar
+                    </a>
+                </div>
+
+                <form class="d-flex flex-column flex-grow-1 h-100">
+
+                    <div class="row g-4 flex-grow-1 align-items-stretch">
+
+                        <div class="col-lg-6">
+                            <div class="card-form h-100 borda-glow-ciano d-flex flex-column">
+                                <h5
+                                    class="text-center text-white mb-4 d-flex justify-content-center align-items-center gap-2 flex-shrink-0">
+                                    <i class="fa-solid fa-circle-info"></i> Informações
+                                </h5>
+
+                                <div class="d-flex flex-column justify-content-between flex-grow-1">
+                                    <div>
+                                        <label class="form-label text-white fw-medium mb-1"
+                                            style="font-size: 0.9rem;">Nome *</label>
+                                        <input id="nomeServer" type="text"
+                                            class="form-control input-escuro input-form-compacto">
+                                    </div>
+                                    <div>
+                                        <label class="form-label text-white fw-medium mb-1"
+                                            style="font-size: 0.9rem;">Localização *</label>
+                                        <input id="localServer" type="text"
+                                            class="form-control input-escuro input-form-compacto">
+                                    </div>
+                                    <div>
+                                        <label class="form-label text-white fw-medium mb-1"
+                                            style="font-size: 0.9rem;">MAC</label>
+                                        <input id="ipServerInt" type="text"
+                                            class="form-control input-escuro input-form-compacto">
+                                    </div>
+                                    <div>
+                                        <label class="form-label text-white fw-medium mb-1"
+                                            style="font-size: 0.9rem;">Tipo de Servidor</label>
+                                        <input id="TipoServer" type="text"
+                                            class="form-control input-escuro input-form-compacto">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card-form h-100 borda-glow-vermelha d-flex flex-column">
+
+                                <div
+                                    class="position-relative d-flex justify-content-center align-items-center mb-4 flex-shrink-0">
+                                    <h5 class="text-white m-0 d-flex align-items-center gap-2">
+                                        <i class="fa-solid fa-server"></i> Componentes
+                                    </h5>
+                                    <div class="d-flex align-items-center gap-1 position-absolute end-0">
+                                        <div style="width: 10px; height: 10px; background-color: var(--cor00);"></div>
+                                        <span class="text-secondary" style="font-size: 0.7rem;">Parâmetros
+                                            sugeridos</span>
+                                    </div>
+                                </div>
+
+                                <div class="row g-4 flex-grow-1 align-content-between">
+                                    <div class="col-6 d-flex flex-column align-items-center text-center">
+                                        <div class="btn-componente-largo">
+                                            <i class="fa-solid fa-microchip"></i>
+                                            <span>CPU</span>
+                                        </div>
+                                        <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
+                                            alerta</span>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <span class="badge-alerta badge-verde">10%</span>
+                                            <span class="badge-alerta badge-amarelo">70%</span>
+                                            <span class="badge-alerta badge-vermelho">90%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 d-flex flex-column align-items-center text-center">
+                                        <div class="btn-componente-largo">
+                                            <i class="fa-solid fa-memory"></i>
+                                            <span>RAM</span>
+                                        </div>
+                                        <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
+                                            alerta</span>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <span class="badge-alerta badge-verde">10%</span>
+                                            <span class="badge-alerta badge-amarelo">70%</span>
+                                            <span class="badge-alerta badge-vermelho">90%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 d-flex flex-column align-items-center text-center">
+                                        <div class="btn-componente-largo">
+                                            <i class="fa-solid fa-hard-drive"></i>
+                                            <span>DISCO</span>
+                                        </div>
+                                        <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
+                                            alerta</span>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <span class="badge-alerta badge-verde">10%</span>
+                                            <span class="badge-alerta badge-amarelo">70%</span>
+                                            <span class="badge-alerta badge-vermelho">90%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6 d-flex flex-column align-items-center text-center">
+                                        <div class="btn-componente-largo">
+                                            <i class="fa-solid fa-server"></i>
+                                            <span>OUTRO</span>
+                                        </div>
+                                        <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
+                                            alerta</span>
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <span class="badge-alerta badge-verde">10%</span>
+                                            <span class="badge-alerta badge-amarelo">70%</span>
+                                            <span class="badge-alerta badge-vermelho">90%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-4 flex-shrink-0">
+                        <button onclick="cadastrarMaquina()" type="button" class="btn-submit-teal d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Adicionar Servidor
+                        </button>
+                    </div>
+                </form>
+
+            </main>
+        </div>
+    </div>
+
+
+    <!-- MENU OFFCANVAS DO BOOTSTRAP HAMBURGUER -->
+    <div class="offcanvas offcanvas-start text-white sidebar" tabindex="-1" id="menuMobile"
+        style="width: 280px; position: fixed;">
+
+        <div class="offcanvas-header border-bottom border-secondary pb-3 mb-3">
+            <img width="130" src="./assets/logo-versao2.png" alt="Logo">
+            <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body d-flex flex-column p-0 px-3">
+
+            <ul class="nav nav-pills flex-column mb-auto gap-2">
+                <li class="nav-item">
+                    <a href="./home.html" class="nav-link active bg-success d-flex align-items-center">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 14V8.66667C10 8.48986 9.92976 8.32029 9.80474 8.19526C9.67971 8.07024 9.51014 8 9.33333 8H6.66667C6.48986 8 6.32029 8.07024 6.19526 8.19526C6.07024 8.32029 6 8.48986 6 8.66667V14"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M2 6.66673C1.99995 6.47277 2.04222 6.28114 2.12386 6.1052C2.20549 5.92927 2.32453 5.77326 2.47267 5.64806L7.13933 1.64873C7.37999 1.44533 7.6849 1.33374 8 1.33374C8.3151 1.33374 8.62001 1.44533 8.86067 1.64873L13.5273 5.64806C13.6755 5.77326 13.7945 5.92927 13.8761 6.1052C13.9578 6.28114 14 6.47277 14 6.66673V12.6667C14 13.0203 13.8595 13.3595 13.6095 13.6095C13.3594 13.8596 13.0203 14.0001 12.6667 14.0001H3.33333C2.97971 14.0001 2.64057 13.8596 2.39052 13.6095C2.14048 13.3595 2 13.0203 2 12.6667V6.66673Z"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="ms-2">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="./gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <svg width="18" height="18  " viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="ms-2">Gestão Equipe</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="./pages/alertas.html" class="nav-link d-flex align-items-center text-white">
+                        <div class="icon_side d-flex align-items-center justify-content-center">
+                            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.4866 12L9.15329 2.66665C9.037 2.46146 8.86836 2.29078 8.66457 2.17203C8.46078 2.05329 8.22914 1.99072 7.99329 1.99072C7.75743 1.99072 7.52579 2.05329 7.322 2.17203C7.11822 2.29078 6.94958 2.46146 6.83329 2.66665L1.49995 12C1.38241 12.2036 1.32077 12.4346 1.32129 12.6697C1.32181 12.9047 1.38447 13.1355 1.50292 13.3385C1.62136 13.5416 1.79138 13.7097 1.99575 13.8259C2.20011 13.942 2.43156 14.0021 2.66662 14H13.3333C13.5672 13.9997 13.797 13.938 13.9995 13.8208C14.202 13.7037 14.3701 13.5354 14.487 13.3327C14.6038 13.1301 14.6653 12.9002 14.6653 12.6663C14.6652 12.4324 14.6036 12.2026 14.4866 12Z"
+                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M8 6V8.66667" stroke="currentColor" stroke-width="1.33333"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M8 11.3334H8.00667" stroke="currentColor" stroke-width="1.33333"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <span class="ms-2">Logs de Alerta</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                <div class="container_user d-flex gap-2">
+                    <a class="d-flex gap-3 align-items-center text-decoration-none text-white" href="">
+                        <div class="icon-profile">FB</div>
+                        <div class="box ms-2">
+                            <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
+                            <p style="font-size: 13px; margin-bottom: 0px; color: #aaa;">Admin Técnico</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="button-sair mt-3 mb-2 text-center"
+                    style="cursor: pointer; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px;">
+                    <p style="margin: 0; color: #ff0050;">Sair</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+
+</body>
+<script>
+    function cadastrarMaquina() {
+        console.log('cadastrando')
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        var nome = document.getElementById("nomeServer").value;
+        var local = document.getElementById("localServer").value;
+        var ip = document.getElementById("ipServerInt").value;
+        var so = document.getElementById("TipoServer").value;
+
+        console.log(nome)
+        console.log(local)
+        console.log(ip)
+        console.log(so)
+        console.log(idEmpresa)
+
+        
+        var componentes = [
+            {
+                idComponente: 1,
+                qtd:  1,// document.getElementById("qtd_cpu").value,
+                limiteAlerta: 90, // document.getElementById("limite_cpu").value,
+                capacidade_limite: 2 // document.getElementById("capacidade").value
+            },
+            {
+                idComponente: 2,
+                qtd: 1, // document.getElementById("qtd_ram").value,
+                limiteAlerta: 90,// document.getElementById("limite_ram").value,
+                capacidade_limite: 2 // document.getElementById("capacidade").value
+            },
+            {
+                idComponente: 3,
+                qtd: 1, //document.getElementById("qtd_disco").value,
+                limiteAlerta: 90, // document.getElementById("limite_disco").value,
+                capacidade_limite: 2 //document.getElementById("capacidade").value
+            },
+            {
+                idComponente: 4,
+                qtd: 1, //document.getElementById("qtd_rede").value,
+                limiteAlerta: 90,// document.getElementById("limite_rede").value,
+                capacidade_limite: 2 // document.getElementById("capacidade").value
+            }
+        ];
+
+        // if (nome == "" || ip == "" || idEmpresa == undefined) {
+        //     alert("Preencha os campos obrigatórios");
+        //     return false;
+        // }
+        
+        var ab = Math.floor(Math.random() * 5000) + 1;
+
+        try {
+            fetch("/maquina/cadastrar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    nomeServer: nome,
+                    localServer: local,
+                    macServer: ip,
+                    ipServer: ab,
+                    tipoServer: so,
+                    fkEmpresa: idEmpresa,
+                    componentesServer: componentes
+                })
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    alert("Cadastro realizado!");
+                } else {
+                    alert("Erro ao cadastrar");
+                }
+            });
+        } catch(erro) {
+            alert("erroooo")
+            console.log(erro);
+            
+        }
+
+        return false;
+    }
+</script>
+
+</html>

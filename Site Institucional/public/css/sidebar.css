@@ -1,0 +1,149 @@
+body {
+  overflow: auto;
+}
+
+:root {
+  --tik: #00f2ea;
+  --tok: #ff0050;
+  --watch: #ffd600;
+  --byte: #a0a0a0;
+}
+
+.home {
+  flex-direction: row;
+}
+
+.sidebar {
+  border-radius: 0 20px 20px 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(171deg, #0a0a0a 43.55%, #0e292d 77.09%, #194a53 86.89%, rgba(0, 242, 234, 0.6) 96.36%);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 1060 !important;
+}
+
+.active {
+  background-color: #00f2ea10 !important;
+  border: solid #00f2ea20 1px !important;
+  color: var(--tik) !important;
+
+  text-decoration: none !important;
+}
+
+.nav-link,
+.nav-link:visited {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--byte);
+  position: relative;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  text-decoration: none;
+}
+
+.icon_side img {
+  width: 20px;
+}
+.nav-item {
+  transition: 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  color: var(--byte) !important;
+}
+
+.nav-link:hover {
+  color: var(--byte);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0px;
+  left: 0;
+  background-color: var(--byte);
+  transition: width 0.4s ease-out;
+}
+
+/*Animation*/
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/*só pra ignorar o activate*/
+.nav-link:not(.active),
+.nav-link:not(.active):hover::after {
+  width: 100%;
+}
+.nav-link.active::after {
+  display: none !important;
+}
+
+.nav-link,
+.nav-link:hover {
+  text-decoration: none;
+}
+
+.user-profile {
+  width: 100%;
+  background: url(../assets/bg-card-profile.png) no-repeat center;
+  background-size: cover;
+  border-radius: 20px;
+  padding: 60px 10px 20px 10px;
+  color: #ffff;
+  transition: 0.2s ease-in-out;
+}
+
+.user-profile:hover{
+    transform: scale(1.05); 
+}
+
+.icon-profile {
+  padding: 8px 10px;
+  border-radius: 50px;
+  border: 1px solid var(--tok);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  background: linear-gradient(
+    135deg,
+    #00f2ea 0%,
+    #b30038 57.21%,
+    #a60034 74.52%,
+    #9f0032 88.46%,
+    #ff0050 100%
+  );
+}
+
+.button-sair {
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(
+    127deg,
+    rgba(6, 11, 40, 0.59) 28.26%,
+    rgba(10, 14, 35, 0.57) 91.2%
+  );
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.container_user a{
+    text-decoration: none;
+    color: #ffff;
+}
+
+.button-sair:hover {
+  background-color:var(--tok);
+  /* background-color:var(--tik); */
+  
+}
