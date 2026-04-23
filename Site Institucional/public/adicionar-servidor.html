@@ -421,7 +421,8 @@
         //     alert("Preencha os campos obrigatórios");
         //     return false;
         // }
-        ab = 16512
+        
+        var ab = Math.floor(Math.random() * 5000) + 1;
 
         try {
             fetch("/maquina/cadastrar", {
@@ -439,7 +440,6 @@
             }).then(function (resposta) {
                 if (resposta.ok) {
                     alert("Cadastro realizado!");
-                    window.location = "dashboard.html";
                 } else {
                     alert("Erro ao cadastrar");
                 }
