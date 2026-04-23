@@ -220,7 +220,7 @@
                                             </div>
 
                                         </div>
-                                        
+
 
 
                                     </div>
@@ -254,10 +254,10 @@
                 </div>
                 <div class="row g-3 align-items-start">
                     <div class="col-lg-3">
-                        <div class="d-flex flex-column gap-3 " >
+                        <div class="d-flex flex-column gap-3 ">
                             <div class="card-kpi px-4 py-3">
                                 <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
-                                    <div class="col-6 coluna-kpi" >
+                                    <div class="col-6 coluna-kpi">
 
                                         <div class="row d-flex justify-content-lg-start justify-content-around">
                                             <div class="d-flex align-items-center justify-content-center"
@@ -1636,18 +1636,18 @@
                                 }
 
                                 if (grafico == 'usoProcessos') {
-                                    document.getElementById('tituloModal').innerText = 'Uso dos processos'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
+                                    document.getElementById('tituloModal').innerText = 'Uso dos Componentes'
+                                    document.getElementById('textoModal').innerText = 'Um gráfico tipo pirulito é uma variação minimalista do gráfico de barras que utiliza uma linha fina com um marcador circular na ponta para indicar um valor exato. Ao analisar os cinco processos de maior consumo de um sistema, este formato elimina a poluição visual gerada por barras espessas. Sua estrutura direciona a atenção diretamente para os marcadores, garantindo uma comparação visual rápida, limpa e precisa da proporção de recursos utilizados por cada serviço.'
                                     graficoAberto = new Chart(ctxModal, lollipopCPUConfig)
 
                                 } else if (grafico == 'tendencia') {
                                     document.getElementById('tituloModal').innerText = 'Tendencia'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
+                                    document.getElementById('textoModal').innerText = 'Um gráfico de tendência utiliza linhas contínuas para relacionar o consumo total de memória com a carga de processos específicos ao longo do tempo. Esta visualização permite identificar de forma imediata qual serviço exato está elevando o uso da RAM ou provocando picos de saturação no sistema.'
                                     graficoAberto = new Chart(ctxModal, scatterCpuConfig)
 
                                 } else if (grafico == 'histograma') {
                                     document.getElementById('tituloModal').innerText = 'Histograma'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
+                                    document.getElementById('textoModal').innerText = 'Um histograma de uso da memória RAM distribui os percentuais de consumo em intervalos predefinidos e exibe a frequência de ocorrências dentro de cada faixa. Sua finalidade principal é identificar, de forma imediata, a margem de carga predominante e os níveis de estresse em que um sistema opera na maior parte do tempo.'
                                     graficoAberto = new Chart(ctxModal, configHist)
 
                                 } else if (grafico == 'usoTempo') {
@@ -1656,8 +1656,8 @@
                                     graficoAberto = new Chart(ctxModal, configDashboard)
 
                                 } else if (grafico == 'doughnut') {
-                                    document.getElementById('tituloModal').innerText = 'Distribuicao'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
+                                    document.getElementById('tituloModal').innerText = 'Consumo da RAM'
+                                    document.getElementById('textoModal').innerText = 'Um gráfico de rosca representa cem por cento da capacidade total de um recurso em formato circular. Nele, a área é dividida em duas fatias estritamente proporcionais: uma ilustra o espaço já consumido e a outra reflete o espaço livre. Trata-se de uma representação visual direta e de soma zero, onde o aumento do percentual de uso resulta, obrigatoriamente e na exata mesma medida, na redução visual da área correspondente à capacidade disponível.'
                                     graficoAberto = new Chart(ctxModal, cpuConfig)
 
                                 }
