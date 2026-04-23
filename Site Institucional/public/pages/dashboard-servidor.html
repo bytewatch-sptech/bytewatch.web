@@ -331,7 +331,7 @@
                                             <div class="row d-flex justify-content-lg-start justify-content-around">
                                                 <div class="col"
                                                     style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
-                                                    <span class="display-6 status-percent">75%</span>
+                                                    <span class="display-6 status-percent">78%</span>
                                                 </div>
                                             </div>
                                             <div class="div-legends">
@@ -508,78 +508,21 @@
                             </div>
                         </div>
                         <div class="row mb-4">
-                            <div class="col mb-5">
+                            <div class="col mb-5" style="height: 380px;">
                                 <h1 class="dashboard-title">Uso dos componentes</h1>
                                 <canvas
                                     style="border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px;"
                                     id="dashboardComponentes"></canvas>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="container-alertas mb-3">
-                                    <div class="row d-flex justify-content-between">
-                                        <div class="col-6">
-                                            <span class="title-alertas">Histórico alertas - 10</span>
-                                        </div>
-                                        <div class="col-6 d-flex justify-content-end">
-                                            <span class="ver-todos-alertas">
-                                                <img src="../assets/icons/eye.svg" alt="">
-                                                Ver Todos
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="row d-flex justify-content-center">
-                                        <div class="col-md-6 col-11">
-                                            <div class="card-alerta">
-                                                <div class="row d-flex justify-content-between">
-                                                    <div class="col-6">
-                                                        <span class="icone-alerta">CPU</span>
-                                                    </div>
-                                                    <div class="col-6 d-flex justify-content-end">
-                                                        <span class="hora-alerta">21:30</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <span class="conteudo-alerta">Uso de CPU excedeu 90%</span>
-                                                </div>
-                                                <div class="row">
-                                                    <span class="data-alerta">29/03/2026</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-11">
-                                            <div class="card-alerta">
-                                                <div class="row d-flex justify-content-between">
-                                                    <div class="col-6">
-                                                        <span class="icone-alerta">RAM</span>
-                                                    </div>
-                                                    <div class="col-6 d-flex justify-content-end">
-                                                        <span class="hora-alerta">21:30</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <span class="conteudo-alerta">Uso de RAM excedeu 95%</span>
-                                                </div>
-                                                <div class="row">
-                                                    <span class="data-alerta">29/03/2026</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="col-lg-4">
                         <div class="row">
                             <div class="col">
                                 <div class="information-container">
                                     <h1>Informações</h1>
-                                    <div class="div-line">
-                                        <label>Status</label>
-                                        <span>Alerta</span>
-                                    </div>
+                                    
                                     <div class="div-line">
                                         <label>Última Coleta</label>
                                         <span>29/03/2026</span>
@@ -593,13 +536,10 @@
                                         <span>Processamento de vídeo</span>
                                     </div>
                                     <div class="div-line">
-                                        <label>IP Externo</label>
-                                        <span>192.1.1.0</span>
+                                        <label>MAC</label>
+                                        <span>00:1A:2B:3C:4D:5E</span>
                                     </div>
-                                    <div class="div-line">
-                                        <label>IP Interno</label>
-                                        <span>10.128.0.5</span>
-                                    </div>
+                                    
                                     <div class="div-line">
                                         <label>RAM</label>
                                         <span>512GB</span>
@@ -616,7 +556,7 @@
                             </div>
                         </div>
                         <div class="row mb-4">
-                            <div class="col mb-5">
+                            <div class="col mb-5" style="height: 200px;">
                                 <h1 class="dashboard-title">Rede</h1>
                                 <canvas
                                     style="border: 1px solid #FFFFFF14; background-color: #151515; border-radius: 9.8px; "
@@ -735,7 +675,7 @@
         const ramData = {
             datasets: [{
                 label: 'My First Dataset',
-                data: [300, 100],
+                data: [91, 9],
                 backgroundColor: [
                     "#B0DB43",
                     "#212121",
@@ -768,7 +708,7 @@
         const cpuData = {
             datasets: [{
                 label: 'My First Dataset',
-                data: [300, 100],
+                data: [78, 22],
                 backgroundColor: [
                     '#C167C7',
                     "#212121",
@@ -801,7 +741,7 @@
         const discoData = {
             datasets: [{
                 label: 'My First Dataset',
-                data: [300, 100],
+                data: [25, 75],
                 backgroundColor: [
                     '#588FFF',
                     "#212121",
@@ -968,6 +908,9 @@
             type: 'line',
             data: dadosDashboard,
             options: {
+                
+                responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     x: {
                         title: {
@@ -999,6 +942,8 @@
             type: 'line',
             data: dadosRede,
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     x: {
                         title: {
