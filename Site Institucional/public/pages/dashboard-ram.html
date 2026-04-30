@@ -621,7 +621,41 @@
                             </div>
                         </div>
                     </div>
-            </main>
+
+                    <!-- POP-UP BYTE AI -->
+                        <button id="chat-toggle" class="btn btn-primary rounded-circle shadow"
+                            style="position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; z-index: 9999;">
+                            <i class="bi bi-chat-dots-fill"></i>💬
+                        </button>
+                        <div id="chat-window" class="card shadow d-none"
+                            style="position: fixed; bottom: 90px; right: 20px; width: 350px; height: 500px; z-index: 9999; display: flex; flex-direction: column;">
+
+                            <div
+                                class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Byte AI</h5>
+                                <button type="button" id="close-chat" class="btn-close btn-close-white"
+                                    aria-label="Close"></button>
+                            </div>
+
+                            <div id="chat-messages" class="card-body overflow-auto bg-light" style="flex: 1;">
+                                <div class="p-2 mb-2 bg-white border rounded shadow-sm text -secondary">
+                                    O que temos para hoje?
+                                </div>
+                            </div>
+
+                            <div class="card-footer bg-white border-top-0">
+                                <div class="input-group">
+                                    <input type="text" name="" id="user-input" class="form-control"
+                                        placeholder="Digite sua dúvida...">
+                                    <button class="btn btn-primary" id="send-btn" type="button">
+                                        Enviar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+            
+                </main>
 
 
 
@@ -1070,12 +1104,15 @@
                         </div>
 
 
+                        
 
-
-
-
+                        
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                         <script>
+
+
+
+
 
                             const cpu = document.getElementById('doughnut_cpu');
 
