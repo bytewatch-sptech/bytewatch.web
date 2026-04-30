@@ -163,9 +163,10 @@
                                     </div>
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
-                                            style="font-size: 0.9rem;">Localização *</label>
-                                        <input id="localServer" type="text"
-                                            class="form-control input-escuro input-form-compacto">
+                                            style="font-size: 0.9rem;">Datacenter *</label>
+                                        <select id="select_datacenter" class="form-control input-escuro input-form-compacto">
+                                            <option value="" selected disabled>SELECIONAR</option>
+                                        </select>    
                                     </div>
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
@@ -374,6 +375,21 @@
 
 
 </body>
+<script src="./services/api.js"></script>
+<script src="./services/servidorService.js"></script>
+<script>
+    async function buscarDatacenters () {
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        resultado = await bucarDatacenterService(idEmpresa)
+        let conteudoSelect = ""
+        for (let i = 0; i < resultado.length; i++) {
+            conteudoSelect += `<option value="${resultado[i].id_datacenter}">${resultado[i].nome_datacenters}</option>`
+        }
+        document.getElementById("select_datacenter").innerHTML += conteudoSelect;
+    } 
+    
+    buscarDatacenters()
+</script>
 <script>
     function cadastrarMaquina() {
         console.log('cadastrando')
