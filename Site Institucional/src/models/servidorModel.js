@@ -1,5 +1,14 @@
 var database = require("../database/config");
 
+function buscarDatacenters(id_empresa) {
+  var instrucaoSql = `SELECT id_datacenter, CONCAT(d.nome, " - ", z.codigo_zona) AS "nome_datacenters" FROM datacenter AS d 
+	JOIN servidor AS s ON fk_datacenter = id_datacenter
+    JOIN zona_disponibilidade AS z ON fk_zona_disponibilidade = id_zona_disponibilidade
+    WHERE fk_id_empresa = ${id_empresa} GROUP BY d.nome;
+`
+  return database.executar(instrucaoSql)
+}
+
 function cadastrar(nome, localizacao, ip, fkEmpresa, tipo, mac_address, componentes) {
 
   var instrucaoSql = `INSERT INTO servidor (nome, endereco_ip, localizacao, tipo, mac_address, fk_id_empresa) VALUES ('${nome}', '${ip}', '${localizacao}', '${tipo}', '${mac_address}', '${fkEmpresa}');`;
@@ -31,5 +40,6 @@ y
 
 
 module.exports = {
-  cadastrar
+  cadastrar,
+  buscarDatacenters
 }

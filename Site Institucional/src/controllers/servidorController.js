@@ -1,5 +1,16 @@
-var addMaquinaModel = require("../models/addMaquinaModel");
+var servidorModel = require("../models/servidorModel");
 
+
+async function buscarDatacenters(req, res) {
+  const { id_empresa } = req.params
+
+  if (!id_empresa) {
+    res.status(400).json("Id empresa invalido!")
+  }
+
+  const resultado = await servidorModel.buscarDatacenters(id_empresa)
+  res.status(200).json(resultado)
+}
 
 function cadastrar(req, res) {
   var nome = req.body.nomeServer;
@@ -24,7 +35,7 @@ function cadastrar(req, res) {
     res.status(400).send("Mac_adress está undefined")
   }else {
 
-    addMaquinaModel.cadastrar(nome, localizacao, ip, fkEmpresa, tipo, mac_address, componentes)
+    servidorModel.cadastrar(nome, localizacao, ip, fkEmpresa, tipo, mac_address, componentes)
       .then((resultado) => {
         res.status(201).json(resultado);
       }
@@ -44,5 +55,6 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-  cadastrar
+  cadastrar,
+  buscarDatacenters
 }
