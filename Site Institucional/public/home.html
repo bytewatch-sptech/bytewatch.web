@@ -618,9 +618,12 @@
                     </div>
 
                     <div class="d-flex flex-column gap-2 mb-5">
-                        <label for="nomeExcluir" class="form-label text-white fw-medium m-0">Digite o Nome</label>
-                        <input type="text" id="nomeExcluir" class="form-control"
+                        <label for="select_servidor" class="form-label text-white fw-medium m-0">Selecione o servidor</label>
+                        <select type="text" id="select_servidor" class="form-control"
                             style="background-color: #1f1f1f; border: 1px solid #333; color: #fff; padding: 10px 14px; border-radius: 8px">
+                            <option disabled selected value="">Selecionar</option>
+                            <option value="">aaaaa</option>
+                        </select>
                     </div>
 
                     <div class="d-flex justify-content-center gap-4">
@@ -1063,3 +1066,18 @@
 </body>
 
 </html>
+<script src="./services/api.js"></script>
+<script src="./services/servidorService.js"></script>
+<script>
+    async function buscarServidores () {
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        resultado = await buscarServidoresService(idEmpresa)
+        let conteudoSelect = ""
+        for (let i = 0; i < resultado.length; i++) {
+            conteudoSelect += `<option value="${resultado[i].id_servidor}">${resultado[i].nome_servidor}</option>`
+        }
+        document.getElementById("select_servidor").innerHTML += conteudoSelect;
+    } 
+    
+    buscarServidores()
+</script>
