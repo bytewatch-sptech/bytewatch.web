@@ -20,13 +20,13 @@
 body,
 html {
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: var(--cor04);
 }
 
 .painel-principal {
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     padding: 2rem 3rem !important;
     /* border: 2px solid red; */
 }
@@ -132,6 +132,21 @@ html {
     border-radius: 6px;
     padding: 12px 30px;
     font-size: 1rem;
+    font-weight: 500;
+
+    &:hover {
+        background-color: #095240;
+        color: var(--cor03);
+    }
+}
+
+.adicionar-componente-button {
+    background-color: #0c6b54;;
+    color: var(--cor03);
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 14px;
     font-weight: 500;
 
     &:hover {
