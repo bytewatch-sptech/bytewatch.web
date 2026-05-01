@@ -1,6 +1,17 @@
 var servidorModel = require("../models/servidorModel");
 
 
+async function atualizarServidor(req, res) {
+  const { nome, endereco_ip, status, mac_address, id_servidor } = req.body
+
+  if (!nome || !endereco_ip || !status || !mac_address || !id_servidor) {
+    res.status(400).json("Preencha todos os campos")
+  }
+
+  const resultado = await servidorModel.atualizarServidor(nome, endereco_ip, status, mac_address, id_servidor)
+  res.status(200).json(resultado)
+}
+
 async function buscarDatacenters(req, res) {
   const { id_empresa } = req.params
 
@@ -80,5 +91,6 @@ module.exports = {
   cadastrar,
   buscarDatacenters,
   listarServidores,
-  removerServidor
+  removerServidor,
+  atualizarServidor
 }

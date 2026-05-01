@@ -1,5 +1,16 @@
 var database = require("../database/config");
 
+function atualizarServidor(nome, endereco_ip, status, mac_address, id_servidor) {
+  var instrucaoSql = `UPDATE servidor 
+                      SET nome = '${nome}',
+                          endereco_ip = '${endereco_ip}',
+                          status = '${status}',
+                          mac_address = '${mac_address}'
+                      WHERE id_servidor = '${id_servidor}';
+`
+  return database.executar(instrucaoSql)
+}
+
 function removerServidor(id_servidor) {
   var instrucaoSql = `DELETE FROM servidor WHERE id_servidor = '${id_servidor}';
 `
@@ -58,5 +69,6 @@ module.exports = {
   cadastrar,
   buscarDatacenters,
   listarServidores,
-  removerServidor
+  removerServidor,
+  atualizarServidor
 }

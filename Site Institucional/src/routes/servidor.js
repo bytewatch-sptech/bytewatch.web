@@ -19,5 +19,9 @@ router.delete("/remover-servidor/:id_servidor", (req, res) => {
   servidorController.removerServidor(req, res)
 })
 
+router.put("/atualizar-servidor", (req, res) => {
+  servidorController.atualizarServidor(req, res)
+})
+
 
 module.exports = router;
