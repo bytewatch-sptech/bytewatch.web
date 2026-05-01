@@ -81,9 +81,9 @@ CREATE TABLE componente_servidor (
   capacidade_limite INT NULL,
   limite_alerta INT NULL,
   PRIMARY KEY (fk_id_servidor, fk_id_componente),
-  CONSTRAINT fk_comp_serv_servidor 
-    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor),
-  CONSTRAINT fk_comp_serv_componente 
+  CONSTRAINT fk_comp_serv_servidorrr 
+    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor) , -- ON DELETE CASCADE
+  CONSTRAINT fk_comp_serv_componenteee 
     FOREIGN KEY (fk_id_componente) REFERENCES componente (id_componente)
 );
 
@@ -129,3 +129,8 @@ INSERT INTO datacenter (nome, proprietario, cep, fk_zona_disponibilidade) VALUES
 ('DC-VA-ORACLE', 'Oracle Cloud', '20147', 3),       
 ('DC-SG-01', 'ByteDance', '188067', 5);   
 
+ALTER TABLE componente_servidor 
+ADD CONSTRAINT fk_comp_serv_servidor 
+FOREIGN KEY (fk_id_servidor) 
+REFERENCES servidor (id_servidor) 
+ON DELETE CASCADE;
