@@ -12,6 +12,17 @@ async function buscarDatacenters(req, res) {
   res.status(200).json(resultado)
 }
 
+async function listarServidores(req, res) {
+  const { id_empresa } = req.params
+
+  if (!id_empresa) {
+    res.status(400).json("Id empresa invalido!")
+  }
+
+  const resultado = await servidorModel.listarServidores(id_empresa)
+  res.status(200).json(resultado)
+}
+
 function cadastrar(req, res) {
   var nome = req.body.nomeServer;
   var localizacao = req.body.localServer;
@@ -56,5 +67,6 @@ function cadastrar(req, res) {
 
 module.exports = {
   cadastrar,
-  buscarDatacenters
+  buscarDatacenters,
+  listarServidores
 }

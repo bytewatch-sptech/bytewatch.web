@@ -11,4 +11,9 @@ router.get("/buscar-datacenters/:id_empresa", (req, res) => {
   servidorController.buscarDatacenters(req, res)
 })
 
+router.get("/listar-servidores/:id_empresa", (req, res) => {
+  servidorController.listarServidores(req, res)
+})
+
+
 module.exports = router;
