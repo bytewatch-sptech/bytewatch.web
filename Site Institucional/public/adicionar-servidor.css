@@ -19,13 +19,14 @@
 
 body,
 html {
-    height: 100%;
+    /* height: 100%; */
     overflow-x: hidden;
+    overflow-y: auto;
     background-color: var(--cor04);
 }
 
 .painel-principal {
-    height: 100vh;
+    /* height: 100vh; */
     overflow-x: hidden;
     padding: 2rem 3rem !important;
     /* border: 2px solid red; */

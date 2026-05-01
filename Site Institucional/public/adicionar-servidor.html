@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div class="home container-fluid p-0 h-100">
+    <div class="home container-fluid p-0">
         <div class="row g-0 h-100 flex-nowrap">
 
             <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
@@ -197,7 +197,7 @@
                                         <i class="fa-solid fa-server"></i> Componentes
                                     </h5>
                                     <div class="d-flex flex-column align-items-center gap-1">
-                                        <button class="adicionar-componente-button">+ Componente</button>
+                                        <button type="button" class="adicionar-componente-button">+ Componente</button>
                                         <!-- <span class="d-flex align-items-center gap-1">
                                             <div style="width: 10px; height: 10px; background-color: var(--cor00);"></div>
                                             <span class="text-secondary" style="font-size: 0.7rem;">Parâmetros
@@ -262,9 +262,13 @@
                                     </div>
 
                                     <div class="col-6 d-flex flex-column align-items-center text-center">
-                                        <button type="button" class="btn-componente-largo">
+                                        <button type="button" id="botao_rede" type="button" class="btn-componente-largo" value="0" onclick="selecionarComponente(event)">
                                             <i class="fa-solid fa-server"></i>
                                             <span>REDE</span>
+                                            <div style="display: flex; align-items: center; gap: 3px;">
+                                                <label style="font-size: 10px;" for="capacidade_disco">MBs: </label>
+                                                <input id="capacidade_rede" type="number">
+                                            </div>
                                         </button>
                                         <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
                                             alerta</span>
@@ -399,7 +403,7 @@
 <script>
     async function buscarDatacenters () {
         var idEmpresa = sessionStorage.ID_EMPRESA;
-        resultado = await bucarDatacenterService(1)
+        resultado = await bucarDatacenterService(idEmpresa)
         let conteudoSelect = ""
         for (let i = 0; i < resultado.length; i++) {
             conteudoSelect += `<option value="${resultado[i].id_datacenter}">${resultado[i].nome_datacenters}</option>`
@@ -426,7 +430,11 @@
         var idEmpresa = sessionStorage.ID_EMPRESA;
         var nome = document.getElementById("nomeServer").value;
 
-        var local = document.getElementById("select_datacenter").value;
+        var local = parseInt(document.getElementById("select_datacenter").value);
+        if (!local > 0) {
+            alert("Selecione o datacenter")
+            return
+        }
         
         var ip = document.getElementById("ipServerInt").value;
         var so = document.getElementById("TipoServer").value;
@@ -434,7 +442,12 @@
         var cpu = document.getElementById("botao_cpu").value;
         var ram = document.getElementById("botao_ram").value;
         var disco = document.getElementById("botao_disco").value;
+        var rede = document.getElementById("botao_rede").value;
 
+        var capRede = parseInt(document.getElementById("capacidade_rede").value)
+        var capCpu = parseInt(document.getElementById("capacidade_cpu").value)
+        var capDisco = parseInt(document.getElementById("capacidade_disco").value)
+        var capRam = parseInt(document.getElementById("capacidade_ram").value)
 
         console.log(nome)
         console.log(local)
@@ -445,59 +458,58 @@
         var componentes = []
 
         if (cpu == 1) {
+            if (!capCpu > 0) {
+                alert("Especifique a capacidade da CPU")
+                return
+            } 
             componenteCpu = {
                 idComponente: 1,
                 limiteAlerta: 90, 
-                capacidade_limite: 100 
+                capacidade_limite: capCpu 
             }
             componentes.push(componenteCpu)
         }
 
         if (ram == 1) {
+            if (!capRam > 0) {
+                alert("Especifique a capacidade da RAM")
+                return
+            } 
             componenteRam = {
                 idComponente: 2,
                 limiteAlerta: 90, 
-                capacidade_limite: 100 
+                capacidade_limite: capRam 
             }
             componentes.push(componenteRam)
         }
 
         if (disco == 1) {
+            if (!capDisco > 0) {
+                alert("Especifique a capacidade do Disco")
+                return
+            } 
             componenteDisco = {
                 idComponente: 3,
                 limiteAlerta: 90, 
-                capacidade_limite: 100 
+                capacidade_limite: capDisco 
             }
             componentes.push(componenteDisco)
         }
 
-        
-        var componentes = [
-            {
-                idComponente: 1,
-                qtd:  1,// document.getElementById("qtd_cpu").value,
-                limiteAlerta: 90, // document.getElementById("limite_cpu").value,
-                capacidade_limite: 2 // document.getElementById("capacidade").value
-            },
-            {
-                idComponente: 2,
-                qtd: 1, // document.getElementById("qtd_ram").value,
-                limiteAlerta: 90,// document.getElementById("limite_ram").value,
-                capacidade_limite: 2 // document.getElementById("capacidade").value
-            },
-            {
-                idComponente: 3,
-                qtd: 1, //document.getElementById("qtd_disco").value,
-                limiteAlerta: 90, // document.getElementById("limite_disco").value,
-                capacidade_limite: 2 //document.getElementById("capacidade").value
-            },
-            {
+        if (rede == 1) {
+            if (!capRede > 0) {
+                alert("Especifique a capacidade da Rede")
+                return
+            } 
+            componenteRede = {
                 idComponente: 4,
-                qtd: 1, //document.getElementById("qtd_rede").value,
-                limiteAlerta: 90,// document.getElementById("limite_rede").value,
-                capacidade_limite: 2 // document.getElementById("capacidade").value
+                limiteAlerta: 90, 
+                capacidade_limite: capRede 
             }
-        ];
+            componentes.push(componenteRede)
+        }
+
+        
 
         // if (nome == "" || ip == "" || idEmpresa == undefined) {
         //     alert("Preencha os campos obrigatórios");
@@ -507,7 +519,7 @@
         var ab = Math.floor(Math.random() * 5000) + 1;
 
         try {
-            fetch("/maquina/cadastrar", {
+            fetch("/servidor/cadastrar", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
