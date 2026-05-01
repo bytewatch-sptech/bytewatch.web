@@ -82,7 +82,7 @@ CREATE TABLE componente_servidor (
   limite_alerta INT NULL,
   PRIMARY KEY (fk_id_servidor, fk_id_componente),
   CONSTRAINT fk_comp_serv_servidorrr 
-    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor) , -- ON DELETE CASCADE
+    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor) ON DELETE CASCADE, -- ON DELETE CASCADE
   CONSTRAINT fk_comp_serv_componenteee 
     FOREIGN KEY (fk_id_componente) REFERENCES componente (id_componente)
 );
@@ -93,9 +93,9 @@ CREATE TABLE responsavel (
   turno VARCHAR(45) NULL,
   PRIMARY KEY (fk_id_usuario, fk_id_servidor),
   CONSTRAINT fk_resp_usuario 
-    FOREIGN KEY (fk_id_usuario) REFERENCES usuario (id_usuario),
+    FOREIGN KEY (fk_id_usuario) REFERENCES usuario (id_usuario) ON DELETE CASCADE,
   CONSTRAINT fk_resp_servidor 
-    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor)
+    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor) ON DELETE CASCADE
 );
 
 INSERT INTO tipo_usuario (tipo) VALUES ('adm'), ('user');
@@ -128,9 +128,3 @@ INSERT INTO datacenter (nome, proprietario, cep, fk_zona_disponibilidade) VALUES
 ('DC-SP-02', 'ByteDance', '06454-000', 2),
 ('DC-VA-ORACLE', 'Oracle Cloud', '20147', 3),       
 ('DC-SG-01', 'ByteDance', '188067', 5);   
-
-ALTER TABLE componente_servidor 
-ADD CONSTRAINT fk_comp_serv_servidor 
-FOREIGN KEY (fk_id_servidor) 
-REFERENCES servidor (id_servidor) 
-ON DELETE CASCADE;
