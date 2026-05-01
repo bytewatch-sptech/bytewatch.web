@@ -1,5 +1,11 @@
 var database = require("../database/config");
 
+function removerServidor(id_servidor) {
+  var instrucaoSql = `DELETE FROM servidor WHERE id_servidor = ${id_servidor};
+`
+  return database.executar(instrucaoSql)
+}
+
 function listarServidores(id_empresa) {
   var instrucaoSql = `SELECT id_servidor, CONCAT(s.nome, " — ", z.codigo_zona) AS "nome_datacenters" FROM datacenter AS d 
 	  JOIN servidor AS s ON fk_datacenter = id_datacenter
@@ -51,5 +57,6 @@ y
 module.exports = {
   cadastrar,
   buscarDatacenters,
-  listarServidores
+  listarServidores,
+  removerServidor
 }

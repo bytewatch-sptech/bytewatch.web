@@ -12,6 +12,17 @@ async function buscarDatacenters(req, res) {
   res.status(200).json(resultado)
 }
 
+async function removerServidor(req, res) {
+  const { id_servidor } = req.params
+
+  if (!id_servidor) {
+    res.status(400).json("Id servidor invalido!")
+  }
+
+  const resultado = await servidorModel.removerServidor(id_servidor)
+  res.status(200).json(resultado)
+}
+
 async function listarServidores(req, res) {
   const { id_empresa } = req.params
 
@@ -68,5 +79,6 @@ function cadastrar(req, res) {
 module.exports = {
   cadastrar,
   buscarDatacenters,
-  listarServidores
+  listarServidores,
+  removerServidor
 }
