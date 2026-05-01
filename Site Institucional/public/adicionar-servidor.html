@@ -201,10 +201,10 @@
 
                                 <div class="row g-4 flex-grow-1 align-content-between">
                                     <div class="col-6 d-flex flex-column align-items-center text-center">
-                                        <div class="btn-componente-largo">
+                                        <button id="botao_cpu" type="button" class="btn-componente-largo botao-selecionado" value="1" onclick="selecionarComponente(event)">
                                             <i class="fa-solid fa-microchip"></i>
                                             <span>CPU</span>
-                                        </div>
+                                        </button>
                                         <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
                                             alerta</span>
                                         <div class="d-flex justify-content-center gap-2">
@@ -215,10 +215,10 @@
                                     </div>
 
                                     <div class="col-6 d-flex flex-column align-items-center text-center">
-                                        <div class="btn-componente-largo">
+                                        <button id="botao_ram" type="button" class="btn-componente-largo botao-selecionado" value="1" onclick="selecionarComponente(event)">
                                             <i class="fa-solid fa-memory"></i>
                                             <span>RAM</span>
-                                        </div>
+                                        </button>
                                         <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
                                             alerta</span>
                                         <div class="d-flex justify-content-center gap-2">
@@ -229,10 +229,10 @@
                                     </div>
 
                                     <div class="col-6 d-flex flex-column align-items-center text-center">
-                                        <div class="btn-componente-largo">
+                                        <button id="botao_disco" type="button" class="btn-componente-largo botao-selecionado" value="1" onclick="selecionarComponente(event)">
                                             <i class="fa-solid fa-hard-drive"></i>
                                             <span>DISCO</span>
-                                        </div>
+                                        </button>
                                         <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
                                             alerta</span>
                                         <div class="d-flex justify-content-center gap-2">
@@ -243,10 +243,10 @@
                                     </div>
 
                                     <div class="col-6 d-flex flex-column align-items-center text-center">
-                                        <div class="btn-componente-largo">
+                                        <button type="button" class="btn-componente-largo">
                                             <i class="fa-solid fa-server"></i>
                                             <span>OUTRO</span>
-                                        </div>
+                                        </button>
                                         <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
                                             alerta</span>
                                         <div class="d-flex justify-content-center gap-2">
@@ -380,7 +380,7 @@
 <script>
     async function buscarDatacenters () {
         var idEmpresa = sessionStorage.ID_EMPRESA;
-        resultado = await bucarDatacenterService(idEmpresa)
+        resultado = await bucarDatacenterService(1)
         let conteudoSelect = ""
         for (let i = 0; i < resultado.length; i++) {
             conteudoSelect += `<option value="${resultado[i].id_datacenter}">${resultado[i].nome_datacenters}</option>`
@@ -391,19 +391,66 @@
     buscarDatacenters()
 </script>
 <script>
+    function selecionarComponente(e) {
+        const elemento = e.currentTarget
+        if (elemento.value == "1") {
+            elemento.value = "0"
+            elemento.classList.remove("botao-selecionado");
+        }
+        else if (elemento.value == "0") {
+            elemento.value = "1"
+            elemento.classList.add("botao-selecionado");
+        }
+    }
     function cadastrarMaquina() {
         console.log('cadastrando')
         var idEmpresa = sessionStorage.ID_EMPRESA;
         var nome = document.getElementById("nomeServer").value;
-        var local = document.getElementById("localServer").value;
+
+        var local = document.getElementById("select_datacenter").value;
+        
         var ip = document.getElementById("ipServerInt").value;
         var so = document.getElementById("TipoServer").value;
+
+        var cpu = document.getElementById("botao_cpu").value;
+        var ram = document.getElementById("botao_ram").value;
+        var disco = document.getElementById("botao_disco").value;
+
 
         console.log(nome)
         console.log(local)
         console.log(ip)
         console.log(so)
         console.log(idEmpresa)
+
+        var componentes = []
+
+        if (cpu == 1) {
+            componenteCpu = {
+                idComponente: 1,
+                limiteAlerta: 90, 
+                capacidade_limite: 100 
+            }
+            componentes.push(componenteCpu)
+        }
+
+        if (ram == 1) {
+            componenteRam = {
+                idComponente: 2,
+                limiteAlerta: 90, 
+                capacidade_limite: 100 
+            }
+            componentes.push(componenteRam)
+        }
+
+        if (disco == 1) {
+            componenteDisco = {
+                idComponente: 3,
+                limiteAlerta: 90, 
+                capacidade_limite: 100 
+            }
+            componentes.push(componenteDisco)
+        }
 
         
         var componentes = [
