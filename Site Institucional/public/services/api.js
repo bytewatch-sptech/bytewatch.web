@@ -42,6 +42,17 @@ class Api {
         })
         return response
     }
+
+    async delete(endpoint, body) {
+        const response = await fetch(`${this.baseUrl}${endpoint}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        return response
+    }
 }
 
 const url = "http://localhost:3333"

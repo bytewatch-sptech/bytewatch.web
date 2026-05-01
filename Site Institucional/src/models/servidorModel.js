@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function removerServidor(id_servidor) {
-  var instrucaoSql = `DELETE FROM servidor WHERE id_servidor = ${id_servidor};
+  var instrucaoSql = `DELETE FROM servidor WHERE id_servidor = '${id_servidor}';
 `
   return database.executar(instrucaoSql)
 }

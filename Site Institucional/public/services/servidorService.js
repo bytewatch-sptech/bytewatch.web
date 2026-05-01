@@ -13,3 +13,10 @@ async function buscarServidoresService(id_empresa){
     console.log(json);
     return json
 } 
+
+async function excluirServidorService(id_servidor){
+    const response = await api.delete(`/servidor/remover-servidor/${id_servidor}`)
+    const json = await response.json()
+    console.log(json);
+    return json
+} 
