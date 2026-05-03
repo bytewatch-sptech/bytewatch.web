@@ -28,9 +28,7 @@ function listarServidores(id_empresa) {
 
 function buscarDatacenters(id_empresa) {
   var instrucaoSql = `SELECT id_datacenter, CONCAT(d.nome, " — ", z.codigo_zona) AS "nome_datacenters" FROM datacenter AS d 
-	JOIN servidor AS s ON fk_datacenter = id_datacenter
-    JOIN zona_disponibilidade AS z ON fk_zona_disponibilidade = id_zona_disponibilidade
-    WHERE fk_id_empresa = ${id_empresa} GROUP BY d.nome;
+    JOIN zona_disponibilidade AS z ON fk_zona_disponibilidade = id_zona_disponibilidade;
 `
   return database.executar(instrucaoSql)
 }
