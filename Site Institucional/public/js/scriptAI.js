@@ -34,7 +34,7 @@ async function enviarMensagem() {
     const data = await response.json();
 
     chatMessages.removeChild(loadingMsg);
-    appendMessage("ai", data.response);
+    appendMessage("ai", data.resposta);
   } catch (error) {
     loadingMsg.innerText = "Erro ao conectar com a IA";
     console.error("Erro no fetch:", error);
