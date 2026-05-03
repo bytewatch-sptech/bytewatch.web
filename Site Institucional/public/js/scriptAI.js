@@ -45,10 +45,11 @@ async function enviarMensagem() {
 function appendMessage(role, text) {
   const msgDiv = document.createElement("div");
   msgDiv.style.maxWidth = "80%";
+  msgDiv.style.backgroundColor = "#FF0050"
   msgDiv.classList.add("p-2", "mb-2", "rounded", "shadow-sm");
 
   if (role === "user") {
-    msgDiv.classList.add("bg-primary", "text-white", "ms-auto");
+    msgDiv.classList.add("text-white", "ms-auto");
   } else {
     msgDiv.classList.add("bg-white", "border", "me-auto", "text-dark");
   }
