@@ -37,16 +37,42 @@ CREATE TABLE componente (
   descricao VARCHAR(200) NULL
 );
 
+CREATE TABLE regiao (
+  id_regiao INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(20) NOT NULL,
+  pais VARCHAR(45) NOT NULL,
+  estado VARCHAR(45) NOT NULL,
+  cidade VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE zona_disponibilidade (
+  id_zona_disponibilidade INT AUTO_INCREMENT PRIMARY KEY,
+  codigo_zona VARCHAR(20) NOT NULL,
+  fk_regiao INT NOT NULL,
+  FOREIGN KEY (fk_regiao) REFERENCES regiao(id_regiao)
+);
+
+
+CREATE TABLE datacenter (
+  id_datacenter INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(45) NOT NULL,
+  proprietario VARCHAR(45) NOT NULL,
+  cep VARCHAR(12) NOT NULL,
+  fk_zona_disponibilidade INT NOT NULL,
+  FOREIGN KEY (fk_zona_disponibilidade) REFERENCES zona_disponibilidade(id_zona_disponibilidade)
+);
+
 CREATE TABLE servidor (
   id_servidor INT AUTO_INCREMENT PRIMARY KEY,
   nome VARCHAR(45) NOT NULL,
   endereco_ip VARCHAR(45) NOT NULL UNIQUE,
-  localizacao VARCHAR(100) NULL,
   tipo VARCHAR(45) NULL,
+  status VARCHAR(45) NULL,
   mac_address VARCHAR(45) NOT NULL UNIQUE,
   fk_id_empresa INT NOT NULL,
-  CONSTRAINT fk_servidor_empresa 
-    FOREIGN KEY (fk_id_empresa) REFERENCES empresa (id_empresa)
+  fk_datacenter INT NOT NULL,
+  FOREIGN KEY (fk_id_empresa) REFERENCES empresa (id_empresa),
+  FOREIGN KEY (fk_datacenter) REFERENCES datacenter(id_datacenter)
 );
 
 CREATE TABLE componente_servidor (
@@ -55,9 +81,9 @@ CREATE TABLE componente_servidor (
   capacidade_limite INT NULL,
   limite_alerta INT NULL,
   PRIMARY KEY (fk_id_servidor, fk_id_componente),
-  CONSTRAINT fk_comp_serv_servidor 
-    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor),
-  CONSTRAINT fk_comp_serv_componente 
+  CONSTRAINT fk_comp_serv_servidorrr 
+    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor) ON DELETE CASCADE, -- ON DELETE CASCADE
+  CONSTRAINT fk_comp_serv_componenteee 
     FOREIGN KEY (fk_id_componente) REFERENCES componente (id_componente)
 );
 
@@ -67,9 +93,9 @@ CREATE TABLE responsavel (
   turno VARCHAR(45) NULL,
   PRIMARY KEY (fk_id_usuario, fk_id_servidor),
   CONSTRAINT fk_resp_usuario 
-    FOREIGN KEY (fk_id_usuario) REFERENCES usuario (id_usuario),
+    FOREIGN KEY (fk_id_usuario) REFERENCES usuario (id_usuario) ON DELETE CASCADE,
   CONSTRAINT fk_resp_servidor 
-    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor)
+    FOREIGN KEY (fk_id_servidor) REFERENCES servidor (id_servidor) ON DELETE CASCADE
 );
 
 INSERT INTO tipo_usuario (tipo) VALUES ('adm'), ('user');
@@ -82,3 +108,23 @@ INSERT INTO componente (id_componente, tipo, unidade, descricao) VALUES
 (2, 'RAM', 'Mb', 'Memoria RAM'),
 (3, 'Disco', 'Gb', 'Armazenamento de Disco'),
 (4, 'Rede', 'Mb', 'Componente de Rede');
+
+
+INSERT INTO regiao (nome, pais, estado, cidade) VALUES 
+('sa-east-1', 'Brasil', 'São Paulo', 'São Paulo'),
+('us-east-1', 'EUA', 'Virgínia', 'Ashburn'),
+('ap-southeast-1', 'Singapura', 'Singapura', 'Singapura');
+
+INSERT INTO zona_disponibilidade (codigo_zona, fk_regiao) VALUES 
+('sa-east-1a', 1), 
+('sa-east-1b', 1), 
+('us-east-1a', 2), 
+('us-east-1b', 2), 
+('ap-southeast-1a', 3); 
+
+
+INSERT INTO datacenter (nome, proprietario, cep, fk_zona_disponibilidade) VALUES 
+('DC-SP-01', 'AWS', '01100-000', 1),  
+('DC-SP-02', 'ByteDance', '06454-000', 2),
+('DC-VA-ORACLE', 'Oracle Cloud', '20147', 3),       
+('DC-SG-01', 'ByteDance', '188067', 5);   

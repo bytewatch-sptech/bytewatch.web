@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="stylesheet" href="./css/dashboards.css">
-    <link rel="stylesheet" href="./adicionar-servidor.css">
+    <link rel="stylesheet" href="./atualizar-servidor.css">
     <link rel="shortcut icon" href="assets/logo-cd.png" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,7 +134,7 @@
                     class="position-relative d-flex justify-content-center align-items-center mb-4 w-100 flex-shrink-0">
                     <div class="d-flex align-items-center gap-3">
                         <i class="fa-solid fa-server fs-2 text-white"></i>
-                        <h2 class="m-0 fw-bold text-white">Adicione um servidor</h2>
+                        <h2 class="m-0 fw-bold text-white">Atualize um servidor</h2>
                     </div>
                     <a href="home.html"
                         class="btn btn-outline-light rounded-pill px-3 py-1 d-flex align-items-center gap-2 position-absolute end-0"
@@ -145,7 +145,7 @@
 
                 <form class="d-flex flex-column flex-grow-1 h-100">
 
-                    <div class="row g-4 flex-grow-1 align-items-stretch">
+                    <div class="row g-4 flex-grow-1 justify-content-center align-items-stretch">
 
                         <div class="col-lg-6">
                             <div class="card-form h-100 borda-glow-ciano d-flex flex-column">
@@ -163,9 +163,10 @@
                                     </div>
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
-                                            style="font-size: 0.9rem;">Datacenter *</label>
+                                            style="font-size: 0.9rem;">Status *</label>
                                         <select id="select_datacenter" class="form-control input-escuro input-form-compacto">
-                                            <option value="" selected disabled>SELECIONAR</option>
+                                            <option>Funcionando</option>
+                                            <option>Manutenção</option>
                                         </select>    
                                     </div>
                                     <div>
@@ -176,7 +177,7 @@
                                     </div>
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
-                                            style="font-size: 0.9rem;">Tipo de Servidor</label>
+                                            style="font-size: 0.9rem;">Endereço IP</label>
                                         <input id="TipoServer" type="text"
                                             class="form-control input-escuro input-form-compacto">
                                     </div>
@@ -184,105 +185,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <div class="card-form h-100 borda-glow-vermelha d-flex flex-column">
-
-                                <div
-                                    class="position-relative d-flex justify-content-between align-items-center mb-4 flex-shrink-0">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <h5 class="text-white m-0 d-flex align-items-center gap-2">
-                                        <i class="fa-solid fa-server"></i> Componentes
-                                    </h5>
-                                    <div class="d-flex flex-column align-items-center gap-1">
-                                        <button type="button" class="adicionar-componente-button">+ Componente</button>
-                                        <!-- <span class="d-flex align-items-center gap-1">
-                                            <div style="width: 10px; height: 10px; background-color: var(--cor00);"></div>
-                                            <span class="text-secondary" style="font-size: 0.7rem;">Parâmetros
-                                                sugeridos</span>
-                                        </span> -->
-                                    </div>
-                                </div>
-
-                                <div class="row g-4 flex-grow-1 align-content-between">
-                                    <div class="col-6 d-flex flex-column align-items-center text-center">
-                                        <button id="botao_cpu" type="button" class="btn-componente-largo botao-selecionado" value="1" onclick="selecionarComponente(event)">
-                                            <i class="fa-solid fa-microchip"></i>
-                                            <span>CPU</span>
-                                            <div style="display: flex; align-items: center; gap: 3px;">
-                                                <label style="font-size: 10px;" for="capacidade_disco">GHz: </label>
-                                                <input id="capacidade_cpu" type="number">
-                                            </div>
-                                        </button>
-                                        <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
-                                            alerta</span>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <span class="badge-alerta badge-verde">10%</span>
-                                            <span class="badge-alerta badge-amarelo">70%</span>
-                                            <span class="badge-alerta badge-vermelho">90%</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 d-flex flex-column align-items-center text-center">
-                                        <button id="botao_ram" type="button" class="btn-componente-largo botao-selecionado" value="1" onclick="selecionarComponente(event)">
-                                            <i class="fa-solid fa-memory"></i>
-                                            <span>RAM</span>
-                                            <div style="display: flex; align-items: center; gap: 3px;">
-                                                <label style="font-size: 10px;" for="capacidade_disco">GB: </label>
-                                                <input id="capacidade_ram" type="number">
-                                            </div>
-                                        </button>
-                                        <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
-                                            alerta</span>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <span class="badge-alerta badge-verde">10%</span>
-                                            <span class="badge-alerta badge-amarelo">70%</span>
-                                            <span class="badge-alerta badge-vermelho">90%</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 d-flex flex-column align-items-center text-center">
-                                        <button id="botao_disco" type="button" class="btn-componente-largo botao-selecionado" value="1" onclick="selecionarComponente(event)">
-                                            <i class="fa-solid fa-hard-drive"></i>
-                                            <span>DISCO</span>
-                                            <div style="display: flex; align-items: center; gap: 3px;">
-                                                <label style="font-size: 10px;" for="capacidade_disco">GB: </label>
-                                                <input id="capacidade_disco" type="number">
-                                            </div>
-                                        </button>
-                                        <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
-                                            alerta</span>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <span class="badge-alerta badge-verde">10%</span>
-                                            <span class="badge-alerta badge-amarelo">70%</span>
-                                            <span class="badge-alerta badge-vermelho">90%</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 d-flex flex-column align-items-center text-center">
-                                        <button type="button" id="botao_rede" type="button" class="btn-componente-largo" value="0" onclick="selecionarComponente(event)">
-                                            <i class="fa-solid fa-server"></i>
-                                            <span>REDE</span>
-                                            <div style="display: flex; align-items: center; gap: 3px;">
-                                                <label style="font-size: 10px;" for="capacidade_disco">MBs: </label>
-                                                <input id="capacidade_rede" type="number">
-                                            </div>
-                                        </button>
-                                        <span class="text-secondary mt-2 mb-2" style="font-size: 0.75rem;">Parâmetros de
-                                            alerta</span>
-                                        <div class="d-flex justify-content-center gap-2">
-                                            <span class="badge-alerta badge-verde">10%</span>
-                                            <span class="badge-alerta badge-amarelo">70%</span>
-                                            <span class="badge-alerta badge-vermelho">90%</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+                        
 
                     <div class="d-flex justify-content-center mt-4 flex-shrink-0">
                         <button onclick="cadastrarMaquina()" type="button" class="btn-submit-teal d-flex align-items-center gap-2">
