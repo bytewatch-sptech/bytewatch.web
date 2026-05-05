@@ -1046,7 +1046,7 @@
         let conteudoCards = ""
 
         for (const servidor of resultado) {
-            const responseS3 = await fetch(`http://localhost:3333/servidores/uso-s3/${servidor.mac_address}`);
+            const responseS3 = await fetch(`http://localhost:3333/servidor/uso-s3/${servidor.mac_address}`);
             const dadosS3 = await responseS3.json()
 
             const cpu = dadosS3?.usoAtual?.cpu || 0;

@@ -24,14 +24,7 @@ router.put("/atualizar-servidor", (req, res) => {
 })
 
 router.get("/uso-s3/:macAddress", async (req, res) => {
-  try{
-    const mac = req.params.macAddress
-    const uso = await obterUsoServidor(mac)
-    res.json(uso)
-
-  }catch(err){
-    res.status(500).send("Erro ao buscar os dados no S3")
-  }
+  servidorController.buscarUsoS3(req, res);   
 })
 
 module.exports = router;

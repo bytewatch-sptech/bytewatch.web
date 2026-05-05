@@ -1,4 +1,5 @@
-const { S3Client, GetObjectCommand } = require("@aws-sdk/client");
+const { s3Client } = require("../../src/config/s3Config"); 
+const { GetObjectCommand } = require("@aws-sdk/client-s3");
 
 const streamToString = (stream) =>
     new Promise((resolve, reject) => {
@@ -10,11 +11,10 @@ const streamToString = (stream) =>
     })
 
 async function obterUsoServidor(macAddress) {
-    const s3Client = new S3Client({ region: process.env.AWS_REGION })
 
     const params = {
         Bucket: process.env.S3_BUCKET_NAME,
-        Key: "raw/client.json"
+        Key: "client/client.json"
     }
 
     try{
@@ -42,3 +42,5 @@ async function obterUsoServidor(macAddress) {
         throw err;
     }
 }
+
+module.exports = { obterUsoServidor }
