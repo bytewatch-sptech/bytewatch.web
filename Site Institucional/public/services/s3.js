@@ -1,5 +1,4 @@
 const { S3Client, GetObjectCommand } = require("@aws-sdk/client");
-const { Bucket$ } = require("@aws-sdk/client-s3");
 
 const streamToString = (stream) =>
     new Promise((resolve, reject) => {

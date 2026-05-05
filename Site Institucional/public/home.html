@@ -996,7 +996,6 @@
 
 </html>
 
-<script src="./services/s3.js"></script>
 <script src="./services/api.js"></script>
 <script src="./services/servidorService.js"></script>
 <script>
@@ -1023,19 +1022,16 @@
         alert("Servidor excluido")
         buscarServidores()
     }
-    cpuUsado = 72
-    ramUsado = 23
-    discoUsado = 67
-    
-    function descobrirStatusServidor() {
-        if ((cpuUsado >= 90 || ramUsado >= 90 || discoUsado >= 90)
-         || (cpuUsado >= 70 && ramUsado >= 70)
-         || (cpuUsado >= 70 && discoUsado >= 70)
-          || (discoUsado >= 70 && ramUsado >= 70)) {
+
+    function descobrirStatusServidor(cpu, ram, disco) {
+        if ((cpu >= 90 || ram >= 90 || disco >= 90)
+            || (cpu >= 70 && ram >= 70)
+            || (cpu >= 70 && disco >= 70)
+            || (disco >= 70 && ram >= 70)) {
             return 'critico'
-        }else if(cpuUsado >= 70 || ramUsado >= 70 || discoUsado >= 70){
+        } else if (cpu >= 70 || ram >= 70 || disco >= 70) {
             return 'alerta'
-        }else{
+        } else {
             return 'normal'
         }
     }
@@ -1047,24 +1043,17 @@
 
         const resultado = await buscarServidoresService(idEmpresa);
 
-        todosServidores = resultado.map(server =>{
-            server.status = descobrirStatusServidor(server.cpuUsado, server.ramUsado, server.discoUsado)
-            server.risco = Math.max(server.cpuUsado, server.ramUsado, server.discoUsado)
-            return server
-        })
-
-        todosServidores.sort(function(a, b){
-            return b.risco - a.risco
-        })
-
-        const top3Piores = todosServidores.slice(0, 3)
-
-
         let conteudoCards = ""
 
-        for (let i = 0; i < top3Piores.length; i++) {
-            const servidor = top3Piores[i]
+        for (const servidor of resultado) {
+            const responseS3 = await fetch(`http://localhost:3333/servidores/uso-s3/${servidor.mac_address}`);
+            const dadosS3 = await responseS3.json()
 
+            const cpu = dadosS3?.usoAtual?.cpu || 0;
+            const ram = dadosS3?.usoAtual?.ram || 0;
+            const disco = dadosS3?.usoAtual?.disco || 0;
+
+            const status = descobrirStatusServidor(cpu, ram, disco)
             conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
                                                     <div class="card h-100 cartao-servidor borda-amarela">
                                                         <a href="./pages/dashboard-servidor.html" style="text-decoration: none;">
@@ -1088,7 +1077,7 @@
                                                                         <span class="label-metrica text-secondary"
                                                                             style="font-size: 0.85rem">CPU</span>
                                                                         <span
-                                                                            class="valor-metrica text-white fw-bold">${servidor.cpuUso}%</span>
+                                                                            class="valor-metrica text-white fw-bold">${cpu}%</span>
                                                                     </div>
                                                                     <div class="d-flex w-100 gap-1">
                                                                         <div class="line-component w-100"
@@ -1108,7 +1097,7 @@
                                                                         <span class="label-metrica text-secondary"
                                                                             style="font-size: 0.85rem">RAM</span>
                                                                         <span
-                                                                            class="valor-metrica text-white fw-bold">${servidor.ramUso}%</span>
+                                                                            class="valor-metrica text-white fw-bold">${ram}%</span>
                                                                     </div>
                                                                     <div class="d-flex w-100 gap-1">
                                                                         <div class="line-component w-100"
@@ -1128,7 +1117,7 @@
                                                                         <span class="label-metrica text-secondary"
                                                                             style="font-size: 0.85rem">DISCO</span>
                                                                         <span
-                                                                            class="valor-metrica text-white fw-bold">${servidor.discoUso}%</span>
+                                                                            class="valor-metrica text-white fw-bold">${disco}%</span>
                                                                     </div>
                                                                     <div class="d-flex w-100 gap-1">
                                                                         <div class="line-component w-100"
