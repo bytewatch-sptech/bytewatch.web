@@ -19,7 +19,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
-var addMaquinaRouter = require("./src/routes/maquina");
+var servidorRouter = require("./src/routes/servidor");
 var empresasRouter = require("./src/routes/empresas");
 
 app.use(express.json());
@@ -32,7 +32,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
-app.use("/maquina", addMaquinaRouter);
+app.use("/servidor", servidorRouter);
 app.use("/empresas", empresasRouter);
 
 app.listen(PORTA_APP, function () {

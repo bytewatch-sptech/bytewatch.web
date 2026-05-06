@@ -618,9 +618,11 @@
                     </div>
 
                     <div class="d-flex flex-column gap-2 mb-5">
-                        <label for="nomeExcluir" class="form-label text-white fw-medium m-0">Digite o Nome</label>
-                        <input type="text" id="nomeExcluir" class="form-control"
+                        <label for="select_servidor" class="form-label text-white fw-medium m-0">Selecione o servidor</label>
+                        <select type="text" id="select_servidor" class="form-control"
                             style="background-color: #1f1f1f; border: 1px solid #333; color: #fff; padding: 10px 14px; border-radius: 8px">
+                            <option disabled selected value="">Selecionar</option>
+                        </select>
                     </div>
 
                     <div class="d-flex justify-content-center gap-4">
@@ -630,7 +632,7 @@
                             onmouseout="this.style.backgroundColor='transparent'">
                             Cancelar
                         </button>
-                        <button type="button" id="btnConfirmarExclusao" class="btn px-4 py-2 fw-medium"
+                        <button type="button" id="btnConfirmarExclusao" data-bs-dismiss="modal" onclick="removerServidor()" class="btn px-4 py-2 fw-medium"
                             style="background-color: #800020; color: #ff2d56; border: 1px solid #ff2d56; border-radius: 8px; transition: 0.3s"
                             onmouseover="this.style.backgroundColor='#5c0017'"
                             onmouseout="this.style.backgroundColor='#800020'">
@@ -1063,3 +1065,30 @@
 </body>
 
 </html>
+<script src="./services/api.js"></script>
+<script src="./services/servidorService.js"></script>
+<script>
+    async function buscarServidores () {
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        resultado = await buscarServidoresService(idEmpresa)
+        let conteudoSelect = `<option disabled selected value="">Selecionar</option>`
+        for (let i = 0; i < resultado.length; i++) {
+            conteudoSelect += `<option value="${resultado[i].id_servidor}">${resultado[i].nome_servidor}</option>`
+        }
+        document.getElementById("select_servidor").innerHTML = conteudoSelect;
+    } 
+    
+    buscarServidores()
+
+    async function removerServidor() {
+        const idServidor = document.getElementById("select_servidor").value;
+
+        console.log(idServidor);
+        
+        
+        const resultado = await excluirServidorService(idServidor)
+        console.log(resultado);
+        alert("Servidor excluido")
+        buscarServidores()
+    }
+</script>
