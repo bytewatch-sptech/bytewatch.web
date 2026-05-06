@@ -1030,11 +1030,12 @@
             || (disco >= 70 && ram >= 70)) {
             return 'critico'
         } else if (cpu >= 70 || ram >= 70 || disco >= 70) {
-            return 'alerta'
+            return 'risco'
         } else {
             return 'normal'
         }
     }
+
 
 
 
@@ -1054,8 +1055,24 @@
             const disco = dadosS3?.usoAtual?.disco || 0;
 
             const status = descobrirStatusServidor(cpu, ram, disco)
+
+            let borda 
+            let cor 
+            let statusCor
+            if(status == 'critico'){
+                 borda = 'vermelha'
+                 statusCor = 'vermelho'
+                 cor =  '#FF0050'
+            }else if(status == 'risco'){
+                 borda = 'amarela'
+                 cor =  '#FFD600'
+            }else{
+                 borda = 'azul'
+                 cor =  '#01F2EA'
+            }
+            console.log(borda+ 'a'+ cor)
             conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-amarela">
+                                                    <div class="card h-100 cartao-servidor borda-${borda}">
                                                         <a href="./pages/dashboard-servidor.html" style="text-decoration: none;">
                                                         <div class="card-body d-flex flex-column gap-3">
                                                             <div class="cabecalho-do-card">
@@ -1063,8 +1080,8 @@
                                                                     class="d-flex justify-content-between align-items-center">
                                                                     <span
                                                                         class="nome-servidor fw-bold text-white">${servidor.nome_servidor}
-                                                            ${servidor.localizacao || 'localização indisponível'}</span>
-                                                                    <span class="bolinha-status ${servidor.status || 'status-amarelo'} "></span>
+                                                            ${servidor.localizacao_servidor || 'localização indisponível'}</span>
+                                                                    <span class="bolinha-status status-${statusCor} "></span>
                                                                 </div>
                                                                 <span class="localizacao-servidor text-secondary"
                                                                     style="font-size: 0.85rem">California, USA</span>
@@ -1080,14 +1097,9 @@
                                                                             class="valor-metrica text-white fw-bold">${cpu}%</span>
                                                                     </div>
                                                                     <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        
+                                                                        <div class="line-component" 
+                                                                            style="background-color: ${cor}; width: ${cpu}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1100,14 +1112,9 @@
                                                                             class="valor-metrica text-white fw-bold">${ram}%</span>
                                                                     </div>
                                                                     <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        
+                                                                        <div class="line-component"
+                                                                            style="background-color: ${cor}; width: ${ram}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1120,14 +1127,9 @@
                                                                             class="valor-metrica text-white fw-bold">${disco}%</span>
                                                                     </div>
                                                                     <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        
+                                                                        <div class="line-component"
+                                                                            style="background-color: ${cor}; width: ${disco}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
                                                                         </div>
                                                                     </div>
                                                                 </div>
