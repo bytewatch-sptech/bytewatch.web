@@ -228,7 +228,7 @@
                                                         </div>
                                                         <div class="textos-do-cartao">
                                                             <span class="titulo-pequeno">Máquinas em Risco</span>
-                                                            <span class="numero-gigante texto-vermelho">3</span>
+                                                            <span class="numero-gigante texto-vermelho" id="kpiMaquinasRisco"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -254,7 +254,7 @@
                                                         </div>
                                                         <div class="textos-do-cartao">
                                                             <span class="titulo-pequeno">Componentes em Risco</span>
-                                                            <span class="numero-gigante texto-ciano">5</span>
+                                                            <span class="numero-gigante texto-ciano" id="kpiComponentesRisco"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1036,6 +1036,25 @@
         }
     }
 
+    function descobrirStatusComponente(valorComponente) {
+        if (valorComponente >= 90) {
+            return {
+                status: 'critico',
+                cor: '#FF0050'
+            };
+        } else if (valorComponente >= 70) {
+            return {
+                status: 'risco',
+                cor: '#FFD600'
+            };
+        } else {
+            return {
+                status: 'estavel',
+                cor: '#01F2EA'
+            };
+        }
+    }
+
 
 
 
@@ -1045,6 +1064,11 @@
         const resultado = await buscarServidoresService(idEmpresa);
 
         let conteudoCards = ""
+
+        let qtdMaquinasEmRisco = 0;
+        let qtdComponentesEmRisco = 0;
+
+
 
         for (const servidor of resultado) {
             const responseS3 = await fetch(`http://localhost:3333/servidor/uso-s3/${servidor.mac_address}`);
@@ -1056,21 +1080,34 @@
 
             const status = descobrirStatusServidor(cpu, ram, disco)
 
-            let borda 
-            let cor 
-            let statusCor
-            if(status == 'critico'){
-                 borda = 'vermelha'
-                 statusCor = 'vermelho'
-                 cor =  '#FF0050'
-            }else if(status == 'risco'){
-                 borda = 'amarela'
-                 cor =  '#FFD600'
-            }else{
-                 borda = 'azul'
-                 cor =  '#01F2EA'
+            if (status !== 'normal') {
+                qtdMaquinasEmRisco++;
             }
-            console.log(borda+ 'a'+ cor)
+
+            if (cpu >= 70) qtdComponentesEmRisco++;
+            if (ram >= 70) qtdComponentesEmRisco++;
+            if (disco >= 70) qtdComponentesEmRisco++;
+
+            let borda
+            let cor
+            let statusCor
+            if (status == 'critico') {
+                borda = 'vermelha'
+                statusCor = 'vermelho'
+                cor = '#FF0050'
+            } else if (status == 'risco') {
+                borda = 'amarela'
+                cor = '#FFD600'
+            } else {
+                borda = 'azul'
+                cor = '#01F2EA'
+            }
+
+            const corCpu = descobrirStatusComponente(cpu).cor;
+            const corRam = descobrirStatusComponente(ram).cor;
+            const corDisco = descobrirStatusComponente(disco).cor;
+
+            console.log(borda + 'a' + cor)
             conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
                                                     <div class="card h-100 cartao-servidor borda-${borda}">
                                                         <a href="./pages/dashboard-servidor.html" style="text-decoration: none;">
@@ -1099,7 +1136,7 @@
                                                                     <div class="d-flex w-100 gap-1">
                                                                         
                                                                         <div class="line-component" 
-                                                                            style="background-color: ${cor}; width: ${cpu}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                            style="background-color: ${corCpu}; width: ${cpu}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1114,7 +1151,7 @@
                                                                     <div class="d-flex w-100 gap-1">
                                                                         
                                                                         <div class="line-component"
-                                                                            style="background-color: ${cor}; width: ${ram}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                            style="background-color: ${corRam}; width: ${ram}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1129,7 +1166,7 @@
                                                                     <div class="d-flex w-100 gap-1">
                                                                         
                                                                         <div class="line-component"
-                                                                            style="background-color: ${cor}; width: ${disco}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                            style="background-color: ${corDisco}; width: ${disco}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1141,6 +1178,9 @@
 
 
         }
+        document.getElementById("kpiMaquinasRisco").innerHTML = qtdMaquinasEmRisco;
+        document.getElementById("kpiComponentesRisco").innerHTML = qtdComponentesEmRisco;
+
         document.getElementById("servidoresAlerta").innerHTML = conteudoCards;
         document.getElementById("totalMaquinas").innerHTML = resultado.length
     }
