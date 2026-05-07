@@ -19,7 +19,7 @@ async function obterUsoServidor(macAddress) {
         const { Body } = await s3Client.send(new GetObjectCommand(params))
         const conteudo = await streamToString(Body)
 
-        // Segurança: verifica se o arquivo está vazio
+
         if (!conteudo || conteudo.trim() === "") return null;
 
         const bancoDadosJson = JSON.parse(conteudo)
@@ -54,7 +54,6 @@ async function obterKPIsAlertas() {
         const { Body } = await s3Client.send(new GetObjectCommand(params));
         const conteudo = await streamToString(Body);
 
-        // --- TRAVA DE SEGURANÇA: ESSA PARTE DEVE FICAR ANTES DO JSON.PARSE ---
         if (!conteudo || conteudo.trim() === "") {
             console.warn("AVISO: Arquivo client.json está vazio no S3.");
             return {
@@ -98,7 +97,6 @@ async function obterKPIsAlertas() {
         };
 
     } catch (err) {
-        // Se o erro for 'NoSuchKey', o arquivo não existe, retornamos 0
         if (err.Code === 'NoSuchKey') {
             console.error("Arquivo client.json não encontrado no S3.");
         } else {
