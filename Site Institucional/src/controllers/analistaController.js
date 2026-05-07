@@ -3,11 +3,14 @@ var usuarioModel = require("../models/analistaModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var cpf = req.body.cpfServer;
 
     if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+        res.status(400).send("Seu email está indefinida!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
+    } else if (cpf == undefined) {
+        res.status(400).send("Seu email está indefinida")
     } else {
 
         usuarioModel.autenticar(email, senha)
