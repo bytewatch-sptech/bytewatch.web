@@ -144,7 +144,7 @@
                             </div>
                             <div>
                                 <p>Total de alertas:</p>
-                                <h2 class="red">8</h2>
+                                <h2 class="red" id="totalAlertas">0</h2>
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                             </div>
                             <div>
                                 <p>Servidor com mais Alertas</p>
-                                <h6>TikTok SA-East-1</h6>
+                                <h6 id="servidorMaisAlertas">Carregando...</h6>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                             </div>
                             <div>
                                 <p>Críticos</p>
-                                <h2 style="color: #FF0050;">5</h2>
+                                <h2 id="criticos" style="color: #FF0050;">0</h2>
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                             </div>
                             <div>
                                 <p>Riscos</p>
-                                <h2 style="color: #FFD500;">3</h2>
+                                <h2 id="riscos" style="color: #FFD500;">0</h2>
                             </div>
                         </div>
                     </div>
@@ -204,9 +204,11 @@
 
                         <div class="col-md-6">
                             <p>Nível de Risco</p>
-                            <button class="pill ativo-risco" id="filterRiskTodos" onclick="filtrarRisco('TODOS')">Todos</button>
+                            <button class="pill ativo-risco" id="filterRiskTodos"
+                                onclick="filtrarRisco('TODOS')">Todos</button>
                             <button class="pill" id="filterRiskAlerta" onclick="filtrarRisco('ALERTA')">Alerta</button>
-                            <button class="pill" id="filterRiskCritico" onclick="filtrarRisco('CRÍTICO')">Crítico</button>
+                            <button class="pill" id="filterRiskCritico"
+                                onclick="filtrarRisco('CRÍTICO')">Crítico</button>
                         </div>
                     </div>
                 </div>
@@ -418,7 +420,11 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
+
+<script src="../services/api.js"></script>
+
 <script>
 
     function filtrar(tipo) {
@@ -430,5 +436,21 @@
         document.querySelector('.pill.ativo-risco')?.classList.remove('ativo-risco');
         event.target.classList.add('ativo-risco');
     }
+
+    async function carregarKPIs() {
+        try {
+            const dados = await api.buscarKPIsAlertas();
+
+            document.getElementById("totalAlertas").innerText = dados.totalAlertas;
+            document.getElementById("criticos").innerText = dados.totalCriticos;
+            document.getElementById("riscos").innerText = dados.totalRiscos;
+            document.getElementById("servidorMaisAlertas").innerText = dados.servidorMaisAlertas;
+
+        } catch (erro) {
+            console.error("Erro ao carregar KPIs:", erro);
+        }
+    }
+
+    window.onload = carregarKPIs;
 
 </script>
