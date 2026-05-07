@@ -53,6 +53,11 @@ class Api {
         })
         return response
     }
+
+    async buscarKPIsAlertas() {
+        const response = await this.get("/alertas/kpis");
+        return await response.json();
+    }
 }
 
 const url = "http://localhost:3333"
