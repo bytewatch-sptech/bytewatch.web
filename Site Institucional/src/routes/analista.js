@@ -7,8 +7,6 @@ router.post("/cadastrar", function (req, res){
     analistaController.cadastrar(req, res);
 });
 
-router.post("/autenticar", function (req, res){
-    analistaController.autenticar(req, res);
-});
+
 
 module.exports = router;

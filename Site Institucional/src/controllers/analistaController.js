@@ -1,49 +1,29 @@
 var usuarioModel = require("../models/analistaModel");
 
-function autenticar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
-    var cpf = req.body.cpfServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está indefinida!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else if (cpf == undefined) {
-        res.status(400).send("Seu email está indefinida")
-    } else {
+function cadastrar(req, res) {
+    var id_usuario = req.body.id_usuarioServer;
+    var nome = req.body.nomeServer
+    var senha = req.body.senhaServer
+    var email = req.body.emailServer
+    var cpf = req.body.cpfServer
+    var fk_tipo_usuario = req.body.fkUserServer
+    var fk_usuario_empresa = req.body.fkEmpresaServer
 
-        usuarioModel.autenticar(email, senha)
-            .then(
-                function (resultadoAutenticar) {
-                    console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+    console.log('Entrei no controller')
+      console.log(id_usuario, nome, senha, email, cpf, fk_tipo_usuario, fk_usuario_empresa);
+    
+        empresaModel.cadastrarServidor(id_usuario, nome, senha, email, cpf, fk_tipo_usuario, fk_usuario_empresa).then((resposta) => {
+          console.log('Entrei no controller')
+          res.status(201).json(resposta);
+    
+        }).catch((erro) => {
+          console.log('Erro no controller')
+          console.log('Erro no controller: ', erro.sqlMessage)
+          res.status(500).json(erro)
+        })
+}
 
-                    if (resultadoAutenticar.length == 1) {
-
-                        res.json({
-                            id_usuario: resultadoAutenticar[0].id_usuario,
-                            email: resultadoAutenticar[0].email,
-                            nome: resultadoAutenticar[0].nome,
-                            cpf: resultadoAutenticar[0].cpf,
-                            fk_usuario_empresa: resultadoAutenticar[0].fk_usuario_empresa,
-                        });
-
-
-
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-
+module.exports = {
+    cadastrar
 }
