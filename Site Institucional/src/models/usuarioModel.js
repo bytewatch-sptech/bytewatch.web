@@ -22,7 +22,19 @@ function cadastrar(nome, email, senha, cpf, fk_tipo_usuario) {
     return database.executar(instrucaoSql);
 }
 
+    function deletar(idUsuario) {
+    console.log("Executando função no id: ", idUsuario);
+    
+    var instrucaoSql = `
+        DELETE FROM usuario WHERE id_usuario = ${idUsuario};
+    `;
+    
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    deletar
 };
