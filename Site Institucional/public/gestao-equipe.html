@@ -268,10 +268,9 @@
                                                                     data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
-                                                                <button class="btn btn-edit"><img
-                                                                        src="assets/botao-editar.png" alt=""></button>
                                                                 <button class="btn btn-delete" data-bs-toggle="modal"
-                                                                    data-bs-target="#modalExcluir"><img
+                                                                    data-bs-target="#modalExcluir"
+                                                                    onclick="prepararExclusao(1), this"><img
                                                                         src="assets/botao-apagar.png" alt=""></button>
                                                             </td>
                                                         </tr>
@@ -290,10 +289,9 @@
                                                                     data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
-                                                                <button class="btn btn-edit"><img
-                                                                        src="assets/botao-editar.png" alt=""></button>
                                                                 <button class="btn btn-delete" data-bs-toggle="modal"
-                                                                    data-bs-target="#modalExcluir"><img
+                                                                    data-bs-target="#modalExcluir"
+                                                                    onclick="prepararExclusao(2, this)"><img
                                                                         src="assets/botao-apagar.png" alt=""></button>
                                                             </td>
                                                         </tr>
@@ -312,10 +310,9 @@
                                                                     data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
-                                                                <button class="btn btn-edit"><img
-                                                                        src="assets/botao-editar.png" alt=""></button>
                                                                 <button class="btn btn-delete" data-bs-toggle="modal"
-                                                                    data-bs-target="#modalExcluir"><img
+                                                                    data-bs-target="#modalExcluir"
+                                                                    onclick="prepararExclusao(3, this)"><img
                                                                         src="assets/botao-apagar.png" alt=""></button>
                                                             </td>
                                                         </tr>
@@ -334,15 +331,12 @@
                                                                     data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
-                                                                <button class="btn btn-edit"><img
-                                                                        src="assets/botao-editar.png" alt=""></button>
                                                                 <button class="btn btn-delete" data-bs-toggle="modal"
-                                                                    data-bs-target="#modalExcluir"><img
+                                                                    data-bs-target="#modalExcluir"
+                                                                    onclick="prepararExclusao(4, this)"><img
                                                                         src="assets/botao-apagar.png" alt=""></button>
                                                             </td>
                                                         </tr>
-
-
 
                                                         <tr>
                                                             <td>
@@ -358,10 +352,9 @@
                                                                     data-bs-target="#modalSelecionarServidor"><img
                                                                         src="assets/servidor_correto_correto.png"
                                                                         alt=""></button>
-                                                                <button class="btn btn-edit"><img
-                                                                        src="assets/botao-editar.png" alt=""></button>
                                                                 <button class="btn btn-delete" data-bs-toggle="modal"
-                                                                    data-bs-target="#modalExcluir"><img
+                                                                    data-bs-target="#modalExcluir"
+                                                                    onclick="prepararExclusao(5, this)"><img
                                                                         src="assets/botao-apagar.png" alt=""></button>
                                                             </td>
                                                         </tr>
@@ -460,10 +453,10 @@
                             </h5>
 
                             <div class="d-flex justify-content-center gap-3 mt-2">
-                                <button type="button" class="btn btn-sim w-50">
+                                <button type="button" class="btn btn-sim w-50" onclick="this.blur()">
                                     <p>Sim</p>
                                 </button>
-                                <button type="button" class="btn btn-nao w-50" data-bs-dismiss="modal">
+                                <button type="button" class="btn btn-nao w-50" data-bs-dismiss="modal" onclick="this.blur()">
                                     <p>Não</p>
                                 </button>
                             </div>
@@ -671,3 +664,39 @@
 </body>
 
 </html>
+
+<script>
+    let idUsuarioExcluir = null;
+    let linhaExcluir = null;
+
+    function prepararExclusao(id, elementoBotao) {
+        idUsuarioExcluir = id;
+        linhaExcluir = elementoBotao.closest('tr');
+    }
+
+    document.querySelector('.btn-sim').addEventListener('click', function () {
+        if (!idUsuarioExcluir) return;
+
+        fetch(`/usuarios/deletar/${idUsuarioExcluir}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                // 1. Fecha o modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('modalExcluir'));
+                modal.hide();
+                if (linhaExcluir) {
+                    linhaParaExcluir.remove();
+                }
+                alert("Funcionário excluído com sucesso!");
+
+            } else {
+                console.log("Houve um erro ao tentar excluir o funcionário!");
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        });
+    });
+</script>
