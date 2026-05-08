@@ -9,7 +9,6 @@ function cadastrar(req, res) {
     var fk_tipo_usuario = req.body.fkUserServer;
     var fk_usuario_empresa = req.body.fkEmpresaServer;
 
-    // Validação simples (opcional, mas recomendada)
     if (nome == undefined || senha == undefined || fk_tipo_usuario == undefined) {
         res.status(400).send("Seus campos estão indefinidos!");
     } else {
