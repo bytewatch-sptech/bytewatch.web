@@ -36,6 +36,7 @@ app.use('/', aiServiceRouter);
 app.use("/medidas", medidasRouter);
 app.use("/servidor", servidorRouter);
 app.use("/empresas", empresasRouter);
+app.use("/analista", analistaRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
