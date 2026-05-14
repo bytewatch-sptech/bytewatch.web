@@ -23,5 +23,8 @@ router.put("/atualizar-servidor", (req, res) => {
   servidorController.atualizarServidor(req, res)
 })
 
+router.get("/uso-s3/:macAddress", async (req, res) => {
+  servidorController.buscarUsoS3(req, res);   
+})
 
 module.exports = router;

@@ -18,7 +18,7 @@ function removerServidor(id_servidor) {
 }
 
 function listarServidores(id_empresa) {
-  var instrucaoSql = `SELECT id_servidor, CONCAT(s.nome, " — ", z.codigo_zona) AS "nome_servidor" FROM datacenter AS d 
+  var instrucaoSql = `SELECT id_servidor, s.mac_address, CONCAT(s.nome, " — ", z.codigo_zona) AS "nome_servidor" FROM datacenter AS d 
 	  JOIN servidor AS s ON fk_datacenter = id_datacenter
     JOIN zona_disponibilidade AS z ON fk_zona_disponibilidade = id_zona_disponibilidade
     WHERE fk_id_empresa = ${id_empresa};

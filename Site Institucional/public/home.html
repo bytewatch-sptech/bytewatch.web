@@ -195,7 +195,8 @@
                                                         </div>
                                                         <div class="textos-do-cartao">
                                                             <span class="titulo-pequeno">Total de Máquinas</span>
-                                                            <span class="numero-gigante texto-ciano">8</span>
+                                                            <span class="numero-gigante texto-ciano"
+                                                                id="totalMaquinas"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -227,7 +228,7 @@
                                                         </div>
                                                         <div class="textos-do-cartao">
                                                             <span class="titulo-pequeno">Máquinas em Risco</span>
-                                                            <span class="numero-gigante texto-vermelho">3</span>
+                                                            <span class="numero-gigante texto-vermelho" id="kpiMaquinasRisco"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -253,7 +254,7 @@
                                                         </div>
                                                         <div class="textos-do-cartao">
                                                             <span class="titulo-pequeno">Componentes em Risco</span>
-                                                            <span class="numero-gigante texto-ciano">5</span>
+                                                            <span class="numero-gigante texto-ciano" id="kpiComponentesRisco"></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -287,252 +288,179 @@
                                                 <button class="btn btn-ver-todos">Ver Todos</button>
                                             </div>
 
-                                            <div class="row g-3">
-                                                <div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-amarela">
-                                                        <a href="./pages/dashboard-servidor.html" style="text-decoration: none;">
-                                                        <div class="card-body d-flex flex-column gap-3">
-                                                            <div class="cabecalho-do-card">
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center">
-                                                                    <span
-                                                                        class="nome-servidor fw-bold text-white">TikTok
-                                                                        US-West-1</span>
-                                                                    <span class="bolinha-status status-amarelo"></span>
-                                                                </div>
-                                                                <span class="localizacao-servidor text-secondary"
-                                                                    style="font-size: 0.85rem">California, USA</span>
-                                                            </div>
+                                            <div class="row g-3" id="servidoresAlerta">
 
-                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">CPU</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">25%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">RAM</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">72%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">DISCO</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">55%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
 
                                                 <div class="col-12 col-md-6 col-xl-4">
                                                     <div class="card h-100 cartao-servidor borda-vermelha">
-                                                            <a href="./pages/dashboard-servidor.html" style="text-decoration: none;">
-                                                        <div class="card-body d-flex flex-column gap-3">
-                                                            <div class="cabecalho-do-card">
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center">
-                                                                    <span
-                                                                        class="nome-servidor fw-bold text-white">TikTok
-                                                                        EU-Central-1</span>
-                                                                    <span class="bolinha-status status-vermelho"></span>
+                                                        <a href="./pages/dashboard-servidor.html"
+                                                            style="text-decoration: none;">
+                                                            <div class="card-body d-flex flex-column gap-3">
+                                                                <div class="cabecalho-do-card">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center">
+                                                                        <span
+                                                                            class="nome-servidor fw-bold text-white">TikTok
+                                                                            EU-Central-1</span>
+                                                                        <span
+                                                                            class="bolinha-status status-vermelho"></span>
+                                                                    </div>
+                                                                    <span class="localizacao-servidor text-secondary"
+                                                                        style="font-size: 0.85rem">Frankfurt,
+                                                                        Germany</span>
                                                                 </div>
-                                                                <span class="localizacao-servidor text-secondary"
-                                                                    style="font-size: 0.85rem">Frankfurt, Germany</span>
-                                                            </div>
 
-                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">CPU</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">95%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                <div
+                                                                    class="area-metricas d-flex flex-column gap-3 mt-2">
+                                                                    <div class="item-metrica">
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-1">
+                                                                            <span class="label-metrica text-secondary"
+                                                                                style="font-size: 0.85rem">CPU</span>
+                                                                            <span
+                                                                                class="valor-metrica text-white fw-bold">95%</span>
                                                                         </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">RAM</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">91%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        <div class="d-flex w-100 gap-1">
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #FFD500; height: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">DISCO</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">88%</span>
+                                                                    <div class="item-metrica">
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-1">
+                                                                            <span class="label-metrica text-secondary"
+                                                                                style="font-size: 0.85rem">RAM</span>
+                                                                            <span
+                                                                                class="valor-metrica text-white fw-bold">91%</span>
+                                                                        </div>
+                                                                        <div class="d-flex w-100 gap-1">
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #FFD500; height: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                    <div class="item-metrica">
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-1">
+                                                                            <span class="label-metrica text-secondary"
+                                                                                style="font-size: 0.85rem">DISCO</span>
+                                                                            <span
+                                                                                class="valor-metrica text-white fw-bold">88%</span>
                                                                         </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        <div class="d-flex w-100 gap-1">
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #FFD500; height: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                         </a>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12 col-md-6 col-xl-4">
                                                     <div class="card h-100 cartao-servidor borda-amarela">
-                                                        <a href="./pages/dashboard-servidor.html" style="text-decoration: none;">
-                                                        <div class="card-body d-flex flex-column gap-3">
-                                                            <div class="cabecalho-do-card">
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center">
-                                                                    <span
-                                                                        class="nome-servidor fw-bold text-white">TikTok
-                                                                        SA-East-1</span>
-                                                                    <span class="bolinha-status status-amarelo"></span>
+                                                        <a href="./pages/dashboard-servidor.html"
+                                                            style="text-decoration: none;">
+                                                            <div class="card-body d-flex flex-column gap-3">
+                                                                <div class="cabecalho-do-card">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center">
+                                                                        <span
+                                                                            class="nome-servidor fw-bold text-white">TikTok
+                                                                            SA-East-1</span>
+                                                                        <span
+                                                                            class="bolinha-status status-amarelo"></span>
+                                                                    </div>
+                                                                    <span class="localizacao-servidor text-secondary"
+                                                                        style="font-size: 0.85rem">São Paulo,
+                                                                        Brazil</span>
                                                                 </div>
-                                                                <span class="localizacao-servidor text-secondary"
-                                                                    style="font-size: 0.85rem">São Paulo, Brazil</span>
-                                                            </div>
 
-                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">CPU</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">78%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                <div
+                                                                    class="area-metricas d-flex flex-column gap-3 mt-2">
+                                                                    <div class="item-metrica">
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-1">
+                                                                            <span class="label-metrica text-secondary"
+                                                                                style="font-size: 0.85rem">CPU</span>
+                                                                            <span
+                                                                                class="valor-metrica text-white fw-bold">78%</span>
                                                                         </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">RAM</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">86%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        <div class="d-flex w-100 gap-1">
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #FFD500; height: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">DISCO</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">62%</span>
+                                                                    <div class="item-metrica">
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-1">
+                                                                            <span class="label-metrica text-secondary"
+                                                                                style="font-size: 0.85rem">RAM</span>
+                                                                            <span
+                                                                                class="valor-metrica text-white fw-bold">86%</span>
+                                                                        </div>
+                                                                        <div class="d-flex w-100 gap-1">
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #FFD500; height: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                    <div class="item-metrica">
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center mb-1">
+                                                                            <span class="label-metrica text-secondary"
+                                                                                style="font-size: 0.85rem">DISCO</span>
+                                                                            <span
+                                                                                class="valor-metrica text-white fw-bold">62%</span>
                                                                         </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #FFD500; height: 4px">
-                                                                        </div>
-                                                                        <div class="line-component w-100"
-                                                                            style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        <div class="d-flex w-100 gap-1">
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #FFD500; height: 4px">
+                                                                            </div>
+                                                                            <div class="line-component w-100"
+                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -618,7 +546,8 @@
                     </div>
 
                     <div class="d-flex flex-column gap-2 mb-5">
-                        <label for="select_servidor" class="form-label text-white fw-medium m-0">Selecione o servidor</label>
+                        <label for="select_servidor" class="form-label text-white fw-medium m-0">Selecione o
+                            servidor</label>
                         <select type="text" id="select_servidor" class="form-control"
                             style="background-color: #1f1f1f; border: 1px solid #333; color: #fff; padding: 10px 14px; border-radius: 8px">
                             <option disabled selected value="">Selecionar</option>
@@ -632,7 +561,8 @@
                             onmouseout="this.style.backgroundColor='transparent'">
                             Cancelar
                         </button>
-                        <button type="button" id="btnConfirmarExclusao" data-bs-dismiss="modal" onclick="removerServidor()" class="btn px-4 py-2 fw-medium"
+                        <button type="button" id="btnConfirmarExclusao" data-bs-dismiss="modal"
+                            onclick="removerServidor()" class="btn px-4 py-2 fw-medium"
                             style="background-color: #800020; color: #ff2d56; border: 1px solid #ff2d56; border-radius: 8px; transition: 0.3s"
                             onmouseover="this.style.backgroundColor='#5c0017'"
                             onmouseout="this.style.backgroundColor='#800020'">
@@ -959,10 +889,10 @@
         </div>
     </div>
 
-    
 
 
-      <!-- MENU OFFCANVAS DO BOOTSTRAP HAMBURGUER -->
+
+    <!-- MENU OFFCANVAS DO BOOTSTRAP HAMBURGUER -->
     <div class="offcanvas offcanvas-start text-white sidebar" tabindex="-1" id="menuMobile"
         style="width: 280px; position: fixed;">
 
@@ -1065,10 +995,11 @@
 </body>
 
 </html>
+
 <script src="./services/api.js"></script>
 <script src="./services/servidorService.js"></script>
 <script>
-    async function buscarServidores () {
+    async function buscarServidores() {
         var idEmpresa = sessionStorage.ID_EMPRESA;
         resultado = await buscarServidoresService(idEmpresa)
         let conteudoSelect = `<option disabled selected value="">Selecionar</option>`
@@ -1076,19 +1007,182 @@
             conteudoSelect += `<option value="${resultado[i].id_servidor}">${resultado[i].nome_servidor}</option>`
         }
         document.getElementById("select_servidor").innerHTML = conteudoSelect;
-    } 
-    
+    }
+
     buscarServidores()
 
     async function removerServidor() {
         const idServidor = document.getElementById("select_servidor").value;
 
         console.log(idServidor);
-        
-        
+
+
         const resultado = await excluirServidorService(idServidor)
         console.log(resultado);
         alert("Servidor excluido")
         buscarServidores()
     }
+
+    function descobrirStatusServidor(cpu, ram, disco) {
+        if ((cpu >= 90 || ram >= 90 || disco >= 90)
+            || (cpu >= 70 && ram >= 70)
+            || (cpu >= 70 && disco >= 70)
+            || (disco >= 70 && ram >= 70)) {
+            return 'critico'
+        } else if (cpu >= 70 || ram >= 70 || disco >= 70) {
+            return 'risco'
+        } else {
+            return 'normal'
+        }
+    }
+
+    function descobrirStatusComponente(valorComponente) {
+        if (valorComponente >= 90) {
+            return {
+                status: 'critico',
+                cor: '#FF0050'
+            };
+        } else if (valorComponente >= 70) {
+            return {
+                status: 'risco',
+                cor: '#FFD600'
+            };
+        } else {
+            return {
+                status: 'estavel',
+                cor: '#01F2EA'
+            };
+        }
+    }
+
+
+
+
+    async function mostrarServidores() {
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+
+        const resultado = await buscarServidoresService(idEmpresa);
+
+        let conteudoCards = ""
+
+        let qtdMaquinasEmRisco = 0;
+        let qtdComponentesEmRisco = 0;
+
+
+
+        for (const servidor of resultado) {
+            const responseS3 = await fetch(`http://localhost:3333/servidor/uso-s3/${servidor.mac_address}`);
+            const dadosS3 = await responseS3.json()
+
+            const cpu = dadosS3?.usoAtual?.cpu || 0;
+            const ram = dadosS3?.usoAtual?.ram || 0;
+            const disco = dadosS3?.usoAtual?.disco || 0;
+
+            const status = descobrirStatusServidor(cpu, ram, disco)
+
+            if (status !== 'normal') {
+                qtdMaquinasEmRisco++;
+            }
+
+            if (cpu >= 70) qtdComponentesEmRisco++;
+            if (ram >= 70) qtdComponentesEmRisco++;
+            if (disco >= 70) qtdComponentesEmRisco++;
+
+            let borda
+            let cor
+            let statusCor
+            if (status == 'critico') {
+                borda = 'vermelha'
+                statusCor = 'vermelho'
+                cor = '#FF0050'
+            } else if (status == 'risco') {
+                borda = 'amarela'
+                cor = '#FFD600'
+            } else {
+                borda = 'azul'
+                cor = '#01F2EA'
+            }
+
+            const corCpu = descobrirStatusComponente(cpu).cor;
+            const corRam = descobrirStatusComponente(ram).cor;
+            const corDisco = descobrirStatusComponente(disco).cor;
+
+            console.log(borda + 'a' + cor)
+            conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
+                                                    <div class="card h-100 cartao-servidor borda-${borda}">
+                                                        <a href="./pages/dashboard-servidor.html" style="text-decoration: none;">
+                                                        <div class="card-body d-flex flex-column gap-3">
+                                                            <div class="cabecalho-do-card">
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center">
+                                                                    <span
+                                                                        class="nome-servidor fw-bold text-white">${servidor.nome_servidor}
+                                                            ${servidor.localizacao_servidor || 'localização indisponível'}</span>
+                                                                    <span class="bolinha-status status-${statusCor} "></span>
+                                                                </div>
+                                                                <span class="localizacao-servidor text-secondary"
+                                                                    style="font-size: 0.85rem">California, USA</span>
+                                                            </div>
+
+                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">CPU</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">${cpu}%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        
+                                                                        <div class="line-component" 
+                                                                            style="background-color: ${corCpu}; width: ${cpu}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">RAM</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">${ram}%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        
+                                                                        <div class="line-component"
+                                                                            style="background-color: ${corRam}; width: ${ram}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item-metrica">
+                                                                    <div
+                                                                        class="d-flex justify-content-between align-items-center mb-1">
+                                                                        <span class="label-metrica text-secondary"
+                                                                            style="font-size: 0.85rem">DISCO</span>
+                                                                        <span
+                                                                            class="valor-metrica text-white fw-bold">${disco}%</span>
+                                                                    </div>
+                                                                    <div class="d-flex w-100 gap-1">
+                                                                        
+                                                                        <div class="line-component"
+                                                                            style="background-color: ${corDisco}; width: ${disco}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </a>
+                                                    </div>
+                                                </div>`
+
+
+        }
+        document.getElementById("kpiMaquinasRisco").innerHTML = qtdMaquinasEmRisco;
+        document.getElementById("kpiComponentesRisco").innerHTML = qtdComponentesEmRisco;
+
+        document.getElementById("servidoresAlerta").innerHTML = conteudoCards;
+        document.getElementById("totalMaquinas").innerHTML = resultado.length
+    }
+    mostrarServidores();
 </script>
