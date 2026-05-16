@@ -231,3 +231,41 @@
   margin-top: 2%;
   margin-bottom: -3%;
 }
+
+.previsao-container {
+    border: 1px solid #FFFFFF14;
+    border-radius: 7px;
+    padding: 15px;
+    background-color: #151515;
+    height: 100%;
+}
+
+.previsao-container h1 {
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.previsao-container label {
+    color: #A0A0A0;
+    font-size: 14px;
+}
+
+.previsao-container span {
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.div-line {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FFFFFF14;
+    margin-top: 14px;
+    padding-bottom: 5px;
+}
+
+.informacoes-previsao {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}

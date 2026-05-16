@@ -366,11 +366,9 @@
                         </div>
                     </div>
 
-                    <div class="col">
-                        <div class="row g-3">
-                            
-                            <div class="col-lg-12">
-
+                    <div class="col d-flex flex-column" style="height: 100%;">
+                        <div class="row g-3 flex-grow-1">
+                            <div class="col-md-9">
                                 <div class="card-kpi">
                                     <div class="d-flex align-items-center justify-content-center"
                                         style="color: white; gap: 10px;">
@@ -387,8 +385,41 @@
                                         </button>
                                         Linha do Tempo de Uso
                                     </div>
-                                    <canvas style="" id="dashboardComponentes"></canvas>
+                                    <canvas id="dashboardComponentes"></canvas>
                                 </div>
+                            </div>
+                            <div class="col-md-3 d-flex">
+                                <div class="previsao-container w-100 h-100">
+                                    <div class="informacoes-previsao">
+                                    <h1 style="padding-top: 0px; margin-top: 0px;" class="div-line">Previsão de Esgotamento</h1>
+
+                                        <div>
+                                            <label>Tempo até 100%:</label>
+                                            <div class="div-line">
+                                                <span>4.5 horas</span>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label>Otimização sugerida:</label>
+                                            <div class="div-line">
+                                                <span>chrome</span>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label>Consumo:</label>
+                                            <div class="div-line">
+                                                <span>10%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-lg-12">
+
 
                                 <div class="process-container mt-3">
                                     <h1>Processos Ativos</h1>
@@ -573,7 +604,7 @@
                                 </div>
 
                             </div>
-                            
+
                         </div>
                     </div>
 
