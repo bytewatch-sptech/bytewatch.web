@@ -232,13 +232,136 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
+                <div class="row g-4 mb-4">
+                    <div class="col-xl-6">
+                        <div class="card-form h-100" style="padding: 1.5rem !important;">
+                            <div class="mb-4">
+                                <h5 class="text-white m-0 fw-semibold mb-1">Distribuição por Severidade</h5>
+                                <span class="text-secondary" style="font-size: 0.85rem;">Todos os sistemas · Tempo
+                                    real</span>
+                            </div>
 
+                            <div class="row align-items-center h-100">
+                                <div class="col-5 position-relative d-flex justify-content-center">
+                                    <div style="height: 180px; width: 180px;">
+                                        <canvas id="donutChart"></canvas>
+                                    </div>
+                                    <div class="position-absolute top-50 start-50 translate-middle text-center mt-1">
+                                        <h3 class="text-white fw-bold m-0" style="line-height: 1;">1.284</h3>
+                                        <span class="text-secondary" style="font-size: 0.75rem;">eventos</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-7 d-flex flex-column gap-3">
+
+                                    <div>
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span
+                                                    style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--cor02);"></span>
+                                                <span class="text-white" style="font-size: 0.85rem;">Crítico</span>
+                                            </div>
+                                            <span class="text-white fw-bold" style="font-size: 0.9rem;">247</span>
+                                        </div>
+                                        <div class="progress"
+                                            style="height: 4px; background-color: rgba(255, 255, 255, 0.1);">
+                                            <div class="progress-bar" role="progressbar"
+                                                style="width: 19.2%; background-color: var(--cor02);"></div>
+                                        </div>
+                                        <span class="text-secondary mt-1 d-block" style="font-size: 0.75rem;">19.2% do
+                                            total</span>
+                                    </div>
+
+                                    <div>
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span
+                                                    style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--cor01);"></span>
+                                                <span class="text-white" style="font-size: 0.85rem;">Alerta</span>
+                                            </div>
+                                            <span class="text-white fw-bold" style="font-size: 0.9rem;">396</span>
+                                        </div>
+                                        <div class="progress"
+                                            style="height: 4px; background-color: rgba(255, 255, 255, 0.1);">
+                                            <div class="progress-bar" role="progressbar"
+                                                style="width: 30.8%; background-color: var(--cor01);"></div>
+                                        </div>
+                                        <span class="text-secondary mt-1 d-block" style="font-size: 0.75rem;">30.8% do
+                                            total</span>
+                                    </div>
+
+                                    <div>
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span
+                                                    style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--cor09);"></span>
+                                                <span class="text-white" style="font-size: 0.85rem;">Saudável</span>
+                                            </div>
+                                            <span class="text-white fw-bold" style="font-size: 0.9rem;">641</span>
+                                        </div>
+                                        <div class="progress"
+                                            style="height: 4px; background-color: rgba(255, 255, 255, 0.1);">
+                                            <div class="progress-bar" role="progressbar"
+                                                style="width: 49.9%; background-color: var(--cor09);"></div>
+                                        </div>
+                                        <span class="text-secondary mt-1 d-block" style="font-size: 0.75rem;">49.9% do
+                                            total</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        Chart.defaults.color = '#6c757d';
+        Chart.defaults.font.family = "'League Spartan', sans-serif";
+
+        const donutCtx = document.getElementById('donutChart');
+        if (donutCtx) {
+            new Chart(donutCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Crítico', 'Alerta', 'Saudável'],
+                    datasets: [{
+                        data: [19.2, 30.8, 49.9],
+                        backgroundColor: [
+                            '#FF2D56',
+                            '#FFD600',
+                            '#00c853'
+                        ],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '75%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return ' ' + context.label + ': ' + context.raw + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
+</script>
