@@ -25,7 +25,7 @@
 
                 <div class="d-flex justify-content-center mb-5">
                     <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
-                    <i class="bi bi-cpu fs-2 text-success d-block d-sm-none"></i>
+                    <i class="bi bi-ram fs-2 text-success d-block d-sm-none"></i>
                 </div>
 
                 <ul class="nav nav-pills flex-column mb-auto gap-2">
@@ -277,7 +277,7 @@
                                             </div>
                                             <div class="col"
                                                 style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
-                                                <span class="display-6 status-percent">91%</span>
+                                                <span class="display-6 status-percent" id="percentual_total_uso_kpi"></span>
                                             </div>
                                         </div>
                                         <div class="div-legends">
@@ -286,20 +286,20 @@
                                                     <span class="span-circle" style="background-color: #B0DB43;"></span>
                                                     <span class="span-legend">Em uso</span>
                                                 </div>
-                                                <span class="span-percent ">91%</span>
+                                                <span class="span-percent" id="percentual_uso_kpi"></span>
                                             </div>
                                             <div class="legend-container">
                                                 <div>
                                                     <span class="span-circle"></span>
                                                     <span class="span-legend">Restante</span>
                                                 </div>
-                                                <span class="span-percent">9%</span>
+                                                <span class="span-percent" id="percentual_uso_restante_kpi"></span>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-6 p-0" style="position: relative;">
-                                        <canvas id="doughnut_cpu"></canvas>
+                                        <canvas id="doughnut_ram"></canvas>
                                     </div>
 
                                 </div>
@@ -974,7 +974,7 @@
                                                                 stroke-linejoin="round" />
                                                         </svg>
 
-                                                        <h5 style="margin: 0;">CPU</h5>
+                                                        <h5 style="margin: 0;">ram</h5>
 
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
@@ -1035,7 +1035,7 @@
 
 
 
-                                                        <h5 style="margin: 0;">CPU</h5>
+                                                        <h5 style="margin: 0;">ram</h5>
 
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
@@ -1080,7 +1080,7 @@
                                                         </svg>
 
 
-                                                        <h5 style="margin: 0;">CPU</h5>
+                                                        <h5 style="margin: 0;">ram</h5>
 
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
@@ -1129,64 +1129,68 @@
 <script src="../js/scriptAI.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const cpu = document.getElementById('doughnut_cpu');
-    
-    const cpuData = {
-        datasets: [{
-            label: 'My First Dataset',
-            data: [91, 9],
-            backgroundColor: [
-                '#B0DB43',
-                "#212121",
-            ],
-            hoverOffset: 4
-        }]
-    };
-    const cpuConfig = {
-        type: 'doughnut',
-        data: cpuData,
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            layout: {
-                padding: 0
-            },
-            plugins: {
-                legend: { display: false },
-                tooltip: { enabled: false }
-            },
-            elements: {
-                arc: {
-                    borderWidth: 0
-                }
-            }
-        }
-    };
-    
-    
-    new Chart(cpu, cpuConfig);
-    
-    
-    
-    
     async function obterDadosGrafico() {
         const resultado = await buscarComponenteRamService("24:fe:9a:06:99:2f")
-        dadosKpiUso = [resultado.dadosMaquina.metricas.kpiUso.percentualUsado, resultado.dadosMaquina.metricas.kpiUso.percentualLivre]
+        dadosUsoKpi = [resultado.dadosMaquina.metricas.kpiUso.percentualUsado, resultado.dadosMaquina.metricas.kpiUso.percentualLivre]
         console.log(resultado);
+        percentual_total_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
+        percentual_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
+        percentual_uso_restante_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualLivre}%`
         const dadosGrafico = resultado.dadosMaquina.metricas.grafico.percentualUsado
         const momentoDadosGrafico = resultado.dadosMaquina.metricas.grafico.momento
         console.log(dadosGrafico);
         console.log(momentoDadosGrafico);
-        
-        
-        plotarGrafico(dadosGrafico, momentoDadosGrafico)
+
+
+        plotarGrafico(dadosGrafico, momentoDadosGrafico, dadosUsoKpi)
     }
-    
+
     obterDadosGrafico()
 
 
 
-    function plotarGrafico(dados, momentos) {
+    function plotarGrafico(dados, momentos, dadosUsoKpi) {
+        const ram = document.getElementById('doughnut_ram');
+
+        const ramData = {
+            datasets: [{
+                label: 'My First Dataset',
+                data: dadosUsoKpi,
+                backgroundColor: [
+                    '#B0DB43',
+                    "#212121",
+                ],
+                hoverOffset: 4
+            }]
+        };
+        const ramConfig = {
+            type: 'doughnut',
+            data: ramData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: 0
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                }
+            }
+        };
+
+
+        new Chart(ram, ramConfig);
+
+
+
+
+
         let graficoAberto = null;
         let grafico = '';
         let configuracaoAtivaDashboard = null;
@@ -1359,12 +1363,12 @@
         if (grafico == 'usoProcessos') {
             document.getElementById('tituloModal').innerText = 'Uso dos Componentes'
             document.getElementById('textoModal').innerText = 'Um gráfico tipo pirulito é uma variação minimalista do gráfico de barras que utiliza uma linha fina com um marcador circular na ponta para indicar um valor exato. Ao analisar os cinco processos de maior consumo de um sistema, este formato elimina a poluição visual gerada por barras espessas. Sua estrutura direciona a atenção diretamente para os marcadores, garantindo uma comparação visual rápida, limpa e precisa da proporção de recursos utilizados por cada serviço.'
-            graficoAberto = new Chart(ctxModal, lollipopCPUConfig)
+            graficoAberto = new Chart(ctxModal, lollipopramConfig)
 
         } else if (grafico == 'tendencia') {
             document.getElementById('tituloModal').innerText = 'Tendencia'
             document.getElementById('textoModal').innerText = 'Um gráfico de tendência utiliza linhas contínuas para relacionar o consumo total de memória com a carga de processos específicos ao longo do tempo. Esta visualização permite identificar de forma imediata qual serviço exato está elevando o uso da RAM ou provocando picos de saturação no sistema.'
-            graficoAberto = new Chart(ctxModal, scatterCpuConfig)
+            graficoAberto = new Chart(ctxModal, scatterramConfig)
 
         } else if (grafico == 'histograma') {
             document.getElementById('tituloModal').innerText = 'Histograma'
@@ -1379,7 +1383,7 @@
         } else if (grafico == 'doughnut') {
             document.getElementById('tituloModal').innerText = 'Consumo da RAM'
             document.getElementById('textoModal').innerText = 'Um gráfico de rosca representa cem por cento da capacidade total de um recurso em formato circular. Nele, a área é dividida em duas fatias estritamente proporcionais: uma ilustra o espaço já consumido e a outra reflete o espaço livre. Trata-se de uma representação visual direta e de soma zero, onde o aumento do percentual de uso resulta, obrigatoriamente e na exata mesma medida, na redução visual da área correspondente à capacidade disponível.'
-            graficoAberto = new Chart(ctxModal, cpuConfig)
+            graficoAberto = new Chart(ctxModal, ramConfig)
 
         }
     })
