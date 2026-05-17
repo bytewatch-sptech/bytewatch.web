@@ -303,4 +303,10 @@ body {
             color: var(--cor09);
         }
     }
+
+    .chart-container-logs {
+        height: 340px;
+        width: 100%;
+        position: relative;
+    }
 }
