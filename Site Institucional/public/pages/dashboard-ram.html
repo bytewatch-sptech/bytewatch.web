@@ -391,7 +391,8 @@
                             <div class="col-md-3 d-flex">
                                 <div class="previsao-container w-100 h-100">
                                     <div class="informacoes-previsao">
-                                    <h1 style="padding-top: 0px; margin-top: 0px;" class="div-line">Previsão de Esgotamento</h1>
+                                        <h1 style="padding-top: 0px; margin-top: 0px;" class="div-line">Previsão de
+                                            Esgotamento</h1>
 
                                         <div>
                                             <label>Tempo até 100%:</label>
@@ -1120,431 +1121,271 @@
                                 de servidor.
                             </div>
                         </div>
-
-
-
-
-                        <script src="../js/scriptAI.js"></script>
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                        <script>
-
-
-
-
-
-                            const cpu = document.getElementById('doughnut_cpu');
-
-                            const cpuData = {
-                                datasets: [{
-                                    label: 'My First Dataset',
-                                    data: [91, 9],
-                                    backgroundColor: [
-                                        '#B0DB43',
-                                        "#212121",
-                                    ],
-                                    hoverOffset: 4
-                                }]
-                            };
-                            const cpuConfig = {
-                                type: 'doughnut',
-                                data: cpuData,
-                                options: {
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    layout: {
-                                        padding: 0
-                                    },
-                                    plugins: {
-                                        legend: { display: false },
-                                        tooltip: { enabled: false }
-                                    },
-                                    elements: {
-                                        arc: {
-                                            borderWidth: 0
-                                        }
-                                    }
-                                }
-                            };
-
-
-                            new Chart(cpu, cpuConfig);
-
-
-                            //GRÁFICO DE TENDÊNCIA
-
-                            const scatterCpu = document.getElementById('scatterPlotCPU');
-
-                            const dataPoints = [
-                                { x: 2, y: 25 }, { x: 3, y: 20 }, { x: 5, y: 50 },
-                                { x: 8, y: 70 }, { x: 12, y: 120 }, { x: 15, y: 140 }
-
-                            ]
-
-                            function calcularRegressao(data) {
-                                const n = data.length
-                                let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0
-
-                                data.forEach(p => {
-                                    sumX += p.x
-                                    sumY += p.y
-                                    sumXY += p.x * p.y
-                                    sumXX += p.x * p.x
-                                })
-
-                                const m = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX)
-                                const b = (sumY - m * sumX) / n
-                                return { m, b }
-                            }
-
-                            const { m, b } = calcularRegressao(dataPoints)
-                            const minX = Math.min(...dataPoints.map(p => p.x))
-                            const maxX = Math.max(...dataPoints.map(p => p.x))
-                            const linePoints = [
-                                { x: minX, y: m * minX + b },
-                                { x: maxX, y: m * maxX + b }
-                            ]
-
-                            const dataScatter = [
-                                {
-                                    label: 'Uso de RAM',
-                                    data: dataPoints,
-                                    backgroundColor: '#B0DB43'
-
-                                },
-                                {
-                                    label: 'Tendência',
-                                    data: linePoints,
-                                    type: 'line',
-                                    borderColor: 'red',
-                                    showLine: true,
-                                    fill: false,
-                                    pointRadius: 0
-                                }
-                            ]
-
-                            const scatterCpuConfig = {
-                                type: 'scatter',
-                                data: {
-                                    datasets: dataScatter
-                                },
-                                options: {
-                                    scales: {
-                                        x: {
-                                            type: 'linear',
-                                            position: 'bottom',
-                                            border: {
-                                                color: '#dddddd'
-                                            },
-                                            grid: {
-                                                display: true,
-                                                color: 'rgba(255, 255, 255, 0.1)',
-                                                tickColor: '#dddddd'
-                                            },
-                                            ticks: {
-                                                color: '#dddddd'
-                                            }
-                                        },
-                                        y: {
-                                            border: {
-                                                color: '#dddddd'
-                                            },
-                                            grid: {
-                                                display: true,
-                                                color: 'rgba(255, 255, 255, 0.1)',
-                                                tickColor: '#dddddd'
-                                            },
-                                            ticks: {
-                                                color: '#dddddd'
-                                            }
-                                        }
-                                    },
-                                    plugins: {
-                                        legend: {
-                                            labels: {
-                                                usePointStyle: true,
-                                                pointStyle: 'circle',
-                                                font: {
-                                                    size: 8
-                                                },
-                                                color: '#dddddd'
-                                            }
-                                        }
-                                    },
-                                    tooltip: {
-                                        displayColors: false,
-                                        callbacks: {
-                                            label: (context) => `RAM: ${context.parsed.x} GB | Processos: ${context.parsed.y.toFixed(0)}`
-                                        }
-                                    }
-                                }
-                            }
-
-                            new Chart(scatterCpu, scatterCpuConfig);
-
-                            // obterDadosGrafico(idSensor)
-
-                            function obterDadosGrafico(id_registro) {
-
-                                fetch(`/medidas/ultimas/${id_registro}`, { cache: 'no-store' }).then(function (response) {
-                                    if (response.ok) {
-                                        response.json().then(function (resposta) {
-                                            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                                            resposta.reverse();
-                                            plotarGrafico(resposta, id_registro);
-
-                                        });
-                                    } else {
-                                        console.error('Nenhum dado encontrado ou erro na API');
-                                    }
-                                })
-                                    .catch(function (error) {
-                                        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-                                    });
-                            }
-
-                            plotarGrafico([], 2)
-
-
-                            function plotarGrafico(resposta, id_registro) {
-                                let graficoAberto = null;
-                                let grafico = '';
-                                let configuracaoAtivaDashboard = null;
-
-                                console.log('iniciando plotagem do gráfico...');
-
-                                labels = ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
-
-                                let dadosRede = {
-                                    labels: labels,
-                                    datasets: [
-                                        {
-                                            label: 'Recebido',
-                                            data: [70, 80, 35, 62, 95, 49, 32],
-                                            fill: true,
-                                            borderColor: '#B0DB43',
-                                            borderWidth: 1.9,
-                                            tension: 0.3,
-                                            fill: "+2",
-                                            fill: false,
-                                            interaction: {
-                                                intersect: false
-                                            },
-                                            radius: 0,
-                                        },
-                                        {
-                                            label: 'Enviado',
-                                            data: [66, 89, 43, 93, 69, 51, 84],
-                                            fill: true,
-                                            borderColor: '#FFD500',
-                                            borderWidth: 1.9,
-                                            tension: 0.3,
-                                            fill: false,
-                                            interaction: {
-                                                intersect: false
-                                            },
-                                            radius: 0,
-                                        },
-                                    ]
-                                }
-
-                                let dadosDashboard = {
-                                    labels: labels,
-                                    datasets: [
-                                        {
-                                            label: 'RAM',
-                                            data: [32, 21, 45, 56, 84, 62, 91, 90, 91],
-                                            fill: true,
-                                            borderColor: '#B0DB43',
-                                            borderWidth: 1.9,
-
-                                            fill: false,
-                                            interaction: {
-                                                intersect: false
-                                            },
-                                            radius: 0,
-                                        },
-
-                                    ]
-                                }
-
-
-                                console.log('----------------------------------------------')
-                                console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-                                console.log(resposta)
-
-                                for (i = 0; i < resposta.length; i++) {
-                                    var registro = resposta[i];
-
-                                    var momentoGrafico = registro.momento_grafico
-                                    labels.push(momentoGrafico);
-
-
-                                    dadosDashboard.datasets[1].data.push(registro.dado);
-                                }
-
-                                const configDashboard = {
-                                    type: 'line',
-                                    data: dadosDashboard,
-                                    options: {
-                                        scales: {
-                                            x: {
-                                                title: {
-                                                    display: true,
-                                                    text: "Horário",
-                                                    color: '#dddddd',
-                                                    font: {
-                                                        size: 14,
-                                                        weight: 'bold'
-                                                    }
-                                                },
-                                                ticks: { color: '#dddddd' }
-                                            },
-                                            y: {
-                                                title: {
-                                                    display: true,
-                                                    text: 'Consumo (%)',
-                                                    color: '#dddddd',
-                                                    font: {
-                                                        size: 14,
-                                                        weight: 'bold'
-                                                    }
-                                                },
-                                                ticks: { color: '#dddddd' }
-                                            }
-                                        }
-                                    }
-                                };
-
-
-
-
-                                let dashboard_componentes = new Chart(
-                                    document.getElementById(`dashboardComponentes`),
-                                    configDashboard
-                                );
-
-
-
-
-                                configuracaoAtivaDashboard = JSON.parse(JSON.stringify(configDashboard));
-
-                                const ctxModal = document.getElementById('canvasGrande')
-                                document.getElementById('modalAmpliado').addEventListener('shown.bs.modal', function () {
-
-                                    if (grafico == 'usoTempo') {
-                                        document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
-                                        document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-
-                                        if (configuracaoAtivaDashboard) {
-                                            graficoAberto = new Chart(ctxModal, configuracaoAtivaDashboard)
-                                        }
-                                    }
-                                })
-
-                                // setTimeout(() => atualizarGrafico(id_registro, dadosDashboard, dashboard_componentes), 2000);
-                            }
-
-                            function atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade) {
-                                fetch(`/medidas/tempo-real/${id_registro}`, { cache: 'no-store' }).then(function (response) {
-                                    if (response.ok) {
-                                        response.json().then(function (novoRegistro) {
-
-                                            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                                            console.log(`Dados atuais do gráfico de temperatura:`);
-                                            console.log(dadosTemperatura);
-
-                                            console.log(`Dados atuais do gráfico de umidade:`);
-                                            console.log(dadosUmidade);
-
-                                            var momentoGrafico = novoRegistro[0].momento_grafico
-                                            var momentoGraficoFormatado = novoRegistro[0].momento_grafico.split(':')
-                                            momentoGraficoFormatado = `${momentoGraficoFormatado[0]}:${momentoGraficoFormatado[1]}`
-                                            if (momentoGrafico == labels[labels.length - 1]) {
-                                                console.log("---------------------------------------------------------------")
-                                                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                                                console.log("Horário do novo dado capturado:")
-                                                console.log(momentoGrafico)
-                                                console.log("Horário do último dado capturado:")
-                                                console.log(labels[labels.length - 1])
-                                                console.log("---------------------------------------------------------------")
-                                            } else {
-
-                                                dadosTemperatura.labels.shift(); // apagar o primeiro
-                                                dadosTemperatura.labels.push(momentoGraficoFormatado); // incluir um novo momento
-
-                                                dadosUmidade.labels.shift(); // apagar o primeiro
-                                                dadosUmidade.labels.push(momentoGraficoFormatado); // incluir um novo momento
-
-                                                labels.shift()
-                                                labelsFormatado.shift()
-                                                labels.push(momentoGrafico)
-                                                labelsFormatado.push(momentoGraficoFormatado)
-
-                                                dadosUmidade.datasets[1].data.shift();  // apagar o primeiro de umidade
-                                                dadosUmidade.datasets[1].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                                            }
-
-                                            proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade), 2000);
-                                        });
-                                    } else {
-                                        console.error('Nenhum dado encontrado ou erro na API');
-                                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                                        proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dados, myChart), 2000);
-                                    }
-                                })
-                                    .catch(function (error) {
-                                        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-                                    });
-                            }
-
-
-
-
-                            // MODAL CONFIG
-
-                            let graficoAberto = null;
-                            let grafico = '';
-                            const ctxModal = document.getElementById('canvasGrande')
-                            document.getElementById('modalAmpliado').addEventListener('shown.bs.modal', function () {
-
-                                if (graficoAberto) {
-                                    graficoAberto.destroy();
-                                }
-
-                                if (grafico == 'usoProcessos') {
-                                    document.getElementById('tituloModal').innerText = 'Uso dos Componentes'
-                                    document.getElementById('textoModal').innerText = 'Um gráfico tipo pirulito é uma variação minimalista do gráfico de barras que utiliza uma linha fina com um marcador circular na ponta para indicar um valor exato. Ao analisar os cinco processos de maior consumo de um sistema, este formato elimina a poluição visual gerada por barras espessas. Sua estrutura direciona a atenção diretamente para os marcadores, garantindo uma comparação visual rápida, limpa e precisa da proporção de recursos utilizados por cada serviço.'
-                                    graficoAberto = new Chart(ctxModal, lollipopCPUConfig)
-
-                                } else if (grafico == 'tendencia') {
-                                    document.getElementById('tituloModal').innerText = 'Tendencia'
-                                    document.getElementById('textoModal').innerText = 'Um gráfico de tendência utiliza linhas contínuas para relacionar o consumo total de memória com a carga de processos específicos ao longo do tempo. Esta visualização permite identificar de forma imediata qual serviço exato está elevando o uso da RAM ou provocando picos de saturação no sistema.'
-                                    graficoAberto = new Chart(ctxModal, scatterCpuConfig)
-
-                                } else if (grafico == 'histograma') {
-                                    document.getElementById('tituloModal').innerText = 'Histograma'
-                                    document.getElementById('textoModal').innerText = 'Um histograma de uso da memória RAM distribui os percentuais de consumo em intervalos predefinidos e exibe a frequência de ocorrências dentro de cada faixa. Sua finalidade principal é identificar, de forma imediata, a margem de carga predominante e os níveis de estresse em que um sistema opera na maior parte do tempo.'
-                                    graficoAberto = new Chart(ctxModal, configHist)
-
-                                } else if (grafico == 'usoTempo') {
-                                    document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-                                    graficoAberto = new Chart(ctxModal, configDashboard)
-
-                                } else if (grafico == 'doughnut') {
-                                    document.getElementById('tituloModal').innerText = 'Consumo da RAM'
-                                    document.getElementById('textoModal').innerText = 'Um gráfico de rosca representa cem por cento da capacidade total de um recurso em formato circular. Nele, a área é dividida em duas fatias estritamente proporcionais: uma ilustra o espaço já consumido e a outra reflete o espaço livre. Trata-se de uma representação visual direta e de soma zero, onde o aumento do percentual de uso resulta, obrigatoriamente e na exata mesma medida, na redução visual da área correspondente à capacidade disponível.'
-                                    graficoAberto = new Chart(ctxModal, cpuConfig)
-
-                                }
-                            })
-                        </script>
-
-
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-                            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-                            crossorigin="anonymous"></script>
 </body>
 
 </html>
+<script src="../services/api.js"></script>
+<script src="../services/serviceComponenteRam.js"></script>
+<script src="../js/scriptAI.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const cpu = document.getElementById('doughnut_cpu');
+    
+    const cpuData = {
+        datasets: [{
+            label: 'My First Dataset',
+            data: [91, 9],
+            backgroundColor: [
+                '#B0DB43',
+                "#212121",
+            ],
+            hoverOffset: 4
+        }]
+    };
+    const cpuConfig = {
+        type: 'doughnut',
+        data: cpuData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            layout: {
+                padding: 0
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+            },
+            elements: {
+                arc: {
+                    borderWidth: 0
+                }
+            }
+        }
+    };
+    
+    
+    new Chart(cpu, cpuConfig);
+    
+    
+    
+    
+    async function obterDadosGrafico() {
+        const resultado = await buscarComponenteRamService("24:fe:9a:06:99:2f")
+        dadosKpiUso = [resultado.dadosMaquina.metricas.kpiUso.percentualUsado, resultado.dadosMaquina.metricas.kpiUso.percentualLivre]
+        console.log(resultado);
+        const dadosGrafico = resultado.dadosMaquina.metricas.grafico.percentualUsado
+        const momentoDadosGrafico = resultado.dadosMaquina.metricas.grafico.momento
+        console.log(dadosGrafico);
+        console.log(momentoDadosGrafico);
+        
+        
+        plotarGrafico(dadosGrafico, momentoDadosGrafico)
+    }
+    
+    obterDadosGrafico()
+
+
+
+    function plotarGrafico(dados, momentos) {
+        let graficoAberto = null;
+        let grafico = '';
+        let configuracaoAtivaDashboard = null;
+
+        console.log('iniciando plotagem do gráfico...');
+
+        labels = []
+
+        let dadosDashboard = {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'RAM',
+                    data: [],
+                    fill: true,
+                    borderColor: '#B0DB43',
+                    borderWidth: 1.9,
+
+                    fill: false,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+
+            ]
+        }
+
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(dados)
+
+        for (i = 0; i < dados.length; i++) {
+            var registro = dados[i];
+
+            var momentoGrafico = momentos[i]
+            labels.push(momentoGrafico);
+
+            dadosDashboard.datasets[0].data.push(registro);
+        }
+
+        const configDashboard = {
+            type: 'line',
+            data: dadosDashboard,
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Horário",
+                            color: '#dddddd',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        ticks: { color: '#dddddd' }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Consumo (%)',
+                            color: '#dddddd',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        },
+                        ticks: { color: '#dddddd' }
+                    }
+                }
+            }
+        };
+
+
+
+
+        let dashboard_componentes = new Chart(
+            document.getElementById(`dashboardComponentes`),
+            configDashboard
+        );
+
+        configuracaoAtivaDashboard = JSON.parse(JSON.stringify(configDashboard));
+
+        const ctxModal = document.getElementById('canvasGrande')
+        document.getElementById('modalAmpliado').addEventListener('shown.bs.modal', function () {
+
+            if (grafico == 'usoTempo') {
+                document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
+                document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
+
+                if (configuracaoAtivaDashboard) {
+                    graficoAberto = new Chart(ctxModal, configuracaoAtivaDashboard)
+                }
+            }
+        })
+
+        // setTimeout(() => atualizarGrafico(id_registro, dadosDashboard, dashboard_componentes), 2000);
+    }
+
+    function atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade) {
+        fetch(`/medidas/tempo-real/${id_registro}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico de temperatura:`);
+                    console.log(dadosTemperatura);
+
+                    console.log(`Dados atuais do gráfico de umidade:`);
+                    console.log(dadosUmidade);
+
+                    var momentoGrafico = novoRegistro[0].momento_grafico
+                    var momentoGraficoFormatado = novoRegistro[0].momento_grafico.split(':')
+                    momentoGraficoFormatado = `${momentoGraficoFormatado[0]}:${momentoGraficoFormatado[1]}`
+                    if (momentoGrafico == labels[labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(momentoGrafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(labels[labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+
+                        dadosTemperatura.labels.shift(); // apagar o primeiro
+                        dadosTemperatura.labels.push(momentoGraficoFormatado); // incluir um novo momento
+
+                        dadosUmidade.labels.shift(); // apagar o primeiro
+                        dadosUmidade.labels.push(momentoGraficoFormatado); // incluir um novo momento
+
+                        labels.shift()
+                        labelsFormatado.shift()
+                        labels.push(momentoGrafico)
+                        labelsFormatado.push(momentoGraficoFormatado)
+
+                        dadosUmidade.datasets[1].data.shift();  // apagar o primeiro de umidade
+                        dadosUmidade.datasets[1].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+                    }
+
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dados, myChart), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+
+
+    // MODAL CONFIG
+
+    let graficoAberto = null;
+    let grafico = '';
+    const ctxModal = document.getElementById('canvasGrande')
+    document.getElementById('modalAmpliado').addEventListener('shown.bs.modal', function () {
+
+        if (graficoAberto) {
+            graficoAberto.destroy();
+        }
+
+        if (grafico == 'usoProcessos') {
+            document.getElementById('tituloModal').innerText = 'Uso dos Componentes'
+            document.getElementById('textoModal').innerText = 'Um gráfico tipo pirulito é uma variação minimalista do gráfico de barras que utiliza uma linha fina com um marcador circular na ponta para indicar um valor exato. Ao analisar os cinco processos de maior consumo de um sistema, este formato elimina a poluição visual gerada por barras espessas. Sua estrutura direciona a atenção diretamente para os marcadores, garantindo uma comparação visual rápida, limpa e precisa da proporção de recursos utilizados por cada serviço.'
+            graficoAberto = new Chart(ctxModal, lollipopCPUConfig)
+
+        } else if (grafico == 'tendencia') {
+            document.getElementById('tituloModal').innerText = 'Tendencia'
+            document.getElementById('textoModal').innerText = 'Um gráfico de tendência utiliza linhas contínuas para relacionar o consumo total de memória com a carga de processos específicos ao longo do tempo. Esta visualização permite identificar de forma imediata qual serviço exato está elevando o uso da RAM ou provocando picos de saturação no sistema.'
+            graficoAberto = new Chart(ctxModal, scatterCpuConfig)
+
+        } else if (grafico == 'histograma') {
+            document.getElementById('tituloModal').innerText = 'Histograma'
+            document.getElementById('textoModal').innerText = 'Um histograma de uso da memória RAM distribui os percentuais de consumo em intervalos predefinidos e exibe a frequência de ocorrências dentro de cada faixa. Sua finalidade principal é identificar, de forma imediata, a margem de carga predominante e os níveis de estresse em que um sistema opera na maior parte do tempo.'
+            graficoAberto = new Chart(ctxModal, configHist)
+
+        } else if (grafico == 'usoTempo') {
+            document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
+            document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
+            graficoAberto = new Chart(ctxModal, configDashboard)
+
+        } else if (grafico == 'doughnut') {
+            document.getElementById('tituloModal').innerText = 'Consumo da RAM'
+            document.getElementById('textoModal').innerText = 'Um gráfico de rosca representa cem por cento da capacidade total de um recurso em formato circular. Nele, a área é dividida em duas fatias estritamente proporcionais: uma ilustra o espaço já consumido e a outra reflete o espaço livre. Trata-se de uma representação visual direta e de soma zero, onde o aumento do percentual de uso resulta, obrigatoriamente e na exata mesma medida, na redução visual da área correspondente à capacidade disponível.'
+            graficoAberto = new Chart(ctxModal, cpuConfig)
+
+        }
+    })
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
