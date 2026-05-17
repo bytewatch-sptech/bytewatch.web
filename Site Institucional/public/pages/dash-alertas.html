@@ -234,17 +234,42 @@
                     </div>
                 </div>
 
-                <div class="row g-4 mb-4">
-                    <div class="col-xl-6">
-                        <div class="card-form h-100" style="padding: 1.5rem !important;">
-                            <div class="mb-4">
+                <div class="row g-4 mb-4 align-items-stretch">
+
+                    <div class="col-12 col-lg-7">
+                        <div class="d-flex flex-column align-items-stretch h-100 p-4"
+                            style="background-color: var(--cor10); border: 1px solid transparent; border-radius: 12px;">
+
+                            <div class="d-flex justify-content-between align-items-start mb-4 w-100">
+                                <div>
+                                    <h5 class="text-white m-0 fw-semibold mb-1">Alertas Gerados vs. Tickets Resolvidos
+                                    </h5>
+                                    <span style="color: var(--cor12); font-size: 0.85rem;">Camada Gold · Integração Jira
+                                        · Janela 24h</span>
+                                </div>
+                            </div>
+
+                            <div class="chart-container-logs flex-grow-1"
+                                style="min-height: 280px; position: relative;"> <canvas
+                                    id="graficoAlertasTickets"></canvas>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-5">
+                        <div class="d-flex flex-column align-items-stretch h-100 p-4"
+                            style="background-color: var(--cor10); border: 1px solid transparent; border-radius: 12px;">
+
+                            <div class="mb-4 w-100">
                                 <h5 class="text-white m-0 fw-semibold mb-1">Distribuição por Severidade</h5>
                                 <span class="text-secondary" style="font-size: 0.85rem;">Todos os sistemas · Tempo
                                     real</span>
                             </div>
 
-                            <div class="row align-items-center h-100">
-                                <div class="col-5 position-relative d-flex justify-content-center">
+                            <div class="row align-items-center h-100 w-100 m-0">
+
+                                <div class="col-5 position-relative d-flex justify-content-center p-0">
                                     <div style="height: 180px; width: 180px;">
                                         <canvas id="donutChart"></canvas>
                                     </div>
@@ -254,8 +279,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-7 d-flex flex-column gap-3">
-
+                                <div class="col-7 d-flex flex-column gap-3 pe-0 m-0" style="margin-left: 0 !important;">
                                     <div>
                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                             <div class="d-flex align-items-center gap-2">
@@ -309,7 +333,6 @@
                                         <span class="text-secondary mt-1 d-block" style="font-size: 0.75rem;">49.9% do
                                             total</span>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -323,6 +346,110 @@
 </html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const canvasElement = document.getElementById('graficoAlertasTickets')
+        if (canvasElement) {
+
+            const ctx = canvasElement.getContext('2d')
+            const gradienteVermelho = ctx.createLinearGradient(0, 0, 0, 360)
+            gradienteVermelho.addColorStop(0, 'rgba(255, 45, 86, 0.4)')
+            gradienteVermelho.addColorStop(1, 'rgba(255, 45, 86, 0.05)')
+
+            const gradienteVerde = ctx.createLinearGradient(0, 0, 0, 360)
+            gradienteVerde.addColorStop(0, 'rgba(0, 200, 83, 0.4)')
+            gradienteVerde.addColorStop(1, 'rgba(0, 200, 83, 0)')
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    //  Eixo X
+                    labels: ['00h', '02h', '04h', '06h', '08h', '10h', '12h', '14h', '16h', '18h', '20h', '22h'],
+                    datasets: [
+                        {
+                            label: 'Gerados',
+                            data: [30, 45, 35, 70, 100, 130, 160, 140, 120, 100, 80, 50],
+                            borderColor: '#FF2D56',
+                            backgroundColor: gradienteVermelho,
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 6
+                        },
+                        {
+                            label: 'Resolvidos (Jira)',
+                            data: [40, 50, 30, 45, 70, 105, 130, 145, 200, 160, 120, 80],
+                            borderColor: '#00c853',
+                            backgroundColor: gradienteVerde,
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            pointHoverRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                usePointStyle: true,
+                                boxWidth: 8,
+                                color: '#A0A0A0',
+                                font: {
+                                    family: "'League Spartan', sans-serif",
+                                    size: 12
+                                }
+                            }
+                        },
+
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: '#1a1a1a',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: '#333',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)',
+                                drawBorder: false,
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                color: '#6c757d',
+                                font: { family: "'League Spartan', sans-serif" }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 260,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)',
+                                drawBorder: false,
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                stepSize: 65,
+                                color: '#6c757d',
+                                font: { family: "'League Spartan', sans-serif" }
+                            }
+                        }
+                    }
+                }
+            })
+        }
+    })
+
     document.addEventListener("DOMContentLoaded", () => {
         Chart.defaults.color = '#6c757d';
         Chart.defaults.font.family = "'League Spartan', sans-serif";
