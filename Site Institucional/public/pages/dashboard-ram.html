@@ -277,7 +277,8 @@
                                             </div>
                                             <div class="col"
                                                 style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
-                                                <span class="display-6 status-percent" id="percentual_total_uso_kpi"></span>
+                                                <span class="display-6 status-percent"
+                                                    id="percentual_total_uso_kpi"></span>
                                             </div>
                                         </div>
                                         <div class="div-legends">
@@ -397,21 +398,22 @@
                                         <div>
                                             <label>Tempo até 100%:</label>
                                             <div class="div-line">
-                                                <span>4.5 horas</span>
+                                                <span style="font-weight: bolder;" id="tempo_esgotamento">Sem
+                                                    previsão</span>
                                             </div>
                                         </div>
 
                                         <div>
                                             <label>Otimização sugerida:</label>
                                             <div class="div-line">
-                                                <span>chrome</span>
+                                                <span style="font-weight: bolder;" id="maior_processo">Nenhum</span>
                                             </div>
                                         </div>
 
                                         <div>
                                             <label>Consumo:</label>
                                             <div class="div-line">
-                                                <span>10%</span>
+                                                <span style="font-weight: bolder;" id="maior_percentual">Nenhum</span>
                                             </div>
                                         </div>
                                     </div>
@@ -978,11 +980,17 @@
         console.log(momentoDadosGrafico);
         console.log(resultado.dadosMaquina.processos);
 
+        let processoComMaiorConsumo = ""
+        let percentualDoMaiorConsumo = ""
         const processos = resultado.dadosMaquina.processos
         let conteudoProcessos = ""
         // class="percent-critical"
         for (let i = 0; i < processos.length; i++) {
             const dadoProcesso = processos[i]
+            if (i == 0) {
+                processoComMaiorConsumo = dadoProcesso.nomeProcesso
+                percentualDoMaiorConsumo = dadoProcesso.percentualRam
+            }
             const linhaTabela = `
             <tr>
                 <td>${dadoProcesso.pid}</td>
@@ -1002,6 +1010,13 @@
             conteudoProcessos += linhaTabela
         }
         container_processos.innerHTML = conteudoProcessos
+
+        const tempo_ate_esgotar = resultado.dadosMaquina.metricas.kpiEsgotamento.tempoRestante
+        if (tempo_ate_esgotar[0] >= 0) {
+            tempo_esgotamento.innerText = tempo_ate_esgotar
+            maior_percentual.innerText = `${percentualDoMaiorConsumo}%`
+            maior_processo.innerText = processoComMaiorConsumo
+        }
 
         plotarGrafico(dadosGrafico, momentoDadosGrafico, dadosUsoKpi)
     }
