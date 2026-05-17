@@ -328,12 +328,12 @@
                                             </div>
                                             <div class="col"
                                                 style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
-                                                <span class="display-6 status-percent">91%</span>
+                                                <span class="display-6 status-percent" id="pico_hoje"></span>
                                             </div>
                                         </div>
                                         <div class="div-legends-pico d-flex justify-content-between align-items-center">
-                                            <p class="pico-ontem">Vs Pico de ontem: <span>75%</span></p>
-                                            <p class="div-comparacao">+16%</p>
+                                            <p class="pico-ontem">Vs Pico de ontem: <span id="pico_ontem"></span></p>
+                                            <p class="div-comparacao" id="pico_variacao"></p>
                                         </div>
                                     </div>
 
@@ -974,8 +974,17 @@
         percentual_total_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
         percentual_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
         percentual_uso_restante_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualLivre}%`
+        
         const dadosGrafico = resultado.dadosMaquina.metricas.grafico.percentualUsado
         const momentoDadosGrafico = resultado.dadosMaquina.metricas.grafico.momento
+        
+        const picoHoje = resultado.dadosMaquina.metricas.kpiPico.picoHoje
+        const picoOntem = resultado.dadosMaquina.metricas.kpiPico.picoOntem
+        const picoVariacao = resultado.dadosMaquina.metricas.kpiPico.variacao
+        pico_hoje.innerText = `${picoHoje}%`
+        pico_ontem.innerText = `${picoOntem}%`
+        pico_variacao.innerText = `${picoVariacao}%`
+
         console.log(dadosGrafico);
         console.log(momentoDadosGrafico);
         console.log(resultado.dadosMaquina.processos);
