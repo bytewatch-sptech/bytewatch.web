@@ -974,10 +974,10 @@
         percentual_total_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
         percentual_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
         percentual_uso_restante_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualLivre}%`
-        
+
         const dadosGrafico = resultado.dadosMaquina.metricas.grafico.percentualUsado
         const momentoDadosGrafico = resultado.dadosMaquina.metricas.grafico.momento
-        
+
         const picoHoje = resultado.dadosMaquina.metricas.kpiPico.picoHoje
         const picoOntem = resultado.dadosMaquina.metricas.kpiPico.picoOntem
         const picoVariacao = resultado.dadosMaquina.metricas.kpiPico.variacao
@@ -1072,10 +1072,6 @@
 
         new Chart(ram, ramConfig);
 
-
-
-
-
         let graficoAberto = null;
         let grafico = '';
         let configuracaoAtivaDashboard = null;
@@ -1099,7 +1095,25 @@
                         intersect: false
                     },
                     radius: 0,
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4,
+                    pointStyle: 'circle',
+                    pointRadius: 3,
+                    pointHoverRadius: 5
                 },
+                {
+                    label: 'Limite Crítico',
+                    data: [70, 70, 70, 70, 70, 70, 70],
+                    fill: false, 
+                    borderColor: 'rgba(255, 0, 31, 0.9)', 
+                    borderWidth: 1.5, 
+                    borderDash: [5, 5],
+                    tension: 0.3,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                }
 
             ]
         }
@@ -1124,6 +1138,7 @@
             options: {
                 scales: {
                     x: {
+                        display: true,
                         title: {
                             display: true,
                             text: "Horário",
@@ -1136,6 +1151,7 @@
                         ticks: { color: '#dddddd' }
                     },
                     y: {
+                        display: true,
                         title: {
                             display: true,
                             text: 'Consumo (%)',
