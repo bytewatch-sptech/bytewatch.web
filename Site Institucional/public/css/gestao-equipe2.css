@@ -22,3 +22,8 @@ body {
 .texto-pequeno {
     font-size: 0.85rem;
 }
+
+/* Cabeçalho e Filtros */
+.fundo-icone-cabecalho {
+    background-color: rgba(0, 242, 234, 0.1);
+}
