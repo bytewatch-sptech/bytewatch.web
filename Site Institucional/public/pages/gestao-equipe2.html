@@ -235,6 +235,95 @@
                         </div>
                     </div>
                 </div>
+
+
+                <div class="cartao-tabela p-4 rounded-4 flex-grow-1">
+                    <h6 class="text-white fw-bold mb-1">Log de Alertas Recentes</h6>
+                    <p class="text-secondary texto-pequeno mb-4">Últimos alertas tratados pela equipe NOC</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover tabela-personalizada align-middle">
+                            <thead>
+                                <tr>
+                                    <th>HORA</th>
+                                    <th>SERVIÇO</th>
+                                    <th>TIPO DE ALERTA</th>
+                                    <th>ANALISTA</th>
+                                    <th>AÇÃO TOMADA</th>
+                                    <th>SEVERIDADE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 09:38</td>
+                                    <td class="text-white fw-semibold">TikTok US-West-1</td>
+                                    <td class="text-secondary">EBS Volume > 90%</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar-pequeno fundo-rosa">BL</div>
+                                            <span class="text-secondary">B. Leandro</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-secondary">Expansão automática EBS +50 GB<br>antes de atingir 100%
+                                    </td>
+                                    <td><span class="badge badge-aviso">Aviso</span></td>
+                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
+                                            Resolvido</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 09:15</td>
+                                    <td class="text-white fw-semibold">TikTok SA-East-1</td>
+                                    <td class="text-secondary">CPU Usage > 85%</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar-pequeno fundo-azul">RO</div>
+                                            <span class="text-secondary">R. Oliveira</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-secondary">Escalonamento de instância EC2<br>(t3.medium → t3.large)
+                                    </td>
+                                    <td><span class="badge badge-aviso">Aviso</span></td>
+                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
+                                            Resolvido</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 08:47</td>
+                                    <td class="text-white fw-semibold">TikTok AP-Southeast-1</td>
+                                    <td class="text-secondary">RAM > 95%</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar-pequeno fundo-verde">LF</div>
+                                            <span class="text-secondary">L. Felipe</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-secondary">Reinicialização controlada do serviço e<br>limpeza de
+                                        cache</td>
+                                    <td><span class="badge badge-critico">Crítico</span></td>
+                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
+                                            Resolvido</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 08:22</td>
+                                    <td class="text-white fw-semibold">TikTok EU-West-1</td>
+                                    <td class="text-secondary">Network Latency Spike</td>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="avatar-pequeno fundo-laranja">LI</div>
+                                            <span class="text-secondary">Luan I.</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-secondary">Roteamento alternativo CDN ativado<br>via Cloudflare</td>
+                                    <td><span class="badge badge-aviso">Aviso</span></td>
+                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
+                                            Resolvido</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
             </main>
         </div>
     </div>

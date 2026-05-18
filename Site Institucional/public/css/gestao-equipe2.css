@@ -131,3 +131,75 @@ body {
     background: rgba(16, 185, 129, 0.15);
     color: #34d399;
 }
+
+
+/* Tabela de Logs */
+.tabela-personalizada {
+    --bs-table-bg: transparent;
+    margin-bottom: 0;
+}
+
+.tabela-personalizada th {
+    color: #666;
+    font-size: 0.75rem;
+    border-bottom: 1px solid var(--borda-cartao);
+    padding-bottom: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.tabela-personalizada td {
+    border-bottom: none;
+    padding: 16px 8px;
+    font-size: 0.85rem;
+}
+
+.avatar-pequeno {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: white;
+}
+
+.fundo-rosa {
+    background-color: #EC4899;
+}
+
+.fundo-azul {
+    background-color: #3B82F6;
+}
+
+.fundo-verde {
+    background-color: #10B981;
+}
+
+.fundo-laranja {
+    background-color: #F97316;
+}
+
+.badge-aviso {
+    background-color: rgba(234, 179, 8, 0.1);
+    color: var(--alerta-amarelo);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    font-weight: normal;
+    padding: 5px 10px;
+}
+
+.badge-critico {
+    background-color: rgba(242, 58, 58, 0.1);
+    color: var(--alerta-vermelho);
+    border: 1px solid rgba(242, 58, 58, 0.3);
+    font-weight: normal;
+    padding: 5px 10px;
+}
+
+.status-resolvido {
+    color: var(--alerta-verde);
+    display: flex;
+    align-items: center;
+}
