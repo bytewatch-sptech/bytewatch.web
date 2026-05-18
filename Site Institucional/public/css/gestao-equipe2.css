@@ -27,3 +27,40 @@ body {
 .fundo-icone-cabecalho {
     background-color: rgba(0, 242, 234, 0.1);
 }
+
+.barra-pesquisa {
+    background: #111216;
+    border: 1px solid var(--borda-cartao);
+    border-radius: 20px;
+    width: 250px;
+    overflow: hidden;
+}
+
+.barra-pesquisa input::placeholder {
+    color: #555;
+}
+
+.barra-pesquisa input:focus {
+    box-shadow: none;
+}
+
+.emblema-filtro {
+    background: var(--texto-ciano);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.fundo-escuro-arredondado {
+    background: #111216;
+    border: 1px solid var(--borda-cartao);
+}
+
+.botao-alternar {
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+.botao-alternar.active {
+    background: #2A2D35;
+}
