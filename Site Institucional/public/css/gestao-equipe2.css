@@ -7,7 +7,7 @@ body {
 
 :root {
     --texto-ciano: #00F2EA;
-    --fundo-cartao: #15171C;
+    --fundo-cartao: #151515;
     --borda-cartao: rgba(255, 255, 255, 0.05);
     --texto-secundario: #8A92A6;
     --alerta-vermelho: #F23A3A;
@@ -23,46 +23,119 @@ body {
     font-size: 0.85rem;
 }
 
-/* Cabeçalho e Filtros */
+/* Cabeçalho */
 .fundo-icone-cabecalho {
     background-color: rgba(0, 242, 234, 0.1);
 }
 
-.barra-pesquisa {
-    background: #111216;
-    border: 1px solid var(--borda-cartao);
-    border-radius: 20px;
-    width: 250px;
-    overflow: hidden;
+
+/* Container Principal do Filtro */
+.caixa-filtros {
+    background-color: #151515;
+    padding: 10px 24px;
+    border-radius: 12px;
 }
 
-.barra-pesquisa input::placeholder {
-    color: #555;
+/* Texto ao lado do funil */
+.texto-filtro {
+    color: #94A3B8;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
-.barra-pesquisa input:focus {
-    box-shadow: none;
+/* Barra de Pesquisa Ciano */
+.barra-pesquisa-personalizada {
+    background-color: #0B0D11;
+    border: 1px solid var(--texto-ciano);
+    border-radius: 8px;
+    height: 35px;
+    width: 280px;
+    transition: box-shadow 0.2s ease;
 }
 
-.emblema-filtro {
-    background: var(--texto-ciano);
-    padding: 5px 15px;
-    border-radius: 20px;
+.barra-pesquisa-personalizada:focus-within {
+    box-shadow: 0 0 8px rgba(0, 242, 234, 0.2);
+}
+
+.input-pesquisa-personalizado {
+    background: transparent;
+    border: none;
+    color: var(--texto-ciano);
+    width: 100%;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+.input-pesquisa-personalizado::placeholder {
+    color: var(--texto-ciano);
+    opacity: 0.9;
+}
+
+.icone-pesquisa-personalizado {
+    color: var(--texto-ciano);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.emblema-todos {
+    background-color: var(--texto-ciano);
+    color: #000000;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    height: 35px;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.emblema-todos:hover {
+    filter: brightness(1.1);
+}
+
+.botao-servidor {
+    background-color: #262626;
+    color: #E2E8F0;
+    border: none;
+    border-radius: 8px;
+    padding: 0 16px;
+    height: 35px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.botao-servidor:hover,
+.botao-servidor:focus,
+.botao-servidor.show {
+    background-color: #2B2F3A;
+    color: #FFFFFF;
+}
+
+.icone-seta {
+    font-size: 0.65rem;
+    /* Seta pequena do lado esquerdo */
+    color: #E2E8F0;
+}
+
+/* Menu Suspenso dos Dropdowns */
+.menu-suspenso-escuro {
+    background-color: #21242C;
+    border: 1px solid #333845;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    padding: 8px 0;
+}
+
+.menu-suspenso-escuro .dropdown-item {
+    color: #94A3B8;
     font-size: 0.85rem;
+    padding: 8px 16px;
+    transition: all 0.2s;
 }
 
-.fundo-escuro-arredondado {
-    background: #111216;
-    border: 1px solid var(--borda-cartao);
-}
-
-.botao-alternar {
-    color: #fff;
-    font-size: 0.85rem;
-}
-
-.botao-alternar.active {
-    background: #2A2D35;
+.menu-suspenso-escuro .dropdown-item:hover {
+    background-color: rgba(0, 242, 234, 0.1);
+    color: var(--texto-ciano);
 }
 
 /* cars kpis */
