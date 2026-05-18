@@ -118,6 +118,31 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-12 col-xl-5">
+                        <div class="cartao-grafico p-4 rounded-4 h-100 position-relative">
+                            <i class="bi bi-info-circle text-secondary position-absolute top-0 end-0 m-4"></i>
+                            <h6 class="text-white fw-bold mb-4 w-75">Proporção de Alertas vs Incidentes Reais</h6>
+
+                            <div style="height: 250px; width: 100%;">
+                                <canvas id="graficoProporcao"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-xl-7">
+                        <div class="cartao-grafico p-4 rounded-4 h-100 position-relative">
+                            <i class="bi bi-info-circle text-secondary position-absolute top-0 end-0 m-4"></i>
+                            <h6 class="text-white fw-bold mb-4">Volume de Alertas por Analista <span
+                                    class="text-secondary fw-normal">— Top 5 analistas</span></h6>
+
+                            <div style="height: 250px; width: 100%;">
+                                <canvas id="graficoVolume"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
@@ -125,3 +150,101 @@
 </body>
 
 </html>
+
+<script>
+    Chart.defaults.color = '#8A92A6';
+    Chart.defaults.font.family = "'Inter', sans-serif";
+
+    const contextoProporcao = document.getElementById('graficoProporcao').getContext('2d');
+    new Chart(contextoProporcao, {
+        type: 'bar',
+        data: {
+            labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            datasets: [
+                {
+                    label: 'Alertas Tratados',
+                    data: [290, 340, 200, 420, 360, 150, 200],
+                    backgroundColor: '#D97736',
+                    borderRadius: 4,
+                    barPercentage: 0.4
+                },
+                {
+                    label: 'Incidentes Reais',
+                    data: [0, 0, 0, 15, 0, 0, 0],
+                    backgroundColor: '#E12D39',
+                    borderRadius: 4,
+                    barPercentage: 0.4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: { display: false, drawBorder: false }
+                },
+                y: {
+                    stacked: true,
+                    min: 0,
+                    max: 600,
+                    ticks: { stepSize: 150 },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)',
+                        drawBorder: false,
+                        borderDash: [5, 5]
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    align: 'start',
+                    labels: {
+                        usePointStyle: true,
+                        boxWidth: 8,
+                        padding: 20
+                    }
+                }
+            }
+        }
+    });
+
+    const contextoVolume = document.getElementById('graficoVolume').getContext('2d');
+    new Chart(contextoVolume, {
+        type: 'bar',
+        data: {
+            labels: ['B. Leandro', 'R. Oliveira', 'L. Felipe', 'Luan I.', 'V. Cordeiro'],
+            datasets: [{
+                label: 'Volume de Alertas',
+                data: [125, 110, 100, 90, 0],
+                backgroundColor: '#00F2EA',
+                borderRadius: 4,
+                barPercentage: 0.6
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    min: 0,
+                    max: 140,
+                    ticks: { stepSize: 35 },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)',
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    grid: { display: false, drawBorder: false }
+                }
+            },
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+</script>
