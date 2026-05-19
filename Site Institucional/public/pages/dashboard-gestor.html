@@ -166,15 +166,17 @@
                             </div>
 
                             <!-- GAUGES -->
-                            <div class="col-lg-4 col-12" >
+                            <div class="col-lg-4 col-12">
 
-                                <div class="card-custom mb-3" style="height:150px;">
+                                <div class="card-custom mb-3">
                                     <h6>servidor 000 - Pico de RAM</h6>
+                                    <canvas id="gaugePicoRAM" style="height:70px;"></canvas>
                                     <div class="gauge kpi-yellow">87%</div>
                                 </div>
 
                                 <div class="card-custom" style="height:150px;">
                                     <h6>servidor 000 - Pico de CPU</h6>
+                                    <canvas id="gaugePicoCPU" style="height:70px;"></canvas>
                                     <div class="gauge kpi-yellow">78%</div>
                                 </div>
                             </div>
@@ -216,35 +218,61 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
 
-    const ctx = document.getElementById('visaoMacro');
+        const linhas = document.getElementById('visaoMacro');
 
-    if (!ctx) {
-        console.error("Canvas não encontrado!");
-        return;
-    }
-
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["00h", "04h", "08h", "12h", "16h", "20h", "23h"],
-            datasets: [
-                {
-                    label: "RAM (%)",
-                    data: [45, 50, 65, 80, 75, 70, 60],
-                    borderColor: "#22c55e",
-                    tension: 0.4
-                },
-                {
-                    label: "CPU (%)",
-                    data: [30, 40, 55, 70, 65, 60, 50],
-                    borderColor: "#f59e0b",
-                    tension: 0.4
-                }
-            ]
+        if (!linhas) {
+            console.error("Canvas não encontrado!");
+            return;
         }
-    });
 
-});
+        new Chart(linhas, {
+            type: 'line',
+            data: {
+                labels: ["00h", "04h", "08h", "12h", "16h", "20h", "23h"],
+                datasets: [
+                    {
+                        label: "RAM (%)",
+                        data: [45, 50, 65, 80, 75, 70, 60],
+                        borderColor: "#22c55e",
+                        tension: 0.4
+                    },
+                    {
+                        label: "CPU (%)",
+                        data: [30, 40, 55, 70, 65, 60, 50],
+                        borderColor: "#f59e0b",
+                        tension: 0.4
+                    }
+                ]
+            }
+        });
+
+        const gauge = document.getElementById("gaugePicoRAM");
+
+        const valor = 78;
+
+        const data = {
+            labels: ["Usado", "Livre"],
+            datasets: [{
+                data: [valor, 100 - valor],
+                backgroundColor: ["#f59e0b", "#1f2937"],
+                borderWidth: 0
+            }]
+        };
+
+        new Chart(gauge, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                aspectRatio: 2,
+                circumference: 180,
+                rotation: -90,
+                cutout: "70%" 
+            }
+        });
+
+        
+
+    });
 </script>
