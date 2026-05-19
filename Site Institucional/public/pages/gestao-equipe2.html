@@ -574,11 +574,9 @@
 
         const modalBarras = document.getElementById('modalBarrasDetalhado');
 
-        // Evento disparado quando o modal termina de abrir
         modalBarras.addEventListener('shown.bs.modal', function () {
             const contextoExpandido = document.getElementById('graficoBarrasExpandido').getContext('2d');
 
-            // Se já existir uma instância (reabertura), destrói para não sobrepor
             if (instanciaGraficoExpandido) {
                 instanciaGraficoExpandido.destroy();
             }
@@ -643,7 +641,6 @@
 
 
     // modal grafico 2
-    // --- Lógica para expandir o gráfico de Volume (Horizontal) ---
     let instanciaGraficoVolumeExpandido = null;
     const modalVolume = document.getElementById('modalVolumeDetalhado');
 
@@ -651,7 +648,6 @@
         modalVolume.addEventListener('shown.bs.modal', function () {
             const contextoVolumeExpandido = document.getElementById('graficoVolumeExpandido').getContext('2d');
 
-            // Destrói o gráfico anterior caso exista
             if (instanciaGraficoVolumeExpandido) {
                 instanciaGraficoVolumeExpandido.destroy();
             }
