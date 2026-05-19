@@ -36,14 +36,12 @@ body {
     border-radius: 12px;
 }
 
-/* Texto ao lado do funil */
 .texto-filtro {
     color: #94A3B8;
     font-size: 1rem;
     font-weight: 500;
 }
 
-/* Barra de Pesquisa Ciano */
 .barra-pesquisa-personalizada {
     background-color: #0B0D11;
     border: 1px solid var(--texto-ciano);
@@ -113,11 +111,9 @@ body {
 
 .icone-seta {
     font-size: 0.65rem;
-    /* Seta pequena do lado esquerdo */
     color: #E2E8F0;
 }
 
-/* Menu Suspenso dos Dropdowns */
 .menu-suspenso-escuro {
     background-color: #21242C;
     border: 1px solid #333845;
@@ -309,4 +305,74 @@ body {
 
 .rolagem-tabela::-webkit-scrollbar-thumb:hover {
     background-color: #00d6ce;
+}
+
+/* modal grafico 1 */
+
+
+
+.cursor-ponteiro {
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+}
+
+.cursor-ponteiro:hover {
+    color: var(--texto-ciano) !important;
+}
+
+.conteudo-modal-estilizado {
+    background-color: #151515;
+    border: none;
+    border-radius: 12px;
+    box-shadow: -4px 5px 0px 0px rgba(255, 214, 0, 0.75);
+    -webkit-box-shadow: -4px 5px 0px 0px rgba(255, 214, 0, 0.75);
+    -moz-box-shadow: -4px 5px 0px 0px rgba(255, 214, 0, 0.75);
+}
+
+.conteudo-modal-estilizado .btn-close {
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.conteudo-modal-estilizado .btn-close:hover {
+    opacity: 1;
+}
+
+.botao-info-grafico .icone-svg-info path {
+    transition: fill 0.2s ease;
+}
+
+.botao-info-grafico:hover .icone-svg-info path {
+    fill: var(--texto-ciano);
+}
+
+/* grafico */
+
+.cartao-grafico {
+    position: relative;
+    /* Essencial para o posicionamento absoluto funcionar */
+    background-color: var(--fundo-cartao);
+    border: 1px solid var(--borda-cartao);
+}
+
+.posicao-absoluta {
+    position: absolute !important;
+}
+
+.topo-0 {
+    top: 0 !important;
+}
+
+.fim-0 {
+    right: 0 !important;
+}
+
+.m-4 {
+    margin: 1.5rem !important;
+}
+
+.botao-info-grafico:hover .icone-svg-info path {
+    fill: var(--texto-ciano);
+    transition: fill 0.2s ease;
 }
