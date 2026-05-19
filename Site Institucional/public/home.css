@@ -403,22 +403,49 @@ body {
   background-color: #1a1a1a;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  border: 2px solid #262626
+  border: 2px solid #262626;
+    color: white;
 }
 
 .cabecalho-servidores{
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     background-color: #0a0a0a;
-
+    padding: 10px;
+    color: #FAFAFA;
+    font-size: 18px;
 }
 
 .cabecalho-servidores .filtro{
     background-color: #151515;
     border-radius: 5px;
-    padding: 10px 5px 10px 5px;
+    padding: 3px;
 }
 
 .cabecalho-servidores .filtro input{
     border-radius: 10px;
+}
+
+
+
+#diagnosticoEtlServidor{
+font-size: 10px;
+}
+
+.cabecalho-customizado {
+    background: #262626 !important;
+}
+
+.cabecalho-customizado > th {
+    background-color: transparent !important;
+    color: #ffffff !important; 
+}
+
+.servidor-critico{
+    background: linear-gradient(90deg, rgba(255, 77, 109, 0.05) 0%, rgba(0, 0, 0, 0.00) 60%);
+}
+
+.servidor-critico > td{
+    background-color: transparent !important;
+    color: #ffffff !important;
 }

@@ -260,8 +260,9 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
 
 
-                                        <div class="col-lg-4 w-100 frota-servidores">
-                                            <div class="d-flex align-items-center gap-3 cabecalho-servidores"><span>Frota de
+                                        <div class="table-responsive w-100 frota-servidores">
+                                            <div class="d-flex align-items-center gap-3 cabecalho-servidores">
+                                                <span>Frota de
                                                     Servidores</span>
                                                 <div class="filtro d-flex align-items-center gap-3"><svg width="16"
                                                         height="16" viewBox="0 0 16 16" fill="none"
@@ -272,49 +273,67 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                             stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
 
-                                                    Filt <input type="text"> <button
-                                                        class="filtro button">Todos <span
+                                                    Filtro <input type="text"> <button class="filtro button">Todos <span
                                                             id="qtdServidores"></span></button> <button
                                                         class="filtro button">Critíco</button> <button
                                                         class="filtro button">Risco</button> <button
                                                         class="filtro button">Estável</button>
                                                 </div>
                                             </div>
-                                            <table>
+                                            <table class="table table-hover align-middle text-start">
                                                 <thead>
-                                                    <tr>
-                                                        <th>
-                                                            ÚLTIMA COLETA
-                                                        </th>
-                                                        <th>
-                                                            SERVIDOR
-                                                        </th>
-                                                        <th>
-                                                            REGIÃO
-                                                        </th>
-                                                        <th>
-                                                            CPU
-                                                        </th>
-                                                        <th>
-                                                            RAM
-                                                        </th>
-                                                        <th>
-                                                            DISCO
-                                                        </th>
-                                                        <th>
-                                                            REDE
-                                                        </th>
+                                                    <tr class="cabecalho-customizado">
+                                                        <th scope="col" class="ps-3 border-0">STATUS</th>
+                                                        <th scope="col" class="border-0">ÚLTIMA COLETA</th>
+                                                        <th scope="col" class="border-0">SERVIDOR</th>
+                                                        <th scope="col" class="border-0">REGIÃO</th>
+                                                        <th scope="col" class="border-0">CPU</th>
+                                                        <th scope="col" class="border-0">RAM</th>
+                                                        <th scope="col" class="border-0">DISCO</th>
+                                                        <th scope="col" class="border-0">REDE</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
+                                                <tbody >
+                                                    <tr class="servidor-critico">
                                                         <td><span id="statusServidorBola">°</span></td>
                                                         <td><span id="horaColeta">10:23:01</span></td>
-                                                        <td><Span id="nomeServidor">TikTok-US-Edge-01</Span> <span
-                                                                id="diagnosticoEtlServidor">Disco Saturado + Clima +
-                                                                DIsco Saturado</span></td>
-                                                        <td><span id="cidadeServidor">São Paulo</span><span id="regiaoServidor">sa-east</span></td>
-                                                        <td><button><div class="col-lg-3"><div class="d-flex align-items-center">Icone 99%</div> <span class="align-items-center justify-content-center">linha</span> ABRIR</div></button></td>
+                                                        <td>
+                                                            <div class="d-flex flex-column">
+                                                                <span id="nomeServidor">TikTok-US-Edge-01</span>
+                                                                <span id="diagnosticoEtlServidor">Disco Saturado
+                                                                    + Clima</span>
+                                                            </div>
+                                                        </td>
+                                                        <td><span id="cidadeServidor">São Paulo</span><span
+                                                                id="regiaoServidor">sa-east</span></td>
+
+                                                        <td>
+                                                            <button
+                                                                class="btn btn-sm btn-light d-flex align-items-center gap-2">
+                                                                <div class="d-flex flex-column">
+                                                                    <span>Icone 99%</span>
+                                                                    <span>----</span>
+                                                                </div>
+                                                                <span>ABRIR</span>
+                                                            </button>
+                                                        </td>
+                                                        <td>
+                                                            <button
+                                                                class="btn btn-sm btn-light d-flex align-items-center gap-2">
+                                                                <div class="d-flex flex-column">
+                                                                    <span>Icone 99%</span>
+                                                                    <span>----</span>
+                                                                </div>
+                                                                <span>ABRIR</span>
+                                                            </button>
+                                                        </td>
+                                                        <td>
+                                                            <span>----</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>----</span>
+                                                        </td>
+
                                                     </tr>
                                                 </tbody>
                                             </table>
