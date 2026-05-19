@@ -138,7 +138,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                             <div class="row h-100 gx-4 justify-content-start linha-divisao-conteudo m-0">
 
-                                <div class="col-lg-9 d-flex flex-column gap-4 coluna-central">
+                                <div class="col-lg-9 w-100 d-flex flex-column gap-4 coluna-central">
                                     <section class="secao-visao-geral">
 
                                         <header class="cabecalho-pagina d-flex align-items-center gap-3 w-100">
@@ -166,13 +166,13 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                     style="font-size: 0.9rem">Veja os insights iniciais</span>
                                             </div>
                                         </header>
-                                        <div class="row g-3">
-                                            <div class="flex-column g-3 grade-cards-resumo">
+                                        <div class="row g-3 align-items-stretch gap-3">
 
+                                            <div class="col-md-3">
+                                                <div class="d-flex flex-column gap-3 h-100 grade-cards-resumo">
 
-                                                <div class="col-md-4">
-                                                    <div class="card h-100 cartao-resumo borda-vermelha">
-                                                        <div class="card-body conteudo-cartao">
+                                                    <div class="card cartao-resumo borda-vermelha flex-fill">
+                                                        <div class="card-body conteudo-cartao w-100">
                                                             <div class="icone icone-vermelho">
                                                                 <svg width="36" height="36" viewBox="0 0 36 36"
                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,313 +196,134 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                 </svg>
                                                             </div>
                                                             <div class="textos-do-cartao">
-                                                                <span class="titulo-pequeno">Máquinas em Risco</span>
+                                                                <span class="titulo-pequeno">Servidores Críticos</span>
                                                                 <span class="numero-gigante texto-vermelho"
-                                                                    id="kpiMaquinasRisco"></span>
+                                                                    id="kpiMaquinasRisco">X</span>
+                                                                <div class="align-items-center w-100 texto-vermelho"
+                                                                    style="border-radius: 10px; background-color: #ff005010;">
+                                                                    <span>xx</span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="col-md-4">
-                                                    <div class="card h-100 cartao-resumo borda-ciano">
+                                                    <div class="card cartao-resumo borda-vermelha flex-fill">
                                                         <div class="card-body conteudo-cartao">
-                                                            <div class="icone icone-ciano">
-                                                                <svg width="36" height="36" viewBox="0 0 36 36"
+                                                            <div class="icone icone-vermelho">
+                                                                <svg width="25" height="25" viewBox="0 0 12 12"
                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                        fill="#00F2EA" fill-opacity="0.2" />
-                                                                    <path
-                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                        stroke="#00F2EA" />
-                                                                    <path
-                                                                        d="M26.3332 18H24.2665C23.9023 17.9992 23.5479 18.1177 23.2574 18.3374C22.967 18.5572 22.7565 18.866 22.6582 19.2166L20.6998 26.1833C20.6872 26.2266 20.6609 26.2646 20.6248 26.2916C20.5888 26.3187 20.5449 26.3333 20.4998 26.3333C20.4548 26.3333 20.4109 26.3187 20.3748 26.2916C20.3388 26.2646 20.3125 26.2266 20.2998 26.1833L15.6998 9.81663C15.6872 9.77335 15.6609 9.73534 15.6248 9.70829C15.5888 9.68125 15.5449 9.66663 15.4998 9.66663C15.4548 9.66663 15.4109 9.68125 15.3748 9.70829C15.3388 9.73534 15.3125 9.77335 15.2998 9.81663L13.3415 16.7833C13.2436 17.1326 13.0343 17.4404 12.7456 17.66C12.4568 17.8796 12.1043 17.9989 11.7415 18H9.6665"
-                                                                        stroke="#00F2EA" stroke-width="1.66667"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
+                                                                    <g clip-path="url(#clip0_1241_38)">
+                                                                        <path
+                                                                            d="M3 5H2C1.73478 5 1.48043 4.89464 1.29289 4.70711C1.10536 4.51957 1 4.26522 1 4V2C1 1.73478 1.10536 1.48043 1.29289 1.29289C1.48043 1.10536 1.73478 1 2 1H10C10.2652 1 10.5196 1.10536 10.7071 1.29289C10.8946 1.48043 11 1.73478 11 2V4C11 4.26522 10.8946 4.51957 10.7071 4.70711C10.5196 4.89464 10.2652 5 10 5H9M3 7H2C1.73478 7 1.48043 7.10536 1.29289 7.29289C1.10536 7.48043 1 7.73478 1 8V10C1 10.2652 1.10536 10.5196 1.29289 10.7071C1.48043 10.8946 1.73478 11 2 11H10C10.2652 11 10.5196 10.8946 10.7071 10.7071C10.8946 10.5196 11 10.2652 11 10V8C11 7.73478 10.8946 7.48043 10.7071 7.29289C10.5196 7.10536 10.2652 7 10 7H9M3 3H3.005M3 9H3.005"
+                                                                            stroke="#FF0050" stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                        <path d="M6.5 3L4.5 6H7.5L5.5 9"
+                                                                            stroke="#FF0050" stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_1241_38">
+                                                                            <rect width="12" height="12" fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
                                                                 </svg>
                                                             </div>
                                                             <div class="textos-do-cartao">
-                                                                <span class="titulo-pequeno">Componentes em Risco</span>
-                                                                <span class="numero-gigante texto-ciano"
-                                                                    id="kpiComponentesRisco"></span>
+                                                                <span class="titulo-pequeno">Servidor Mais Propenso <br>
+                                                                    a Falha</span>
+                                                                <span
+                                                                    class="numero-gigante texto-vermelho col flex-column"
+                                                                    id="kpiServidorPropensoFalha">XX</span>
+                                                                <div class="align-items-center w-100 texto-vermelho"
+                                                                    style="border-radius: 10px; background-color: #ff005010;">
+                                                                    <span>xx</span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </div>
-                                            <div class="card-mapa">
-                                                <div id="mapa"></div>
 
+                                            <div class="col-md-4 matriz-priorizacao d-flex flex-column">
+                                                <span>Matriz de priorização</span>
+                                                <div class="flex-fill" style="position: relative;">
+                                                    <canvas></canvas>
+                                                </div>
                                             </div>
+
+                                            <div class="col-md-5 card-mapa d-flex flex-column">
+                                                <div id="mapa" class="flex-fill" style="min-height: 300px;"></div>
+                                            </div>
+
                                         </div>
 
-                                        <div
-                                            class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros">
-                                            <div class="d-flex align-items-center gap-3">
-                                                <div class="icone-filtro"></div>
-                                                <span class="texto-filtro">Filtros:</span>
-                                                <button class="btn btn-filtro">Críticos</button>
-                                                <button class="btn btn-filtro">Alerta</button>
-                                                <button class="btn btn-filtro">Normal</button>
-                                            </div>
 
-                                            <div class="form-check form-switch container-switch">
-                                                <input class="form-check-input switch-customizado" type="checkbox"
-                                                    id="mostrarTodos">
-                                                <label class="form-check-label label-switch" for="mostrarTodos">Mostrar
-                                                    todos</label>
+
+                                        <div class="col-lg-4 w-100 frota-servidores">
+                                            <div class="d-flex align-items-center gap-3 cabecalho-servidores"><span>Frota de
+                                                    Servidores</span>
+                                                <div class="filtro d-flex align-items-center gap-3"><svg width="16"
+                                                        height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M6.66708 13.3333C6.66702 13.4572 6.70148 13.5787 6.7666 13.6841C6.83172 13.7895 6.92492 13.8746 7.03574 13.93L8.36908 14.5967C8.47074 14.6475 8.58371 14.6714 8.69724 14.6663C8.81077 14.6612 8.92111 14.6271 9.01776 14.5673C9.11442 14.5075 9.19419 14.424 9.24949 14.3247C9.30479 14.2254 9.3338 14.1137 9.33374 14V9.33333C9.33389 9.00292 9.45672 8.68433 9.67841 8.43933L14.4937 3.11333C14.5801 3.01771 14.6368 2.89912 14.6571 2.77192C14.6775 2.64472 14.6605 2.51435 14.6083 2.39658C14.5562 2.27881 14.471 2.17868 14.3631 2.1083C14.2552 2.03792 14.1292 2.0003 14.0004 2H2.00041C1.87148 2.00005 1.74533 2.03748 1.63724 2.10776C1.52915 2.17804 1.44376 2.27815 1.39141 2.39598C1.33906 2.5138 1.322 2.64427 1.34229 2.77159C1.36259 2.89892 1.41936 3.01762 1.50574 3.11333L6.32241 8.43933C6.5441 8.68433 6.66693 9.00292 6.66708 9.33333V13.3333Z"
+                                                            stroke="#00F2EA" stroke-width="1.33333"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+
+                                                    Filt <input type="text"> <button
+                                                        class="filtro button">Todos <span
+                                                            id="qtdServidores"></span></button> <button
+                                                        class="filtro button">Critíco</button> <button
+                                                        class="filtro button">Risco</button> <button
+                                                        class="filtro button">Estável</button>
+                                                </div>
                                             </div>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            ÚLTIMA COLETA
+                                                        </th>
+                                                        <th>
+                                                            SERVIDOR
+                                                        </th>
+                                                        <th>
+                                                            REGIÃO
+                                                        </th>
+                                                        <th>
+                                                            CPU
+                                                        </th>
+                                                        <th>
+                                                            RAM
+                                                        </th>
+                                                        <th>
+                                                            DISCO
+                                                        </th>
+                                                        <th>
+                                                            REDE
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><span id="statusServidorBola">°</span></td>
+                                                        <td><span id="horaColeta">10:23:01</span></td>
+                                                        <td><Span id="nomeServidor">TikTok-US-Edge-01</Span> <span
+                                                                id="diagnosticoEtlServidor">Disco Saturado + Clima +
+                                                                DIsco Saturado</span></td>
+                                                        <td><span id="cidadeServidor">São Paulo</span><span id="regiaoServidor">sa-east</span></td>
+                                                        <td><button><div class="col-lg-3"><div class="d-flex align-items-center">Icone 99%</div> <span class="align-items-center justify-content-center">linha</span> ABRIR</div></button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-
-                                        <section class="secao-servidores mt-4">
-                                            <div
-                                                class="d-flex justify-content-between align-items-end mb-3 cabecalho-secao-servidores">
-                                                <div>
-                                                    <h4 class="titulo-secao text-white">Servidores em Risco</h4>
-                                                </div>
-                                                <button class="btn btn-ver-todos">Ver Todos</button>
-                                            </div>
-
-                                            <div class="row g-3" id="servidoresAlerta">
-
-
-                                                <div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-vermelha">
-                                                        <a href="./pages/dashboard-servidor.html"
-                                                            style="text-decoration: none;">
-                                                            <div class="card-body d-flex flex-column gap-3">
-                                                                <div class="cabecalho-do-card">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center">
-                                                                        <span
-                                                                            class="nome-servidor fw-bold text-white">TikTok
-                                                                            EU-Central-1</span>
-                                                                        <span
-                                                                            class="bolinha-status status-vermelho"></span>
-                                                                    </div>
-                                                                    <span class="localizacao-servidor text-secondary"
-                                                                        style="font-size: 0.85rem">Frankfurt,
-                                                                        Germany</span>
-                                                                </div>
-
-                                                                <div
-                                                                    class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">CPU</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">95%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">RAM</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">91%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">DISCO</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">88%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-amarela">
-                                                        <a href="./pages/dashboard-servidor.html"
-                                                            style="text-decoration: none;">
-                                                            <div class="card-body d-flex flex-column gap-3">
-                                                                <div class="cabecalho-do-card">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center">
-                                                                        <span
-                                                                            class="nome-servidor fw-bold text-white">TikTok
-                                                                            SA-East-1</span>
-                                                                        <span
-                                                                            class="bolinha-status status-amarelo"></span>
-                                                                    </div>
-                                                                    <span class="localizacao-servidor text-secondary"
-                                                                        style="font-size: 0.85rem">São Paulo,
-                                                                        Brazil</span>
-                                                                </div>
-
-                                                                <div
-                                                                    class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">CPU</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">78%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">RAM</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">86%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">DISCO</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">62%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </section>
 
                                     </section>
                                 </div>
 
-                                <aside class="col-lg-3 d-flex flex-column gap-3 barra-lateral-direita conteudo-aside">
 
-                                    <div class="d-flex justify-content-end w-100 mb-4"
-                                        style="transform: translateY(12px)">
-                                        <div id="statusInfo"
-                                            class="info-alert d-flex align-items-center gap-2 px-3 py-2"
-                                            data-bs-toggle="modal" data-bs-target="#modalLegenda"
-                                            style="cursor: pointer; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; transition: all 0.3s ease">
-                                            <div class="icon d-flex">
-                                                <i class="fa-solid fa-circle-info text-secondary fs-5"></i>
-                                            </div>
-                                            <span class="text-white fw-medium" style="font-size: 0.9rem">Legenda</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-2">
-                                            <span class="titulo-lateral text-white fw-bold">Último Alerta</span>
-                                            <div class="d-flex align-items-center gap-2 mt-1">
-                                                <span class="bolinha-status status-vermelho"></span>
-                                                <span class="text-white fw-semibold">CPU crítico</span>
-                                            </div>
-                                            <span class="texto-secundario ps-3 ms-1">TikTok EU-Central-1</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
-                                            <span class="titulo-lateral text-white fw-bold">Ações Rápidas</span>
-                                            <div class="d-flex flex-column gap-2">
-                                                <a href="./adicionar-servidor.html"
-                                                    class="btn btn-acao btn-acao-adicionar text-decoration-none">
-                                                    <i class="fa-solid fa-plus"></i> Adicionar Servidor
-                                                </a>
-                                                <a href="" class="btn btn-acao btn-acao-editar text-decoration-none">
-                                                    <i class="fa-solid fa-pen"></i> Editar Servidor
-                                                </a>
-
-                                                <button class="btn btn-acao btn-acao-excluir" data-bs-toggle="modal"
-                                                    data-bs-target="#modalExcluirServidor">
-                                                    <i class="fa-solid fa-trash"></i> Excluir Servidor
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
-                                            <span class="titulo-lateral text-white fw-bold">Exportar Logs</span>
-                                            <button class="btn btn-relatorio w-100">
-                                                <i class="fa-solid fa-download"></i> Baixar CSV
-                                            </button>
-                                        </div>
-                                    </div>
-                                </aside>
                             </div>
                         </main>
                     </div>
