@@ -11,6 +11,15 @@ function atualizarServidor(nome, endereco_ip, status, mac_address, id_servidor) 
   return database.executar(instrucaoSql)
 }
 
+function buscarNomeServidor(mac_address) {
+  var instrucaoSql = `SELECT CONCAT(s.nome, " ",  r.nome) AS nome_servidor, CONCAT(pais, ", ", estado) AS localizacao  FROM regiao AS r JOIN zona_disponibilidade ON id_regiao = fk_regiao
+	JOIN datacenter ON id_zona_disponibilidade = fk_zona_disponibilidade
+    JOIN servidor AS s ON id_datacenter = fk_datacenter WHERE mac_address = '${mac_address}';`
+
+  return database.executar(instrucaoSql)
+}
+
+
 function removerServidor(id_servidor) {
   var instrucaoSql = `DELETE FROM servidor WHERE id_servidor = '${id_servidor}';
 `
