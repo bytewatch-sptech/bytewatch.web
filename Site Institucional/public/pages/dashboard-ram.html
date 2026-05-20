@@ -1020,7 +1020,17 @@
         const picoVariacao = resultado.dadosMaquina.metricas.kpiPico.variacao
         pico_hoje.innerText = `${picoHoje}%`
         pico_ontem.innerText = `${picoOntem}%`
-        pico_variacao.innerText = `${picoVariacao}%`
+        if (picoVariacao >= 0) {
+            pico_variacao.innerHTML = `<span style="color: red;">+${picoVariacao}%</span>`
+        }
+        else if (picoVariacao < 0) {
+            console.log("testeeeeeee");
+            
+            pico_variacao.innerHTML = `<span style="color: green;">${picoVariacao}%</span>`
+        }
+        if (picoVariacao == 0 && picoHoje < 70) {
+            pico_variacao.innerHTML = `<span style="color: #FFFFFF;">+${picoVariacao}%</span>`
+        }
         mudarCorKpiPico(picoHoje, picoOntem, "kpi_pico_ram")
 
         console.log(dadosGrafico);
