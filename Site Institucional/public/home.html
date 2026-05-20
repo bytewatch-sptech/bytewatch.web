@@ -247,7 +247,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                                             <div class="col-md-4 matriz-priorizacao d-flex flex-column">
                                                 <span>Matriz de priorização</span>
-                                                <div class="flex-fill" style="position: relative;">
+                                                <div class="flex-fill" style="position: relative; height: 350px; width: 100%;">
                                                     <canvas id="matrizChart"></canvas>
                                                 </div>
                                             </div>
@@ -808,6 +808,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/home.js"></script>
 </body>
 
@@ -819,8 +820,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
     const ctx = document.getElementById('matrizChart').getContext('2d')
 
-    const bubleLabelsPlugin = {
-        id: 'bubleLabels',
+    const bubbleLabelsPlugin = {
+        id: 'bubbleLabels',
         afterDatasetsDraw(chart) {
             const { ctx } = chart
             ctx.font = '12px Arial'
@@ -831,11 +832,86 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 const meta = chart.getDatasetMeta(i)
                 meta.data.forEach((bubble, index) => {
                     const dataPoint = dataset.data[index]
-                    ctx,fillText(dataPoint.valor, bubble.x, bubble,y)
+                    ctx.fillText(dataPoint.valor, bubble.x, bubble.y)
                 })
             })
         }
     }
+
+    const matrizChart = new Chart(ctx, {
+        type: 'bubble',
+        plugins: [bubbleLabelsPlugin],
+        data: {
+            datasets: [
+                {
+                    label: 'Servidores Estáveis',
+                    data: [
+                    { x: 33, y: 60, r: 12, valor: 20 },
+                    { x: 42, y: 75, r: 14, valor: 24 },
+                    { x: 48, y: 120, r: 16, valor: 28 },
+                    { x: 72, y: 200, r: 24, valor: 44 }
+                ],
+                backgroundColor: 'rgba(0, 240, 255, 0.2)',
+                borderColor: '#00E5FF',
+                borderWidth: 2
+                },
+                {
+                    label: 'Servidores Critícos',
+                    data: [
+                    { x: 80, y: 400, r: 35, valor: 91 },
+                    { x: 85, y: 380, r: 40, valor: 100 },
+                    { x: 90, y: 500, r: 40, valor: 100 }
+                ],
+                backgroundColor: 'rgba(255, 59, 48, 0.2)',
+                borderColor: '#FF3B30',
+                borderWidth: 2,
+                borderDash: [6, 4]
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context){
+                            return `Risco: ${context.raw.valor} | CPU/RAM: ${context.raw.x}% | Latência: ${context.raw.y}ms`
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    min: 0,
+                    max: 100,
+                    ticks: {
+                        stepSize: 25,
+                        callback: function(value) { return value + '%'; },
+                        color: '#888'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
+                    }
+                },
+                y:{
+                    min: 0,
+                    max: 600,
+                    ticks: {
+                        stepSize: 150,
+                        callback: function(value){ return value + 'ms'; },
+                        color: '#888'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
+                    }
+                }
+            }
+        }
+    })
 
 
     async function buscarServidores() {
