@@ -248,7 +248,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                             <div class="col-md-4 matriz-priorizacao d-flex flex-column">
                                                 <span>Matriz de priorização</span>
                                                 <div class="flex-fill" style="position: relative;">
-                                                    <canvas></canvas>
+                                                    <canvas id="matrizChart"></canvas>
                                                 </div>
                                             </div>
 
@@ -816,6 +816,28 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 <script src="./services/api.js"></script>
 <script src="./services/servidorService.js"></script>
 <script>
+
+    const ctx = document.getElementById('matrizChart').getContext('2d')
+
+    const bubleLabelsPlugin = {
+        id: 'bubleLabels',
+        afterDatasetsDraw(chart) {
+            const { ctx } = chart
+            ctx.font = '12px Arial'
+            ctx.fillStyle = 'white'
+            ctx.textBaseline = 'middle'
+
+            chart.data.datasets.forEach((dataset, i) => {
+                const meta = chart.getDatasetMeta(i)
+                meta.data.forEach((bubble, index) => {
+                    const dataPoint = dataset.data[index]
+                    ctx,fillText(dataPoint.valor, bubble.x, bubble,y)
+                })
+            })
+        }
+    }
+
+
     async function buscarServidores() {
         var idEmpresa = sessionStorage.ID_EMPRESA;
         resultado = await buscarServidoresService(idEmpresa)
