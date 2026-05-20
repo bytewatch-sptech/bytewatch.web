@@ -7,8 +7,8 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/gestor.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -17,7 +17,7 @@
 
     <div class="row flex-nowrap">
         <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
-            style="min-height: 100vh; transition: 0.3s;">
+            style="min-height: 100vh; transition: 0.3s; overflow-x: hidden;">
 
             <div class="d-flex justify-content-center mb-5">
                 <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
@@ -114,7 +114,7 @@
                 <div class="row">
 
                     <!-- MAIN -->
-                    <div class="col-lg-10 col-12">
+                    <div class="col-lg-10 col-10">
 
                         <h3>Painel Executivo</h3>
                         <p class="text-secondary">Visão macro da infraestrutura</p>
@@ -133,7 +133,7 @@
                             <div class="col-md-3">
                                 <div class="card-custom" style="box-shadow:3px 3px #22F1E7;">
                                     <p><img src="../assets/calendar.png" style="height: 25px;" alt=""> Custo do dia</p>
-                                    <div class="kpi-value kpi-red">10.0</div>
+                                    <div class="kpi-value kpi-red">R$ 10.00</div>
                                     <!-- <small class="kpi-green">↓ 60%</small> -->
                                 </div>
                             </div>
@@ -141,7 +141,7 @@
                             <div class="col-md-3">
                                 <div class="card-custom" style="box-shadow:3px 3px #22F1E7;">
                                     <p><img src="../assets/goal.png" style="height: 25px;" alt=""> Meta do mês</p>
-                                    <div class="kpi-value">99,92%</div>
+                                    <div class="kpi-value">R$ 50.000</div>
                                     <!-- <small class="kpi-green">↑ 0,15%</small> -->
                                 </div>
                             </div>
