@@ -223,11 +223,10 @@
                                     <i class="fa-solid fa-circle-check"></i>
                                 </div>
                                 <div class="d-flex flex-column">
-                                    <span class="titulo-metrica">Saudáveis</span>
-                                    <span class="valor-metrica">831</span>
+                                    <span class="titulo-metrica">Servidores Ativos</span>
+                                    <span class="valor-metrica" id="totalServers"></span>
                                     <span class="subtitulo-metrica">Servidores online</span>
-                                    <span class="trend trend-good mt-1"><i class="fa-solid fa-arrow-trend-down"></i> +2%
-                                        estável</span>
+                                    <span class="trend trend-good mt-1"></span>
                                 </div>
                             </div>
                         </div>
@@ -458,12 +457,20 @@
 
     async function carregarDashboard() {
         const resultado = await MetricasAlertas()
-        console.log (resultado.alertas.length)
+        /* console.log (resultado.alertas.length) */
         valor_metrica.innerHTML = resultado.alertas.length
-    }
 
-    // Executa a função assim que a página terminar de carregar na tela
-    window.onload = carregarDashboard();
+        const alertasCriticos = resultado.alertas.filter(alerta => alerta.nivel === "CRÍTICO");
+        alertas_criticos.innerHTML = alertasCriticos.length;
+
+        const servidorMaisVolatil = resultado.alertas[0].mac
+        servidor_volatil.innerHTML = servidorMaisVolatil
+
+        const todosMacs = resultado.alertas.map(alerta => alerta.mac)
+        const serversUnicos = new Set(todosMacs)
+        totalServers.innerHTML = serversUnicos.size
+    }
+    window.onload = carregarDashboard;
 
 
 
