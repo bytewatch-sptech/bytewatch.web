@@ -306,7 +306,7 @@
                                 </div>
 
                             </div>
-                            <div class="card-kpi px-4 py-3">
+                            <div class="card-kpi px-4 py-3" id="kpi_pico_ram">
                                 <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
                                     <div class="col-12 coluna-kpi">
 
@@ -971,11 +971,30 @@
         const meuElemento = document.querySelector(`#${idComponente}`);
 
         valor = parseInt(valor)
-        if (valor >= 70) {
+        if (valor >= 90) {
+            meuElemento.classList.add('kpi-risco');
+        }
+        else if (valor >= 70) {
             meuElemento.classList.add('kpi-critico');
         }
-        else if (valor >= 90) {
+        else {
+            meuElemento.classList.remove('kpi-risco');
+            meuElemento.classList.remove('kpi-critico');
+        }
+
+    }
+
+    async function mudarCorKpiPico(valorHoje, valorOntem, idComponente) {
+        const meuElemento = document.querySelector(`#${idComponente}`);
+
+        valorHoje = parseInt(valorHoje)
+        valorOntem = parseInt(valorOntem)
+
+        if (valorHoje >= 90 && valorHoje >= valorOntem) {
             meuElemento.classList.add('kpi-risco');
+        }
+        else if (valorHoje >= 70 && valorHoje >= valorOntem) {
+            meuElemento.classList.add('kpi-critico');
         }
         else {
             meuElemento.classList.remove('kpi-risco');
@@ -1002,6 +1021,7 @@
         pico_hoje.innerText = `${picoHoje}%`
         pico_ontem.innerText = `${picoOntem}%`
         pico_variacao.innerText = `${picoVariacao}%`
+        mudarCorKpiPico(picoHoje, picoOntem, "kpi_pico_ram")
 
         console.log(dadosGrafico);
         console.log(momentoDadosGrafico);
