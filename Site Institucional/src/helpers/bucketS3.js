@@ -39,7 +39,7 @@ async function obterDadosGestor(macAddress) {
 
     const params = {
         Bucket: process.env.S3_BUCKET_NAME,
-        Key: "client/dashboard_ram.json"
+        Key: "client/dashboard_gestor.json"
     }
 
     try{
