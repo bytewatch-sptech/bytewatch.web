@@ -120,7 +120,7 @@
                         <p class="text-secondary">Visão geral da infraestrutura</p>
 
                         <!-- KPI -->
-                        <div class="row g-3 mb-4">
+                        <div class="row g-3 mb-4 mx-3">
 
                             <div class="col-md-3">
                                 <div class="card-custom">
@@ -150,7 +150,7 @@
                         </div>
 
                         <div class="row g-3 align-items-center">
-                            <div class="col-lg-8 col-12">
+                            <div class="col-lg-9 col-12">
 
                                 <div class="d-flex align-items-start justify-content-center card-custom">
 
@@ -166,11 +166,11 @@
                             </div>
 
                             <!-- GAUGES -->
-                            <div class="col-lg-4 col-8">
+                            <div class="col-lg-auto col-8">
 
                                 <div class="card-custom mb-2">
                                     <h6>servidor 000 - Pico de RAM</h6>
-                                    <canvas id="gaugePicoRAM" style="height:70px;"></canvas>
+                                    <canvas id="gaugePicoRAM" style="height:50px;"></canvas>
                                     <div class="gauge kpi-yellow">87%</div>
                                 </div>
 
@@ -249,6 +249,7 @@
         });
 
         const gauge = document.getElementById("gaugePicoRAM");
+        const gaugeCPU = document.getElementById("gaugePicoCPU")
 
         const valor = 78;
 
@@ -271,6 +272,20 @@
                 cutout: "70%" 
             }
         });
+
+        new Chart(gaugeCPU, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                aspectRatio: 2,
+                circumference: 180,
+                rotation: -90,
+                cutout: "70%" 
+            }
+        });
+
+
+        
 
         
 
