@@ -33,4 +33,8 @@ router.get("/buscar-metricas-ram/:macAddress", async (req, res) => {
   componenteRamController.buscarUsoS3(req, res);   
 })
 
+router.get("/gestor/:macAddress", (req, res) => {
+  dadosGestorController.buscarGestorS3(req, res)
+}) 
+
 module.exports = router;
