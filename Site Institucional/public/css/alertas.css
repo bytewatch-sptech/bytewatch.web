@@ -265,11 +265,11 @@ body {
     }
 
     &.neutro {
-        border-color: var(--cor21);
+        border-color: var(--cor12);
 
         & .icon-box {
             /* background-color: rgba(255, 255, 255, 0.04);  */
-            border-color: var(--cor21);
+            border-color: var(--cor12);
             /* color: var(--cor05);  */
         }
     }
