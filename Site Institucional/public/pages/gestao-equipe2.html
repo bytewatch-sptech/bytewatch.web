@@ -191,7 +191,7 @@
                                 </span>
                             </div>
                             <p class="text-secondary mb-1 texto-pequeno">Alertas Processados (7d)</p>
-                            <h3 class="text-white fw-bold mb-0">1,847</h3>
+                            <h3 class="text-white fw-bold mb-0" id="kpi_total_alertas_todos">0</h3>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-xl-3">
@@ -659,13 +659,13 @@
                     datasets: [{
                         label: 'Alertas Resolvidos',
                         data: [125, 110, 100, 90, 0],
-                        backgroundColor: '#00F2EA', // Cor Ciano
+                        backgroundColor: '#00F2EA',
                         borderRadius: 4,
                         barPercentage: 0.5
                     }]
                 },
                 options: {
-                    indexAxis: 'y', // Define o gráfico como horizontal
+                    indexAxis: 'y',
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
@@ -703,5 +703,28 @@
                 }
             });
         });
+
+        function mostrarKPITodos() {
+            if (!dadosGlobaisAlertas || !dadosGlobaisAlertas.incidentes) return;
+
+            const alertas = dadosGlobaisAlertas.incidentes;
+            const filtroTempoSelecionado = tempo_total_alertas_todos.value;
+
+            const agora = new Date();
+            const limiteTempo = agora.getTime() - filtros_tempo[filtroTempoSelecionado];
+
+            const alertasFiltrados = alertas.filter(alerta => {
+                const dataCriacao = new Date(alerta.criadoEm).getTime();
+                const estaAtivo = alerta.status !== "Concluído" && alerta.resolvidoEm === null;
+
+                return dataCriacao >= limiteTempo && estaAtivo;
+            })
+
+
+
+            kpi_total_alertas_todos.innerText = alertasFiltrados.length;
+            console.log(alertasFiltrados)
+
+        }
     }
 </script>
