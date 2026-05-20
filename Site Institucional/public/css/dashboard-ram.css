@@ -269,3 +269,15 @@
   justify-content: space-between;
   height: 100%;
 }
+
+.kpi-critico {
+    border-color: var(--cor02);
+    box-shadow: 0 0 15px rgba(255, 251, 0, 0.6); 
+    border: 1px solid #FFD500;
+}
+
+.kpi-risco {
+    border-color: var(--cor02);
+    box-shadow: 0 0 15px rgba(255, 0, 85, 0.6); 
+    border: 1px solid #FF0050;
+}
