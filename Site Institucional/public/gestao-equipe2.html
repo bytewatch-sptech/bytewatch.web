@@ -703,28 +703,34 @@
                 }
             });
         });
+    }
 
-        function mostrarKPITodos() {
-            if (!dadosGlobaisAlertas || !dadosGlobaisAlertas.incidentes) return;
+    async function carregarDadosJira() {
+        const fkEmpresa = sessionStorage.getItem("ID_EMPRESA") || 1;
 
-            const alertas = dadosGlobaisAlertas.incidentes;
-            const filtroTempoSelecionado = tempo_total_alertas_todos.value;
+        try {
+            const resposta = await fetch(`/jira/dashboard/${fkEmpresa}`);
 
-            const agora = new Date();
-            const limiteTempo = agora.getTime() - filtros_tempo[filtroTempoSelecionado];
+            if (resposta.ok) {
+                const dadosJira = await resposta.json();
 
-            const alertasFiltrados = alertas.filter(alerta => {
-                const dataCriacao = new Date(alerta.criadoEm).getTime();
-                const estaAtivo = alerta.status !== "Concluído" && alerta.resolvidoEm === null;
+                console.log("DADOS QUE CHEGARAM DO BACKEND:", dadosJira);
 
-                return dataCriacao >= limiteTempo && estaAtivo;
-            })
+                const kpiTotal = document.getElementById('kpi_total_alertas_todos');
+                if (kpiTotal) {
 
+                    kpiTotal.innerText = dadosJira.incidentes.length;
+                }
 
-
-            kpi_total_alertas_todos.innerText = alertasFiltrados.length;
-            console.log(alertasFiltrados)
-
+            } else {
+                console.error('Erro na resposta da API do Jira:', resposta.status);
+            }
+        } catch (erro) {
+            console.error('Erro ao fazer o fetch para o Jira:', erro);
         }
     }
+
+
+    document.addEventListener('DOMContentLoaded', carregarDadosJira);
+
 </script>
