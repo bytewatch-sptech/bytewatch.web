@@ -1063,7 +1063,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
             const resposta = await fetch(`/servidor/buscarDashboardHome/${idEmpresa}`, { cache: 'no-store' })
 
 
-           
+
 
 
             if (resposta.ok) {
@@ -1073,12 +1073,20 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 dados.servidores.forEach(servidor => {
                     if (servidor.dados_tempo_real) {
                         console.log(`gráfico para : ${servidor.nome_db}`)
+                        const macAddress = servidor.dados_tempo_real.macAddress;
+                        const nome = servidor.dados_tempo_real.nome;
+                        
+                        console.log("macAddress: ", macAddress, "nome:", nome)
                     } else {
                         console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
                     }
                 })
 
                 const qtdCriticos = dados.resumo_global.servidores_criticos
+                const totalServidores = dados.resumo_global.total_servidores
+
+
+                console.log("qtd critícos:", qtdCriticos, "total sevidores:", totalServidores)
                 document.getElementById('kpiMaquinasRisco').innerText = qtdCriticos;
                 console.log("Total de servidores em estado crítico:", qtdCriticos);
             } else {
@@ -1089,7 +1097,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
         }
     }
 
-    carregarDadosDashboard(1)
+    carregarDadosDashboard(sessionStorage.ID_EMPRESA)
 
 
 
