@@ -198,7 +198,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                             <div class="textos-do-cartao">
                                                                 <span class="titulo-pequeno">Servidores Críticos</span>
                                                                 <span class="numero-gigante texto-vermelho"
-                                                                    id="kpiMaquinasRisco">X</span>
+                                                                    id="kpiMaquinasRisco"></span>
                                                                 <div class="align-items-center w-100 texto-vermelho"
                                                                     style="border-radius: 10px; background-color: #ff005010;">
                                                                     <span>xx</span>
@@ -299,7 +299,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         <td><span id="statusServidorBola">°</span></td>
                                                         <td>
                                                             <div class="flex-column d-flex">
-                                                                <span id="horaColeta" >10:23:01</span>
+                                                                <span id="horaColeta">10:23:01</span>
                                                                 <span id="dataColeta">10/04/2006</span>
                                                             </div>
                                                         </td>
@@ -1056,61 +1056,41 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
     })
 
 
-    async function buscarServidores() {
-        var idEmpresa = sessionStorage.ID_EMPRESA;
-        resultado = await buscarServidoresService(idEmpresa)
-        let conteudoSelect = `<option disabled selected value="">Selecionar</option>`
-        for (let i = 0; i < resultado.length; i++) {
-            conteudoSelect += `<option value="${resultado[i].id_servidor}">${resultado[i].nome_servidor}</option>`
-        }
-        document.getElementById("select_servidor").innerHTML = conteudoSelect;
-    }
 
-    buscarServidores()
-
-    async function removerServidor() {
-        const idServidor = document.getElementById("select_servidor").value;
-
-        console.log(idServidor);
+    async function carregarDadosDashboard(idEmpresa) {
+        try {
+            console.log("Buscando dados")
+            const resposta = await fetch(`/servidor/buscarDashboardHome/${idEmpresa}`, { cache: 'no-store' })
 
 
-        const resultado = await excluirServidorService(idServidor)
-        console.log(resultado);
-        alert("Servidor excluido")
-        buscarServidores()
-    }
+           
 
-    function descobrirStatusServidor(cpu, ram, disco) {
-        if ((cpu >= 90 || ram >= 90 || disco >= 90)
-            || (cpu >= 70 && ram >= 70)
-            || (cpu >= 70 && disco >= 70)
-            || (disco >= 70 && ram >= 70)) {
-            return 'critico'
-        } else if (cpu >= 70 || ram >= 70 || disco >= 70) {
-            return 'risco'
-        } else {
-            return 'normal'
+
+            if (resposta.ok) {
+                const dados = await resposta.json()
+                console.log("Dados recebidos da API", dados)
+
+                dados.servidores.forEach(servidor => {
+                    if (servidor.dados_tempo_real) {
+                        console.log(`gráfico para : ${servidor.nome_db}`)
+                    } else {
+                        console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
+                    }
+                })
+
+                const qtdCriticos = dados.resumo_global.servidores_criticos
+                document.getElementById('kpiMaquinasRisco').innerText = qtdCriticos;
+                console.log("Total de servidores em estado crítico:", qtdCriticos);
+            } else {
+                console.error("Erro na resposta da API:", resposta.status);
+            }
+        } catch (erro) {
+            console.error("Erro no fetch do dashboard:", erro);
         }
     }
 
-    function descobrirStatusComponente(valorComponente) {
-        if (valorComponente >= 90) {
-            return {
-                status: 'critico',
-                cor: '#FF0050'
-            };
-        } else if (valorComponente >= 70) {
-            return {
-                status: 'risco',
-                cor: '#FFD600'
-            };
-        } else {
-            return {
-                status: 'estavel',
-                cor: '#01F2EA'
-            };
-        }
-    }
+    carregarDadosDashboard(1)
+
 
 
 

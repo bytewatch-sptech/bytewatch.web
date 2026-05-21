@@ -23,8 +23,8 @@ router.put("/atualizar-servidor", (req, res) => {
   servidorController.atualizarServidor(req, res)
 })
 
-router.get("/uso-s3/:macAddress", async (req, res) => {
-  servidorController.buscarUsoS3(req, res);   
+router.get("/buscarDashboardHome/:idEmpresa", async (req, res) => {
+  servidorController.buscarDashboardHome(req, res);   
 })
 
 module.exports = router;

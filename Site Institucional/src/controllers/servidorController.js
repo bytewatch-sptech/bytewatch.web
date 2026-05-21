@@ -87,32 +87,46 @@ function cadastrar(req, res) {
   
 }
 
-var s3Service = require("../../public/services/s3")
+var s3Service = require("../../public/services/s3Home")
 
-function buscarUsoS3(req, res){
-  var mac = req.params.macAddress
+async function buscarDashboardHome(req, res){
+  const idEmpresa = req.params.idEmpresa || req.params.id_empresa;
 
-  if(!mac){
-    return res.status(400).send("MAC Addressé obrigatório")
-  }
-  s3Service.obterUsoServidor(mac).then(function (resultado){
-    if(resultado){
-      res.json(resultado)
-    }else{
-      res.status(400).json({ mensagem: `Métricas não encontradas para o MAC: ${mac}`})
+  try{
+    const resultadoServidor = await servidorModel.listarServidores(idEmpresa)
+    const servidoresCadastrados = resultadoServidor;
+
+    if(servidoresCadastrados.length === 0) {
+      return res.status(404).json({ mensagem: "Nenhum server cadastrado"})
     }
-  })
-  .catch(function(erro){
-    console.erro("Erro no Controller ao buscar o S3",erro)
-    res.status(500).json({
-      mensagem: "Erro ao buscar dados no S3",
-      detalhe: erro.message
-    })  
-  })
+
+    const dadosS3 = await s3Service.obterDadosS3()
+    const frotaS3 = dadosS3.frota_servidores
+
+    const servidoresValidos = servidoresCadastrados.map(servidorDB => {
+      const metricasS3 = frotaS3.find(s => s.macAddress === servidorDB.mac_address)
+
+      return {
+        id_servidor: servidorDB.id_servidor,
+        nome_db: servidorDB.nome_servidor,
+        mac_address: servidorDB.mac_address,
+        idEmpresa: idEmpresa,
+        dados_tempo_real: metricasS3 ? metricasS3 : null
+      }
+    })
+
+    res.status(200).json({
+      resumo_global: dadosS3.resumo_global,
+      servidores: servidoresValidos
+    })
+  }catch(erro){
+    console.error("erro na integração do Banco e S3", erro)
+    res.status(500).json({ erro: "Erro interno no servidor"})
+  }
 }
 
 module.exports = {
-  buscarUsoS3,
+  buscarDashboardHome,
   cadastrar,
   buscarDatacenters,
   listarServidores,
