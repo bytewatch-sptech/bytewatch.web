@@ -1004,9 +1004,15 @@
     }
 
     async function obterDadosGrafico() {
-        const resultado = await buscarComponenteRamService("00-26-b9-ec-6c-b6")
+        const resultado = await buscarComponenteRamService("24:fe:9a:06:99:22")
+        
         console.log(resultado)
+        try {
         dadosUsoKpi = [resultado.dadosMaquina.metricas.kpiUso.percentualUsado, resultado.dadosMaquina.metricas.kpiUso.percentualLivre]
+        }
+        catch {
+            alert("Servidor inexistente no bucket, monitore o servidor com o script de captura Python")
+        }
         console.log(resultado);
         percentual_total_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
         percentual_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
