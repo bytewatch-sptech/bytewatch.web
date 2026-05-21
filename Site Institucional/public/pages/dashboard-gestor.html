@@ -187,11 +187,11 @@
                         </div>
 
                         <!-- ALERTAS -->
-                        <!-- <div class="card-custom mt-4">
-                            <h5>Alertas</h5>
+                        <div class="card-custom mt-4">
+                            <h5>Ranking Servidores</h5>
 
                             <div class="alert-item">
-                                <span>RAM acima de 85%</span>
+                                <span>Servidor - 000</span>
                                 <span class="badge-custom critico">Crítico</span>
                             </div>
 
@@ -205,7 +205,7 @@
                                 <span class="badge-custom info">Info</span>
                             </div>
 
-                        </div> -->
+                        </div>
 
                     </div>
                 </div>
@@ -225,7 +225,7 @@
 
 <script>
 
-    async function ObterDados() {
+    async function ObterDadosGauge() {
         const resultado = await buscarDadosGestorService();
         console.log(resultado.dadosMaquina);
 
@@ -251,7 +251,6 @@
             console.error("Erro ao pegar picos:", erro);
         }
     }
-
     ObterDados();
 
 

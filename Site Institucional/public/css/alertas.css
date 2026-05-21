@@ -179,9 +179,9 @@ body {
     }
 
     &.btn-exportar-green {
-        border: 1px solid var(--cor26);
-        background-color: var(--cor27);
-        color: var(--cor09);
+        border: 1px solid var(--cor00);
+        background-color: #00f2ea1f;
+        color: var(--cor00);
 
         &:hover {
             background-color: var(--cor28);
@@ -260,16 +260,16 @@ body {
         }
 
         &.trend-good {
-            color: var(--cor09);
+            color: var(--cor00);
         }
     }
 
     &.neutro {
-        border-color: var(--cor21);
+        border-color: var(--cor12);
 
         & .icon-box {
             /* background-color: rgba(255, 255, 255, 0.04);  */
-            border-color: var(--cor21);
+            border-color: var(--cor12);
             /* color: var(--cor05);  */
         }
     }
@@ -295,12 +295,12 @@ body {
     }
 
     &.verde {
-        border-color: var(--cor09);
+        border-color: var(--cor00);
 
         & .icon-box {
-            background-color: var(--cor34);
-            border-color: var(--cor35);
-            color: var(--cor09);
+            background-color: #00f2ea36;
+            border-color: var(--cor00);
+            color: var(--cor00);
         }
     }
 

@@ -26,6 +26,10 @@ router.put("/atualizar-servidor", (req, res) => {
   servidorController.atualizarServidor(req, res)
 })
 
+router.get("/buscar-nome-servidor/:macAddress", async (req, res) => {
+  servidorController.buscarNomeServidor(req, res);   
+})
+
 router.get("/uso-s3/:macAddress", async (req, res) => {
   servidorController.buscarUsoS3(req, res);   
 })

@@ -12,6 +12,16 @@ async function atualizarServidor(req, res) {
   res.status(200).json(resultado)
 }
 
+async function buscarNomeServidor(req, res){
+  var mac = req.params.macAddress
+
+  if(!mac){
+    return res.status(400).send("MAC Addressé obrigatório")
+  }
+  const resultado = await servidorModel.buscarNomeServidor(mac)
+  res.status(200).json(resultado)
+}
+
 async function buscarDatacenters(req, res) {
   const { id_empresa } = req.params
 
@@ -117,5 +127,6 @@ module.exports = {
   buscarDatacenters,
   listarServidores,
   removerServidor,
-  atualizarServidor
+  atualizarServidor,
+  buscarNomeServidor
 }
