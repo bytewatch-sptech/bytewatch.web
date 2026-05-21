@@ -116,7 +116,7 @@
                     <!-- MAIN -->
                     <div class="col-lg-10 col-10">
                         <button onclick="history.back()">← Voltar</button>
-                            <div class="middle-line"></div>
+                        <div class="middle-line"></div>
 
                         <h3>Painel Executivo</h3>
                         <p class="text-secondary">Visão macro da infraestrutura</p>
@@ -126,7 +126,8 @@
 
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/wallet.png" style="height: 25px;" alt=""> Custo Mensal</p>
+                                    <p><img src="../assets/wallet.png" style="height: 25px;" alt=""> Custo Mensal
+                                        Estimado</p>
                                     <div class="kpi-value">R$ 42.380</div>
                                     <!-- <small class="kpi-green">↓ 3,2%</small> -->
                                 </div>
@@ -186,7 +187,7 @@
                         </div>
 
                         <!-- ALERTAS -->
-                        <div class="card-custom mt-4">
+                        <!-- <div class="card-custom mt-4">
                             <h5>Alertas</h5>
 
                             <div class="alert-item">
@@ -204,7 +205,7 @@
                                 <span class="badge-custom info">Info</span>
                             </div>
 
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -225,13 +226,37 @@
 <script>
 
     async function ObterDados() {
-        const resultado = await buscarDadosGestorService()
-        console.log(resultado)
+        const resultado = await buscarDadosGestorService();
+        console.log(resultado.dadosMaquina);
+
+        console.log("ServidorEmPico:", resultado?.ServidorEmPico);
+
+        if (!resultado) {
+            console.error("Sem dados");
+            return;
+        }
+
+        try {
+            const picoRam = resultado.dadosMaquina.ServidorEmPico.servidorPicoRAM.valor;
+            const picoCpu = resultado.dadosMaquina.ServidorEmPico.servidorPicoCPU.valor;
+
+            const picosDia = [picoRam, picoCpu];
+
+            console.log("Picos:", picosDia);
+
+            atualizarGaugeRam(picoRam);
+            atualizarGaugeCpu(picoCpu);
+
+        } catch (erro) {
+            console.error("Erro ao pegar picos:", erro);
+        }
     }
-    ObterDados()
+
+    ObterDados();
+
 
     async function mudarGaugePico(params) {
-        
+
     }
     document.addEventListener("DOMContentLoaded", function () {
 
@@ -284,7 +309,7 @@
                 aspectRatio: 2,
                 circumference: 180,
                 rotation: -90,
-                cutout: "70%" 
+                cutout: "70%"
             }
         });
 
@@ -295,14 +320,14 @@
                 aspectRatio: 2,
                 circumference: 180,
                 rotation: -90,
-                cutout: "70%" 
+                cutout: "70%"
             }
         });
 
 
-        
 
-        
+
+
 
     });
 </script>
