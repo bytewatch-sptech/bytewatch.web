@@ -17,6 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="
+https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
+"></script>
 </head>
 
 <body>
@@ -138,7 +141,7 @@
                                 <div class="col-lg-9 d-flex flex-column gap-4 coluna-central">
                                     <section class="secao-visao-geral">
 
-                                        <header class="cabecalho-pagina mb-4 d-flex align-items-center gap-3 w-100">
+                                        <header class="cabecalho-pagina d-flex align-items-center gap-3 w-100">
                                             <div class="icone-cabecalho">
                                                 <svg width="56" height="56" viewBox="0 0 48 48" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -163,45 +166,76 @@
                                                     style="font-size: 0.9rem">Veja os insights iniciais</span>
                                             </div>
                                         </header>
+                                        <div class="row g-3">
+                                            <div class="flex-column g-3 grade-cards-resumo">
 
-                                        <div class="row g-3 grade-cards-resumo">
-                                            <div class="col-md-4">
-                                                <div class="card h-100 cartao-resumo borda-ciano">
-                                                    <div class="card-body conteudo-cartao">
-                                                        <div class="icone icone-ciano">
-                                                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                    fill="#00F2EA" fill-opacity="0.2" />
-                                                                <path
-                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                    stroke="#00F2EA" />
-                                                                <path
-                                                                    d="M24.6665 9.66663H11.3332C10.4127 9.66663 9.6665 10.4128 9.6665 11.3333V14.6666C9.6665 15.5871 10.4127 16.3333 11.3332 16.3333H24.6665C25.587 16.3333 26.3332 15.5871 26.3332 14.6666V11.3333C26.3332 10.4128 25.587 9.66663 24.6665 9.66663Z"
-                                                                    stroke="#00F2EA" stroke-width="1.66667"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path
-                                                                    d="M24.6665 19.6666H11.3332C10.4127 19.6666 9.6665 20.4128 9.6665 21.3333V24.6666C9.6665 25.5871 10.4127 26.3333 11.3332 26.3333H24.6665C25.587 26.3333 26.3332 25.5871 26.3332 24.6666V21.3333C26.3332 20.4128 25.587 19.6666 24.6665 19.6666Z"
-                                                                    stroke="#00F2EA" stroke-width="1.66667"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M13 13H13.0083" stroke="#00F2EA"
-                                                                    stroke-width="1.66667" stroke-linecap="round"
-                                                                    stroke-linejoin="round" />
-                                                                <path d="M13 23H13.0083" stroke="#00F2EA"
-                                                                    stroke-width="1.66667" stroke-linecap="round"
-                                                                    stroke-linejoin="round" />
-                                                            </svg>
+
+                                                <div class="col-md-4">
+                                                    <div class="card h-100 cartao-resumo borda-vermelha">
+                                                        <div class="card-body conteudo-cartao">
+                                                            <div class="icone icone-vermelho">
+                                                                <svg width="36" height="36" viewBox="0 0 36 36"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                        fill="#FF0050" fill-opacity="0.2" />
+                                                                    <path
+                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                        stroke="#FF3366" />
+                                                                    <path
+                                                                        d="M26.1085 23L19.4419 11.3333C19.2965 11.0768 19.0857 10.8635 18.831 10.715C18.5762 10.5666 18.2867 10.4884 17.9919 10.4884C17.697 10.4884 17.4075 10.5666 17.1527 10.715C16.898 10.8635 16.6872 11.0768 16.5419 11.3333L9.87519 23C9.72825 23.2544 9.65121 23.5432 9.65186 23.8371C9.65251 24.1309 9.73083 24.4194 9.87889 24.6732C10.0269 24.927 10.2395 25.1371 10.4949 25.2823C10.7504 25.4275 11.0397 25.5026 11.3335 25.5H24.6669C24.9593 25.4997 25.2465 25.4225 25.4996 25.2761C25.7527 25.1297 25.9629 24.9192 26.1089 24.6659C26.255 24.4126 26.3319 24.1253 26.3318 23.8329C26.3317 23.5405 26.2547 23.2532 26.1085 23Z"
+                                                                        stroke="#FF0050" stroke-width="1.66667"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path d="M18 15.5V18.8333" stroke="#FF0050"
+                                                                        stroke-width="1.66667" stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path d="M18 22.1666H18.0083" stroke="#FF0050"
+                                                                        stroke-width="1.66667" stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="textos-do-cartao">
+                                                                <span class="titulo-pequeno">Máquinas em Risco</span>
+                                                                <span class="numero-gigante texto-vermelho"
+                                                                    id="kpiMaquinasRisco"></span>
+                                                            </div>
                                                         </div>
-                                                        <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Total de Máquinas</span>
-                                                            <span class="numero-gigante texto-ciano"
-                                                                id="totalMaquinas"></span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="card h-100 cartao-resumo borda-ciano">
+                                                        <div class="card-body conteudo-cartao">
+                                                            <div class="icone icone-ciano">
+                                                                <svg width="36" height="36" viewBox="0 0 36 36"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                        fill="#00F2EA" fill-opacity="0.2" />
+                                                                    <path
+                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                        stroke="#00F2EA" />
+                                                                    <path
+                                                                        d="M26.3332 18H24.2665C23.9023 17.9992 23.5479 18.1177 23.2574 18.3374C22.967 18.5572 22.7565 18.866 22.6582 19.2166L20.6998 26.1833C20.6872 26.2266 20.6609 26.2646 20.6248 26.2916C20.5888 26.3187 20.5449 26.3333 20.4998 26.3333C20.4548 26.3333 20.4109 26.3187 20.3748 26.2916C20.3388 26.2646 20.3125 26.2266 20.2998 26.1833L15.6998 9.81663C15.6872 9.77335 15.6609 9.73534 15.6248 9.70829C15.5888 9.68125 15.5449 9.66663 15.4998 9.66663C15.4548 9.66663 15.4109 9.68125 15.3748 9.70829C15.3388 9.73534 15.3125 9.77335 15.2998 9.81663L13.3415 16.7833C13.2436 17.1326 13.0343 17.4404 12.7456 17.66C12.4568 17.8796 12.1043 17.9989 11.7415 18H9.6665"
+                                                                        stroke="#00F2EA" stroke-width="1.66667"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="textos-do-cartao">
+                                                                <span class="titulo-pequeno">Componentes em Risco</span>
+                                                                <span class="numero-gigante texto-ciano"
+                                                                    id="kpiComponentesRisco"></span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="card-mapa">
+                                                <div id="mapa"></div>
 
+<<<<<<< HEAD
                                             <div class="col-md-4">
                                                 <div class="card h-100 cartao-resumo borda-vermelha">
                                                     <div class="card-body conteudo-cartao">
@@ -260,6 +294,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
+=======
+>>>>>>> 9981da1 (Gráfico mapa, esqueleto)
                                             </div>
                                         </div>
 
@@ -1187,4 +1223,122 @@
         document.getElementById("totalMaquinas").innerHTML = resultado.length
     }
     mostrarServidores();
+
+
+
+    const chartDom = document.getElementById('mapa')
+    const myChart = echarts.init(chartDom);
+    const svgDoFigma = `
+    <svg width="744" height="371" viewBox="0 0 744 371" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100%" height="100%" fill="#0d5eff" /> <path fill-rule="evenodd" clip-rule="evenodd" d="M383.042 296.401C383.042 295.979... (seu path aqui)" fill="#222222"/>
+      <path d="M383.042 296.401C383.042 295.979 383.769 295.196 384.189 295.799C384.612 296.401 384.431 297.247 385.276 297.247C386.12 297.247 387.63 297.548 387.873 297.187C388.112 296.824 389.2 296.522 389.2 295.859C389.2 295.196 389.2 282.883 389.2 282.4C389.2 281.917 391.254 282.4 391.254 281.615C391.254 280.83 391.254 274.614 391.254 274.614C391.254 274.614 392.762 274.495 393.186 274.374C393.609 274.254 395.119 273.468 395.482 273.71C395.844 273.949 396.325 274.797 396.567 274.494C396.808 274.192 397.413 273.588 398.017 273.588C398.346 273.588 398.886 273.446 399.389 273.325C399.289 273.148 399.225 272.982 399.225 272.854C399.225 272.343 395.55 272.956 394.937 273.161C394.323 273.366 392.385 273.671 391.771 273.365C391.159 273.059 387.279 273.365 387.279 273.365L386.564 272.65C386.564 272.65 380.232 272.65 379.518 272.65C378.804 272.65 378.291 272.549 377.68 272.143C377.066 271.732 376.455 271.732 375.739 272.037C375.025 272.344 375.331 271.63 374.821 271.63C374.31 271.63 374.106 272.143 374.106 272.143L373.469 272.309C373.469 272.309 374.821 271.63 374.821 271.63Z" fill="#222222" stroke="#333" />
+    </svg>`;
+
+    echarts.register('mapa_figma', { svg: svgDoFigma });
+
+
+    const option = {
+        backgroundColor: 'transparent',
+        tooltip: {
+            trigger: 'item',
+            backgroundColor: 'rgba(26, 26, 26, 0.9)',
+            borderColor: 'rgba(255, 255, 255, 0.2)',
+            borderWidth: 1,
+            textStyle: { color: '#fff', fontFamily: 'Arial' },
+            formatter: function (params) {
+                if (params.seriesType === 'effectScatter' || params.seriesType === 'scatter') {
+                    const servidor = params.data[2];
+                    const status = params.data[3];
+                    const latência = params.data[4];
+                    const corStatus = status === 'CRÍTICO' ? '#ff3b30' : '#00f0ff';
+                }
+                return `
+                <div style="font-weight: bold; margin-bottom: 5px;">
+                `
+            }
+        },
+
+        graphic: [
+            {
+                type: 'image',
+                id: 'fundo-mapa',
+                left: 0, top: 0, width: '100%', height: '100%',
+                style: {
+                    image: imagemMapa,
+                    opacity: 1
+                },
+                silent: true,
+                zIndex: -10
+            }
+        ],
+        grid: {
+            show: true,
+            backgroundColor: '#0d5eff',
+            borderWidth: 0,
+            left: '5%',
+            right: '5%',
+            top: '5%',
+            bottom: '5%'
+        },
+        xAxis: {
+            type: 'value',
+            min: 0, max: 100, splitNumber: 10,
+            axisLine: { show: false }, axisTick: { show: false }, axisLabel: { show: false },
+            splitLine: { show: true, lineStyle: { color: 'rgba(255, 255, 255, 0.15)' } }
+        },
+        yAxis: {
+            type: 'value',
+            min: 0, max: 100, splitNumber: 5,
+            axisLine: { show: false }, axisTick: { show: false }, axisLabel: { show: false },
+            splitLine: { show: true, lineStyle: { color: 'rgba(255, 255, 255, 0.15)' } }
+        },
+        series: [
+            {
+                type: 'custom',
+                coordinateSystem: 'cartesian2d',
+                renderItem: function (params, api) {
+                    const points = []
+                    const dataCoords = api.value(0)
+                    for (let i = 0; i < dataCoords.length; i++) {
+                        points.push(api.coord(dataCoords[i]))
+
+                    }
+                    return {
+                        type: 'polygon',
+                        shape: { points: points },
+                        style: api.style({ fill: '#1a1a1a', stroke: '#1a1a1a' })
+                    }
+                },
+                data: [
+                    [[[15, 40], [35, 35], [38, 65], [20, 75], [15, 60]]],
+                    [[[35, 10], [42, 10], [42, 45], [35, 45]]],
+                    [[[50, 15], [60, 15], [60, 48], [50, 48]]],
+                    [[[62, 50], [85, 40], [80, 70], [60, 70]]]
+                ]
+            },
+            {
+                name: 'OK',
+                type: 'scatter',
+                coordinateSystem: 'cartesian2d',
+                symbolSize: 8,
+                itemStyle: { color: '#00f0ff', shadowBlur: 6, shadowColor: '#00f0ff' },
+                data: [[22, 55], [49, 75], [52, 72], [78, 62]]
+            },
+            {
+                name: 'Crítico',
+                type: 'effectScatter',
+                coordinateSystem: 'cartesian2d',
+                symbolSize: 10,
+                rippleEffect: { brushType: 'stroke', scale: 4, period: 3 },
+                itemStyle: { color: '#ff3b30', shadowBlur: 10, shadowColor: '#ff3b30' },
+                data: [[32, 58], [40, 25], [55, 23], [70, 45]]
+
+            }
+        ]
+    }
+    myChart.setOption(option);
+
+    window.addEventListener('resize', function () {
+        myChart.resize();
+    })
 </script>
