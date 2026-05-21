@@ -12,6 +12,16 @@ async function atualizarServidor(req, res) {
   res.status(200).json(resultado)
 }
 
+async function buscarNomeServidor(req, res){
+  var mac = req.params.macAddress
+
+  if(!mac){
+    return res.status(400).send("MAC Addressé obrigatório")
+  }
+  const resultado = await servidorModel.buscarNomeServidor(mac)
+  res.status(200).json(resultado)
+}
+
 async function buscarDatacenters(req, res) {
   const { id_empresa } = req.params
 
@@ -102,13 +112,13 @@ function buscarUsoS3(req, res) {
       res.status(400).json({ mensagem: `Métricas não encontradas para o MAC: ${mac}` })
     }
   })
-    .catch(function (erro) {
-      console.error("Erro no Controller ao buscar o S3", erro)
-      res.status(500).json({
-        mensagem: "Erro ao buscar dados no S3",
-        detalhe: erro.message
-      })
-    })
+  .catch(function(erro){
+    console.error("Erro no Controller ao buscar o S3",erro)
+    res.status(500).json({
+      mensagem: "Erro ao buscar dados no S3",
+      detalhe: erro.message
+    })  
+  })
 }
 
 module.exports = {
@@ -117,5 +127,6 @@ module.exports = {
   buscarDatacenters,
   listarServidores,
   removerServidor,
-  atualizarServidor
+  atualizarServidor,
+  buscarNomeServidor
 }
