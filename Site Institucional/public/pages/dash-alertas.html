@@ -486,109 +486,31 @@
     }
     window.onload = carregarDashboard;
 
+    async function carregarTicketsAlertas(resultadoPython) {
+        try {
+            let arrayGerados = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const canvasElement = document.getElementById('graficoAlertasTickets')
-        if (canvasElement) {
+            if (resultadoPython.graficos && resultadoPython.graficos.linha_tempo) {
+                let arrayGerados = [];
+                const historico = resultadoPython.graficos.linha_tempo;
 
-            const ctx = canvasElement.getContext('2d')
-            const gradienteVermelho = ctx.createLinearGradient(0, 0, 0, 360)
-            gradienteVermelho.addColorStop(0, 'rgba(255, 45, 86, 0.4)')
-            gradienteVermelho.addColorStop(1, 'rgba(255, 45, 86, 0.05)')
-
-            const gradienteVerde = ctx.createLinearGradient(0, 0, 0, 360)
-            gradienteVerde.addColorStop(0, 'rgba(0, 200, 83, 0.4)')
-            gradienteVerde.addColorStop(1, 'rgba(0, 200, 83, 0)')
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    //  Eixo X
-                    labels: ['00h', '02h', '04h', '06h', '08h', '10h', '12h', '14h', '16h', '18h', '20h', '22h'],
-                    datasets: [
-                        {
-                            label: 'Gerados',
-                            data: [30, 45, 35, 70, 100, 130, 160, 140, 120, 100, 80, 50],
-                            borderColor: '#FF2D56',
-                            backgroundColor: gradienteVermelho,
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.4,
-                            pointRadius: 0,
-                            pointHoverRadius: 6
-                        },
-                        {
-                            label: 'Resolvidos (Jira)',
-                            data: [40, 50, 30, 45, 70, 105, 130, 145, 200, 160, 120, 80],
-                            borderColor: '#00c853',
-                            backgroundColor: gradienteVerde,
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.4,
-                            pointRadius: 0,
-                            pointHoverRadius: 6
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                usePointStyle: true,
-                                boxWidth: 8,
-                                color: '#A0A0A0',
-                                font: {
-                                    family: "'League Spartan', sans-serif",
-                                    size: 12
-                                }
-                            }
-                        },
-
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false,
-                            backgroundColor: '#1a1a1a',
-                            titleColor: '#fff',
-                            bodyColor: '#fff',
-                            borderColor: '#333',
-                            borderWidth: 1
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                color: '#6c757d',
-                                font: { family: "'League Spartan', sans-serif" }
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            max: 260,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                stepSize: 65,
-                                color: '#6c757d',
-                                font: { family: "'League Spartan', sans-serif" }
-                            }
-                        }
-                    }
+                for (let i = 0; i < historico.length; i++) {
+                    arrayGerados.push(historico[i].gerados);
                 }
-            })
+            }
+
+            const urlJira = 'http://localhost:3333/api/incidentes/1';
+
+            const respostaJira = await fetch(urlJira);
+            const chamadosJira = await respostaJira.json();
+            const arrayResolvidos = agruparResolvidosPorHora(chamadosJira);
+
+            renderizarChartLinha(arrayGerados, arrayResolvidos);
+
+        } catch (erro) {
+            console.error("Erro ao cruzar Python e Jira no Gráfico de Linhas:", erro);
         }
-    })
+    }
 
     // só para evitar sobreposição
     let graficoSeveridadeInstance = null;
