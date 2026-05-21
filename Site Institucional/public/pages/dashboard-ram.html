@@ -284,7 +284,7 @@
                                         <div class="div-legends">
                                             <div class="legend-container">
                                                 <div>
-                                                    <span class="span-circle" style="background-color: #588FFF;"></span>
+                                                    <span class="span-circle" id="cor_bullet_kpi_uso" style="background-color: #588FFF;"></span>
                                                     <span class="span-legend">Em uso</span>
                                                 </div>
                                                 <span class="span-percent" id="percentual_uso_kpi"></span>
@@ -974,11 +974,16 @@
         if (valor >= 90) {
             meuElemento.classList.add('kpi-risco');
             COR_KPI_USO =  "#FF0050"
+            percentual_total_uso_kpi.style.color = "#FF0050"
+            cor_bullet_kpi_uso.style.backgroundColor = "#FF0050"
+            percentual_uso_kpi.style.color = "#FF0050"
         }
         else if (valor >= 70) {
             meuElemento.classList.add('kpi-critico');
             COR_KPI_USO = "#FFD500"
-            // percentual_uso_kpi.style.color =
+            percentual_total_uso_kpi.style.color = "#FFD500"
+            cor_bullet_kpi_uso.style.backgroundColor = "#FFD500"
+            percentual_uso_kpi.style.color = "#FFD500"
         }
         else {
             meuElemento.classList.remove('kpi-risco');
@@ -1009,7 +1014,7 @@
 
     var COR_KPI_USO = "#588FFF"
     async function obterDadosGrafico() {
-        const resultado = await buscarComponenteRamService("00-26-b9-ec-6c-b6")
+        const resultado = await buscarComponenteRamService("24:fe:9a:06:99:2f")
         
         console.log(resultado)
         try {
