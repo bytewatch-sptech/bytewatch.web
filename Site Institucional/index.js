@@ -20,23 +20,23 @@ router.post("/api/jira/teste", (req, res) => {
 });
 
 require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const { buscarIssues } = require('./public/services/jiraService');
+var express = require('express');
+var cors = require('cors');
+var { buscarIssues } = require('./public/services/jiraService');
 
-const app = express();
+var app = express();
 
 app.use(express.json());
 app.use(cors());
 
 app.get('/api/incidentes/:fkEmpresa', async (req, res) => {
 
-    const idEmpresa = req.params.fkEmpresa;
+    var idEmpresa = req.params.fkEmpresa;
 
     console.log(`Recebida requisição de incidentes - Empresa: ${idEmpresa}`);
 
     try {
-        const incidentes = await buscarIssues(idEmpresa);
+        var incidentes = await buscarIssues(idEmpresa);
 
         if (!incidentes || incidentes.length === 0) {
             return res.status(204).send();
@@ -55,7 +55,7 @@ app.get('/api/incidentes/:fkEmpresa', async (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 3333;
+var PORT = process.env.PORT || 3333;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });

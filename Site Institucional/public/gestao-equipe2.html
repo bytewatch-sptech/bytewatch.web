@@ -205,7 +205,7 @@
                                 </span>
                             </div>
                             <p class="text-secondary mb-1 texto-pequeno">Alertas em abertos</p>
-                            <h3 class="text-white fw-bold mb-0">47</h3>
+                            <h3 class="text-white fw-bold mb-0" id="kpi_alertas_abertos">0</h3>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-xl-3">
@@ -219,7 +219,7 @@
                                 </span>
                             </div>
                             <p class="text-secondary mb-1 texto-pequeno">MTTA - Tempo de Reconhecimento</p>
-                            <h3 class="text-white fw-bold mb-0 d-flex align-items-baseline gap-1">4.2 <span
+                            <h3 class="text-white fw-bold mb-0 d-flex align-items-baseline gap-1" id="kpi_mtta">0 <span
                                     class="fs-6 text-secondary fw-normal">min</span></h3>
                         </div>
                     </div>
@@ -234,7 +234,7 @@
                                 </span>
                             </div>
                             <p class="text-secondary mb-1 texto-pequeno">MTTR - Tempo de Resolução</p>
-                            <h3 class="text-white fw-bold mb-0 d-flex align-items-baseline gap-1">23.5 <span
+                            <h3 class="text-white fw-bold mb-0 d-flex align-items-baseline gap-1" id="kpi_mttr">0 <span
                                     class="fs-6 text-secondary fw-normal">min</span></h3>
                         </div>
                     </div>
@@ -472,63 +472,13 @@
     Chart.defaults.color = '#8A92A6';
     Chart.defaults.font.family = "'Inter', sans-serif";
 
-    const contextoProporcao = document.getElementById('graficoProporcao').getContext('2d');
-    new Chart(contextoProporcao, {
-        type: 'bar',
-        data: {
-            labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-            datasets: [
-                {
-                    label: 'Alertas Tratados',
-                    data: [290, 340, 200, 420, 360, 150, 200],
-                    backgroundColor: '#FFD600',
-                    borderRadius: 4,
-                    barPercentage: 0.4
-                },
-                {
-                    label: 'Incidentes Reais',
-                    data: [0, 0, 0, 15, 0, 0, 0],
-                    backgroundColor: '#FF2D56',
-                    borderRadius: 4,
-                    barPercentage: 0.4
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    stacked: true,
-                    grid: { display: false, drawBorder: false }
-                },
-                y: {
-                    stacked: true,
-                    min: 0,
-                    max: 600,
-                    ticks: { stepSize: 150 },
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.05)',
-                        drawBorder: false,
-                        borderDash: [5, 5]
-                    }
-                }
-            },
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                    align: 'start',
-                    labels: {
-                        usePointStyle: true,
-                        boxWidth: 8,
-                        padding: 20
-                    }
-                }
-            }
-        }
-    });
 
-    const contextoVolume = document.getElementById('graficoVolume').getContext('2d');
+    var dadosDoDashboard = null;
+
+
+
+    // grafico 2 MOCADO
+    var contextoVolume = document.getElementById('graficoVolume').getContext('2d');
     new Chart(contextoVolume, {
         type: 'bar',
         data: {
@@ -567,86 +517,15 @@
 
 
 
-    // modal grafico 1
-
-    document.addEventListener("DOMContentLoaded", function () {
-        let instanciaGraficoExpandido = null;
-
-        const modalBarras = document.getElementById('modalBarrasDetalhado');
-
-        modalBarras.addEventListener('shown.bs.modal', function () {
-            const contextoExpandido = document.getElementById('graficoBarrasExpandido').getContext('2d');
-
-            if (instanciaGraficoExpandido) {
-                instanciaGraficoExpandido.destroy();
-            }
-
-            instanciaGraficoExpandido = new Chart(contextoExpandido, {
-                type: 'bar',
-                data: {
-                    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
-                    datasets: [
-                        {
-                            label: 'Alertas Tratados',
-                            data: [290, 340, 200, 420, 360, 150, 200],
-                            backgroundColor: '#FFD600',
-                            borderRadius: 5,
-                            barPercentage: 0.5
-                        },
-                        {
-                            label: 'Incidentes Reais',
-                            data: [0, 0, 0, 25, 0, 0, 0],
-                            backgroundColor: '#FF2D56',
-                            borderRadius: 5,
-                            barPercentage: 0.5
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            stacked: true,
-                            grid: { display: false },
-                            ticks: { color: '#8A92A6', font: { size: 14 } }
-                        },
-                        y: {
-                            stacked: true,
-                            min: 0,
-                            max: 600,
-                            ticks: { stepSize: 100, color: '#8A92A6' },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: '#8A92A6',
-                                padding: 30,
-                                usePointStyle: true,
-                                pointStyle: 'circle'
-                            }
-                        }
-                    }
-                }
-            });
-        });
-    });
 
 
-    // modal grafico 2
-    let instanciaGraficoVolumeExpandido = null;
-    const modalVolume = document.getElementById('modalVolumeDetalhado');
+    // modal grafico 2 MOCADO
+    var instanciaGraficoVolumeExpandido = null;
+    var modalVolume = document.getElementById('modalVolumeDetalhado');
 
     if (modalVolume) {
         modalVolume.addEventListener('shown.bs.modal', function () {
-            const contextoVolumeExpandido = document.getElementById('graficoVolumeExpandido').getContext('2d');
+            var contextoVolumeExpandido = document.getElementById('graficoVolumeExpandido').getContext('2d');
 
             if (instanciaGraficoVolumeExpandido) {
                 instanciaGraficoVolumeExpandido.destroy();
@@ -706,21 +585,38 @@
     }
 
     async function carregarDadosJira() {
-        const fkEmpresa = sessionStorage.getItem("ID_EMPRESA") || 1;
+        var fkEmpresa = sessionStorage.getItem("ID_EMPRESA") || 1;
 
         try {
-            const resposta = await fetch(`/jira/dashboard/${fkEmpresa}`);
+            var resposta = await fetch(`/jira/dashboard/${fkEmpresa}`);
 
             if (resposta.ok) {
-                const dadosJira = await resposta.json();
+                var dadosJira = await resposta.json();
 
-                console.log("DADOS QUE CHEGARAM DO BACKEND:", dadosJira);
+                dadosDoDashboard = dadosJira;
 
-                const kpiTotal = document.getElementById('kpi_total_alertas_todos');
+
+                var kpiTotal = document.getElementById('kpi_total_alertas_todos');
                 if (kpiTotal) {
-
                     kpiTotal.innerText = dadosJira.incidentes.length;
                 }
+
+                var kpiAbertos = document.getElementById('kpi_alertas_abertos');
+                if (kpiAbertos) {
+                    kpiAbertos.innerText = dadosJira.incidentesAtivos;
+                }
+
+                var kpiMtta = document.getElementById('kpi_mtta');
+                if (kpiMtta) {
+                    kpiMtta.innerHTML = `${dadosJira.mtta} <span class="fs-6 text-secondary fw-normal">min</span>`;
+                }
+
+                var kpiMttr = document.getElementById('kpi_mttr');
+                if (kpiMttr) {
+                    kpiMttr.innerHTML = `${dadosJira.mttr} <span class="fs-6 text-secondary fw-normal">min</span>`;
+                }
+
+                plotarGraficoProporcao(dadosJira.graficoBarras.alertas, dadosJira.graficoBarras.incidentes);
 
             } else {
                 console.error('Erro na resposta da API do Jira:', resposta.status);
@@ -728,9 +624,152 @@
         } catch (erro) {
             console.error('Erro ao fazer o fetch para o Jira:', erro);
         }
+
     }
 
+    // grafico 1
+    var graficoProporcaoInstancia = null;
 
-    document.addEventListener('DOMContentLoaded', carregarDadosJira);
+
+    function plotarGraficoProporcao(alertas, incidentes) {
+        var contextoProporcao = document.getElementById('graficoProporcao').getContext('2d');
+
+        if (graficoProporcaoInstancia) {
+            graficoProporcaoInstancia.destroy();
+        }
+
+        graficoProporcaoInstancia = new Chart(contextoProporcao, {
+            type: 'bar',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                datasets: [
+                    {
+                        label: 'Alertas Tratados',
+                        data: alertas,
+                        backgroundColor: '#FFD600',
+                        borderRadius: 4,
+                        barPercentage: 0.4
+                    },
+                    {
+                        label: 'Incidentes Reais',
+                        data: incidentes,
+                        backgroundColor: '#FF2D56',
+                        borderRadius: 4,
+                        barPercentage: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        stacked: true,
+                        grid: { display: false },
+                        ticks: { color: '#8A92A6', font: { size: 14 } }
+                    },
+                    y: {
+                        stacked: true,
+                        min: 0,
+                        max: 600,
+                        ticks: { stepSize: 100, color: '#8A92A6' },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)',
+                            drawBorder: false,
+                            borderDash: [5, 5]
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#8A92A6',
+                            padding: 30,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    }
+                }
+            }
+        });
+
+
+    }
+
+    // modal grafico 1
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var instanciaGraficoExpandido = null;
+
+        var modalBarras = document.getElementById('modalBarrasDetalhado');
+
+        modalBarras.addEventListener('shown.bs.modal', function () {
+            var contextoExpandido = document.getElementById('graficoBarrasExpandido').getContext('2d');
+
+            if (instanciaGraficoExpandido) {
+                instanciaGraficoExpandido.destroy();
+            }
+
+            instanciaGraficoExpandido = new Chart(contextoExpandido, {
+                type: 'bar',
+                data: {
+                    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                    datasets: [
+                        {
+                            label: 'Alertas Tratados',
+                            data: dadosDoDashboard.graficoBarras.alertas,
+                            backgroundColor: '#FFD600',
+                            borderRadius: 5,
+                            barPercentage: 0.5
+                        },
+                        {
+                            label: 'Incidentes Reais',
+                            data: dadosDoDashboard.graficoBarras.incidentes,
+                            backgroundColor: '#FF2D56',
+                            borderRadius: 5,
+                            barPercentage: 0.5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            stacked: true,
+                            grid: { display: false },
+                            ticks: { color: '#8A92A6', font: { size: 14 } }
+                        },
+                        y: {
+                            stacked: true,
+                            min: 0,
+                            max: 600,
+                            ticks: { stepSize: 100, color: '#8A92A6' },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.05)',
+                                drawBorder: false,
+                                borderDash: [5, 5]
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#8A92A6',
+                                padding: 30,
+                                usePointStyle: true,
+                                pointStyle: 'circle'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    });
+
+
+    window.addEventListener('DOMContentLoaded', carregarDadosJira);
 
 </script>

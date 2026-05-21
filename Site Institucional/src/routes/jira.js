@@ -1,8 +1,8 @@
-const express = require("express");
+var express = require("express");
 
-const router = express.Router();
+var router = express.Router();
 
-const jiraController = require("../controllers/jiraController");
+var jiraController = require("../controllers/jiraController");
 
 
 router.get("/dashboard/:fkEmpresa", function (req, res) {
