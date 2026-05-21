@@ -10,7 +10,7 @@ const streamToString = (stream) =>
 
     })
 
-async function obterUsoServidor(macAddress) {
+async function obterUsoServidor() {
 
     const params = {
         Bucket: process.env.S3_BUCKET_NAME,
