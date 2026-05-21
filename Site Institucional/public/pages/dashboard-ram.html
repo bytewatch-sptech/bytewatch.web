@@ -973,13 +973,17 @@
         valor = parseInt(valor)
         if (valor >= 90) {
             meuElemento.classList.add('kpi-risco');
+            COR_KPI_USO =  "#FF0050"
         }
         else if (valor >= 70) {
             meuElemento.classList.add('kpi-critico');
+            COR_KPI_USO = "#FFD500"
+            // percentual_uso_kpi.style.color =
         }
         else {
             meuElemento.classList.remove('kpi-risco');
             meuElemento.classList.remove('kpi-critico');
+            COR_KPI_USO = "#588FFF"
         }
 
     }
@@ -1003,9 +1007,17 @@
 
     }
 
+    var COR_KPI_USO = "#588FFF"
     async function obterDadosGrafico() {
-        const resultado = await buscarComponenteRamService("24:fe:9a:06:99:2f")
-        dadosUsoKpi = [resultado.dadosMaquina.metricas.kpiUso.percentualUsado, resultado.dadosMaquina.metricas.kpiUso.percentualLivre]
+        const resultado = await buscarComponenteRamService("00-26-b9-ec-6c-b6")
+        
+        console.log(resultado)
+        try {
+        dadosUsoKpi = [resultado.dadosMaquina.metricas.kpiUso.percentualLivre, resultado.dadosMaquina.metricas.kpiUso.percentualUsado]
+        }
+        catch {
+            alert("Servidor inexistente no bucket, monitore o servidor com o script de captura Python")
+        }
         console.log(resultado);
         percentual_total_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
         percentual_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
@@ -1090,8 +1102,8 @@
                 label: 'My First Dataset',
                 data: dadosUsoKpi,
                 backgroundColor: [
-                    '#588FFF',
                     "#212121",
+                    COR_KPI_USO,
                 ],
                 hoverOffset: 4
             }]

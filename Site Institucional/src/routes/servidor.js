@@ -3,6 +3,7 @@ var router = express.Router();
 
 var servidorController = require("../controllers/servidorController");
 var componenteRamController = require("../controllers/componenteRamController");
+var dadosGestorController = require("../controllers/dadosGestorController");
 
 
 router.post("/cadastrar", function (req, res) {
@@ -25,6 +26,10 @@ router.put("/atualizar-servidor", (req, res) => {
   servidorController.atualizarServidor(req, res)
 })
 
+router.get("/buscar-nome-servidor/:macAddress", async (req, res) => {
+  servidorController.buscarNomeServidor(req, res);   
+})
+
 router.get("/uso-s3/:macAddress", async (req, res) => {
   servidorController.buscarUsoS3(req, res);   
 })
@@ -32,5 +37,9 @@ router.get("/uso-s3/:macAddress", async (req, res) => {
 router.get("/buscar-metricas-ram/:macAddress", async (req, res) => {
   componenteRamController.buscarUsoS3(req, res);   
 })
+
+router.get("/gestor", (req, res) => {
+  dadosGestorController.buscarGestorS3(req, res)
+}) 
 
 module.exports = router;
