@@ -67,15 +67,13 @@ function cadastrar(nome, localizacao, ip, fkEmpresa, tipo, mac_address, componen
     }
     return Promise.all(promessas);
   });
-y
 }
-
-
 
 module.exports = {
   cadastrar,
   buscarDatacenters,
   listarServidores,
   removerServidor,
-  atualizarServidor
+  atualizarServidor,
+  buscarNomeServidor
 }
