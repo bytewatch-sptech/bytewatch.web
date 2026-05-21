@@ -989,6 +989,9 @@
             meuElemento.classList.remove('kpi-risco');
             meuElemento.classList.remove('kpi-critico');
             COR_KPI_USO = "#588FFF"
+            percentual_total_uso_kpi.style.color = "#FFFFFF"
+            cor_bullet_kpi_uso.style.backgroundColor = "#FFFFFF"
+            percentual_uso_kpi.style.color = "#FFFFFF"
         }
 
     }
@@ -1001,13 +1004,16 @@
 
         if (valorHoje >= 90 && valorHoje >= valorOntem) {
             meuElemento.classList.add('kpi-risco');
+            pico_hoje.style.color = "#FF0050"
         }
         else if (valorHoje >= 70 && valorHoje >= valorOntem) {
             meuElemento.classList.add('kpi-critico');
+            pico_hoje.style.color = "#FFD500"
         }
         else {
             meuElemento.classList.remove('kpi-risco');
             meuElemento.classList.remove('kpi-critico');
+            pico_hoje.style.color = "#FFFFFF"
         }
 
     }
