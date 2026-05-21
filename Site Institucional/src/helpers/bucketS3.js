@@ -35,7 +35,7 @@ async function obterUsoMemoriaRam(macAddress) {
     }
 }
 
-async function obterDadosGestor(macAddress) {
+async function obterDadosGestor() {
 
     const params = {
         Bucket: process.env.S3_BUCKET_NAME,
@@ -47,11 +47,10 @@ async function obterDadosGestor(macAddress) {
         const conteudo = await streamToString(Body)
         const bancoDadosJson = JSON.parse(conteudo)
 
-        const dadosMaquina = bancoDadosJson[macAddress]
+        const dadosMaquina = bancoDadosJson
         if(!dadosMaquina)return null;
         
         return{
-            macAddress,
             dadosMaquina
         }
     }catch(err){
@@ -60,4 +59,4 @@ async function obterDadosGestor(macAddress) {
     }
 }
 
-module.exports = { obterUsoMemoriaRam }
+module.exports = { obterUsoMemoriaRam, obterDadosGestor }

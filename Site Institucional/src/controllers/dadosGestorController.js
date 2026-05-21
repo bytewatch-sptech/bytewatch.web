@@ -1,13 +1,9 @@
 var s3Service = require("../helpers/bucketS3")
 
 function buscarGestorS3(req, res) {
-    var mac = req.params.macAddress
+   
 
-    if(!mac){
-        return res.status(400).send("MAC Address é obrigatorio")
-    }
-
-    s3Service.obterDadosGestor(mac).then(function (resultado) {
+    s3Service.obterDadosGestor().then(function (resultado) {
         if(resultado){
             console.log("estou no if do controller")
             res.json(resultado)

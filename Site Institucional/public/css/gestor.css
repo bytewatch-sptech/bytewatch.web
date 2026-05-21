@@ -1,7 +1,7 @@
     body {
         background: #0d0d0d;
         color: #e6edf3;
-        font-family: Arial, sans-serif; 
+        font-family: Arial, sans-serif;
         overflow-x: hidden;
     }
 
@@ -136,6 +136,18 @@
     .card-heatmap {
         max-width: 700px;
         margin: 0 auto;
+    }
+
+    .kpi-critico {
+        border-color: var(--cor02);
+        box-shadow: 0 0 15px rgba(255, 251, 0, 0.6);
+        border: 1px solid #FFD500;
+    }
+
+    .kpi-risco {
+        border-color: var(--cor02);
+        box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+        border: 1px solid #FF0050;
     }
 
     /* #gaugePicoRAM {

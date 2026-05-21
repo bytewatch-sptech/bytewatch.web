@@ -103,7 +103,7 @@ function buscarUsoS3(req, res){
     }
   })
   .catch(function(erro){
-    console.erro("Erro no Controller ao buscar o S3",erro)
+    console.error("Erro no Controller ao buscar o S3",erro)
     res.status(500).json({
       mensagem: "Erro ao buscar dados no S3",
       detalhe: erro.message
