@@ -119,8 +119,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 </div>
             </nav>
 
-            <main class="col d-flex flex-column gap-4 p-4 overflow-auto" style="max-height: 100vh; overflow-y: auto;">
-                <div class="d-flex">
+            <main class="col d-flex flex-column gap-4 p-3 overflow-auto" style="max-height: 100vh; overflow-y: auto;">
+                <div class="d-flex d-lg-none">
                     <button class="btn btn-link text-white p-0 me-3 d-lg-none border-0" type="button"
                         data-bs-toggle="offcanvas" data-bs-target="#menuMobile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
@@ -166,15 +166,15 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                     style="font-size: 0.9rem">Veja os insights iniciais</span>
                                             </div>
                                         </header>
-                                        <div class="row g-3 align-items-stretch gap-3">
+                                        <div class="row align-items-stretch w-100 justify-content-between">
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-2">
                                                 <div class="d-flex flex-column gap-3 h-100 grade-cards-resumo">
 
                                                     <div class="card cartao-resumo borda-vermelha flex-fill">
-                                                        <div class="card-body conteudo-cartao w-100">
+                                                        <div class="card-body conteudo-cartao">
                                                             <div class="icone icone-vermelho">
-                                                                <svg width="36" height="36" viewBox="0 0 36 36"
+                                                                <svg width="24" height="24" viewBox="0 0 36 36"
                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path
                                                                         d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
@@ -210,7 +210,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                     <div class="card cartao-resumo borda-vermelha flex-fill">
                                                         <div class="card-body conteudo-cartao">
                                                             <div class="icone icone-vermelho">
-                                                                <svg width="25" height="25" viewBox="0 0 12 12"
+                                                                <svg width="20" height="20" viewBox="0 0 12 12"
                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <g clip-path="url(#clip0_1241_38)">
                                                                         <path
@@ -247,7 +247,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                                             <div class="col-md-4 matriz-priorizacao d-flex flex-column">
                                                 <span>Matriz de priorização</span>
-                                                <div class="flex-fill" style="position: relative; height: 350px; width: 100%;">
+                                                <div class="flex-fill"
+                                                    style="position: relative; height: 180px; width: 100%;">
                                                     <canvas id="matrizChart"></canvas>
                                                 </div>
                                             </div>
@@ -260,7 +261,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
 
 
-                                        <div class="table-responsive w-100 frota-servidores">
+                                        <div class="table-responsive w-100 frota-servidores mt-4">
                                             <div class="d-flex align-items-center gap-3 cabecalho-servidores">
                                                 <span>Frota de
                                                     Servidores</span>
@@ -293,62 +294,203 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         <th scope="col" class="border-0">REDE</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody >
+                                                <tbody>
                                                     <tr class="servidor-critico">
                                                         <td><span id="statusServidorBola">°</span></td>
-                                                        <td><span id="horaColeta">10:23:01</span></td>
                                                         <td>
-                                                            <div class="d-flex flex-column">
-                                                                <span id="nomeServidor">TikTok-US-Edge-01</span>
-                                                                <span id="diagnosticoEtlServidor">Disco Saturado
-                                                                    + Clima</span>
+                                                            <div class="flex-column d-flex">
+                                                                <span id="horaColeta" >10:23:01</span>
+                                                                <span id="dataColeta">10/04/2006</span>
                                                             </div>
                                                         </td>
-                                                        <td><span id="cidadeServidor">São Paulo</span><span
-                                                                id="regiaoServidor">sa-east</span></td>
-
-                                                        <td>
-                                                            <button
-                                                                class="btn btn-sm btn-light d-flex align-items-center gap-2">
-                                                                <div class="d-flex flex-column">
-                                                                    <span>Icone 99%</span>
-                                                                    <span>----</span>
-                                                                </div>
-                                                                <span>ABRIR</span>
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <button
-                                                                class="btn btn-sm btn-light d-flex align-items-center gap-2">
-                                                                <div class="d-flex flex-column">
-                                                                    <span>Icone 99%</span>
-                                                                    <span>----</span>
-                                                                </div>
-                                                                <span>ABRIR</span>
-                                                            </button>
-                                                        </td>
-                                                        <td>
-                                                            <span>----</span>
-                                                        </td>
-                                                        <td>
-                                                            <span>----</span>
-                                                        </td>
-
-                                                    </tr>
-                                                </tbody>
-                                            </table>
                                         </div>
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                <span id="nomeServidor">TikTok-US-Edge-01</span>
+                                                <span id="diagnosticoEtlServidor">Disco Saturado
+                                                    + Clima</span>
+                                            </div>
+                                        </td>
+                                        <td><span id="cidadeServidor">São Paulo</span><span
+                                                id="regiaoServidor">sa-east</span></td>
 
-                                    </section>
+                                        <td>
+                                            <button
+                                                class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
+
+                                                <div class="d-flex flex-column w-100 gap-1">
+
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="0.434783" y="0.434783" width="19.1304"
+                                                                height="18.2609" rx="3.91304" fill="#C167C7"
+                                                                fill-opacity="0.3" />
+                                                            <rect x="0.434783" y="0.434783" width="19.1304"
+                                                                height="18.2609" rx="3.91304" stroke="#C167C7"
+                                                                stroke-width="0.869565" />
+                                                            <g clip-path="url(#clip0_1129_470)">
+                                                                <path
+                                                                    d="M12.998 6.00024H6.99805C6.44576 6.00024 5.99805 6.44796 5.99805 7.00024V13.0002C5.99805 13.5525 6.44576 14.0002 6.99805 14.0002H12.998C13.5503 14.0002 13.998 13.5525 13.998 13.0002V7.00024C13.998 6.44796 13.5503 6.00024 12.998 6.00024Z"
+                                                                    stroke="#C167C7" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M11 8.5H9C8.72386 8.5 8.5 8.72386 8.5 9V11C8.5 11.2761 8.72386 11.5 9 11.5H11C11.2761 11.5 11.5 11.2761 11.5 11V9C11.5 8.72386 11.2761 8.5 11 8.5Z"
+                                                                    stroke="#C167C7" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                                <path d="M11.5 4.99976V5.99976" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M11.5 13.9998V14.9998" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M5 11.5H6" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M5 8.5H6" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M14.002 11.5H15.002" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M14.002 8.5H15.002" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M8.5 4.99976V5.99976" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M8.5 13.9998V14.9998" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_1129_470">
+                                                                    <rect width="12" height="12" fill="white"
+                                                                        transform="translate(4 4)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+
+                                                        <span class="texto-destaque fs-5 fw-bold">93%</span>
+                                                    </div>
+
+                                                    <div class="progress-track">
+                                                        <div class="progress-fill" style="width: 93%;">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div
+                                                    class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
+                                                    ABRIR
+                                                    <svg width="22" height="22" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75"
+                                                            stroke="#ba0c46" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button
+                                                class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
+
+                                                <div class="d-flex flex-column w-100 gap-1">
+
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="0.434783" y="0.434783" width="19.1304"
+                                                                height="18.2609" rx="3.91304" fill="#B0DB43"
+                                                                fill-opacity="0.3" />
+                                                            <rect x="0.434783" y="0.434783" width="19.1304"
+                                                                height="18.2609" rx="3.91304" stroke="#B0DB43"
+                                                                stroke-width="0.869565" />
+                                                            <path d="M7.09961 13.2326V11.7749" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M9.16406 13.2326V11.7749" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M11.2266 13.2326V11.7749" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M13.293 13.2326V11.7749" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M8.13086 9.3451V8.37329" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M12.2598 9.3451V8.37329" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M10.1953 9.3451V8.37329" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M5.03125 11.2888H15.3568" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path
+                                                                d="M5.03125 7.40126C5.03125 7.14352 5.14004 6.89633 5.33368 6.71408C5.52732 6.53183 5.78995 6.42944 6.0638 6.42944H14.3242C14.5981 6.42944 14.8607 6.53183 15.0543 6.71408C15.248 6.89633 15.3568 7.14352 15.3568 7.40126V7.93575C15.1429 7.99504 14.9552 8.11789 14.8217 8.28592C14.6881 8.45395 14.616 8.65814 14.616 8.86797C14.616 9.0778 14.6881 9.28199 14.8217 9.45002C14.9552 9.61805 15.1429 9.74089 15.3568 9.80018V12.2603C15.3568 12.5181 15.248 12.7653 15.0543 12.9475C14.8607 13.1298 14.5981 13.2321 14.3242 13.2321H6.0638C5.78995 13.2321 5.52732 13.1298 5.33368 12.9475C5.14004 12.7653 5.03125 12.5181 5.03125 12.2603V9.7822C5.24511 9.72291 5.43283 9.60007 5.56636 9.43204C5.69989 9.26401 5.77205 9.05982 5.77205 8.84999C5.77205 8.64016 5.69989 8.43597 5.56636 8.26794C5.43283 8.09991 5.24511 7.97706 5.03125 7.91778V7.40126Z"
+                                                                stroke="#B0DB43" stroke-width="1.03255"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <span class="texto-destaque fs-5 fw-bold">93%</span>
+                                                    </div>
+
+                                                    <div class="progress-track">
+                                                        <div class="progress-fill" style="width: 93%;">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div
+                                                    class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
+                                                    ABRIR
+                                                    <svg width="22" height="22" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75"
+                                                            stroke="#ba0c46" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <div class="flex-column text-center">
+                                                <span>80%</span>
+
+                                                <div class="progress-track">
+                                                    <div class="progress-fill" style="width: 93%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex-column text-center">
+                                                <span>80%</span>
+
+                                                <div class="progress-track">
+                                                    <div class="progress-fill" style="width: 93%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        </tr>
+                                        </tbody>
+                                        </table>
                                 </div>
 
-
+                                </section>
                             </div>
-                        </main>
+
+
                     </div>
-                </div>
             </main>
         </div>
+    </div>
+    </main>
+    </div>
     </div>
 
     <div class="modal fade" id="modalExcluirServidor" tabindex="-1" aria-labelledby="modalExcluirLabel"
@@ -824,7 +966,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
         id: 'bubbleLabels',
         afterDatasetsDraw(chart) {
             const { ctx } = chart
-            ctx.font = '12px Arial'
+            ctx.font = '9px Arial'
             ctx.fillStyle = 'white'
             ctx.textBaseline = 'middle'
 
@@ -846,26 +988,26 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 {
                     label: 'Servidores Estáveis',
                     data: [
-                    { x: 33, y: 60, r: 12, valor: 20 },
-                    { x: 42, y: 75, r: 14, valor: 24 },
-                    { x: 48, y: 120, r: 16, valor: 28 },
-                    { x: 72, y: 200, r: 24, valor: 44 }
-                ],
-                backgroundColor: 'rgba(0, 240, 255, 0.2)',
-                borderColor: '#00E5FF',
-                borderWidth: 2
+                        { x: 33, y: 60, r: 6, valor: 20 },
+                        { x: 42, y: 75, r: 5, valor: 24 },
+                        { x: 48, y: 120, r: 6, valor: 28 },
+                        { x: 72, y: 200, r: 10, valor: 44 }
+                    ],
+                    backgroundColor: 'rgba(0, 240, 255, 0.2)',
+                    borderColor: '#00E5FF',
+                    borderWidth: 2
                 },
                 {
                     label: 'Servidores Critícos',
                     data: [
-                    { x: 80, y: 400, r: 35, valor: 91 },
-                    { x: 85, y: 380, r: 40, valor: 100 },
-                    { x: 90, y: 500, r: 40, valor: 100 }
-                ],
-                backgroundColor: 'rgba(255, 59, 48, 0.2)',
-                borderColor: '#FF3B30',
-                borderWidth: 2,
-                borderDash: [6, 4]
+                        { x: 80, y: 400, r: 13, valor: 91 },
+                        { x: 85, y: 380, r: 15, valor: 100 },
+                        { x: 90, y: 500, r: 15, valor: 100 }
+                    ],
+                    backgroundColor: 'rgba(255, 59, 48, 0.2)',
+                    borderColor: '#FF3B30',
+                    borderWidth: 2,
+                    borderDash: [6, 4]
                 }
             ]
         },
@@ -878,7 +1020,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 },
                 tooltip: {
                     callbacks: {
-                        label: function(context){
+                        label: function (context) {
                             return `Risco: ${context.raw.valor} | CPU/RAM: ${context.raw.x}% | Latência: ${context.raw.y}ms`
                         }
                     }
@@ -890,19 +1032,19 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     max: 100,
                     ticks: {
                         stepSize: 25,
-                        callback: function(value) { return value + '%'; },
+                        callback: function (value) { return value + '%'; },
                         color: '#888'
                     },
                     grid: {
                         color: 'rgba(255, 255, 255, 0.05)'
                     }
                 },
-                y:{
+                y: {
                     min: 0,
-                    max: 600,
+                    max: 650,
                     ticks: {
                         stepSize: 150,
-                        callback: function(value){ return value + 'ms'; },
+                        callback: function (value) { return value + 'ms'; },
                         color: '#888'
                     },
                     grid: {
