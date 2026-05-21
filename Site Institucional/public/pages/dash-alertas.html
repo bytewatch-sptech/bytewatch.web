@@ -273,7 +273,8 @@
                                         <canvas id="donutChart"></canvas>
                                     </div>
                                     <div class="position-absolute top-50 start-50 translate-middle text-center mt-1">
-                                        <h3 class="text-white fw-bold m-0" style="line-height: 1;">1.284</h3>
+                                        <h3 id="total-eventos" class="text-white fw-bold m-0" style="line-height: 1;">0
+                                        </h3>
                                         <span class="text-secondary" style="font-size: 0.75rem;">eventos</span>
                                     </div>
                                 </div>
@@ -286,15 +287,16 @@
                                                     style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--cor02);"></span>
                                                 <span class="text-white" style="font-size: 0.85rem;">Crítico</span>
                                             </div>
-                                            <span class="text-white fw-bold" style="font-size: 0.9rem;">247</span>
+                                            <span id="qtd-critico" class="text-white fw-bold"
+                                                style="font-size: 0.9rem;">0</span>
                                         </div>
                                         <div class="progress"
                                             style="height: 4px; background-color: rgba(255, 255, 255, 0.1);">
-                                            <div class="progress-bar" role="progressbar"
-                                                style="width: 19.2%; background-color: var(--cor02);"></div>
+                                            <div id="bar-critico" class="progress-bar" role="progressbar"
+                                                style="width: 0%; background-color: var(--cor02);"></div>
                                         </div>
-                                        <span class="text-secondary mt-1 d-block" style="font-size: 0.75rem;">19.2% do
-                                            total</span>
+                                        <span id="pct-critico-text" class="text-secondary mt-1 d-block"
+                                            style="font-size: 0.75rem;">0% do total</span>
                                     </div>
 
                                     <div>
@@ -304,15 +306,16 @@
                                                     style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--cor01);"></span>
                                                 <span class="text-white" style="font-size: 0.85rem;">Alerta</span>
                                             </div>
-                                            <span class="text-white fw-bold" style="font-size: 0.9rem;">396</span>
+                                            <span id="qtd-alerta" class="text-white fw-bold"
+                                                style="font-size: 0.9rem;">0</span>
                                         </div>
                                         <div class="progress"
                                             style="height: 4px; background-color: rgba(255, 255, 255, 0.1);">
-                                            <div class="progress-bar" role="progressbar"
-                                                style="width: 30.8%; background-color: var(--cor01);"></div>
+                                            <div id="bar-alerta" class="progress-bar" role="progressbar"
+                                                style="width: 0%; background-color: var(--cor01);"></div>
                                         </div>
-                                        <span class="text-secondary mt-1 d-block" style="font-size: 0.75rem;">30.8% do
-                                            total</span>
+                                        <span id="pct-alerta-text" class="text-secondary mt-1 d-block"
+                                            style="font-size: 0.75rem;">0% do total</span>
                                     </div>
 
                                     <div>
@@ -322,15 +325,16 @@
                                                     style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--cor09);"></span>
                                                 <span class="text-white" style="font-size: 0.85rem;">Saudável</span>
                                             </div>
-                                            <span class="text-white fw-bold" style="font-size: 0.9rem;">641</span>
+                                            <span id="qtd-saudavel" class="text-white fw-bold"
+                                                style="font-size: 0.9rem;">0</span>
                                         </div>
                                         <div class="progress"
                                             style="height: 4px; background-color: rgba(255, 255, 255, 0.1);">
-                                            <div class="progress-bar" role="progressbar"
-                                                style="width: 49.9%; background-color: var(--cor09);"></div>
+                                            <div id="bar-saudavel" class="progress-bar" role="progressbar"
+                                                style="width: 0%; background-color: var(--cor09);"></div>
                                         </div>
-                                        <span class="text-secondary mt-1 d-block" style="font-size: 0.75rem;">49.9% do
-                                            total</span>
+                                        <span id="pct-saudavel-text" class="text-secondary mt-1 d-block"
+                                            style="font-size: 0.75rem;">0% do total</span>
                                     </div>
                                 </div>
                             </div>
@@ -456,27 +460,31 @@
 <script>
 
     async function carregarDashboard() {
-        const resultado = await MetricasAlertas()
-        /* console.log (resultado.alertas.length) */
-        valor_metrica.innerHTML = resultado.alertas.length
 
-        const alertasCriticos = resultado.alertas.filter(alerta => alerta.nivel === "CRÍTICO");
+        const resultado = await MetricasAlertas();
+        valor_metrica.innerHTML = resultado.alertas.length;
+
+        const alertasCriticos = resultado.alertas.filter(alerta =>
+            alerta.nivel === "CRÍTICO" || alerta.nivel === "CRITICO"
+        );
         alertas_criticos.innerHTML = alertasCriticos.length;
 
-        const mac = resultado.alertas[0].mac
+        // verificando se há algum dado inserido no json
+        if (resultado.alertas.length > 0) {
+            const mac = resultado.alertas[0].mac;
+            const nomeServidor = await ObterNomeServidor(mac);
+            console.log(nomeServidor);
+            const servidorMaisVolatil = nomeServidor[0].nome_servidor;
+            servidor_volatil.innerHTML = servidorMaisVolatil;
+        }
 
-        const nomeServidor = await ObterNomeServidor(mac)
-        console.log (nomeServidor)
-        const servidorMaisVolatil = nomeServidor[0].nome_servidor
-        servidor_volatil.innerHTML = servidorMaisVolatil 
-    
+        const todosMacs = resultado.alertas.map(alerta => alerta.mac);
+        const serversUnicos = new Set(todosMacs);
+        totalServers.innerHTML = serversUnicos.size;
 
-        const todosMacs = resultado.alertas.map(alerta => alerta.mac)
-        const serversUnicos = new Set(todosMacs)
-        totalServers.innerHTML = serversUnicos.size
+        renderizarGraficoSeveridade(resultado);
     }
     window.onload = carregarDashboard;
-
 
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -582,23 +590,54 @@
         }
     })
 
-    document.addEventListener("DOMContentLoaded", () => {
-        Chart.defaults.color = '#6c757d';
-        Chart.defaults.font.family = "'League Spartan', sans-serif";
+    // só para evitar sobreposição
+    let graficoSeveridadeInstance = null;
+
+    function renderizarGraficoSeveridade(dados) {
+        if (!dados.graficos || !dados.graficos.distribuicao_severidade) {
+            console.warn("Dados de severidade não encontrados no JSON.");
+            return;
+        }
+
+        const severidade = dados.graficos.distribuicao_severidade;
+        const total = severidade.total > 0 ? severidade.total : 1;
+
+        // regra de 3 para calcular as porcentagens do grafico de rosca
+        const pctCritico = ((severidade.critico / total) * 100).toFixed(1);
+        const pctAlerta = ((severidade.alerta / total) * 100).toFixed(1);
+        const pctSaudavel = ((severidade.saudavel / total) * 100).toFixed(1);
+
+
+        document.getElementById('total-eventos').innerText = severidade.total.toLocaleString('pt-BR');
+
+        document.getElementById('qtd-critico').innerText = severidade.critico;
+        document.getElementById('bar-critico').style.width = pctCritico + '%';
+        document.getElementById('pct-critico-text').innerText = pctCritico + '% do total';
+
+        document.getElementById('qtd-alerta').innerText = severidade.alerta;
+        document.getElementById('bar-alerta').style.width = pctAlerta + '%';
+        document.getElementById('pct-alerta-text').innerText = pctAlerta + '% do total';
+
+        document.getElementById('qtd-saudavel').innerText = severidade.saudavel;
+        document.getElementById('bar-saudavel').style.width = pctSaudavel + '%';
+        document.getElementById('pct-saudavel-text').innerText = pctSaudavel + '% do total';
 
         const donutCtx = document.getElementById('donutChart');
         if (donutCtx) {
-            new Chart(donutCtx, {
+            Chart.defaults.color = '#6c757d';
+            Chart.defaults.font.family = "'League Spartan', sans-serif";
+
+            if (graficoSeveridadeInstance) {
+                graficoSeveridadeInstance.destroy();
+            }
+
+            graficoSeveridadeInstance = new Chart(donutCtx, {
                 type: 'doughnut',
                 data: {
                     labels: ['Crítico', 'Alerta', 'Saudável'],
                     datasets: [{
-                        data: [19.2, 30.8, 49.9],
-                        backgroundColor: [
-                            '#FF2D56',
-                            '#FFD600',
-                            '#00c853'
-                        ],
+                        data: [pctCritico, pctAlerta, pctSaudavel],
+                        backgroundColor: ['#FF2D56', '#FFD600', '#00c853'],
                         borderWidth: 0,
                         hoverOffset: 4
                     }]
@@ -608,9 +647,7 @@
                     maintainAspectRatio: false,
                     cutout: '75%',
                     plugins: {
-                        legend: {
-                            display: false
-                        },
+                        legend: { display: false },
                         tooltip: {
                             callbacks: {
                                 label: function (context) {
@@ -622,5 +659,5 @@
                 }
             });
         }
-    });
+    }
 </script>
