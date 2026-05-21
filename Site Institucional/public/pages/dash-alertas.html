@@ -463,8 +463,13 @@
         const alertasCriticos = resultado.alertas.filter(alerta => alerta.nivel === "CRÍTICO");
         alertas_criticos.innerHTML = alertasCriticos.length;
 
-        const servidorMaisVolatil = resultado.alertas[0].mac
-        servidor_volatil.innerHTML = servidorMaisVolatil
+        const mac = resultado.alertas[0].mac
+
+        const nomeServidor = await ObterNomeServidor(mac)
+        console.log (nomeServidor)
+        const servidorMaisVolatil = nomeServidor[0].nome_servidor
+        servidor_volatil.innerHTML = servidorMaisVolatil 
+    
 
         const todosMacs = resultado.alertas.map(alerta => alerta.mac)
         const serversUnicos = new Set(todosMacs)
