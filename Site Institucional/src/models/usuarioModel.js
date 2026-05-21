@@ -37,11 +37,9 @@ function listar() {
         SELECT 
         u.id_usuario, 
         u.nome, 
-        tu.tipo AS cargo,
-        COUNT(s.id_servidor) AS qtd_servidores
+        tu.tipo AS cargo
         FROM usuario u
         JOIN tipo_usuario tu ON u.fk_tipo_usuario = tu.id_tipo_usuario
-        LEFT JOIN servidor s ON s.fk_usuario_analista = u.id_usuario
         WHERE tu.tipo = 'Analista de SRC'
         GROUP BY u.id_usuario, u.nome, tu.tipo;
     `;

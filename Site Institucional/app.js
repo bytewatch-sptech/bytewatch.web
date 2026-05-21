@@ -21,7 +21,7 @@ var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var servidorRouter = require("./src/routes/servidor");
 var empresasRouter = require("./src/routes/empresas");
-var aiServiceRouter = require("./src/routes/aiService")
+var aiServiceRouter = require("./src/routes/aiService");
 var analistaRouter = require("./src/routes/analista");
 var jiraRouter = require("./src/routes/jira");
 

@@ -87,8 +87,6 @@ async function filtrarDashboard(fkEmpresa) {
 
     for (var i = 0; i < incidentes.length; i++) {
         var incidente = incidentes[i];
-
-        // indice do jira resolvido
         var dataCriacao = new Date(incidente.criadoEm);
 
 

@@ -70,13 +70,13 @@ function cadastrar(req, res) {
     res.status(400).send("nome está undefined!");
   } else if (localizacao == undefined) {
     res.status(400).send("localização está undefined!");
-  } else if(ip == undefined){
+  } else if (ip == undefined) {
     res.status(400).send("ip está undefined!");
   } else if (fkEmpresa == undefined) {
     res.status(400).send("fkEmpres está undefined")
-  }else if (mac_address == undefined) {
+  } else if (mac_address == undefined) {
     res.status(400).send("Mac_adress está undefined")
-  }else {
+  } else {
 
     servidorModel.cadastrar(nome, localizacao, ip, fkEmpresa, tipo, mac_address, componentes)
       .then((resultado) => {
@@ -93,23 +93,23 @@ function cadastrar(req, res) {
   }
 
 
-    
-  
+
+
 }
 
 var s3Service = require("../../public/services/s3")
 
-function buscarUsoS3(req, res){
+function buscarUsoS3(req, res) {
   var mac = req.params.macAddress
 
-  if(!mac){
+  if (!mac) {
     return res.status(400).send("MAC Addressé obrigatório")
   }
-  s3Service.obterUsoServidor(mac).then(function (resultado){
-    if(resultado){
+  s3Service.obterUsoServidor(mac).then(function (resultado) {
+    if (resultado) {
       res.json(resultado)
-    }else{
-      res.status(400).json({ mensagem: `Métricas não encontradas para o MAC: ${mac}`})
+    } else {
+      res.status(400).json({ mensagem: `Métricas não encontradas para o MAC: ${mac}` })
     }
   })
   .catch(function(erro){
