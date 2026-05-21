@@ -281,3 +281,43 @@
     box-shadow: 0 0 15px rgba(255, 0, 85, 0.6); 
     border: 1px solid #FF0050;
 }
+
+
+.information-container {
+    border: 1px solid #FFFFFF14;
+    border-radius: 7px;
+    padding: 15px;
+    background-color: #151515;
+}
+
+.information-container h1 {
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.information-container label {
+    color: #A0A0A0;
+    font-size: 14px;
+}
+
+.information-container span {
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.div-line {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #FFFFFF14;
+    margin-top: 14px;
+    padding-bottom: 5px;
+}
+
+
+.container-legenda {
+    border: 1px solid #FFFFFF14;
+    border-radius: 7px;
+    padding: 15px;
+    background-color: #151515;
+    color: #FFFFFF
+}

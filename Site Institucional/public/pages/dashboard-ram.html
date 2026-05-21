@@ -284,7 +284,8 @@
                                         <div class="div-legends">
                                             <div class="legend-container">
                                                 <div>
-                                                    <span class="span-circle" id="cor_bullet_kpi_uso" style="background-color: #588FFF;"></span>
+                                                    <span class="span-circle" id="cor_bullet_kpi_uso"
+                                                        style="background-color: #588FFF;"></span>
                                                     <span class="span-legend">Em uso</span>
                                                 </div>
                                                 <span class="span-percent" id="percentual_uso_kpi"></span>
@@ -339,6 +340,25 @@
 
                                 </div>
 
+                            </div>
+                            <div class="container-legenda">
+                                <p>Legenda</p>
+                                <div class="d-flex box-componente gap-3 ">
+                                    <div class="col d-flex flex-column align-items-center">
+                                        <span>Risco</span>
+                                        <div class="line-component"
+                                            style="background-color: #FFD500; width: 100%; height: 5px; ">
+                                        </div>
+                                        70%
+                                    </div>
+                                    <div class="col d-flex flex-column align-items-center">
+                                        <span>Critíco</span>
+                                        <div class="line-component"
+                                            style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                        </div>
+                                        90%
+                                    </div>
+                                </div>
                             </div>
                             <div class="information-container">
                                 <h1>Informações</h1>
@@ -973,7 +993,7 @@
         valor = parseInt(valor)
         if (valor >= 90) {
             meuElemento.classList.add('kpi-risco');
-            COR_KPI_USO =  "#FF0050"
+            COR_KPI_USO = "#FF0050"
             percentual_total_uso_kpi.style.color = "#FF0050"
             cor_bullet_kpi_uso.style.backgroundColor = "#FF0050"
             percentual_uso_kpi.style.color = "#FF0050"
@@ -1021,10 +1041,10 @@
     var COR_KPI_USO = "#588FFF"
     async function obterDadosGrafico() {
         const resultado = await buscarComponenteRamService("24:fe:9a:06:99:2f")
-        
+
         console.log(resultado)
         try {
-        dadosUsoKpi = [resultado.dadosMaquina.metricas.kpiUso.percentualLivre, resultado.dadosMaquina.metricas.kpiUso.percentualUsado]
+            dadosUsoKpi = [resultado.dadosMaquina.metricas.kpiUso.percentualLivre, resultado.dadosMaquina.metricas.kpiUso.percentualUsado]
         }
         catch {
             alert("Servidor inexistente no bucket, monitore o servidor com o script de captura Python")
@@ -1048,7 +1068,7 @@
         }
         else if (picoVariacao < 0) {
             console.log("testeeeeeee");
-            
+
             pico_variacao.innerHTML = `<span style="color: green;">${picoVariacao}%</span>`
         }
         if (picoVariacao == 0 && picoHoje < 70) {
@@ -1175,9 +1195,9 @@
                 {
                     label: 'Limite Risco',
                     data: [70, 70, 70, 70, 70, 70, 70],
-                    fill: false, 
-                    borderColor: 'rgba(255, 213, 0, 0.9)', 
-                    borderWidth: 1.5, 
+                    fill: false,
+                    borderColor: 'rgba(255, 213, 0, 0.9)',
+                    borderWidth: 1.5,
                     borderDash: [5, 5],
                     tension: 0.3,
                     interaction: {
@@ -1188,9 +1208,9 @@
                 {
                     label: 'Limite Crítico',
                     data: [90, 90, 90, 90, 90, 90, 90],
-                    fill: false, 
-                    borderColor: 'rgba(255, 0, 31, 0.9)', 
-                    borderWidth: 1.5, 
+                    fill: false,
+                    borderColor: 'rgba(255, 0, 31, 0.9)',
+                    borderWidth: 1.5,
                     borderDash: [5, 5],
                     tension: 0.3,
                     interaction: {
