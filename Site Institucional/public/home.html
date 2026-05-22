@@ -1070,16 +1070,37 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 const dados = await resposta.json()
                 console.log("Dados recebidos da API", dados)
 
+                const novosEstaveis = [];
+                const novosInstaveis = [];
+
                 dados.servidores.forEach(servidor => {
                     if (servidor.dados_tempo_real) {
                         console.log(`gráfico para : ${servidor.nome_db}`)
-                        
+
                         renderizarServidorTela(servidor)
-                        mostrarMapa(servidor)
+
+                        const status_servidor = servidor.dados_tempo_real.status_servidor
+                        const nome = servidor.dados_tempo_real.nome;
+                        const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
+
+                        const formatoMapa = [coordenadas[0], coordenadas[1], nome, status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL']
+
+                        if (status_servidor.toLowerCase() === 'critico') {
+                            novosInstaveis.push(formatoMapa);
+                        } else {
+                            novosEstaveis.push(formatoMapa);
+                        }
                     } else {
                         console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
                     }
                 })
+
+                myChart.setOption({
+                series: [
+                    { name: 'Servidores Estáveis', data: novosEstaveis },
+                    { name: 'Servidores Instáveis', data: novosInstaveis }
+                ]
+            });
 
                 const qtdCriticos = dados.resumo_global.servidores_criticos
                 const totalServidores = dados.resumo_global.total_servidores
@@ -1127,13 +1148,13 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
         const rede_acao_permitida = servidor.dados_tempo_real.componentes.rede.acao_permitida
 
         console.log("macAddress: ", macAddress, "nome:", nome,
-                            "regiao:", regiao, "status_servidor:", status_servidor,
-                            "diagnostico_etl:", diagnostico_etl, "coordernadas:",
-                            coordenadas, "saturacao_trafego:", saturacao_trafego,
-                            "eixo_x:", matriz_priorizacao_x, "eixo_y:",
-                            matriz_priorizacao_y, "cpuUso:", cpu_uso, "status_ui",
-                            cpu_status_ui, "acao_permitidia", cpu_acao_permitida
-                        )
+            "regiao:", regiao, "status_servidor:", status_servidor,
+            "diagnostico_etl:", diagnostico_etl, "coordernadas:",
+            coordenadas, "saturacao_trafego:", saturacao_trafego,
+            "eixo_x:", matriz_priorizacao_x, "eixo_y:",
+            matriz_priorizacao_y, "cpuUso:", cpu_uso, "status_ui",
+            cpu_status_ui, "acao_permitidia", cpu_acao_permitida
+        )
 
         cardServidor = `
         <tr class="servidor-critico">
@@ -1264,7 +1285,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
         `
 
 
-        container.innerHTML += cardServidor 
+        container.innerHTML += cardServidor
 
     }
 
@@ -1398,18 +1419,13 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
     mostrarServidores();
 
 
-    async function mostrarMapa(servidor) {
-        
+
     const chartDom = document.getElementById('mapa')
     const myChart = echarts.init(chartDom);
-
-    const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
-
 
     fetch('https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/json/world.json').then(res => res.json()).then(worldJson => {
         echarts.registerMap('mundo', worldJson)
 
-        b
 
         const option = {
             backgroundColor: 'transparent',
@@ -1423,7 +1439,6 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     if (params.seriesType === 'effectScatter' || params.seriesType === 'scatter') {
                         const servidor = params.data[2];
                         const status = params.data[3];
-                        const latência = params.data[4];
                         const corStatus = status === 'CRÍTICO' ? '#ff3b30' : '#00f0ff';
 
                         return `
@@ -1449,50 +1464,15 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
             },
 
             series: [
-                {
-                    name: 'Servidores Estáveis',
-                    type: 'scatter',
-                    coordinateSystem: 'geo',
-                    symbolSize: 8,
-                    itemStyle: {
-                        color: '#00f0ff',
-                        shadowBlur: 6,
-                        shadowColor: '#00f0ff'
-                    },
-                    data: [
-                        [-77.4360, 39.0438, 'Virginia-Teste', 'OPERACIONAL', 12],   // EUA
-                        [-0.1276, 51.5072, 'London-Teste', 'OPERACIONAL', 15],      // Londres
-                        [139.6917, 35.6895, 'Tokyo-Teste', 'OPERACIONAL', 9]
-                    ]
-                },
-                {
-                    name: 'Servidores Instáveis',
-                    type: 'effectScatter',
-                    coordinateSystem: 'geo',
-                    symbolSize: 12,
-                    rippleEffect: {
-                        brushType: 'stroke',
-                        scale: 5,
-                        period: 3
-                    },
-                    itemStyle: {
-                        color: '#ff3b30',
-                        shadowBlur: 10,
-                        shadowColor: '#ff3b30'
-                    },
-
-                    data: [
-                        [-46.6333, -23.5505, 'SP-Edge-01', 'CRÍTICO', 450],
-                        [-46.7333, -23.6505, 'SP-Core-02', 'CRÍTICO', 380]
-                    ]
-                }
+                { name: 'Servidores Estáveis', type: 'scatter', coordinateSystem: 'geo', symbolSize: 8, itemStyle: { color: '#00f0ff', shadowBlur: 6, shadowColor: '#00f0ff' }, data: [] },
+                { name: 'Servidores Instáveis', type: 'effectScatter', coordinateSystem: 'geo', symbolSize: 12, rippleEffect: { brushType: 'stroke', scale: 5, period: 3 }, itemStyle: { color: '#ff3b30', shadowBlur: 10, shadowColor: '#ff3b30' }, data: [] }
             ]
+
         }
         myChart.setOption(option);
     })
     window.addEventListener('resize', function () {
         myChart.resize();
     })
-    }
 
 </script>
