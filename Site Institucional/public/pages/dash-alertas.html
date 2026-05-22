@@ -235,22 +235,18 @@
 
                 <div class="row g-4 mb-4 align-items-stretch">
 
-                    <div class="col-12 col-lg-7">
-                        <div class="d-flex flex-column align-items-stretch h-100 p-4"
-                            style="background-color: var(--cor10); border: 1px solid transparent; border-radius: 12px;">
+                    <div class="col-12 col-lg-7 mb-4">
+                        <div class="d-flex flex-column h-100 p-4"
+                            style="background-color: var(--cor10); border-radius: 12px;">
 
-                            <div class="d-flex justify-content-between align-items-start mb-4 w-100">
-                                <div>
-                                    <h5 class="text-white m-0 fw-semibold mb-1">Alertas Gerados vs. Tickets Resolvidos
-                                    </h5>
-                                    <span style="color: var(--cor12); font-size: 0.85rem;">Camada Gold · Integração Jira
-                                        · Janela 24h</span>
-                                </div>
+                            <div class="mb-4 w-100">
+                                <h5 class="text-white m-0 fw-semibold mb-1">Alertas Gerados vs. Tickets Resolvidos</h5>
+                                <span style="color: var(--cor12); font-size: 0.85rem;">Janela 24h</span>
                             </div>
 
                             <div class="chart-container-logs flex-grow-1"
-                                style="min-height: 280px; position: relative;"> <canvas
-                                    id="graficoAlertasTickets"></canvas>
+                                style="position: relative; min-height: 280px; width: 100%; height: 100%;">
+                                <canvas id="graficoAlertasTickets"></canvas>
                             </div>
 
                         </div>
@@ -486,109 +482,62 @@
     }
     window.onload = carregarDashboard;
 
+    async function carregarTicketsAlertas(resultadoPython) {
+        try {
+            let arrayGerados = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const canvasElement = document.getElementById('graficoAlertasTickets')
-        if (canvasElement) {
+            if (resultadoPython.graficos && resultadoPython.graficos.linha_tempo) {
+                arrayGerados = [];
+                const historico = resultadoPython.graficos.linha_tempo;
 
-            const ctx = canvasElement.getContext('2d')
-            const gradienteVermelho = ctx.createLinearGradient(0, 0, 0, 360)
-            gradienteVermelho.addColorStop(0, 'rgba(255, 45, 86, 0.4)')
-            gradienteVermelho.addColorStop(1, 'rgba(255, 45, 86, 0.05)')
-
-            const gradienteVerde = ctx.createLinearGradient(0, 0, 0, 360)
-            gradienteVerde.addColorStop(0, 'rgba(0, 200, 83, 0.4)')
-            gradienteVerde.addColorStop(1, 'rgba(0, 200, 83, 0)')
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    //  Eixo X
-                    labels: ['00h', '02h', '04h', '06h', '08h', '10h', '12h', '14h', '16h', '18h', '20h', '22h'],
-                    datasets: [
-                        {
-                            label: 'Gerados',
-                            data: [30, 45, 35, 70, 100, 130, 160, 140, 120, 100, 80, 50],
-                            borderColor: '#FF2D56',
-                            backgroundColor: gradienteVermelho,
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.4,
-                            pointRadius: 0,
-                            pointHoverRadius: 6
-                        },
-                        {
-                            label: 'Resolvidos (Jira)',
-                            data: [40, 50, 30, 45, 70, 105, 130, 145, 200, 160, 120, 80],
-                            borderColor: '#00c853',
-                            backgroundColor: gradienteVerde,
-                            borderWidth: 2,
-                            fill: true,
-                            tension: 0.4,
-                            pointRadius: 0,
-                            pointHoverRadius: 6
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                usePointStyle: true,
-                                boxWidth: 8,
-                                color: '#A0A0A0',
-                                font: {
-                                    family: "'League Spartan', sans-serif",
-                                    size: 12
-                                }
-                            }
-                        },
-
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false,
-                            backgroundColor: '#1a1a1a',
-                            titleColor: '#fff',
-                            bodyColor: '#fff',
-                            borderColor: '#333',
-                            borderWidth: 1
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                color: '#6c757d',
-                                font: { family: "'League Spartan', sans-serif" }
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            max: 260,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                stepSize: 65,
-                                color: '#6c757d',
-                                font: { family: "'League Spartan', sans-serif" }
-                            }
-                        }
-                    }
+                for (let i = 0; i < historico.length; i++) {
+                    arrayGerados.push(historico[i].gerados);
                 }
-            })
+            }
+
+            const urlJira = 'http://localhost:3333/api/incidentes/1';
+
+            const respostaJira = await fetch(urlJira);
+            const chamadosJira = await respostaJira.json();
+            const arrayResolvidos = agruparResolvidosPorHora(chamadosJira);
+
+            renderizarChartLinha(arrayGerados, arrayResolvidos);
+
+        } catch (erro) {
+            console.error("Erro ao cruzar Python e Jira no Gráfico de Linhas:", erro);
         }
-    })
+    }
+
+    function agruparResolvidosPorHora(incidentesDoJira) {
+        const contagemResolvidos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        // calculo dos milisegundos de um dia, isso abre a janela de atualização do gráfico
+        const limite24h = new Date(Date.now() - (24 * 60 * 60 * 1000));
+
+        // vetor para armazenar os tickets com status feito
+        const chamadosResolvidos = [];
+        for (let i = 0; i < incidentesDoJira.length; i++) {
+            const chamado = incidentesDoJira[i];
+            // se elesatingirem a condição e tiverem data de resolução, guardamos
+            if (chamado.status === "FEITO" && chamado.resolvidoEm != null) {
+                chamadosResolvidos.push(chamado);
+            }
+        }
+
+        // percorro a lista da validação acima
+        for (let i = 0; i < chamadosResolvidos.length; i++) {
+            const ticket = chamadosResolvidos[i];
+            const dataResolucao = new Date(ticket.resolvidoEm);
+
+            if (dataResolucao >= limite24h) {
+                const hora = dataResolucao.getHours();
+                const index = Math.floor(hora / 2);
+                // arredondando para não deixar os horarios quebrados não serem plotados
+                contagemResolvidos[index]++;
+            }
+        }
+
+        return contagemResolvidos;
+    }
 
     // só para evitar sobreposição
     let graficoSeveridadeInstance = null;
