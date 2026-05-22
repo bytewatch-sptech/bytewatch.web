@@ -35,6 +35,30 @@ async function obterUsoMemoriaRam(macAddress) {
     }
 }
 
+async function obterDadosGestor() {
+
+    const params = {
+        Bucket: process.env.S3_BUCKET_NAME,
+        Key: "client/dashboard_gestor.json"
+    }
+
+    try {
+        const { Body } = await s3Client.send(new GetObjectCommand(params))
+        const conteudo = await streamToString(Body)
+        const bancoDadosJson = JSON.parse(conteudo)
+
+        const dadosMaquina = bancoDadosJson
+        if (!dadosMaquina) return null;
+
+        return {
+            dadosMaquina
+        }
+    } catch (err) {
+        console.error("Erro ao buscar os alertas:", err)
+        throw err;
+    }
+}
+
 async function obterMetricaAlertas() {
 
     const params = {

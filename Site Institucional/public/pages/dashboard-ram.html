@@ -284,7 +284,8 @@
                                         <div class="div-legends">
                                             <div class="legend-container">
                                                 <div>
-                                                    <span class="span-circle" style="background-color: #588FFF;"></span>
+                                                    <span class="span-circle" id="cor_bullet_kpi_uso"
+                                                        style="background-color: #588FFF;"></span>
                                                     <span class="span-legend">Em uso</span>
                                                 </div>
                                                 <span class="span-percent" id="percentual_uso_kpi"></span>
@@ -306,7 +307,7 @@
                                 </div>
 
                             </div>
-                            <div class="card-kpi px-4 py-3">
+                            <div class="card-kpi px-4 py-3" id="kpi_pico_ram">
                                 <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
                                     <div class="col-12 coluna-kpi">
 
@@ -340,6 +341,25 @@
                                 </div>
 
                             </div>
+                            <div class="container-legenda">
+                                <p>Legenda</p>
+                                <div class="d-flex box-componente gap-3 ">
+                                    <div class="col d-flex flex-column align-items-center">
+                                        <span>Risco</span>
+                                        <div class="line-component"
+                                            style="background-color: #FFD500; width: 100%; height: 5px; ">
+                                        </div>
+                                        70%
+                                    </div>
+                                    <div class="col d-flex flex-column align-items-center">
+                                        <span>Critíco</span>
+                                        <div class="line-component"
+                                            style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                        </div>
+                                        90%
+                                    </div>
+                                </div>
+                            </div>
                             <div class="information-container">
                                 <h1>Informações</h1>
                                 <div class="div-line">
@@ -347,12 +367,12 @@
                                     <span>29/03/2026</span>
                                 </div>
                                 <div class="div-line">
-                                    <label>Nome</label>
-                                    <span>Xeon E5-2697 v4</span>
+                                    <label>Servidor</label>
+                                    <span>Tiktok east-1f</span>
                                 </div>
                                 <div class="div-line">
-                                    <label>Cores Lógicos</label>
-                                    <span>36</span>
+                                    <label>Total RAM</label>
+                                    <span>36GB</span>
                                 </div>
                                 <div class="div-line">
                                     <label>IP Externo</label>
@@ -971,22 +991,64 @@
         const meuElemento = document.querySelector(`#${idComponente}`);
 
         valor = parseInt(valor)
-        if (valor >= 70) {
-            meuElemento.classList.add('kpi-critico');
-        }
-        else if (valor >= 90) {
+        if (valor >= 90) {
             meuElemento.classList.add('kpi-risco');
+            COR_KPI_USO = "#FF0050"
+            percentual_total_uso_kpi.style.color = "#FF0050"
+            cor_bullet_kpi_uso.style.backgroundColor = "#FF0050"
+            percentual_uso_kpi.style.color = "#FF0050"
+        }
+        else if (valor >= 70) {
+            meuElemento.classList.add('kpi-critico');
+            COR_KPI_USO = "#FFD500"
+            percentual_total_uso_kpi.style.color = "#FFD500"
+            cor_bullet_kpi_uso.style.backgroundColor = "#FFD500"
+            percentual_uso_kpi.style.color = "#FFD500"
         }
         else {
             meuElemento.classList.remove('kpi-risco');
             meuElemento.classList.remove('kpi-critico');
+            COR_KPI_USO = "#588FFF"
+            percentual_total_uso_kpi.style.color = "#FFFFFF"
+            cor_bullet_kpi_uso.style.backgroundColor = "#FFFFFF"
+            percentual_uso_kpi.style.color = "#FFFFFF"
         }
 
     }
 
+    async function mudarCorKpiPico(valorHoje, valorOntem, idComponente) {
+        const meuElemento = document.querySelector(`#${idComponente}`);
+
+        valorHoje = parseInt(valorHoje)
+        valorOntem = parseInt(valorOntem)
+
+        if (valorHoje >= 90 && valorHoje >= valorOntem) {
+            meuElemento.classList.add('kpi-risco');
+            pico_hoje.style.color = "#FF0050"
+        }
+        else if (valorHoje >= 70 && valorHoje >= valorOntem) {
+            meuElemento.classList.add('kpi-critico');
+            pico_hoje.style.color = "#FFD500"
+        }
+        else {
+            meuElemento.classList.remove('kpi-risco');
+            meuElemento.classList.remove('kpi-critico');
+            pico_hoje.style.color = "#FFFFFF"
+        }
+
+    }
+
+    var COR_KPI_USO = "#588FFF"
     async function obterDadosGrafico() {
         const resultado = await buscarComponenteRamService("24:fe:9a:06:99:2f")
-        dadosUsoKpi = [resultado.dadosMaquina.metricas.kpiUso.percentualUsado, resultado.dadosMaquina.metricas.kpiUso.percentualLivre]
+
+        console.log(resultado)
+        try {
+            dadosUsoKpi = [resultado.dadosMaquina.metricas.kpiUso.percentualLivre, resultado.dadosMaquina.metricas.kpiUso.percentualUsado]
+        }
+        catch {
+            alert("Servidor inexistente no bucket, monitore o servidor com o script de captura Python")
+        }
         console.log(resultado);
         percentual_total_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
         percentual_uso_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualUsado}%`
@@ -1001,7 +1063,18 @@
         const picoVariacao = resultado.dadosMaquina.metricas.kpiPico.variacao
         pico_hoje.innerText = `${picoHoje}%`
         pico_ontem.innerText = `${picoOntem}%`
-        pico_variacao.innerText = `${picoVariacao}%`
+        if (picoVariacao >= 0) {
+            pico_variacao.innerHTML = `<span style="color: red;">+${picoVariacao}%</span>`
+        }
+        else if (picoVariacao < 0) {
+            console.log("testeeeeeee");
+
+            pico_variacao.innerHTML = `<span style="color: green;">${picoVariacao}%</span>`
+        }
+        if (picoVariacao == 0 && picoHoje < 70) {
+            pico_variacao.innerHTML = `<span style="color: #FFFFFF;">+${picoVariacao}%</span>`
+        }
+        mudarCorKpiPico(picoHoje, picoOntem, "kpi_pico_ram")
 
         console.log(dadosGrafico);
         console.log(momentoDadosGrafico);
@@ -1060,8 +1133,8 @@
                 label: 'My First Dataset',
                 data: dadosUsoKpi,
                 backgroundColor: [
-                    '#588FFF',
                     "#212121",
+                    COR_KPI_USO,
                 ],
                 hoverOffset: 4
             }]
@@ -1120,11 +1193,24 @@
                     pointHoverRadius: 5
                 },
                 {
-                    label: 'Limite Crítico',
+                    label: 'Limite Risco',
                     data: [70, 70, 70, 70, 70, 70, 70],
-                    fill: false, 
-                    borderColor: 'rgba(255, 0, 31, 0.9)', 
-                    borderWidth: 1.5, 
+                    fill: false,
+                    borderColor: 'rgba(255, 213, 0, 0.9)',
+                    borderWidth: 1.5,
+                    borderDash: [5, 5],
+                    tension: 0.3,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+                {
+                    label: 'Limite Crítico',
+                    data: [90, 90, 90, 90, 90, 90, 90],
+                    fill: false,
+                    borderColor: 'rgba(255, 0, 31, 0.9)',
+                    borderWidth: 1.5,
                     borderDash: [5, 5],
                     tension: 0.3,
                     interaction: {

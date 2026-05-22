@@ -25,7 +25,8 @@ async function buscarIssues(fkEmpresa) {
                         "updated",
                         "resolutiondate",
                         "issuetype",
-                        "labels"
+                        "labels",
+                        "assignee"
                     ]
                 },
                 headers: {
@@ -52,6 +53,19 @@ async function buscarIssues(fkEmpresa) {
                 label => !componentesValidos.includes(label)
             );
 
+
+            // --- NOME DO ANALISTA ---
+            var nomeAnalista = "Não atribuído";
+            if (issue.fields.assignee != null) {
+                nomeAnalista = issue.fields.assignee.displayName;
+            }
+
+            var nomeAnalista = "Não atribuído";
+
+            if (issue.fields.assignee != null) {
+                nomeAnalista = issue.fields.assignee.displayName;
+            }
+
             return {
                 id: issue.id,
                 key: issue.key,
@@ -62,8 +76,9 @@ async function buscarIssues(fkEmpresa) {
                 atualizadoEm: issue.fields.updated,
                 resolvidoEm: issue.fields.resolutiondate,
                 componente: componente || "desconhecido",
-                servidor: servidor || "desconhecido",
-                labels_crudas: labels
+                servidor: servidor,
+                labels_crudas: labels,
+                analista: nomeAnalista
             };
         });
 
@@ -87,8 +102,6 @@ async function filtrarDashboard(fkEmpresa) {
 
     for (var i = 0; i < incidentes.length; i++) {
         var incidente = incidentes[i];
-
-        // indice do jira resolvido
         var dataCriacao = new Date(incidente.criadoEm);
 
 
