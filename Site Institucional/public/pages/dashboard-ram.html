@@ -644,7 +644,9 @@
 
     var COR_KPI_USO = "#588FFF"
     async function obterDadosGrafico() {
-        const resultado = await buscarComponenteRamService("24:fe:9a:06:99:2f")
+        sessionStorage.setItem('MAC_ADDRESS', "24:fe:9a:06:99:2f"); // REMOVER 
+        const mac_address = sessionStorage.getItem('MAC_ADDRESS');
+        const resultado = await buscarComponenteRamService(mac_address)
 
         console.log(resultado)
         try {
