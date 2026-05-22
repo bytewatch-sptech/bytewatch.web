@@ -1096,11 +1096,11 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 })
 
                 myChart.setOption({
-                series: [
-                    { name: 'Servidores Estáveis', data: novosEstaveis },
-                    { name: 'Servidores Instáveis', data: novosInstaveis }
-                ]
-            });
+                    series: [
+                        { name: 'Servidores Estáveis', data: novosEstaveis },
+                        { name: 'Servidores Instáveis', data: novosInstaveis }
+                    ]
+                });
 
                 const qtdCriticos = dados.resumo_global.servidores_criticos
                 const totalServidores = dados.resumo_global.total_servidores
@@ -1175,7 +1175,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                         <td><span id="cidadeServidor">${regiao}</span><span id="regiaoServidor">sa-east</span></td>
 
                                         <td>
-                                            <button class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
+                                            <button value="${macAddress}" onclick="acessarCpu(e)" class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
 
                                                 <div class="d-flex flex-column w-100 gap-1">
 
@@ -1222,7 +1222,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                             </button>
                                         </td>
                                         <td>
-                                            <button class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
+                                            <button macA="${macAddress}" onclick="acessarRam(this)" class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
 
                                                 <div class="d-flex flex-column w-100 gap-1">
 
@@ -1289,6 +1289,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
     }
 
+    function acessarRam(botao) {
+        
+        let macAddress = botao.getAttribute('macA')
+
+        console.log("MACCCC:",macAddress)
+        sessionStorage.setItem('MAC_ADDRESS', macAddress) 
+        window.location.href = `/pages/dashboard-ram.html`
+    }
 
     async function mostrarServidores() {
         var idEmpresa = sessionStorage.ID_EMPRESA;
@@ -1452,8 +1460,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
             geo: {
                 map: 'mundo',
                 roam: true,
-                layourCenter:  ['50%', '50%'],
-                layoutSize: '100%', 
+                layourCenter: ['50%', '50%'],
+                layoutSize: '100%',
                 zoom: 1.3,
                 itemStyle: {
                     areaColor: '#4A4A4A',
