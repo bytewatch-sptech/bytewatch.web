@@ -1081,3 +1081,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
+<script src="../services/api.js"></script>
+<script src="../services/serviceComponenteCpu.js"></script>
+<script>
+    async function obterDados() {
+        sessionStorage.setItem('MAC_ADDRESS', "24:fe:9a:06:99:2f"); // REMOVER 
+        const mac_address = sessionStorage.getItem('MAC_ADDRESS');
+        const resultado = await buscarComponenteCpuService(mac_address)
+        console.log(resultado);
+    }
+
+    obterDados()
+
+    // Lógica aqui
+    
+</script>
