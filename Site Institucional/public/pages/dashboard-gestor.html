@@ -131,29 +131,28 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-3 me-2">
-                                <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/calendar.png" style="height: 25px;" alt=""> Custo do dia</p>
-                                    <div class="kpi-value kpi-red">R$ 10.00</div>
-                                    <!-- <small class="kpi-green">↓ 60%</small> -->
-                                </div>
-                            </div>
-
                             <div class="col-md-3">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/goal.png" style="height: 25px;" alt=""> Meta do mês</p>
-                                    <div class="kpi-value">R$ 50.000</div>
+                                    <p><img src="../assets/goal.png" style="height: 25px;" alt=""> Custo até o momento</p>
+                                    <div class="kpi-value">R$ 30.000</div>
                                     <!-- <small class="kpi-green">↑ 0,15%</small> -->
                                 </div>
                             </div>
 
+                            <div class="col-md-3 me-2">
+                                <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
+                                    <p><img src="../assets/calendar.png" style="height: 25px;" alt=""> Custo do dia</p>
+                                    <div class="kpi-value">R$ 10.00</div>
+                                    <!-- <small class="kpi-green">↓ 60%</small> -->
+                                </div>
+                            </div>
 
                         </div>
 
                         <div class="row g-3 align-items-center">
                             <div class="col-lg-9 col-12">
 
-                                <div class="card-principal d-flex align-items-start justify-content-center card-custom">
+                                <div class="d-flex align-items-start justify-content-center card-custom">
 
                                     <div class="card-kpi">
                                         <div class="d-flex align-items-center justify-content-center"
@@ -222,9 +221,9 @@
 <script src="../js/scriptAI.js"></script>
 
 <script>
-    window.onload = ObterDadosGauge;
+    window.onload = ObterDadosGrafico;
 
-    async function ObterDadosGauge() {
+    async function ObterDadosGrafico() {
         const resultado = await buscarDadosGestorService();
         console.log(resultado.dadosMaquina);
 
@@ -247,6 +246,8 @@
                 return;
             }
 
+            
+
 
             const picosDia = [picoRam, picoCpu];
 
@@ -255,22 +256,43 @@
             plotarGaugeRam(picoRam);
             plotarGaugeCpu(picoCpu);
 
-            document.getElementById("valorRam").innerText = picoRam + "%";
-            document.getElementById("valorCpu").innerText = picoCpu + "%";
+            document.getElementById("valorRam").innerText = picoRam + "%"
+            document.getElementById("valorCpu").innerText = picoCpu + "%"
 
+
+            // Pegando os dados da KPI de financeiro
+
+            const custoAtual = resultado.dadosMaquina.custoTotalAteAgora
+            const custoMes = resultado.dadosMaquina.custoTotalNoMes
+            const custoDia = resultado.dadosMaquina.custoDoDia
+            const dias = resultado.dadosMaquina.diasDecorridos
+
+            
+
+            const hoje = new Date()
+            const diaDoMes = new Date(
+                hoje.getFullYear(),
+                hoje.getMonth() + 1, 0
+            ).getDate()
         } catch (erro) {
-            console.error("Erro ao pegar picos:", erro);
+            console.error("Erro ao pegar picos:", erro)
         }
+
+        const custouAtual = (custoAtual / custoMes) * 100
+        const custoEsperado = custoMes / diaDoMes
+        const estimativaAteHoje = custoEsperado * dias
+
+        
     }
-    ObterDadosGauge();
+    ObterDadosGrafico()
 
 
     function criarGauge(canvasId, valor, cor) {
-        const ctx = document.getElementById(canvasId);
+        const ctx = document.getElementById(canvasId)
 
         if (!ctx) {
-            console.error("Canvas não encontrado:", canvasId);
-            return;
+            console.error("Canvas não encontrado:", canvasId)
+            return
         }
 
         new Chart(ctx, {
@@ -278,7 +300,7 @@
             data: {
                 datasets: [{
                     data: [valor, 100 - valor],
-                    backgroundColor: [cor, "#1f2937"],
+                    backgroundColor: ["#CC79A7", "##102A43"],
                     borderWidth: 0
                 }]
             },
@@ -292,25 +314,25 @@
                     tooltip: { enabled: false }
                 }
             }
-        });
+        })
     }
 
     function plotarGaugeRam(valor) {
-        criarGauge("gaugePicoRAM", valor, "#f1c40f");
+        criarGauge("gaugePicoRAM", valor, "#f1c40f")
     }
 
     function plotarGaugeCpu(valor) {
-        criarGauge("gaugePicoCPU", valor, "#e74c3c");
+        criarGauge("gaugePicoCPU", valor, "#e74c3c")
     }
 
 
     document.addEventListener("DOMContentLoaded", function () {
 
-        const linhas = document.getElementById('visaoMacro');
+        const linhas = document.getElementById('visaoMacro')
 
         if (!linhas) {
-            console.error("Canvas não encontrado!");
-            return;
+            console.error("Canvas não encontrado!")
+            return
         }
 
         new Chart(linhas, {
@@ -332,12 +354,12 @@
                     }
                 ]
             }
-        });
+        })
 
-        // const gauge = document.getElementById("gaugePicoRAM");
+        // const gauge = document.getElementById("gaugePicoRAM")
         // const gaugeCPU = document.getElementById("gaugePicoCPU")
 
-        // const valor = 78;
+        // const valor = 78
 
         // const data = {
         //     labels: ["Usado", "Livre"],
@@ -346,7 +368,7 @@
         //         backgroundColor: ["#f59e0b", "#1f2937"],
         //         borderWidth: 0
         //     }]
-        // };
+        // }
 
         // new Chart(gauge, {
         //     type: 'doughnut',
@@ -357,7 +379,7 @@
         //         rotation: -90,
         //         cutout: "70%"
         //     }
-        // });
+        // })
 
         // new Chart(gaugeCPU, {
         //     type: 'doughnut',
@@ -368,7 +390,7 @@
         //         rotation: -90,
         //         cutout: "70%"
         //     }
-        // });
+        // })
 
 
 
