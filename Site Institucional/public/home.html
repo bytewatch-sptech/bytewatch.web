@@ -1056,11 +1056,11 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
     })
 
 
-
-    async function carregarDadosDashboard(idEmpresa) {
+    idUsuario = sessionStorage.ID_USUARIO
+    async function carregarDadosDashboard(idEmpresa, idUsuario) {
         try {
             console.log("Buscando dados")
-            const resposta = await fetch(`/servidor/buscarDashboardHome/${idEmpresa}`, { cache: 'no-store' })
+            const resposta = await fetch(`/servidor/buscarDashboardHome/${idEmpresa}/${idUsuario}`, { cache: 'no-store' })
 
 
 
@@ -1075,6 +1075,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                         console.log(`gráfico para : ${servidor.nome_db}`)
                         
                         renderizarServidorTela(servidor)
+                        mostrarMapa(servidor)
                     } else {
                         console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
                     }
@@ -1095,7 +1096,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
         }
     }
 
-    carregarDadosDashboard(sessionStorage.ID_EMPRESA)
+    carregarDadosDashboard(sessionStorage.ID_EMPRESA, sessionStorage.ID_USUARIO)
 
 
     function renderizarServidorTela(servidor) {
@@ -1397,12 +1398,18 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
     mostrarServidores();
 
 
-
+    async function mostrarMapa(servidor) {
+        
     const chartDom = document.getElementById('mapa')
     const myChart = echarts.init(chartDom);
 
-    fetch('world.json').then(res => res.json()).then(worldJson => {
+    const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
+
+
+    fetch('https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/json/world.json').then(res => res.json()).then(worldJson => {
         echarts.registerMap('mundo', worldJson)
+
+        b
 
         const option = {
             backgroundColor: 'transparent',
@@ -1486,5 +1493,6 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
     window.addEventListener('resize', function () {
         myChart.resize();
     })
+    }
 
 </script>
