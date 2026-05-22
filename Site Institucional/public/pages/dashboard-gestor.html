@@ -282,6 +282,17 @@
         const custoEsperado = custoMes / diaDoMes
         const estimativaAteHoje = custoEsperado * dias
 
+        var status = "Dentro do esperado"
+        var cor = "white"
+
+        if (percentual > 5) {
+            status = "Acima do esperado"
+            cor = "red"
+        } else if (percentual < -5){
+            status = "Abaixo do esperado"
+            cor = "green"
+        }
+
         
     }
     ObterDadosGrafico()
