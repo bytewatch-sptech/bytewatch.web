@@ -17,6 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="
+https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
+"></script>
 </head>
 
 <body>
@@ -116,8 +119,8 @@
                 </div>
             </nav>
 
-            <main class="col d-flex flex-column gap-4 p-4 overflow-auto" style="max-height: 100vh; overflow-y: auto;">
-                <div class="d-flex">
+            <main class="col d-flex flex-column gap-4 p-3 overflow-auto" style="max-height: 100vh; overflow-y: auto;">
+                <div class="d-flex d-lg-none">
                     <button class="btn btn-link text-white p-0 me-3 d-lg-none border-0" type="button"
                         data-bs-toggle="offcanvas" data-bs-target="#menuMobile">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
@@ -135,10 +138,10 @@
 
                             <div class="row h-100 gx-4 justify-content-start linha-divisao-conteudo m-0">
 
-                                <div class="col-lg-9 d-flex flex-column gap-4 coluna-central">
+                                <div class="col-lg-9 w-100 d-flex flex-column gap-4 coluna-central">
                                     <section class="secao-visao-geral">
 
-                                        <header class="cabecalho-pagina mb-4 d-flex align-items-center gap-3 w-100">
+                                        <header class="cabecalho-pagina d-flex align-items-center gap-3 w-100">
                                             <div class="icone-cabecalho">
                                                 <svg width="56" height="56" viewBox="0 0 48 48" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -163,377 +166,331 @@
                                                     style="font-size: 0.9rem">Veja os insights iniciais</span>
                                             </div>
                                         </header>
+                                        <div class="row align-items-stretch w-100 justify-content-between">
 
-                                        <div class="row g-3 grade-cards-resumo">
-                                            <div class="col-md-4">
-                                                <div class="card h-100 cartao-resumo borda-ciano">
-                                                    <div class="card-body conteudo-cartao">
-                                                        <div class="icone icone-ciano">
-                                                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                    fill="#00F2EA" fill-opacity="0.2" />
-                                                                <path
-                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                    stroke="#00F2EA" />
-                                                                <path
-                                                                    d="M24.6665 9.66663H11.3332C10.4127 9.66663 9.6665 10.4128 9.6665 11.3333V14.6666C9.6665 15.5871 10.4127 16.3333 11.3332 16.3333H24.6665C25.587 16.3333 26.3332 15.5871 26.3332 14.6666V11.3333C26.3332 10.4128 25.587 9.66663 24.6665 9.66663Z"
-                                                                    stroke="#00F2EA" stroke-width="1.66667"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path
-                                                                    d="M24.6665 19.6666H11.3332C10.4127 19.6666 9.6665 20.4128 9.6665 21.3333V24.6666C9.6665 25.5871 10.4127 26.3333 11.3332 26.3333H24.6665C25.587 26.3333 26.3332 25.5871 26.3332 24.6666V21.3333C26.3332 20.4128 25.587 19.6666 24.6665 19.6666Z"
-                                                                    stroke="#00F2EA" stroke-width="1.66667"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M13 13H13.0083" stroke="#00F2EA"
-                                                                    stroke-width="1.66667" stroke-linecap="round"
-                                                                    stroke-linejoin="round" />
-                                                                <path d="M13 23H13.0083" stroke="#00F2EA"
-                                                                    stroke-width="1.66667" stroke-linecap="round"
-                                                                    stroke-linejoin="round" />
-                                                            </svg>
-                                                        </div>
-                                                        <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Total de Máquinas</span>
-                                                            <span class="numero-gigante texto-ciano"
-                                                                id="totalMaquinas"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="d-flex flex-column gap-3 h-100 grade-cards-resumo">
 
-                                            <div class="col-md-4">
-                                                <div class="card h-100 cartao-resumo borda-vermelha">
-                                                    <div class="card-body conteudo-cartao">
-                                                        <div class="icone icone-vermelho">
-                                                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                    fill="#FF0050" fill-opacity="0.2" />
-                                                                <path
-                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                    stroke="#FF3366" />
-                                                                <path
-                                                                    d="M26.1085 23L19.4419 11.3333C19.2965 11.0768 19.0857 10.8635 18.831 10.715C18.5762 10.5666 18.2867 10.4884 17.9919 10.4884C17.697 10.4884 17.4075 10.5666 17.1527 10.715C16.898 10.8635 16.6872 11.0768 16.5419 11.3333L9.87519 23C9.72825 23.2544 9.65121 23.5432 9.65186 23.8371C9.65251 24.1309 9.73083 24.4194 9.87889 24.6732C10.0269 24.927 10.2395 25.1371 10.4949 25.2823C10.7504 25.4275 11.0397 25.5026 11.3335 25.5H24.6669C24.9593 25.4997 25.2465 25.4225 25.4996 25.2761C25.7527 25.1297 25.9629 24.9192 26.1089 24.6659C26.255 24.4126 26.3319 24.1253 26.3318 23.8329C26.3317 23.5405 26.2547 23.2532 26.1085 23Z"
-                                                                    stroke="#FF0050" stroke-width="1.66667"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M18 15.5V18.8333" stroke="#FF0050"
-                                                                    stroke-width="1.66667" stroke-linecap="round"
-                                                                    stroke-linejoin="round" />
-                                                                <path d="M18 22.1666H18.0083" stroke="#FF0050"
-                                                                    stroke-width="1.66667" stroke-linecap="round"
-                                                                    stroke-linejoin="round" />
-                                                            </svg>
-                                                        </div>
-                                                        <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Máquinas em Risco</span>
-                                                            <span class="numero-gigante texto-vermelho"
-                                                                id="kpiMaquinasRisco"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="card h-100 cartao-resumo borda-ciano">
-                                                    <div class="card-body conteudo-cartao">
-                                                        <div class="icone icone-ciano">
-                                                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                    fill="#00F2EA" fill-opacity="0.2" />
-                                                                <path
-                                                                    d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                    stroke="#00F2EA" />
-                                                                <path
-                                                                    d="M26.3332 18H24.2665C23.9023 17.9992 23.5479 18.1177 23.2574 18.3374C22.967 18.5572 22.7565 18.866 22.6582 19.2166L20.6998 26.1833C20.6872 26.2266 20.6609 26.2646 20.6248 26.2916C20.5888 26.3187 20.5449 26.3333 20.4998 26.3333C20.4548 26.3333 20.4109 26.3187 20.3748 26.2916C20.3388 26.2646 20.3125 26.2266 20.2998 26.1833L15.6998 9.81663C15.6872 9.77335 15.6609 9.73534 15.6248 9.70829C15.5888 9.68125 15.5449 9.66663 15.4998 9.66663C15.4548 9.66663 15.4109 9.68125 15.3748 9.70829C15.3388 9.73534 15.3125 9.77335 15.2998 9.81663L13.3415 16.7833C13.2436 17.1326 13.0343 17.4404 12.7456 17.66C12.4568 17.8796 12.1043 17.9989 11.7415 18H9.6665"
-                                                                    stroke="#00F2EA" stroke-width="1.66667"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                            </svg>
-                                                        </div>
-                                                        <div class="textos-do-cartao">
-                                                            <span class="titulo-pequeno">Componentes em Risco</span>
-                                                            <span class="numero-gigante texto-ciano"
-                                                                id="kpiComponentesRisco"></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div
-                                            class="d-flex justify-content-between align-items-center mt-4 barra-ferramentas-filtros">
-                                            <div class="d-flex align-items-center gap-3">
-                                                <div class="icone-filtro"></div>
-                                                <span class="texto-filtro">Filtros:</span>
-                                                <button class="btn btn-filtro">Críticos</button>
-                                                <button class="btn btn-filtro">Alerta</button>
-                                                <button class="btn btn-filtro">Normal</button>
-                                            </div>
-
-                                            <div class="form-check form-switch container-switch">
-                                                <input class="form-check-input switch-customizado" type="checkbox"
-                                                    id="mostrarTodos">
-                                                <label class="form-check-label label-switch" for="mostrarTodos">Mostrar
-                                                    todos</label>
-                                            </div>
-                                        </div>
-
-                                        <section class="secao-servidores mt-4">
-                                            <div
-                                                class="d-flex justify-content-between align-items-end mb-3 cabecalho-secao-servidores">
-                                                <div>
-                                                    <h4 class="titulo-secao text-white">Servidores em Risco</h4>
-                                                </div>
-                                                <button class="btn btn-ver-todos">Ver Todos</button>
-                                            </div>
-
-                                            <div class="row g-3" id="servidoresAlerta">
-
-
-                                                <div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-vermelha">
-                                                        <a href="./pages/dashboard-servidor.html"
-                                                            style="text-decoration: none;">
-                                                            <div class="card-body d-flex flex-column gap-3">
-                                                                <div class="cabecalho-do-card">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center">
-                                                                        <span
-                                                                            class="nome-servidor fw-bold text-white">TikTok
-                                                                            EU-Central-1</span>
-                                                                        <span
-                                                                            class="bolinha-status status-vermelho"></span>
-                                                                    </div>
-                                                                    <span class="localizacao-servidor text-secondary"
-                                                                        style="font-size: 0.85rem">Frankfurt,
-                                                                        Germany</span>
-                                                                </div>
-
-                                                                <div
-                                                                    class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">CPU</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">95%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">RAM</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">91%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">DISCO</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">88%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                    <div class="card cartao-resumo borda-vermelha flex-fill">
+                                                        <div class="card-body conteudo-cartao">
+                                                            <div class="icone icone-vermelho">
+                                                                <svg width="24" height="24" viewBox="0 0 36 36"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                        fill="#FF0050" fill-opacity="0.2" />
+                                                                    <path
+                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
+                                                                        stroke="#FF3366" />
+                                                                    <path
+                                                                        d="M26.1085 23L19.4419 11.3333C19.2965 11.0768 19.0857 10.8635 18.831 10.715C18.5762 10.5666 18.2867 10.4884 17.9919 10.4884C17.697 10.4884 17.4075 10.5666 17.1527 10.715C16.898 10.8635 16.6872 11.0768 16.5419 11.3333L9.87519 23C9.72825 23.2544 9.65121 23.5432 9.65186 23.8371C9.65251 24.1309 9.73083 24.4194 9.87889 24.6732C10.0269 24.927 10.2395 25.1371 10.4949 25.2823C10.7504 25.4275 11.0397 25.5026 11.3335 25.5H24.6669C24.9593 25.4997 25.2465 25.4225 25.4996 25.2761C25.7527 25.1297 25.9629 24.9192 26.1089 24.6659C26.255 24.4126 26.3319 24.1253 26.3318 23.8329C26.3317 23.5405 26.2547 23.2532 26.1085 23Z"
+                                                                        stroke="#FF0050" stroke-width="1.66667"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path d="M18 15.5V18.8333" stroke="#FF0050"
+                                                                        stroke-width="1.66667" stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path d="M18 22.1666H18.0083" stroke="#FF0050"
+                                                                        stroke-width="1.66667" stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                            <div class="textos-do-cartao">
+                                                                <span class="titulo-pequeno">Servidores Críticos</span>
+                                                                <span class="numero-gigante texto-vermelho"
+                                                                    id="kpiMaquinasRisco"></span>
+                                                                <div class="align-items-center w-100 texto-vermelho"
+                                                                    style="border-radius: 10px; background-color: #ff005010;">
+                                                                    <span>xx</span>
                                                                 </div>
                                                             </div>
-                                                        </a>
+                                                        </div>
                                                     </div>
-                                                </div>
 
-                                                <div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-amarela">
-                                                        <a href="./pages/dashboard-servidor.html"
-                                                            style="text-decoration: none;">
-                                                            <div class="card-body d-flex flex-column gap-3">
-                                                                <div class="cabecalho-do-card">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center">
-                                                                        <span
-                                                                            class="nome-servidor fw-bold text-white">TikTok
-                                                                            SA-East-1</span>
-                                                                        <span
-                                                                            class="bolinha-status status-amarelo"></span>
-                                                                    </div>
-                                                                    <span class="localizacao-servidor text-secondary"
-                                                                        style="font-size: 0.85rem">São Paulo,
-                                                                        Brazil</span>
-                                                                </div>
-
-                                                                <div
-                                                                    class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">CPU</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">78%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">RAM</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">86%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="item-metrica">
-                                                                        <div
-                                                                            class="d-flex justify-content-between align-items-center mb-1">
-                                                                            <span class="label-metrica text-secondary"
-                                                                                style="font-size: 0.85rem">DISCO</span>
-                                                                            <span
-                                                                                class="valor-metrica text-white fw-bold">62%</span>
-                                                                        </div>
-                                                                        <div class="d-flex w-100 gap-1">
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #00F2EA; height: 4px; border-top-left-radius: 4px; border-bottom-left-radius: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #FFD500; height: 4px">
-                                                                            </div>
-                                                                            <div class="line-component w-100"
-                                                                                style="background-color: #ff0050; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                    <div class="card cartao-resumo borda-vermelha flex-fill">
+                                                        <div class="card-body conteudo-cartao">
+                                                            <div class="icone icone-vermelho">
+                                                                <svg width="20" height="20" viewBox="0 0 12 12"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <g clip-path="url(#clip0_1241_38)">
+                                                                        <path
+                                                                            d="M3 5H2C1.73478 5 1.48043 4.89464 1.29289 4.70711C1.10536 4.51957 1 4.26522 1 4V2C1 1.73478 1.10536 1.48043 1.29289 1.29289C1.48043 1.10536 1.73478 1 2 1H10C10.2652 1 10.5196 1.10536 10.7071 1.29289C10.8946 1.48043 11 1.73478 11 2V4C11 4.26522 10.8946 4.51957 10.7071 4.70711C10.5196 4.89464 10.2652 5 10 5H9M3 7H2C1.73478 7 1.48043 7.10536 1.29289 7.29289C1.10536 7.48043 1 7.73478 1 8V10C1 10.2652 1.10536 10.5196 1.29289 10.7071C1.48043 10.8946 1.73478 11 2 11H10C10.2652 11 10.5196 10.8946 10.7071 10.7071C10.8946 10.5196 11 10.2652 11 10V8C11 7.73478 10.8946 7.48043 10.7071 7.29289C10.5196 7.10536 10.2652 7 10 7H9M3 3H3.005M3 9H3.005"
+                                                                            stroke="#FF0050" stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                        <path d="M6.5 3L4.5 6H7.5L5.5 9"
+                                                                            stroke="#FF0050" stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_1241_38">
+                                                                            <rect width="12" height="12" fill="white" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg>
+                                                            </div>
+                                                            <div class="textos-do-cartao">
+                                                                <span class="titulo-pequeno">Servidor Mais Propenso <br>
+                                                                    a Falha</span>
+                                                                <span
+                                                                    class="numero-gigante texto-vermelho col flex-column"
+                                                                    id="kpiServidorPropensoFalha">XX</span>
+                                                                <div class="align-items-center w-100 texto-vermelho"
+                                                                    style="border-radius: 10px; background-color: #ff005010;">
+                                                                    <span>xx</span>
                                                                 </div>
                                                             </div>
-                                                        </a>
+                                                        </div>
                                                     </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4 matriz-priorizacao d-flex flex-column">
+                                                <span>Matriz de priorização</span>
+                                                <div class="flex-fill"
+                                                    style="position: relative; height: 180px; width: 100%;">
+                                                    <canvas id="matrizChart"></canvas>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-5 card-mapa d-flex flex-column">
+                                                <div id="mapa" class="flex-fill" style="min-height: 300px;"></div>
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <div class="table-responsive w-100 frota-servidores mt-4">
+                                            <div class="d-flex align-items-center gap-3 cabecalho-servidores">
+                                                <span>Frota de
+                                                    Servidores</span>
+                                                <div class="filtro d-flex align-items-center gap-3"><svg width="16"
+                                                        height="16" viewBox="0 0 16 16" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M6.66708 13.3333C6.66702 13.4572 6.70148 13.5787 6.7666 13.6841C6.83172 13.7895 6.92492 13.8746 7.03574 13.93L8.36908 14.5967C8.47074 14.6475 8.58371 14.6714 8.69724 14.6663C8.81077 14.6612 8.92111 14.6271 9.01776 14.5673C9.11442 14.5075 9.19419 14.424 9.24949 14.3247C9.30479 14.2254 9.3338 14.1137 9.33374 14V9.33333C9.33389 9.00292 9.45672 8.68433 9.67841 8.43933L14.4937 3.11333C14.5801 3.01771 14.6368 2.89912 14.6571 2.77192C14.6775 2.64472 14.6605 2.51435 14.6083 2.39658C14.5562 2.27881 14.471 2.17868 14.3631 2.1083C14.2552 2.03792 14.1292 2.0003 14.0004 2H2.00041C1.87148 2.00005 1.74533 2.03748 1.63724 2.10776C1.52915 2.17804 1.44376 2.27815 1.39141 2.39598C1.33906 2.5138 1.322 2.64427 1.34229 2.77159C1.36259 2.89892 1.41936 3.01762 1.50574 3.11333L6.32241 8.43933C6.5441 8.68433 6.66693 9.00292 6.66708 9.33333V13.3333Z"
+                                                            stroke="#00F2EA" stroke-width="1.33333"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+
+                                                    Filtro <input type="text"> <button class="filtro button">Todos <span
+                                                            id="qtdServidores"></span></button> <button
+                                                        class="filtro button">Critíco</button> <button
+                                                        class="filtro button">Risco</button> <button
+                                                        class="filtro button">Estável</button>
+                                                </div>
+                                            </div>
+                                            <table class="table table-hover align-middle text-start">
+                                                <thead>
+                                                    <tr class="cabecalho-customizado">
+                                                        <th scope="col" class="ps-3 border-0">STATUS</th>
+                                                        <th scope="col" class="border-0">ÚLTIMA COLETA</th>
+                                                        <th scope="col" class="border-0">SERVIDOR</th>
+                                                        <th scope="col" class="border-0">REGIÃO</th>
+                                                        <th scope="col" class="border-0">CPU</th>
+                                                        <th scope="col" class="border-0">RAM</th>
+                                                        <th scope="col" class="border-0">DISCO</th>
+                                                        <th scope="col" class="border-0">REDE</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="lista-servidores">
+                                                    <tr class="servidor-critico">
+                                                        <td><span id="statusServidorBola">°</span></td>
+                                                        <td>
+                                                            <div class="flex-column d-flex">
+                                                                <span id="horaColeta">10:23:01</span>
+                                                                <span id="dataColeta">10/04/2006</span>
+                                                            </div>
+                                                        </td>
+                                        </div>
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                <span id="nomeServidor">TikTok-US-Edge-01</span>
+                                                <span id="diagnosticoEtlServidor">Disco Saturado
+                                                    + Clima</span>
+                                            </div>
+                                        </td>
+                                        <td><span id="cidadeServidor">São Paulo</span><span
+                                                id="regiaoServidor">sa-east</span></td>
+
+                                        <td>
+                                            <button
+                                                class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
+
+                                                <div class="d-flex flex-column w-100 gap-1">
+
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="0.434783" y="0.434783" width="19.1304"
+                                                                height="18.2609" rx="3.91304" fill="#C167C7"
+                                                                fill-opacity="0.3" />
+                                                            <rect x="0.434783" y="0.434783" width="19.1304"
+                                                                height="18.2609" rx="3.91304" stroke="#C167C7"
+                                                                stroke-width="0.869565" />
+                                                            <g clip-path="url(#clip0_1129_470)">
+                                                                <path
+                                                                    d="M12.998 6.00024H6.99805C6.44576 6.00024 5.99805 6.44796 5.99805 7.00024V13.0002C5.99805 13.5525 6.44576 14.0002 6.99805 14.0002H12.998C13.5503 14.0002 13.998 13.5525 13.998 13.0002V7.00024C13.998 6.44796 13.5503 6.00024 12.998 6.00024Z"
+                                                                    stroke="#C167C7" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                                <path
+                                                                    d="M11 8.5H9C8.72386 8.5 8.5 8.72386 8.5 9V11C8.5 11.2761 8.72386 11.5 9 11.5H11C11.2761 11.5 11.5 11.2761 11.5 11V9C11.5 8.72386 11.2761 8.5 11 8.5Z"
+                                                                    stroke="#C167C7" stroke-linecap="round"
+                                                                    stroke-linejoin="round" />
+                                                                <path d="M11.5 4.99976V5.99976" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M11.5 13.9998V14.9998" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M5 11.5H6" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M5 8.5H6" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M14.002 11.5H15.002" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M14.002 8.5H15.002" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M8.5 4.99976V5.99976" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                                <path d="M8.5 13.9998V14.9998" stroke="#C167C7"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_1129_470">
+                                                                    <rect width="12" height="12" fill="white"
+                                                                        transform="translate(4 4)" />
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+
+                                                        <span class="texto-destaque fs-5 fw-bold">93%</span>
+                                                    </div>
+
+                                                    <div class="progress-track">
+                                                        <div class="progress-fill" style="width: 93%;">
+                                                        </div>
+                                                    </div>
+
                                                 </div>
 
-                                            </div>
-                                        </section>
+                                                <div
+                                                    class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
+                                                    ABRIR
+                                                    <svg width="22" height="22" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75"
+                                                            stroke="#ba0c46" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
 
-                                    </section>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button
+                                                class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
+
+                                                <div class="d-flex flex-column w-100 gap-1">
+
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="0.434783" y="0.434783" width="19.1304"
+                                                                height="18.2609" rx="3.91304" fill="#B0DB43"
+                                                                fill-opacity="0.3" />
+                                                            <rect x="0.434783" y="0.434783" width="19.1304"
+                                                                height="18.2609" rx="3.91304" stroke="#B0DB43"
+                                                                stroke-width="0.869565" />
+                                                            <path d="M7.09961 13.2326V11.7749" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M9.16406 13.2326V11.7749" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M11.2266 13.2326V11.7749" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M13.293 13.2326V11.7749" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M8.13086 9.3451V8.37329" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M12.2598 9.3451V8.37329" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M10.1953 9.3451V8.37329" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M5.03125 11.2888H15.3568" stroke="#B0DB43"
+                                                                stroke-width="1.03255" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path
+                                                                d="M5.03125 7.40126C5.03125 7.14352 5.14004 6.89633 5.33368 6.71408C5.52732 6.53183 5.78995 6.42944 6.0638 6.42944H14.3242C14.5981 6.42944 14.8607 6.53183 15.0543 6.71408C15.248 6.89633 15.3568 7.14352 15.3568 7.40126V7.93575C15.1429 7.99504 14.9552 8.11789 14.8217 8.28592C14.6881 8.45395 14.616 8.65814 14.616 8.86797C14.616 9.0778 14.6881 9.28199 14.8217 9.45002C14.9552 9.61805 15.1429 9.74089 15.3568 9.80018V12.2603C15.3568 12.5181 15.248 12.7653 15.0543 12.9475C14.8607 13.1298 14.5981 13.2321 14.3242 13.2321H6.0638C5.78995 13.2321 5.52732 13.1298 5.33368 12.9475C5.14004 12.7653 5.03125 12.5181 5.03125 12.2603V9.7822C5.24511 9.72291 5.43283 9.60007 5.56636 9.43204C5.69989 9.26401 5.77205 9.05982 5.77205 8.84999C5.77205 8.64016 5.69989 8.43597 5.56636 8.26794C5.43283 8.09991 5.24511 7.97706 5.03125 7.91778V7.40126Z"
+                                                                stroke="#B0DB43" stroke-width="1.03255"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <span class="texto-destaque fs-5 fw-bold">93%</span>
+                                                    </div>
+
+                                                    <div class="progress-track">
+                                                        <div class="progress-fill" style="width: 93%;">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div
+                                                    class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
+                                                    ABRIR
+                                                    <svg width="22" height="22" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75"
+                                                            stroke="#ba0c46" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </div>
+
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <div class="flex-column text-center">
+                                                <span>80%</span>
+
+                                                <div class="progress-track">
+                                                    <div class="progress-fill" style="width: 93%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex-column text-center">
+                                                <span>80%</span>
+
+                                                <div class="progress-track">
+                                                    <div class="progress-fill" style="width: 93%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        </tr>
+                                        </tbody>
+                                        </table>
                                 </div>
 
-                                <aside class="col-lg-3 d-flex flex-column gap-3 barra-lateral-direita conteudo-aside">
-
-                                    <div class="d-flex justify-content-end w-100 mb-4"
-                                        style="transform: translateY(12px)">
-                                        <div id="statusInfo"
-                                            class="info-alert d-flex align-items-center gap-2 px-3 py-2"
-                                            data-bs-toggle="modal" data-bs-target="#modalLegenda"
-                                            style="cursor: pointer; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; transition: all 0.3s ease">
-                                            <div class="icon d-flex">
-                                                <i class="fa-solid fa-circle-info text-secondary fs-5"></i>
-                                            </div>
-                                            <span class="text-white fw-medium" style="font-size: 0.9rem">Legenda</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-2">
-                                            <span class="titulo-lateral text-white fw-bold">Último Alerta</span>
-                                            <div class="d-flex align-items-center gap-2 mt-1">
-                                                <span class="bolinha-status status-vermelho"></span>
-                                                <span class="text-white fw-semibold">CPU crítico</span>
-                                            </div>
-                                            <span class="texto-secundario ps-3 ms-1">TikTok EU-Central-1</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
-                                            <span class="titulo-lateral text-white fw-bold">Ações Rápidas</span>
-                                            <div class="d-flex flex-column gap-2">
-                                                <a href="./adicionar-servidor.html"
-                                                    class="btn btn-acao btn-acao-adicionar text-decoration-none">
-                                                    <i class="fa-solid fa-plus"></i> Adicionar Servidor
-                                                </a>
-                                                <a href="" class="btn btn-acao btn-acao-editar text-decoration-none">
-                                                    <i class="fa-solid fa-pen"></i> Editar Servidor
-                                                </a>
-
-                                                <button class="btn btn-acao btn-acao-excluir" data-bs-toggle="modal"
-                                                    data-bs-target="#modalExcluirServidor">
-                                                    <i class="fa-solid fa-trash"></i> Excluir Servidor
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card cartao-acao-lateral">
-                                        <div class="card-body conteudo-cartao d-flex flex-column gap-3">
-                                            <span class="titulo-lateral text-white fw-bold">Exportar Logs</span>
-                                            <button class="btn btn-relatorio w-100">
-                                                <i class="fa-solid fa-download"></i> Baixar CSV
-                                            </button>
-                                        </div>
-                                    </div>
-                                </aside>
+                                </section>
                             </div>
-                        </main>
+
+
                     </div>
-                </div>
             </main>
         </div>
+    </div>
+    </main>
+    </div>
     </div>
 
     <div class="modal fade" id="modalExcluirServidor" tabindex="-1" aria-labelledby="modalExcluirLabel"
@@ -993,6 +950,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/home.js"></script>
 </body>
 
@@ -1001,63 +959,313 @@
 <script src="./services/api.js"></script>
 <script src="./services/servidorService.js"></script>
 <script>
-    async function buscarServidores() {
-        var idEmpresa = sessionStorage.ID_EMPRESA;
-        resultado = await buscarServidoresService(idEmpresa)
-        let conteudoSelect = `<option disabled selected value="">Selecionar</option>`
-        for (let i = 0; i < resultado.length; i++) {
-            conteudoSelect += `<option value="${resultado[i].id_servidor}">${resultado[i].nome_servidor}</option>`
-        }
-        document.getElementById("select_servidor").innerHTML = conteudoSelect;
-    }
 
-    buscarServidores()
+    const ctx = document.getElementById('matrizChart').getContext('2d')
 
-    async function removerServidor() {
-        const idServidor = document.getElementById("select_servidor").value;
+    const bubbleLabelsPlugin = {
+        id: 'bubbleLabels',
+        afterDatasetsDraw(chart) {
+            const { ctx } = chart
+            ctx.font = '9px Arial'
+            ctx.fillStyle = 'white'
+            ctx.textBaseline = 'middle'
 
-        console.log(idServidor);
-
-
-        const resultado = await excluirServidorService(idServidor)
-        console.log(resultado);
-        alert("Servidor excluido")
-        buscarServidores()
-    }
-
-    function descobrirStatusServidor(cpu, ram, disco) {
-        if ((cpu >= 90 || ram >= 90 || disco >= 90)
-            || (cpu >= 70 && ram >= 70)
-            || (cpu >= 70 && disco >= 70)
-            || (disco >= 70 && ram >= 70)) {
-            return 'critico'
-        } else if (cpu >= 70 || ram >= 70 || disco >= 70) {
-            return 'risco'
-        } else {
-            return 'normal'
+            chart.data.datasets.forEach((dataset, i) => {
+                const meta = chart.getDatasetMeta(i)
+                meta.data.forEach((bubble, index) => {
+                    const dataPoint = dataset.data[index]
+                    ctx.fillText(dataPoint.valor, bubble.x, bubble.y)
+                })
+            })
         }
     }
 
-    function descobrirStatusComponente(valorComponente) {
-        if (valorComponente >= 90) {
-            return {
-                status: 'critico',
-                cor: '#FF0050'
-            };
-        } else if (valorComponente >= 70) {
-            return {
-                status: 'risco',
-                cor: '#FFD600'
-            };
-        } else {
-            return {
-                status: 'estavel',
-                cor: '#01F2EA'
-            };
+    const matrizChart = new Chart(ctx, {
+        type: 'bubble',
+        plugins: [bubbleLabelsPlugin],
+        data: {
+            datasets: [
+                {
+                    label: 'Servidores Estáveis',
+                    data: [
+                        { x: 33, y: 60, r: 6, valor: 20 },
+                        { x: 42, y: 75, r: 5, valor: 24 },
+                        { x: 48, y: 120, r: 6, valor: 28 },
+                        { x: 72, y: 200, r: 10, valor: 44 }
+                    ],
+                    backgroundColor: 'rgba(0, 240, 255, 0.2)',
+                    borderColor: '#00E5FF',
+                    borderWidth: 2
+                },
+                {
+                    label: 'Servidores Critícos',
+                    data: [
+                        { x: 80, y: 400, r: 13, valor: 91 },
+                        { x: 85, y: 380, r: 15, valor: 100 },
+                        { x: 90, y: 500, r: 15, valor: 100 }
+                    ],
+                    backgroundColor: 'rgba(255, 59, 48, 0.2)',
+                    borderColor: '#FF3B30',
+                    borderWidth: 2,
+                    borderDash: [6, 4]
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return `Risco: ${context.raw.valor} | CPU/RAM: ${context.raw.x}% | Latência: ${context.raw.y}ms`
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    min: 0,
+                    max: 100,
+                    ticks: {
+                        stepSize: 25,
+                        callback: function (value) { return value + '%'; },
+                        color: '#888'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
+                    }
+                },
+                y: {
+                    min: 0,
+                    max: 650,
+                    ticks: {
+                        stepSize: 150,
+                        callback: function (value) { return value + 'ms'; },
+                        color: '#888'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)'
+                    }
+                }
+            }
+        }
+    })
+
+
+
+    async function carregarDadosDashboard(idEmpresa) {
+        try {
+            console.log("Buscando dados")
+            const resposta = await fetch(`/servidor/buscarDashboardHome/${idEmpresa}`, { cache: 'no-store' })
+
+
+
+
+
+            if (resposta.ok) {
+                const dados = await resposta.json()
+                console.log("Dados recebidos da API", dados)
+
+                dados.servidores.forEach(servidor => {
+                    if (servidor.dados_tempo_real) {
+                        console.log(`gráfico para : ${servidor.nome_db}`)
+                        
+                        renderizarServidorTela(servidor)
+                    } else {
+                        console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
+                    }
+                })
+
+                const qtdCriticos = dados.resumo_global.servidores_criticos
+                const totalServidores = dados.resumo_global.total_servidores
+
+
+                console.log("qtd critícos:", qtdCriticos, "total sevidores:", totalServidores)
+                document.getElementById('kpiMaquinasRisco').innerText = qtdCriticos;
+                console.log("Total de servidores em estado crítico:", qtdCriticos);
+            } else {
+                console.error("Erro na resposta da API:", resposta.status);
+            }
+        } catch (erro) {
+            console.error("Erro no fetch do dashboard:", erro);
         }
     }
 
+    carregarDadosDashboard(sessionStorage.ID_EMPRESA)
 
+
+    function renderizarServidorTela(servidor) {
+        const container = document.getElementById('lista-servidores')
+
+        const macAddress = servidor.dados_tempo_real.macAddress;
+        const nome = servidor.dados_tempo_real.nome;
+        const regiao = servidor.dados_tempo_real.regiao;
+        const ultima_coleta = servidor.dados_tempo_real.ultimaColeta;
+        const status_servidor = servidor.dados_tempo_real.status_servidor
+        const diagnostico_etl = servidor.dados_tempo_real.diagnostico_etl
+        const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
+        const saturacao_trafego = servidor.dados_tempo_real.geolocalizacao.saturacao_trafego
+        const matriz_priorizacao_x = servidor.dados_tempo_real.matriz_priorizacao.x
+        const matriz_priorizacao_y = servidor.dados_tempo_real.matriz_priorizacao.y
+        const matriz_priorizacao_bolha = servidor.dados_tempo_real.matriz_priorizacao.tamanho_bolha
+        const cpu_uso = servidor.dados_tempo_real.componentes.cpu.valor
+        const cpu_status_ui = servidor.dados_tempo_real.componentes.cpu.status_ui
+        const cpu_acao_permitida = servidor.dados_tempo_real.componentes.cpu.acao_permitida
+        const ram_uso = servidor.dados_tempo_real.componentes.ram.valor
+        const ram_status_ui = servidor.dados_tempo_real.componentes.ram.status_ui
+        const ram_acao_permitida = servidor.dados_tempo_real.componentes.ram.acao_permitida
+        const disco_uso = servidor.dados_tempo_real.componentes.disco.valor
+        const disco_status_ui = servidor.dados_tempo_real.componentes.disco.status_ui
+        const disco_acao_permitida = servidor.dados_tempo_real.componentes.disco.acao_permitida
+        const rede_uso = servidor.dados_tempo_real.componentes.rede.valor
+        const rede_status_ui = servidor.dados_tempo_real.componentes.rede.status_ui
+        const rede_acao_permitida = servidor.dados_tempo_real.componentes.rede.acao_permitida
+
+        console.log("macAddress: ", macAddress, "nome:", nome,
+                            "regiao:", regiao, "status_servidor:", status_servidor,
+                            "diagnostico_etl:", diagnostico_etl, "coordernadas:",
+                            coordenadas, "saturacao_trafego:", saturacao_trafego,
+                            "eixo_x:", matriz_priorizacao_x, "eixo_y:",
+                            matriz_priorizacao_y, "cpuUso:", cpu_uso, "status_ui",
+                            cpu_status_ui, "acao_permitidia", cpu_acao_permitida
+                        )
+
+        cardServidor = `
+        <tr class="servidor-critico">
+                                                        <td><span id="statusServidorBola">°</span></td>
+                                                        <td>
+                                                            <div class="flex-column d-flex">
+                                                                <span id="horaColeta">${ultima_coleta}</span>
+                                                                <span id="dataColeta">10/04/2006</span>
+                                                            </div>
+                                                        </td>
+                                        
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                <span id="nomeServidor">${nome}</span>
+                                                <span id="diagnosticoEtlServidor">${diagnostico_etl}</span>
+                                            </div>
+                                        </td>
+                                        <td><span id="cidadeServidor">${regiao}</span><span id="regiaoServidor">sa-east</span></td>
+
+                                        <td>
+                                            <button class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
+
+                                                <div class="d-flex flex-column w-100 gap-1">
+
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="0.434783" y="0.434783" width="19.1304" height="18.2609" rx="3.91304" fill="#C167C7" fill-opacity="0.3"></rect>
+                                                            <rect x="0.434783" y="0.434783" width="19.1304" height="18.2609" rx="3.91304" stroke="#C167C7" stroke-width="0.869565"></rect>
+                                                            <g clip-path="url(#clip0_1129_470)">
+                                                                <path d="M12.998 6.00024H6.99805C6.44576 6.00024 5.99805 6.44796 5.99805 7.00024V13.0002C5.99805 13.5525 6.44576 14.0002 6.99805 14.0002H12.998C13.5503 14.0002 13.998 13.5525 13.998 13.0002V7.00024C13.998 6.44796 13.5503 6.00024 12.998 6.00024Z" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M11 8.5H9C8.72386 8.5 8.5 8.72386 8.5 9V11C8.5 11.2761 8.72386 11.5 9 11.5H11C11.2761 11.5 11.5 11.2761 11.5 11V9C11.5 8.72386 11.2761 8.5 11 8.5Z" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M11.5 4.99976V5.99976" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M11.5 13.9998V14.9998" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M5 11.5H6" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M5 8.5H6" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M14.002 11.5H15.002" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M14.002 8.5H15.002" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M8.5 4.99976V5.99976" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                <path d="M8.5 13.9998V14.9998" stroke="#C167C7" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            </g>
+                                                            <defs>
+                                                                <clipPath id="clip0_1129_470">
+                                                                    <rect width="12" height="12" fill="white" transform="translate(4 4)"></rect>
+                                                                </clipPath>
+                                                            </defs>
+                                                        </svg>
+
+                                                        <span class="texto-destaque fs-5 fw-bold">${cpu_uso}</span>
+                                                    </div>
+
+                                                    <div class="progress-track">
+                                                        <div class="progress-fill" style="width: ${cpu_uso}%;">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
+                                                    ABRIR
+                                                    <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75" stroke="#ba0c46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    </svg>
+                                                </div>
+
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
+
+                                                <div class="d-flex flex-column w-100 gap-1">
+
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <rect x="0.434783" y="0.434783" width="19.1304" height="18.2609" rx="3.91304" fill="#B0DB43" fill-opacity="0.3"></rect>
+                                                            <rect x="0.434783" y="0.434783" width="19.1304" height="18.2609" rx="3.91304" stroke="#B0DB43" stroke-width="0.869565"></rect>
+                                                            <path d="M7.09961 13.2326V11.7749" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M9.16406 13.2326V11.7749" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M11.2266 13.2326V11.7749" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M13.293 13.2326V11.7749" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M8.13086 9.3451V8.37329" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M12.2598 9.3451V8.37329" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M10.1953 9.3451V8.37329" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M5.03125 11.2888H15.3568" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                            <path d="M5.03125 7.40126C5.03125 7.14352 5.14004 6.89633 5.33368 6.71408C5.52732 6.53183 5.78995 6.42944 6.0638 6.42944H14.3242C14.5981 6.42944 14.8607 6.53183 15.0543 6.71408C15.248 6.89633 15.3568 7.14352 15.3568 7.40126V7.93575C15.1429 7.99504 14.9552 8.11789 14.8217 8.28592C14.6881 8.45395 14.616 8.65814 14.616 8.86797C14.616 9.0778 14.6881 9.28199 14.8217 9.45002C14.9552 9.61805 15.1429 9.74089 15.3568 9.80018V12.2603C15.3568 12.5181 15.248 12.7653 15.0543 12.9475C14.8607 13.1298 14.5981 13.2321 14.3242 13.2321H6.0638C5.78995 13.2321 5.52732 13.1298 5.33368 12.9475C5.14004 12.7653 5.03125 12.5181 5.03125 12.2603V9.7822C5.24511 9.72291 5.43283 9.60007 5.56636 9.43204C5.69989 9.26401 5.77205 9.05982 5.77205 8.84999C5.77205 8.64016 5.69989 8.43597 5.56636 8.26794C5.43283 8.09991 5.24511 7.97706 5.03125 7.91778V7.40126Z" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        </svg>
+                                                        <span class="texto-destaque fs-5 fw-bold">${ram_uso}%</span>
+                                                    </div>
+
+                                                    <div class="progress-track">
+                                                        <div class="progress-fill" style="width: ${ram_uso}%;">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
+                                                    ABRIR
+                                                    <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75" stroke="#ba0c46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    </svg>
+                                                </div>
+
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <div class="flex-column text-center">
+                                                <span>${disco_uso}%</span>
+
+                                                <div class="progress-track">
+                                                    <div class="progress-fill" style="width: ${disco_uso}%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="flex-column text-center">
+                                                <span>${rede_uso}%</span>
+
+                                                <div class="progress-track">
+                                                    <div class="progress-fill" style="width: ${rede_uso}%;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        </tr>
+
+        `
+
+
+        container.innerHTML += cardServidor 
+
+    }
 
 
     async function mostrarServidores() {
@@ -1187,4 +1395,96 @@
         document.getElementById("totalMaquinas").innerHTML = resultado.length
     }
     mostrarServidores();
+
+
+
+    const chartDom = document.getElementById('mapa')
+    const myChart = echarts.init(chartDom);
+
+    fetch('world.json').then(res => res.json()).then(worldJson => {
+        echarts.registerMap('mundo', worldJson)
+
+        const option = {
+            backgroundColor: 'transparent',
+            tooltip: {
+                trigger: 'item',
+                backgroundColor: 'rgba(26, 26, 26, 0.9)',
+                borderColor: 'rgba(255, 255, 255, 0.2)',
+                borderWidth: 1,
+                textStyle: { color: '#fff', fontFamily: 'Arial' },
+                formatter: function (params) {
+                    if (params.seriesType === 'effectScatter' || params.seriesType === 'scatter') {
+                        const servidor = params.data[2];
+                        const status = params.data[3];
+                        const latência = params.data[4];
+                        const corStatus = status === 'CRÍTICO' ? '#ff3b30' : '#00f0ff';
+
+                        return `
+                    <div style="font-weight: bold; margin-bottom: 5px;">Servidor: ${servidor}</div>
+                    <div style="color: ${corStatus}"> Status: ${status}</div>
+                    `
+                    }
+                    return params.name
+                }
+            },
+            geo: {
+                map: 'mundo',
+                roam: true,
+                itemStyle: {
+                    areaColor: '#4A4A4A',
+                    borderColor: '#2A2A2A',
+                    borderWidth: 1
+                },
+                emphasis: {
+                    itemStyle: { areaColor: '#5A5A5A' },
+                    label: { show: false }
+                }
+            },
+
+            series: [
+                {
+                    name: 'Servidores Estáveis',
+                    type: 'scatter',
+                    coordinateSystem: 'geo',
+                    symbolSize: 8,
+                    itemStyle: {
+                        color: '#00f0ff',
+                        shadowBlur: 6,
+                        shadowColor: '#00f0ff'
+                    },
+                    data: [
+                        [-77.4360, 39.0438, 'Virginia-Teste', 'OPERACIONAL', 12],   // EUA
+                        [-0.1276, 51.5072, 'London-Teste', 'OPERACIONAL', 15],      // Londres
+                        [139.6917, 35.6895, 'Tokyo-Teste', 'OPERACIONAL', 9]
+                    ]
+                },
+                {
+                    name: 'Servidores Instáveis',
+                    type: 'effectScatter',
+                    coordinateSystem: 'geo',
+                    symbolSize: 12,
+                    rippleEffect: {
+                        brushType: 'stroke',
+                        scale: 5,
+                        period: 3
+                    },
+                    itemStyle: {
+                        color: '#ff3b30',
+                        shadowBlur: 10,
+                        shadowColor: '#ff3b30'
+                    },
+
+                    data: [
+                        [-46.6333, -23.5505, 'SP-Edge-01', 'CRÍTICO', 450],
+                        [-46.7333, -23.6505, 'SP-Core-02', 'CRÍTICO', 380]
+                    ]
+                }
+            ]
+        }
+        myChart.setOption(option);
+    })
+    window.addEventListener('resize', function () {
+        myChart.resize();
+    })
+
 </script>
