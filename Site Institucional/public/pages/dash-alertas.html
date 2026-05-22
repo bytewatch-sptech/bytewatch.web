@@ -491,7 +491,7 @@
             let arrayGerados = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
             if (resultadoPython.graficos && resultadoPython.graficos.linha_tempo) {
-                let arrayGerados = [];
+                arrayGerados = [];
                 const historico = resultadoPython.graficos.linha_tempo;
 
                 for (let i = 0; i < historico.length; i++) {
@@ -510,6 +510,37 @@
         } catch (erro) {
             console.error("Erro ao cruzar Python e Jira no Gráfico de Linhas:", erro);
         }
+    }
+
+    function agruparResolvidosPorHora(incidentesDoJira) {
+        const contagemResolvidos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        // calculo dos milisegundos de um dia, isso abre a janela de atualização do gráfico
+        const limite24h = new Date(Date.now() - (24 * 60 * 60 * 1000));
+
+        // vetor para armazenar os tickets com status feito
+        const chamadosResolvidos = [];
+        for (let i = 0; i < incidentesDoJira.length; i++) {
+            const chamado = incidentesDoJira[i];
+            // se elesatingirem a condição e tiverem data de resolução, guardamos
+            if (chamado.status === "FEITO" && chamado.resolvidoEm != null) {
+                chamadosResolvidos.push(chamado);
+            }
+        }
+
+        // percorro a lista da validação acima
+        for (let i = 0; i < chamadosResolvidos.length; i++) {
+            const ticket = chamadosResolvidos[i];
+            const dataResolucao = new Date(ticket.resolvidoEm);
+
+            if (dataResolucao >= limite24h) {
+                const hora = dataResolucao.getHours();
+                const index = Math.floor(hora / 2);
+                // arredondando para não deixar os horarios quebrados não serem plotados
+                contagemResolvidos[index]++;
+            }
+        }
+
+        return contagemResolvidos;
     }
 
     // só para evitar sobreposição
