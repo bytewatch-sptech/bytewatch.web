@@ -29,7 +29,8 @@
         background: #161b22;
         border: 1px solid #21262d;
         border-radius: 12px;
-        padding: 15px;
+        padding: 10px;
+        width: 100%;
     }
 
     .kpi-value {
@@ -84,18 +85,6 @@
         padding: 4px;
     }
 
-    .heatmap-box {
-        display: grid;
-        grid-template-columns: repeat(24, 1fr);
-        gap: 4px;
-    }
-
-    .heat {
-        width: 100%;
-        padding-top: 100%;
-        border-radius: 4px;
-    }
-
     .low {
         background: #1f2937;
     }
@@ -112,32 +101,6 @@
         background: #ef4444;
     }
 
-    #dias {
-        display: grid;
-        grid-template-rows: repeat(7, 14px);
-        gap: 6px;
-        font-size: 12px;
-        color: #9ca3af;
-    }
-
-    .heatmap {
-        display: grid;
-        grid-template-columns: repeat(24, 14px);
-        grid-template-rows: repeat(7, 14px);
-        gap: 6px;
-    }
-
-    .cell {
-        width: 14px;
-        height: 14px;
-        border-radius: 3px;
-    }
-
-    .card-heatmap {
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
     .kpi-critico {
         border-color: var(--cor02);
         box-shadow: 0 0 15px rgba(255, 251, 0, 0.6);
@@ -148,6 +111,26 @@
         border-color: var(--cor02);
         box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
         border: 1px solid #FF0050;
+    }
+
+    .card-gauge {
+        width: 220px;
+        margin: auto;
+    }
+
+    .card-gauge canvas {
+        width: 100% !important;
+        height: 150px !important;
+    }
+
+    .card-kpi {
+        width: 100%;
+        height: 390px;
+    }
+
+    .card-principal{
+        width: 100%;
+        height: 390px;
     }
 
     /* #gaugePicoRAM {

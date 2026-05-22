@@ -115,8 +115,6 @@
 
                     <!-- MAIN -->
                     <div class="col-lg-10 col-10">
-                        <button onclick="history.back()">← Voltar</button>
-                        <div class="middle-line"></div>
 
                         <h3>Painel Executivo</h3>
                         <p class="text-secondary">Visão macro da infraestrutura</p>
@@ -155,12 +153,12 @@
                         <div class="row g-3 align-items-center">
                             <div class="col-lg-9 col-12">
 
-                                <div class="d-flex align-items-start justify-content-center card-custom">
+                                <div class="card-principal d-flex align-items-start justify-content-center card-custom">
 
                                     <div class="card-kpi">
                                         <div class="d-flex align-items-center justify-content-center"
                                             style="color: white; gap: 10px;">
-                                            Linha de Comparação
+                                            
                                         </div>
                                         <canvas id="visaoMacro" style="height:300px;"></canvas>
                                     </div>
@@ -169,18 +167,18 @@
                             </div>
 
                             <!-- GAUGES -->
-                            <div class="col-lg-auto col-8">
+                            <div class="col-lg-3 col-12">
 
-                                <div class="card-custom mb-2">
+                                <div class="card-custom card-gauge mb-2">
                                     <h6>servidor 000 - Pico de RAM</h6>
-                                    <canvas id="gaugePicoRAM" style="height:50px;"></canvas>
-                                    <div class="gauge kpi-yellow">87%</div>
+                                    <canvas id="gaugePicoRAM"></canvas>
+                                    <div id="valorRam" class="gauge kpi-yellow"></div>
                                 </div>
 
-                                <div class="card-custom">
+                                <div class="card-custom card-gauge">
                                     <h6>servidor 000 - Pico de CPU</h6>
-                                    <canvas id="gaugePicoCPU" style="height:70px;"></canvas>
-                                    <div class="gauge kpi-yellow">78%</div>
+                                    <canvas id="gaugePicoCPU"></canvas>
+                                    <div id="valorCpu" class="gauge kpi-yellow"></div>
                                 </div>
                             </div>
 
@@ -224,12 +222,13 @@
 <script src="../js/scriptAI.js"></script>
 
 <script>
+    window.onload = ObterDadosGauge;
 
     async function ObterDadosGauge() {
         const resultado = await buscarDadosGestorService();
         console.log(resultado.dadosMaquina);
 
-        console.log("ServidorEmPico:", resultado?.ServidorEmPico);
+        console.log("ServidorEmPico:", resultado?.dadosMaquina.ServidorEmPico);
 
         if (!resultado) {
             console.error("Sem dados");
@@ -237,26 +236,74 @@
         }
 
         try {
-            const picoRam = resultado.dadosMaquina.ServidorEmPico.servidorPicoRAM.valor;
-            const picoCpu = resultado.dadosMaquina.ServidorEmPico.servidorPicoCPU.valor;
+            const picoRam = resultado.dadosMaquina.ServidorEmPico?.servidorPicoRAM?.valor;
+            const picoCpu = resultado.dadosMaquina.ServidorEmPico?.servidorPicoCPU?.valor;
+
+            console.log("RAM:", picoRam);
+            console.log("CPU:", picoCpu);
+
+            if (picoRam == null || picoCpu == null) {
+                console.error("Dados de pico inválidos");
+                return;
+            }
+
 
             const picosDia = [picoRam, picoCpu];
 
             console.log("Picos:", picosDia);
 
-            atualizarGaugeRam(picoRam);
-            atualizarGaugeCpu(picoCpu);
+            plotarGaugeRam(picoRam);
+            plotarGaugeCpu(picoCpu);
+
+            document.getElementById("valorRam").innerText = picoRam + "%";
+            document.getElementById("valorCpu").innerText = picoCpu + "%";
 
         } catch (erro) {
             console.error("Erro ao pegar picos:", erro);
         }
     }
-    ObterDados();
+    ObterDadosGauge();
 
 
-    async function mudarGaugePico(params) {
+    function criarGauge(canvasId, valor, cor) {
+        const ctx = document.getElementById(canvasId);
 
+        if (!ctx) {
+            console.error("Canvas não encontrado:", canvasId);
+            return;
+        }
+
+        new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                datasets: [{
+                    data: [valor, 100 - valor],
+                    backgroundColor: [cor, "#1f2937"],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                circumference: 180,
+                rotation: -90,
+                cutout: "70%",
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        });
     }
+
+    function plotarGaugeRam(valor) {
+        criarGauge("gaugePicoRAM", valor, "#f1c40f");
+    }
+
+    function plotarGaugeCpu(valor) {
+        criarGauge("gaugePicoCPU", valor, "#e74c3c");
+    }
+
+
     document.addEventListener("DOMContentLoaded", function () {
 
         const linhas = document.getElementById('visaoMacro');
@@ -287,41 +334,41 @@
             }
         });
 
-        const gauge = document.getElementById("gaugePicoRAM");
-        const gaugeCPU = document.getElementById("gaugePicoCPU")
+        // const gauge = document.getElementById("gaugePicoRAM");
+        // const gaugeCPU = document.getElementById("gaugePicoCPU")
 
-        const valor = 78;
+        // const valor = 78;
 
-        const data = {
-            labels: ["Usado", "Livre"],
-            datasets: [{
-                data: [valor, 100 - valor],
-                backgroundColor: ["#f59e0b", "#1f2937"],
-                borderWidth: 0
-            }]
-        };
+        // const data = {
+        //     labels: ["Usado", "Livre"],
+        //     datasets: [{
+        //         data: [valor, 100 - valor],
+        //         backgroundColor: ["#f59e0b", "#1f2937"],
+        //         borderWidth: 0
+        //     }]
+        // };
 
-        new Chart(gauge, {
-            type: 'doughnut',
-            data: data,
-            options: {
-                aspectRatio: 2,
-                circumference: 180,
-                rotation: -90,
-                cutout: "70%"
-            }
-        });
+        // new Chart(gauge, {
+        //     type: 'doughnut',
+        //     data: data,
+        //     options: {
+        //         aspectRatio: 2,
+        //         circumference: 180,
+        //         rotation: -90,
+        //         cutout: "70%"
+        //     }
+        // });
 
-        new Chart(gaugeCPU, {
-            type: 'doughnut',
-            data: data,
-            options: {
-                aspectRatio: 2,
-                circumference: 180,
-                rotation: -90,
-                cutout: "70%"
-            }
-        });
+        // new Chart(gaugeCPU, {
+        //     type: 'doughnut',
+        //     data: data,
+        //     options: {
+        //         aspectRatio: 2,
+        //         circumference: 180,
+        //         rotation: -90,
+        //         cutout: "70%"
+        //     }
+        // });
 
 
 
