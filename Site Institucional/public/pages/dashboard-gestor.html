@@ -161,19 +161,21 @@
                                 </div>
                             </div>
 
-                            <div class="col d-flex flex-column align-items-center">
-                                <span>Risco</span>
-                                <div class="line-component"
-                                    style="background-color: #FFD500; width: 100%; height: 5px; ">
+                            <div class="card-parametro">
+                                <div class="col d-flex flex-column align-items-center">
+                                    <span>Risco</span>
+                                    <div class="line-component rounded"
+                                        style="background-color: #FFD500; width: 100%; height: 5px; ">
+                                    </div>
+                                    70%
                                 </div>
-                                70%
-                            </div>
-                            <div class="col d-flex flex-column align-items-center">
-                                <span>Critíco</span>
-                                <div class="line-component"
-                                    style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                <div class="col d-flex flex-column align-items-center">
+                                    <span>Critíco</span>
+                                    <div class="line-component rounded"
+                                        style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                    </div>
+                                    90%
                                 </div>
-                                90%
                             </div>
 
                         </div>
@@ -198,13 +200,13 @@
                             <div class="col-lg-3 col-12">
 
                                 <div class="card-custom card-gauge mb-2">
-                                    <h6>servidor 000 - Pico de RAM</h6>
+                                    <h6 class="mb-0">servidor 000 - Pico de RAM</h6>
                                     <canvas id="gaugePicoRAM"></canvas>
                                     <div id="valorRam" class="gauge kpi-yellow"></div>
                                 </div>
 
                                 <div class="card-custom card-gauge">
-                                    <h6>servidor 000 - Pico de CPU</h6>
+                                    <h6 class="mb-0">servidor 000 - Pico de CPU</h6>
                                     <canvas id="gaugePicoCPU"></canvas>
                                     <div id="valorCpu" class="gauge kpi-yellow"></div>
                                 </div>
@@ -270,7 +272,7 @@
             console.log("RAM:", picoRam);
             console.log("CPU:", picoCpu);
 
-            if (picoRam == null || picoCpu == null) {
+            if (picoRamGauge == null || picoCpu == null) {
                 console.error("Dados de pico inválidos");
                 return;
             }
@@ -278,14 +280,14 @@
 
 
 
-            const picosDia = [picoRam, picoCpu];
+            const picosDia = [picoRamGauge, picoCpu];
 
             console.log("Picos:", picosDia);
 
-            plotarGaugeRam(picoRam);
+            plotarGaugeRam(picoRamGauge);
             plotarGaugeCpu(picoCpu);
 
-            document.getElementById("valorRam").innerText = picoRam + "%"
+            document.getElementById("valorRam").innerText = picoRamGauge + "%"
             document.getElementById("valorCpu").innerText = picoCpu + "%"
 
 
@@ -339,6 +341,25 @@
 
             document.getElementById("custoDia").innerText =
                 `R$ ${custoDia.toFixed(2)}`;
+
+            
+            //Pegando os dados do Ranking de consumo de RAM
+
+            // const posicao = resultado.dadosMaquina.posicao
+            // const servidor = resultado.dadosMaquina.macAddress
+            // const maxRam = resultado.dadosMaquina.picoRam
+            const ranking = resultado.dadosMaquina.rankingRam
+
+            const posicao = []
+            const servidor = []
+            const pico = []
+
+            for (let i = 0; i < ranking.length; i++) {
+                posicao.push(ranking[i].posicao)
+                servidor.push(ranking[i].macAddress)
+                pico.push(ranking[i].picoRam)
+                
+            }
 
 
         } catch (erro) {
