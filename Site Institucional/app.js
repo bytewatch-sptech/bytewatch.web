@@ -21,8 +21,9 @@ var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var servidorRouter = require("./src/routes/servidor");
 var empresasRouter = require("./src/routes/empresas");
-var aiServiceRouter = require("./src/routes/aiService")
+var aiServiceRouter = require("./src/routes/aiService");
 var analistaRouter = require("./src/routes/analista");
+var jiraRouter = require("./src/routes/jira");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,6 +39,7 @@ app.use("/medidas", medidasRouter);
 app.use("/servidor", servidorRouter);
 app.use("/empresas", empresasRouter);
 app.use("/analista", analistaRouter);
+app.use("/jira", jiraRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
