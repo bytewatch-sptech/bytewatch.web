@@ -502,12 +502,15 @@
     async function carregarDashboard() {
 
         const resultado = await MetricasAlertas();
-        valor_metrica.innerHTML = resultado.alertas.length;
+        if (resultado.graficos && resultado.graficos.distribuicao_severidade) {
+            
+            valor_metrica.innerHTML = resultado.graficos.distribuicao_severidade.total;
+            alertas_criticos.innerHTML = resultado.graficos.distribuicao_severidade.critico;
 
-        const alertasCriticos = resultado.alertas.filter(alerta =>
-            alerta.nivel === "CRÍTICO" || alerta.nivel === "CRITICO"
-        );
-        alertas_criticos.innerHTML = alertasCriticos.length;
+        } else {
+            valor_metrica.innerHTML = 0;
+            alertas_criticos.innerHTML = 0;
+        }
 
         if (resultado.servidor_mais_volatil) {
             try {
