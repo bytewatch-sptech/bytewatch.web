@@ -154,9 +154,10 @@
                                     <i class="fa-solid fa-rotate-right"></i> Atualizar
                                 </button>
 
-                                <button class="btn-header-log btn-exportar-green">
+                                <button id="btnExportarRelatorio" class="btn-header-log btn-exportar-green">
                                     <i class="fa-solid fa-download"></i> Exportar Relatório <span
                                         class="texto-java ms-1"></span>
+                                </button>
                                 </button>
 
                             </div>
@@ -461,7 +462,43 @@
 
     const API_BASE_URL = "http://localhost:3333";
     // MUDAR PARA QUANDO FOR PARA A NUVEM
-    
+
+
+    async function baixarRelatorioS3() {
+        try {
+            const resposta = await fetch(`${API_BASE_URL}/relatorios/exportar`);
+
+            if (!resposta.ok) {
+                return alert("Erro ao baixar o relatório. Verifique o servidor.");
+            }
+
+            const jsonRetorno = await resposta.json();
+
+            if (!jsonRetorno.dadosMaquina) return;
+
+            const blob = new Blob([jsonRetorno.dadosMaquina], { type: 'text/csv' });
+            const urlBlob = window.URL.createObjectURL(blob);
+
+            const linkInvisivel = document.createElement('a');
+            linkInvisivel.href = urlBlob;
+            linkInvisivel.download = 'relatorio_magnes_solution.csv';
+
+            document.body.appendChild(linkInvisivel);
+            linkInvisivel.click();
+            linkInvisivel.remove();
+
+            window.URL.revokeObjectURL(urlBlob);
+
+        } catch (erro) {
+            alert("Falha na conexão com o servidor.");
+        }
+    }
+
+    const botaoExportar = document.getElementById('btnExportarRelatorio');
+    if (botaoExportar) {
+        botaoExportar.addEventListener('click', baixarRelatorioS3);
+    }
+
     async function carregarDashboard() {
 
         const resultado = await MetricasAlertas();
@@ -472,13 +509,34 @@
         );
         alertas_criticos.innerHTML = alertasCriticos.length;
 
-        // verificando se há algum dado inserido no json
-        if (resultado.alertas.length > 0) {
-            const mac = resultado.alertas[0].mac;
-            const nomeServidor = await ObterNomeServidor(mac);
-            console.log(nomeServidor);
-            const servidorMaisVolatil = nomeServidor[0].nome_servidor;
-            servidor_volatil.innerHTML = servidorMaisVolatil;
+        if (resultado.servidor_mais_volatil) {
+            try {
+                const macVolatil = resultado.servidor_mais_volatil.mac;
+                const totalEventos = resultado.servidor_mais_volatil.eventos_hoje;
+
+                const respostaNome = await ObterNomeServidor(macVolatil);
+                
+                const nomeServidor = respostaNome && respostaNome.length > 0 
+                    ? respostaNome[0].nome_servidor 
+                    : "Servidor Desconhecido";
+
+                servidor_volatil.innerHTML = nomeServidor;
+                const elementoQtdEventos = document.getElementById("qtd_eventos_volatil"); 
+                if (elementoQtdEventos) {
+                    elementoQtdEventos.innerHTML = `${totalEventos} eventos hoje`;
+                }
+
+            } catch (erro) {
+                console.error("Erro ao buscar o nome do servidor volátil no banco:", erro);
+                servidor_volatil.innerHTML = "Erro de Conexão";
+            }
+        } else {
+            servidor_volatil.innerHTML = "Nenhum (Sistema Estável)";
+            
+            const elementoQtdEventos = document.getElementById("qtd_eventos_volatil"); 
+            if (elementoQtdEventos) {
+                elementoQtdEventos.innerHTML = "0 eventos hoje";
+            }
         }
 
         const todosMacs = resultado.alertas.map(alerta => alerta.mac);
@@ -519,7 +577,7 @@
             if (!respostaJira.ok) {
                 console.warn(`Erro na API do Jira: Status ${respostaJira.status}. Renderizando apenas linha vermelha.`);
                 renderizarChartLinha(arrayGerados, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-                return; 
+                return;
             }
 
             if (respostaJira.status === 204) {
