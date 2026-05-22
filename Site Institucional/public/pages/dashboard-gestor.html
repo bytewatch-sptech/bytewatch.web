@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/gestor.css">
     <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="shortcut icon" href="../assets/logo-cd.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -110,6 +111,8 @@
         </nav>
 
         <main>
+
+
             <div class="container-fluid">
                 <div class="row">
 
@@ -124,27 +127,53 @@
 
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/wallet.png" style="height: 25px;" alt=""> Custo Mensal
-                                        Estimado</p>
-                                    <div class="kpi-value">R$ 42.380</div>
-                                    <!-- <small class="kpi-green">↓ 3,2%</small> -->
+                                    <p><img src="../assets/wallet.png" style="height: 25px;"> Custo Mensal Estimado</p>
+                                    <div class="kpi-value">
+                                        <span id="custoMes"></span>
+                                    </div>
+                                    <small class="kpi-green">
+                                        <span id="progressoMes"></span>
+                                    </small>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/goal.png" style="height: 25px;" alt=""> Custo até o momento</p>
-                                    <div class="kpi-value">R$ 30.000</div>
-                                    <!-- <small class="kpi-green">↑ 0,15%</small> -->
+                                    <p><img src="../assets/goal.png" style="height: 25px;"> Custo até o momento</p>
+                                    <div class="kpi-value">
+                                        <span id="custoAtual"></span>
+                                    </div>
+                                    <small class="kpi-green">
+                                        <span id="statusCusto"></span>
+                                    </small>
                                 </div>
                             </div>
 
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/calendar.png" style="height: 25px;" alt=""> Custo do dia</p>
-                                    <div class="kpi-value">R$ 10.00</div>
-                                    <!-- <small class="kpi-green">↓ 60%</small> -->
+                                    <p><img src="../assets/calendar.png" style="height: 25px;"> Custo do dia</p>
+                                    <div class="kpi-value">
+                                        <span id="custoDia"></span>
+                                    </div>
+                                    <small class="kpi-green">
+                                        <span id="infoDia"></span>
+                                    </small>
                                 </div>
+                            </div>
+
+                            <div class="col d-flex flex-column align-items-center">
+                                <span>Risco</span>
+                                <div class="line-component"
+                                    style="background-color: #FFD500; width: 100%; height: 5px; ">
+                                </div>
+                                70%
+                            </div>
+                            <div class="col d-flex flex-column align-items-center">
+                                <span>Critíco</span>
+                                <div class="line-component"
+                                    style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                </div>
+                                90%
                             </div>
 
                         </div>
@@ -157,7 +186,7 @@
                                     <div class="card-kpi">
                                         <div class="d-flex align-items-center justify-content-center"
                                             style="color: white; gap: 10px;">
-                                            
+
                                         </div>
                                         <canvas id="visaoMacro" style="height:300px;"></canvas>
                                     </div>
@@ -185,7 +214,7 @@
 
                         <!-- ALERTAS -->
                         <div class="card-custom mt-4">
-                            <h5>Ranking Servidores</h5>
+                            <h5>Ranking Consumo RAM</h5>
 
                             <div class="alert-item">
                                 <span>Servidor - 000</span>
@@ -246,7 +275,7 @@
                 return;
             }
 
-            
+
 
 
             const picosDia = [picoRam, picoCpu];
@@ -267,33 +296,66 @@
             const custoDia = resultado.dadosMaquina.custoDoDia
             const dias = resultado.dadosMaquina.diasDecorridos
 
-            
+
 
             const hoje = new Date()
-            const diaDoMes = new Date(
+            const diasDoMes = new Date(
                 hoje.getFullYear(),
                 hoje.getMonth() + 1, 0
             ).getDate()
+
+
+            const progresso = (custoAtual / custoMes) * 100
+            const custoEsperado = custoMes / diasDoMes
+            const estimativaAteHoje = custoEsperado * dias
+
+            var status = "Dentro do esperado"
+            var cor = "white"
+
+            const diferenca = custoAtual - estimativaAteHoje;
+            const percentual = (diferenca / estimativaAteHoje) * 100;
+
+            if (percentual > 5) {
+                status = "Acima do esperado"
+                cor = "red"
+            } else if (percentual < -5) {
+                status = "Abaixo do esperado"
+                cor = "green"
+            }
+
+            document.getElementById("custoAtual").innerText =
+                `R$ ${custoAtual.toFixed(2)}`;
+
+            document.getElementById("custoMes").innerText =
+                `R$ ${custoMes.toFixed(2)}`;
+
+            document.getElementById("progressoMes").innerText =
+                `${progresso.toFixed(1)}%`;
+
+            document.getElementById("statusCusto").innerText =
+                `${percentual.toFixed(1)}% ${status}`;
+
+            document.getElementById("statusCusto").style.color = cor;
+
+            document.getElementById("custoDia").innerText =
+                `R$ ${custoDia.toFixed(2)}`;
+
+
         } catch (erro) {
             console.error("Erro ao pegar picos:", erro)
         }
 
-        const custouAtual = (custoAtual / custoMes) * 100
-        const custoEsperado = custoMes / diaDoMes
-        const estimativaAteHoje = custoEsperado * dias
 
-        var status = "Dentro do esperado"
-        var cor = "white"
 
-        if (percentual > 5) {
-            status = "Acima do esperado"
-            cor = "red"
-        } else if (percentual < -5){
-            status = "Abaixo do esperado"
-            cor = "green"
-        }
+        // console.log({
+        //     progresso,
+        //     esperadoAteHoje,
+        //     diferenca,
+        //     percentual,
+        //     status
+        // });
 
-        
+
     }
     ObterDadosGrafico()
 
