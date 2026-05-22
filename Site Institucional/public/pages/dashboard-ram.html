@@ -8,13 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/dashboard-ram.css">
     <link rel="stylesheet" href="../css/dashboard-servidor.css">
     <link rel="shortcut icon" href="../assets/logo-cd.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dashboard-ram.css">
 </head>
 
 <body style="overflow: auto;">
@@ -273,7 +273,7 @@
                                                     </svg>
 
                                                 </button>
-                                                Consumo
+                                                <span style="width: 100%;">Consumo</span>
                                             </div>
                                             <div class="col"
                                                 style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
@@ -325,7 +325,7 @@
                                                     </svg>
 
                                                 </button>
-                                                Pico de Hoje
+                                                <span style="width: 100%;">Pico de Hoje</span>
                                             </div>
                                             <div class="col"
                                                 style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
@@ -363,24 +363,20 @@
                             <div class="information-container">
                                 <h1>Informações</h1>
                                 <div class="div-line">
-                                    <label>Última Coleta</label>
-                                    <span>29/03/2026</span>
+                                    <label style="font-size: 12px;">Última Coleta</label>
+                                    <span style="font-size: 12px; font-weight: bolder;" id="informacao_ultima_coleta"></span>
                                 </div>
                                 <div class="div-line">
-                                    <label>Servidor</label>
-                                    <span>Tiktok east-1f</span>
+                                    <label style="font-size: 12px;">Situação</label>
+                                    <span style="font-size: 12px;" id="informacao_situacao_servidor"></span>
                                 </div>
                                 <div class="div-line">
-                                    <label>Total RAM</label>
-                                    <span>36GB</span>
+                                    <label style="font-size: 12px;">Servidor</label>
+                                    <span style="font-size: 12px;" id="informacao_nome_servidor"></span>
                                 </div>
                                 <div class="div-line">
-                                    <label>IP Externo</label>
-                                    <span>192.1.1.0</span>
-                                </div>
-                                <div class="div-line">
-                                    <label>IP Interno</label>
-                                    <span>10.128.0.5</span>
+                                    <label style="font-size: 12px;">Total RAM</label>
+                                    <span style="font-size: 12px;" id="informacao_total_ram"></span>
                                 </div>
                             </div>
 
@@ -984,6 +980,7 @@
 </html>
 <script src="../services/api.js"></script>
 <script src="../services/serviceComponenteRam.js"></script>
+<script src="../services/serviceMetricasAlertas.js"></script>
 <script src="../js/scriptAI.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -997,6 +994,7 @@
             percentual_total_uso_kpi.style.color = "#FF0050"
             cor_bullet_kpi_uso.style.backgroundColor = "#FF0050"
             percentual_uso_kpi.style.color = "#FF0050"
+            informacao_situacao_servidor.innerHTML = `<span style="color: #FF0050;">CRÍTICO</span>`
         }
         else if (valor >= 70) {
             meuElemento.classList.add('kpi-critico');
@@ -1055,6 +1053,29 @@
         percentual_uso_restante_kpi.innerText = `${resultado.dadosMaquina.metricas.kpiUso.percentualLivre}%`
         mudarCorKpi(percentual_total_uso_kpi.innerText, "kpi_uso_ram")
 
+        informacao_ultima_coleta.innerHTML = `${resultado.dadosMaquina.metricas.kpiInformacao.ultimaColeta}`
+        informacao_total_ram.innerHTML = `${resultado.dadosMaquina.metricas.kpiInformacao.capacidadeRam}GB`
+        const resultadoBanco = await ObterNomeServidor(resultado.macAddress)
+        console.log(resultadoBanco[0].nome_servidor);
+        const nomeServidor = resultadoBanco[0].nome_servidor
+        informacao_nome_servidor.innerHTML = nomeServidor
+
+        const usoRam = parseInt(resultado.dadosMaquina.metricas.kpiUso.percentualUsado)
+
+        console.log(usoRam);
+        
+
+        if (usoRam >= 90) {
+            informacao_situacao_servidor.innerHTML = `<span style="color: #FF0050;">RISCO</span>`
+        }
+        else if (usoRam >= 70) {
+            informacao_situacao_servidor.innerHTML = `<span style="color: #FFD500;">RISCO</span>`
+        }
+        else {
+            informacao_situacao_servidor.innerHTML = `<span style="color: #3af900;">ESTÁVEL</span>`
+        }
+
+
         const dadosGrafico = resultado.dadosMaquina.metricas.grafico.percentualUsado
         const momentoDadosGrafico = resultado.dadosMaquina.metricas.grafico.momento
 
@@ -1064,12 +1085,12 @@
         pico_hoje.innerText = `${picoHoje}%`
         pico_ontem.innerText = `${picoOntem}%`
         if (picoVariacao >= 0) {
-            pico_variacao.innerHTML = `<span style="color: red;">+${picoVariacao}%</span>`
+            pico_variacao.innerHTML = `<span style="color: #FF0050;;">+${picoVariacao}%</span>`
         }
         else if (picoVariacao < 0) {
             console.log("testeeeeeee");
 
-            pico_variacao.innerHTML = `<span style="color: green;">${picoVariacao}%</span>`
+            pico_variacao.innerHTML = `<span style="color: #3af900;">${picoVariacao}%</span>`
         }
         if (picoVariacao == 0 && picoHoje < 70) {
             pico_variacao.innerHTML = `<span style="color: #FFFFFF;">+${picoVariacao}%</span>`
