@@ -169,13 +169,14 @@
 
 
 
+                            <!-- VOLTAR AQUI -->
                             <div class="d-flex align-items-center" style="gap: 0;">
-                                <div class="info-alert d-flex align-items-center"
-                                    style=" border-bottom-right-radius: 10px; border-top-right-radius: 10px; color: var(--tok); background-color: #FF00501A; gap: 5px; margin-left: 10px;">
+                                <div class="info-alert d-flex align-items-center" id="container_situacao"
+                                    style="border-bottom-right-radius: 10px; border-top-right-radius: 10px; gap: 5px; margin-left: 10px;">
                                     <div class="icon">
-                                        <img src="../assets/info-danger.svg" alt="">
+                                        <img id="icone_critico" style="display: none;" src="../assets/info-danger.svg" alt="">
                                     </div>
-                                    <span id="serverAlert">Critíco</span>
+                                    <span id="texto_situacao"></span>
                                 </div>
 
                             </div>
@@ -733,12 +734,25 @@
 
         if (usoRam >= 90) {
             informacao_situacao_servidor.innerHTML = `<span style="color: #FF0050;">Crítico</span>`
+            texto_situacao.innerHTML = "Crítico"
+            container_situacao.style.color = "#FF0050"
+            container_situacao.style.backgroundColor = "#FF00501A"
+            icone_critico.style.display = "flex"
+            
         }
         else if (usoRam >= 70) {
             informacao_situacao_servidor.innerHTML = `<span style="color: #FFD500;">Risco</span>`
+            texto_situacao.innerHTML = "Risco"
+            container_situacao.style.color = "#FFD500"
+            container_situacao.style.backgroundColor = "#FFD5001A"
+            icone_critico.style.display = "none"
         }
         else {
             informacao_situacao_servidor.innerHTML = `<span style="color: #3af900;">Estável</span>`
+            texto_situacao.innerHTML = "Estável"
+            container_situacao.style.color = "#588FFF"
+            container_situacao.style.backgroundColor = "#588FFF1A"
+            icone_critico.style.display = "none"
         }
 
 
