@@ -686,14 +686,14 @@
             const respostaNome = await ObterNomeServidor(alerta.mac);
             const nomeServidor = respostaNome && respostaNome.length > 0 ? respostaNome[0].nome_servidor : "Desconhecido";
 
-            let corClasse = "warning";
+            let corClasse = "border-warning";
             let corBadge = "bg-warning text-dark";
-            let iconeCaminho = `../assets/icons/alert/${alerta.componente.toLowerCase()}-warning.svg`;
+            let iconeCaminho = '<i class="fas fa-server" style="color: yellow;"></i>'
 
             if (alerta.nivel.toUpperCase() === "CRÍTICO" || alerta.nivel.toUpperCase() === "CRITICO") {
-                corClasse = "red";
+                corClasse = "border-warning";
                 corBadge = "bg-danger";
-                iconeCaminho = `../assets/icons/alert/${alerta.componente.toLowerCase()}-critic.svg`;
+                iconeCaminho = '<i class="fas fa-server" style="color: red;"></i>'
             }
 
             const dataObj = new Date(alerta.horario.replace(" ", "T"));
@@ -706,7 +706,7 @@
                 <div class="conteudo-alerta">
                     <div class="alert-left d-flex gap-3 align-items-start">
                         <div class="icon ${corClasse}-icon">
-                            <img src="${iconeCaminho}" alt="${alerta.componente}" onerror="this.style.display='none'"/>
+                        ${iconeCaminho}
                         </div>
                         <div>
                             <div class="linha-topo ">
