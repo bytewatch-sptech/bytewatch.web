@@ -677,7 +677,7 @@
             container_situacao.style.color = "#FF0050"
             container_situacao.style.backgroundColor = "#FF00501A"
             icone_critico.style.display = "flex"
-            
+            container_situacao.style.borderColor = "#FF0050"
         }
         else if (usoRam >= 70) {
             informacao_situacao_servidor.innerHTML = `<span style="color: #FFD500;">Risco</span>`
@@ -685,6 +685,7 @@
             container_situacao.style.color = "#FFD500"
             container_situacao.style.backgroundColor = "#FFD5001A"
             icone_critico.style.display = "none"
+            container_situacao.style.borderColor = "#FFD500"
         }
         else {
             informacao_situacao_servidor.innerHTML = `<span style="color: #3af900;">Estável</span>`
@@ -692,6 +693,7 @@
             container_situacao.style.color = "#588FFF"
             container_situacao.style.backgroundColor = "#588FFF1A"
             icone_critico.style.display = "none"
+            container_situacao.style.borderColor = "#588FFF"
         }
 
 
