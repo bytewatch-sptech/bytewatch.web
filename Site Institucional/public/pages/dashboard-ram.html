@@ -674,7 +674,7 @@
             meuElemento.classList.remove('kpi-critico');
             COR_KPI_USO = "#588FFF"
             percentual_total_uso_kpi.style.color = "#FFFFFF"
-            cor_bullet_kpi_uso.style.backgroundColor = "#FFFFFF"
+            cor_bullet_kpi_uso.style.backgroundColor = "#588FFF"
             percentual_uso_kpi.style.color = "#FFFFFF"
         }
 
@@ -732,13 +732,13 @@
         
 
         if (usoRam >= 90) {
-            informacao_situacao_servidor.innerHTML = `<span style="color: #FF0050;">RISCO</span>`
+            informacao_situacao_servidor.innerHTML = `<span style="color: #FF0050;">Crítico</span>`
         }
         else if (usoRam >= 70) {
-            informacao_situacao_servidor.innerHTML = `<span style="color: #FFD500;">RISCO</span>`
+            informacao_situacao_servidor.innerHTML = `<span style="color: #FFD500;">Risco</span>`
         }
         else {
-            informacao_situacao_servidor.innerHTML = `<span style="color: #3af900;">ESTÁVEL</span>`
+            informacao_situacao_servidor.innerHTML = `<span style="color: #3af900;">Estável</span>`
         }
 
 
