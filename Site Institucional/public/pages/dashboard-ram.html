@@ -128,6 +128,9 @@
                             </button>
                             <button onclick="history.back()">← Voltar</button>
                             <div class="middle-line"></div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center" style="gap: 15px;">
                             <div
                                 style="display: flex; align-items: center; margin-left: 20px; flex-wrap: wrap; justify-content: center; gap: 10px;">
                                 <div class="icon-box d-flex align-items-center justify-content-center"
@@ -155,30 +158,18 @@
                                             stroke="#588FFF" stroke-width="1.31123" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                     </svg>
-
+    
                                 </div>
-
+    
                                 <div style="display: flex; flex-direction: column;">
                                     <span class="servidor-title" style="color: #588FFF;">RAM</span>
-
+    
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="d-flex align-items-center" style="gap: 15px;">
 
 
 
                             <div class="d-flex align-items-center" style="gap: 0;">
-
-                                <div id="statusInfo" class="info-alert d-flex align-items-center" data-bs-toggle="modal"
-                                    data-bs-target="#modalLegenda">
-                                    <div class="icon">
-                                        <img src="../assets/Icon-info.svg" alt="">
-                                    </div>
-                                    <span>Status</span>
-                                </div>
-
                                 <div class="info-alert d-flex align-items-center"
                                     style=" border-bottom-right-radius: 10px; border-top-right-radius: 10px; color: var(--tok); background-color: #FF00501A; gap: 5px; margin-left: 10px;">
                                     <div class="icon">
@@ -412,7 +403,7 @@
                                             Esgotamento</h1>
 
                                         <div>
-                                            <label>Tempo até 100%:</label>
+                                            <label>Tempo até <span id="limite_esgotamento"></span>:</label>
                                             <div class="div-line">
                                                 <span style="font-weight: bolder;" id="tempo_esgotamento">Sem
                                                     previsão</span>
@@ -630,11 +621,6 @@
 
 
             <!-- MODAL DA LEGENDA -->
-
-
-
-
-
             <!-- MODAL DOS GRAFICOS UNIVERSAO -->
 
             <div class="modal fade" id="modalAmpliado" tabindex="-1" data-bs-theme="dark">
@@ -655,29 +641,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="modal fade" id="modalLegenda" tabindex="-1" data-bs-theme="dark">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header d-flex flex-column border-0 pb-0 position-relative">
-
-                            <h1 class="modal-title w-100 d-flex justify-content-center align-items-center gap-2 m-0 text-white"
-                                style="font-size: 1.5rem;">
-                                <svg width="24" height="24" viewBox="0 0 19 19" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.0641 13.2312C10.2156 13.0792 10.2913 12.891 10.2913 12.6667V9.50004C10.2913 9.27573 10.2153 9.08785 10.0633 8.93637C9.91134 8.7849 9.72345 8.7089 9.49967 8.70837C9.2759 8.70785 9.08801 8.78385 8.93601 8.93637C8.78401 9.0889 8.70801 9.27679 8.70801 9.50004V12.6667C8.70801 12.891 8.78401 13.0792 8.93601 13.2312C9.08801 13.3832 9.2759 13.4589 9.49967 13.4584C9.72345 13.4578 9.91161 13.3826 10.0641 13.2312ZM10.0641 6.89704C10.2156 6.74557 10.2913 6.55768 10.2913 6.33337C10.2913 6.10907 10.2153 5.92118 10.0633 5.76971C9.91134 5.61824 9.72345 5.54223 9.49967 5.54171C9.2759 5.54118 9.08801 5.61718 8.93601 5.76971C8.78401 5.92224 8.70801 6.11012 8.70801 6.33337C8.70801 6.55662 8.78401 6.74478 8.93601 6.89783C9.08801 7.05089 9.2759 7.12662 9.49967 7.12504C9.72345 7.12346 9.91161 7.04746 10.0641 6.89704ZM9.49967 17.4167C8.40454 17.4167 7.37537 17.2088 6.41218 16.7929C5.44898 16.377 4.61113 15.8131 3.89863 15.1011C3.18613 14.3891 2.6222 13.5513 2.20684 12.5875C1.79148 11.6238 1.58354 10.5947 1.58301 9.50004C1.58248 8.40543 1.79043 7.37626 2.20684 6.41254C2.62326 5.44882 3.18719 4.61097 3.89863 3.899C4.61008 3.18703 5.44793 2.6231 6.41218 2.20721C7.37643 1.79132 8.40559 1.58337 9.49967 1.58337C10.5938 1.58337 11.6229 1.79132 12.5872 2.20721C13.5514 2.6231 14.3893 3.18703 15.1007 3.899C15.8122 4.61097 16.3764 5.44882 16.7933 6.41254C17.2102 7.37626 17.4179 8.40543 17.4163 9.50004C17.4148 10.5947 17.2068 11.6238 16.7925 12.5875C16.3782 13.5513 15.8143 14.3891 15.1007 15.1011C14.3872 15.8131 13.5493 16.3772 12.5872 16.7937C11.625 17.2101 10.5959 17.4178 9.49967 17.4167Z"
-                                        fill="white" />
-                                </svg>
-                                Legenda
-                            </h1>
-
-                            <button type="button" class="btn-close btn-close-white position-absolute end-0 me-4"
-                                data-bs-dismiss="modal"></button>
-                            <p style="font-weight: 300;">
-                                São os parâmetros de alertas dos componentes e do servidor.
-                            </p>
-                        </div>
 </body>
 
 </html>
@@ -836,6 +799,8 @@
         container_processos.innerHTML = conteudoProcessos
 
         const tempo_ate_esgotar = resultado.dadosMaquina.metricas.kpiEsgotamento.tempoRestante
+        const limite_para_esgotar = `${resultado.dadosMaquina.metricas.kpiEsgotamento.limite}%`
+        limite_esgotamento.innerHTML = limite_para_esgotar
         if (tempo_ate_esgotar[0] >= 0) {
             tempo_esgotamento.innerText = tempo_ate_esgotar
             maior_percentual.innerText = `${percentualDoMaiorConsumo}%`

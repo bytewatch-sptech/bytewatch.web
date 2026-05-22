@@ -245,6 +245,11 @@
     color: #FFFFFF;
 }
 
+#limite_esgotamento {
+    color: #A0A0A0;
+    font-size: 14px;
+}
+
 .previsao-container label {
     color: #A0A0A0;
     font-size: 14px;
