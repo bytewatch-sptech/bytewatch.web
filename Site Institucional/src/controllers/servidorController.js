@@ -97,7 +97,7 @@ function cadastrar(req, res) {
 
 }
 
-var s3Service = require("../../public/services/s3")
+var s3Service = require("../../public/services/s3Home")
 
 function buscarUsoS3(req, res) {
   var mac = req.params.macAddress
@@ -120,13 +120,49 @@ function buscarUsoS3(req, res) {
     })  
   })
 }
+async function buscarDashboardHome(req, res){
+  const idEmpresa = req.params.idEmpresa || req.params.id_empresa;
+
+  try{
+    const resultadoServidor = await servidorModel.listarServidores(idEmpresa)
+    const servidoresCadastrados = resultadoServidor;
+
+    if(servidoresCadastrados.length === 0) {
+      return res.status(404).json({ mensagem: "Nenhum server cadastrado"})
+    }
+
+    const dadosS3 = await s3Service.obterDadosS3()
+    const frotaS3 = dadosS3.frota_servidores
+
+    const servidoresValidos = servidoresCadastrados.map(servidorDB => {
+      const metricasS3 = frotaS3.find(s => s.macAddress === servidorDB.mac_address)
+
+      return {
+        id_servidor: servidorDB.id_servidor,
+        nome_db: servidorDB.nome_servidor,
+        mac_address: servidorDB.mac_address,
+        idEmpresa: idEmpresa,
+        dados_tempo_real: metricasS3 ? metricasS3 : null
+      }
+    })
+
+    res.status(200).json({
+      resumo_global: dadosS3.resumo_global,
+      servidores: servidoresValidos
+    })
+  }catch(erro){
+    console.error("erro na integração do Banco e S3", erro)
+    res.status(500).json({ erro: "Erro interno no servidor"})
+  }
+}
 
 module.exports = {
-  buscarUsoS3,
+  buscarDashboardHome,
   cadastrar,
   buscarDatacenters,
   listarServidores,
   removerServidor,
   atualizarServidor,
-  buscarNomeServidor
+  buscarNomeServidor,
+  buscarUsoS3
 }
