@@ -316,7 +316,7 @@
                                                 style="color: white; gap: 10px;">
                                                 <button type="button" class=" btn btn-link d-flex p-0 border-0"
                                                     data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                                    onclick="grafico = 'doughnut'">
+                                                    onclick="grafico = 'pico'">
                                                     <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
@@ -647,9 +647,6 @@
                         </div>
 
                         <div class="modal-body text-center">
-                            <div style="position: relative; height: 400px; width: 100%;">
-                                <canvas id="canvasGrande"></canvas>
-                            </div>
                             <p class="text-secondary mt-3 mb-1" id="textoModal">
 
                             </p>
@@ -1386,31 +1383,18 @@
             graficoAberto.destroy();
         }
 
-        if (grafico == 'usoProcessos') {
-            document.getElementById('tituloModal').innerText = 'Uso dos Componentes'
-            document.getElementById('textoModal').innerText = 'Um gráfico tipo pirulito é uma variação minimalista do gráfico de barras que utiliza uma linha fina com um marcador circular na ponta para indicar um valor exato. Ao analisar os cinco processos de maior consumo de um sistema, este formato elimina a poluição visual gerada por barras espessas. Sua estrutura direciona a atenção diretamente para os marcadores, garantindo uma comparação visual rápida, limpa e precisa da proporção de recursos utilizados por cada serviço.'
-            graficoAberto = new Chart(ctxModal, lollipopramConfig)
-
-        } else if (grafico == 'tendencia') {
-            document.getElementById('tituloModal').innerText = 'Tendencia'
-            document.getElementById('textoModal').innerText = 'Um gráfico de tendência utiliza linhas contínuas para relacionar o consumo total de memória com a carga de processos específicos ao longo do tempo. Esta visualização permite identificar de forma imediata qual serviço exato está elevando o uso da RAM ou provocando picos de saturação no sistema.'
-            graficoAberto = new Chart(ctxModal, scatterramConfig)
-
-        } else if (grafico == 'histograma') {
-            document.getElementById('tituloModal').innerText = 'Histograma'
-            document.getElementById('textoModal').innerText = 'Um histograma de uso da memória RAM distribui os percentuais de consumo em intervalos predefinidos e exibe a frequência de ocorrências dentro de cada faixa. Sua finalidade principal é identificar, de forma imediata, a margem de carga predominante e os níveis de estresse em que um sistema opera na maior parte do tempo.'
-            graficoAberto = new Chart(ctxModal, configHist)
-
-        } else if (grafico == 'usoTempo') {
+        if (grafico == 'usoTempo') {
             document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
-            document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-            graficoAberto = new Chart(ctxModal, configDashboard)
+            document.getElementById('textoModal').innerText = 'Um gráfico de linha que representa o consumo de RAM ao longo do tempo com objetivo de comparar os consumos e investigar incidentes.'
 
-        } else if (grafico == 'doughnut') {
+        } 
+        else if (grafico == 'doughnut') {
             document.getElementById('tituloModal').innerText = 'Consumo da RAM'
             document.getElementById('textoModal').innerText = 'Um gráfico de rosca representa cem por cento da capacidade total de um recurso em formato circular. Nele, a área é dividida em duas fatias estritamente proporcionais: uma ilustra o espaço já consumido e a outra reflete o espaço livre. Trata-se de uma representação visual direta e de soma zero, onde o aumento do percentual de uso resulta, obrigatoriamente e na exata mesma medida, na redução visual da área correspondente à capacidade disponível.'
-            graficoAberto = new Chart(ctxModal, ramConfig)
-
+        }
+        else if (grafico == 'pico') {
+            document.getElementById('tituloModal').innerText = 'Pico de RAM'
+            document.getElementById('textoModal').innerText = 'Picos são o maior consumo de  que o servidor teve em um período de 24h'
         }
     })
 </script>
