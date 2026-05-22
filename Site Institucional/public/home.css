@@ -378,11 +378,11 @@ body {
 }
 
 .card-mapa {
-  width: 430px;
-  height: 200px;
+  width: 400px !important;
+  height: 250px !important;
   background-color: #1a1a1a;
   border-radius: 12px;
-  padding: 15px;
+  padding: 5px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
