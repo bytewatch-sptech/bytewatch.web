@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="stylesheet" href="./css/dashboards.css">
-    <link rel="stylesheet" href="./atualizar-servidor.css">
+    <link rel="stylesheet" href="./atribuir-analista.css">
     <link rel="shortcut icon" href="assets/logo-cd.png" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,7 +134,7 @@
                     class="position-relative d-flex justify-content-center align-items-center mb-4 w-100 flex-shrink-0">
                     <div class="d-flex align-items-center gap-3">
                         <i class="fa-solid fa-server fs-2 text-white"></i>
-                        <h2 class="m-0 fw-bold text-white">Atualize um servidor</h2>
+                        <h2 class="m-0 fw-bold text-white">Atribuir um analista<h2>
                     </div>
                     <a href="home.html"
                         class="btn btn-outline-light rounded-pill px-3 py-1 d-flex align-items-center gap-2 position-absolute end-0"
@@ -157,29 +157,18 @@
                                 <div class="d-flex flex-column justify-content-between flex-grow-1">
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
-                                            style="font-size: 0.9rem;">Nome *</label>
-                                        <input id="nomeServer" type="text"
-                                            class="form-control input-escuro input-form-compacto">
-                                    </div>
-                                    <div>
-                                        <label class="form-label text-white fw-medium mb-1"
-                                            style="font-size: 0.9rem;">Status *</label>
-                                        <select id="select_datacenter" class="form-control input-escuro input-form-compacto">
-                                            <option>Funcionando</option>
+                                            style="font-size: 0.9rem;">Funcionário *</label>
+                                        <select id="select_funcionario" class="form-control input-escuro input-form-compacto">
+                                            <option selected disabled>Selecionar</option>
                                             <option>Manutenção</option>
                                         </select>    
                                     </div>
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
-                                            style="font-size: 0.9rem;">MAC</label>
-                                        <input id="ipServerInt" type="text"
-                                            class="form-control input-escuro input-form-compacto">
-                                    </div>
-                                    <div>
-                                        <label class="form-label text-white fw-medium mb-1"
-                                            style="font-size: 0.9rem;">Endereço IP</label>
-                                        <input id="TipoServer" type="text"
-                                            class="form-control input-escuro input-form-compacto">
+                                            style="font-size: 0.9rem;">Servidor *</label>
+                                        <select id="select_datacenter" class="form-control input-escuro input-form-compacto">
+                                            <option >Manutenção</option>
+                                        </select>    
                                     </div>
                                 </div>
                             </div>
@@ -306,7 +295,7 @@
 <script>
     async function buscarDatacenters () {
         var idEmpresa = sessionStorage.ID_EMPRESA;
-        resultado = await bucarDatacenterService(idEmpresa)
+        resultado = await buscarTodosServidoresService()
         let conteudoSelect = ""
         for (let i = 0; i < resultado.length; i++) {
             conteudoSelect += `<option value="${resultado[i].id_datacenter}">${resultado[i].nome_datacenters}</option>`
