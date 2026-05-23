@@ -494,9 +494,26 @@
         }
     });
 
-    function preencherTabelaAlertas(incidentes) {
+    async function ObterNomeServidor(macAddress) {
+        try {
+            const response = await fetch(`/servidor/buscar-nome-servidor/${macAddress}`);
+            const json = await response.json();
+            return json;
+        } catch (erro) {
+            console.error("Erro na API ao buscar nome do servidor:", erro);
+            return null;
+        }
+    }
+
+    async function preencherTabelaAlertas(incidentes) {
         var tbody = document.getElementById('tabela_alertas_body');
         tbody.innerHTML = "";
+
+        // Vamos exibir apenas os 10 últimos chamados para não quebrar o layout
+        // var limite = incidentes.length;
+        // if (limite > 10) {
+        //     limite = 10;
+        // }
 
         var limite = incidentes.length;
 
@@ -504,17 +521,9 @@
             var incidente = incidentes[i];
 
             var dataObj = new Date(incidente.criadoEm);
-
-
-            var dia = dataObj.getDate().toString().padStart(2, '0');
-            var mes = (dataObj.getMonth() + 1).toString().padStart(2, '0');
-            var ano = dataObj.getFullYear();
-
             var horas = dataObj.getHours().toString().padStart(2, '0');
             var minutos = dataObj.getMinutes().toString().padStart(2, '0');
-
-
-            var dataHoraFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
+            var horaFormatada = horas + ":" + minutos;
 
             var classeBadge = "";
             var textoBadge = "";
@@ -544,20 +553,37 @@
                 nomeAnalista = "Não Atribuído";
             }
 
+            // variavel vazia para puxar o mac do jira
+            let macCapturado = null;
+
+             // verifica se o array de labels existe e não está vazio
+            if (incidente.labels_crudas && incidente.labels_crudas.length > 0) {
+                let labelDoMac = incidente.labels_crudas.find(label => label.startsWith("MAC:"));
+
+                if (labelDoMac) {
+                    macCapturado = labelDoMac.replace("MAC:", "");
+                }
+            }
+
+            const respostaNome = await ObterNomeServidor(macCapturado);
+            const nomeServidor = respostaNome && respostaNome.length > 0 ? respostaNome[0].nome_servidor : "Servidor Desconhecido";
+
+            // ==========================================
+
             var tr = document.createElement('tr');
             tr.innerHTML = `
-<td class="text-secondary"></i> ${dataHoraFormatada}</td>
-<td class="text-white fw-semibold">${incidente.servidor}</td>
-<td class="text-secondary">${incidente.titulo}</td>
-<td>
-    <div class="d-flex align-items-center gap-2">
-        <div class="avatar-pequeno fundo-azul">${iniciais}</div>
-        <span class="text-secondary">${nomeAnalista}</span>
-    </div>
-</td>
-<td><span class="badge ${classeBadge}">${textoBadge}</span></td>
-<td>${htmlStatus}</td>
-`;
+        <td class="text-secondary"><i class="bi bi-clock me-1"></i> ${horaFormatada}</td>
+        <td class="text-white fw-semibold">${nomeServidor}</td>
+        <td class="text-secondary">${incidente.titulo}</td>
+        <td>
+            <div class="d-flex align-items-center gap-2">
+                <div class="avatar-pequeno fundo-azul">${iniciais}</div>
+                <span class="text-secondary">${nomeAnalista}</span>
+            </div>
+        </td>
+        <td><span class="badge ${classeBadge}">${textoBadge}</span></td>
+        <td>${htmlStatus}</td>
+    `;
 
             tbody.appendChild(tr);
         }
