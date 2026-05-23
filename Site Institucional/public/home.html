@@ -171,40 +171,20 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                             <div class="col-md-2">
                                                 <div class="d-flex flex-column gap-3 h-100 grade-cards-resumo">
 
-                                                    <div class="card cartao-resumo borda-vermelha flex-fill">
-                                                        <div class="card-body conteudo-cartao">
-                                                            <div class="icone icone-vermelho">
-                                                                <svg width="24" height="24" viewBox="0 0 36 36"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path
-                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                        fill="#FF0050" fill-opacity="0.2" />
-                                                                    <path
-                                                                        d="M8 0.5H28C32.1421 0.5 35.5 3.85786 35.5 8V28C35.5 32.1421 32.1421 35.5 28 35.5H8C3.85786 35.5 0.5 32.1421 0.5 28V8C0.5 3.85786 3.85786 0.5 8 0.5Z"
-                                                                        stroke="#FF3366" />
-                                                                    <path
-                                                                        d="M26.1085 23L19.4419 11.3333C19.2965 11.0768 19.0857 10.8635 18.831 10.715C18.5762 10.5666 18.2867 10.4884 17.9919 10.4884C17.697 10.4884 17.4075 10.5666 17.1527 10.715C16.898 10.8635 16.6872 11.0768 16.5419 11.3333L9.87519 23C9.72825 23.2544 9.65121 23.5432 9.65186 23.8371C9.65251 24.1309 9.73083 24.4194 9.87889 24.6732C10.0269 24.927 10.2395 25.1371 10.4949 25.2823C10.7504 25.4275 11.0397 25.5026 11.3335 25.5H24.6669C24.9593 25.4997 25.2465 25.4225 25.4996 25.2761C25.7527 25.1297 25.9629 24.9192 26.1089 24.6659C26.255 24.4126 26.3319 24.1253 26.3318 23.8329C26.3317 23.5405 26.2547 23.2532 26.1085 23Z"
-                                                                        stroke="#FF0050" stroke-width="1.66667"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                    <path d="M18 15.5V18.8333" stroke="#FF0050"
-                                                                        stroke-width="1.66667" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                    <path d="M18 22.1666H18.0083" stroke="#FF0050"
-                                                                        stroke-width="1.66667" stroke-linecap="round"
-                                                                        stroke-linejoin="round" />
-                                                                </svg>
+                                                    <div class="cartao-indicador p-3 rounded-4">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                            <div class="caixa-icone icone-vermelho">
+                                                                <i class="bi bi-exclamation-triangle"></i>
                                                             </div>
-                                                            <div class="textos-do-cartao">
-                                                                <span class="titulo-pequeno">Servidores Críticos</span>
-                                                                <span class="numero-gigante texto-vermelho"
-                                                                    id="kpiMaquinasRisco"></span>
-                                                                <div class="align-items-center w-100 texto-vermelho"
-                                                                    style="border-radius: 10px; background-color: #ff005010;">
-                                                                    <span>xx</span>
-                                                                </div>
-                                                            </div>
+                                                            <span class="emblema-tendencia tendencia-critica">
+                                                                <i class="bi bi-graph-up-arrow"></i> +8% vs sem. ant.
+                                                            </span>
                                                         </div>
+                                                        <p class="text-secondary mb-1 texto-pequeno">Alertas Processados
+                                                            (7d)</p>
+                                                        <h3 class="text-white fw-bold mb-0"
+                                                            id="kpiMaquinasRisco">0</h3>
                                                     </div>
 
                                                     <div class="card cartao-resumo borda-vermelha flex-fill">
@@ -274,12 +254,26 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                             stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
 
-                                                    Filtro <input type="text" id="input-busca"> 
-                                                    <button class="filtro button btn-filtro" data-valor="Todos">Todos <span
-                                                            id="qtdServidores"></span></button> <button
-                                                        class="filtro button btn-filtro" data-valor="critico">Critíco</button> <button
-                                                        class="filtro button btn-filtro"data-valor="risco">Risco</button> <button
-                                                        class="filtro button btn-filtro"data-valor="estavel" >Estável</button>
+                                                    Filtro <div
+                                                        class="barra-pesquisa-personalizada d-flex align-items-center px-3">
+                                                        <input type="text" class="input-pesquisa-personalizado"
+                                                            placeholder="Pesquisar analista">
+                                                        <svg width="18" height="18" viewBox="0 0 10 10" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                d="M1.4303 4.28948C1.4303 3.53105 1.73156 2.80369 2.26782 2.2674C2.80408 1.73111 3.53141 1.42983 4.28979 1.42983C5.04818 1.42983 5.7755 1.73111 6.31176 2.2674C6.84802 2.80369 7.14929 3.53105 7.14929 4.28948C7.14929 5.04791 6.84802 5.77527 6.31176 6.31156C5.7755 6.84785 5.04818 7.14913 4.28979 7.14913C3.53141 7.14913 2.80408 6.84785 2.26782 6.31156C1.73156 5.77527 1.4303 5.04791 1.4303 4.28948ZM4.28979 8.11151e-08C3.61474 -8.60682e-05 2.9492 0.15917 2.34729 0.464816C1.74539 0.770462 1.22412 1.21387 0.825888 1.75897C0.427652 2.30407 0.163691 2.93548 0.0554738 3.60184C-0.0527433 4.2682 -0.0021607 4.95069 0.203108 5.59381C0.408376 6.23693 0.762533 6.82253 1.23678 7.30296C1.71102 7.78339 2.29196 8.1451 2.93234 8.35866C3.57272 8.57223 4.25447 8.63162 4.92214 8.53201C5.5898 8.43239 6.22453 8.17659 6.77469 7.7854L8.7885 9.79931C8.92332 9.92954 9.1039 10.0016 9.29134 9.99997C9.47878 9.99834 9.65808 9.92316 9.79062 9.79061C9.92316 9.65806 9.99834 9.47875 9.99997 9.2913C10.0016 9.10385 9.92955 8.92326 9.79933 8.78843L7.78624 6.77523C8.24253 6.1335 8.51338 5.37854 8.56911 4.59309C8.62484 3.80763 8.4633 3.02199 8.1022 2.32225C7.74109 1.62252 7.19434 1.03569 6.52188 0.626066C5.84942 0.216447 5.07718 -0.000153028 4.28979 8.11151e-08Z"
+                                                                fill="#00F2EA" />
+                                                        </svg>
+
+                                                    </div>
+                                                    <button class="filtro button btn-filtro" data-valor="Todos">Todos
+                                                        <span id="qtdServidores"></span></button> <button
+                                                        class="filtro button btn-filtro"
+                                                        data-valor="critico">Critíco</button> <button
+                                                        class="filtro button btn-filtro"
+                                                        data-valor="risco">Risco</button> <button
+                                                        class="filtro button btn-filtro"
+                                                        data-valor="estavel">Estável</button>
                                                 </div>
                                             </div>
                                             <table class="table table-hover align-middle text-start">
@@ -1222,8 +1216,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         <span class="texto-destaque ${cpu_status_ui}  fs-5 fw-bold">${cpu_uso}</span>
                                                     </div>
 
-                                                    <div class="progress-track ${cpu_status_ui}">
-                                                        <div class="progress-fill ${cpu_status_ui}" style="width: ${cpu_uso}%;">
+                                                    <div class="progress-track ${cpu_status_ui}%">
+                                                        <div class="progress-fill ${cpu_status_ui}%" style="width: ${cpu_uso}%;">
                                                         </div>
                                                     </div>
 
