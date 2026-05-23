@@ -629,11 +629,11 @@
         valorHoje = parseInt(valorHoje)
         valorOntem = parseInt(valorOntem)
 
-        if (valorHoje >= 90 && valorHoje >= valorOntem) {
+        if (valorHoje >= 90) {
             meuElemento.classList.add('kpi-risco');
             pico_hoje.style.color = "#FF0050"
         }
-        else if (valorHoje >= 70 && valorHoje >= valorOntem) {
+        else if (valorHoje >= 70) {
             meuElemento.classList.add('kpi-critico');
             pico_hoje.style.color = "#FFD500"
         }
