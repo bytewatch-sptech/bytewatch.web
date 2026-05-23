@@ -138,9 +138,11 @@
                     // alert(json.fk_tipo_usuario)
                     setTimeout(function () {
                         if (json.fk_tipo_usuario == 1) {
+                            sessionStorage.CARGO = "Analista";
                             window.location = "./home.html";
                         }
                         else {
+                            sessionStorage.CARGO = "Gestor";
                             window.location = './pages/dashboard-gestor.html'
                         }
                     }, 1000); // apenas para exibir o loading
