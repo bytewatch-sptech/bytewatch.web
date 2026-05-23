@@ -55,10 +55,7 @@ class Api {
     }
 }
 
-<<<<<<< HEAD
-=======
 /* const url = "http://3.223.199.1" */
->>>>>>> origin/feat/dash-alertas
 const url = "http://localhost:3333"
 
 const api = new Api(url)
