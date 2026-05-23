@@ -166,31 +166,72 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                     style="font-size: 0.9rem">Veja os insights iniciais</span>
                                             </div>
                                         </header>
-                                        <div class="row align-items-stretch w-100 justify-content-between">
+                                        <div class="row align-items-stretch mb-4"
+                                            style="min-height: 280px;">
 
-                                            <div class="col-md-2">
+
+                                            <div class="col-md-3">
                                                 <div class="d-flex flex-column gap-3 h-100 grade-cards-resumo">
 
-                                                    <div class="cartao-indicador p-3 rounded-4">
+
+                                                    <div
+                                                        class="cartao-indicador p-3 rounded-4 flex-fill d-flex flex-column justify-content-center">
                                                         <div
-                                                            class="d-flex justify-content-between align-items-start mb-3">
+                                                            class="d-flex justify-content-between align-items-start mb-2 gap-1">
                                                             <div class="caixa-icone icone-vermelho">
-                                                                <i class="bi bi-exclamation-triangle"></i>
+                                                                <svg width="30" height="30" viewBox="0 0 20 20"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <mask id="path-1-inside-1_1130_1512" fill="white">
+                                                                        <path
+                                                                            d="M0 4.35C0 1.94756 1.94756 0 4.35 0H15.65C18.0524 0 20 1.94756 20 4.35V15.65C20 18.0524 18.0524 20 15.65 20H4.35C1.94756 20 0 18.0524 0 15.65V4.35Z" />
+                                                                    </mask>
+                                                                    <path
+                                                                        d="M0 4.35C0 1.94756 1.94756 0 4.35 0H15.65C18.0524 0 20 1.94756 20 4.35V15.65C20 18.0524 18.0524 20 15.65 20H4.35C1.94756 20 0 18.0524 0 15.65V4.35Z"
+                                                                        fill="#FF0050" fill-opacity="0.133" />
+                                                                    <path
+                                                                        d="M4.35 0V0.694444H15.65V0V-0.694444H4.35V0ZM20 4.35H19.3056V15.65H20H20.6944V4.35H20ZM15.65 20V19.3056H4.35V20V20.6944H15.65V20ZM0 15.65H0.694444V4.35H0H-0.694444V15.65H0ZM4.35 20V19.3056C2.33109 19.3056 0.694444 17.6689 0.694444 15.65H0H-0.694444C-0.694444 18.436 1.56403 20.6944 4.35 20.6944V20ZM20 15.65H19.3056C19.3056 17.6689 17.6689 19.3056 15.65 19.3056V20V20.6944C18.436 20.6944 20.6944 18.436 20.6944 15.65H20ZM15.65 0V0.694444C17.6689 0.694444 19.3056 2.33109 19.3056 4.35H20H20.6944C20.6944 1.56403 18.436 -0.694444 15.65 -0.694444V0ZM4.35 0V-0.694444C1.56403 -0.694444 -0.694444 1.56403 -0.694444 4.35H0H0.694444C0.694444 2.33109 2.33109 0.694444 4.35 0.694444V0Z"
+                                                                        fill="#FF0050" fill-opacity="0.333"
+                                                                        mask="url(#path-1-inside-1_1130_1512)" />
+                                                                    <g clip-path="url(#clip0_1130_1512)">
+                                                                        <path
+                                                                            d="M15.6298 13.4723L11 5.37021C10.899 5.19208 10.7526 5.04392 10.5757 4.94084C10.3988 4.83776 10.1978 4.78345 9.99301 4.78345C9.78827 4.78345 9.58719 4.83776 9.41028 4.94084C9.23338 5.04392 9.08699 5.19208 8.98604 5.37021L4.35627 13.4723C4.25423 13.649 4.20072 13.8496 4.20117 14.0536C4.20163 14.2577 4.25602 14.458 4.35884 14.6343C4.46166 14.8105 4.60925 14.9565 4.78666 15.0573C4.96406 15.1582 5.16498 15.2103 5.36903 15.2085H14.6286C14.8316 15.2083 15.0311 15.1546 15.2069 15.053C15.3827 14.9513 15.5286 14.8052 15.6301 14.6292C15.7315 14.4533 15.7849 14.2538 15.7848 14.0507C15.7848 13.8477 15.7313 13.6482 15.6298 13.4723Z"
+                                                                            stroke="#FF0050" stroke-width="1.15744"
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                        <path d="M9.99609 8.26416V10.579"
+                                                                            stroke="#FF0050" stroke-width="1.15744"
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                        <path d="M9.99609 12.894H10.0023"
+                                                                            stroke="#FF0050" stroke-width="1.15744"
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                    </g>
+                                                                    <defs>
+                                                                        <clipPath id="clip0_1130_1512">
+                                                                            <rect width="13.8893" height="13.8893"
+                                                                                fill="white"
+                                                                                transform="translate(3.05078 3.05518)" />
+                                                                        </clipPath>
+                                                                    </defs>
+                                                                </svg>
                                                             </div>
                                                             <span class="emblema-tendencia tendencia-critica">
                                                                 <i class="bi bi-graph-up-arrow"></i> +8% vs sem. ant.
                                                             </span>
                                                         </div>
-                                                        <p class="text-secondary mb-1 texto-pequeno">Alertas Processados
+                                                        <p class="text-secondary mb-1 texto-pequeno">Máquinas Críticas
                                                             (7d)</p>
-                                                        <h3 class="text-white fw-bold mb-0"
-                                                            id="kpiMaquinasRisco">0</h3>
+                                                        <h3 class="text-white fw-bold mb-0" id="kpiMaquinasRisco">3</h3>
                                                     </div>
 
-                                                    <div class="card cartao-resumo borda-vermelha flex-fill">
-                                                        <div class="card-body conteudo-cartao">
-                                                            <div class="icone icone-vermelho">
-                                                                <svg width="20" height="20" viewBox="0 0 12 12"
+
+                                                    <div
+                                                        class="cartao-indicador p-3 rounded-4 flex-fill d-flex flex-column justify-content-center">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-start mb-2 gap-1">
+                                                            <div class="caixa-icone icone-vermelho">
+                                                                <svg width="24" height="24" viewBox="0 0 12 12"
                                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <g clip-path="url(#clip0_1241_38)">
                                                                         <path
@@ -208,745 +249,720 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                     </defs>
                                                                 </svg>
                                                             </div>
-                                                            <div class="textos-do-cartao">
-                                                                <span class="titulo-pequeno">Servidor Mais Propenso <br>
-                                                                    a Falha</span>
-                                                                <span
-                                                                    class="numero-gigante texto-vermelho col flex-column"
-                                                                    id="kpiServidorPropensoFalha">XX</span>
-                                                                <div class="align-items-center w-100 texto-vermelho"
-                                                                    style="border-radius: 10px; background-color: #ff005010;">
-                                                                    <span>xx</span>
+                                                        </div>
+                                                        <p class="text-secondary mb-1 texto-pequeno text-truncate">
+                                                            Servidor Mais Propenso a Falha</p>
+                                                        <h3 class="text-white fw-bold mb-0"
+                                                            id="kpiServidorPropensoFalha">XX</h3>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-5 d-flex flex-column">
+                                                <div class="matriz-priorizacao d-flex flex-column flex-fill w-100">
+                                                    <span class="text-white mb-2 fw-semibold">Matriz de
+                                                        priorização</span>
+                                                    <div class="flex-fill w-100 position-relative">
+                                                        <canvas id="matrizChart"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-4 d-flex flex-column">
+                                                <div class="card-mapa d-flex flex-column flex-fill w-100 p-2">
+                                                    <div id="mapa" class="flex-fill w-100 h-100"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="table-responsive w-100 frota-servidores mt-2">
+                                                    <div class="d-flex align-items-center gap-3 cabecalho-servidores">
+                                                        <span>Frota de
+                                                            Servidores</span>
+                                                        <div class="filtro d-flex align-items-center gap-3"><svg
+                                                                width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M6.66708 13.3333C6.66702 13.4572 6.70148 13.5787 6.7666 13.6841C6.83172 13.7895 6.92492 13.8746 7.03574 13.93L8.36908 14.5967C8.47074 14.6475 8.58371 14.6714 8.69724 14.6663C8.81077 14.6612 8.92111 14.6271 9.01776 14.5673C9.11442 14.5075 9.19419 14.424 9.24949 14.3247C9.30479 14.2254 9.3338 14.1137 9.33374 14V9.33333C9.33389 9.00292 9.45672 8.68433 9.67841 8.43933L14.4937 3.11333C14.5801 3.01771 14.6368 2.89912 14.6571 2.77192C14.6775 2.64472 14.6605 2.51435 14.6083 2.39658C14.5562 2.27881 14.471 2.17868 14.3631 2.1083C14.2552 2.03792 14.1292 2.0003 14.0004 2H2.00041C1.87148 2.00005 1.74533 2.03748 1.63724 2.10776C1.52915 2.17804 1.44376 2.27815 1.39141 2.39598C1.33906 2.5138 1.322 2.64427 1.34229 2.77159C1.36259 2.89892 1.41936 3.01762 1.50574 3.11333L6.32241 8.43933C6.5441 8.68433 6.66693 9.00292 6.66708 9.33333V13.3333Z"
+                                                                    stroke="#00F2EA" stroke-width="1.33333"
+                                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                            </svg>
+
+                                                            Filtro <div
+                                                                class="barra-pesquisa-personalizada d-flex align-items-center px-3">
+                                                                <input type="text" class="input-pesquisa-personalizado"
+                                                                    placeholder="Pesquisar analista">
+                                                                <svg width="18" height="18" viewBox="0 0 10 10"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                        d="M1.4303 4.28948C1.4303 3.53105 1.73156 2.80369 2.26782 2.2674C2.80408 1.73111 3.53141 1.42983 4.28979 1.42983C5.04818 1.42983 5.7755 1.73111 6.31176 2.2674C6.84802 2.80369 7.14929 3.53105 7.14929 4.28948C7.14929 5.04791 6.84802 5.77527 6.31176 6.31156C5.7755 6.84785 5.04818 7.14913 4.28979 7.14913C3.53141 7.14913 2.80408 6.84785 2.26782 6.31156C1.73156 5.77527 1.4303 5.04791 1.4303 4.28948ZM4.28979 8.11151e-08C3.61474 -8.60682e-05 2.9492 0.15917 2.34729 0.464816C1.74539 0.770462 1.22412 1.21387 0.825888 1.75897C0.427652 2.30407 0.163691 2.93548 0.0554738 3.60184C-0.0527433 4.2682 -0.0021607 4.95069 0.203108 5.59381C0.408376 6.23693 0.762533 6.82253 1.23678 7.30296C1.71102 7.78339 2.29196 8.1451 2.93234 8.35866C3.57272 8.57223 4.25447 8.63162 4.92214 8.53201C5.5898 8.43239 6.22453 8.17659 6.77469 7.7854L8.7885 9.79931C8.92332 9.92954 9.1039 10.0016 9.29134 9.99997C9.47878 9.99834 9.65808 9.92316 9.79062 9.79061C9.92316 9.65806 9.99834 9.47875 9.99997 9.2913C10.0016 9.10385 9.92955 8.92326 9.79933 8.78843L7.78624 6.77523C8.24253 6.1335 8.51338 5.37854 8.56911 4.59309C8.62484 3.80763 8.4633 3.02199 8.1022 2.32225C7.74109 1.62252 7.19434 1.03569 6.52188 0.626066C5.84942 0.216447 5.07718 -0.000153028 4.28979 8.11151e-08Z"
+                                                                        fill="#00F2EA" />
+                                                                </svg>
+
+                                                            </div>
+                                                            <button class="filtro button btn-filtro"
+                                                                data-valor="Todos">Todos
+                                                                <span id="qtdServidores"></span></button> <button
+                                                                class="filtro button btn-filtro"
+                                                                data-valor="critico">Critíco</button> <button
+                                                                class="filtro button btn-filtro"
+                                                                data-valor="risco">Risco</button> <button
+                                                                class="filtro button btn-filtro"
+                                                                data-valor="estavel">Estável</button>
+                                                        </div>
+                                                    </div>
+                                                    <table class="table table-hover align-middle text-start">
+                                                        <thead>
+                                                            <tr class="cabecalho-customizado">
+                                                                <th scope="col" class="ps-3 border-0">STATUS</th>
+                                                                <th scope="col" class="border-0">ÚLTIMA COLETA</th>
+                                                                <th scope="col" class="border-0">SERVIDOR</th>
+                                                                <th scope="col" class="border-0">REGIÃO</th>
+                                                                <th scope="col" class="border-0">CPU</th>
+                                                                <th scope="col" class="border-0">RAM</th>
+                                                                <th scope="col" class="border-0">DISCO</th>
+                                                                <th scope="col" class="border-0">REDE</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="lista-servidores">
+                                                        
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal fade" id="modalExcluirServidor" tabindex="-1"
+                                            aria-labelledby="modalExcluirLabel" aria-hidden="true" data-bs-theme="dark">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content"
+                                                    style="background-color: #121212; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px">
+                                                    <div class="modal-body p-4 p-md-5">
+                                                        <div class="d-flex align-items-center gap-3 mb-4">
+                                                            <i class="fa-solid fa-server fs-1 text-white"></i>
+                                                            <h3 class="m-0 fw-bold text-white" id="modalExcluirLabel">
+                                                                Excluir um servidor</h3>
+                                                        </div>
+
+                                                        <div class="d-flex flex-column gap-2 mb-5">
+                                                            <label for="select_servidor"
+                                                                class="form-label text-white fw-medium m-0">Selecione o
+                                                                servidor</label>
+                                                            <select type="text" id="select_servidor"
+                                                                class="form-control"
+                                                                style="background-color: #1f1f1f; border: 1px solid #333; color: #fff; padding: 10px 14px; border-radius: 8px">
+                                                                <option disabled selected value="">Selecionar</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="d-flex justify-content-center gap-4">
+                                                            <button type="button" class="btn px-4 py-2 fw-medium"
+                                                                data-bs-dismiss="modal"
+                                                                style="background-color: transparent; color: #00F2EA; border: 1px solid #00F2EA; border-radius: 8px; transition: 0.3s"
+                                                                onmouseover="this.style.backgroundColor='rgba(0, 242, 234, 0.1)'"
+                                                                onmouseout="this.style.backgroundColor='transparent'">
+                                                                Cancelar
+                                                            </button>
+                                                            <button type="button" id="btnConfirmarExclusao"
+                                                                data-bs-dismiss="modal" onclick="removerServidor()"
+                                                                class="btn px-4 py-2 fw-medium"
+                                                                style="background-color: #800020; color: #ff2d56; border: 1px solid #ff2d56; border-radius: 8px; transition: 0.3s"
+                                                                onmouseover="this.style.backgroundColor='#5c0017'"
+                                                                onmouseout="this.style.backgroundColor='#800020'">
+                                                                Excluir
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal fade" id="modalCertezaExcluir" tabindex="-1"
+                                            aria-hidden="true" data-bs-theme="dark">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content"
+                                                    style="background-color: #141414; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px">
+                                                    <div
+                                                        class="modal-body p-5 text-center d-flex flex-column align-items-center">
+                                                        <i class="fa-solid fa-triangle-exclamation mb-4"
+                                                            style="color: #FF2D56; font-size: 4.5rem"></i>
+                                                        <h4 class="text-white mb-5 fw-normal" style="font-size: 1.6rem">
+                                                            Deseja mesmo <b class="fw-bold">excluir</b> esse Servidor?
+                                                        </h4>
+                                                        <div class="d-flex justify-content-center gap-4 w-100 px-2">
+                                                            <button type="button" id="btnSimExcluir"
+                                                                class="btn w-50 py-2 fw-bold"
+                                                                style="background-color: #0c4d42; border: 1px solid #00F2EA; color: #00F2EA; border-radius: 8px; font-size: 1.2rem; transition: 0.3s"
+                                                                onmouseover="this.style.backgroundColor='rgba(0, 242, 234, 0.1)'"
+                                                                onmouseout="this.style.backgroundColor='#0c4d42'">
+                                                                Sim
+                                                            </button>
+                                                            <button type="button" class="btn w-50 py-2 fw-bold"
+                                                                data-bs-dismiss="modal"
+                                                                style="background-color: #5c0017; border: 1px solid #FF2D56; color: #FF2D56; border-radius: 8px; font-size: 1.2rem; transition: 0.3s"
+                                                                onmouseover="this.style.backgroundColor='rgba(255, 45, 86, 0.1)'"
+                                                                onmouseout="this.style.backgroundColor='#5c0017'">
+                                                                Não
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal fade" id="modalLegenda" tabindex="-1" data-bs-theme="dark">
+                                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                <div class="modal-content text-white"
+                                                    style="background-color: #121212; border: 1px solid rgba(255,255,255,0.1)">
+                                                    <div
+                                                        class="modal-header d-flex flex-column border-0 pb-0 position-relative mt-3">
+                                                        <h1 class="modal-title w-100 d-flex justify-content-center align-items-center gap-2 m-0 text-white"
+                                                            style="font-size: 1.5rem">
+                                                            <svg width="24" height="24" viewBox="0 0 19 19" fill="none"
+                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M10.0641 13.2312C10.2156 13.0792 10.2913 12.891 10.2913 12.6667V9.50004C10.2913 9.27573 10.2153 9.08785 10.0633 8.93637C9.91134 8.7849 9.72345 8.7089 9.49967 8.70837C9.2759 8.70785 9.08801 8.78385 8.93601 8.93637C8.78401 9.0889 8.70801 9.27679 8.70801 9.50004V12.6667C8.70801 12.891 8.78401 13.0792 8.93601 13.2312C9.08801 13.3832 9.2759 13.4589 9.49967 13.4584C9.72345 13.4578 9.91161 13.3826 10.0641 13.2312ZM10.0641 6.89704C10.2156 6.74557 10.2913 6.55768 10.2913 6.33337C10.2913 6.10907 10.2153 5.92118 10.0633 5.76971C9.91134 5.61824 9.72345 5.54223 9.49967 5.54171C9.2759 5.54118 9.08801 5.61718 8.93601 5.76971C8.78401 5.92224 8.70801 6.11012 8.70801 6.33337C8.70801 6.55662 8.78401 6.74478 8.93601 6.89783C9.08801 7.05089 9.2759 7.12662 9.49967 7.12504C9.72345 7.12346 9.91161 7.04746 10.0641 6.89704ZM9.49967 17.4167C8.40454 17.4167 7.37537 17.2088 6.41218 16.7929C5.44898 16.377 4.61113 15.8131 3.89863 15.1011C3.18613 14.3891 2.6222 13.5513 2.20684 12.5875C1.79148 11.6238 1.58354 10.5947 1.58301 9.50004C1.58248 8.40543 1.79043 7.37626 2.20684 6.41254C2.62326 5.44882 3.18719 4.61097 3.89863 3.899C4.61008 3.18703 5.44793 2.6231 6.41218 2.20721C7.37643 1.79132 8.40559 1.58337 9.49967 1.58337C10.5938 1.58337 11.6229 1.79132 12.5872 2.20721C13.5514 2.6231 14.3893 3.18703 15.1007 3.899C15.8122 4.61097 16.3764 5.44882 16.7933 6.41254C17.2102 7.37626 17.4179 8.40543 17.4163 9.50004C17.4148 10.5947 17.2068 11.6238 16.7925 12.5875C16.3782 13.5513 15.8143 14.3891 15.1007 15.1011C14.3872 15.8131 13.5493 16.3772 12.5872 16.7937C11.625 17.2101 10.5959 17.4178 9.49967 17.4167Z"
+                                                                    fill="white" />
+                                                            </svg>
+                                                            Legenda
+                                                        </h1>
+                                                        <button type="button"
+                                                            class="btn-close btn-close-white position-absolute end-0 me-4"
+                                                            data-bs-dismiss="modal"></button>
+                                                        <p class="text-center text-secondary mt-2 mb-0"
+                                                            style="font-weight: 300">São os parâmetros de
+                                                            alertas dos componentes e do servidor.</p>
+                                                    </div>
+                                                    <div class="modal-body text-center p-4">
+                                                        <div class="row g-4">
+                                                            <div class="col-lg-6">
+                                                                <div class="card-legend p-4 d-flex flex-column gap-4 h-100"
+                                                                    style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05)">
+                                                                    <h5 class="text-center text-light m-0"
+                                                                        style="font-weight: 500">Servidor</h5>
+                                                                    <div
+                                                                        class="d-flex flex-column gap-4 text-start mt-2">
+                                                                        <div class="d-flex align-items-center gap-3">
+                                                                            <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                                                                                style="width: 56px; height: 56px; border: 1px solid #00F2EA; border-radius: 12px; background-color: rgba(0, 242, 234, 0.1)">
+                                                                                <svg width="26" height="26"
+                                                                                    viewBox="0 0 26 26" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path
+                                                                                        d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
+                                                                                        stroke="#00F2EA"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
+                                                                                        stroke="#00F2EA"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M6.37305 6.37256H6.38356"
+                                                                                        stroke="#00F2EA"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M6.37305 19.1179H6.38356"
+                                                                                        stroke="#00F2EA"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="d-flex flex-column">
+                                                                                <span class="text-light fw-medium">Todos
+                                                                                    os Componentes</span>
+                                                                                <span
+                                                                                    style="color: #00F2EA">Estáveis</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-flex align-items-center gap-3">
+                                                                            <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                                                                                style="width: 56px; height: 56px; border: 1px solid #FFD700; border-radius: 12px; background-color: rgba(255, 215, 0, 0.1)">
+                                                                                <svg width="26" height="26"
+                                                                                    viewBox="0 0 26 26" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path
+                                                                                        d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
+                                                                                        stroke="#FFD700"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
+                                                                                        stroke="#FFD700"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M6.37305 6.37256H6.38356"
+                                                                                        stroke="#FFD700"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M6.37305 19.1179H6.38356"
+                                                                                        stroke="#FFD700"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="d-flex flex-column">
+                                                                                <span class="text-light fw-medium">Pelo
+                                                                                    menos um componente</span>
+                                                                                <span style="color: #FFD700">Em
+                                                                                    Risco</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="d-flex align-items-center gap-3">
+                                                                            <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                                                                                style="width: 56px; height: 56px; border: 1px solid #ff0050; border-radius: 12px; background-color: rgba(255, 20, 147, 0.1)">
+                                                                                <svg width="26" height="26"
+                                                                                    viewBox="0 0 26 26" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path
+                                                                                        d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
+                                                                                        stroke="#FF1493"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
+                                                                                        stroke="#FF1493"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M6.37305 6.37256H6.38356"
+                                                                                        stroke="#FF1493"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M6.37305 19.1179H6.38356"
+                                                                                        stroke="#FF1493"
+                                                                                        stroke-width="2.12419"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                            </div>
+                                                                            <div class="d-flex flex-column">
+                                                                                <span class="text-light fw-medium">Dois
+                                                                                    componentes em risco ou um</span>
+                                                                                <span style="color: #ff0050">Em
+                                                                                    Crítico</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="card-legend p-4 d-flex flex-column gap-4 h-100"
+                                                                    style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05)">
+                                                                    <h5 class="text-center text-light m-0"
+                                                                        style="font-weight: 500">Componente</h5>
+                                                                    <div
+                                                                        class="d-flex flex-column gap-4 text-start mt-2">
+                                                                        <div
+                                                                            class="d-flex flex-column box-componente gap-2">
+                                                                            <div
+                                                                                class="d-flex align-items-center gap-2">
+                                                                                <svg width="21" height="21"
+                                                                                    viewBox="0 0 21 21" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path
+                                                                                        d="M15.647 3.47668H5.21686C4.2568 3.47668 3.47852 4.25497 3.47852 5.21503V15.6451C3.47852 16.6052 4.2568 17.3835 5.21686 17.3835H15.647C16.607 17.3835 17.3853 16.6052 17.3853 15.6451V5.21503C17.3853 4.25497 16.607 3.47668 15.647 3.47668Z"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M12.1701 7.82251H8.69339C8.21336 7.82251 7.82422 8.21165 7.82422 8.69168V12.1684C7.82422 12.6484 8.21336 13.0376 8.69339 13.0376H12.1701C12.6501 13.0376 13.0393 12.6484 13.0393 12.1684V8.69168C13.0393 8.21165 12.6501 7.82251 12.1701 7.82251Z"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M13.0381 1.7384V3.47675"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M13.0381 17.3835V19.1219"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M1.73926 13.0377H3.47761"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M1.73926 7.82251H3.47761"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M17.3838 13.0377H19.1221"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M17.3838 7.82251H19.1221"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M7.82422 1.7384V3.47675"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M7.82422 17.3835V19.1219"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                <h6 style="margin: 0; color: #A0A0A0">
+                                                                                    CPU</h6>
+                                                                            </div>
+                                                                            <div class="d-flex w-100 gap-1 text-center"
+                                                                                style="font-size: 0.8rem">
+                                                                                <div
+                                                                                    class="col d-flex flex-column align-items-center">
+                                                                                    <span
+                                                                                        class="text-secondary mb-1">Estável</span>
+                                                                                    <div class="line-component w-100 mb-1"
+                                                                                        style="background-color: #00F2EA; height: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px">
+                                                                                    </div>
+                                                                                    <span
+                                                                                        style="color: #00F2EA">10%</span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col d-flex flex-column align-items-center">
+                                                                                    <span
+                                                                                        class="text-secondary mb-1">Risco</span>
+                                                                                    <div class="line-component w-100 mb-1"
+                                                                                        style="background-color: #FFD500; height: 6px">
+                                                                                    </div>
+                                                                                    <span
+                                                                                        style="color: #FFD500">70%</span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col d-flex flex-column align-items-center">
+                                                                                    <span
+                                                                                        class="text-secondary mb-1">Crítico</span>
+                                                                                    <div class="line-component w-100 mb-1"
+                                                                                        style="background-color: #ff0050; height: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px">
+                                                                                    </div>
+                                                                                    <span
+                                                                                        style="color: #ff0050">90%</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex flex-column box-componente gap-2">
+                                                                            <div
+                                                                                class="d-flex align-items-center gap-2">
+                                                                                <svg width="21" height="21"
+                                                                                    viewBox="0 0 21 21" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path d="M5.21582 16.5143V13.9067"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M8.69238 16.5143V13.9067"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M12.1699 16.5143V13.9067"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M15.6465 16.5143V13.9067"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M6.9541 9.56086V7.82251"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M13.9072 9.56086V7.82251"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M10.4307 9.56086V7.82251"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M1.73926 13.0375H19.1227"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M1.73926 6.0843C1.73926 5.62326 1.9224 5.1811 2.24841 4.8551C2.57441 4.52909 3.01657 4.34595 3.47761 4.34595H17.3844C17.8454 4.34595 18.2876 4.52909 18.6136 4.8551C18.9396 5.1811 19.1227 5.62326 19.1227 6.0843V7.04039C18.7627 7.14644 18.4467 7.36618 18.2219 7.66674C17.9971 7.96731 17.8756 8.33256 17.8756 8.7079C17.8756 9.08323 17.9971 9.44848 18.2219 9.74905C18.4467 10.0496 18.7627 10.2694 19.1227 10.3754V14.776C19.1227 15.2371 18.9396 15.6792 18.6136 16.0052C18.2876 16.3312 17.8454 16.5144 17.3844 16.5144H3.47761C3.01657 16.5144 2.57441 16.3312 2.24841 16.0052C1.9224 15.6792 1.73926 15.2371 1.73926 14.776V10.3432C2.0993 10.2372 2.41534 10.0175 2.64014 9.71689C2.86494 9.41632 2.98642 9.05107 2.98642 8.67574C2.98642 8.3004 2.86494 7.93515 2.64014 7.63458C2.41534 7.33402 2.0993 7.11428 1.73926 7.00823V6.0843Z"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                <h6 style="margin: 0; color: #A0A0A0">
+                                                                                    RAM</h6>
+                                                                            </div>
+                                                                            <div class="d-flex w-100 gap-1 text-center"
+                                                                                style="font-size: 0.8rem">
+                                                                                <div
+                                                                                    class="col d-flex flex-column align-items-center">
+                                                                                    <span
+                                                                                        class="text-secondary mb-1">Estável</span>
+                                                                                    <div class="line-component w-100 mb-1"
+                                                                                        style="background-color: #00F2EA; height: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px">
+                                                                                    </div>
+                                                                                    <span
+                                                                                        style="color: #00F2EA">10%</span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col d-flex flex-column align-items-center">
+                                                                                    <span
+                                                                                        class="text-secondary mb-1">Risco</span>
+                                                                                    <div class="line-component w-100 mb-1"
+                                                                                        style="background-color: #FFD500; height: 6px">
+                                                                                    </div>
+                                                                                    <span
+                                                                                        style="color: #FFD500">70%</span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col d-flex flex-column align-items-center">
+                                                                                    <span
+                                                                                        class="text-secondary mb-1">Crítico</span>
+                                                                                    <div class="line-component w-100 mb-1"
+                                                                                        style="background-color: #ff0050; height: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px">
+                                                                                    </div>
+                                                                                    <span
+                                                                                        style="color: #ff0050">90%</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="d-flex flex-column box-componente gap-2">
+                                                                            <div
+                                                                                class="d-flex align-items-center gap-2">
+                                                                                <svg width="21" height="21"
+                                                                                    viewBox="0 0 21 21" fill="none"
+                                                                                    xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path d="M19.1227 10.4302H1.73926"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path
+                                                                                        d="M4.73791 4.44159L1.73926 10.4302V15.6452C1.73926 16.1063 1.9224 16.5484 2.24841 16.8744C2.57441 17.2004 3.01657 17.3836 3.47761 17.3836H17.3844C17.8454 17.3836 18.2876 17.2004 18.6136 16.8744C18.9396 16.5484 19.1227 16.1063 19.1227 15.6452V10.4302L16.1241 4.44159C15.9802 4.15197 15.7583 3.90824 15.4835 3.7378C15.2086 3.56736 14.8917 3.47698 14.5683 3.47681H6.29373C5.97032 3.47698 5.65338 3.56736 5.37853 3.7378C5.10368 3.90824 4.88182 4.15197 4.73791 4.44159Z"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M5.21582 13.907H5.22278"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                    <path d="M8.69238 13.907H8.69935"
+                                                                                        stroke="#A0A0A0"
+                                                                                        stroke-width="1.73835"
+                                                                                        stroke-linecap="round"
+                                                                                        stroke-linejoin="round" />
+                                                                                </svg>
+                                                                                <h6 style="margin: 0; color: #A0A0A0">
+                                                                                    DISCO</h6>
+                                                                            </div>
+                                                                            <div class="d-flex w-100 gap-1 text-center"
+                                                                                style="font-size: 0.8rem">
+                                                                                <div
+                                                                                    class="col d-flex flex-column align-items-center">
+                                                                                    <span
+                                                                                        class="text-secondary mb-1">Estável</span>
+                                                                                    <div class="line-component w-100 mb-1"
+                                                                                        style="background-color: #00F2EA; height: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px">
+                                                                                    </div>
+                                                                                    <span
+                                                                                        style="color: #00F2EA">10%</span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col d-flex flex-column align-items-center">
+                                                                                    <span
+                                                                                        class="text-secondary mb-1">Risco</span>
+                                                                                    <div class="line-component w-100 mb-1"
+                                                                                        style="background-color: #FFD500; height: 6px">
+                                                                                    </div>
+                                                                                    <span
+                                                                                        style="color: #FFD500">70%</span>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col d-flex flex-column align-items-center">
+                                                                                    <span
+                                                                                        class="text-secondary mb-1">Crítico</span>
+                                                                                    <div class="line-component w-100 mb-1"
+                                                                                        style="background-color: #ff0050; height: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px">
+                                                                                    </div>
+                                                                                    <span
+                                                                                        style="color: #ff0050">90%</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="text-center mt-4 text-secondary pb-2"
+                                                            style="font-size: 0.9rem">
+                                                            Você consegue alterar os parâmetros do componente<br>na tela
+                                                            de adição e edição de servidor.
+                                                        </div>
                                                     </div>
-
                                                 </div>
                                             </div>
-
-                                            <div class="col-md-2 matriz-priorizacao d-flex flex-column">
-                                                <span>Matriz de priorização</span>
-                                                <div class="flex-fill"
-                                                    style="position: relative; height: 180px; width: 100%;">
-                                                    <canvas id="matrizChart"></canvas>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-3 card-mapa d-flex flex-column">
-                                                <div id="mapa" class="flex-fill"></div>
-                                            </div>
-
                                         </div>
 
 
 
-                                        <div class="table-responsive w-100 frota-servidores mt-2">
-                                            <div class="d-flex align-items-center gap-3 cabecalho-servidores">
-                                                <span>Frota de
-                                                    Servidores</span>
-                                                <div class="filtro d-flex align-items-center gap-3"><svg width="16"
-                                                        height="16" viewBox="0 0 16 16" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M6.66708 13.3333C6.66702 13.4572 6.70148 13.5787 6.7666 13.6841C6.83172 13.7895 6.92492 13.8746 7.03574 13.93L8.36908 14.5967C8.47074 14.6475 8.58371 14.6714 8.69724 14.6663C8.81077 14.6612 8.92111 14.6271 9.01776 14.5673C9.11442 14.5075 9.19419 14.424 9.24949 14.3247C9.30479 14.2254 9.3338 14.1137 9.33374 14V9.33333C9.33389 9.00292 9.45672 8.68433 9.67841 8.43933L14.4937 3.11333C14.5801 3.01771 14.6368 2.89912 14.6571 2.77192C14.6775 2.64472 14.6605 2.51435 14.6083 2.39658C14.5562 2.27881 14.471 2.17868 14.3631 2.1083C14.2552 2.03792 14.1292 2.0003 14.0004 2H2.00041C1.87148 2.00005 1.74533 2.03748 1.63724 2.10776C1.52915 2.17804 1.44376 2.27815 1.39141 2.39598C1.33906 2.5138 1.322 2.64427 1.34229 2.77159C1.36259 2.89892 1.41936 3.01762 1.50574 3.11333L6.32241 8.43933C6.5441 8.68433 6.66693 9.00292 6.66708 9.33333V13.3333Z"
-                                                            stroke="#00F2EA" stroke-width="1.33333"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
 
-                                                    Filtro <div
-                                                        class="barra-pesquisa-personalizada d-flex align-items-center px-3">
-                                                        <input type="text" class="input-pesquisa-personalizado"
-                                                            placeholder="Pesquisar analista">
-                                                        <svg width="18" height="18" viewBox="0 0 10 10" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                d="M1.4303 4.28948C1.4303 3.53105 1.73156 2.80369 2.26782 2.2674C2.80408 1.73111 3.53141 1.42983 4.28979 1.42983C5.04818 1.42983 5.7755 1.73111 6.31176 2.2674C6.84802 2.80369 7.14929 3.53105 7.14929 4.28948C7.14929 5.04791 6.84802 5.77527 6.31176 6.31156C5.7755 6.84785 5.04818 7.14913 4.28979 7.14913C3.53141 7.14913 2.80408 6.84785 2.26782 6.31156C1.73156 5.77527 1.4303 5.04791 1.4303 4.28948ZM4.28979 8.11151e-08C3.61474 -8.60682e-05 2.9492 0.15917 2.34729 0.464816C1.74539 0.770462 1.22412 1.21387 0.825888 1.75897C0.427652 2.30407 0.163691 2.93548 0.0554738 3.60184C-0.0527433 4.2682 -0.0021607 4.95069 0.203108 5.59381C0.408376 6.23693 0.762533 6.82253 1.23678 7.30296C1.71102 7.78339 2.29196 8.1451 2.93234 8.35866C3.57272 8.57223 4.25447 8.63162 4.92214 8.53201C5.5898 8.43239 6.22453 8.17659 6.77469 7.7854L8.7885 9.79931C8.92332 9.92954 9.1039 10.0016 9.29134 9.99997C9.47878 9.99834 9.65808 9.92316 9.79062 9.79061C9.92316 9.65806 9.99834 9.47875 9.99997 9.2913C10.0016 9.10385 9.92955 8.92326 9.79933 8.78843L7.78624 6.77523C8.24253 6.1335 8.51338 5.37854 8.56911 4.59309C8.62484 3.80763 8.4633 3.02199 8.1022 2.32225C7.74109 1.62252 7.19434 1.03569 6.52188 0.626066C5.84942 0.216447 5.07718 -0.000153028 4.28979 8.11151e-08Z"
-                                                                fill="#00F2EA" />
-                                                        </svg>
+                                        <!-- MENU OFFCANVAS DO BOOTSTRAP HAMBURGUER -->
+                                        <div class="offcanvas offcanvas-start text-white sidebar" tabindex="-1"
+                                            id="menuMobile" style="width: 280px; position: fixed;">
 
-                                                    </div>
-                                                    <button class="filtro button btn-filtro" data-valor="Todos">Todos
-                                                        <span id="qtdServidores"></span></button> <button
-                                                        class="filtro button btn-filtro"
-                                                        data-valor="critico">Critíco</button> <button
-                                                        class="filtro button btn-filtro"
-                                                        data-valor="risco">Risco</button> <button
-                                                        class="filtro button btn-filtro"
-                                                        data-valor="estavel">Estável</button>
-                                                </div>
+                                            <div class="offcanvas-header border-bottom border-secondary pb-3 mb-3">
+                                                <img width="130" src="./assets/logo-versao2.png" alt="Logo">
+                                                <button type="button" class="btn-close bg-white"
+                                                    data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                             </div>
-                                            <table class="table table-hover align-middle text-start">
-                                                <thead>
-                                                    <tr class="cabecalho-customizado">
-                                                        <th scope="col" class="ps-3 border-0">STATUS</th>
-                                                        <th scope="col" class="border-0">ÚLTIMA COLETA</th>
-                                                        <th scope="col" class="border-0">SERVIDOR</th>
-                                                        <th scope="col" class="border-0">REGIÃO</th>
-                                                        <th scope="col" class="border-0">CPU</th>
-                                                        <th scope="col" class="border-0">RAM</th>
-                                                        <th scope="col" class="border-0">DISCO</th>
-                                                        <th scope="col" class="border-0">REDE</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="lista-servidores">
-                                                    <tr class="servidor-critico">
-                                                        <td><span id="statusServidorBola">°</span></td>
-                                                        <td>
-                                                            <div class="flex-column d-flex">
-                                                                <span id="horaColeta">10:23:01</span>
-                                                                <span id="dataColeta">10/04/2006</span>
+
+                                            <div class="offcanvas-body d-flex flex-column p-0 px-3">
+
+                                                <ul class="nav nav-pills flex-column mb-auto gap-2">
+                                                    <li class="nav-item">
+                                                        <a href="./home.html"
+                                                            class="nav-link active bg-success d-flex align-items-center">
+                                                            <div
+                                                                class="icon_side d-flex align-items-center justify-content-center">
+                                                                <svg width="18" height="18" viewBox="0 0 16 16"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M10 14V8.66667C10 8.48986 9.92976 8.32029 9.80474 8.19526C9.67971 8.07024 9.51014 8 9.33333 8H6.66667C6.48986 8 6.32029 8.07024 6.19526 8.19526C6.07024 8.32029 6 8.48986 6 8.66667V14"
+                                                                        stroke="currentColor" stroke-width="1.33333"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path
+                                                                        d="M2 6.66673C1.99995 6.47277 2.04222 6.28114 2.12386 6.1052C2.20549 5.92927 2.32453 5.77326 2.47267 5.64806L7.13933 1.64873C7.37999 1.44533 7.6849 1.33374 8 1.33374C8.3151 1.33374 8.62001 1.44533 8.86067 1.64873L13.5273 5.64806C13.6755 5.77326 13.7945 5.92927 13.8761 6.1052C13.9578 6.28114 14 6.47277 14 6.66673V12.6667C14 13.0203 13.8595 13.3595 13.6095 13.6095C13.3594 13.8596 13.0203 14.0001 12.6667 14.0001H3.33333C2.97971 14.0001 2.64057 13.8596 2.39052 13.6095C2.14048 13.3595 2 13.0203 2 12.6667V6.66673Z"
+                                                                        stroke="currentColor" stroke-width="1.33333"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                </svg>
                                                             </div>
-                                                        </td>
-                                        </div>
-                                        <td>
-                                            <div class="d-flex flex-column">
-                                                <span id="nomeServidor">TikTok-US-Edge-01</span>
-                                                <span id="diagnosticoEtlServidor">Disco Saturado
-                                                    + Clima</span>
-                                            </div>
-                                        </td>
-                                        <td><span id="cidadeServidor">São Paulo</span><span
-                                                id="regiaoServidor">sa-east</span></td>
-
-                                        <td>
-                                            <button
-                                                class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
-
-                                                <div class="d-flex flex-column w-100 gap-1">
-
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <rect x="0.434783" y="0.434783" width="19.1304"
-                                                                height="18.2609" rx="3.91304" fill="#C167C7"
-                                                                fill-opacity="0.3" />
-                                                            <rect x="0.434783" y="0.434783" width="19.1304"
-                                                                height="18.2609" rx="3.91304" stroke="#C167C7"
-                                                                stroke-width="0.869565" />
-                                                            <g clip-path="url(#clip0_1129_470)">
-                                                                <path
-                                                                    d="M12.998 6.00024H6.99805C6.44576 6.00024 5.99805 6.44796 5.99805 7.00024V13.0002C5.99805 13.5525 6.44576 14.0002 6.99805 14.0002H12.998C13.5503 14.0002 13.998 13.5525 13.998 13.0002V7.00024C13.998 6.44796 13.5503 6.00024 12.998 6.00024Z"
-                                                                    stroke="#C167C7" stroke-linecap="round"
-                                                                    stroke-linejoin="round" />
-                                                                <path
-                                                                    d="M11 8.5H9C8.72386 8.5 8.5 8.72386 8.5 9V11C8.5 11.2761 8.72386 11.5 9 11.5H11C11.2761 11.5 11.5 11.2761 11.5 11V9C11.5 8.72386 11.2761 8.5 11 8.5Z"
-                                                                    stroke="#C167C7" stroke-linecap="round"
-                                                                    stroke-linejoin="round" />
-                                                                <path d="M11.5 4.99976V5.99976" stroke="#C167C7"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M11.5 13.9998V14.9998" stroke="#C167C7"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M5 11.5H6" stroke="#C167C7"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M5 8.5H6" stroke="#C167C7"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M14.002 11.5H15.002" stroke="#C167C7"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M14.002 8.5H15.002" stroke="#C167C7"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M8.5 4.99976V5.99976" stroke="#C167C7"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M8.5 13.9998V14.9998" stroke="#C167C7"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                            </g>
-                                                            <defs>
-                                                                <clipPath id="clip0_1129_470">
-                                                                    <rect width="12" height="12" fill="white"
-                                                                        transform="translate(4 4)" />
-                                                                </clipPath>
-                                                            </defs>
-                                                        </svg>
-
-                                                        <span class="texto-destaque fs-5 fw-bold">93%</span>
-                                                    </div>
-
-                                                    <div class="progress-track">
-                                                        <div class="progress-fill estavel" style="width: 93%;">
-                                                        </div>
-                                                    </div>
-
-                                                </div>
+                                                            <span class="ms-2">Home</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="./gestao-equipe.html"
+                                                            class="nav-link d-flex align-items-center text-white">
+                                                            <div
+                                                                class="icon_side d-flex align-items-center justify-content-center">
+                                                                <svg width="18" height="18  " viewBox="0 0 16 16"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14"
+                                                                        stroke="currentColor" stroke-width="1.33333"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path
+                                                                        d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z"
+                                                                        stroke="currentColor" stroke-width="1.33333"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path
+                                                                        d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867"
+                                                                        stroke="currentColor" stroke-width="1.33333"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path
+                                                                        d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334"
+                                                                        stroke="currentColor" stroke-width="1.33333"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                            <span class="ms-2">Gestão Equipe</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a href="./pages/alertas.html"
+                                                            class="nav-link d-flex align-items-center text-white">
+                                                            <div
+                                                                class="icon_side d-flex align-items-center justify-content-center">
+                                                                <svg width="18" height="18" viewBox="0 0 16 16"
+                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path
+                                                                        d="M14.4866 12L9.15329 2.66665C9.037 2.46146 8.86836 2.29078 8.66457 2.17203C8.46078 2.05329 8.22914 1.99072 7.99329 1.99072C7.75743 1.99072 7.52579 2.05329 7.322 2.17203C7.11822 2.29078 6.94958 2.46146 6.83329 2.66665L1.49995 12C1.38241 12.2036 1.32077 12.4346 1.32129 12.6697C1.32181 12.9047 1.38447 13.1355 1.50292 13.3385C1.62136 13.5416 1.79138 13.7097 1.99575 13.8259C2.20011 13.942 2.43156 14.0021 2.66662 14H13.3333C13.5672 13.9997 13.797 13.938 13.9995 13.8208C14.202 13.7037 14.3701 13.5354 14.487 13.3327C14.6038 13.1301 14.6653 12.9002 14.6653 12.6663C14.6652 12.4324 14.6036 12.2026 14.4866 12Z"
+                                                                        stroke="currentColor" stroke-width="1.33333"
+                                                                        stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path d="M8 6V8.66667" stroke="currentColor"
+                                                                        stroke-width="1.33333" stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                    <path d="M8 11.3334H8.00667" stroke="currentColor"
+                                                                        stroke-width="1.33333" stroke-linecap="round"
+                                                                        stroke-linejoin="round" />
+                                                                </svg>
+                                                            </div>
+                                                            <span class="ms-2">Logs de Alerta</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
 
                                                 <div
-                                                    class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
-                                                    ABRIR
-                                                    <svg width="22" height="22" viewBox="0 0 18 18" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-
-                                            </button>
-                                        </td>
-                                        <td>
-                                            <button
-                                                class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
-
-                                                <div class="d-flex flex-column w-100 gap-1">
-
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <rect x="0.434783" y="0.434783" width="19.1304"
-                                                                height="18.2609" rx="3.91304" fill="#B0DB43"
-                                                                fill-opacity="0.3" />
-                                                            <rect x="0.434783" y="0.434783" width="19.1304"
-                                                                height="18.2609" rx="3.91304" stroke="#B0DB43"
-                                                                stroke-width="0.869565" />
-                                                            <path d="M7.09961 13.2326V11.7749" stroke="#B0DB43"
-                                                                stroke-width="1.03255" stroke-linecap="round"
-                                                                stroke-linejoin="round" />
-                                                            <path d="M9.16406 13.2326V11.7749" stroke="#B0DB43"
-                                                                stroke-width="1.03255" stroke-linecap="round"
-                                                                stroke-linejoin="round" />
-                                                            <path d="M11.2266 13.2326V11.7749" stroke="#B0DB43"
-                                                                stroke-width="1.03255" stroke-linecap="round"
-                                                                stroke-linejoin="round" />
-                                                            <path d="M13.293 13.2326V11.7749" stroke="#B0DB43"
-                                                                stroke-width="1.03255" stroke-linecap="round"
-                                                                stroke-linejoin="round" />
-                                                            <path d="M8.13086 9.3451V8.37329" stroke="#B0DB43"
-                                                                stroke-width="1.03255" stroke-linecap="round"
-                                                                stroke-linejoin="round" />
-                                                            <path d="M12.2598 9.3451V8.37329" stroke="#B0DB43"
-                                                                stroke-width="1.03255" stroke-linecap="round"
-                                                                stroke-linejoin="round" />
-                                                            <path d="M10.1953 9.3451V8.37329" stroke="#B0DB43"
-                                                                stroke-width="1.03255" stroke-linecap="round"
-                                                                stroke-linejoin="round" />
-                                                            <path d="M5.03125 11.2888H15.3568" stroke="#B0DB43"
-                                                                stroke-width="1.03255" stroke-linecap="round"
-                                                                stroke-linejoin="round" />
-                                                            <path
-                                                                d="M5.03125 7.40126C5.03125 7.14352 5.14004 6.89633 5.33368 6.71408C5.52732 6.53183 5.78995 6.42944 6.0638 6.42944H14.3242C14.5981 6.42944 14.8607 6.53183 15.0543 6.71408C15.248 6.89633 15.3568 7.14352 15.3568 7.40126V7.93575C15.1429 7.99504 14.9552 8.11789 14.8217 8.28592C14.6881 8.45395 14.616 8.65814 14.616 8.86797C14.616 9.0778 14.6881 9.28199 14.8217 9.45002C14.9552 9.61805 15.1429 9.74089 15.3568 9.80018V12.2603C15.3568 12.5181 15.248 12.7653 15.0543 12.9475C14.8607 13.1298 14.5981 13.2321 14.3242 13.2321H6.0638C5.78995 13.2321 5.52732 13.1298 5.33368 12.9475C5.14004 12.7653 5.03125 12.5181 5.03125 12.2603V9.7822C5.24511 9.72291 5.43283 9.60007 5.56636 9.43204C5.69989 9.26401 5.77205 9.05982 5.77205 8.84999C5.77205 8.64016 5.69989 8.43597 5.56636 8.26794C5.43283 8.09991 5.24511 7.97706 5.03125 7.91778V7.40126Z"
-                                                                stroke="#B0DB43" stroke-width="1.03255"
-                                                                stroke-linecap="round" stroke-linejoin="round" />
-                                                        </svg>
-                                                        <span class="texto-destaque fs-5 fw-bold">93%</span>
+                                                    class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
+                                                    <div class="container_user d-flex gap-2">
+                                                        <a class="d-flex gap-3 align-items-center text-decoration-none text-white"
+                                                            href="">
+                                                            <div class="icon-profile">FB</div>
+                                                            <div class="box ms-2">
+                                                                <p style="font-size: 16px; margin: 0;">Fernando Brandão
+                                                                </p>
+                                                                <p
+                                                                    style="font-size: 13px; margin-bottom: 0px; color: #aaa;">
+                                                                    Admin Técnico</p>
+                                                            </div>
+                                                        </a>
                                                     </div>
-
-                                                    <div class="progress-track">
-                                                        <div class="progress-fill" style="width: 93%;">
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div
-                                                    class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
-                                                    ABRIR
-                                                    <svg width="22" height="22" viewBox="0 0 18 18" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75"
-                                                            stroke="currentColor" stroke-width="2"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-                                                </div>
-
-                                            </button>
-                                        </td>
-                                        <td>
-                                            <div class="flex-column text-center">
-                                                <span>80%</span>
-
-                                                <div class="progress-track">
-                                                    <div class="progress-fill" style="width: 93%;">
+                                                    <div class="button-sair mt-3 mb-2 text-center"
+                                                        style="cursor: pointer; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px;">
+                                                        <p style="margin: 0; color: #ff0050;">Sair</p>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="flex-column text-center">
-                                                <span>80%</span>
 
-                                                <div class="progress-track">
-                                                    <div class="progress-fill" style="width: 93%;">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        </tr>
-                                        </tbody>
-                                        </table>
-                                </div>
-
-                                </section>
-                            </div>
-
-
-                    </div>
-            </main>
-        </div>
-    </div>
-    </main>
-    </div>
-    </div>
-
-    <div class="modal fade" id="modalExcluirServidor" tabindex="-1" aria-labelledby="modalExcluirLabel"
-        aria-hidden="true" data-bs-theme="dark">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content"
-                style="background-color: #121212; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px">
-                <div class="modal-body p-4 p-md-5">
-                    <div class="d-flex align-items-center gap-3 mb-4">
-                        <i class="fa-solid fa-server fs-1 text-white"></i>
-                        <h3 class="m-0 fw-bold text-white" id="modalExcluirLabel">Excluir um servidor</h3>
-                    </div>
-
-                    <div class="d-flex flex-column gap-2 mb-5">
-                        <label for="select_servidor" class="form-label text-white fw-medium m-0">Selecione o
-                            servidor</label>
-                        <select type="text" id="select_servidor" class="form-control"
-                            style="background-color: #1f1f1f; border: 1px solid #333; color: #fff; padding: 10px 14px; border-radius: 8px">
-                            <option disabled selected value="">Selecionar</option>
-                        </select>
-                    </div>
-
-                    <div class="d-flex justify-content-center gap-4">
-                        <button type="button" class="btn px-4 py-2 fw-medium" data-bs-dismiss="modal"
-                            style="background-color: transparent; color: #00F2EA; border: 1px solid #00F2EA; border-radius: 8px; transition: 0.3s"
-                            onmouseover="this.style.backgroundColor='rgba(0, 242, 234, 0.1)'"
-                            onmouseout="this.style.backgroundColor='transparent'">
-                            Cancelar
-                        </button>
-                        <button type="button" id="btnConfirmarExclusao" data-bs-dismiss="modal"
-                            onclick="removerServidor()" class="btn px-4 py-2 fw-medium"
-                            style="background-color: #800020; color: #ff2d56; border: 1px solid #ff2d56; border-radius: 8px; transition: 0.3s"
-                            onmouseover="this.style.backgroundColor='#5c0017'"
-                            onmouseout="this.style.backgroundColor='#800020'">
-                            Excluir
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalCertezaExcluir" tabindex="-1" aria-hidden="true" data-bs-theme="dark">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content"
-                style="background-color: #141414; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px">
-                <div class="modal-body p-5 text-center d-flex flex-column align-items-center">
-                    <i class="fa-solid fa-triangle-exclamation mb-4" style="color: #FF2D56; font-size: 4.5rem"></i>
-                    <h4 class="text-white mb-5 fw-normal" style="font-size: 1.6rem">
-                        Deseja mesmo <b class="fw-bold">excluir</b> esse Servidor?
-                    </h4>
-                    <div class="d-flex justify-content-center gap-4 w-100 px-2">
-                        <button type="button" id="btnSimExcluir" class="btn w-50 py-2 fw-bold"
-                            style="background-color: #0c4d42; border: 1px solid #00F2EA; color: #00F2EA; border-radius: 8px; font-size: 1.2rem; transition: 0.3s"
-                            onmouseover="this.style.backgroundColor='rgba(0, 242, 234, 0.1)'"
-                            onmouseout="this.style.backgroundColor='#0c4d42'">
-                            Sim
-                        </button>
-                        <button type="button" class="btn w-50 py-2 fw-bold" data-bs-dismiss="modal"
-                            style="background-color: #5c0017; border: 1px solid #FF2D56; color: #FF2D56; border-radius: 8px; font-size: 1.2rem; transition: 0.3s"
-                            onmouseover="this.style.backgroundColor='rgba(255, 45, 86, 0.1)'"
-                            onmouseout="this.style.backgroundColor='#5c0017'">
-                            Não
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="modalLegenda" tabindex="-1" data-bs-theme="dark">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content text-white"
-                style="background-color: #121212; border: 1px solid rgba(255,255,255,0.1)">
-                <div class="modal-header d-flex flex-column border-0 pb-0 position-relative mt-3">
-                    <h1 class="modal-title w-100 d-flex justify-content-center align-items-center gap-2 m-0 text-white"
-                        style="font-size: 1.5rem">
-                        <svg width="24" height="24" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10.0641 13.2312C10.2156 13.0792 10.2913 12.891 10.2913 12.6667V9.50004C10.2913 9.27573 10.2153 9.08785 10.0633 8.93637C9.91134 8.7849 9.72345 8.7089 9.49967 8.70837C9.2759 8.70785 9.08801 8.78385 8.93601 8.93637C8.78401 9.0889 8.70801 9.27679 8.70801 9.50004V12.6667C8.70801 12.891 8.78401 13.0792 8.93601 13.2312C9.08801 13.3832 9.2759 13.4589 9.49967 13.4584C9.72345 13.4578 9.91161 13.3826 10.0641 13.2312ZM10.0641 6.89704C10.2156 6.74557 10.2913 6.55768 10.2913 6.33337C10.2913 6.10907 10.2153 5.92118 10.0633 5.76971C9.91134 5.61824 9.72345 5.54223 9.49967 5.54171C9.2759 5.54118 9.08801 5.61718 8.93601 5.76971C8.78401 5.92224 8.70801 6.11012 8.70801 6.33337C8.70801 6.55662 8.78401 6.74478 8.93601 6.89783C9.08801 7.05089 9.2759 7.12662 9.49967 7.12504C9.72345 7.12346 9.91161 7.04746 10.0641 6.89704ZM9.49967 17.4167C8.40454 17.4167 7.37537 17.2088 6.41218 16.7929C5.44898 16.377 4.61113 15.8131 3.89863 15.1011C3.18613 14.3891 2.6222 13.5513 2.20684 12.5875C1.79148 11.6238 1.58354 10.5947 1.58301 9.50004C1.58248 8.40543 1.79043 7.37626 2.20684 6.41254C2.62326 5.44882 3.18719 4.61097 3.89863 3.899C4.61008 3.18703 5.44793 2.6231 6.41218 2.20721C7.37643 1.79132 8.40559 1.58337 9.49967 1.58337C10.5938 1.58337 11.6229 1.79132 12.5872 2.20721C13.5514 2.6231 14.3893 3.18703 15.1007 3.899C15.8122 4.61097 16.3764 5.44882 16.7933 6.41254C17.2102 7.37626 17.4179 8.40543 17.4163 9.50004C17.4148 10.5947 17.2068 11.6238 16.7925 12.5875C16.3782 13.5513 15.8143 14.3891 15.1007 15.1011C14.3872 15.8131 13.5493 16.3772 12.5872 16.7937C11.625 17.2101 10.5959 17.4178 9.49967 17.4167Z"
-                                fill="white" />
-                        </svg>
-                        Legenda
-                    </h1>
-                    <button type="button" class="btn-close btn-close-white position-absolute end-0 me-4"
-                        data-bs-dismiss="modal"></button>
-                    <p class="text-center text-secondary mt-2 mb-0" style="font-weight: 300">São os parâmetros de
-                        alertas dos componentes e do servidor.</p>
-                </div>
-                <div class="modal-body text-center p-4">
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="card-legend p-4 d-flex flex-column gap-4 h-100"
-                                style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05)">
-                                <h5 class="text-center text-light m-0" style="font-weight: 500">Servidor</h5>
-                                <div class="d-flex flex-column gap-4 text-start mt-2">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="d-flex align-items-center justify-content-center flex-shrink-0"
-                                            style="width: 56px; height: 56px; border: 1px solid #00F2EA; border-radius: 12px; background-color: rgba(0, 242, 234, 0.1)">
-                                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
-                                                    stroke="#00F2EA" stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path
-                                                    d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
-                                                    stroke="#00F2EA" stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.37305 6.37256H6.38356" stroke="#00F2EA"
-                                                    stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.37305 19.1179H6.38356" stroke="#00F2EA"
-                                                    stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="text-light fw-medium">Todos os Componentes</span>
-                                            <span style="color: #00F2EA">Estáveis</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="d-flex align-items-center justify-content-center flex-shrink-0"
-                                            style="width: 56px; height: 56px; border: 1px solid #FFD700; border-radius: 12px; background-color: rgba(255, 215, 0, 0.1)">
-                                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
-                                                    stroke="#FFD700" stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path
-                                                    d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
-                                                    stroke="#FFD700" stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.37305 6.37256H6.38356" stroke="#FFD700"
-                                                    stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.37305 19.1179H6.38356" stroke="#FFD700"
-                                                    stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="text-light fw-medium">Pelo menos um componente</span>
-                                            <span style="color: #FFD700">Em Risco</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="d-flex align-items-center justify-content-center flex-shrink-0"
-                                            style="width: 56px; height: 56px; border: 1px solid #ff0050; border-radius: 12px; background-color: rgba(255, 20, 147, 0.1)">
-                                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
-                                                    stroke="#FF1493" stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path
-                                                    d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
-                                                    stroke="#FF1493" stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.37305 6.37256H6.38356" stroke="#FF1493"
-                                                    stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.37305 19.1179H6.38356" stroke="#FF1493"
-                                                    stroke-width="2.12419" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="text-light fw-medium">Dois componentes em risco ou um</span>
-                                            <span style="color: #ff0050">Em Crítico</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="card-legend p-4 d-flex flex-column gap-4 h-100"
-                                style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05)">
-                                <h5 class="text-center text-light m-0" style="font-weight: 500">Componente</h5>
-                                <div class="d-flex flex-column gap-4 text-start mt-2">
-                                    <div class="d-flex flex-column box-componente gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M15.647 3.47668H5.21686C4.2568 3.47668 3.47852 4.25497 3.47852 5.21503V15.6451C3.47852 16.6052 4.2568 17.3835 5.21686 17.3835H15.647C16.607 17.3835 17.3853 16.6052 17.3853 15.6451V5.21503C17.3853 4.25497 16.607 3.47668 15.647 3.47668Z"
-                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path
-                                                    d="M12.1701 7.82251H8.69339C8.21336 7.82251 7.82422 8.21165 7.82422 8.69168V12.1684C7.82422 12.6484 8.21336 13.0376 8.69339 13.0376H12.1701C12.6501 13.0376 13.0393 12.6484 13.0393 12.1684V8.69168C13.0393 8.21165 12.6501 7.82251 12.1701 7.82251Z"
-                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M13.0381 1.7384V3.47675" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M13.0381 17.3835V19.1219" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M1.73926 13.0377H3.47761" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M1.73926 7.82251H3.47761" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M17.3838 13.0377H19.1221" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M17.3838 7.82251H19.1221" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M7.82422 1.7384V3.47675" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M7.82422 17.3835V19.1219" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                            <h6 style="margin: 0; color: #A0A0A0">CPU</h6>
-                                        </div>
-                                        <div class="d-flex w-100 gap-1 text-center" style="font-size: 0.8rem">
-                                            <div class="col d-flex flex-column align-items-center">
-                                                <span class="text-secondary mb-1">Estável</span>
-                                                <div class="line-component w-100 mb-1"
-                                                    style="background-color: #00F2EA; height: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px">
-                                                </div>
-                                                <span style="color: #00F2EA">10%</span>
-                                            </div>
-                                            <div class="col d-flex flex-column align-items-center">
-                                                <span class="text-secondary mb-1">Risco</span>
-                                                <div class="line-component w-100 mb-1"
-                                                    style="background-color: #FFD500; height: 6px"></div>
-                                                <span style="color: #FFD500">70%</span>
-                                            </div>
-                                            <div class="col d-flex flex-column align-items-center">
-                                                <span class="text-secondary mb-1">Crítico</span>
-                                                <div class="line-component w-100 mb-1"
-                                                    style="background-color: #ff0050; height: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px">
-                                                </div>
-                                                <span style="color: #ff0050">90%</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="d-flex flex-column box-componente gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5.21582 16.5143V13.9067" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M8.69238 16.5143V13.9067" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M12.1699 16.5143V13.9067" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M15.6465 16.5143V13.9067" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M6.9541 9.56086V7.82251" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M13.9072 9.56086V7.82251" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M10.4307 9.56086V7.82251" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M1.73926 13.0375H19.1227" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path
-                                                    d="M1.73926 6.0843C1.73926 5.62326 1.9224 5.1811 2.24841 4.8551C2.57441 4.52909 3.01657 4.34595 3.47761 4.34595H17.3844C17.8454 4.34595 18.2876 4.52909 18.6136 4.8551C18.9396 5.1811 19.1227 5.62326 19.1227 6.0843V7.04039C18.7627 7.14644 18.4467 7.36618 18.2219 7.66674C17.9971 7.96731 17.8756 8.33256 17.8756 8.7079C17.8756 9.08323 17.9971 9.44848 18.2219 9.74905C18.4467 10.0496 18.7627 10.2694 19.1227 10.3754V14.776C19.1227 15.2371 18.9396 15.6792 18.6136 16.0052C18.2876 16.3312 17.8454 16.5144 17.3844 16.5144H3.47761C3.01657 16.5144 2.57441 16.3312 2.24841 16.0052C1.9224 15.6792 1.73926 15.2371 1.73926 14.776V10.3432C2.0993 10.2372 2.41534 10.0175 2.64014 9.71689C2.86494 9.41632 2.98642 9.05107 2.98642 8.67574C2.98642 8.3004 2.86494 7.93515 2.64014 7.63458C2.41534 7.33402 2.0993 7.11428 1.73926 7.00823V6.0843Z"
-                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                            <h6 style="margin: 0; color: #A0A0A0">RAM</h6>
-                                        </div>
-                                        <div class="d-flex w-100 gap-1 text-center" style="font-size: 0.8rem">
-                                            <div class="col d-flex flex-column align-items-center">
-                                                <span class="text-secondary mb-1">Estável</span>
-                                                <div class="line-component w-100 mb-1"
-                                                    style="background-color: #00F2EA; height: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px">
-                                                </div>
-                                                <span style="color: #00F2EA">10%</span>
-                                            </div>
-                                            <div class="col d-flex flex-column align-items-center">
-                                                <span class="text-secondary mb-1">Risco</span>
-                                                <div class="line-component w-100 mb-1"
-                                                    style="background-color: #FFD500; height: 6px"></div>
-                                                <span style="color: #FFD500">70%</span>
-                                            </div>
-                                            <div class="col d-flex flex-column align-items-center">
-                                                <span class="text-secondary mb-1">Crítico</span>
-                                                <div class="line-component w-100 mb-1"
-                                                    style="background-color: #ff0050; height: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px">
-                                                </div>
-                                                <span style="color: #ff0050">90%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex flex-column box-componente gap-2">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M19.1227 10.4302H1.73926" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path
-                                                    d="M4.73791 4.44159L1.73926 10.4302V15.6452C1.73926 16.1063 1.9224 16.5484 2.24841 16.8744C2.57441 17.2004 3.01657 17.3836 3.47761 17.3836H17.3844C17.8454 17.3836 18.2876 17.2004 18.6136 16.8744C18.9396 16.5484 19.1227 16.1063 19.1227 15.6452V10.4302L16.1241 4.44159C15.9802 4.15197 15.7583 3.90824 15.4835 3.7378C15.2086 3.56736 14.8917 3.47698 14.5683 3.47681H6.29373C5.97032 3.47698 5.65338 3.56736 5.37853 3.7378C5.10368 3.90824 4.88182 4.15197 4.73791 4.44159Z"
-                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M5.21582 13.907H5.22278" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path d="M8.69238 13.907H8.69935" stroke="#A0A0A0"
-                                                    stroke-width="1.73835" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </svg>
-                                            <h6 style="margin: 0; color: #A0A0A0">DISCO</h6>
-                                        </div>
-                                        <div class="d-flex w-100 gap-1 text-center" style="font-size: 0.8rem">
-                                            <div class="col d-flex flex-column align-items-center">
-                                                <span class="text-secondary mb-1">Estável</span>
-                                                <div class="line-component w-100 mb-1"
-                                                    style="background-color: #00F2EA; height: 6px; border-top-left-radius: 6px; border-bottom-left-radius: 6px">
-                                                </div>
-                                                <span style="color: #00F2EA">10%</span>
-                                            </div>
-                                            <div class="col d-flex flex-column align-items-center">
-                                                <span class="text-secondary mb-1">Risco</span>
-                                                <div class="line-component w-100 mb-1"
-                                                    style="background-color: #FFD500; height: 6px"></div>
-                                                <span style="color: #FFD500">70%</span>
-                                            </div>
-                                            <div class="col d-flex flex-column align-items-center">
-                                                <span class="text-secondary mb-1">Crítico</span>
-                                                <div class="line-component w-100 mb-1"
-                                                    style="background-color: #ff0050; height: 6px; border-top-right-radius: 6px; border-bottom-right-radius: 6px">
-                                                </div>
-                                                <span style="color: #ff0050">90%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="text-center mt-4 text-secondary pb-2" style="font-size: 0.9rem">
-                        Você consegue alterar os parâmetros do componente<br>na tela de adição e edição de servidor.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-
-
-
-    <!-- MENU OFFCANVAS DO BOOTSTRAP HAMBURGUER -->
-    <div class="offcanvas offcanvas-start text-white sidebar" tabindex="-1" id="menuMobile"
-        style="width: 280px; position: fixed;">
-
-        <div class="offcanvas-header border-bottom border-secondary pb-3 mb-3">
-            <img width="130" src="./assets/logo-versao2.png" alt="Logo">
-            <button type="button" class="btn-close bg-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-
-        <div class="offcanvas-body d-flex flex-column p-0 px-3">
-
-            <ul class="nav nav-pills flex-column mb-auto gap-2">
-                <li class="nav-item">
-                    <a href="./home.html" class="nav-link active bg-success d-flex align-items-center">
-                        <div class="icon_side d-flex align-items-center justify-content-center">
-                            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10 14V8.66667C10 8.48986 9.92976 8.32029 9.80474 8.19526C9.67971 8.07024 9.51014 8 9.33333 8H6.66667C6.48986 8 6.32029 8.07024 6.19526 8.19526C6.07024 8.32029 6 8.48986 6 8.66667V14"
-                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path
-                                    d="M2 6.66673C1.99995 6.47277 2.04222 6.28114 2.12386 6.1052C2.20549 5.92927 2.32453 5.77326 2.47267 5.64806L7.13933 1.64873C7.37999 1.44533 7.6849 1.33374 8 1.33374C8.3151 1.33374 8.62001 1.44533 8.86067 1.64873L13.5273 5.64806C13.6755 5.77326 13.7945 5.92927 13.8761 6.1052C13.9578 6.28114 14 6.47277 14 6.66673V12.6667C14 13.0203 13.8595 13.3595 13.6095 13.6095C13.3594 13.8596 13.0203 14.0001 12.6667 14.0001H3.33333C2.97971 14.0001 2.64057 13.8596 2.39052 13.6095C2.14048 13.3595 2 13.0203 2 12.6667V6.66673Z"
-                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <span class="ms-2">Home</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="./gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
-                        <div class="icon_side d-flex align-items-center justify-content-center">
-                            <svg width="18" height="18  " viewBox="0 0 16 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14"
-                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path
-                                    d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z"
-                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path
-                                    d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867"
-                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path
-                                    d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334"
-                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <span class="ms-2">Gestão Equipe</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="./pages/alertas.html" class="nav-link d-flex align-items-center text-white">
-                        <div class="icon_side d-flex align-items-center justify-content-center">
-                            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M14.4866 12L9.15329 2.66665C9.037 2.46146 8.86836 2.29078 8.66457 2.17203C8.46078 2.05329 8.22914 1.99072 7.99329 1.99072C7.75743 1.99072 7.52579 2.05329 7.322 2.17203C7.11822 2.29078 6.94958 2.46146 6.83329 2.66665L1.49995 12C1.38241 12.2036 1.32077 12.4346 1.32129 12.6697C1.32181 12.9047 1.38447 13.1355 1.50292 13.3385C1.62136 13.5416 1.79138 13.7097 1.99575 13.8259C2.20011 13.942 2.43156 14.0021 2.66662 14H13.3333C13.5672 13.9997 13.797 13.938 13.9995 13.8208C14.202 13.7037 14.3701 13.5354 14.487 13.3327C14.6038 13.1301 14.6653 12.9002 14.6653 12.6663C14.6652 12.4324 14.6036 12.2026 14.4866 12Z"
-                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path d="M8 6V8.66667" stroke="currentColor" stroke-width="1.33333"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M8 11.3334H8.00667" stroke="currentColor" stroke-width="1.33333"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <span class="ms-2">Logs de Alerta</span>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
-                <div class="container_user d-flex gap-2">
-                    <a class="d-flex gap-3 align-items-center text-decoration-none text-white" href="">
-                        <div class="icon-profile">FB</div>
-                        <div class="box ms-2">
-                            <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
-                            <p style="font-size: 13px; margin-bottom: 0px; color: #aaa;">Admin Técnico</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="button-sair mt-3 mb-2 text-center"
-                    style="cursor: pointer; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px;">
-                    <p style="margin: 0; color: #ff0050;">Sair</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script src="index.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="./js/home.js"></script>
+                                        <script
+                                            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                                            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                                            crossorigin="anonymous"></script>
+                                        <script src="index.js"></script>
+                                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                        <script src="./js/home.js"></script>
 </body>
 
 </html>

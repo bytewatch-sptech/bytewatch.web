@@ -381,11 +381,8 @@ body {
 }
 
 .card-mapa {
-  width: 400px !important;
-  height: 250px !important;
   background-color: #1a1a1a;
   border-radius: 12px;
-  padding: 5px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
@@ -395,7 +392,6 @@ body {
 }
 
 .matriz-priorizacao {
-  width: 430px;
   background-color: #1a1a1a;
   border-radius: 12px;
   padding: 15px;
@@ -431,8 +427,6 @@ body {
 }
 
 .card-mapa {
-  width: 650px;
-  height: 450px;
   background-color: #1a1a1a;
   border-radius: 12px;
   padding: 15px;
@@ -442,6 +436,7 @@ body {
 #mapa {
   width: 100%;
   height: 100%;
+  border-radius: 10pz;
 }
 
 #diagnosticoEtlServidor {
