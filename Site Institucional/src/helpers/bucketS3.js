@@ -112,7 +112,7 @@ async function obterRelatorio() {
     
     const params = {
         Bucket: process.env.S3_BUCKET_NAME,
-        Key: "relatorios/relatorio_final_projeto.csv"
+        Key: "relatorios/relatorio.csv"
     };
 
     try {
