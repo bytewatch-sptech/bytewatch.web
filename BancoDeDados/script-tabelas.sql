@@ -75,9 +75,6 @@
 	  FOREIGN KEY (fk_datacenter) REFERENCES datacenter(id_datacenter)
 	);
 
-	INSERT INTO servidor 
-	VALUES (default, "a", "a", "a", "a", '8c:b0:e9:c2:04:27', 1, 1);
-
 	CREATE TABLE componente_servidor (
 	id_componente_servidor INT auto_increment,
 	  fk_id_servidor INT NOT NULL,
