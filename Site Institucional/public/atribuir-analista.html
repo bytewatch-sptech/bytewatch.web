@@ -160,14 +160,13 @@
                                             style="font-size: 0.9rem;">Funcionário *</label>
                                         <select id="select_funcionario" class="form-control input-escuro input-form-compacto">
                                             <option selected disabled>Selecionar</option>
-                                            <option>Manutenção</option>
                                         </select>    
                                     </div>
                                     <div>
                                         <label class="form-label text-white fw-medium mb-1"
                                             style="font-size: 0.9rem;">Servidor *</label>
                                         <select id="select_datacenter" class="form-control input-escuro input-form-compacto">
-                                            <option >Manutenção</option>
+                                            <option selected disabled>Selecionar</option>
                                         </select>    
                                     </div>
                                 </div>
@@ -302,8 +301,19 @@
         }
         document.getElementById("select_datacenter").innerHTML += conteudoSelect;
     } 
+
+    async function buscarFuncionarios () {
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        resultado = await buscarTodosFuncionariosService()
+        let conteudoSelect = ""
+        for (let i = 0; i < resultado.length; i++) {
+            conteudoSelect += `<option value="${resultado[i].id_usuario}">${resultado[i].nome}</option>`
+        }
+        document.getElementById("select_funcionario").innerHTML += conteudoSelect;
+    } 
     
     buscarDatacenters()
+    buscarFuncionarios()
 </script>
 <script>
     function selecionarComponente(e) {

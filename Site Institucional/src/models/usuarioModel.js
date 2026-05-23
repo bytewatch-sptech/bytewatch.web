@@ -39,9 +39,7 @@ function listar() {
         u.nome, 
         tu.tipo AS cargo
         FROM usuario u
-        JOIN tipo_usuario tu ON u.fk_tipo_usuario = tu.id_tipo_usuario
-        WHERE tu.tipo = 'Analista de SRC'
-        GROUP BY u.id_usuario, u.nome, tu.tipo;
+        JOIN tipo_usuario tu ON u.fk_tipo_usuario = tu.id_tipo_usuario;
     `;
     return database.executar(instrucaoSql);
 }

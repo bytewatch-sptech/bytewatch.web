@@ -22,6 +22,14 @@ async function buscarTodosServidoresService(){
     return json
 } 
 
+async function buscarTodosFuncionariosService(){
+    const body = {  }
+    const response = await api.get(`/usuarios/listar`, body)
+    const json = await response.json()
+    console.log(json);
+    return json
+} 
+
 async function excluirServidorService(id_servidor){
     const response = await api.delete(`/servidor/remover-servidor/${id_servidor}`)
     const json = await response.json()
