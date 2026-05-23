@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/gestor.css">
     <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="shortcut icon" href="../assets/logo-cd.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -17,7 +18,7 @@
 
     <div class="row flex-nowrap">
         <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
-            style="min-height: 100vh; transition: 0.3s; overflow-x: hidden;">
+            style="min-height: 100vh;">
 
             <div class="d-flex justify-content-center mb-5">
                 <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
@@ -26,7 +27,7 @@
 
             <ul class="nav nav-pills flex-column mb-auto gap-2">
                 <li class="nav-item">
-                    <a href="../home.html" class="nav-link active bg-success d-flex align-items-center">
+                    <a href="/home.html" class="nav-link active bg-success d-flex align-items-center">
                         <div class="icon_side d-flex align-items-center justify-content-center">
                             <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +46,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
+                    <a href="/gestao-equipe2.html" class="nav-link d-flex align-items-center text-white">
                         <div class="icon_side d-flex align-items-center justify-content-center">
                             <svg width="18" height="18  " viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +73,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./alertas.html" class="nav-link d-flex align-items-center text-white">
+                    <a href="dash-alertas.html" class="nav-link d-flex align-items-center text-white">
                         <div class="icon_side d-flex align-items-center justify-content-center">
                             <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -110,13 +111,13 @@
         </nav>
 
         <main>
+
+
             <div class="container-fluid">
                 <div class="row">
 
                     <!-- MAIN -->
                     <div class="col-lg-10 col-10">
-                        <button onclick="history.back()">← Voltar</button>
-                        <div class="middle-line"></div>
 
                         <h3>Painel Executivo</h3>
                         <p class="text-secondary">Visão macro da infraestrutura</p>
@@ -126,29 +127,56 @@
 
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/wallet.png" style="height: 25px;" alt=""> Custo Mensal
-                                        Estimado</p>
-                                    <div class="kpi-value">R$ 42.380</div>
-                                    <!-- <small class="kpi-green">↓ 3,2%</small> -->
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 me-2">
-                                <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/calendar.png" style="height: 25px;" alt=""> Custo do dia</p>
-                                    <div class="kpi-value kpi-red">R$ 10.00</div>
-                                    <!-- <small class="kpi-green">↓ 60%</small> -->
+                                    <p><img src="../assets/walvar.png" style="height: 25px;"> Custo Mensal Estimado</p>
+                                    <div class="kpi-value">
+                                        <span id="custoMes"></span>
+                                    </div>
+                                    <small class="kpi-green">
+                                        <span id="progressoMes"></span>
+                                    </small>
                                 </div>
                             </div>
 
                             <div class="col-md-3">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/goal.png" style="height: 25px;" alt=""> Meta do mês</p>
-                                    <div class="kpi-value">R$ 50.000</div>
-                                    <!-- <small class="kpi-green">↑ 0,15%</small> -->
+                                    <p><img src="../assets/goal.png" style="height: 25px;"> Custo até o momento</p>
+                                    <div class="kpi-value">
+                                        <span id="custoAtual"></span>
+                                    </div>
+                                    <small class="kpi-green">
+                                        <span id="statusCusto"></span>
+                                    </small>
                                 </div>
                             </div>
 
+                            <div class="col-md-3 me-2">
+                                <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
+                                    <p><img src="../assets/calendar.png" style="height: 25px;"> Custo do dia</p>
+                                    <div class="kpi-value">
+                                        <span id="custoDia"></span>
+                                    </div>
+                                    <small class="kpi-green">
+                                        <span id="infoDia"></span>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="card-parametro">
+                                <div class="col d-flex flex-column align-items-center">
+                                    <span>Risco</span>
+                                    <div class="line-component rounded"
+                                        style="background-color: #FFD500; width: 100%; height: 5px; ">
+                                    </div>
+                                    70%
+                                </div>
+                                <div class="col d-flex flex-column align-items-center">
+                                    <span>Critíco</span>
+                                    <div class="line-component rounded"
+                                        style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                    </div>
+                                    90%
+                                </div>
+                            </div>
 
                         </div>
 
@@ -160,7 +188,7 @@
                                     <div class="card-kpi">
                                         <div class="d-flex align-items-center justify-content-center"
                                             style="color: white; gap: 10px;">
-                                            Linha de Comparação
+
                                         </div>
                                         <canvas id="visaoMacro" style="height:300px;"></canvas>
                                     </div>
@@ -169,45 +197,33 @@
                             </div>
 
                             <!-- GAUGES -->
-                            <div class="col-lg-auto col-8">
+                            <div class="col-lg-3 col-12">
 
-                                <div class="card-custom mb-2">
-                                    <h6>servidor 000 - Pico de RAM</h6>
-                                    <canvas id="gaugePicoRAM" style="height:50px;"></canvas>
-                                    <div class="gauge kpi-yellow">87%</div>
+                                <div class="card-custom card-gauge mb-2" id="statusGaugeRam">
+                                    <h6 class="mb-0">servidor 000 - Pico de RAM</h6>
+                                    <canvas id="gaugePicoRAM"></canvas>
+                                    <div id="valorRam" class="gauge kpi-yellow"></div>
                                 </div>
 
-                                <div class="card-custom">
-                                    <h6>servidor 000 - Pico de CPU</h6>
-                                    <canvas id="gaugePicoCPU" style="height:70px;"></canvas>
-                                    <div class="gauge kpi-yellow">78%</div>
+                                <div class="card-custom card-gauge" id="statusGaugeCpu">
+                                    <h6 class="mb-0">servidor 000 - Pico de CPU</h6>
+                                    <canvas id="gaugePicoCPU"></canvas>
+                                    <div id="valorCpu" class="gauge kpi-yellow"></div>
                                 </div>
                             </div>
 
                         </div>
 
-                        <!-- ALERTAS -->
+                        <!-- RANKING -->
                         <div class="card-custom mt-4">
-                            <h5>Ranking Servidores</h5>
+                            <h5>Ranking Consumo RAM</h5>
 
-                            <div class="alert-item">
-                                <span>Servidor - 000</span>
-                                <span class="badge-custom critico">Crítico</span>
-                            </div>
-
-                            <div class="alert-item">
-                                <span>Custo acima do orçamento</span>
-                                <span class="badge-custom atencao">Atenção</span>
-                            </div>
-
-                            <div class="alert-item">
-                                <span>Backup desatualizado</span>
-                                <span class="badge-custom info">Info</span>
-                            </div>
+                            <div class="alert-item" id="rankingContainer"></div>
 
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </main>
@@ -221,15 +237,18 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../services/api.js"></script>
 <script src="../services/serviceGestorDash.js"></script>
-<script src="../js/scriptAI.js"></script>
+<!-- <script src="../js/scriptAI.js"></script> -->
 
 <script>
+    window.onload = () => {
+        ObterDadosGrafico();
+    }
 
-    async function ObterDadosGauge() {
+    async function ObterDadosGrafico() {
         const resultado = await buscarDadosGestorService();
         console.log(resultado.dadosMaquina);
 
-        console.log("ServidorEmPico:", resultado?.ServidorEmPico);
+        console.log("ServidorEmPico:", resultado?.dadosMaquina.ServidorEmPico);
 
         if (!resultado) {
             console.error("Sem dados");
@@ -237,33 +256,218 @@
         }
 
         try {
-            const picoRam = resultado.dadosMaquina.ServidorEmPico.servidorPicoRAM.valor;
-            const picoCpu = resultado.dadosMaquina.ServidorEmPico.servidorPicoCPU.valor;
+            const picoRamGauge = resultado.dadosMaquina.ServidorEmPico?.servidorPicoRAM?.valor;
+            const picoCpu = resultado.dadosMaquina.ServidorEmPico?.servidorPicoCPU?.valor;
 
-            const picosDia = [picoRam, picoCpu];
+            console.log("RAM:", picoRamGauge);
+            console.log("CPU:", picoCpu);
+
+            if (picoRamGauge == null || picoCpu == null) {
+                console.error("Dados de pico inválidos");
+                return;
+            }
+
+
+
+
+            const picosDia = [picoRamGauge, picoCpu];
 
             console.log("Picos:", picosDia);
 
-            atualizarGaugeRam(picoRam);
-            atualizarGaugeCpu(picoCpu);
+            plotarGaugeRam(picoRamGauge);
+            plotarGaugeCpu(picoCpu);
+
+            document.getElementById("valorRam").innerText = picoRamGauge + "%"
+            document.getElementById("valorCpu").innerText = picoCpu + "%"
+
+
+            // Pegando os dados da KPI de financeiro
+
+            const custoAtual = resultado.dadosMaquina.custoTotalAteAgora
+            const custoMes = resultado.dadosMaquina.custoTotalNoMes
+            const custoDia = resultado.dadosMaquina.custoDoDia
+            const dias = resultado.dadosMaquina.diasDecorridos
+
+
+
+            const hoje = new Date()
+            const diasDoMes = new Date(
+                hoje.getFullYear(),
+                hoje.getMonth() + 1, 0
+            ).getDate()
+
+
+            const progresso = (custoAtual / custoMes) * 100
+            const custoEsperado = custoMes / diasDoMes
+            const estimativaAteHoje = custoEsperado * dias
+
+            var status = "Dentro do esperado"
+            var cor = "white"
+
+            const diferenca = custoAtual - estimativaAteHoje;
+            const percentual = (diferenca / estimativaAteHoje) * 100;
+
+            if (percentual > 5) {
+                status = "Acima do esperado"
+                cor = "red"
+            } else if (percentual < -5) {
+                status = "Abaixo do esperado"
+                cor = "green"
+            }
+
+            document.getElementById("custoAtual").innerText =
+                `R$ ${custoAtual.toFixed(2)}`;
+
+            document.getElementById("custoMes").innerText =
+                `R$ ${custoMes.toFixed(2)}`;
+
+            document.getElementById("progressoMes").innerText =
+                `${progresso.toFixed(1)}%`;
+
+            document.getElementById("statusCusto").innerText =
+                `${percentual.toFixed(1)}% ${status}`;
+
+            document.getElementById("statusCusto").style.color = cor;
+
+            document.getElementById("custoDia").innerText =
+                `R$ ${custoDia.toFixed(2)}`;
+
+
+            //Pegando os dados do Ranking de consumo de RAM
+
+            // const posicao = resultado.dadosMaquina.posicao
+            // const servidor = resultado.dadosMaquina.macAddress
+            // const maxRam = resultado.dadosMaquina.picoRam
+            const ranking = resultado.dadosMaquina.rankingRam
+            ranking.sort((a, b) => a.posicao - b.posicao)
+
+            if (!ranking.length) {
+                return
+            }
+
+            if (ranking.length > 0) {
+                criarRanking(ranking)
+            } else {
+                alert("ranking não encontrado")
+            }
+
+
+            console.log("RANKING: ", ranking)
+
 
         } catch (erro) {
-            console.error("Erro ao pegar picos:", erro);
+            console.error("Erro ao pegar Dados:", erro)
         }
+
+
+
+        // console.log({
+        //     progresso,
+        //     esperadoAteHoje,
+        //     diferenca,
+        //     percentual,
+        //     status
+        // });
+
+
     }
-    ObterDados();
 
 
-    async function mudarGaugePico(params) {
+    function criarGauge(canvasId, valor, cor, cardId) {
+        const ctx = document.getElementById(canvasId)
+        const gaugeCor = document.getElementById(cardId)
+        gaugeCor.classList.remove("card-normal", "card-alerta", "card-critico")
+
+        console.log("Classes antes:", gaugeCor.className)
+
+        if (!ctx) {
+            console.error("Canvas não encontrado:", canvasId)
+            return
+        }
+
+        if (valor >= 85) {
+            cor = "red"
+            gaugeCor.classList.add("card-critico")
+        } else if (valor >= 65) {
+            cor = "yellow"
+            gaugeCor.classList.add("card-alerta")
+        } else {
+            cor = "white"
+            gaugeCor.classList.add("card-normal")
+        }
+
+        console.log("Classes depois:", gaugeCor.className)
+
+        new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                datasets: [{
+                    data: [valor, 100 - valor],
+                    backgroundColor: [cor, "#102A43"],
+                    borderColor: [cor, cor],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                circumference: 180,
+                rotation: -90,
+                cutout: "70%",
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                }
+            }
+        })
+    }
+
+    function plotarGaugeRam(valor) {
+        criarGauge("gaugePicoRAM", valor, null, "statusGaugeRam")
+    }
+
+    function plotarGaugeCpu(valor) {
+        criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu")
+    }
+
+    function criarRanking(ranking) {
+        const container = document.getElementById("rankingContainer")
+
+        container.innerHTML = ""
+
+        for (var i = 0; i < 3 && i < ranking.length; i++) {
+
+            var item = ranking[i]
+
+            var classe = "badge-custom"
+
+            // Define cor baseado no uso
+            if (item.picoRam > 85) {
+                classe += " critico"
+            } else if (item.picoRam > 70) {
+                classe += " alerta"
+            } else {
+                classe += " normal"
+            }
+
+            container.innerHTML += `
+        <div class="alert-item">
+            <span>${item.posicao}°</span>
+            <span>Servidor - ${item.macAddress}</span>
+            <span class="${classe}">${item.picoRam.toFixed(1)}%</span>
+        </div>
+    `
+        }
 
     }
+
+
     document.addEventListener("DOMContentLoaded", function () {
 
-        const linhas = document.getElementById('visaoMacro');
+        const linhas = document.getElementById('visaoMacro')
 
         if (!linhas) {
-            console.error("Canvas não encontrado!");
-            return;
+            console.error("Canvas não encontrado!")
+            return
         }
 
         new Chart(linhas, {
@@ -285,43 +489,43 @@
                     }
                 ]
             }
-        });
+        })
 
-        const gauge = document.getElementById("gaugePicoRAM");
-        const gaugeCPU = document.getElementById("gaugePicoCPU")
+        // const gauge = document.getElementById("gaugePicoRAM")
+        // const gaugeCPU = document.getElementById("gaugePicoCPU")
 
-        const valor = 78;
+        // const valor = 78
 
-        const data = {
-            labels: ["Usado", "Livre"],
-            datasets: [{
-                data: [valor, 100 - valor],
-                backgroundColor: ["#f59e0b", "#1f2937"],
-                borderWidth: 0
-            }]
-        };
+        // const data = {
+        //     labels: ["Usado", "Livre"],
+        //     datasets: [{
+        //         data: [valor, 100 - valor],
+        //         backgroundColor: ["#f59e0b", "#1f2937"],
+        //         borderWidth: 0
+        //     }]
+        // }
 
-        new Chart(gauge, {
-            type: 'doughnut',
-            data: data,
-            options: {
-                aspectRatio: 2,
-                circumference: 180,
-                rotation: -90,
-                cutout: "70%"
-            }
-        });
+        // new Chart(gauge, {
+        //     type: 'doughnut',
+        //     data: data,
+        //     options: {
+        //         aspectRatio: 2,
+        //         circumference: 180,
+        //         rotation: -90,
+        //         cutout: "70%"
+        //     }
+        // })
 
-        new Chart(gaugeCPU, {
-            type: 'doughnut',
-            data: data,
-            options: {
-                aspectRatio: 2,
-                circumference: 180,
-                rotation: -90,
-                cutout: "70%"
-            }
-        });
+        // new Chart(gaugeCPU, {
+        //     type: 'doughnut',
+        //     data: data,
+        //     options: {
+        //         aspectRatio: 2,
+        //         circumference: 180,
+        //         rotation: -90,
+        //         cutout: "70%"
+        //     }
+        // })
 
 
 
