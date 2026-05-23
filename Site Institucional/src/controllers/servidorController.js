@@ -38,6 +38,12 @@ async function buscarDatacenters(req, res) {
   res.status(200).json(resultado);
 }
 
+async function buscarTodosServidores(req, res) {
+  
+  const resultado = await servidorModel.buscarServidores();
+  res.status(200).json(resultado);
+}
+
 async function removerServidor(req, res) {
   const { id_servidor } = req.params;
 
@@ -185,4 +191,5 @@ module.exports = {
   atualizarServidor,
   buscarNomeServidor,
   buscarUsoS3,
+  buscarTodosServidores
 };

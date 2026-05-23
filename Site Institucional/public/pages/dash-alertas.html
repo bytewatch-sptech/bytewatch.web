@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
+                        <a href="/gestao-equipe2.html" class="nav-link d-flex align-items-center text-white">
                             <div class="icon_side d-flex align-items-center justify-content-center">
                                 <svg width="18" height="18  " viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -154,9 +154,10 @@
                                     <i class="fa-solid fa-rotate-right"></i> Atualizar
                                 </button>
 
-                                <button class="btn-header-log btn-exportar-green">
+                                <button id="btnExportarRelatorio" class="btn-header-log btn-exportar-green">
                                     <i class="fa-solid fa-download"></i> Exportar Relatório <span
                                         class="texto-java ms-1"></span>
+                                </button>
                                 </button>
 
                             </div>
@@ -177,8 +178,6 @@
                                     <span class="titulo-metrica">Total de Alertas</span>
                                     <span class="valor-metrica" id="valor_metrica"></span>
                                     <span class="subtitulo-metrica">Últimas 24 horas</span>
-                                    <span class="trend trend-bad mt-1"><i class="fa-solid fa-arrow-trend-up"></i> +12%
-                                        vs ontem</span>
                                 </div>
                             </div>
                         </div>
@@ -209,8 +208,6 @@
                                     <span class="titulo-metrica">Críticos</span>
                                     <span class="valor-metrica" id="alertas_criticos"></span>
                                     <span class="subtitulo-metrica">Incidentes não resolvidos</span>
-                                    <span class="trend trend-bad mt-1"><i class="fa-solid fa-arrow-trend-up"></i> +5% em
-                                        alta</span>
                                 </div>
                             </div>
                         </div>
@@ -235,26 +232,26 @@
 
                 <div class="row g-4 mb-4 align-items-stretch">
 
-                    <div class="col-12 col-lg-7">
-                        <div class="d-flex flex-column align-items-stretch h-100 p-4"
-                            style="background-color: var(--cor10); border: 1px solid transparent; border-radius: 12px;">
+                    <div class="col-12 col-lg-7 mb-4">
+                        <div class="d-flex flex-column h-100 p-4"
+                            style="background-color: var(--cor10); border-radius: 12px;">
 
                             <div class="d-flex justify-content-between align-items-start mb-4 w-100">
                                 <div>
                                     <h5 class="text-white m-0 fw-semibold mb-1">Alertas Gerados vs. Tickets Resolvidos
                                     </h5>
-                                    <span style="color: var(--cor12); font-size: 0.85rem;">Camada Gold · Integração Jira
-                                        · Janela 24h</span>
+                                    <span style="color: var(--cor12); font-size: 0.85rem;">Janela 24h</span>
                                 </div>
                             </div>
 
                             <div class="chart-container-logs flex-grow-1"
-                                style="min-height: 280px; position: relative;"> <canvas
-                                    id="graficoAlertasTickets"></canvas>
+                                style="position: relative; min-height: 280px; width: 100%; height: 100%;">
+                                <canvas id="graficoAlertasTickets"></canvas>
                             </div>
 
                         </div>
                     </div>
+
 
                     <div class="col-12 col-lg-5">
                         <div class="d-flex flex-column align-items-stretch h-100 p-4"
@@ -342,110 +339,8 @@
                     </div>
                 </div>
 
-                <h5 class="mb-3">Lista de Alertas (5)</h5>
-
-                <div class="alerta red">
-                    <div class="conteudo-alerta">
-                        <div class="alert-left d-flex gap-3 align-items-start">
-                            <div class="icon red-icon">
-                                <img src="../assets/icons/alert/cpu-critic.svg" alt="CPU" />
-                            </div>
-                            <div>
-                                <div class="linha-topo ">
-                                    <strong>TikTok EU-Central-1</strong>
-                                    <span class="badge bg-danger">CRÍTICO</span>
-                                    <span class="badge bg-secondary">CPU</span>
-                                </div>
-
-                                <p>CPU ultrapassou o limite de 90%</p>
-                                <small>24 de Abril de 2026 às 14:30</small>
-                            </div>
-                        </div>
-                        <button class="btn-visualizar">Visualizar</button>
-                    </div>
-                </div>
-
-                <div class="alerta red">
-                    <div class="conteudo-alerta">
-                        <div class="alert-left d-flex gap-3 align-items-start">
-                            <div class="icon red-icon">
-                                <img src="../assets/icons/alert/ram-critic.svg" alt="RAM" />
-                            </div>
-                            <div>
-                                <div class="linha-topo">
-                                    <strong>TikTok EU-Central-1</strong>
-                                    <span class="badge bg-danger">CRÍTICO</span>
-                                    <span class="badge bg-secondary">RAM</span>
-                                </div>
-
-                                <p>Uso de memória em 91%</p>
-                                <small>24 de Abril de 2026 às 14:25</small>
-                            </div>
-                        </div>
-                        <button class="btn-visualizar">Visualizar</button>
-                    </div>
-                </div>
-
-                <div class="alerta yellow">
-                    <div class="conteudo-alerta">
-                        <div class="alert-left d-flex gap-3 align-items-start">
-                            <div class="icon yellow-icon">
-                                <img src="../assets/icons/alert/cpu-risk.svg" alt="CPU" />
-                            </div>
-                            <div>
-                                <div class="linha-topo">
-                                    <strong>TikTok US-West-1</strong>
-                                    <span class="badge bg-warning text-dark">ALERTA</span>
-                                    <span class="badge bg-secondary cpu">CPU</span>
-                                </div>
-
-                                <p>Uso de CPU próximo a 70%</p>
-                                <small>24 de Abril de 2026 às 13:45</small>
-                            </div>
-                        </div>
-                        <button class="btn-visualizar">Visualizar</button>
-                    </div>
-                </div>
-
-                <div class="alerta yellow">
-                    <div class="conteudo-alerta">
-                        <div class="alert-left d-flex gap-3 align-items-start">
-                            <div class="icon yellow-icon">
-                                <img src="../assets/icons//alert/ram-risk.svg" alt="RAM" />
-                            </div>
-                            <div>
-                                <div class="linha-topo">
-                                    <strong>TikTok SA-East-1</strong>
-                                    <span class="badge bg-warning text-dark">ALERTA</span>
-                                    <span class="badge bg-secondary">RAM</span>
-                                </div>
-
-                                <p>Uso de memória 75%</p>
-                                <small>24 de Abril de 2026 às 12:15</small>
-                            </div>
-                        </div>
-                        <button class="btn-visualizar">Visualizar</button>
-                    </div>
-                </div>
-
-                <div class="alerta yellow">
-                    <div class="conteudo-alerta">
-                        <div class="alert-left d-flex gap-3 align-items-start">
-                            <div class="icon yellow-icon">
-                                <img src="../assets/icons/alert/rede.svg" alt="Rede" />
-                            </div>
-                            <div>
-                                <div class="linha-topo">
-                                    <strong>TikTok SA-East-1</strong>
-                                    <span class="badge bg-warning text-dark">ALERTA</span>
-                                    <span class="badge bg-secondary">REDE</span>
-                                </div>
-                                <p>Latência de rede com redução de 25%</p>
-                                <small>24 de Abril de 2026 às 11:30</small>
-                            </div>
-                        </div>
-                        <button class="btn-visualizar">Visualizar</button>
-                    </div>
+                <h5 id="tituloListaAlertas" class="mb-3">Lista de Alertas (0)</h5>
+                <div id="containerListaAlertas">
                 </div>
 
             </main>
@@ -459,56 +354,193 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
+    const API_BASE_URL = "http://localhost:3333";
+    // MUDAR PARA QUANDO FOR PARA A NUVEM
+
+    async function baixarRelatorioS3() {
+        try {
+            const resposta = await fetch(`${API_BASE_URL}/relatorios/exportar`);
+
+            if (!resposta.ok) {
+                return alert("Erro ao baixar o relatório. Verifique o servidor.");
+            }
+
+            const jsonRetorno = await resposta.json();
+
+            if (!jsonRetorno.dadosMaquina) return;
+
+            const blob = new Blob([jsonRetorno.dadosMaquina], { type: 'text/csv' });
+            const urlBlob = window.URL.createObjectURL(blob);
+
+            const linkInvisivel = document.createElement('a');
+            linkInvisivel.href = urlBlob;
+            linkInvisivel.download = 'relatorio_magnes_solution.csv';
+
+            document.body.appendChild(linkInvisivel);
+            linkInvisivel.click();
+            linkInvisivel.remove();
+
+            window.URL.revokeObjectURL(urlBlob);
+
+        } catch (erro) {
+            alert("Falha na conexão com o servidor.");
+        }
+    }
+
+    const botaoExportar = document.getElementById('btnExportarRelatorio');
+    if (botaoExportar) {
+        botaoExportar.addEventListener('click', baixarRelatorioS3);
+    }
+
+    let graficoAlertasTicketsInstance = null;
+    let graficoSeveridadeInstance = null;
+
+    document.addEventListener('DOMContentLoaded', carregarDashboard);
+
     async function carregarDashboard() {
-
         const resultado = await MetricasAlertas();
-        valor_metrica.innerHTML = resultado.alertas.length;
 
-        const alertasCriticos = resultado.alertas.filter(alerta =>
-            alerta.nivel === "CRÍTICO" || alerta.nivel === "CRITICO"
-        );
-        alertas_criticos.innerHTML = alertasCriticos.length;
-
-        // verificando se há algum dado inserido no json
-        if (resultado.alertas.length > 0) {
-            const mac = resultado.alertas[0].mac;
-            const nomeServidor = await ObterNomeServidor(mac);
-            console.log(nomeServidor);
-            const servidorMaisVolatil = nomeServidor[0].nome_servidor;
-            servidor_volatil.innerHTML = servidorMaisVolatil;
+        if (resultado.graficos && resultado.graficos.distribuicao_severidade) {
+            valor_metrica.innerHTML = resultado.graficos.distribuicao_severidade.total;
+            alertas_criticos.innerHTML = resultado.graficos.distribuicao_severidade.critico;
+        } else {
+            valor_metrica.innerHTML = 0;
+            alertas_criticos.innerHTML = 0;
         }
 
-        const todosMacs = resultado.alertas.map(alerta => alerta.mac);
-        const serversUnicos = new Set(todosMacs);
-        totalServers.innerHTML = serversUnicos.size;
+        if (resultado.servidor_mais_volatil) {
+            try {
+                const macVolatil = resultado.servidor_mais_volatil.mac;
+                const totalEventos = resultado.servidor_mais_volatil.eventos_hoje;
 
-        renderizarGraficoSeveridade(resultado);
+                const respostaNome = await ObterNomeServidor(macVolatil);
+
+                const nomeServidor = respostaNome && respostaNome.length > 0
+                    ? respostaNome[0].nome_servidor
+                    : "Servidor Desconhecido";
+
+                servidor_volatil.innerHTML = nomeServidor;
+                const elementoQtdEventos = document.getElementById("qtd_eventos_volatil");
+                if (elementoQtdEventos) {
+                    elementoQtdEventos.innerHTML = `${totalEventos} eventos hoje`;
+                }
+
+            } catch (erro) {
+                console.error(erro);
+                servidor_volatil.innerHTML = "Erro de Conexão";
+            }
+        } else {
+            servidor_volatil.innerHTML = "Nenhum (Sistema Estável)";
+
+            const elementoQtdEventos = document.getElementById("qtd_eventos_volatil");
+            if (elementoQtdEventos) {
+                elementoQtdEventos.innerHTML = "0 eventos hoje";
+            }
+        }
+
+        if (resultado.alertas) {
+            renderizarListaAlertas(resultado.alertas);
+
+            const todosMacs = resultado.alertas.map(alerta => alerta.mac);
+            const serversUnicos = new Set(todosMacs);
+
+            const totalServers = document.getElementById('totalServers');
+            if (totalServers) {
+                totalServers.innerHTML = serversUnicos.size;
+            }
+
+            renderizarGraficoSeveridade(resultado);
+            carregarTicketsAlertas(resultado);
+        }
     }
-    window.onload = carregarDashboard;
 
+    async function carregarTicketsAlertas(resultadoPython) {
+        try {
+            let arrayGerados = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            const limite24h = new Date(Date.now() - (24 * 60 * 60 * 1000));
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const canvasElement = document.getElementById('graficoAlertasTickets')
+            if (resultadoPython.alertas) {
+                for (let i = 0; i < resultadoPython.alertas.length; i++) {
+                    const alerta = resultadoPython.alertas[i];
+                    const dataAlerta = new Date(alerta.horario.replace(" ", "T"));
+
+                    if (dataAlerta >= limite24h) {
+                        const hora = dataAlerta.getHours();
+                        const index = Math.floor(hora / 2);
+                        arrayGerados[index]++;
+                    }
+                }
+            }
+
+            const idEmpresa = 1;
+            const urlJira = `${API_BASE_URL}/jira/dashboard/${idEmpresa}`;
+            const respostaJira = await fetch(urlJira);
+
+            if (!respostaJira.ok || respostaJira.status === 204) {
+                renderizarChartLinha(arrayGerados, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+                return;
+            }
+
+            const chamadosJira = await respostaJira.json();
+            const arrayResolvidos = agruparResolvidosPorHora(chamadosJira.incidentes);
+            renderizarChartLinha(arrayGerados, arrayResolvidos);
+
+        } catch (erro) {
+            renderizarChartLinha(arrayGerados, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+        }
+    }
+
+    function agruparResolvidosPorHora(incidentesDoJira) {
+        const contagemResolvidos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        const limite24h = new Date(Date.now() - (24 * 60 * 60 * 1000));
+        const chamadosResolvidos = [];
+
+        for (let i = 0; i < incidentesDoJira.length; i++) {
+            const chamado = incidentesDoJira[i];
+            if (chamado.status.toUpperCase() === "FEITO" && chamado.resolvidoEm != null) {
+                chamadosResolvidos.push(chamado);
+            }
+        }
+
+        for (let i = 0; i < chamadosResolvidos.length; i++) {
+            const ticket = chamadosResolvidos[i];
+            const dataResolucao = new Date(ticket.resolvidoEm);
+
+            if (dataResolucao >= limite24h) {
+                const hora = dataResolucao.getHours();
+                const index = Math.floor(hora / 2);
+                contagemResolvidos[index]++;
+            }
+        }
+
+        return contagemResolvidos;
+    }
+
+    function renderizarChartLinha(dadosVermelhos, dadosVerdes) {
+        const canvasElement = document.getElementById('graficoAlertasTickets');
+
         if (canvasElement) {
+            const ctx = canvasElement.getContext('2d');
+            const gradienteVermelho = ctx.createLinearGradient(0, 0, 0, 360);
+            gradienteVermelho.addColorStop(0, 'rgba(255, 45, 86, 0.4)');
+            gradienteVermelho.addColorStop(1, 'rgba(255, 45, 86, 0.05)');
 
-            const ctx = canvasElement.getContext('2d')
-            const gradienteVermelho = ctx.createLinearGradient(0, 0, 0, 360)
-            gradienteVermelho.addColorStop(0, 'rgba(255, 45, 86, 0.4)')
-            gradienteVermelho.addColorStop(1, 'rgba(255, 45, 86, 0.05)')
+            const gradienteVerde = ctx.createLinearGradient(0, 0, 0, 360);
+            gradienteVerde.addColorStop(0, 'rgba(0, 200, 83, 0.4)');
+            gradienteVerde.addColorStop(1, 'rgba(0, 200, 83, 0)');
 
-            const gradienteVerde = ctx.createLinearGradient(0, 0, 0, 360)
-            gradienteVerde.addColorStop(0, 'rgba(0, 200, 83, 0.4)')
-            gradienteVerde.addColorStop(1, 'rgba(0, 200, 83, 0)')
+            if (graficoAlertasTicketsInstance) {
+                graficoAlertasTicketsInstance.destroy();
+            }
 
-            new Chart(ctx, {
+            graficoAlertasTicketsInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    //  Eixo X
                     labels: ['00h', '02h', '04h', '06h', '08h', '10h', '12h', '14h', '16h', '18h', '20h', '22h'],
                     datasets: [
                         {
                             label: 'Gerados',
-                            data: [30, 45, 35, 70, 100, 130, 160, 140, 120, 100, 80, 50],
+                            data: dadosVermelhos,
                             borderColor: '#FF2D56',
                             backgroundColor: gradienteVermelho,
                             borderWidth: 2,
@@ -519,7 +551,7 @@
                         },
                         {
                             label: 'Resolvidos (Jira)',
-                            data: [40, 50, 30, 45, 70, 105, 130, 145, 200, 160, 120, 80],
+                            data: dadosVerdes,
                             borderColor: '#00c853',
                             backgroundColor: gradienteVerde,
                             borderWidth: 2,
@@ -534,20 +566,15 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-
                         legend: {
                             position: 'bottom',
                             labels: {
                                 usePointStyle: true,
                                 boxWidth: 8,
                                 color: '#A0A0A0',
-                                font: {
-                                    family: "'League Spartan', sans-serif",
-                                    size: 12
-                                }
+                                font: { family: "'League Spartan', sans-serif", size: 12 }
                             }
                         },
-
                         tooltip: {
                             mode: 'index',
                             intersect: false,
@@ -560,56 +587,31 @@
                     },
                     scales: {
                         x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                color: '#6c757d',
-                                font: { family: "'League Spartan', sans-serif" }
-                            }
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false, borderDash: [5, 5] },
+                            ticks: { color: '#6c757d', font: { family: "'League Spartan', sans-serif" } }
                         },
                         y: {
                             beginAtZero: true,
-                            max: 260,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                stepSize: 65,
-                                color: '#6c757d',
-                                font: { family: "'League Spartan', sans-serif" }
-                            }
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false, borderDash: [5, 5] },
+                            ticks: { stepSize: 65, color: '#6c757d', font: { family: "'League Spartan', sans-serif" } }
                         }
                     }
                 }
-            })
+            });
         }
-    })
-
-    // só para evitar sobreposição
-    let graficoSeveridadeInstance = null;
+    }
 
     function renderizarGraficoSeveridade(dados) {
-        if (!dados.graficos || !dados.graficos.distribuicao_severidade) {
-            console.warn("Dados de severidade não encontrados no JSON.");
-            return;
-        }
+        if (!dados.graficos || !dados.graficos.distribuicao_severidade) return;
 
         const severidade = dados.graficos.distribuicao_severidade;
         const total = severidade.total > 0 ? severidade.total : 1;
 
-        // regra de 3 para calcular as porcentagens do grafico de rosca
         const pctCritico = ((severidade.critico / total) * 100).toFixed(1);
         const pctAlerta = ((severidade.alerta / total) * 100).toFixed(1);
         const pctSaudavel = ((severidade.saudavel / total) * 100).toFixed(1);
 
-
         document.getElementById('total-eventos').innerText = severidade.total.toLocaleString('pt-BR');
-
         document.getElementById('qtd-critico').innerText = severidade.critico;
         document.getElementById('bar-critico').style.width = pctCritico + '%';
         document.getElementById('pct-critico-text').innerText = pctCritico + '% do total';
@@ -658,6 +660,65 @@
                     }
                 }
             });
+        }
+    }
+
+    async function renderizarListaAlertas(alertas) {
+        const container = document.getElementById('containerListaAlertas');
+        const titulo = document.getElementById('tituloListaAlertas');
+
+        if (!container || !titulo) return;
+
+        titulo.innerHTML = `Lista de Alertas (${alertas.length})`;
+        container.innerHTML = "";
+
+        if (alertas.length === 0) {
+            container.innerHTML = "<p class='text-muted'>Nenhum alerta gerado.</p>";
+            return;
+        }
+
+        for (let i = 0; i < alertas.length; i++) {
+            const alerta = alertas[i];
+            const respostaNome = await ObterNomeServidor(alerta.mac);
+            const nomeServidor = respostaNome && respostaNome.length > 0 ? respostaNome[0].nome_servidor : "Desconhecido";
+
+            let corClasse = "border-warning";
+            let corBadge = "bg-warning text-dark";
+            let iconeCaminho = '<i class="fas fa-server" style="color: yellow;"></i>'
+
+            if (alerta.nivel.toUpperCase() === "CRÍTICO" || alerta.nivel.toUpperCase() === "CRITICO") {
+                corClasse = "border-warning";
+                corBadge = "bg-danger";
+                iconeCaminho = '<i class="fas fa-server" style="color: red;"></i>'
+            }
+
+            const dataObj = new Date(alerta.horario.replace(" ", "T"));
+            const dataFormatada = dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+            const horaFormatada = dataObj.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+            const dataFinal = `${dataFormatada} às ${horaFormatada}`;
+
+            const cardHTML = `
+            <div class="alerta ${corClasse}">
+                <div class="conteudo-alerta">
+                    <div class="alert-left d-flex gap-3 align-items-start">
+                        <div class="icon ${corClasse}-icon">
+                        ${iconeCaminho}
+                        </div>
+                        <div>
+                            <div class="linha-topo ">
+                                <strong>${nomeServidor}</strong>
+                                <span class="badge ${corBadge}">${alerta.nivel}</span>
+                                <span class="badge bg-secondary">${alerta.componente}</span>
+                            </div>
+                            <p>${alerta.mensagem}</p>
+                            <small>${dataFinal}</small>
+                        </div>
+                    </div>
+                    <button class="btn-visualizar">Visualizar</button>
+                </div>
+            </div>
+        `;
+            container.innerHTML += cardHTML;
         }
     }
 </script>
