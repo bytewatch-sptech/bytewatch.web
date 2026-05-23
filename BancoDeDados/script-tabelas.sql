@@ -154,11 +154,11 @@ FROM historico_alertas WHERE jira_key = 'KAN-25';
     ("Iada", "5.11.11.5", "Database", "Ativo", "8c:b0:e9:c2:04:27", 1, 1),
     ("Beatriz", "179.60.192.36", "DNS", "Ativo", "38-14-28-4e-8b-6a", 1, 2),
     ("Mendes", "41.77.112.61", "WEB", "Ativo", "71-b5-e8-fc-b5-fa", 1, 3),
-    ("Cordeiro", "61.9.133.193", "Backup", "Ativo", "VAZIO", 1, 4),
+    ("Cordeiro", "61.9.133.193", "Backup", "Ativo", "e2-0a-f6-64-a3-b5", 1, 4),
     ("Luis - Idea", "203.50.2.71", "Proxy", "Ativo", "24:fe:9a:06:99:2f", 1, 1),
     ("Tiktok - Xeon", "94.140.14.14", "Machine Learning", "Ativo", "22:09:4d:12:44:ac", 1, 2),
     ("Luis - TK", "195.46.39.39", "API REST", "Ativo", "00:2b:67:e7:9f:72", 1, 3),
-    ("Ryan", "64.6.64.6", "Security", "Ativo", "VAZIO2", 1, 4);
+    ("Ryan", "64.6.64.6", "Security", "Ativo", "00-26-b9-ec-6c-b6", 1, 4);
     
     INSERT INTO usuario (nome, senha, email, cpf, fk_tipo_usuario, fk_usuario_empresa) 
     VALUES ('Bruna', 'bruna123','bruna@email.com', '12345678901', 2, 1);
