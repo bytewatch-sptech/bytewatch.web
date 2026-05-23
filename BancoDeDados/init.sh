@@ -1,6 +1,6 @@
 docker network create bytewatch-net
+# docker volume rm mysql-data
 docker volume create mysql-data 
-
 # docker network inspect bytewatch-net
 
 docker build -t imagem_bd .
