@@ -22,7 +22,8 @@ function autenticar(req, res) {
                             id_usuario: resultadoAutenticar[0].id_usuario,
                             email: resultadoAutenticar[0].email,
                             nome: resultadoAutenticar[0].nome,
-                            fk_usuario_empresa: resultadoAutenticar[0].fk_usuario_empresa
+                            fk_usuario_empresa: resultadoAutenticar[0].fk_usuario_empresa,
+                            fk_tipo_usuario: resultadoAutenticar[0].fk_tipo_usuario
                         });
 
 
