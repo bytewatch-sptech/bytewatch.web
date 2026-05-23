@@ -24,6 +24,7 @@ var empresasRouter = require("./src/routes/empresas");
 var aiServiceRouter = require("./src/routes/aiService");
 var analistaRouter = require("./src/routes/analista");
 var jiraRouter = require("./src/routes/jira");
+var relatorioRouter = require("./src/routes/relatorio");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -40,6 +41,7 @@ app.use("/servidor", servidorRouter);
 app.use("/empresas", empresasRouter);
 app.use("/analista", analistaRouter);
 app.use("/jira", jiraRouter);
+app.use("/relatorios", relatorioRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

@@ -154,9 +154,10 @@
                                     <i class="fa-solid fa-rotate-right"></i> Atualizar
                                 </button>
 
-                                <button class="btn-header-log btn-exportar-green">
+                                <button id="btnExportarRelatorio" class="btn-header-log btn-exportar-green">
                                     <i class="fa-solid fa-download"></i> Exportar Relatório <span
                                         class="texto-java ms-1"></span>
+                                </button>
                                 </button>
 
                             </div>
@@ -243,8 +244,7 @@
                                 <div>
                                     <h5 class="text-white m-0 fw-semibold mb-1">Alertas Gerados vs. Tickets Resolvidos
                                     </h5>
-                                    <span style="color: var(--cor12); font-size: 0.85rem;">Camada Gold · Integração Jira
-                                        · Janela 24h</span>
+                                    <span style="color: var(--cor12); font-size: 0.85rem;">Janela 24h</span>
                                 </div>
                             </div>
 
@@ -255,6 +255,7 @@
 
                         </div>
                     </div>
+
 
                     <div class="col-12 col-lg-5">
                         <div class="d-flex flex-column align-items-stretch h-100 p-4"
@@ -459,23 +460,86 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 
+    const API_BASE_URL = "http://localhost:3333";
+    // MUDAR PARA QUANDO FOR PARA A NUVEM
+
+
+    async function baixarRelatorioS3() {
+        try {
+            const resposta = await fetch(`${API_BASE_URL}/relatorios/exportar`);
+
+            if (!resposta.ok) {
+                return alert("Erro ao baixar o relatório. Verifique o servidor.");
+            }
+
+            const jsonRetorno = await resposta.json();
+
+            if (!jsonRetorno.dadosMaquina) return;
+
+            const blob = new Blob([jsonRetorno.dadosMaquina], { type: 'text/csv' });
+            const urlBlob = window.URL.createObjectURL(blob);
+
+            const linkInvisivel = document.createElement('a');
+            linkInvisivel.href = urlBlob;
+            linkInvisivel.download = 'relatorio_magnes_solution.csv';
+
+            document.body.appendChild(linkInvisivel);
+            linkInvisivel.click();
+            linkInvisivel.remove();
+
+            window.URL.revokeObjectURL(urlBlob);
+
+        } catch (erro) {
+            alert("Falha na conexão com o servidor.");
+        }
+    }
+
+    const botaoExportar = document.getElementById('btnExportarRelatorio');
+    if (botaoExportar) {
+        botaoExportar.addEventListener('click', baixarRelatorioS3);
+    }
+
     async function carregarDashboard() {
 
         const resultado = await MetricasAlertas();
-        valor_metrica.innerHTML = resultado.alertas.length;
+        if (resultado.graficos && resultado.graficos.distribuicao_severidade) {
+            
+            valor_metrica.innerHTML = resultado.graficos.distribuicao_severidade.total;
+            alertas_criticos.innerHTML = resultado.graficos.distribuicao_severidade.critico;
 
-        const alertasCriticos = resultado.alertas.filter(alerta =>
-            alerta.nivel === "CRÍTICO" || alerta.nivel === "CRITICO"
-        );
-        alertas_criticos.innerHTML = alertasCriticos.length;
+        } else {
+            valor_metrica.innerHTML = 0;
+            alertas_criticos.innerHTML = 0;
+        }
 
-        // verificando se há algum dado inserido no json
-        if (resultado.alertas.length > 0) {
-            const mac = resultado.alertas[0].mac;
-            const nomeServidor = await ObterNomeServidor(mac);
-            console.log(nomeServidor);
-            const servidorMaisVolatil = nomeServidor[0].nome_servidor;
-            servidor_volatil.innerHTML = servidorMaisVolatil;
+        if (resultado.servidor_mais_volatil) {
+            try {
+                const macVolatil = resultado.servidor_mais_volatil.mac;
+                const totalEventos = resultado.servidor_mais_volatil.eventos_hoje;
+
+                const respostaNome = await ObterNomeServidor(macVolatil);
+                
+                const nomeServidor = respostaNome && respostaNome.length > 0 
+                    ? respostaNome[0].nome_servidor 
+                    : "Servidor Desconhecido";
+
+                servidor_volatil.innerHTML = nomeServidor;
+                const elementoQtdEventos = document.getElementById("qtd_eventos_volatil"); 
+                if (elementoQtdEventos) {
+                    elementoQtdEventos.innerHTML = `${totalEventos} eventos hoje`;
+                }
+
+            } catch (erro) {
+                console.error("Erro ao buscar o nome do servidor volátil no banco:", erro);
+                servidor_volatil.innerHTML = "Erro de Conexão";
+            }
+        } else {
+            servidor_volatil.innerHTML = "Nenhum (Sistema Estável)";
+            
+            const elementoQtdEventos = document.getElementById("qtd_eventos_volatil"); 
+            if (elementoQtdEventos) {
+                elementoQtdEventos.innerHTML = "0 eventos hoje";
+            }
         }
 
         const todosMacs = resultado.alertas.map(alerta => alerta.mac);
@@ -483,32 +547,117 @@
         totalServers.innerHTML = serversUnicos.size;
 
         renderizarGraficoSeveridade(resultado);
+        carregarTicketsAlertas(resultado);
     }
     window.onload = carregarDashboard;
 
+    async function carregarTicketsAlertas(resultadoPython) {
+        try {
+            let arrayGerados = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            const limite24h = new Date(Date.now() - (24 * 60 * 60 * 1000));
 
-    document.addEventListener("DOMContentLoaded", () => {
-        const canvasElement = document.getElementById('graficoAlertasTickets')
+            if (resultadoPython.alertas) {
+                for (let i = 0; i < resultadoPython.alertas.length; i++) {
+                    const alerta = resultadoPython.alertas[i];
+
+                    // Converte a string  para um formato de data
+                    const dataAlerta = new Date(alerta.horario.replace(" ", "T"));
+
+                    // Se o alerta aconteceu nas últimas 24h, joga na gaveta certa do gráfico
+                    if (dataAlerta >= limite24h) {
+                        const hora = dataAlerta.getHours();
+                        const index = Math.floor(hora / 2);
+                        arrayGerados[index]++;
+                    }
+                }
+            }
+
+            const idEmpresa = 1;
+            const urlJira = `${API_BASE_URL}/jira/dashboard/${idEmpresa}`;
+
+            const respostaJira = await fetch(urlJira);
+
+            if (!respostaJira.ok) {
+                console.warn(`Erro na API do Jira: Status ${respostaJira.status}. Renderizando apenas linha vermelha.`);
+                renderizarChartLinha(arrayGerados, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+                return;
+            }
+
+            if (respostaJira.status === 204) {
+                console.warn("Nenhum incidente retornado pelo Jira nas últimas 24h.");
+                renderizarChartLinha(arrayGerados, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+                return;
+            }
+
+            const chamadosJira = await respostaJira.json();
+            const arrayResolvidos = agruparResolvidosPorHora(chamadosJira.incidentes);
+            renderizarChartLinha(arrayGerados, arrayResolvidos);
+
+        } catch (erro) {
+            console.error("Erro ao buscar Jira:", erro);
+            renderizarChartLinha(arrayGerados, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+        }
+    }
+
+    function agruparResolvidosPorHora(incidentesDoJira) {
+        const contagemResolvidos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        // calculo dos milisegundos de um dia, isso abre a janela de atualização do gráfico
+        const limite24h = new Date(Date.now() - (24 * 60 * 60 * 1000));
+
+        // vetor para armazenar os tickets com status feito
+        const chamadosResolvidos = [];
+        for (let i = 0; i < incidentesDoJira.length; i++) {
+            const chamado = incidentesDoJira[i];
+            // se elesatingirem a condição e tiverem data de resolução, guardamos
+            if (chamado.status.toUpperCase() === "FEITO" && chamado.resolvidoEm != null) {
+                chamadosResolvidos.push(chamado);
+            }
+        }
+
+        // percorro a lista da validação acima
+        for (let i = 0; i < chamadosResolvidos.length; i++) {
+            const ticket = chamadosResolvidos[i];
+            const dataResolucao = new Date(ticket.resolvidoEm);
+
+            if (dataResolucao >= limite24h) {
+                const hora = dataResolucao.getHours();
+                const index = Math.floor(hora / 2);
+                // arredondando para não deixar os horarios quebrados não serem plotados
+                contagemResolvidos[index]++;
+            }
+        }
+
+        return contagemResolvidos;
+    }
+
+    let graficoAlertasTicketsInstance = null;
+
+    function renderizarChartLinha(dadosVermelhos, dadosVerdes) {
+        const canvasElement = document.getElementById('graficoAlertasTickets');
+
         if (canvasElement) {
+            const ctx = canvasElement.getContext('2d');
 
-            const ctx = canvasElement.getContext('2d')
-            const gradienteVermelho = ctx.createLinearGradient(0, 0, 0, 360)
-            gradienteVermelho.addColorStop(0, 'rgba(255, 45, 86, 0.4)')
-            gradienteVermelho.addColorStop(1, 'rgba(255, 45, 86, 0.05)')
+            const gradienteVermelho = ctx.createLinearGradient(0, 0, 0, 360);
+            gradienteVermelho.addColorStop(0, 'rgba(255, 45, 86, 0.4)');
+            gradienteVermelho.addColorStop(1, 'rgba(255, 45, 86, 0.05)');
 
-            const gradienteVerde = ctx.createLinearGradient(0, 0, 0, 360)
-            gradienteVerde.addColorStop(0, 'rgba(0, 200, 83, 0.4)')
-            gradienteVerde.addColorStop(1, 'rgba(0, 200, 83, 0)')
+            const gradienteVerde = ctx.createLinearGradient(0, 0, 0, 360);
+            gradienteVerde.addColorStop(0, 'rgba(0, 200, 83, 0.4)');
+            gradienteVerde.addColorStop(1, 'rgba(0, 200, 83, 0)');
 
-            new Chart(ctx, {
+            if (graficoAlertasTicketsInstance) {
+                graficoAlertasTicketsInstance.destroy();
+            }
+
+            graficoAlertasTicketsInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    //  Eixo X
                     labels: ['00h', '02h', '04h', '06h', '08h', '10h', '12h', '14h', '16h', '18h', '20h', '22h'],
                     datasets: [
                         {
                             label: 'Gerados',
-                            data: [30, 45, 35, 70, 100, 130, 160, 140, 120, 100, 80, 50],
+                            data: dadosVermelhos,
                             borderColor: '#FF2D56',
                             backgroundColor: gradienteVermelho,
                             borderWidth: 2,
@@ -519,7 +668,7 @@
                         },
                         {
                             label: 'Resolvidos (Jira)',
-                            data: [40, 50, 30, 45, 70, 105, 130, 145, 200, 160, 120, 80],
+                            data: dadosVerdes,
                             borderColor: '#00c853',
                             backgroundColor: gradienteVerde,
                             borderWidth: 2,
@@ -534,20 +683,15 @@
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-
                         legend: {
                             position: 'bottom',
                             labels: {
                                 usePointStyle: true,
                                 boxWidth: 8,
                                 color: '#A0A0A0',
-                                font: {
-                                    family: "'League Spartan', sans-serif",
-                                    size: 12
-                                }
+                                font: { family: "'League Spartan', sans-serif", size: 12 }
                             }
                         },
-
                         tooltip: {
                             mode: 'index',
                             intersect: false,
@@ -560,35 +704,19 @@
                     },
                     scales: {
                         x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                color: '#6c757d',
-                                font: { family: "'League Spartan', sans-serif" }
-                            }
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false, borderDash: [5, 5] },
+                            ticks: { color: '#6c757d', font: { family: "'League Spartan', sans-serif" } }
                         },
                         y: {
                             beginAtZero: true,
-                            max: 260,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
-                            },
-                            ticks: {
-                                stepSize: 65,
-                                color: '#6c757d',
-                                font: { family: "'League Spartan', sans-serif" }
-                            }
+                            grid: { color: 'rgba(255, 255, 255, 0.05)', drawBorder: false, borderDash: [5, 5] },
+                            ticks: { stepSize: 65, color: '#6c757d', font: { family: "'League Spartan', sans-serif" } }
                         }
                     }
                 }
-            })
+            });
         }
-    })
+    }
 
     // só para evitar sobreposição
     let graficoSeveridadeInstance = null;
