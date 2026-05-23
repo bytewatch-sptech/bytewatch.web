@@ -275,7 +275,7 @@ body {
 
 /* scroll da tabela */
 .rolagem-tabela {
-    max-height: 340px;
+    height: 250px;
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 8px;
@@ -306,6 +306,7 @@ body {
 .rolagem-tabela::-webkit-scrollbar-thumb:hover {
     background-color: #00d6ce;
 }
+
 
 /* modal grafico 1 */
 

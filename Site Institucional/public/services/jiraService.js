@@ -96,6 +96,7 @@ async function buscarIssues(fkEmpresa) {
 async function filtrarDashboard(fkEmpresa) {
     var incidentes = await buscarIssues(fkEmpresa);
 
+
     var labelsDias = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
     var contagemAlertas = [0, 0, 0, 0, 0, 0, 0];
     var contagemIncidentes = [0, 0, 0, 0, 0, 0, 0];
