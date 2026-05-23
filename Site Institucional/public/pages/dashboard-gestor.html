@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/gestor.css">
     <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="../assets/logo-cd.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -18,7 +20,7 @@
 
     <div class="row flex-nowrap">
         <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
-            style="min-height: 100vh;">
+            style="min-height: 100vh; transition: 0.3s;">
 
             <div class="d-flex justify-content-center mb-5">
                 <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
@@ -128,7 +130,7 @@
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
                                     <p><img src="../assets/walvar.png" style="height: 25px;"> Custo Mensal Estimado</p>
-                                    <div class="kpi-value">
+                                    <div class="kpi-value" style="font-size: 30px;">
                                         <span id="custoMes"></span>
                                     </div>
                                     <small class="kpi-green">
@@ -140,7 +142,7 @@
                             <div class="col-md-3">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
                                     <p><img src="../assets/goal.png" style="height: 25px;"> Custo até o momento</p>
-                                    <div class="kpi-value">
+                                    <div class="kpi-value"  style="font-size: 30px;">
                                         <span id="custoAtual"></span>
                                     </div>
                                     <small class="kpi-green">
@@ -152,7 +154,7 @@
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
                                     <p><img src="../assets/calendar.png" style="height: 25px;"> Custo do dia</p>
-                                    <div class="kpi-value">
+                                    <div class="kpi-value"  style="font-size: 30px;">
                                         <span id="custoDia"></span>
                                     </div>
                                     <small class="kpi-green">
@@ -302,7 +304,8 @@
             const estimativaAteHoje = custoEsperado * dias
 
             var status = "Dentro do esperado"
-            var cor = "white"
+            var cor = "green"
+            var corProg = "green"
 
             const diferenca = custoAtual - estimativaAteHoje;
             const percentual = (diferenca / estimativaAteHoje) * 100;
@@ -315,6 +318,12 @@
                 cor = "green"
             }
 
+            if (progresso > 80) {
+                corProg = "red"
+            } else {
+                corProg = "green"
+            }
+
             document.getElementById("custoAtual").innerText =
                 `R$ ${custoAtual.toFixed(2)}`;
 
@@ -324,6 +333,8 @@
             document.getElementById("progressoMes").innerText =
                 `${progresso.toFixed(1)}%`;
 
+            document.getElementById("progressoMes").style.color = corProg;
+
             document.getElementById("statusCusto").innerText =
                 `${percentual.toFixed(1)}% ${status}`;
 
@@ -331,6 +342,9 @@
 
             document.getElementById("custoDia").innerText =
                 `R$ ${custoDia.toFixed(2)}`;
+
+            document.getElementById("infoDia").innerText =
+                `Dias decorrido: ${dias}`
 
 
             //Pegando os dados do Ranking de consumo de RAM
