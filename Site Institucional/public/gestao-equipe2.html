@@ -127,12 +127,8 @@
                     </div>
                 </header>
 
-
-
                 <div class="caixa-filtros d-flex justify-content-between align-items-center w-100 mb-4">
-
                     <div class="d-flex align-items-center gap-4">
-
                         <div class="d-flex align-items-center gap-2">
                             <i class="bi bi-funnel texto-ciano fs-5"></i>
                             <span class="texto-filtro">Filtro</span>
@@ -175,9 +171,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
 
                 <div class="row g-3 mb-4">
                     <div class="col-12 col-sm-6 col-xl-3">
@@ -240,8 +233,8 @@
                     </div>
                 </div>
 
-                <div class="row g-3 mb-4">
-                    <div class="col-12 col-xl-5">
+                <div class="row g-3 mb-4 flex-grow-1">
+                    <div class="col-12 col-xl-4">
                         <div class="cartao-grafico p-4 rounded-4 h-100 position-relative">
                             <button type="button"
                                 class="btn btn-link d-flex p-0 border-0 posicao-absoluta topo-0 fim-0 m-4 botao-info-grafico"
@@ -261,136 +254,30 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-xl-7">
-                        <div class="cartao-grafico p-4 rounded-4 h-100 position-relative">
-                            <button type="button"
-                                class="btn btn-link d-flex p-0 border-0 posicao-absoluta topo-0 fim-0 m-4 botao-info-grafico"
-                                data-bs-toggle="modal" data-bs-target="#modalVolumeDetalhado">
-                                <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg" class="icone-svg-info">
-                                    <path
-                                        d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z"
-                                        fill="#A0A0A0" />
-                                </svg>
-                            </button>
-                            <h6 class="text-white fw-bold mb-4">Volume de Alertas por Analista <span
-                                    class="text-secondary fw-normal">— Top 5 analistas</span></h6>
+                    <div class="col-12 col-xl-8">
+                        <div class="cartao-tabela p-4 rounded-4 h-100 d-flex flex-column">
+                            <h6 class="text-white fw-bold mb-1">Log de Alertas Recentes</h6>
+                            <p class="text-secondary texto-pequeno mb-4">Últimos alertas tratados pela equipe NOC</p>
 
-                            <div style="height: 250px; width: 100%;">
-                                <canvas id="graficoVolume"></canvas>
+                            <div class="rolagem-tabela flex-grow-1">
+                                <table class="table table-dark table-hover tabela-personalizada align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>DATA / HORA</th>
+                                            <th>SERVIÇO</th>
+                                            <th>TIPO DE ALERTA</th>
+                                            <th>ANALISTA</th>
+                                            <th>SEVERIDADE</th>
+                                            <th>STATUS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tabela_alertas_body">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="cartao-tabela p-4 rounded-4 flex-grow-1">
-                    <h6 class="text-white fw-bold mb-1">Log de Alertas Recentes</h6>
-                    <p class="text-secondary texto-pequeno mb-4">Últimos alertas tratados pela equipe NOC</p>
-
-                    <div class="rolagem-tabela">
-                        <table class="table table-dark table-hover tabela-personalizada align-middle">
-                            <thead>
-                                <tr>
-                                    <th>HORA</th>
-                                    <th>SERVIÇO</th>
-                                    <th>TIPO DE ALERTA</th>
-                                    <th>ANALISTA</th>
-                                    <th>SEVERIDADE</th>
-                                    <th>STATUS</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabela_alertas_body">
-                                <tr>
-                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 09:38</td>
-                                    <td class="text-white fw-semibold">TikTok US-West-1</td>
-                                    <td class="text-secondary">EBS Volume > 90%</td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="avatar-pequeno fundo-rosa">BL</div>
-                                            <span class="text-secondary">B. Leandro</span>
-                                        </div>
-
-                                    <td><span class="badge badge-aviso">Aviso</span></td>
-                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
-                                            Resolvido</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 09:15</td>
-                                    <td class="text-white fw-semibold">TikTok SA-East-1</td>
-                                    <td class="text-secondary">CPU Usage > 85%</td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="avatar-pequeno fundo-azul">RO</div>
-                                            <span class="text-secondary">R. Oliveira</span>
-                                        </div>
-                                    <td><span class="badge badge-aviso">Aviso</span></td>
-                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
-                                            Resolvido</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 08:47</td>
-                                    <td class="text-white fw-semibold">TikTok AP-Southeast-1</td>
-                                    <td class="text-secondary">RAM > 95%</td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="avatar-pequeno fundo-verde">LF</div>
-                                            <span class="text-secondary">L. Felipe</span>
-                                        </div>
-                                    </td>
-
-                                    <td><span class="badge badge-critico">Crítico</span></td>
-                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
-                                            Resolvido</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 08:22</td>
-                                    <td class="text-white fw-semibold">TikTok EU-West-1</td>
-                                    <td class="text-secondary">Network Latency Spike</td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="avatar-pequeno fundo-laranja">LI</div>
-                                            <span class="text-secondary">Luan I.</span>
-                                        </div>
-
-                                    <td><span class="badge badge-aviso">Aviso</span></td>
-                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
-                                            Resolvido</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 08:10</td>
-                                    <td class="text-white fw-semibold">TikTok SA-East-1</td>
-                                    <td class="text-secondary">Database Timeout</td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="avatar-pequeno fundo-azul">RO</div>
-                                            <span class="text-secondary">R. Oliveira</span>
-                                        </div>
-
-                                    <td><span class="badge badge-critico">Crítico</span></td>
-                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
-                                            Resolvido</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-secondary"><i class="bi bi-clock me-1"></i> 08:10</td>
-                                    <td class="text-white fw-semibold">TikTok SA-East-1</td>
-                                    <td class="text-secondary">Database Timeout</td>
-                                    <td>
-                                        <div class="d-flex align-items-center gap-2">
-                                            <div class="avatar-pequeno fundo-azul">RO</div>
-                                            <span class="text-secondary">R. Oliveira</span>
-                                        </div>
-
-                                    <td><span class="badge badge-critico">Crítico</span></td>
-                                    <td><span class="status-resolvido"><i class="bi bi-check-circle me-1"></i>
-                                            Resolvido</span></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
 
             </main>
         </div>
@@ -398,57 +285,23 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- modal gráfico 1 -->
-
     <div class="modal fade" id="modalBarrasDetalhado" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content conteudo-modal-estilizado">
-
                 <div class="modal-header border-0 px-4 pt-4 pb-0">
                     <h5 class="text-white fw-bold fs-4 mb-0">Proporção de Alertas vs Incidentes Reais</h5>
                     <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal"
                         aria-label="Fechar"></button>
                 </div>
-
                 <div class="modal-body px-4 pb-4 pt-3">
                     <div style="height: 350px; width: 100%;">
                         <canvas id="graficoBarrasExpandido"></canvas>
                     </div>
-
                     <div class="mt-3 text-center">
                         <p class="text-secondary fs-6 mb-0">Comparativo semanal detalhado de alertas processados e
                             incidentes críticos confirmados</p>
                     </div>
                 </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- modal gráfico 2 -->
-
-    <div class="modal fade" id="modalVolumeDetalhado" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content conteudo-modal-estilizado-ciano">
-
-                <div class="modal-header border-0 px-4 pt-4 pb-0">
-                    <h5 class="text-white fw-bold fs-4 mb-0">Volume de Alertas por Analista <span
-                            class="text-secondary fs-5 fw-normal">— Top 5 analistas</span></h5>
-                    <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal"
-                        aria-label="Fechar"></button>
-                </div>
-
-                <div class="modal-body px-4 pb-4 pt-3">
-                    <div style="height: 350px; width: 100%;">
-                        <canvas id="graficoVolumeExpandido"></canvas>
-                    </div>
-
-                    <div class="mt-3 text-center">
-                        <p class="text-secondary fs-6 mb-0">Detalhamento da produtividade e volume de alertas resolvidos
-                            pela equipe</p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -460,117 +313,7 @@
     Chart.defaults.color = '#8A92A6';
     Chart.defaults.font.family = "'Inter', sans-serif";
 
-
     var dadosDoDashboard = null;
-
-
-
-    // grafico 2 MOCADO
-    var contextoVolume = document.getElementById('graficoVolume').getContext('2d');
-    new Chart(contextoVolume, {
-        type: 'bar',
-        data: {
-            labels: ['B. Leandro', 'R. Oliveira', 'L. Felipe', 'Luan I.', 'V. Cordeiro'],
-            datasets: [{
-                label: 'Volume de Alertas',
-                data: [125, 110, 100, 90, 0],
-                backgroundColor: '#00F2EA',
-                borderRadius: 4,
-                barPercentage: 0.6
-            }]
-        },
-        options: {
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    min: 0,
-                    max: 140,
-                    ticks: { stepSize: 35 },
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.05)',
-                        drawBorder: false
-                    }
-                },
-                y: {
-                    grid: { display: false, drawBorder: false }
-                }
-            },
-            plugins: {
-                legend: { display: false }
-            }
-        }
-    });
-
-
-
-
-
-    // modal grafico 2 MOCADO
-    var instanciaGraficoVolumeExpandido = null;
-    var modalVolume = document.getElementById('modalVolumeDetalhado');
-
-    if (modalVolume) {
-        modalVolume.addEventListener('shown.bs.modal', function () {
-            var contextoVolumeExpandido = document.getElementById('graficoVolumeExpandido').getContext('2d');
-
-            if (instanciaGraficoVolumeExpandido) {
-                instanciaGraficoVolumeExpandido.destroy();
-            }
-
-            instanciaGraficoVolumeExpandido = new Chart(contextoVolumeExpandido, {
-                type: 'bar',
-                data: {
-                    labels: ['B. Leandro', 'R. Oliveira', 'L. Felipe', 'Luan I.', 'V. Cordeiro'],
-                    datasets: [{
-                        label: 'Alertas Resolvidos',
-                        data: [125, 110, 100, 90, 0],
-                        backgroundColor: '#00F2EA',
-                        borderRadius: 4,
-                        barPercentage: 0.5
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            min: 0,
-                            max: 140,
-                            ticks: {
-                                stepSize: 35,
-                                color: '#8A92A6',
-                                font: { size: 14 }
-                            },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false
-                            }
-                        },
-                        y: {
-                            grid: { display: false, drawBorder: false },
-                            ticks: {
-                                color: '#8A92A6',
-                                font: { size: 14 }
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: function (contexto) {
-                                    return ` Quantidade: ${contexto.raw}`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        });
-    }
 
     async function carregarDadosJira() {
         var fkEmpresa = sessionStorage.getItem("ID_EMPRESA") || 1;
@@ -580,9 +323,7 @@
 
             if (resposta.ok) {
                 var dadosJira = await resposta.json();
-
                 dadosDoDashboard = dadosJira;
-
 
                 var kpiTotal = document.getElementById('kpi_total_alertas_todos');
                 if (kpiTotal) {
@@ -605,7 +346,6 @@
                 }
 
                 plotarGraficoProporcao(dadosJira.graficoBarras.alertas, dadosJira.graficoBarras.incidentes);
-
                 preencherTabelaAlertas(dadosJira.incidentes);
 
             } else {
@@ -614,12 +354,9 @@
         } catch (erro) {
             console.error('Erro ao fazer o fetch para o Jira:', erro);
         }
-
     }
 
-    // grafico 1
     var graficoProporcaoInstancia = null;
-
 
     function plotarGraficoProporcao(alertas, incidentes) {
         var contextoProporcao = document.getElementById('graficoProporcao').getContext('2d');
@@ -661,8 +398,8 @@
                     y: {
                         stacked: true,
                         min: 0,
-                        max: 600,
-                        ticks: { stepSize: 100, color: '#8A92A6' },
+                        // max: 100,
+                        ticks: { stepSize: 10, color: '#8A92A6' },
                         grid: {
                             color: 'rgba(255, 255, 255, 0.05)',
                             drawBorder: false,
@@ -683,91 +420,83 @@
                 }
             }
         });
-
-
     }
 
-    // modal grafico 1
-
+    // Modal gráfico 1
     document.addEventListener("DOMContentLoaded", function () {
         var instanciaGraficoExpandido = null;
-
         var modalBarras = document.getElementById('modalBarrasDetalhado');
 
-        modalBarras.addEventListener('shown.bs.modal', function () {
-            var contextoExpandido = document.getElementById('graficoBarrasExpandido').getContext('2d');
+        if (modalBarras) {
+            modalBarras.addEventListener('shown.bs.modal', function () {
+                var contextoExpandido = document.getElementById('graficoBarrasExpandido').getContext('2d');
 
-            if (instanciaGraficoExpandido) {
-                instanciaGraficoExpandido.destroy();
-            }
+                if (instanciaGraficoExpandido) {
+                    instanciaGraficoExpandido.destroy();
+                }
 
-            instanciaGraficoExpandido = new Chart(contextoExpandido, {
-                type: 'bar',
-                data: {
-                    labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
-                    datasets: [
-                        {
-                            label: 'Alertas Tratados',
-                            data: dadosDoDashboard.graficoBarras.alertas,
-                            backgroundColor: '#FFD600',
-                            borderRadius: 5,
-                            barPercentage: 0.5
-                        },
-                        {
-                            label: 'Incidentes Reais',
-                            data: dadosDoDashboard.graficoBarras.incidentes,
-                            backgroundColor: '#FF2D56',
-                            borderRadius: 5,
-                            barPercentage: 0.5
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            stacked: true,
-                            grid: { display: false },
-                            ticks: { color: '#8A92A6', font: { size: 14 } }
-                        },
-                        y: {
-                            stacked: true,
-                            min: 0,
-                            max: 600,
-                            ticks: { stepSize: 100, color: '#8A92A6' },
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.05)',
-                                drawBorder: false,
-                                borderDash: [5, 5]
+                instanciaGraficoExpandido = new Chart(contextoExpandido, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                        datasets: [
+                            {
+                                label: 'Alertas Tratados',
+                                data: dadosDoDashboard.graficoBarras.alertas,
+                                backgroundColor: '#FFD600',
+                                borderRadius: 5,
+                                barPercentage: 0.5
+                            },
+                            {
+                                label: 'Incidentes Reais',
+                                data: dadosDoDashboard.graficoBarras.incidentes,
+                                backgroundColor: '#FF2D56',
+                                borderRadius: 5,
+                                barPercentage: 0.5
                             }
-                        }
+                        ]
                     },
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                color: '#8A92A6',
-                                padding: 30,
-                                usePointStyle: true,
-                                pointStyle: 'circle'
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                stacked: true,
+                                grid: { display: false },
+                                ticks: { color: '#8A92A6', font: { size: 14 } }
+                            },
+                            y: {
+                                stacked: true,
+                                min: 0,
+                                max: 600,
+                                ticks: { stepSize: 100, color: '#8A92A6' },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.05)',
+                                    drawBorder: false,
+                                    borderDash: [5, 5]
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#8A92A6',
+                                    padding: 30,
+                                    usePointStyle: true,
+                                    pointStyle: 'circle'
+                                }
                             }
                         }
                     }
-                }
+                });
             });
-        });
+        }
     });
 
     function preencherTabelaAlertas(incidentes) {
         var tbody = document.getElementById('tabela_alertas_body');
-        tbody.innerHTML = ""; // Limpa a tabela antes de preencher
-
-        // Vamos exibir apenas os 10 últimos chamados para não quebrar o layout
-        // var limite = incidentes.length;
-        // if (limite > 10) {
-        //     limite = 10;
-        // }
+        tbody.innerHTML = "";
 
         var limite = incidentes.length;
 
@@ -775,9 +504,17 @@
             var incidente = incidentes[i];
 
             var dataObj = new Date(incidente.criadoEm);
+
+
+            var dia = dataObj.getDate().toString().padStart(2, '0');
+            var mes = (dataObj.getMonth() + 1).toString().padStart(2, '0');
+            var ano = dataObj.getFullYear();
+
             var horas = dataObj.getHours().toString().padStart(2, '0');
             var minutos = dataObj.getMinutes().toString().padStart(2, '0');
-            var horaFormatada = horas + ":" + minutos;
+
+
+            var dataHoraFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
 
             var classeBadge = "";
             var textoBadge = "";
@@ -807,27 +544,24 @@
                 nomeAnalista = "Não Atribuído";
             }
 
-
             var tr = document.createElement('tr');
             tr.innerHTML = `
-            <td class="text-secondary"><i class="bi bi-clock me-1"></i> ${horaFormatada}</td>
-            <td class="text-white fw-semibold">${incidente.servidor}</td>
-            <td class="text-secondary">${incidente.titulo}</td>
-            <td>
-                <div class="d-flex align-items-center gap-2">
-                    <div class="avatar-pequeno fundo-azul">${iniciais}</div>
-                    <span class="text-secondary">${nomeAnalista}</span>
-                </div>
-            </td>
-            <td><span class="badge ${classeBadge}">${textoBadge}</span></td>
-            <td>${htmlStatus}</td>
-        `;
+<td class="text-secondary"></i> ${dataHoraFormatada}</td>
+<td class="text-white fw-semibold">${incidente.servidor}</td>
+<td class="text-secondary">${incidente.titulo}</td>
+<td>
+    <div class="d-flex align-items-center gap-2">
+        <div class="avatar-pequeno fundo-azul">${iniciais}</div>
+        <span class="text-secondary">${nomeAnalista}</span>
+    </div>
+</td>
+<td><span class="badge ${classeBadge}">${textoBadge}</span></td>
+<td>${htmlStatus}</td>
+`;
 
             tbody.appendChild(tr);
         }
     }
 
-
     window.addEventListener('DOMContentLoaded', carregarDadosJira);
-
 </script>
