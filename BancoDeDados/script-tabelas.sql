@@ -1,6 +1,6 @@
 	CREATE DATABASE IF NOT EXISTS monitoramento;
 	USE monitoramento;
-    
+
 	CREATE TABLE tipo_usuario (
 	  id_tipo_usuario INT AUTO_INCREMENT PRIMARY KEY,
 	  tipo VARCHAR(45) NOT NULL UNIQUE,
@@ -161,4 +161,12 @@ FROM historico_alertas WHERE jira_key = 'KAN-25';
     ("Ryan", "64.6.64.6", "Security", "Ativo", "VAZIO2", 1, 4);
 
 	select * from servidor;
-	
+    
+
+CREATE USER 'bytewatch'@'%' IDENTIFIED BY '@Bytewatch2026';
+GRANT ALL PRIVILEGES ON *.* TO 'bytewatch'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+# DROP USER 'bytewatch'@'%';
+# FLUSH PRIVILEGES;
