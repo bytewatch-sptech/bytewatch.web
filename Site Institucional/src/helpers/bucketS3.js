@@ -83,5 +83,57 @@ async function obterMetricaAlertas() {
     }
 }
 
-module.exports = { obterUsoMemoriaRam, obterDadosGestor, obterMetricaAlertas }
+async function obterUsoCpu(macAddress) {
 
+    const params = {
+        Bucket: process.env.S3_BUCKET_NAME,
+        Key: "client/dashboard_cpu.json"
+    }
+
+    try {
+        const { Body } = await s3Client.send(new GetObjectCommand(params))
+        const conteudo = await streamToString(Body)
+        const bancoDadosJson = JSON.parse(conteudo)
+
+        const dadosMaquina = bancoDadosJson[macAddress]
+        if (!dadosMaquina) return null;
+
+        return {
+            macAddress,
+            dadosMaquina
+        }
+    } catch (err) {
+        console.error("Erro ao processar componentes:", err)
+        throw err;
+    }
+}
+
+async function obterRelatorio() {
+    
+    const params = {
+        Bucket: process.env.S3_BUCKET_NAME,
+        Key: "relatorios/relatorio_final_projeto.csv"
+    };
+
+    try {
+        const { Body } = await s3Client.send(new GetObjectCommand(params));
+        const conteudoCsv = await streamToString(Body);
+        if (!conteudoCsv) return null;
+        
+        return {
+            dadosMaquina: conteudoCsv 
+        };
+
+    } catch (err) {
+        console.error("Erro ao buscar o relatório no S3:", err);
+        throw err;
+    }
+}
+
+module.exports = { 
+    obterUsoMemoriaRam, 
+    obterDadosGestor, 
+    obterMetricaAlertas, 
+    obterUsoCpu,
+    obterRelatorio
+ }

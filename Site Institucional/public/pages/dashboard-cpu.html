@@ -20,8 +20,8 @@
 <body style="overflow: auto;">
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
-                style="min-height: 100vh; transition: 0.3s;">
+            <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark H-100"
+                style="transition: 0.3s;">
 
                 <div class="d-flex justify-content-center mb-5">
                     <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
@@ -280,321 +280,86 @@
                         </div>
                     </div>
                 </div>
-                <div class="row g-3 align-items-start">
-                    <div class="col-lg-3">
-                        <div class="d-flex flex-column gap-3 ">
-                            <div class="card-kpi px-4 py-3">
-                                <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
-                                    <div class="col-6 coluna-kpi">
+                <div class="grid-container">
+                    <div class="card-kpi px-4 py-3 child-1" id="grafico_uso">
+                        <div style="height: 100%;" class="row align-items-center flex-nowrap gap-2">
+                            <div class="col-6 coluna-kpi">
 
-                                        <div class="row d-flex justify-content-lg-start justify-content-around">
-                                            <div class="d-flex align-items-center justify-content-center"
-                                                style="color: white; gap: 10px;">
-                                                <button type="button" class=" btn btn-link d-flex p-0 border-0"
-                                                    data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                                    onclick="grafico = 'doughnut'">
-                                                    <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z"
-                                                            fill="#A0A0A0" />
-                                                    </svg>
-
-                                                </button>
-                                                Consumo
-                                            </div>
-                                            <div class="col"
-                                                style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
-                                                <span class="display-6 status-percent">78%</span>
-                                            </div>
-                                        </div>
-                                        <div class="div-legends">
-                                            <div class="legend-container">
-                                                <div>
-                                                    <span class="span-circle" style="background-color: #C167C7;"></span>
-                                                    <span class="span-legend">Em uso</span>
-                                                </div>
-                                                <span class="span-percent">78%</span>
-                                            </div>
-                                            <div class="legend-container">
-                                                <div>
-                                                    <span class="span-circle"></span>
-                                                    <span class="span-legend">Restante</span>
-                                                </div>
-                                                <span class="span-percent">22%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 p-0" style="position: relative;">
-                                        <canvas id="doughnut_cpu"></canvas>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="col-6 card-kpi">
-                                <div class="d-flex align-items-center justify-content-center"
-                                    style="color: white; gap: 10px;">
-                                    <button type="button" class=" btn btn-link d-flex p-0 border-0"
-                                        data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                        onclick="grafico = 'tendencia'">
-                                        <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z"
-                                                fill="#A0A0A0" />
-                                        </svg>
-
-                                    </button>
-                                    Tendência dos Processos
-                                </div>
-                                <canvas id="scatterPlotCPU">
-
-                                </canvas>
-
-                            </div>
-
-                            <div class="card-kpi d-flex flex-column" style="min-height: 249px;">
-
-                                <div class="d-flex align-items-center justify-content-center"
-                                    style="color: white; gap: 10px;">
-                                    <button type="button" class=" btn btn-link d-flex p-0 border-0"
-                                        data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                        onclick="grafico = 'usoProcessos'">
-                                        <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z"
-                                                fill="#A0A0A0" />
-                                        </svg>
-
-                                    </button>
-                                    Uso dos Processos
-                                </div>
-
-                                <div style="position: relative; flex: 1; min-height: 0;">
-
-                                    <div style="position: absolute; top: 0; left: 0; right: 10px; bottom: 10px;">
-                                        <canvas id="lollipopCPU"></canvas>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="row g-3">
-
-                            <div class="col-lg-8">
-
-                                <div class="card-kpi">
+                                <div class="row d-flex justify-content-lg-start justify-content-around">
                                     <div class="d-flex align-items-center justify-content-center"
                                         style="color: white; gap: 10px;">
                                         <button type="button" class=" btn btn-link d-flex p-0 border-0"
                                             data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                            onclick="grafico = 'usoTempo'">
-                                            <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z"
-                                                    fill="#A0A0A0" />
+                                            onclick="grafico = 'doughnut'">
+                                            <svg width="40" height="40" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M6.11111 18.0556L10.3472 13.8194L13.125 16.5972L18.0556 11.7014V13.8889H20.8333V6.94444H13.8889V9.72222H16.0764L13.125 12.6736L10.3472 9.89583L4.16667 16.1111L6.11111 18.0556ZM2.77778 25C2.01389 25 1.36019 24.7282 0.816667 24.1847C0.273148 23.6412 0.000925926 22.987 0 22.2222V2.77778C0 2.01389 0.272222 1.36019 0.816667 0.816667C1.36111 0.273148 2.01481 0.000925926 2.77778 0H22.2222C22.9861 0 23.6403 0.272222 24.1847 0.816667C24.7292 1.36111 25.0009 2.01481 25 2.77778V22.2222C25 22.9861 24.7282 23.6403 24.1847 24.1847C23.6412 24.7292 22.987 25.0009 22.2222 25H2.77778Z" fill="#C167C7"/>
                                             </svg>
-
                                         </button>
-                                        Linha do Tempo de Uso
+                                        <span class="display-6 graph-titles">USO</span>
                                     </div>
-                                    <canvas style="" id="dashboardComponentes"></canvas>
-                                </div>
-
-                                <div class="process-container mt-3">
-                                    <h1>Processos Ativos</h1>
-                                    <div class="table-wrapper">
-                                        <table class="process-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>PID</th>
-                                                    <th>NOME</th>
-                                                    <th>CPU%</th>
-                                                    <th>STATUS</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1239</td>
-                                                    <td>watermark</td>
-                                                    <td class="tdCenter">
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 91%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent critical">91%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3651</td>
-                                                    <td>h265</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 80%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">80%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>4532</td>
-                                                    <td>ffmpeg</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 50%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">50%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>1235</td>
-                                                    <td>nginx</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 31%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">31%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>1679</td>
-                                                    <td>thumbnail</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 21%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">21%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>2346</td>
-                                                    <td>firefox</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width:16%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">16%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>6354</td>
-                                                    <td>proxy</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width:16%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">16%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>7456</td>
-                                                    <td>manes</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 15.5%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">15.5%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>7856</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>4625</td>
-                                                    <td>fever</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 10%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">10%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>9456</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>1364</td>
-                                                    <td>prolt</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 6%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">6%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>6458</td>
-                                                    <td>fence</td>
-                                                    <td>
-                                                        <div class="progress-item-table">
-                                                            <div class="progress-bg">
-                                                                <div class="progress-fill" style="width: 2%;">
-                                                                </div>
-                                                            </div>
-                                                            <span class="percent">2%</span>
-                                                        </div>
-                                                    </td>
-                                                    <td>Ativo</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <div class="col"
+                                        style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
+                                        <span class="display-6 graph-titles mt-2" style="font-size: 55px;">78%</span>
                                     </div>
                                 </div>
-
+                                <div class="div-legends">
+                                    <div class="legend-container">
+                                        <div>
+                                            <span class="span-circle" style="background-color: #C167C7;"></span>
+                                            <span class="span-legend">Em uso</span>
+                                        </div>
+                                        <span class="span-percent">78%</span>
+                                    </div>
+                                    <div class="legend-container">
+                                        <div>
+                                            <span class="span-circle"></span>
+                                            <span class="span-legend">Restante</span>
+                                        </div>
+                                        <span class="span-percent">22%</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-lg-4">
 
-                                <div class="information-container">
+                            <div class="col-6 p-0" style="position: relative;">
+                                <canvas id="doughnut_cpu"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="risco card-kpi child-2 p-3" id="kpi_pico">
+                        <div class="d-flex column align-items-start gap-2">
+                            <svg width="16" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.8401 15.6906L4.84005 15.6906L4.84005 7.76604L5.34058e-05 7.76604L7.84005 9.53674e-07L15.6801 7.76604L10.8401 7.76604V15.6906Z" fill="#C167C7"/>
+                            </svg>
+
+                            <p class="card-title kpi-titles">PICO</p>
+                        </div>
+                        <div class="kpi-info">
+                            <span class="display-6 status-percent" style="font-size: 50px;">90%</span>
+                        </div>
+                    </div>
+                    <div class="critico card-kpi child-3 p-3" id="kpi_temperatura">
+                        <div class="d-flex column align-items-start gap-2">
+                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 10.1725C0 8.28917 0.558334 6.48084 1.675 4.74751C2.79167 3.01417 4.325 1.49751 6.275 0.197507C6.64167 -0.0524929 7.021 -0.0651597 7.413 0.159507C7.805 0.384174 8.00067 0.72184 8 1.17251V2.47251C8 3.03917 8.196 3.51417 8.588 3.89751C8.98 4.28084 9.459 4.47251 10.025 4.47251C10.3083 4.47251 10.5793 4.40984 10.838 4.28451C11.0967 4.15917 11.3257 3.98017 11.525 3.74751C11.6583 3.58084 11.8293 3.47684 12.038 3.43551C12.2467 3.39417 12.4423 3.43984 12.625 3.57251C13.675 4.32251 14.5 5.28084 15.1 6.44751C15.7 7.61417 16 8.85584 16 10.1725C16 11.6392 15.6417 12.9768 14.925 14.1855C14.2083 15.3942 13.2667 16.3478 12.1 17.0465C12.3833 16.6465 12.6043 16.2092 12.763 15.7345C12.9217 15.2598 13.0007 14.7558 13 14.2225C13 13.5558 12.875 12.9265 12.625 12.3345C12.375 11.7425 12.0167 11.2135 11.55 10.7475L8 7.27251L4.475 10.7475C3.99167 11.2308 3.625 11.7642 3.375 12.3475C3.125 12.9308 3 13.5558 3 14.2225C3 14.7558 3.07933 15.2602 3.238 15.7355C3.39667 16.2108 3.61733 16.6482 3.9 17.0475C2.73333 16.3475 1.79167 15.3932 1.075 14.1845C0.358333 12.9758 0 11.6385 0 10.1725ZM8 10.0725L10.125 12.1475C10.4083 12.4308 10.625 12.7475 10.775 13.0975C10.925 13.4475 11 13.8225 11 14.2225C11 15.0392 10.7083 15.7352 10.125 16.3105C9.54167 16.8858 8.83333 17.1732 8 17.1725C7.16667 17.1718 6.45833 16.8845 5.875 16.3105C5.29167 15.7365 5 15.0405 5 14.2225C5 13.8392 5.075 13.4685 5.225 13.1105C5.375 12.7525 5.59167 12.4315 5.875 12.1475L8 10.0725Z" fill="#C167C7"/>
+                            </svg>
+                            <p class="card-title kpi-titles">TEMPERATURA</p>
+                        </div>
+                        <div class="kpi-info">
+                            <span class="display-6 status-percent" style="font-size: 50px;">68°C</span>
+                        </div>
+                    </div>
+                    <div class="card-kpi child-4 p-3" id="kpi_frequencia">
+                        <div class="d-flex column align-items-start gap-2">
+                            <svg width="16" height="18" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M26.5833 0H2.41667C1.77573 0 1.16104 0.254612 0.707825 0.707825C0.254612 1.16104 0 1.77573 0 2.41667V26.5833C0 27.2243 0.254612 27.839 0.707825 28.2922C1.16104 28.7454 1.77573 29 2.41667 29H26.5833C27.2243 29 27.839 28.7454 28.2922 28.2922C28.7454 27.839 29 27.2243 29 26.5833V2.41667C29 1.77573 28.7454 1.16104 28.2922 0.707825C27.839 0.254612 27.2243 0 26.5833 0ZM24.9521 21.8814C22.978 23.5701 21.1911 24.1621 19.569 24.1621C17.4151 24.1621 15.5482 23.1169 13.9094 22.1986C11.1287 20.6414 8.9326 19.4119 5.61875 22.2454C5.49815 22.3486 5.35842 22.4269 5.20753 22.4761C5.05664 22.5252 4.89756 22.5442 4.73935 22.5318C4.58114 22.5195 4.42691 22.4761 4.28547 22.4041C4.14403 22.3322 4.01814 22.2331 3.915 22.1125C3.81186 21.9919 3.73348 21.8522 3.68434 21.7013C3.6352 21.5504 3.61626 21.3913 3.6286 21.2331C3.64094 21.0749 3.68433 20.9207 3.75627 20.7792C3.82822 20.6378 3.92732 20.5119 4.04792 20.4087C8.6426 16.4817 12.2178 18.4815 15.0906 20.0901C17.8713 21.6473 20.0749 22.8768 23.3813 20.0432C23.6248 19.8349 23.9411 19.7319 24.2607 19.7568C24.5802 19.7818 24.8767 19.9326 25.085 20.1761C25.2933 20.4197 25.3963 20.736 25.3714 21.0555C25.3465 21.3751 25.1956 21.6716 24.9521 21.8799V21.8814ZM24.9521 15.2356C22.978 16.9242 21.1911 17.5163 19.569 17.5163C17.4151 17.5163 15.5482 16.4711 13.9094 15.5528C11.1287 13.9955 8.9326 12.766 5.61875 15.5996C5.37519 15.8079 5.05886 15.9109 4.73935 15.886C4.41983 15.8611 4.12331 15.7102 3.915 15.4667C3.70669 15.2231 3.60367 14.9068 3.6286 14.5873C3.65353 14.2677 3.80436 13.9712 4.04792 13.7629C8.6426 9.83583 12.2178 11.8356 15.0906 13.4442C17.8713 15.0015 20.0749 16.2309 23.3813 13.3974C23.5018 13.2943 23.6416 13.2159 23.7925 13.1667C23.9434 13.1176 24.1024 13.0987 24.2607 13.111C24.4189 13.1233 24.5731 13.1667 24.7145 13.2387C24.856 13.3106 24.9819 13.4097 25.085 13.5303C25.1881 13.6509 25.2665 13.7906 25.3157 13.9415C25.3648 14.0924 25.3837 14.2515 25.3714 14.4097C25.3591 14.5679 25.3157 14.7222 25.2437 14.8636C25.1718 15.005 25.0727 15.1309 24.9521 15.2341V15.2356ZM24.9521 8.58974C22.978 10.2784 21.1911 10.8705 19.569 10.8705C17.4151 10.8705 15.5482 9.82526 13.9094 8.90693C11.1287 7.34969 8.9326 6.12021 5.61875 8.95375C5.37407 9.15113 5.06209 9.24538 4.74905 9.21649C4.43601 9.1876 4.14655 9.03785 3.94212 8.79902C3.73769 8.56019 3.63439 8.2511 3.65414 7.93735C3.6739 7.6236 3.81515 7.3299 4.04792 7.11859C8.6426 3.19151 12.2178 5.1913 15.0906 6.7999C17.8713 8.35714 20.0749 9.58661 23.3813 6.75307C23.6248 6.54477 23.9411 6.44175 24.2607 6.46667C24.5802 6.4916 24.8767 6.64243 25.085 6.88599C25.2933 7.12955 25.3963 7.44588 25.3714 7.76539C25.3465 8.08491 25.1956 8.38143 24.9521 8.58974Z" fill="#C167C7"/>
+                            </svg>
+                            <p class="card-title kpi-titles">FREQUÊNCIA</p>
+                        </div>
+                        <div class="kpi-info">
+                            <span class="display-6 status-percent" style="font-size: 50px;">80%</span>
+                        </div>
+                    </div>
+                    <div class="information-container child-5" id="informacoes">
                                     <h1>Informações</h1>
                                     <div class="div-line">
                                         <label>Última Coleta</label>
@@ -605,10 +370,6 @@
                                         <span>Xeon E5-2697 v4</span>
                                     </div>
                                     <div class="div-line">
-                                        <label>Cores Lógicos</label>
-                                        <span>36</span>
-                                    </div>
-                                    <div class="div-line">
                                         <label>IP Externo</label>
                                         <span>192.1.1.0</span>
                                     </div>
@@ -616,41 +377,238 @@
                                         <label>IP Interno</label>
                                         <span>10.128.0.5</span>
                                     </div>
+                                    <div class="div-line">
+                                        <label>Cores Físicos</label>
+                                        <span>18</span>
+                                    </div>
+                                    <div class="div-line">
+                                        <label>Cores Lógicos</label>
+                                        <span>36</span>
+                                    </div>
                                 </div>
-                                <div class="card-kpi mt-3 d-flex flex-column" style="height: 100%; max-height: 320px;">
-
-                                    <div class="d-flex align-items-center justify-content-center"
-                                        style="color: white; gap: 10px;">
-                                        <button type="button" class=" btn btn-link d-flex p-0 border-0"
-                                            data-bs-toggle="modal" data-bs-target="#modalAmpliado"
-                                            onclick="grafico = 'histograma'">
-                                            <svg width="20" height="20" viewBox="0 0 14 14" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z"
-                                                    fill="#A0A0A0" />
+                    <div class="card-kpi child-6 p-3" id="distribuicao">
+                                    <div class="d-flex align-items-start justify-content-start" style="color: white; gap: 10px;">
+                                        <svg width="20" height="20" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15 0H1C0.45 0 0 0.45 0 1V13C0 13.55 0.45 14 1 14H15C15.55 14 16 13.55 16 13V1C16 0.45 15.55 0 15 0ZM15.02 5.85L13.02 8.85C12.79 9.2 12.21 9.2 11.98 8.85L9.5 5.13L6.02 10.35C5.79 10.7 5.21 10.7 4.98 10.35L3.5 8.13L2.02 10.35C1.9 10.53 1.7 10.62 1.5 10.62C1.38 10.62 1.26 10.59 1.15 10.52C1.08163 10.4741 1.02298 10.4152 0.977419 10.3466C0.931857 10.278 0.900276 10.2011 0.884484 10.1203C0.868692 10.0395 0.869 9.95632 0.885391 9.87562C0.901781 9.79492 0.933931 9.71825 0.98 9.65L2.98 6.65C3.21 6.3 3.79 6.3 4.02 6.65L5.5 8.87L8.98 3.65C9.21 3.3 9.79 3.3 10.02 3.65L12.5 7.37L13.98 5.15C14.17 4.86 14.56 4.78 14.85 4.98C15.13 5.17 15.21 5.56 15.02 5.85Z" fill="#C167C7"/>
+                                        </svg>
+                                        <p class="card-title kpi-titles">DISTRIBUIÇÃO DE USO</p>
+                                        <button type="button" class=" btn btn-link d-flex p-0 border-0" data-bs-toggle="modal" data-bs-target="#modalAmpliado"onclick="grafico = 'usoTempo'">
+                                            <svg width="20" height="20" viewBox="0 0 14 14" fill="none"xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z" fill="#A0A0A0" />
                                             </svg>
-
                                         </button>
-                                        Histograma
                                     </div>
-
-                                    <div style="position: relative; flex: 1; min-height: 0;">
-
-                                        <div style="position: absolute; top: 0; left: 0; right: 10px; bottom: 10px;">
-                                            <canvas id="histCPU"></canvas>
-                                        </div>
-
+                                    <div style="height: 90%;">
+                                        <canvas id="dashboardComponentes" ></canvas>
                                     </div>
-
                                 </div>
+                    <div class="card-kpi px-4 py-3 child-7" id="fila_processos">
+                        <div style="height: 100%;" class="column align-items-center flex-nowrap gap-2">
+                            <div class="kpi-titles d-flex column align-items-start gap-2"" >
+                                <svg width="16" height="18" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0.75C0 0.551088 0.0790177 0.360322 0.21967 0.21967C0.360322 0.0790175 0.551088 0 0.75 0H11.75C11.9489 0 12.1397 0.0790175 12.2803 0.21967C12.421 0.360322 12.5 0.551088 12.5 0.75C12.5 0.948912 12.421 1.13968 12.2803 1.28033C12.1397 1.42098 11.9489 1.5 11.75 1.5H0.75C0.551088 1.5 0.360322 1.42098 0.21967 1.28033C0.0790177 1.13968 0 0.948912 0 0.75ZM6.5 4H0.75C0.551088 4 0.360322 4.07902 0.21967 4.21967C0.0790177 4.36032 0 4.55109 0 4.75C0 4.94891 0.0790177 5.13968 0.21967 5.28033C0.360322 5.42098 0.551088 5.5 0.75 5.5H6.5C6.69891 5.5 6.88968 5.42098 7.03033 5.28033C7.17098 5.13968 7.25 4.94891 7.25 4.75C7.25 4.55109 7.17098 4.36032 7.03033 4.21967C6.88968 4.07902 6.69891 4 6.5 4ZM6.5 8H0.75C0.551088 8 0.360322 8.07902 0.21967 8.21967C0.0790177 8.36032 0 8.55109 0 8.75C0 8.94891 0.0790177 9.13968 0.21967 9.28033C0.360322 9.42098 0.551088 9.5 0.75 9.5H6.5C6.69891 9.5 6.88968 9.42098 7.03033 9.28033C7.17098 9.13968 7.25 8.94891 7.25 8.75C7.25 8.55109 7.17098 8.36032 7.03033 8.21967C6.88968 8.07902 6.69891 8 6.5 8ZM14 6.75C14 6.87725 13.9677 7.00241 13.906 7.11372C13.8444 7.22502 13.7554 7.31881 13.6475 7.38625L9.6475 9.88625C9.53395 9.95722 9.40348 9.99649 9.26962 10C9.13577 10.0035 9.00342 9.9711 8.88631 9.90617C8.76921 9.84124 8.67162 9.74615 8.60369 9.63076C8.53576 9.51537 8.49996 9.3839 8.5 9.25V4.25C8.49996 4.1161 8.53576 3.98463 8.60369 3.86924C8.67162 3.75385 8.76921 3.65876 8.88631 3.59383C9.00342 3.5289 9.13577 3.4965 9.26962 3.5C9.40348 3.50351 9.53395 3.54278 9.6475 3.61375L13.6475 6.11375C13.7554 6.18119 13.8444 6.27498 13.906 6.38628C13.9677 6.49759 14 6.62275 14 6.75ZM11.835 6.75L10 5.60312V7.89688L11.835 6.75Z" fill="#C167C7"/>
+                                </svg>
 
+                                <p>FILA DE PROCESSAMENTO</p>
+                            </div>
+                            <div style="position: relative;">
+                                <canvas id="gauge_queue"></canvas>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center" style="color: white; gap: 10px;">
+                                <h1>1.6</h1>
                             </div>
                         </div>
                     </div>
+                    <div class="process-container child-8 p-3" id="processos_ativos">
+                        <div class="kpi-titles d-flex column align-items-start gap-2">
+                                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 0H0V4H20V0ZM0 6H20V10H0V6ZM0 12H20V16H0V12Z" fill="#C167C7"/>
+                                </svg>
+
+                                <p>PROCESSOS ATIVOS</p>
+                            </div>
+                        <div class="table-wrapper">
+                            <table class="process-table">
+                                <thead>
+                                    <tr>
+                                        <th>PID</th>
+                                        <th>NOME</th>
+                                        <th>CPU%</th>
+                                        <th>INSTANCIAS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1239</td>
+                                        <td>watermark</td>
+                                        <td class="tdCenter">
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width: 91%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent critical">91%</span>
+                                            </div>
+                                        </td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3651</td>
+                                        <td>h265</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width: 80%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">80%</span>
+                                            </div>
+                                        </td>
+                                        <td>10</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>4532</td>
+                                        <td>ffmpeg</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width: 50%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">50%</span>
+                                            </div>
+                                        </td>
+                                        <td>Ativo</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>1235</td>
+                                        <td>nginx</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width: 31%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">31%</span>
+                                            </div>
+                                        </td>
+                                        <td>Ativo</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>1679</td>
+                                        <td>thumbnail</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width: 21%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">21%</span>
+                                            </div>
+                                        </td>
+                                        <td>Ativo</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>2346</td>
+                                        <td>firefox</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width:16%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">16%</span>
+                                            </div>
+                                        </td>
+                                        <td>Ativo</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>6354</td>
+                                        <td>proxy</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width:16%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">16%</span>
+                                            </div>
+                                        </td>
+                                        <td>Ativo</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>7456</td>
+                                        <td>manes</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width: 15.5%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">15.5%</span>
+                                            </div>
+                                        </td>
+                                        <td>7856</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>4625</td>
+                                        <td>fever</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width: 10%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">10%</span>
+                                            </div>
+                                        </td>
+                                        <td>9456</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>1364</td>
+                                        <td>prolt</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width: 6%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">6%</span>
+                                            </div>
+                                        </td>
+                                        <td>Ativo</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>6458</td>
+                                        <td>fence</td>
+                                        <td>
+                                            <div class="progress-item-table">
+                                                <div class="progress-bg">
+                                                    <div class="progress-fill" style="width: 2%;">
+                                                    </div>
+                                                </div>
+                                                <span class="percent">2%</span>
+                                            </div>
+                                        </td>
+                                        <td>Ativo</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                </div>
             </main>
-
-
 
             <!-- MENU OFFCANVAS DO BOOTSTRAP HAMBURGUER -->
             <div class="offcanvas offcanvas-start text-white sidebar" tabindex="-1" id="menuMobile"
@@ -748,13 +706,6 @@
                 </div>
             </div>
 
-
-            <!-- MODAL DA LEGENDA -->
-
-
-
-
-
             <!-- MODAL DOS GRAFICOS UNIVERSAO -->
 
             <div class="modal fade" id="modalAmpliado" tabindex="-1" data-bs-theme="dark">
@@ -809,8 +760,7 @@
                                         <div class="card-legend p-2 gap-3 h-100"
                                             style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);">
 
-                                            <h5 class="text-center text-light mb-4" style="font-weight: 500;">Servidor
-                                            </h5>
+                                            <h5 class="text-center text-light mb-4" style="font-weight: 500;">Servidor</h5>
 
                                             <div class="d-flex flex-column gap-4 text-start">
 
@@ -898,14 +848,11 @@
                                                 </div>
 
                                             </div>
-
-
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="card-legend p-4"
                                             style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);">
-
                                             <h5 class="text-center text-light mb-4" style="font-weight: 500;">Componente
                                             </h5>
 
@@ -963,14 +910,14 @@
                                                         <div class="line-component"
                                                             style="background-color: #FFD500; width: 100%; height: 5px; ">
                                                         </div>
-                                                        10%
+                                                        70%
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
                                                         <span>Critíco</span>
                                                         <div class="line-component"
                                                             style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
                                                         </div>
-                                                        10%
+                                                        90%
                                                     </div>
                                                 </div>
                                                 <div class="d-flex box=componente gap-3">
@@ -1024,14 +971,14 @@
                                                         <div class="line-component"
                                                             style="background-color: #FFD500; width: 100%; height: 5px; ">
                                                         </div>
-                                                        10%
+                                                        70%
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
                                                         <span>Critíco</span>
                                                         <div class="line-component"
                                                             style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
                                                         </div>
-                                                        10%
+                                                        90%
                                                     </div>
                                                 </div>
                                                 <div class="d-flex box=componente gap-3">
@@ -1069,23 +1016,17 @@
                                                         <div class="line-component"
                                                             style="background-color: #FFD500; width: 100%; height: 5px; ">
                                                         </div>
-                                                        10%
+                                                        70%
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
                                                         <span>Critíco</span>
                                                         <div class="line-component"
                                                             style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
                                                         </div>
-                                                        10%
+                                                        90%
                                                     </div>
                                                 </div>
-
-
-
-
-
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -1096,586 +1037,62 @@
                             </div>
                         </div>
 
-
-
-
-
-
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                        <script>
-
-                            const cpu = document.getElementById('doughnut_cpu');
-
-                            const cpuData = {
-                                datasets: [{
-                                    label: 'My First Dataset',
-                                    data: [78, 22],
-                                    backgroundColor: [
-                                        '#C167C7',
-                                        "#212121",
-                                    ],
-                                    hoverOffset: 4
-                                }]
-                            };
-                            const cpuConfig = {
-                                type: 'doughnut',
-                                data: cpuData,
-                                options: {
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    layout: {
-                                        padding: 0
-                                    },
-                                    plugins: {
-                                        legend: { display: false },
-                                        tooltip: { enabled: false }
-                                    },
-                                    elements: {
-                                        arc: {
-                                            borderWidth: 0
-                                        }
-                                    }
-                                }
-                            };
-
-
-                            new Chart(cpu, cpuConfig);
-
-
-                            //GRÁFICO DE TENDÊNCIA
-
-                            const scatterCpu = document.getElementById('scatterPlotCPU');
-
-                            const dataPoints = [
-                                { x: 2, y: 25 }, { x: 3, y: 20 }, { x: 5, y: 50 },
-                                { x: 8, y: 70 }, { x: 12, y: 120 }, { x: 15, y: 140 }
-
-                            ]
-
-                            function calcularRegressao(data) {
-                                const n = data.length
-                                let sumX = 0, sumY = 0, sumXY = 0, sumXX = 0
-
-                                data.forEach(p => {
-                                    sumX += p.x
-                                    sumY += p.y
-                                    sumXY += p.x * p.y
-                                    sumXX += p.x * p.x
-                                })
-
-                                const m = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX)
-                                const b = (sumY - m * sumX) / n
-                                return { m, b }
-                            }
-
-                            const { m, b } = calcularRegressao(dataPoints)
-                            const minX = Math.min(...dataPoints.map(p => p.x))
-                            const maxX = Math.max(...dataPoints.map(p => p.x))
-                            const linePoints = [
-                                { x: minX, y: m * minX + b },
-                                { x: maxX, y: m * maxX + b }
-                            ]
-
-                            const dataScatter = [
-                                {
-                                    label: 'Uso de CPU',
-                                    data: dataPoints,
-                                    backgroundColor: 'rgba(255, 99, 132, 0.6)'
-
-                                },
-                                {
-                                    label: 'Tendência',
-                                    data: linePoints,
-                                    type: 'line',
-                                    borderColor: 'red',
-                                    showLine: true,
-                                    fill: false,
-                                    pointRadius: 0
-                                }
-                            ]
-
-                            const scatterCpuConfig = {
-                                type: 'scatter',
-                                data: {
-                                    datasets: dataScatter
-                                },
-                                options: {
-                                    scales: {
-                                        x: {
-                                            type: 'linear',
-                                            position: 'bottom',
-                                            border: {
-                                                color: '#dddddd'
-                                            },
-                                            grid: {
-                                                display: true,
-                                                color: 'rgba(255, 255, 255, 0.1)',
-                                                tickColor: '#dddddd'
-                                            },
-                                            ticks: {
-                                                color: '#dddddd'
-                                            }
-                                        },
-                                        y: {
-                                            border: {
-                                                color: '#dddddd'
-                                            },
-                                            grid: {
-                                                display: true,
-                                                color: 'rgba(255, 255, 255, 0.1)',
-                                                tickColor: '#dddddd'
-                                            },
-                                            ticks: {
-                                                color: '#dddddd'
-                                            }
-                                        }
-                                    },
-                                    plugins: {
-                                        legend: {
-                                            labels: {
-                                                usePointStyle: true,
-                                                pointStyle: 'circle',
-                                                font: {
-                                                    size: 8
-                                                },
-                                                color: '#dddddd'
-                                            }
-                                        }
-                                    },
-                                    tooltip: {
-                                        displayColors: false,
-                                        callbacks: {
-                                            label: (context) => `CPU: ${context.parsed.x} GB | Processos: ${context.parsed.y.toFixed(0)}`
-                                        }
-                                    }
-                                }
-                            }
-
-                            new Chart(scatterCpu, scatterCpuConfig);
-
-
-
-
-
-                            // GRAFICO DE LOLIPOP
-                            const lollipopCPU = document.getElementById('lollipopCPU');
-
-                            const labelsLollipop = ['ffmpeg', 'h265', 'thumbnail', 'watermark', 'nginx']
-                            const dadosLollipop = [50, 81, 21, 91, 31]
-
-                            const lollipopCPUConfig = {
-                                type: 'bar',
-                                data: {
-                                    labels: labelsLollipop,
-                                    datasets: [
-                                        {
-                                            type: 'line',
-                                            label: 'bolinha',
-                                            data: dadosLollipop,
-                                            backgroundColor: '#FF1493',
-                                            borderColor: '#FF1493',
-                                            pointRadius: 6,
-                                            showLine: false,
-                                            order: 1
-                                        },
-                                        {
-                                            type: 'bar',
-                                            label: 'Uso de CPU',
-                                            data: dadosLollipop,
-                                            backgroundColor: '#FF1493',
-                                            barThickness: 2,
-                                            order: 2
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    responsive: true,
-                                    maintainAspectRatio: false,
-                                    plugins: {
-                                        legend: {
-                                            display: false,
-
-                                        },
-                                        tooltip: {
-                                            displayColors: false,
-                                            callbacks: {
-                                                label: (context) => `Uso: ${context.raw}%`
-                                            },
-
-                                        },
-
-                                    },
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true,
-                                            max: 100,
-                                            grid: {
-                                                color: 'rgba(255, 255, 255, 0.05)'
-                                            },
-                                            ticks: {
-                                                color: '#dddddd',
-                                                font: { size: 8 }
-                                            }
-
-                                        },
-                                        x: {
-                                            grid: {
-                                                display: false
-                                            },
-                                            ticks: {
-                                                color: '#dddddd',
-                                                font: { size: 7 }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-
-
-
-                            new Chart(lollipopCPU, lollipopCPUConfig);
-
-
-
-                            // GRAFICO HSITORGRAMA CPU
-
-                            const histCPU = document.getElementById('histCPU');
-
-                            const dadosFrequencia = [15, 10, 16, 12, 32, 58, 44, 8, 15]
-                            const labelsIntervalo = ['0-10', '10-20', '20-30', '30-40', '40-50', '50-60', '60-70', '70-80', '80-90']
-
-                            const configHist = {
-                                type: 'bar',
-                                data: {
-                                    labels: labelsIntervalo,
-                                    datasets: [
-                                        {
-                                            label: 'Frequência',
-                                            data: dadosFrequencia,
-                                            backgroundColor: 'rgba(128, 64, 128, 0.8)',
-                                            borderColor: 'rgba(218, 112, 214, 1)',
-                                            borderWidth: 1,
-                                            barPercentage: 1.0,
-                                            categoryPercentage: 1.0
-                                        }
-                                    ]
-                                },
-                                options: {
-                                    responsive: true,
-
-                                    maintainAspectRatio: false,
-                                    plugins: {
-                                        legend: {
-                                            display: false
-                                        },
-                                        tooltip: {
-                                            displayColors: false,
-                                            callbacks: {
-                                                title: (context) => `Percentual: ${context[0].label}%`,
-                                                label: (context) => `Frequência: ${context.raw}%`
-                                            }
-                                        }
-                                    },
-                                    scales: {
-                                        y: {
-                                            beginAtZero: true,
-                                            max: 90,
-                                            title: {
-                                                display: true,
-                                                text: 'Frequência',
-                                                color: '#dddddd',
-                                                font: { size: 14 }
-                                            },
-                                            grid: {
-                                                color: 'rgba(255, 255, 255, 0.05)'
-                                            },
-                                            ticks: { color: '#dddddd' }
-                                        },
-                                        x: {
-                                            title: {
-                                                display: true,
-                                                text: 'Percentual',
-                                                color: '#dddddd',
-                                                font: { size: 14 }
-                                            },
-                                            grid: {
-                                                display: false
-                                            },
-                                            ticks: { color: '#dddddd' }
-
-                                        }
-                                    }
-                                }
-                            }
-
-                            new Chart(histCPU, configHist);
-
-                            // obterDadosGrafico(idSensor)
-
-                            function obterDadosGrafico(id_registro) {
-
-                                fetch(`/medidas/ultimas/${id_registro}`, { cache: 'no-store' }).then(function (response) {
-                                    if (response.ok) {
-                                        response.json().then(function (resposta) {
-                                            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                                            resposta.reverse();
-                                            plotarGrafico(resposta, id_registro);
-
-                                        });
-                                    } else {
-                                        console.error('Nenhum dado encontrado ou erro na API');
-                                    }
-                                })
-                                    .catch(function (error) {
-                                        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-                                    });
-                            }
-
-                            plotarGrafico([], 2)
-
-
-                            function plotarGrafico(resposta, id_registro) {
-                                let graficoAberto = null;
-                                let grafico = '';
-                                let configuracaoAtivaDashboard = null;
-
-                                console.log('iniciando plotagem do gráfico...');
-
-                                labels = ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00"]
-
-                                let dadosRede = {
-                                    labels: labels,
-                                    datasets: [
-                                        {
-                                            label: 'Recebido',
-                                            data: [70, 80, 35, 62, 95, 49, 32],
-                                            fill: true,
-                                            borderColor: '#C167C7',
-                                            borderWidth: 1.9,
-                                            tension: 0.3,
-                                            fill: "+2",
-                                            fill: false,
-                                            interaction: {
-                                                intersect: false
-                                            },
-                                            radius: 0,
-                                        },
-                                        {
-                                            label: 'Enviado',
-                                            data: [66, 89, 43, 93, 69, 51, 84],
-                                            fill: true,
-                                            borderColor: '#FFD500',
-                                            borderWidth: 1.9,
-                                            tension: 0.3,
-                                            fill: false,
-                                            interaction: {
-                                                intersect: false
-                                            },
-                                            radius: 0,
-                                        },
-                                    ]
-                                }
-
-                                let dadosDashboard = {
-                                    labels: labels,
-                                    datasets: [
-                                        {
-                                            label: 'CPU',
-                                            data: [50, 53, 74, 62, 45, 72, 75,],
-                                            fill: true,
-                                            borderColor: '#C167C7',
-                                            borderWidth: 1.9,
-
-                                            fill: "+2",
-                                            fill: false,
-                                            interaction: {
-                                                intersect: false
-                                            },
-                                            radius: 0,
-                                        },
-
-                                    ]
-                                }
-
-
-                                console.log('----------------------------------------------')
-                                console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-                                console.log(resposta)
-
-                                for (i = 0; i < resposta.length; i++) {
-                                    var registro = resposta[i];
-
-                                    var momentoGrafico = registro.momento_grafico
-                                    labels.push(momentoGrafico);
-
-
-                                    dadosDashboard.datasets[1].data.push(registro.dado);
-                                }
-
-                                const configDashboard = {
-                                    type: 'line',
-                                    data: dadosDashboard,
-                                    options: {
-                                        scales: {
-                                            x: {
-                                                title: {
-                                                    display: true,
-                                                    text: "Horário",
-                                                    color: '#dddddd',
-                                                    font: {
-                                                        size: 14,
-                                                        weight: 'bold'
-                                                    }
-                                                },
-                                                ticks: { color: '#dddddd' }
-                                            },
-                                            y: {
-                                                title: {
-                                                    display: true,
-                                                    text: 'Consumo (%)',
-                                                    color: '#dddddd',
-                                                    font: {
-                                                        size: 14,
-                                                        weight: 'bold'
-                                                    }
-                                                },
-                                                ticks: { color: '#dddddd' }
-                                            }
-                                        }
-                                    }
-                                };
-
-
-
-
-                                let dashboard_componentes = new Chart(
-                                    document.getElementById(`dashboardComponentes`),
-                                    configDashboard
-                                );
-
-
-
-
-                                configuracaoAtivaDashboard = JSON.parse(JSON.stringify(configDashboard));
-
-                                const ctxModal = document.getElementById('canvasGrande')
-                                document.getElementById('modalAmpliado').addEventListener('shown.bs.modal', function () {
-
-                                    if (grafico == 'usoTempo') {
-                                        document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
-                                        document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-
-                                        if (configuracaoAtivaDashboard) {
-                                            graficoAberto = new Chart(ctxModal, configuracaoAtivaDashboard)
-                                        }
-                                    }
-                                })
-
-                                // setTimeout(() => atualizarGrafico(id_registro, dadosDashboard, dashboard_componentes), 2000);
-                            }
-
-                            function atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade) {
-                                fetch(`/medidas/tempo-real/${id_registro}`, { cache: 'no-store' }).then(function (response) {
-                                    if (response.ok) {
-                                        response.json().then(function (novoRegistro) {
-
-                                            console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                                            console.log(`Dados atuais do gráfico de temperatura:`);
-                                            console.log(dadosTemperatura);
-
-                                            console.log(`Dados atuais do gráfico de umidade:`);
-                                            console.log(dadosUmidade);
-
-                                            var momentoGrafico = novoRegistro[0].momento_grafico
-                                            var momentoGraficoFormatado = novoRegistro[0].momento_grafico.split(':')
-                                            momentoGraficoFormatado = `${momentoGraficoFormatado[0]}:${momentoGraficoFormatado[1]}`
-                                            if (momentoGrafico == labels[labels.length - 1]) {
-                                                console.log("---------------------------------------------------------------")
-                                                console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-                                                console.log("Horário do novo dado capturado:")
-                                                console.log(momentoGrafico)
-                                                console.log("Horário do último dado capturado:")
-                                                console.log(labels[labels.length - 1])
-                                                console.log("---------------------------------------------------------------")
-                                            } else {
-
-                                                dadosTemperatura.labels.shift(); // apagar o primeiro
-                                                dadosTemperatura.labels.push(momentoGraficoFormatado); // incluir um novo momento
-
-                                                dadosUmidade.labels.shift(); // apagar o primeiro
-                                                dadosUmidade.labels.push(momentoGraficoFormatado); // incluir um novo momento
-
-                                                labels.shift()
-                                                labelsFormatado.shift()
-                                                labels.push(momentoGrafico)
-                                                labelsFormatado.push(momentoGraficoFormatado)
-
-                                                dadosUmidade.datasets[1].data.shift();  // apagar o primeiro de umidade
-                                                dadosUmidade.datasets[1].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                                            }
-
-                                            proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dadosUmidade, dashboardUmidade), 2000);
-                                        });
-                                    } else {
-                                        console.error('Nenhum dado encontrado ou erro na API');
-                                        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                                        proximaAtualizacao = setTimeout(() => atualizarGrafico(id_registro, dados, myChart), 2000);
-                                    }
-                                })
-                                    .catch(function (error) {
-                                        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-                                    });
-                            }
-
-
-
-
-                            // MODAL CONFIG
-
-                            let graficoAberto = null;
-                            let grafico = '';
-                            const ctxModal = document.getElementById('canvasGrande')
-                            document.getElementById('modalAmpliado').addEventListener('shown.bs.modal', function () {
-
-                                if (graficoAberto) {
-                                    graficoAberto.destroy();
-                                }
-
-                                if (grafico == 'usoProcessos') {
-                                    document.getElementById('tituloModal').innerText = 'Uso dos processos'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-                                    graficoAberto = new Chart(ctxModal, lollipopCPUConfig)
-
-                                } else if (grafico == 'tendencia') {
-                                    document.getElementById('tituloModal').innerText = 'Tendencia'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-                                    graficoAberto = new Chart(ctxModal, scatterCpuConfig)
-
-                                } else if (grafico == 'histograma') {
-                                    document.getElementById('tituloModal').innerText = 'Histograma'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-                                    graficoAberto = new Chart(ctxModal, configHist)
-
-                                } else if (grafico == 'usoTempo') {
-                                    document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-                                    graficoAberto = new Chart(ctxModal, configDashboard)
-
-                                } else if (grafico == 'doughnut') {
-                                    document.getElementById('tituloModal').innerText = 'Distribuicao'
-                                    document.getElementById('textoModal').innerText = 'Pirulitos que informam de 0 a 100% o uso daquele processo'
-                                    graficoAberto = new Chart(ctxModal, cpuConfig)
-
-                                }
-                            })
-                        </script>
-
-
-                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-                            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-                            crossorigin="anonymous"></script>
+                    </div>
+                </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    
+    async function mudarCorKpi(valor, idComponente) {
+        const meuElemento = document.querySelector(`#${idComponente}`);
+
+        valor = parseInt(valor)
+        if(idComponente == "kpi_pico") {
+            if (valor >= 90) {
+            meuElemento.classList.add('critico');
+            }
+            else if (valor >= 70) {
+                meuElemento.classList.add('risco');
+            }
+            else {
+                meuElemento.classList.remove('risco');
+                meuElemento.classList.remove('critico');
+            }
+        } else if (idComponente == "kpi_temperatura") {
+            if (valor >= 85) {
+                meuElemento.classList.add('critico');
+            }
+            else if (valor >= 70) {
+                meuElemento.classList.add('risco');
+            }
+            else {
+                meuElemento.classList.remove('risco');
+                meuElemento.classList.remove('critico');
+            }
+        } else if (idComponente == "kpi_frequencia") {
+            
+        }
+    }
+
+    
+
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
-
 </html>
+<script src="../services/api.js"></script>
+<script src="../services/serviceComponenteCpu.js"></script>
+<script>
+    async function obterDados() {
+        sessionStorage.setItem('MAC_ADDRESS', "24:fe:9a:06:99:2f"); // REMOVER 
+        const mac_address = sessionStorage.getItem('MAC_ADDRESS');
+        const resultado = await buscarComponenteCpuService(mac_address)
+        console.log(resultado);
+    }
+
+    obterDados()
+
+    // Lógica aqui
+    
+</script>
