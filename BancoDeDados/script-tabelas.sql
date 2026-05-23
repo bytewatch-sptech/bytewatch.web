@@ -119,7 +119,7 @@
 SELECT id_alerta, valor_leitura, status_alerta, data_abertura, data_resolucao, jira_key 
 FROM historico_alertas WHERE jira_key = 'KAN-25';
 
-	INSERT INTO tipo_usuario (tipo) VALUES ('adm'), ('user');
+	INSERT INTO tipo_usuario (tipo) VALUES ('Analista'), ('Gestor');
 
 	INSERT INTO empresa (nome_fantasia, cnpj, telefone, email) VALUES 
 	('Tiktok', '1289657564', '123456789', 'tiktok@corporation.com');
@@ -159,6 +159,9 @@ FROM historico_alertas WHERE jira_key = 'KAN-25';
     ("Tiktok - Xeon", "94.140.14.14", "Machine Learning", "Ativo", "22:09:4d:12:44:ac", 1, 2),
     ("Luis - TK", "195.46.39.39", "API REST", "Ativo", "00:2b:67:e7:9f:72", 1, 3),
     ("Ryan", "64.6.64.6", "Security", "Ativo", "VAZIO2", 1, 4);
+    
+    INSERT INTO usuario (nome, senha, email, cpf, fk_tipo_usuario, fk_usuario_empresa) 
+    VALUES ('Bruna', 'bruna123','bruna@email.com', '12345678901', 2, 1);
 
 	select * from servidor;
     
