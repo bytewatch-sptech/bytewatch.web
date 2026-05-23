@@ -7,6 +7,12 @@ var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 
 require("dotenv").config({ path: caminho_env });
 
+console.log("AWS_ACCESS_KEY_ID:", process.env.AWS_ACCESS_KEY_ID);
+console.log("AWS_SECRET_ACCESS_KEY:", process.env.AWS_SECRET_ACCESS_KEY);
+console.log("AWS_SESSION_TOKEN:", process.env.AWS_SESSION_TOKEN);
+console.log("AWS_REGION:", process.env.AWS_REGION);
+console.log("S3_BUCKET_NAME:", process.env.S3_BUCKET_NAME);
+
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
