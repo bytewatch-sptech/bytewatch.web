@@ -261,7 +261,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
 
 
-                                        <div class="table-responsive w-100 frota-servidores mt-4">
+                                        <div class="table-responsive w-100 frota-servidores mt-2">
                                             <div class="d-flex align-items-center gap-3 cabecalho-servidores">
                                                 <span>Frota de
                                                     Servidores</span>
@@ -987,23 +987,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
             datasets: [
                 {
                     label: 'Servidores Estáveis',
-                    data: [
-                        { x: 33, y: 60, r: 6, valor: 20 },
-                        { x: 42, y: 75, r: 5, valor: 24 },
-                        { x: 48, y: 120, r: 6, valor: 28 },
-                        { x: 72, y: 200, r: 10, valor: 44 }
-                    ],
+                    data: [],
                     backgroundColor: 'rgba(0, 240, 255, 0.2)',
                     borderColor: '#00E5FF',
                     borderWidth: 2
                 },
                 {
                     label: 'Servidores Critícos',
-                    data: [
-                        { x: 80, y: 400, r: 13, valor: 91 },
-                        { x: 85, y: 380, r: 15, valor: 100 },
-                        { x: 90, y: 500, r: 15, valor: 100 }
-                    ],
+                    data: [],
                     backgroundColor: 'rgba(255, 59, 48, 0.2)',
                     borderColor: '#FF3B30',
                     borderWidth: 2,
@@ -1073,6 +1064,10 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 const novosEstaveis = [];
                 const novosInstaveis = [];
 
+                const bolhasEstaveis = []
+                const bolhasCriticas = []
+
+
                 dados.servidores.forEach(servidor => {
                     if (servidor.dados_tempo_real) {
                         console.log(`gráfico para : ${servidor.nome_db}`)
@@ -1090,6 +1085,23 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                         } else {
                             novosEstaveis.push(formatoMapa);
                         }
+
+                        if (servidor.dados_tempo_real.matriz_priorizacao) {
+                            const matriz = servidor.dados_tempo_real.matriz_priorizacao
+
+                            const pontosBolha = {
+                                x: parseFloat(matriz.x.toFixed(1)),
+                                y: parseFloat(matriz.y.toFixed(1)),
+                                valor: Math.round(matriz.tamanho_bolha),
+                                r: Math.max(6, Math.round(matriz.tamanho_bolha / 5))
+                            }
+
+                            if (status_servidor.toLowerCase() === 'critico') {
+                                bolhasCriticas.push(pontosBolha);
+                            } else {
+                                bolhasEstaveis.push(pontosBolha);
+                            }
+                        }
                     } else {
                         console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
                     }
@@ -1101,6 +1113,10 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                         { name: 'Servidores Instáveis', data: novosInstaveis }
                     ]
                 });
+
+                matrizChart.data.datasets[0].data = bolhasEstaveis; 
+                matrizChart.data.datasets[1].data = bolhasCriticas; 
+                matrizChart.update();
 
                 const qtdCriticos = dados.resumo_global.servidores_criticos
                 const totalServidores = dados.resumo_global.total_servidores
@@ -1290,11 +1306,11 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
     }
 
     function acessarRam(botao) {
-        
+
         let macAddress = botao.getAttribute('macA')
 
-        console.log("MACCCC:",macAddress)
-        sessionStorage.setItem('MAC_ADDRESS', macAddress) 
+        console.log("MACCCC:", macAddress)
+        sessionStorage.setItem('MAC_ADDRESS', macAddress)
         window.location.href = `/pages/dashboard-ram.html`
     }
 
