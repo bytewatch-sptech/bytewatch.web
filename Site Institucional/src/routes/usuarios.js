@@ -20,4 +20,8 @@ router.get("/listar", function (req, res) {
     usuarioController.listar(req, res);
 });
 
+router.post("/atribuir", function (req, res) {
+    usuarioController.atribuir(req, res);
+});
+
 module.exports = router;

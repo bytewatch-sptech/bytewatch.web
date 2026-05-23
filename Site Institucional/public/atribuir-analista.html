@@ -176,8 +176,8 @@
                         
 
                     <div class="d-flex justify-content-center mt-4 flex-shrink-0">
-                        <button onclick="cadastrarMaquina()" type="button" class="btn-submit-teal d-flex align-items-center gap-2">
-                            <i class="fa-solid fa-plus"></i> Adicionar Servidor
+                        <button onclick="atribuirServidorAoAnalista()" type="button" class="btn-submit-teal d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Atribuir
                         </button>
                     </div>
                 </form>
@@ -297,7 +297,7 @@
         resultado = await buscarTodosServidoresService()
         let conteudoSelect = ""
         for (let i = 0; i < resultado.length; i++) {
-            conteudoSelect += `<option value="${resultado[i].id_datacenter}">${resultado[i].nome_datacenters}</option>`
+            conteudoSelect += `<option value="${resultado[i].id_servidor}">${resultado[i].nome_datacenters}</option>`
         }
         document.getElementById("select_datacenter").innerHTML += conteudoSelect;
     } 
@@ -311,6 +311,23 @@
         }
         document.getElementById("select_funcionario").innerHTML += conteudoSelect;
     } 
+    
+    async function atribuirServidorAoAnalista () {
+        const fk_usuario = document.getElementById("select_funcionario").value
+        const fk_servidor = document.getElementById("select_datacenter").value
+        console.log(fk_usuario)
+        console.log(fk_servidor);
+        // var idEmpresa = sessionStorage.ID_EMPRESA;
+        try {
+            resultado = await atribuirServidor(fk_usuario, fk_servidor)
+            console.log(resultado);
+            alert("Servidor atribuido ao analista")
+        } catch {
+            alert("error ao atribuir servidor")
+        }
+        
+    } 
+    
     
     buscarDatacenters()
     buscarFuncionarios()

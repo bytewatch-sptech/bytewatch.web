@@ -44,9 +44,20 @@ function listar() {
     return database.executar(instrucaoSql);
 }
 
+function atribuirServidor(fk_usuario, fk_servidor) {
+    var instrucaoSql = `
+        INSERT INTO responsavel (fk_id_usuario, fk_id_servidor)
+            VALUES 
+                (${fk_usuario}, ${fk_servidor});
+    `;
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     autenticar,
     cadastrar,
     deletar,
-    listar
+    listar,
+    atribuirServidor
 };

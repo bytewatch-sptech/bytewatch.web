@@ -84,6 +84,38 @@ function cadastrar(req, res) {
     }
 }
 
+
+function atribuir(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var fk_usuario = req.body.fk_usuario;
+    var fk_servidor = req.body.fk_servidor;
+
+    // Faça as validações dos valores
+    if (fk_usuario == undefined) {
+        res.status(400).send("Seu usuario está undefined!");
+    } else if (fk_servidor == undefined) {
+        res.status(400).send("Seu servidor está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.atribuirServidor(fk_usuario, fk_servidor)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
     function deletar(req, res) {
     var idUsuario = req.params.idUsuario;
 
@@ -119,5 +151,6 @@ module.exports = {
     autenticar,
     cadastrar,
     deletar,
-    listar
+    listar,
+    atribuir
 }
