@@ -274,11 +274,12 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                             stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
 
-                                                    Filtro <input type="text"> <button class="filtro button">Todos <span
+                                                    Filtro <input type="text" id="input-busca"> 
+                                                    <button class="filtro button btn-filtro" data-valor="Todos">Todos <span
                                                             id="qtdServidores"></span></button> <button
-                                                        class="filtro button">Critíco</button> <button
-                                                        class="filtro button">Risco</button> <button
-                                                        class="filtro button">Estável</button>
+                                                        class="filtro button btn-filtro" data-valor="critico">Critíco</button> <button
+                                                        class="filtro button btn-filtro"data-valor="risco">Risco</button> <button
+                                                        class="filtro button btn-filtro"data-valor="estavel" >Estável</button>
                                                 </div>
                                             </div>
                                             <table class="table table-hover align-middle text-start">
@@ -367,7 +368,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                     </div>
 
                                                     <div class="progress-track">
-                                                        <div class="progress-fill" style="width: 93%;">
+                                                        <div class="progress-fill estavel" style="width: 93%;">
                                                         </div>
                                                     </div>
 
@@ -380,8 +381,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
                                                             d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75"
-                                                            stroke="#ba0c46" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
+                                                            stroke="currentColor" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </div>
 
@@ -448,8 +449,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         xmlns="http://www.w3.org/2000/svg">
                                                         <path
                                                             d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75"
-                                                            stroke="#ba0c46" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
+                                                            stroke="currentColor" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </div>
 
@@ -1114,8 +1115,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     ]
                 });
 
-                matrizChart.data.datasets[0].data = bolhasEstaveis; 
-                matrizChart.data.datasets[1].data = bolhasCriticas; 
+                matrizChart.data.datasets[0].data = bolhasEstaveis;
+                matrizChart.data.datasets[1].data = bolhasCriticas;
                 matrizChart.update();
 
                 const qtdCriticos = dados.resumo_global.servidores_criticos
@@ -1173,8 +1174,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
         )
 
         cardServidor = `
-        <tr class="servidor-critico">
-                                                        <td><span id="statusServidorBola">°</span></td>
+        <tr class="linha-servidor servidor-${status_servidor}" data-status="${status_servidor}">
+                                                        <td><span class="status-dot ${status_servidor}"></span></td>
                                                         <td>
                                                             <div class="flex-column d-flex">
                                                                 <span id="horaColeta">${ultima_coleta}</span>
@@ -1184,14 +1185,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                         
                                         <td>
                                             <div class="d-flex flex-column">
-                                                <span id="nomeServidor">${nome}</span>
+                                                <span class="nome-servidor">${nome}</span>
                                                 <span id="diagnosticoEtlServidor">${diagnostico_etl}</span>
                                             </div>
                                         </td>
-                                        <td><span id="cidadeServidor">${regiao}</span><span id="regiaoServidor">sa-east</span></td>
+                                        <td><span id="cidadeServidor">${regiao}</span><span id="regiaoServidor"></span></td>
 
                                         <td>
-                                            <button value="${macAddress}" onclick="acessarCpu(e)" class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
+                                            <button value="${macAddress}" onclick="acessarCpu(e)" class="btn btn-componente ${cpu_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
 
                                                 <div class="d-flex flex-column w-100 gap-1">
 
@@ -1218,20 +1219,20 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                             </defs>
                                                         </svg>
 
-                                                        <span class="texto-destaque fs-5 fw-bold">${cpu_uso}</span>
+                                                        <span class="texto-destaque ${cpu_status_ui}  fs-5 fw-bold">${cpu_uso}</span>
                                                     </div>
 
-                                                    <div class="progress-track">
-                                                        <div class="progress-fill" style="width: ${cpu_uso}%;">
+                                                    <div class="progress-track ${cpu_status_ui}">
+                                                        <div class="progress-fill ${cpu_status_ui}" style="width: ${cpu_uso}%;">
                                                         </div>
                                                     </div>
 
                                                 </div>
 
-                                                <div class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
+                                                <div class="d-flex align-items-center gap-1 texto-destaque ${cpu_status_ui} fw-bold fs-6">
                                                     ABRIR
                                                     <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75" stroke="#ba0c46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        <path d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                                     </svg>
                                                 </div>
 
@@ -1256,20 +1257,20 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                             <path d="M5.03125 11.2888H15.3568" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
                                                             <path d="M5.03125 7.40126C5.03125 7.14352 5.14004 6.89633 5.33368 6.71408C5.52732 6.53183 5.78995 6.42944 6.0638 6.42944H14.3242C14.5981 6.42944 14.8607 6.53183 15.0543 6.71408C15.248 6.89633 15.3568 7.14352 15.3568 7.40126V7.93575C15.1429 7.99504 14.9552 8.11789 14.8217 8.28592C14.6881 8.45395 14.616 8.65814 14.616 8.86797C14.616 9.0778 14.6881 9.28199 14.8217 9.45002C14.9552 9.61805 15.1429 9.74089 15.3568 9.80018V12.2603C15.3568 12.5181 15.248 12.7653 15.0543 12.9475C14.8607 13.1298 14.5981 13.2321 14.3242 13.2321H6.0638C5.78995 13.2321 5.52732 13.1298 5.33368 12.9475C5.14004 12.7653 5.03125 12.5181 5.03125 12.2603V9.7822C5.24511 9.72291 5.43283 9.60007 5.56636 9.43204C5.69989 9.26401 5.77205 9.05982 5.77205 8.84999C5.77205 8.64016 5.69989 8.43597 5.56636 8.26794C5.43283 8.09991 5.24511 7.97706 5.03125 7.91778V7.40126Z" stroke="#B0DB43" stroke-width="1.03255" stroke-linecap="round" stroke-linejoin="round"></path>
                                                         </svg>
-                                                        <span class="texto-destaque fs-5 fw-bold">${ram_uso}%</span>
+                                                        <span class="texto-destaque ${ram_status_ui} fs-5 fw-bold">${ram_uso}%</span>
                                                     </div>
 
-                                                    <div class="progress-track">
-                                                        <div class="progress-fill" style="width: ${ram_uso}%;">
+                                                    <div class="progress-track ${ram_status_ui}">
+                                                        <div class="progress-fill ${ram_status_ui}" style="width: ${ram_uso}%;">
                                                         </div>
                                                     </div>
 
                                                 </div>
 
-                                                <div class="d-flex align-items-center gap-1 texto-destaque fw-bold fs-6">
+                                                <div class="d-flex align-items-center gap-1 texto-destaque ${ram_status_ui} fw-bold fs-6">
                                                     ABRIR
                                                     <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75" stroke="#ba0c46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                        <path d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                                     </svg>
                                                 </div>
 
@@ -1279,8 +1280,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                             <div class="flex-column text-center">
                                                 <span>${disco_uso}%</span>
 
-                                                <div class="progress-track">
-                                                    <div class="progress-fill" style="width: ${disco_uso}%;">
+                                                <div class="progress-track ${disco_status_ui}">
+                                                    <div class="progress-fill ${disco_status_ui}" style="width: ${disco_uso}%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1289,8 +1290,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                             <div class="flex-column text-center">
                                                 <span>${rede_uso}%</span>
 
-                                                <div class="progress-track">
-                                                    <div class="progress-fill" style="width: ${rede_uso}%;">
+                                                <div class="progress-track ${rede_status_ui}">
+                                                    <div class="progress-fill ${rede_status_ui}" style="width: ${rede_uso}%;">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1501,5 +1502,56 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
     window.addEventListener('resize', function () {
         myChart.resize();
     })
+
+
+    let filtroTextoAtual = '';
+    let filtroStatusAtual = 'Todos';
+
+
+    function filtrarServidores() {
+        const linhasServidores = document.querySelectorAll('.linha-servidor')
+
+        linhasServidores.forEach(linha => {
+            const elementoNome = linha.querySelector('.nome-servidor');
+
+            if (!elementoNome) return;
+
+            const nomeServidor = elementoNome.textContent.toLowerCase();
+
+            const statusServidor = linha.getAttribute('data-status')
+
+            const condicaoTexto = nomeServidor.includes(filtroTextoAtual)
+
+            const condicaoStatus = (filtroStatusAtual === 'Todos') || (statusServidor === filtroStatusAtual);
+
+            if (condicaoTexto && condicaoStatus) {
+                linha.style.display = ''
+            } else {
+                linha.style.display = 'none'
+            }
+        })
+    }
+
+    const inputBusca = document.getElementById('input-busca')
+    if (inputBusca) {
+        inputBusca.addEventListener('input', (evento) => {
+            filtroTextoAtual = evento.target.value.toLowerCase()
+            filtrarServidores()
+        })
+    }
+
+    const botoesFiltro = document.querySelectorAll('.btn-filtro')
+    botoesFiltro.forEach(botao => {
+        botao.addEventListener('click', (evento) => {
+            filtroStatusAtual = evento.currentTarget.getAttribute('data-valor')
+
+            botoesFiltro.forEach(b => b.classList.remove('ativo'))
+            evento.currentTarget.classList.add('ativo')
+
+            filtrarServidores()
+        })
+    })
+
+
 
 </script>
