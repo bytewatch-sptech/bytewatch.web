@@ -554,6 +554,16 @@ body {
   border-color: #00f2ea;
 }
 
+.btn-componente{
+    width: 220px !important;
+    flex-shrink: 0; 
+    padding: 8px 12px;
+}
+.btn-componente .fs-5 {
+    display: inline-block;
+    min-width: 60px; /* Garante espaço suficiente até para "100.0%" */
+    text-align: left;
+}
 .status-dot {
   display: inline-block;
   width: 10px;

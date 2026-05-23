@@ -1204,7 +1204,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                         <td>
                                             <button value="${macAddress}" onclick="acessarCpu(e)" class="btn btn-componente ${cpu_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
 
-                                                <div class="d-flex flex-column w-100 gap-1">
+                                                <div class="d-flex flex-column flex-grow-1 gap-1">
 
                                                     <div class="d-flex align-items-center gap-2">
                                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1229,11 +1229,11 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                             </defs>
                                                         </svg>
 
-                                                        <span class="texto-destaque ${cpu_status_ui}  fs-5 fw-bold">${cpu_uso}</span>
+                                                        <span class="texto-destaque ${cpu_status_ui}  fs-5 fw-bold">${cpu_uso}%</span>
                                                     </div>
 
-                                                    <div class="progress-track ${cpu_status_ui}%">
-                                                        <div class="progress-fill ${cpu_status_ui}%" style="width: ${cpu_uso}%;">
+                                                    <div class="progress-track ${cpu_status_ui}">
+                                                        <div class="progress-fill ${cpu_status_ui}% style="width: ${cpu_uso};">
                                                         </div>
                                                     </div>
 
@@ -1249,7 +1249,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                             </button>
                                         </td>
                                         <td>
-                                            <button macA="${macAddress}" onclick="acessarRam(this)" class="btn btn-dark-custom d-flex align-items-center justify-content-between gap-4">
+                                            <button macA="${macAddress}" onclick="acessarRam(this)" class="btn btn-componente ${ram_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4">
 
                                                 <div class="d-flex flex-column w-100 gap-1">
 
