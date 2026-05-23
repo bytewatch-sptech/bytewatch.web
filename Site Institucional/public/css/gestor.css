@@ -2,7 +2,7 @@
         background: #0d0d0d;
         color: #e6edf3;
         font-family: Arial, sans-serif;
-        overflow-x: hidden;
+        
     }
 
     .sidebar {
@@ -28,30 +28,15 @@
     .card-custom {
         background: #151515;
         border: 1px solid #21262d;
+        transition: 0.3s;
         border-radius: 12px;
         padding: 10px;
         width: 100%;
     }
 
-    .kpi-value {
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    .kpi-green {
-        color: #22c55e;
-    }
-
-    .kpi-red {
-        color: #ef4444;
-    }
-
-    .kpi-yellow {
-        color: #f59e0b;
-    }
-
     .alert-item {
         display: flex;
+        width: 100%;
         justify-content: space-between;
         padding: 8px 0;
         border-bottom: 1px solid #21262d;
@@ -85,21 +70,6 @@
         padding: 4px;
     }
 
-    .low {
-        background: #1f2937;
-    }
-
-    .med {
-        background: #22c55e;
-    }
-
-    .high {
-        background: #f59e0b;
-    }
-
-    .peak {
-        background: #ef4444;
-    }
 
     .kpi-critico {
         border-color: var(--cor02);
@@ -128,12 +98,27 @@
         height: 390px;
     }
 
-    .card-parametro{
+    .card-parametro {
         background: #151515;
         border: 1px solid #21262d;
         width: 11%;
         margin-bottom: 6px;
         border-radius: 15px;
+    }
+
+    #rankingContainer {
+        justify-content: space-between;
+    }
+
+    
+
+    
+    .card-alerta {
+        box-shadow:0px 0px 10px 1px yellow
+    }
+    
+    .card-critico {
+        box-shadow:0px 0px 10px 1px red
     }
 
 

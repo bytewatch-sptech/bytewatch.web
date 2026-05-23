@@ -18,7 +18,7 @@
 
     <div class="row flex-nowrap">
         <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
-            style="min-height: 100vh; transition: 0.3s; overflow-x: hidden;">
+            style="min-height: 100vh;">
 
             <div class="d-flex justify-content-center mb-5">
                 <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
@@ -127,7 +127,7 @@
 
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/wallet.png" style="height: 25px;"> Custo Mensal Estimado</p>
+                                    <p><img src="../assets/walvar.png" style="height: 25px;"> Custo Mensal Estimado</p>
                                     <div class="kpi-value">
                                         <span id="custoMes"></span>
                                     </div>
@@ -199,13 +199,13 @@
                             <!-- GAUGES -->
                             <div class="col-lg-3 col-12">
 
-                                <div class="card-custom card-gauge mb-2">
+                                <div class="card-custom card-gauge mb-2" id="statusGaugeRam">
                                     <h6 class="mb-0">servidor 000 - Pico de RAM</h6>
                                     <canvas id="gaugePicoRAM"></canvas>
                                     <div id="valorRam" class="gauge kpi-yellow"></div>
                                 </div>
 
-                                <div class="card-custom card-gauge">
+                                <div class="card-custom card-gauge" id="statusGaugeCpu">
                                     <h6 class="mb-0">servidor 000 - Pico de CPU</h6>
                                     <canvas id="gaugePicoCPU"></canvas>
                                     <div id="valorCpu" class="gauge kpi-yellow"></div>
@@ -214,28 +214,16 @@
 
                         </div>
 
-                        <!-- ALERTAS -->
+                        <!-- RANKING -->
                         <div class="card-custom mt-4">
                             <h5>Ranking Consumo RAM</h5>
 
-                            <div class="alert-item">
-                                <span>Servidor - 000</span>
-                                <span class="badge-custom critico">Crítico</span>
-                            </div>
-
-                            <div class="alert-item">
-                                <span>Custo acima do orçamento</span>
-                                <span class="badge-custom atencao">Atenção</span>
-                            </div>
-
-                            <div class="alert-item">
-                                <span>Backup desatualizado</span>
-                                <span class="badge-custom info">Info</span>
-                            </div>
+                            <div class="alert-item" id="rankingContainer"></div>
 
                         </div>
 
                     </div>
+
                 </div>
             </div>
         </main>
@@ -249,10 +237,12 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../services/api.js"></script>
 <script src="../services/serviceGestorDash.js"></script>
-<script src="../js/scriptAI.js"></script>
+<!-- <script src="../js/scriptAI.js"></script> -->
 
 <script>
-    window.onload = ObterDadosGrafico;
+    window.onload = () => {
+        ObterDadosGrafico();
+    }
 
     async function ObterDadosGrafico() {
         const resultado = await buscarDadosGestorService();
@@ -269,7 +259,7 @@
             const picoRamGauge = resultado.dadosMaquina.ServidorEmPico?.servidorPicoRAM?.valor;
             const picoCpu = resultado.dadosMaquina.ServidorEmPico?.servidorPicoCPU?.valor;
 
-            console.log("RAM:", picoRam);
+            console.log("RAM:", picoRamGauge);
             console.log("CPU:", picoCpu);
 
             if (picoRamGauge == null || picoCpu == null) {
@@ -342,28 +332,31 @@
             document.getElementById("custoDia").innerText =
                 `R$ ${custoDia.toFixed(2)}`;
 
-            
+
             //Pegando os dados do Ranking de consumo de RAM
 
             // const posicao = resultado.dadosMaquina.posicao
             // const servidor = resultado.dadosMaquina.macAddress
             // const maxRam = resultado.dadosMaquina.picoRam
             const ranking = resultado.dadosMaquina.rankingRam
+            ranking.sort((a, b) => a.posicao - b.posicao)
 
-            const posicao = []
-            const servidor = []
-            const pico = []
+            if (!ranking.length) {
+                return
+            }
 
-            for (let i = 0; i < ranking.length; i++) {
-                posicao.push(ranking[i].posicao)
-                servidor.push(ranking[i].macAddress)
-                pico.push(ranking[i].picoRam)
-                
+            if (ranking.length > 0) {
+                criarRanking(ranking)
+            } else {
+                alert("ranking não encontrado")
             }
 
 
+            console.log("RANKING: ", ranking)
+
+
         } catch (erro) {
-            console.error("Erro ao pegar picos:", erro)
+            console.error("Erro ao pegar Dados:", erro)
         }
 
 
@@ -378,24 +371,41 @@
 
 
     }
-    ObterDadosGrafico()
 
 
-    function criarGauge(canvasId, valor, cor) {
+    function criarGauge(canvasId, valor, cor, cardId) {
         const ctx = document.getElementById(canvasId)
+        const gaugeCor = document.getElementById(cardId)
+        gaugeCor.classList.remove("card-normal", "card-alerta", "card-critico")
+
+        console.log("Classes antes:", gaugeCor.className)
 
         if (!ctx) {
             console.error("Canvas não encontrado:", canvasId)
             return
         }
 
+        if (valor >= 85) {
+            cor = "red"
+            gaugeCor.classList.add("card-critico")
+        } else if (valor >= 65) {
+            cor = "yellow"
+            gaugeCor.classList.add("card-alerta")
+        } else {
+            cor = "white"
+            gaugeCor.classList.add("card-normal")
+        }
+
+        console.log("Classes depois:", gaugeCor.className)
+
         new Chart(ctx, {
             type: "doughnut",
             data: {
                 datasets: [{
                     data: [valor, 100 - valor],
-                    backgroundColor: ["#CC79A7", "##102A43"],
-                    borderWidth: 0
+                    backgroundColor: [cor, "#102A43"],
+                    borderColor: [cor, cor],
+                    borderWidth: 1
                 }]
             },
             options: {
@@ -412,11 +422,42 @@
     }
 
     function plotarGaugeRam(valor) {
-        criarGauge("gaugePicoRAM", valor, "#f1c40f")
+        criarGauge("gaugePicoRAM", valor, null, "statusGaugeRam")
     }
 
     function plotarGaugeCpu(valor) {
-        criarGauge("gaugePicoCPU", valor, "#e74c3c")
+        criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu")
+    }
+
+    function criarRanking(ranking) {
+        const container = document.getElementById("rankingContainer")
+
+        container.innerHTML = ""
+
+        for (var i = 0; i < 3 && i < ranking.length; i++) {
+
+            var item = ranking[i]
+
+            var classe = "badge-custom"
+
+            // Define cor baseado no uso
+            if (item.picoRam > 85) {
+                classe += " critico"
+            } else if (item.picoRam > 70) {
+                classe += " alerta"
+            } else {
+                classe += " normal"
+            }
+
+            container.innerHTML += `
+        <div class="alert-item">
+            <span>${item.posicao}°</span>
+            <span>Servidor - ${item.macAddress}</span>
+            <span class="${classe}">${item.picoRam.toFixed(1)}%</span>
+        </div>
+    `
+        }
+
     }
 
 
