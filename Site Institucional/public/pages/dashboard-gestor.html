@@ -180,7 +180,7 @@
                             <div class="col-md-3">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
                                     <p><img src="../assets/goal.png" style="height: 25px;"> Custo até o momento</p>
-                                    <div class="kpi-value"  style="font-size: 30px;">
+                                    <div class="kpi-value" style="font-size: 30px;">
                                         <span id="custoAtual"></span>
                                     </div>
                                     <small class="kpi-green">
@@ -192,7 +192,7 @@
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
                                     <p><img src="../assets/calendar.png" style="height: 25px;"> Custo do dia</p>
-                                    <div class="kpi-value"  style="font-size: 30px;">
+                                    <div class="kpi-value" style="font-size: 30px;">
                                         <span id="custoDia"></span>
                                     </div>
                                     <small class="kpi-green">
@@ -404,8 +404,20 @@
                 alert("ranking não encontrado")
             }
 
+            // comparação de dias QUE DEUS ME AJUDE COM ISSO
+
+            const grafico = resultado.dadosMaquina.graficoComparativo;
+
+            if (grafico) {
+                plotarComparativo(grafico);
+            }
+
 
             console.log("RANKING: ", ranking)
+
+
+
+
 
 
         } catch (erro) {
@@ -513,36 +525,81 @@
 
     }
 
+    function plotarComparativo(dados) {
+        const barras= document.getElementById("visaoMacro");
 
-    document.addEventListener("DOMContentLoaded", function () {
-
-        const linhas = document.getElementById('visaoMacro')
-
-        if (!linhas) {
-            console.error("Canvas não encontrado!")
-            return
+        if (!barras) {
+            console.error("Canvas não encontrado");
+            return;
         }
 
-        new Chart(linhas, {
-            type: 'line',
+
+        new Chart(barras, {
+            type: 'bar',
             data: {
-                labels: ["00h", "04h", "08h", "12h", "16h", "20h", "23h"],
+                labels: dados.labels,
                 datasets: [
                     {
-                        label: "ONTEM",
-                        data: [45, 50, 65, 80, 75, 70, 60],
-                        borderColor: "#22c55e",
-                        tension: 0.4
+                        label: 'Ontem',
+                        data: dados.ontem,
+                        borderWidth: 1
                     },
                     {
-                        label: "HOJE",
-                        data: [30, 40, 55, 70, 65, 60, 50],
-                        borderColor: "#f59e0b",
-                        tension: 0.4
+                        label: 'Hoje',
+                        data: dados.hoje,
+                        borderWidth: 1
                     }
                 ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: 'white' }
+                    },
+                    y: {
+                        ticks: { color: 'white' },
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
             }
-        })
+        });
+    }
+
+
+    // document.addEventListener("DOMContentLoaded", function () {
+
+    //     const linhas = document.getElementById('visaoMacro')
+
+    //     if (!linhas) {
+    //         console.error("Canvas não encontrado!")
+    //         return
+    //     }
+
+    //     new Chart(linhas, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ['00h', '04h', '08h', '12h', '16h', '20h', '23h'],
+    //             datasets: [
+    //                 {
+    //                     label: 'Ontem',
+    //                     data: [45, 50, 65, 80, 75, 70, 60]
+    //                 },
+    //                 {
+    //                     label: 'Hoje',
+    //                     data: [30, 40, 55, 70, 65, 60, 50]
+    //                 }
+    //             ]
+    //         }
+    //     });
 
         // const gauge = document.getElementById("gaugePicoRAM")
         // const gaugeCPU = document.getElementById("gaugePicoCPU")
@@ -585,5 +642,5 @@
 
 
 
-    });
+    // });
 </script>
