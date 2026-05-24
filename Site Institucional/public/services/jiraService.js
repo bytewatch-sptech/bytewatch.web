@@ -17,6 +17,7 @@ async function buscarIssues(fkEmpresa) {
             {
                 params: {
                     jql: "created >= -365d ORDER BY created DESC", //A JQL (Jira Query Language) é a linguagem de consulta mais poderosa e flexível que o Jira oferece para buscar issues (tarefas)
+                    maxResults: 100,
                     fields: [
                         "summary",
                         "status",
@@ -93,8 +94,22 @@ async function buscarIssues(fkEmpresa) {
     }
 }
 
-async function filtrarDashboard(fkEmpresa) {
+async function filtrarDashboard(fkEmpresa, nomeAnalistaBuscado, macServidorBuscado) {
     var incidentes = await buscarIssues(fkEmpresa);
+
+    if (nomeAnalistaBuscado) {
+        var nomeFormatado = nomeAnalistaBuscado.toLowerCase().trim();
+        incidentes = incidentes.filter(i =>
+            i.analista.toLowerCase().trim() === nomeFormatado
+        );
+    }
+
+    if (macServidorBuscado) {
+        var labelBuscada = "MAC:" + macServidorBuscado;
+        incidentes = incidentes.filter(i =>
+            i.labels_crudas && i.labels_crudas.includes(labelBuscada)
+        );
+    }
 
 
     var labelsDias = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
@@ -115,7 +130,23 @@ async function filtrarDashboard(fkEmpresa) {
         }
 
 
-        if (incidente.prioridade === "Highest" || incidente.titulo.toLowerCase().includes("90%")) {
+        var ehCritico = false;
+
+        if (incidente.prioridade === "Highest" || incidente.prioridade === "High") {
+            ehCritico = true;
+        } else {
+            var partesDoTitulo = incidente.titulo.split(":");
+
+            if (partesDoTitulo.length > 1) {
+                var valorDaPorcentagem = parseFloat(partesDoTitulo[1]);
+
+                if (valorDaPorcentagem >= 90) {
+                    ehCritico = true;
+                }
+            }
+        }
+
+        if (ehCritico == true) {
             contagemIncidentes[diaIndex]++;
         } else {
             contagemAlertas[diaIndex]++;
@@ -161,7 +192,7 @@ async function filtrarDashboard(fkEmpresa) {
         var dataCriacao = new Date(chamado.criadoEm);
         var dataAtualizacao = new Date(chamado.atualizadoEm);
 
-        var diferencaMinutos = (dataAtualizacao - dataCriacao) / (1000 * 60); //conversão de milissegundos para minutos
+        var diferencaMinutos = (dataAtualizacao - dataCriacao) / (1000 * 60);
 
         somaTempoReconhecimento += diferencaMinutos;
     }

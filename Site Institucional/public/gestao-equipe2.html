@@ -134,39 +134,35 @@
                             <span class="texto-filtro">Filtro</span>
                         </div>
 
-                        <div class="barra-pesquisa-personalizada d-flex align-items-center px-3">
-                            <input type="text" class="input-pesquisa-personalizado" placeholder="Pesquisar analista">
+                        <div class="barra-pesquisa-personalizada d-flex align-items-center px-3 position-relative">
+                            <input type="text" class="input-pesquisa-personalizado" placeholder="Pesquisar analista"
+                                autocomplete="off">
                             <i class="bi bi-search icone-pesquisa-personalizado"></i>
+
+                            <ul class="dropdown-menu dropdown-menu-dark w-100 position-absolute" id="dropdownSugestoes"
+                                style="top: 100%; left: 0; z-index: 1050; display: none; max-height: 200px; overflow-y: auto;">
+                            </ul>
                         </div>
 
-                        <div class="emblema-todos d-flex align-items-center gap-2 px-3 py-2">
+                        <!-- <div class="emblema-todos d-flex align-items-center gap-2 px-3 py-2">
                             <i class="bi bi-people-fill fs-6"></i>
                             <span>Todos · 90</span>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="d-flex gap-3">
                         <div class="dropdown">
                             <button class="btn botao-servidor d-flex align-items-center gap-2" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                id="btnDropdownServidor" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-caret-down-fill icone-seta"></i>
                                 Servidor
                             </button>
-                            <ul class="dropdown-menu menu-suspenso-escuro">
-                                <li><a class="dropdown-item" href="#">TikTok US-West-1</a></li>
-                                <li><a class="dropdown-item" href="#">TikTok SA-East-1</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="dropdown">
-                            <button class="btn botao-servidor d-flex align-items-center gap-2" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-caret-down-fill icone-seta"></i>
-                                Servidor
-                            </button>
-                            <ul class="dropdown-menu menu-suspenso-escuro">
-                                <li><a class="dropdown-item" href="#">TikTok AP-Southeast-1</a></li>
-                                <li><a class="dropdown-item" href="#">TikTok EU-West-1</a></li>
+                            <ul class="dropdown-menu menu-suspenso-escuro" id="dropdownServidores">
+                                <li><a class="dropdown-item opcao-servidor" href="#" data-mac="">Todos os Servidores</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -179,9 +175,9 @@
                                 <div class="caixa-icone icone-vermelho">
                                     <i class="bi bi-exclamation-triangle"></i>
                                 </div>
-                                <span class="emblema-tendencia tendencia-alta">
+                                <!-- <span class="emblema-tendencia tendencia-alta">
                                     <i class="bi bi-graph-up-arrow"></i> +8% vs sem. ant.
-                                </span>
+                                </span> -->
                             </div>
                             <p class="text-secondary mb-1 texto-pequeno">Alertas Processados (7d)</p>
                             <h3 class="text-white fw-bold mb-0" id="kpi_total_alertas_todos">0</h3>
@@ -193,9 +189,9 @@
                                 <div class="caixa-icone icone-ciano">
                                     <i class="bi bi-shield-check"></i>
                                 </div>
-                                <span class="emblema-tendencia tendencia-alta-verde">
+                                <!-- <span class="emblema-tendencia tendencia-alta-verde">
                                     <i class="bi bi-graph-up-arrow"></i> +12% vs sem. ant.
-                                </span>
+                                </span> -->
                             </div>
                             <p class="text-secondary mb-1 texto-pequeno">Alertas em abertos</p>
                             <h3 class="text-white fw-bold mb-0" id="kpi_alertas_abertos">0</h3>
@@ -207,9 +203,9 @@
                                 <div class="caixa-icone icone-amarelo">
                                     <i class="bi bi-clock"></i>
                                 </div>
-                                <span class="emblema-tendencia tendencia-baixa-verde">
+                                <!-- <span class="emblema-tendencia tendencia-baixa-verde">
                                     <i class="bi bi-graph-down-arrow"></i> -8% esta semana
-                                </span>
+                                </span> -->
                             </div>
                             <p class="text-secondary mb-1 texto-pequeno">MTTA - Tempo de Reconhecimento</p>
                             <h3 class="text-white fw-bold mb-0 d-flex align-items-baseline gap-1" id="kpi_mtta">0 <span
@@ -222,9 +218,9 @@
                                 <div class="caixa-icone icone-verde">
                                     <i class="bi bi-check-circle"></i>
                                 </div>
-                                <span class="emblema-tendencia tendencia-baixa-verde">
+                                <!-- <span class="emblema-tendencia tendencia-baixa-verde">
                                     <i class="bi bi-graph-down-arrow"></i> -15% esta semana
-                                </span>
+                                </span> -->
                             </div>
                             <p class="text-secondary mb-1 texto-pequeno">MTTR - Tempo de Resolução</p>
                             <h3 class="text-white fw-bold mb-0 d-flex align-items-baseline gap-1" id="kpi_mttr">0 <span
@@ -246,7 +242,7 @@
                                         fill="#A0A0A0" />
                                 </svg>
                             </button>
-                            <h6 class="text-white fw-bold mb-4 w-75">Proporção de Alertas vs Incidentes Reais</h6>
+                            <h6 class="text-white fw-bold mb-4 w-75">Proporção de Alertas vs Alertas Críticos</h6>
 
                             <div style="height: 250px; width: 100%;">
                                 <canvas id="graficoProporcao"></canvas>
@@ -314,6 +310,10 @@
     Chart.defaults.font.family = "'Inter', sans-serif";
 
     var dadosDoDashboard = null;
+    var analistasUnicos = [];
+
+    let filtroAnalistaAtual = '';
+    let filtroMacAtual = '';
 
     async function carregarDadosJira() {
         var fkEmpresa = sessionStorage.getItem("ID_EMPRESA") || 1;
@@ -325,9 +325,39 @@
                 var dadosJira = await resposta.json();
                 dadosDoDashboard = dadosJira;
 
+
+                analistasUnicos = [];
+
+                for (var i = 0; i < dadosJira.incidentes.length; i++) {
+                    var nome = dadosJira.incidentes[i].analista;
+
+                    if (nome != null && nome != "Não atribuído" && nome != "Não Atribuído") {
+
+                        var jaExiste = false;
+                        for (var j = 0; j < analistasUnicos.length; j++) {
+                            if (analistasUnicos[j] == nome) {
+                                jaExiste = true;
+                            }
+                        }
+
+                        if (jaExiste == false) {
+                            analistasUnicos.push(nome);
+                        }
+                    }
+                }
+                for (var i = 0; i < analistasUnicos.length; i++) {
+                    for (var j = i + 1; j < analistasUnicos.length; j++) {
+                        if (analistasUnicos[i] > analistasUnicos[j]) {
+                            var temporario = analistasUnicos[i];
+                            analistasUnicos[i] = analistasUnicos[j];
+                            analistasUnicos[j] = temporario;
+                        }
+                    }
+                }
+
                 var kpiTotal = document.getElementById('kpi_total_alertas_todos');
                 if (kpiTotal) {
-                    kpiTotal.innerText = dadosJira.incidentes.length;
+                    kpiTotal.innerText = dadosJira.incidentesResolvidos;
                 }
 
                 var kpiAbertos = document.getElementById('kpi_alertas_abertos');
@@ -347,6 +377,7 @@
 
                 plotarGraficoProporcao(dadosJira.graficoBarras.alertas, dadosJira.graficoBarras.incidentes);
                 preencherTabelaAlertas(dadosJira.incidentes);
+                await montarDropdownServidores(dadosJira.incidentes);
 
             } else {
                 console.error('Erro na resposta da API do Jira:', resposta.status);
@@ -378,7 +409,7 @@
                         barPercentage: 0.4
                     },
                     {
-                        label: 'Incidentes Reais',
+                        label: 'Alertas Críticos',
                         data: incidentes,
                         backgroundColor: '#FF2D56',
                         borderRadius: 4,
@@ -468,8 +499,8 @@
                             y: {
                                 stacked: true,
                                 min: 0,
-                                max: 600,
-                                ticks: { stepSize: 100, color: '#8A92A6' },
+                                // max: 600,
+                                ticks: { stepSize: 10, color: '#8A92A6' },
                                 grid: {
                                     color: 'rgba(255, 255, 255, 0.05)',
                                     drawBorder: false,
@@ -496,8 +527,8 @@
 
     async function ObterNomeServidor(macAddress) {
         try {
-            const response = await fetch(`/servidor/buscar-nome-servidor/${macAddress}`);
-            const json = await response.json();
+            var response = await fetch(`/servidor/buscar-nome-servidor/${macAddress}`);
+            var json = await response.json();
             return json;
         } catch (erro) {
             console.error("Erro na API ao buscar nome do servidor:", erro);
@@ -521,14 +552,32 @@
             var incidente = incidentes[i];
 
             var dataObj = new Date(incidente.criadoEm);
+
+            var dia = dataObj.getDate().toString().padStart(2, '0');
+            var mes = (dataObj.getMonth() + 1).toString().padStart(2, '0');
+            var ano = dataObj.getFullYear();
+
             var horas = dataObj.getHours().toString().padStart(2, '0');
             var minutos = dataObj.getMinutes().toString().padStart(2, '0');
-            var horaFormatada = horas + ":" + minutos;
+
+            var dataEHoraFormatada = dia + "/" + mes + "/" + ano + " " + horas + ":" + minutos;
 
             var classeBadge = "";
-            var textoBadge = "";
+            var ehCritico = false;
 
             if (incidente.prioridade === "Highest" || incidente.prioridade === "High") {
+                ehCritico = true;
+            } else {
+                var partesDoTitulo = incidente.titulo.split(":");
+                if (partesDoTitulo.length > 1) {
+                    var valorDaPorcentagem = parseFloat(partesDoTitulo[1]);
+                    if (valorDaPorcentagem >= 90) {
+                        ehCritico = true;
+                    }
+                }
+            }
+
+            if (ehCritico == true) {
                 classeBadge = "badge-critico";
                 textoBadge = "Crítico";
             } else {
@@ -553,26 +602,25 @@
                 nomeAnalista = "Não Atribuído";
             }
 
-            // variavel vazia para puxar o mac do jira
-            let macCapturado = null;
 
-             // verifica se o array de labels existe e não está vazio
+            var macCapturado = null;
+
+
             if (incidente.labels_crudas && incidente.labels_crudas.length > 0) {
-                let labelDoMac = incidente.labels_crudas.find(label => label.startsWith("MAC:"));
+                var labelDoMac = incidente.labels_crudas.find(label => label.startsWith("MAC:"));
 
                 if (labelDoMac) {
                     macCapturado = labelDoMac.replace("MAC:", "");
                 }
             }
 
-            const respostaNome = await ObterNomeServidor(macCapturado);
-            const nomeServidor = respostaNome && respostaNome.length > 0 ? respostaNome[0].nome_servidor : "Servidor Desconhecido";
+            var respostaNome = await ObterNomeServidor(macCapturado);
+            var nomeServidor = respostaNome && respostaNome.length > 0 ? respostaNome[0].nome_servidor : "Servidor Desconhecido";
 
-            // ==========================================
 
             var tr = document.createElement('tr');
             tr.innerHTML = `
-        <td class="text-secondary"><i class="bi bi-clock me-1"></i> ${horaFormatada}</td>
+        <td class="text-secondary"></i> ${dataEHoraFormatada}</td>
         <td class="text-white fw-semibold">${nomeServidor}</td>
         <td class="text-secondary">${incidente.titulo}</td>
         <td>
@@ -587,6 +635,204 @@
 
             tbody.appendChild(tr);
         }
+    }
+
+
+    function buscarDadosDoDashboard() {
+        var fkEmpresa = sessionStorage.getItem("ID_EMPRESA") || 1;
+        var url = '/jira/dashboard/' + fkEmpresa;
+        var listaDeFiltros = [];
+
+        if (filtroAnalistaAtual != '') {
+            listaDeFiltros.push('nomeAnalista=' + encodeURIComponent(filtroAnalistaAtual));
+        }
+        if (filtroMacAtual != '') {
+            listaDeFiltros.push('macServidor=' + encodeURIComponent(filtroMacAtual));
+        }
+        if (listaDeFiltros.length > 0) {
+            url = url + '?' + listaDeFiltros.join('&');
+        }
+
+        fetch(url)
+            .then(function (resposta) {
+                if (!resposta.ok) {
+                    throw new Error("Erro na API");
+                }
+
+                return resposta.json();
+            })
+            .then(function (dados) {
+                dadosDoDashboard = dados;
+                atualizarTela(dados);
+            })
+            .catch(function (erro) {
+                console.error("Erro ao buscar dados atualizados:", erro);
+            });
+    }
+
+    var inputPesquisa = document.querySelector('input[placeholder="Pesquisar analista"]');
+    var dropdownSugestoes = document.getElementById('dropdownSugestoes');
+
+    inputPesquisa.addEventListener('input', function (e) {
+        var nomeDigitado = e.target.value.toLowerCase().trim();
+
+        dropdownSugestoes.innerHTML = '';
+
+        var sugestoes = [];
+        if (nomeDigitado.length > 0) {
+            for (var i = 0; i < analistasUnicos.length; i++) {
+                var nomeNoArray = analistasUnicos[i].toLowerCase();
+                if (nomeNoArray.indexOf(nomeDigitado) !== -1) {
+                    sugestoes.push(analistasUnicos[i]);
+                }
+            }
+        }
+
+        if (sugestoes.length > 0) {
+
+
+            var sugestoes = [];
+
+
+            for (var i = 0; i < analistasUnicos.length; i++) {
+                var nomeNoArray = analistasUnicos[i].toLowerCase();
+
+
+                if (nomeNoArray.indexOf(nomeDigitado) !== -1) {
+                    sugestoes.push(analistasUnicos[i]);
+                }
+            }
+
+
+            if (sugestoes.length > 0) {
+                for (let i = 0; i < sugestoes.length; i++) {
+                    let nome = sugestoes[i];
+
+                    var li = document.createElement('li');
+                    li.innerHTML = '<a class="dropdown-item" href="#" style="cursor: pointer;">' + nome + '</a>';
+
+                    li.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        inputPesquisa.value = nome;
+                        dropdownSugestoes.style.display = 'none';
+
+                        filtroAnalistaAtual = nome;
+                        buscarDadosDoDashboard();
+                    });
+
+                    dropdownSugestoes.appendChild(li);
+                }
+
+                dropdownSugestoes.style.display = 'block';
+
+            } else {
+                dropdownSugestoes.style.display = 'none';
+            }
+
+
+            filtroAnalistaAtual = nomeDigitado;
+            buscarDadosDoDashboard();
+
+        } else {
+
+            dropdownSugestoes.style.display = 'none';
+            filtroAnalistaAtual = '';
+            buscarDadosDoDashboard();
+        }
+    });
+
+
+    document.addEventListener('click', function (e) {
+        if (!inputPesquisa.contains(e.target) && !dropdownSugestoes.contains(e.target)) {
+            dropdownSugestoes.style.display = 'none';
+        }
+    });
+
+
+    async function montarDropdownServidores(incidentes) {
+
+        var listaDeMacs = [];
+        var ulServidores = document.getElementById('dropdownServidores');
+
+
+        for (var i = 0; i < incidentes.length; i++) {
+            var incidente = incidentes[i];
+
+            if (incidente.labels_crudas != null) {
+                for (var j = 0; j < incidente.labels_crudas.length; j++) {
+                    var label = incidente.labels_crudas[j];
+
+                    if (label.indexOf("MAC:") == 0) {
+                        var macLimpo = label.substring(4);
+
+
+                        var jaExiste = false;
+                        for (var k = 0; k < listaDeMacs.length; k++) {
+                            if (listaDeMacs[k] == macLimpo) {
+                                jaExiste = true;
+                            }
+                        }
+
+                        if (jaExiste == false) {
+                            listaDeMacs.push(macLimpo);
+                        }
+                    }
+                }
+            }
+        }
+
+        for (var i = 0; i < listaDeMacs.length; i++) {
+            var mac = listaDeMacs[i];
+
+            var resposta = await ObterNomeServidor(mac);
+            var nomeDoServidor = "Servidor Desconhecido";
+
+            if (resposta != null && resposta.length > 0) {
+                nomeDoServidor = resposta[0].nome_servidor;
+            }
+
+
+            var novoItem = document.createElement('li');
+            novoItem.innerHTML = '<a class="dropdown-item opcao-servidor" href="#" data-mac="' + mac + '">' + nomeDoServidor + '</a>';
+
+            novoItem.querySelector('a').addEventListener('click', function (e) {
+                e.preventDefault();
+
+                var alvo = e.target;
+                var macEscolhido = alvo.getAttribute('data-mac');
+                var nomeEscolhido = alvo.innerText;
+                var btn = document.getElementById('btnDropdownServidor');
+
+                if (macEscolhido == "") {
+                    filtroMacAtual = '';
+                    btn.innerHTML = '<i class="bi bi-caret-down-fill icone-seta"></i> Servidor';
+                } else {
+                    filtroMacAtual = macEscolhido;
+                    btn.innerHTML = '<i class="bi bi-caret-down-fill icone-seta"></i> ' + nomeEscolhido;
+                }
+
+                buscarDadosDoDashboard();
+            });
+
+            ulServidores.appendChild(novoItem);
+        }
+    }
+
+    function atualizarTela(dados) {
+        var kpiTotal = document.getElementById('kpi_total_alertas_todos');
+        if (kpiTotal) kpiTotal.innerText = dados.incidentesResolvidos;
+
+        var kpiAbertos = document.getElementById('kpi_alertas_abertos');
+        if (kpiAbertos) kpiAbertos.innerText = dados.incidentesAtivos;
+
+        var kpiMtta = document.getElementById('kpi_mtta');
+        if (kpiMtta) kpiMtta.innerHTML = `${dados.mtta} <span class="fs-6 text-secondary fw-normal">min</span>`;
+
+        var kpiMttr = document.getElementById('kpi_mttr');
+        if (kpiMttr) kpiMttr.innerHTML = `${dados.mttr} <span class="fs-6 text-secondary fw-normal">min</span>`;
+
+        plotarGraficoProporcao(dados.graficoBarras.alertas, dados.graficoBarras.incidentes);
+        preencherTabelaAlertas(dados.incidentes);
     }
 
     window.addEventListener('DOMContentLoaded', carregarDadosJira);
