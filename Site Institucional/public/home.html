@@ -299,7 +299,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="table-responsive w-100 frota-servidores mt-2">
+                                                <div class="w-100 frota-servidores mt-2">
                                                     <div class="d-flex align-items-center gap-3 cabecalho-servidores">
                                                         <span>Frota de
                                                             Servidores</span>
@@ -335,21 +335,24 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                 data-valor="estavel">Estável</button>
                                                         </div>
                                                     </div>
-                                                    <table class="table table-hover align-middle text-start">
-                                                        <thead>
-                                                            <tr class="cabecalho-customizado">
-                                                                <th scope="col" class="ps-3 border-0">STATUS</th>
-                                                                <th scope="col" class="border-0">ÚLTIMA COLETA</th>
-                                                                <th scope="col" class="border-0">SERVIDOR</th>
-                                                                <th scope="col" class="border-0">REGIÃO</th>
-                                                                <th scope="col" class="border-0">CPU</th>
-                                                                <th scope="col" class="border-0">RAM</th>
-                                                                <th scope="col" class="border-0">DISCO</th>
-                                                                <th scope="col" class="border-0">REDE</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="lista-servidores">
-
+                                                    <div class="container-table-scroll">
+                                                        <table class="table table-hover align-middle text-start">
+                                                            <thead>
+                                                                <tr class="cabecalho-customizado">
+                                                                    <th scope="col" class="ps-3 border-0">STATUS</th>
+                                                                    <th scope="col" class="border-0">ÚLTIMA COLETA</th>
+                                                                    <th scope="col" class="border-0">SERVIDOR</th>
+                                                                    <th scope="col" class="border-0">REGIÃO</th>
+                                                                    <th scope="col" class="border-0">CPU</th>
+                                                                    <th scope="col" class="border-0">RAM</th>
+                                                                    <th scope="col" class="border-0">DISCO</th>
+                                                                    <th scope="col" class="border-0">REDE</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="lista-servidores">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
