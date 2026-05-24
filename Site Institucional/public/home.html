@@ -215,8 +215,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                     </defs>
                                                                 </svg>
                                                             </div>
-                                                            <span class="emblema-tendencia tendencia-critica">
-                                                                <i class="bi bi-graph-up-arrow"></i> +8% vs sem. ant.
+                                                            <span class="emblema-tendencia tendencia-critica" id="kpiMaquinaCriticas24h">
+                                                                <i class="bi bi-graph-up-arrow"></i>
                                                             </span>
                                                         </div>
                                                         <p class="text-secondary mb-1 texto-pequeno">Máquinas Críticas
@@ -252,7 +252,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         <p class="text-secondary mb-1 texto-pequeno text-truncate">
                                                             Servidor Mais Propenso a Falha</p>
                                                         <h3 class="text-white fw-bold mb-0"
-                                                            id="kpiServidorPropensoFalha">XX</h3>
+                                                            id="kpiServidorPropenso"></h3>
                                                     </div>
 
                                                 </div>
@@ -1076,6 +1076,9 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                 const bolhasEstaveis = []
                 const bolhasCriticas = []
+                
+                let totalCriticosAgora = 0;
+                let totalCriticos24hAtras = 0;
 
                 let servidorMaisPropenso = "Todos Estáveis";
                 let menorTempoMinutos = 999999;
@@ -1099,6 +1102,10 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             novosEstaveis.push(formatoMapa);
                         }
 
+                        if (servidor.status_24h_atras && servidor.status_24h_atras.toLowerCase() === 'critico') {
+                            totalCriticos24hAtras++;
+                        }
+
                         if (servidor.dados_tempo_real.matriz_priorizacao) {
                             const matriz = servidor.dados_tempo_real.matriz_priorizacao
 
@@ -1116,17 +1123,17 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             }
                         }
 
-                        if(servidor.dados_tempo_real.previsao_esgotamento){
+                        if (servidor.dados_tempo_real.previsao_esgotamento) {
                             const predicao = servidor.dados_tempo_real.previsao_esgotamento
 
-                            if(predicao.minutos < menorTempoMinutos){
+                            if (predicao.minutos < menorTempoMinutos) {
                                 menorTempoMinutos = predicao.minutos;
 
-                                if(predicao.minutos === 0){
-                                    servidorMaisPropenso =  `${nome} (Crítico)`
-                                }else if(predicao.minutos === 999999){
+                                if (predicao.minutos === 0) {
+                                    servidorMaisPropenso = `${nome} (Crítico)`
+                                } else if (predicao.minutos === 999999) {
                                     servidorMaisPropenso = "Todos Estáveis"
-                                }else{
+                                } else {
                                     servidorMaisPropenso = `${nome} (${predicao.texto})`
                                 }
                             }
@@ -1148,6 +1155,15 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 matrizChart.data.datasets[0].data = bolhasEstaveis;
                 matrizChart.data.datasets[1].data = bolhasCriticas;
                 matrizChart.update();
+
+                let variacao = 0;
+                if (totalCriticos24hAtras > 0) {
+                    variacao = Math.round(((totalCriticosAgora - totalCriticos24hAtras) / totalCriticos24hAtras) * 100);
+                } else if (totalCriticosAgora > 0) {
+                    variacao = 100;
+                }
+                const sinal = variacao > 0 ? "+" : "";
+                document.getElementById('kpiMaquinaCriticas24h').innerText = `${sinal}${variacao}% vs 24. ant.`;
 
                 const qtdCriticos = dados.resumo_global.servidores_criticos
                 const totalServidores = dados.resumo_global.total_servidores
