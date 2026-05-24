@@ -652,3 +652,14 @@ body {
     background: rgba(16, 185, 129, 0.15);
     color: #34d399;
 }
+
+#statusInfo {
+    cursor: pointer;
+    padding: 6px 8px;
+    background-color: #212121;
+    box-shadow: 2px 0 6.4px 0 rgba(0, 0, 0, 0.5);
+    gap: 5px;
+    color: rgb(161, 158, 158);
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+}

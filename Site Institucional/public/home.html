@@ -141,8 +141,10 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                 <div class="col-lg-9 w-100 d-flex flex-column gap-4 coluna-central">
                                     <section class="secao-visao-geral">
 
-                                        <header class="cabecalho-pagina d-flex align-items-center gap-3 w-100">
-                                            <div class="icone-cabecalho">
+                                        <header
+                                            class="cabecalho-pagina d-flex align-items-center justify-content-between gap-3 w-100">
+                                            <div class="d-flex align-items-center gap-3">
+
                                                 <svg width="56" height="56" viewBox="0 0 48 48" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <rect x="4" width="40" height="40" rx="10" fill="#00F2EA"
@@ -159,11 +161,25 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         stroke="#00F2EA" stroke-width="1.33333" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
+
+                                                <div class="textos-cabecalho">
+                                                    <h2 class="titulo-pagina m-0 text-white fw-bold">Home</h2>
+                                                    <span class="subtitulo-pagina text-secondary"
+                                                        style="font-size: 0.9rem">Veja os seus servidores</span>
+                                                </div>
                                             </div>
-                                            <div class="textos-cabecalho">
-                                                <h2 class="titulo-pagina m-0 text-white fw-bold">Home</h2>
-                                                <span class="subtitulo-pagina text-secondary"
-                                                    style="font-size: 0.9rem">Veja os insights iniciais</span>
+                                            <div id="statusInfo" class="info-alert d-flex align-items-center"
+                                                data-bs-toggle="modal" data-bs-target="#modalLegenda">
+                                                <div class="icon">
+                                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M7.41527 9.74933C7.52688 9.63733 7.58268 9.49869 7.58268 9.33341V7.00008C7.58268 6.8348 7.52668 6.69636 7.41468 6.58475C7.30268 6.47314 7.16424 6.41714 6.99935 6.41675C6.83446 6.41636 6.69602 6.47236 6.58402 6.58475C6.47202 6.69714 6.41602 6.83558 6.41602 7.00008V9.33341C6.41602 9.49869 6.47202 9.63733 6.58402 9.74933C6.69602 9.86133 6.83446 9.91714 6.99935 9.91675C7.16424 9.91636 7.30288 9.86094 7.41527 9.74933ZM7.41527 5.08208C7.52688 4.97047 7.58268 4.83203 7.58268 4.66675C7.58268 4.50147 7.52668 4.36303 7.41468 4.25141C7.30268 4.1398 7.16424 4.0838 6.99935 4.08341C6.83446 4.08303 6.69602 4.13903 6.58402 4.25141C6.47202 4.3638 6.41602 4.50225 6.41602 4.66675C6.41602 4.83125 6.47202 4.96989 6.58402 5.08266C6.69602 5.19544 6.83446 5.25125 6.99935 5.25008C7.16424 5.24891 7.30288 5.19291 7.41527 5.08208ZM6.99935 12.8334C6.1924 12.8334 5.43407 12.6802 4.72435 12.3737C4.01463 12.0673 3.39727 11.6518 2.87227 11.1272C2.34727 10.6026 1.93174 9.98519 1.62568 9.27508C1.31963 8.56497 1.16641 7.80664 1.16602 7.00008C1.16563 6.19353 1.31885 5.43519 1.62568 4.72508C1.93252 4.01497 2.34804 3.39761 2.87227 2.873C3.39649 2.34839 4.01385 1.93286 4.72435 1.62641C5.43485 1.31997 6.19318 1.16675 6.99935 1.16675C7.80552 1.16675 8.56385 1.31997 9.27435 1.62641C9.98485 1.93286 10.6022 2.34839 11.1264 2.873C11.6507 3.39761 12.0664 4.01497 12.3736 4.72508C12.6808 5.43519 12.8338 6.19353 12.8327 7.00008C12.8315 7.80664 12.6783 8.56497 12.373 9.27508C12.0677 9.98519 11.6522 10.6026 11.1264 11.1272C10.6007 11.6518 9.98329 12.0675 9.27435 12.3743C8.5654 12.6812 7.80707 12.8342 6.99935 12.8334Z"
+                                                            fill="#A0A0A0" />
+                                                    </svg>
+
+                                                </div>
+                                                <span>Legenda</span>
                                             </div>
                                         </header>
                                         <div class="row align-items-stretch mb-4" style="min-height: 280px;">
@@ -215,7 +231,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                     </defs>
                                                                 </svg>
                                                             </div>
-                                                            <span class="emblema-tendencia tendencia-critica" id="kpiMaquinaCriticas24h">
+                                                            <span class="emblema-tendencia tendencia-critica"
+                                                                id="kpiMaquinaCriticas24h">
                                                                 <i class="bi bi-graph-up-arrow"></i>
                                                             </span>
                                                         </div>
@@ -251,8 +268,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         </div>
                                                         <p class="text-secondary mb-1 texto-pequeno text-truncate">
                                                             Servidor Mais Propenso a Falha</p>
-                                                        <h3 class="text-white fw-bold mb-0"
-                                                            id="kpiServidorPropenso"></h3>
+                                                        <h3 class="text-white fw-bold mb-0" id="kpiServidorPropenso">
+                                                        </h3>
                                                     </div>
 
                                                 </div>
@@ -966,268 +983,578 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
 </html>
 
-<script src="./services/api.js"></script>
-<script src="./services/servidorService.js"></script>
-<script>
 
-    const ctx = document.getElementById('matrizChart').getContext('2d')
+<div class="modal fade" id="modalLegenda" tabindex="-1" data-bs-theme="dark">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-flex flex-column border-0 pb-0 position-relative">
 
-    const bubbleLabelsPlugin = {
-        id: 'bubbleLabels',
-        afterDatasetsDraw(chart) {
-            const { ctx } = chart
-            ctx.font = '9px Arial'
-            ctx.fillStyle = 'white'
-            ctx.textBaseline = 'middle'
+                <h1 class="modal-title w-100 d-flex justify-content-center align-items-center gap-2 m-0 text-white"
+                    style="font-size: 1.5rem;">
+                    <svg width="24" height="24" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.0641 13.2312C10.2156 13.0792 10.2913 12.891 10.2913 12.6667V9.50004C10.2913 9.27573 10.2153 9.08785 10.0633 8.93637C9.91134 8.7849 9.72345 8.7089 9.49967 8.70837C9.2759 8.70785 9.08801 8.78385 8.93601 8.93637C8.78401 9.0889 8.70801 9.27679 8.70801 9.50004V12.6667C8.70801 12.891 8.78401 13.0792 8.93601 13.2312C9.08801 13.3832 9.2759 13.4589 9.49967 13.4584C9.72345 13.4578 9.91161 13.3826 10.0641 13.2312ZM10.0641 6.89704C10.2156 6.74557 10.2913 6.55768 10.2913 6.33337C10.2913 6.10907 10.2153 5.92118 10.0633 5.76971C9.91134 5.61824 9.72345 5.54223 9.49967 5.54171C9.2759 5.54118 9.08801 5.61718 8.93601 5.76971C8.78401 5.92224 8.70801 6.11012 8.70801 6.33337C8.70801 6.55662 8.78401 6.74478 8.93601 6.89783C9.08801 7.05089 9.2759 7.12662 9.49967 7.12504C9.72345 7.12346 9.91161 7.04746 10.0641 6.89704ZM9.49967 17.4167C8.40454 17.4167 7.37537 17.2088 6.41218 16.7929C5.44898 16.377 4.61113 15.8131 3.89863 15.1011C3.18613 14.3891 2.6222 13.5513 2.20684 12.5875C1.79148 11.6238 1.58354 10.5947 1.58301 9.50004C1.58248 8.40543 1.79043 7.37626 2.20684 6.41254C2.62326 5.44882 3.18719 4.61097 3.89863 3.899C4.61008 3.18703 5.44793 2.6231 6.41218 2.20721C7.37643 1.79132 8.40559 1.58337 9.49967 1.58337C10.5938 1.58337 11.6229 1.79132 12.5872 2.20721C13.5514 2.6231 14.3893 3.18703 15.1007 3.899C15.8122 4.61097 16.3764 5.44882 16.7933 6.41254C17.2102 7.37626 17.4179 8.40543 17.4163 9.50004C17.4148 10.5947 17.2068 11.6238 16.7925 12.5875C16.3782 13.5513 15.8143 14.3891 15.1007 15.1011C14.3872 15.8131 13.5493 16.3772 12.5872 16.7937C11.625 17.2101 10.5959 17.4178 9.49967 17.4167Z"
+                            fill="white" />
+                    </svg>
+                    Legenda
+                </h1>
 
-            chart.data.datasets.forEach((dataset, i) => {
-                const meta = chart.getDatasetMeta(i)
-                meta.data.forEach((bubble, index) => {
-                    const dataPoint = dataset.data[index]
-                    ctx.fillText(dataPoint.valor, bubble.x, bubble.y)
+                <button type="button" class="btn-close btn-close-white position-absolute end-0 me-4"
+                    data-bs-dismiss="modal"></button>
+                <p style="font-weight: 300;">
+                    São os parâmetros de alertas dos componentes e do servidor.
+                </p>
+            </div>
+
+            <div class="modal-body text-center">
+                <div style="position: relative; height: 400px; width: 100%;">
+                    <div class="row g-5">
+                        <div class="col-lg-6 ">
+                            <div class="card-legend p-2 gap-3 h-100"
+                                style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);">
+
+                                <h5 class="text-center text-light mb-4" style="font-weight: 500;">Servidor</h5>
+
+                                <div class="d-flex flex-column gap-4 text-start">
+
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                                            style="width: 56px; height: 56px; border: 1px solid #00F2EA; border-radius: 12px; background-color: rgba(0, 242, 234, 0.1);">
+                                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
+                                                    stroke="#00F2EA" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
+                                                    stroke="#00F2EA" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 6.37256H6.38356" stroke="#00F2EA"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 19.1179H6.38356" stroke="#00F2EA"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-light fw-medium">Todos os Componentes</span>
+                                            <span style="color: #00F2EA;">Estáveis</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                                            style="width: 56px; height: 56px; border: 1px solid #FFD700; border-radius: 12px; background-color: rgba(255, 215, 0, 0.1);">
+                                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
+                                                    stroke="#FFD700" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
+                                                    stroke="#FFD700" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 6.37256H6.38356" stroke="#FFD700"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 19.1179H6.38356" stroke="#FFD700"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-light fw-medium">Pelo menos um
+                                                componente</span>
+                                            <span style="color: #FFD700;">Em Risco</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                                            style="width: 56px; height: 56px; border: 1px solid #ff0050; border-radius: 12px; background-color: rgba(255, 20, 147, 0.1);">
+                                            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M21.2417 2.12451H4.24822C3.07506 2.12451 2.12402 3.07554 2.12402 4.2487V8.49709C2.12402 9.67025 3.07506 10.6213 4.24822 10.6213H21.2417C22.4149 10.6213 23.3659 9.67025 23.3659 8.49709V4.2487C23.3659 3.07554 22.4149 2.12451 21.2417 2.12451Z"
+                                                    stroke="#FF1493" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M21.2417 14.8693H4.24822C3.07506 14.8693 2.12402 15.8203 2.12402 16.9935V21.2418C2.12402 22.415 3.07506 23.366 4.24822 23.366H21.2417C22.4149 23.366 23.3659 22.415 23.3659 21.2418V16.9935C23.3659 15.8203 22.4149 14.8693 21.2417 14.8693Z"
+                                                    stroke="#FF1493" stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 6.37256H6.38356" stroke="#FF1493"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.37305 19.1179H6.38356" stroke="#FF1493"
+                                                    stroke-width="2.12419" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="text-light fw-medium">Dois componentes em risco ou
+                                                um</span>
+                                            <span style="color: #ff0050;">Em Crítico</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card-legend p-4"
+                                style="background-color: #1a1a1a; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                                <h5 class="text-center text-light mb-4" style="font-weight: 500;">Componente
+                                </h5>
+
+                                <div class="d-flex flex-column gap-4 text-start">
+                                    <div class="d-flex box-componente gap-3">
+                                        <div class="d-flex align-items-center justify-content-center gap-2">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M15.647 3.47668H5.21686C4.2568 3.47668 3.47852 4.25497 3.47852 5.21503V15.6451C3.47852 16.6052 4.2568 17.3835 5.21686 17.3835H15.647C16.607 17.3835 17.3853 16.6052 17.3853 15.6451V5.21503C17.3853 4.25497 16.607 3.47668 15.647 3.47668Z"
+                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M12.1701 7.82251H8.69339C8.21336 7.82251 7.82422 8.21165 7.82422 8.69168V12.1684C7.82422 12.6484 8.21336 13.0376 8.69339 13.0376H12.1701C12.6501 13.0376 13.0393 12.6484 13.0393 12.1684V8.69168C13.0393 8.21165 12.6501 7.82251 12.1701 7.82251Z"
+                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M13.0381 1.7384V3.47675" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M13.0381 17.3835V19.1219" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.73926 13.0377H3.47761" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.73926 7.82251H3.47761" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M17.3838 13.0377H19.1221" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M17.3838 7.82251H19.1221" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M7.82422 1.7384V3.47675" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M7.82422 17.3835V19.1219" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+                                            <h5 style="margin: 0;">CPU</h5>
+
+                                        </div>
+                                        <div class="col d-flex flex-column align-items-center">
+                                            <span>Estável</span>
+                                            <div class="line-component"
+                                                style="background-color: #00F2EA; width: 100%; height: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px;">
+                                            </div>
+                                            10%
+                                        </div>
+                                        <div class="col d-flex flex-column align-items-center">
+                                            <span>Risco</span>
+                                            <div class="line-component"
+                                                style="background-color: #FFD500; width: 100%; height: 5px; ">
+                                            </div>
+                                            70%
+                                        </div>
+                                        <div class="col d-flex flex-column align-items-center">
+                                            <span>Critíco</span>
+                                            <div class="line-component"
+                                                style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                            </div>
+                                            90%
+                                        </div>
+                                    </div>
+                                    <div class="d-flex box=componente gap-3">
+                                        <div class="d-flex align-items-center justify-content-center gap-2">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.21582 16.5143V13.9067" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M8.69238 16.5143V13.9067" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M12.1699 16.5143V13.9067" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M15.6465 16.5143V13.9067" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M6.9541 9.56086V7.82251" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M13.9072 9.56086V7.82251" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M10.4307 9.56086V7.82251" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M1.73926 13.0375H19.1227" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M1.73926 6.0843C1.73926 5.62326 1.9224 5.1811 2.24841 4.8551C2.57441 4.52909 3.01657 4.34595 3.47761 4.34595H17.3844C17.8454 4.34595 18.2876 4.52909 18.6136 4.8551C18.9396 5.1811 19.1227 5.62326 19.1227 6.0843V7.04039C18.7627 7.14644 18.4467 7.36618 18.2219 7.66674C17.9971 7.96731 17.8756 8.33256 17.8756 8.7079C17.8756 9.08323 17.9971 9.44848 18.2219 9.74905C18.4467 10.0496 18.7627 10.2694 19.1227 10.3754V14.776C19.1227 15.2371 18.9396 15.6792 18.6136 16.0052C18.2876 16.3312 17.8454 16.5144 17.3844 16.5144H3.47761C3.01657 16.5144 2.57441 16.3312 2.24841 16.0052C1.9224 15.6792 1.73926 15.2371 1.73926 14.776V10.3432C2.0993 10.2372 2.41534 10.0175 2.64014 9.71689C2.86494 9.41632 2.98642 9.05107 2.98642 8.67574C2.98642 8.3004 2.86494 7.93515 2.64014 7.63458C2.41534 7.33402 2.0993 7.11428 1.73926 7.00823V6.0843Z"
+                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+
+
+                                            <h5 style="margin: 0;">CPU</h5>
+
+                                        </div>
+                                        <div class="col d-flex flex-column align-items-center">
+                                            <span>Estável</span>
+                                            <div class="line-component"
+                                                style="background-color: #00F2EA; width: 100%; height: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px;">
+                                            </div>
+                                            10%
+                                        </div>
+                                        <div class="col d-flex flex-column align-items-center">
+                                            <span>Risco</span>
+                                            <div class="line-component"
+                                                style="background-color: #FFD500; width: 100%; height: 5px; ">
+                                            </div>
+                                            70%
+                                        </div>
+                                        <div class="col d-flex flex-column align-items-center">
+                                            <span>Critíco</span>
+                                            <div class="line-component"
+                                                style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                            </div>
+                                            90%
+                                        </div>
+                                    </div>
+                                    <div class="d-flex box=componente gap-3">
+                                        <div class="d-flex align-items-center justify-content-center gap-2">
+                                            <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M19.1227 10.4302H1.73926" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path
+                                                    d="M4.73791 4.44159L1.73926 10.4302V15.6452C1.73926 16.1063 1.9224 16.5484 2.24841 16.8744C2.57441 17.2004 3.01657 17.3836 3.47761 17.3836H17.3844C17.8454 17.3836 18.2876 17.2004 18.6136 16.8744C18.9396 16.5484 19.1227 16.1063 19.1227 15.6452V10.4302L16.1241 4.44159C15.9802 4.15197 15.7583 3.90824 15.4835 3.7378C15.2086 3.56736 14.8917 3.47698 14.5683 3.47681H6.29373C5.97032 3.47698 5.65338 3.56736 5.37853 3.7378C5.10368 3.90824 4.88182 4.15197 4.73791 4.44159Z"
+                                                    stroke="#A0A0A0" stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M5.21582 13.907H5.22278" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                                <path d="M8.69238 13.907H8.69935" stroke="#A0A0A0"
+                                                    stroke-width="1.73835" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+
+
+                                            <h5 style="margin: 0;">CPU</h5>
+
+                                        </div>
+                                        <div class="col d-flex flex-column align-items-center">
+                                            <span>Estável</span>
+                                            <div class="line-component"
+                                                style="background-color: #00F2EA; width: 100%; height: 5px; border-top-left-radius: 5px; border-bottom-left-radius: 5px;">
+                                            </div>
+                                            10%
+                                        </div>
+                                        <div class="col d-flex flex-column align-items-center">
+                                            <span>Risco</span>
+                                            <div class="line-component"
+                                                style="background-color: #FFD500; width: 100%; height: 5px; ">
+                                            </div>
+                                            70%
+                                        </div>
+                                        <div class="col d-flex flex-column align-items-center">
+                                            <span>Critíco</span>
+                                            <div class="line-component"
+                                                style="background-color: #ff0050; width: 100%; height: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+                                            </div>
+                                            90%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    Você consegue alterar os parâmetros do <br> componente na tela de adição e <br> edição
+                    de servidor.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./services/api.js"></script>
+    <script src="./services/servidorService.js"></script>
+    <script>
+
+        const ctx = document.getElementById('matrizChart').getContext('2d')
+
+        const bubbleLabelsPlugin = {
+            id: 'bubbleLabels',
+            afterDatasetsDraw(chart) {
+                const { ctx } = chart
+                ctx.font = '9px Arial'
+                ctx.fillStyle = 'white'
+                ctx.textBaseline = 'middle'
+
+                chart.data.datasets.forEach((dataset, i) => {
+                    const meta = chart.getDatasetMeta(i)
+                    meta.data.forEach((bubble, index) => {
+                        const dataPoint = dataset.data[index]
+                        ctx.fillText(dataPoint.valor, bubble.x, bubble.y)
+                    })
                 })
-            })
+            }
         }
-    }
 
-    const matrizChart = new Chart(ctx, {
-        type: 'bubble',
-        plugins: [bubbleLabelsPlugin],
-        data: {
-            datasets: [
-                {
-                    label: 'Servidores Estáveis',
-                    data: [],
-                    backgroundColor: 'rgba(0, 240, 255, 0.2)',
-                    borderColor: '#00E5FF',
-                    borderWidth: 2
-                },
-                {
-                    label: 'Servidores Critícos',
-                    data: [],
-                    backgroundColor: 'rgba(255, 59, 48, 0.2)',
-                    borderColor: '#FF3B30',
-                    borderWidth: 2,
-                    borderDash: [6, 4]
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            return `Risco: ${context.raw.valor} | CPU/RAM: ${context.raw.x}% | Latência: ${context.raw.y}ms`
+        const matrizChart = new Chart(ctx, {
+            type: 'bubble',
+            plugins: [bubbleLabelsPlugin],
+            data: {
+                datasets: [
+                    {
+                        label: 'Servidores Estáveis',
+                        data: [],
+                        backgroundColor: 'rgba(0, 240, 255, 0.2)',
+                        borderColor: '#00E5FF',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Servidores Critícos',
+                        data: [],
+                        backgroundColor: 'rgba(255, 59, 48, 0.2)',
+                        borderColor: '#FF3B30',
+                        borderWidth: 2,
+                        borderDash: [6, 4]
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                return `Risco: ${context.raw.valor} | CPU/RAM: ${context.raw.x}% | Latência: ${context.raw.y}ms`
+                            }
                         }
                     }
-                }
-            },
-            scales: {
-                x: {
-                    min: 0,
-                    max: 100,
-                    ticks: {
-                        stepSize: 25,
-                        callback: function (value) { return value + '%'; },
-                        color: '#888'
-                    },
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.05)'
-                    }
                 },
-                y: {
-                    min: 0,
-                    max: 650,
-                    ticks: {
-                        stepSize: 150,
-                        callback: function (value) { return value + 'ms'; },
-                        color: '#888'
+                scales: {
+                    x: {
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            stepSize: 25,
+                            callback: function (value) { return value + '%'; },
+                            color: '#888'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        }
                     },
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.05)'
+                    y: {
+                        min: 0,
+                        max: 650,
+                        ticks: {
+                            stepSize: 150,
+                            callback: function (value) { return value + 'ms'; },
+                            color: '#888'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        }
                     }
                 }
             }
-        }
-    })
+        })
 
 
-    idUsuario = sessionStorage.ID_USUARIO
-    async function carregarDadosDashboard(idEmpresa, idUsuario) {
-        try {
-            console.log("Buscando dados")
-            const resposta = await fetch(`/servidor/buscarDashboardHome/${idEmpresa}/${idUsuario}`, { cache: 'no-store' })
-
-
+        idUsuario = sessionStorage.ID_USUARIO
+        async function carregarDadosDashboard(idEmpresa, idUsuario) {
+            try {
+                console.log("Buscando dados")
+                const resposta = await fetch(`/servidor/buscarDashboardHome/${idEmpresa}/${idUsuario}`, { cache: 'no-store' })
 
 
 
-            if (resposta.ok) {
-                const dados = await resposta.json()
-                console.log("Dados recebidos da API", dados)
-
-                const novosEstaveis = [];
-                const novosInstaveis = [];
-
-                const bolhasEstaveis = []
-                const bolhasCriticas = []
-                
-                let totalCriticosAgora = 0;
-                let totalCriticos24hAtras = 0;
-
-                let servidorMaisPropenso = "Todos Estáveis";
-                let menorTempoMinutos = 999999;
 
 
-                dados.servidores.forEach(servidor => {
-                    if (servidor.dados_tempo_real) {
-                        console.log(`gráfico para : ${servidor.nome_db}`)
+                if (resposta.ok) {
+                    const dados = await resposta.json()
+                    console.log("Dados recebidos da API", dados)
 
-                        renderizarServidorTela(servidor)
+                    const novosEstaveis = [];
+                    const novosInstaveis = [];
 
-                        const status_servidor = servidor.dados_tempo_real.status_servidor
-                        const nome = servidor.dados_tempo_real.nome;
-                        const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
+                    const bolhasEstaveis = []
+                    const bolhasCriticas = []
 
-                        const formatoMapa = [coordenadas[0], coordenadas[1], nome, status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL']
+                    let totalCriticosAgora = 0;
+                    let totalCriticos24hAtras = 0;
 
-                        if (status_servidor.toLowerCase() === 'critico') {
-                            novosInstaveis.push(formatoMapa);
-                        } else {
-                            novosEstaveis.push(formatoMapa);
-                        }
+                    let servidorMaisPropenso = "Todos Estáveis";
+                    let menorTempoMinutos = 999999;
 
-                        if (servidor.status_24h_atras && servidor.status_24h_atras.toLowerCase() === 'critico') {
-                            totalCriticos24hAtras++;
-                        }
 
-                        if (servidor.dados_tempo_real.matriz_priorizacao) {
-                            const matriz = servidor.dados_tempo_real.matriz_priorizacao
+                    dados.servidores.forEach(servidor => {
+                        if (servidor.dados_tempo_real) {
+                            console.log(`gráfico para : ${servidor.nome_db}`)
 
-                            const pontosBolha = {
-                                x: parseFloat(matriz.x.toFixed(1)),
-                                y: parseFloat(matriz.y.toFixed(1)),
-                                valor: Math.round(matriz.tamanho_bolha),
-                                r: Math.max(6, Math.round(matriz.tamanho_bolha / 5))
-                            }
+                            renderizarServidorTela(servidor)
+
+                            const status_servidor = servidor.dados_tempo_real.status_servidor
+                            const nome = servidor.dados_tempo_real.nome;
+                            const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
+
+                            const formatoMapa = [coordenadas[0], coordenadas[1], nome, status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL']
 
                             if (status_servidor.toLowerCase() === 'critico') {
-                                bolhasCriticas.push(pontosBolha);
+                                novosInstaveis.push(formatoMapa);
                             } else {
-                                bolhasEstaveis.push(pontosBolha);
+                                novosEstaveis.push(formatoMapa);
                             }
-                        }
 
-                        if (servidor.dados_tempo_real.previsao_esgotamento) {
-                            const predicao = servidor.dados_tempo_real.previsao_esgotamento
+                            if (servidor.status_24h_atras && servidor.status_24h_atras.toLowerCase() === 'critico') {
+                                totalCriticos24hAtras++;
+                            }
 
-                            if (predicao.minutos < menorTempoMinutos) {
-                                menorTempoMinutos = predicao.minutos;
+                            if (servidor.dados_tempo_real.matriz_priorizacao) {
+                                const matriz = servidor.dados_tempo_real.matriz_priorizacao
 
-                                if (predicao.minutos === 0) {
-                                    servidorMaisPropenso = `${nome} (Crítico)`
-                                } else if (predicao.minutos === 999999) {
-                                    servidorMaisPropenso = "Todos Estáveis"
+                                const pontosBolha = {
+                                    x: parseFloat(matriz.x.toFixed(1)),
+                                    y: parseFloat(matriz.y.toFixed(1)),
+                                    valor: Math.round(matriz.tamanho_bolha),
+                                    r: Math.max(6, Math.round(matriz.tamanho_bolha / 5))
+                                }
+
+                                if (status_servidor.toLowerCase() === 'critico') {
+                                    bolhasCriticas.push(pontosBolha);
                                 } else {
-                                    servidorMaisPropenso = `${nome} (${predicao.texto})`
+                                    bolhasEstaveis.push(pontosBolha);
                                 }
                             }
+
+                            if (servidor.dados_tempo_real.previsao_esgotamento) {
+                                const predicao = servidor.dados_tempo_real.previsao_esgotamento
+
+                                if (predicao.minutos < menorTempoMinutos) {
+                                    menorTempoMinutos = predicao.minutos;
+
+                                    if (predicao.minutos === 0) {
+                                        servidorMaisPropenso = `${nome} (Crítico)`
+                                    } else if (predicao.minutos === 999999) {
+                                        servidorMaisPropenso = "Todos Estáveis"
+                                    } else {
+                                        servidorMaisPropenso = `${nome} (${predicao.texto})`
+                                    }
+                                }
+                            }
+
+
+                        } else {
+                            console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
                         }
+                    })
 
+                    myChart.setOption({
+                        series: [
+                            { name: 'Servidores Estáveis', data: novosEstaveis },
+                            { name: 'Servidores Instáveis', data: novosInstaveis }
+                        ]
+                    });
 
-                    } else {
-                        console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
+                    matrizChart.data.datasets[0].data = bolhasEstaveis;
+                    matrizChart.data.datasets[1].data = bolhasCriticas;
+                    matrizChart.update();
+
+                    let variacao = 0;
+                    if (totalCriticos24hAtras > 0) {
+                        variacao = Math.round(((totalCriticosAgora - totalCriticos24hAtras) / totalCriticos24hAtras) * 100);
+                    } else if (totalCriticosAgora > 0) {
+                        variacao = 100;
                     }
-                })
+                    const sinal = variacao > 0 ? "+" : "";
+                    document.getElementById('kpiMaquinaCriticas24h').innerText = `${sinal}${variacao}% vs 24. ant.`;
 
-                myChart.setOption({
-                    series: [
-                        { name: 'Servidores Estáveis', data: novosEstaveis },
-                        { name: 'Servidores Instáveis', data: novosInstaveis }
-                    ]
-                });
+                    const qtdCriticos = dados.resumo_global.servidores_criticos
+                    const totalServidores = dados.resumo_global.total_servidores
 
-                matrizChart.data.datasets[0].data = bolhasEstaveis;
-                matrizChart.data.datasets[1].data = bolhasCriticas;
-                matrizChart.update();
+                    document.getElementById('kpiServidorPropenso').innerText = servidorMaisPropenso;
 
-                let variacao = 0;
-                if (totalCriticos24hAtras > 0) {
-                    variacao = Math.round(((totalCriticosAgora - totalCriticos24hAtras) / totalCriticos24hAtras) * 100);
-                } else if (totalCriticosAgora > 0) {
-                    variacao = 100;
+                    console.log("qtd critícos:", qtdCriticos, "total sevidores:", totalServidores)
+                    document.getElementById('kpiMaquinasRisco').innerText = qtdCriticos;
+                    console.log("Total de servidores em estado crítico:", qtdCriticos);
+                    console.log("Servidor mapeado com maior propensão a falhas:", servidorMaisPropenso);
+                } else {
+                    console.error("Erro na resposta da API:", resposta.status);
                 }
-                const sinal = variacao > 0 ? "+" : "";
-                document.getElementById('kpiMaquinaCriticas24h').innerText = `${sinal}${variacao}% vs 24. ant.`;
-
-                const qtdCriticos = dados.resumo_global.servidores_criticos
-                const totalServidores = dados.resumo_global.total_servidores
-
-                document.getElementById('kpiServidorPropenso').innerText = servidorMaisPropenso;
-
-                console.log("qtd critícos:", qtdCriticos, "total sevidores:", totalServidores)
-                document.getElementById('kpiMaquinasRisco').innerText = qtdCriticos;
-                console.log("Total de servidores em estado crítico:", qtdCriticos);
-                console.log("Servidor mapeado com maior propensão a falhas:", servidorMaisPropenso);
-            } else {
-                console.error("Erro na resposta da API:", resposta.status);
+            } catch (erro) {
+                console.error("Erro no fetch do dashboard:", erro);
             }
-        } catch (erro) {
-            console.error("Erro no fetch do dashboard:", erro);
         }
-    }
 
-    carregarDadosDashboard(sessionStorage.ID_EMPRESA, sessionStorage.ID_USUARIO)
+        carregarDadosDashboard(sessionStorage.ID_EMPRESA, sessionStorage.ID_USUARIO)
 
 
-    function renderizarServidorTela(servidor) {
-        const container = document.getElementById('lista-servidores')
+        function renderizarServidorTela(servidor) {
+            const container = document.getElementById('lista-servidores')
 
-        const macAddress = servidor.dados_tempo_real.macAddress;
-        const nome = servidor.dados_tempo_real.nome;
-        const regiao = servidor.dados_tempo_real.regiao;
-        const ultima_coleta = servidor.dados_tempo_real.ultimaColeta;
-        const status_servidor = servidor.dados_tempo_real.status_servidor
-        const diagnostico_etl = servidor.dados_tempo_real.diagnostico_etl
-        const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
-        const saturacao_trafego = servidor.dados_tempo_real.geolocalizacao.saturacao_trafego
-        const matriz_priorizacao_x = servidor.dados_tempo_real.matriz_priorizacao.x
-        const matriz_priorizacao_y = servidor.dados_tempo_real.matriz_priorizacao.y
-        const matriz_priorizacao_bolha = servidor.dados_tempo_real.matriz_priorizacao.tamanho_bolha
-        const cpu_uso = servidor.dados_tempo_real.componentes.cpu.valor
-        const cpu_status_ui = servidor.dados_tempo_real.componentes.cpu.status_ui
-        const cpu_acao_permitida = servidor.dados_tempo_real.componentes.cpu.acao_permitida
-        const ram_uso = servidor.dados_tempo_real.componentes.ram.valor
-        const ram_status_ui = servidor.dados_tempo_real.componentes.ram.status_ui
-        const ram_acao_permitida = servidor.dados_tempo_real.componentes.ram.acao_permitida
-        const disco_uso = servidor.dados_tempo_real.componentes.disco.valor
-        const disco_status_ui = servidor.dados_tempo_real.componentes.disco.status_ui
-        const disco_acao_permitida = servidor.dados_tempo_real.componentes.disco.acao_permitida
-        const rede_uso = servidor.dados_tempo_real.componentes.rede.valor
-        const rede_status_ui = servidor.dados_tempo_real.componentes.rede.status_ui
-        const rede_acao_permitida = servidor.dados_tempo_real.componentes.rede.acao_permitida
+            const macAddress = servidor.dados_tempo_real.macAddress;
+            const nome = servidor.dados_tempo_real.nome;
+            const regiao = servidor.dados_tempo_real.regiao;
+            const ultima_coleta = servidor.dados_tempo_real.ultimaColeta;
+            const status_servidor = servidor.dados_tempo_real.status_servidor
+            const diagnostico_etl = servidor.dados_tempo_real.diagnostico_etl
+            const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
+            const saturacao_trafego = servidor.dados_tempo_real.geolocalizacao.saturacao_trafego
+            const matriz_priorizacao_x = servidor.dados_tempo_real.matriz_priorizacao.x
+            const matriz_priorizacao_y = servidor.dados_tempo_real.matriz_priorizacao.y
+            const matriz_priorizacao_bolha = servidor.dados_tempo_real.matriz_priorizacao.tamanho_bolha
+            const cpu_uso = servidor.dados_tempo_real.componentes.cpu.valor
+            const cpu_status_ui = servidor.dados_tempo_real.componentes.cpu.status_ui
+            const cpu_acao_permitida = servidor.dados_tempo_real.componentes.cpu.acao_permitida
+            const ram_uso = servidor.dados_tempo_real.componentes.ram.valor
+            const ram_status_ui = servidor.dados_tempo_real.componentes.ram.status_ui
+            const ram_acao_permitida = servidor.dados_tempo_real.componentes.ram.acao_permitida
+            const disco_uso = servidor.dados_tempo_real.componentes.disco.valor
+            const disco_status_ui = servidor.dados_tempo_real.componentes.disco.status_ui
+            const disco_acao_permitida = servidor.dados_tempo_real.componentes.disco.acao_permitida
+            const rede_uso = servidor.dados_tempo_real.componentes.rede.valor
+            const rede_status_ui = servidor.dados_tempo_real.componentes.rede.status_ui
+            const rede_acao_permitida = servidor.dados_tempo_real.componentes.rede.acao_permitida
 
-        console.log("macAddress: ", macAddress, "nome:", nome,
-            "regiao:", regiao, "status_servidor:", status_servidor,
-            "diagnostico_etl:", diagnostico_etl, "coordernadas:",
-            coordenadas, "saturacao_trafego:", saturacao_trafego,
-            "eixo_x:", matriz_priorizacao_x, "eixo_y:",
-            matriz_priorizacao_y, "cpuUso:", cpu_uso, "status_ui",
-            cpu_status_ui, "acao_permitidia", cpu_acao_permitida
-        )
+            console.log("macAddress: ", macAddress, "nome:", nome,
+                "regiao:", regiao, "status_servidor:", status_servidor,
+                "diagnostico_etl:", diagnostico_etl, "coordernadas:",
+                coordenadas, "saturacao_trafego:", saturacao_trafego,
+                "eixo_x:", matriz_priorizacao_x, "eixo_y:",
+                matriz_priorizacao_y, "cpuUso:", cpu_uso, "status_ui",
+                cpu_status_ui, "acao_permitidia", cpu_acao_permitida
+            )
 
-        cardServidor = `
+            cardServidor = `
         <tr class="linha-servidor servidor-${status_servidor}" data-status="${status_servidor}">
                                                         <td><span class="status-dot ${status_servidor}"></span></td>
                                                         <td>
                                                             <div class="flex-column d-flex">
                                                                 <span id="horaColeta">${ultima_coleta}</span>
-                                                                <span id="dataColeta">10/04/2006</span>
+                                                                <span id="dataColeta"></span>
                                                             </div>
                                                         </td>
                                         
@@ -1240,7 +1567,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                         <td><span id="cidadeServidor">${regiao}</span><span id="regiaoServidor"></span></td>
 
                                         <td>
-                                            <button value="${macAddress}" onclick="acessarCpu(e)" class="btn btn-componente ${cpu_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
+                                            <button macA="${macAddress}" onclick="acessarRam(this)" class="btn btn-componente ${cpu_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
 
                                                 <div class="d-flex flex-column flex-grow-1 gap-1">
 
@@ -1350,70 +1677,79 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
         `
 
 
-        container.innerHTML += cardServidor
+            container.innerHTML += cardServidor
 
-    }
+        }
 
-    function acessarRam(botao) {
+        function acessarRam(botao) {
 
-        let macAddress = botao.getAttribute('macA')
+            let macAddress = botao.getAttribute('macA')
 
-        console.log("MACCCC:", macAddress)
-        sessionStorage.setItem('MAC_ADDRESS', macAddress)
-        window.location.href = `/pages/dashboard-ram.html`
-    }
+            console.log("MACCCC:", macAddress)
+            sessionStorage.setItem('MAC_ADDRESS', macAddress)
+            window.location.href = `/pages/dashboard-ram.html`
+        }
 
-    async function mostrarServidores() {
-        var idEmpresa = sessionStorage.ID_EMPRESA;
+        function acessarCpu(botao) {
 
-        const resultado = await buscarServidoresService(idEmpresa);
+            let macAddress = botao.getAttribute('macA')
 
-        let conteudoCards = ""
+            console.log("MACCCC:", macAddress)
+            sessionStorage.setItem('MAC_ADDRESS', macAddress)
+            window.location.href = `/pages/dashboard-cpu.html`
+        }
 
-        let qtdMaquinasEmRisco = 0;
-        let qtdComponentesEmRisco = 0;
+        async function mostrarServidores() {
+            var idEmpresa = sessionStorage.ID_EMPRESA;
+
+            const resultado = await buscarServidoresService(idEmpresa);
+
+            let conteudoCards = ""
+
+            let qtdMaquinasEmRisco = 0;
+            let qtdComponentesEmRisco = 0;
 
 
 
-        for (const servidor of resultado) {
-            const responseS3 = await fetch(`http://localhost:3333/servidor/uso-s3/${servidor.mac_address}`);
-            const dadosS3 = await responseS3.json()
+            for (const servidor of resultado) {
+                const responseS3 = await fetch(`http://localhost:3333/servidor/uso-s3/${servidor.mac_address}`);
+                const dadosS3 = await responseS3.json()
 
-            const cpu = dadosS3?.usoAtual?.cpu || 0;
-            const ram = dadosS3?.usoAtual?.ram || 0;
-            const disco = dadosS3?.usoAtual?.disco || 0;
+                const cpu = dadosS3?.usoAtual?.cpu || 0;
+                const ram = dadosS3?.usoAtual?.ram || 0;
+                const disco = dadosS3?.usoAtual?.disco || 0;
 
-            const status = descobrirStatusServidor(cpu, ram, disco)
+                const status = descobrirStatusServidor(cpu, ram, disco)
 
-            if (status !== 'normal') {
-                qtdMaquinasEmRisco++;
-            }
+                if (status !== 'normal') {
+                    qtdMaquinasEmRisco++;
+                }
 
-            if (cpu >= 70) qtdComponentesEmRisco++;
-            if (ram >= 70) qtdComponentesEmRisco++;
-            if (disco >= 70) qtdComponentesEmRisco++;
+                if (cpu >= 70) qtdComponentesEmRisco++;
+                if (ram >= 70) qtdComponentesEmRisco++;
+                if (disco >= 70) qtdComponentesEmRisco++;
 
-            let borda
-            let cor
-            let statusCor
-            if (status == 'critico') {
-                borda = 'vermelha'
-                statusCor = 'vermelho'
-                cor = '#FF0050'
-            } else if (status == 'risco') {
-                borda = 'amarela'
-                cor = '#FFD600'
-            } else {
-                borda = 'azul'
-                cor = '#01F2EA'
-            }
+                let borda
+                let cor
+                let statusCor
+                if (status == 'critico') {
+                    borda = 'vermelha'
+                    statusCor = 'vermelho'
+                    cor = '#FF0050'
+                } else if (status == 'risco') {
+                    borda = 'amarela'
+                    cor = '#FFD600'
+                } else {
+                    borda = 'azul'
+                    cor = '#01F2EA'
+                }
 
-            const corCpu = descobrirStatusComponente(cpu).cor;
-            const corRam = descobrirStatusComponente(ram).cor;
-            const corDisco = descobrirStatusComponente(disco).cor;
+                const corCpu = descobrirStatusComponente(cpu).cor;
+                const corRam = descobrirStatusComponente(ram).cor;
+                const corDisco = descobrirStatusComponente(disco).cor;
 
-            console.log(borda + 'a' + cor)
-            conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
+                console.log(borda + 'a' + cor)
+                conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
                                                     <div class="card h-100 cartao-servidor borda-${borda}">
                                                         <a href="./pages/dashboard-servidor.html" style="text-decoration: none;">
                                                         <div class="card-body d-flex flex-column gap-3">
@@ -1482,124 +1818,124 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                 </div>`
 
 
+            }
+            document.getElementById("kpiMaquinasRisco").innerHTML = qtdMaquinasEmRisco;
+            document.getElementById("kpiComponentesRisco").innerHTML = qtdComponentesEmRisco;
+
+            document.getElementById("servidoresAlerta").innerHTML = conteudoCards;
+            document.getElementById("totalMaquinas").innerHTML = resultado.length
         }
-        document.getElementById("kpiMaquinasRisco").innerHTML = qtdMaquinasEmRisco;
-        document.getElementById("kpiComponentesRisco").innerHTML = qtdComponentesEmRisco;
-
-        document.getElementById("servidoresAlerta").innerHTML = conteudoCards;
-        document.getElementById("totalMaquinas").innerHTML = resultado.length
-    }
-    mostrarServidores();
+        mostrarServidores();
 
 
 
-    const chartDom = document.getElementById('mapa')
-    const myChart = echarts.init(chartDom);
+        const chartDom = document.getElementById('mapa')
+        const myChart = echarts.init(chartDom);
 
-    fetch('https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/json/world.json').then(res => res.json()).then(worldJson => {
-        echarts.registerMap('mundo', worldJson)
+        fetch('https://cdn.jsdelivr.net/npm/echarts@4.9.0/map/json/world.json').then(res => res.json()).then(worldJson => {
+            echarts.registerMap('mundo', worldJson)
 
 
-        const option = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'item',
-                backgroundColor: 'rgba(26, 26, 26, 0.9)',
-                borderColor: 'rgba(255, 255, 255, 0.2)',
-                borderWidth: 1,
-                textStyle: { color: '#fff', fontFamily: 'Arial' },
-                formatter: function (params) {
-                    if (params.seriesType === 'effectScatter' || params.seriesType === 'scatter') {
-                        const servidor = params.data[2];
-                        const status = params.data[3];
-                        const corStatus = status === 'CRÍTICO' ? '#ff3b30' : '#00f0ff';
+            const option = {
+                backgroundColor: 'transparent',
+                tooltip: {
+                    trigger: 'item',
+                    backgroundColor: 'rgba(26, 26, 26, 0.9)',
+                    borderColor: 'rgba(255, 255, 255, 0.2)',
+                    borderWidth: 1,
+                    textStyle: { color: '#fff', fontFamily: 'Arial' },
+                    formatter: function (params) {
+                        if (params.seriesType === 'effectScatter' || params.seriesType === 'scatter') {
+                            const servidor = params.data[2];
+                            const status = params.data[3];
+                            const corStatus = status === 'CRÍTICO' ? '#ff3b30' : '#00f0ff';
 
-                        return `
+                            return `
                     <div style="font-weight: bold; margin-bottom: 5px;">Servidor: ${servidor}</div>
                     <div style="color: ${corStatus}"> Status: ${status}</div>
                     `
+                        }
+                        return params.name
                     }
-                    return params.name
-                }
-            },
-            geo: {
-                map: 'mundo',
-                roam: true,
-                layourCenter: ['50%', '50%'],
-                layoutSize: '100%',
-                zoom: 1.3,
-                itemStyle: {
-                    areaColor: '#4A4A4A',
-                    borderColor: '#2A2A2A',
-                    borderWidth: 1
                 },
-                emphasis: {
-                    itemStyle: { areaColor: '#5A5A5A' },
-                    label: { show: false }
-                }
-            },
+                geo: {
+                    map: 'mundo',
+                    roam: true,
+                    layourCenter: ['50%', '50%'],
+                    layoutSize: '100%',
+                    zoom: 1.3,
+                    itemStyle: {
+                        areaColor: '#4A4A4A',
+                        borderColor: '#2A2A2A',
+                        borderWidth: 1
+                    },
+                    emphasis: {
+                        itemStyle: { areaColor: '#5A5A5A' },
+                        label: { show: false }
+                    }
+                },
 
-            series: [
-                { name: 'Servidores Estáveis', type: 'scatter', coordinateSystem: 'geo', symbolSize: 8, itemStyle: { color: '#00f0ff', shadowBlur: 6, shadowColor: '#00f0ff' }, data: [] },
-                { name: 'Servidores Instáveis', type: 'effectScatter', coordinateSystem: 'geo', symbolSize: 12, rippleEffect: { brushType: 'stroke', scale: 5, period: 3 }, itemStyle: { color: '#ff3b30', shadowBlur: 10, shadowColor: '#ff3b30' }, data: [] }
-            ]
+                series: [
+                    { name: 'Servidores Estáveis', type: 'scatter', coordinateSystem: 'geo', symbolSize: 8, itemStyle: { color: '#00f0ff', shadowBlur: 6, shadowColor: '#00f0ff' }, data: [] },
+                    { name: 'Servidores Instáveis', type: 'effectScatter', coordinateSystem: 'geo', symbolSize: 12, rippleEffect: { brushType: 'stroke', scale: 5, period: 3 }, itemStyle: { color: '#ff3b30', shadowBlur: 10, shadowColor: '#ff3b30' }, data: [] }
+                ]
 
-        }
-        myChart.setOption(option);
-    })
-    window.addEventListener('resize', function () {
-        myChart.resize();
-    })
-
-
-    let filtroTextoAtual = '';
-    let filtroStatusAtual = 'Todos';
-
-
-    function filtrarServidores() {
-        const linhasServidores = document.querySelectorAll('.linha-servidor')
-
-        linhasServidores.forEach(linha => {
-            const elementoNome = linha.querySelector('.nome-servidor');
-
-            if (!elementoNome) return;
-
-            const nomeServidor = elementoNome.textContent.toLowerCase();
-
-            const statusServidor = linha.getAttribute('data-status')
-
-            const condicaoTexto = nomeServidor.includes(filtroTextoAtual)
-
-            const condicaoStatus = (filtroStatusAtual === 'Todos') || (statusServidor === filtroStatusAtual);
-
-            if (condicaoTexto && condicaoStatus) {
-                linha.style.display = ''
-            } else {
-                linha.style.display = 'none'
             }
+            myChart.setOption(option);
         })
-    }
-
-    const inputBusca = document.getElementById('input-busca')
-    if (inputBusca) {
-        inputBusca.addEventListener('input', (evento) => {
-            filtroTextoAtual = evento.target.value.toLowerCase()
-            filtrarServidores()
+        window.addEventListener('resize', function () {
+            myChart.resize();
         })
-    }
 
-    const botoesFiltro = document.querySelectorAll('.btn-filtro')
-    botoesFiltro.forEach(botao => {
-        botao.addEventListener('click', (evento) => {
-            filtroStatusAtual = evento.currentTarget.getAttribute('data-valor')
 
-            botoesFiltro.forEach(b => b.classList.remove('ativo'))
-            evento.currentTarget.classList.add('ativo')
+        let filtroTextoAtual = '';
+        let filtroStatusAtual = 'Todos';
 
-            filtrarServidores()
+
+        function filtrarServidores() {
+            const linhasServidores = document.querySelectorAll('.linha-servidor')
+
+            linhasServidores.forEach(linha => {
+                const elementoNome = linha.querySelector('.nome-servidor');
+
+                if (!elementoNome) return;
+
+                const nomeServidor = elementoNome.textContent.toLowerCase();
+
+                const statusServidor = linha.getAttribute('data-status')
+
+                const condicaoTexto = nomeServidor.includes(filtroTextoAtual)
+
+                const condicaoStatus = (filtroStatusAtual === 'Todos') || (statusServidor === filtroStatusAtual);
+
+                if (condicaoTexto && condicaoStatus) {
+                    linha.style.display = ''
+                } else {
+                    linha.style.display = 'none'
+                }
+            })
+        }
+
+        const inputBusca = document.getElementById('input-busca')
+        if (inputBusca) {
+            inputBusca.addEventListener('input', (evento) => {
+                filtroTextoAtual = evento.target.value.toLowerCase()
+                filtrarServidores()
+            })
+        }
+
+        const botoesFiltro = document.querySelectorAll('.btn-filtro')
+        botoesFiltro.forEach(botao => {
+            botao.addEventListener('click', (evento) => {
+                filtroStatusAtual = evento.currentTarget.getAttribute('data-valor')
+
+                botoesFiltro.forEach(b => b.classList.remove('ativo'))
+                evento.currentTarget.classList.add('ativo')
+
+                filtrarServidores()
+            })
         })
-    })
 
 
 
-</script>
+    </script>
