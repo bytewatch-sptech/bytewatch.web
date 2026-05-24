@@ -166,8 +166,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                     style="font-size: 0.9rem">Veja os insights iniciais</span>
                                             </div>
                                         </header>
-                                        <div class="row align-items-stretch mb-4"
-                                            style="min-height: 280px;">
+                                        <div class="row align-items-stretch mb-4" style="min-height: 280px;">
 
 
                                             <div class="col-md-3">
@@ -333,7 +332,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                             </tr>
                                                         </thead>
                                                         <tbody id="lista-servidores">
-                                                        
+
                                                 </div>
                                             </div>
                                         </div>
@@ -1078,6 +1077,9 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 const bolhasEstaveis = []
                 const bolhasCriticas = []
 
+                let servidorMaisPropenso = "Todos Estáveis";
+                let menorTempoMinutos = 999999;
+
 
                 dados.servidores.forEach(servidor => {
                     if (servidor.dados_tempo_real) {
@@ -1113,6 +1115,24 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                 bolhasEstaveis.push(pontosBolha);
                             }
                         }
+
+                        if(servidor.dados_tempo_real.previsao_esgotamento){
+                            const predicao = servidor.dados_tempo_real.previsao_esgotamento
+
+                            if(predicao.minutos < menorTempoMinutos){
+                                menorTempoMinutos = predicao.minutos;
+
+                                if(predicao.minutos === 0){
+                                    servidorMaisPropenso =  `${nome} (Crítico)`
+                                }else if(predicao.minutos === 999999){
+                                    servidorMaisPropenso = "Todos Estáveis"
+                                }else{
+                                    servidorMaisPropenso = `${nome} (${predicao.texto})`
+                                }
+                            }
+                        }
+
+
                     } else {
                         console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
                     }
@@ -1132,10 +1152,12 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 const qtdCriticos = dados.resumo_global.servidores_criticos
                 const totalServidores = dados.resumo_global.total_servidores
 
+                document.getElementById('kpiServidorPropenso').innerText = servidorMaisPropenso;
 
                 console.log("qtd critícos:", qtdCriticos, "total sevidores:", totalServidores)
                 document.getElementById('kpiMaquinasRisco').innerText = qtdCriticos;
                 console.log("Total de servidores em estado crítico:", qtdCriticos);
+                console.log("Servidor mapeado com maior propensão a falhas:", servidorMaisPropenso);
             } else {
                 console.error("Erro na resposta da API:", resposta.status);
             }
