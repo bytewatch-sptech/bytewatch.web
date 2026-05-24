@@ -342,7 +342,6 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                     <th scope="col" class="ps-3 border-0">STATUS</th>
                                                                     <th scope="col" class="border-0">ÚLTIMA COLETA</th>
                                                                     <th scope="col" class="border-0">SERVIDOR</th>
-                                                                    <th scope="col" class="border-0">REGIÃO</th>
                                                                     <th scope="col" class="border-0">CPU</th>
                                                                     <th scope="col" class="border-0">RAM</th>
                                                                     <th scope="col" class="border-0">DISCO</th>
@@ -1423,8 +1422,9 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             const status_servidor = servidor.dados_tempo_real.status_servidor
                             const nome = servidor.dados_tempo_real.nome;
                             const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
+                            const regiao = servidor.dados_tempo_real.regiao;
 
-                            const formatoMapa = [coordenadas[0], coordenadas[1], nome, status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL']
+                            const formatoMapa = [coordenadas[0], coordenadas[1], nome, status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL', regiao]
 
                             if (status_servidor.toLowerCase() === 'critico') {
                                 novosInstaveis.push(formatoMapa);
@@ -1567,7 +1567,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                 <span id="diagnosticoEtlServidor">${diagnostico_etl}</span>
                                             </div>
                                         </td>
-                                        <td><span id="cidadeServidor">${regiao}</span><span id="regiaoServidor"></span></td>
+                                        
 
                                         <td>
                                             <button macA="${macAddress}" onclick="acessarRam(this)" class="btn btn-componente ${cpu_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
@@ -1852,9 +1852,11 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             const servidor = params.data[2];
                             const status = params.data[3];
                             const corStatus = status === 'CRÍTICO' ? '#ff3b30' : '#00f0ff';
+                            const regiao = params.data[4]
 
                             return `
-                    <div style="font-weight: bold; margin-bottom: 5px;">Servidor: ${servidor}</div>
+                    <div style="font-weight: 600; margin-bottom: 5px;">Servidor: ${servidor} <br> Região: ${regiao}</div>
+                    
                     <div style="color: ${corStatus}"> Status: ${status}</div>
                     `
                         }
