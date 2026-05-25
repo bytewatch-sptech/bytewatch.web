@@ -20,8 +20,8 @@
 <body style="overflow: auto;">
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark H-100"
-                style="transition: 0.3s;">
+            <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
+                style="min-height: 100vh; transition: 0.3s;">
 
                 <div class="d-flex justify-content-center mb-5">
                     <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
@@ -30,7 +30,7 @@
 
                 <ul class="nav nav-pills flex-column mb-auto gap-2">
                     <li class="nav-item">
-                        <a href="../home.html" class="nav-link active bg-success d-flex align-items-center">
+                        <a href="/home.html" class="nav-link active d-flex align-items-center text-white">
                             <div class="icon_side d-flex align-items-center justify-content-center">
                                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -48,35 +48,9 @@
                             <span class="ms-2 d-none d-sm-inline">Home</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="../gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
-                            <div class="icon_side d-flex align-items-center justify-content-center">
-                                <svg width="18" height="18  " viewBox="0 0 16 16" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14"
-                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path
-                                        d="M5.99967 7.33333C7.47243 7.33333 8.66634 6.13943 8.66634 4.66667C8.66634 3.19391 7.47243 2 5.99967 2C4.52692 2 3.33301 3.19391 3.33301 4.66667C3.33301 6.13943 4.52692 7.33333 5.99967 7.33333Z"
-                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path
-                                        d="M14.667 14V12.6667C14.6666 12.0758 14.4699 11.5019 14.1079 11.0349C13.7459 10.5679 13.2391 10.2344 12.667 10.0867"
-                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path
-                                        d="M10.667 2.08667C11.2406 2.23354 11.749 2.56714 12.1121 3.03488C12.4752 3.50262 12.6722 4.07789 12.6722 4.67C12.6722 5.26212 12.4752 5.83739 12.1121 6.30513C11.749 6.77287 11.2406 7.10647 10.667 7.25334"
-                                        stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
 
-                            </div>
-                            <span class="ms-2 d-none d-sm-inline">Gestão Equipe</span>
-                        </a>
-                    </li>
                     <li class="nav-item">
-                        <a href="./alertas.html" class="nav-link d-flex align-items-center text-white">
+                        <a href="/pages/dash-alertas.html" class="nav-link d-flex align-items-center text-white">
                             <div class="icon_side d-flex align-items-center justify-content-center">
                                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -184,18 +158,17 @@
 
                                 <div id="statusInfo" class="info-alert d-flex align-items-center" data-bs-toggle="modal"
                                     data-bs-target="#modalLegenda">
-                                    <div class="icon">
+                                    <div class="icon" >
                                         <img src="../assets/Icon-info.svg" alt="">
                                     </div>
-                                    <span>Status</span>
+                                    <span>Legenda</span>
                                 </div>
 
-                                <div class="info-alert d-flex align-items-center"
-                                    style=" border-bottom-right-radius: 10px; border-top-right-radius: 10px; color: var(--tok); background-color: #FF00501A; gap: 5px; margin-left: 10px;">
-                                    <div class="icon">
-                                        <img src="../assets/info-danger.svg" alt="">
+                                <div class="info-alert d-flex align-items-center" id="kpi_Alert">
+                                    <div class="icon" id="statusIcon">
+                                        <img src="../assets/info-danger.svg" alt="" >
                                     </div>
-                                    <span id="serverAlert">Critíco</span>
+                                    <span id="serverAlert">N/A</span>
                                 </div>
 
                             </div>
@@ -252,8 +225,9 @@
                             <svg width="16" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10.8401 15.6906L4.84005 15.6906L4.84005 7.76604L5.34058e-05 7.76604L7.84005 9.53674e-07L15.6801 7.76604L10.8401 7.76604V15.6906Z" fill="#C167C7"/>
                             </svg>
-
                             <p class="card-title kpi-titles">PICO</p>
+
+                            <p style="font-size: 14px; color: #999; padding-left: 50%;">24h</p>
                         </div>
                         <div class="kpi-info">
                             <span class="display-6 status-percent" id="picoValor" style="font-size: 40px;">N/A</span>
@@ -328,8 +302,8 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <div  style="height: 85%; ">
-                                        <canvas id="dashboardComponentes" ></canvas>
+                                    <div style="height: 85%;">
+                                        <canvas id="dashboardComponentes"></canvas>
                                     </div>
                                 </div>
                     <div class="card-kpi px-4 py-3 child-7" id="fila_processos">
@@ -560,8 +534,8 @@
                                                         </svg>
                                                     </div>
                                                     <div class="d-flex flex-column">
-                                                        <span class="text-light fw-medium">Todos os Componentes</span>
-                                                        <span style="color: #00F2EA;">Estáveis</span>
+                                                        <span class="text-light fw-medium">Todos os Componentes saudáveis.</span>
+                                                        <span style="color: #00F2EA;">Estável</span>
                                                     </div>
                                                 </div>
 
@@ -587,8 +561,7 @@
                                                         </svg>
                                                     </div>
                                                     <div class="d-flex flex-column">
-                                                        <span class="text-light fw-medium">Pelo menos um
-                                                            componente</span>
+                                                        <span class="text-light fw-medium">Ao menos um componente excedido.</span>
                                                         <span style="color: #FFD700;">Em Risco</span>
                                                     </div>
                                                 </div>
@@ -615,8 +588,7 @@
                                                         </svg>
                                                     </div>
                                                     <div class="d-flex flex-column">
-                                                        <span class="text-light fw-medium">Dois componentes em risco ou
-                                                            um</span>
+                                                        <span class="text-light fw-medium">Dois ou mais componentes em risco.</span>
                                                         <span style="color: #ff0050;">Em Crítico</span>
                                                     </div>
                                                 </div>
@@ -730,7 +702,7 @@
 
 
 
-                                                        <h5 style="margin: 0;">CPU</h5>
+                                                        <h5 style="margin: 0;">RAM</h5>
 
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
@@ -775,7 +747,7 @@
                                                         </svg>
 
 
-                                                        <h5 style="margin: 0;">CPU</h5>
+                                                        <h5 style="margin: 0;">DISK</h5>
 
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
@@ -806,8 +778,8 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                Você consegue alterar os parâmetros do <br> componente na tela de adição e <br> edição
-                                de servidor.
+                                Os parâmetros de alertas são definidos com base em análises históricas e benchmarks de servidor <br> 
+                                garantindo que os alertas sejam acionados de acordo com a necessidade real de monitoramento.
                             </div>
                         </div>
 
@@ -1017,7 +989,7 @@
                 scales: {
                     x: {
                         title: { display: true, text: 'Horário', color: '#dddddd', font: { size: 12, weight: 'bold' } },
-                        ticks: { color: '#dddddd', maxTicksLimit: 8 },
+                        ticks: { color: '#dddddd', maxTicksLimit: 12 },
                         grid: { color: 'rgba(255,255,255,0.04)' }
                     },
                     y: {
@@ -1034,15 +1006,35 @@
     }
 
     function checarStatusServidor() {
-        if (KpiUsado >= 90 || KpiPico >= 90 || KpiTemp >= 85 || KpiFrequenciaAtual >= KpiFrequenciaMax * 0.85 || indiceFila > 1.2) {
+        const alertaElemento = document.getElementById('kpi_Alert');
+        if (!alertaElemento) return;
+
+        qtdAlertas = 0;
+
+        alertaElemento.classList.remove('alert-estavel', 'alert-risco', 'alert-critico');
+
+        for (let i = 0; i < 5; i++) {
+            if (i == 0 && KpiUsado >= 70) qtdAlertas++;
+            else if (i == 1 && KpiPico >= 70) qtdAlertas++;
+            else if (i == 2 && KpiTemp >= 70) qtdAlertas++;
+            else if (i == 3 && KpiFrequenciaAtual >= KpiFrequenciaMax * 0.7) qtdAlertas++;
+            else if (i == 4 && indiceFila > 0.8) qtdAlertas++;
+        }
+
+        if (qtdAlertas >= 2) {
             document.getElementById('serverAlert').innerHTML = 'Crítico';
-            document.getElementById('serverAlert').style.color = '#FF0050';
-        } else if (KpiUsado >= 70 || KpiPico >= 70 || KpiTemp >= 70 || KpiFrequenciaAtual >= KpiFrequenciaMax * 0.7 || indiceFila > 0.8) {
-            document.getElementById('serverAlert').innerHTML = 'Risco';
-            document.getElementById('serverAlert').style.color = '#FFD700';
+            document.getElementById('statusIcon').innerHTML = `<img src="../assets/info-danger.svg" alt="" width="14" height="14">`;
+            alertaElemento.classList.add('alert-critico');
+            
+        } else if (qtdAlertas >= 1) {
+            document.getElementById('serverAlert').innerHTML = 'Alerta';
+            document.getElementById('statusIcon').innerHTML = `<img src="../assets/info-risk.svg" alt="" width="14" height="14">`;
+            alertaElemento.classList.add('alert-risco');
         } else {
             document.getElementById('serverAlert').innerHTML = 'Estável';
-            document.getElementById('serverAlert').style.color = '#00F2EA';
+            document.getElementById('statusIcon').innerHTML = `<img src="../assets/info-stable.svg" alt="" width="14" height="14">`;
+            alertaElemento.classList.add('alert-estavel');
+            
         }
     }
 
@@ -1102,6 +1094,7 @@
             } else if (grafico == 'filaProcessos' && queueConfig) {
                 document.getElementById('tituloModal').innerText = 'Índice de Fila de Processos';
                 document.getElementById('textoModal').innerHTML = `
+                    <h1 style="color: #FFFFFF; padding: 0px 0px 10px 0px;">${indiceFila}</h1>
                     <strong>Fórmula do Índice:</strong> <br>
                     <code style="background: #2b2b2b; padding: 2px 6px; color: #C167C7; border-radius: 4px;">Índice = Processos em Fila / Núcleos Lógicos</code>
                     <br><br>
