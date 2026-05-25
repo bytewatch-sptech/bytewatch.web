@@ -159,7 +159,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                 <span>Legenda</span>
                                             </div>
                                         </header>
-                                        <div class="row align-items-stretch mb-4" style="min-height: 280px;">
+                                        <div class="row align-items-stretch mb-2" style="min-height: 280px;">
 
 
                                             <div class="col-md-3">
@@ -208,13 +208,10 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                     </defs>
                                                                 </svg>
                                                             </div>
-                                                            <span class="emblema-tendencia tendencia-critica"
-                                                                id="kpiMaquinaCriticas24h">
-                                                                <i class="bi bi-graph-up-arrow"></i>
-                                                            </span>
+                                                            
                                                         </div>
                                                         <p class="text-secondary mb-1 texto-pequeno">Máquinas Críticas
-                                                            (7d)</p>
+                                                        </p>
                                                         <h3 class="text-white fw-bold mb-0" id="kpiMaquinasRisco">3</h3>
                                                     </div>
 
@@ -1399,7 +1396,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     let totalCriticosAgora = 0;
                     let totalCriticos24hAtras = 0;
 
-                    let servidorMaisPropenso = "Todos Estáveis";
+                    let servidorMaisPropenso = "Nenhuma previsão";
                     let menorTempoMinutos = 999999;
 
 
@@ -1483,7 +1480,6 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                         variacao = 100;
                     }
                     const sinal = variacao > 0 ? "+" : "";
-                    document.getElementById('kpiMaquinaCriticas24h').innerText = `${sinal}${variacao}% vs 24. ant.`;
 
                     const qtdCriticos = dados.resumo_global.servidores_criticos
                     const totalServidores = dados.resumo_global.total_servidores
