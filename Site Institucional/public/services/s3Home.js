@@ -32,7 +32,7 @@ async function obterUsoServidor(macAddress) {
 
     const params = {
         Bucket: process.env.S3_BUCKET_NAME,
-        Key: "client/client.json"
+        Key: "client/dashboard_geral.json"
     }
 
     try{
