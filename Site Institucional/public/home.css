@@ -471,6 +471,14 @@ body {
   background-color: transparent !important;
   color: #ffffff !important;
 }
+.servidor-risco > td {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+.servidor-estavel > td {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
 
 .btnCitico {
   background-color: #262626;

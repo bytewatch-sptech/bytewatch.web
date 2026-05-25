@@ -78,19 +78,22 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
                     <div class="container_user d-flex gap-2">
                         <a class="d-flex gap-3 align-items-center" href="">
-                            <div class="icon-profile">FB</div>
+                            <div class="icon-profile">VS</div>
 
                             <div class="box ms-2 d-none d-sm-inline">
-                                <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
-                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Admin Técnico</p>
+                                <p id="nome_usuario_header" style="font-size: 16px; margin: 0;">Carregando...</p>
+                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Analista de TI
                             </div>
                         </a>
                     </div>
 
                     <div class="button-sair mt-2 text-center">
-                        <p style="margin: 0;">Sair</p>
+                        <a href="../login.html" class="button" style="text-decoration: none; color: white;">
+                            Sair
+                        </a>
                     </div>
                 </div>
+
             </nav>
 
             <main class="col d-flex flex-column gap-4 p-3 overflow-auto" style="max-height: 100vh; overflow-y: auto;">
@@ -1273,6 +1276,19 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
     <script src="./services/servidorService.js"></script>
     <script>
 
+        window.addEventListener('DOMContentLoaded', () => {
+            const elementoNome = document.getElementById("nome_usuario_header");
+
+            if (elementoNome) {
+                const nomeSalvo = sessionStorage.getItem("NOME_USUARIO");
+                if (nomeSalvo) {
+                    elementoNome.innerHTML = nomeSalvo;
+                } else {
+                    elementoNome.innerHTML = "Usuário Desconhecido";
+                }
+            }
+        });
+
         const ctx = document.getElementById('matrizChart').getContext('2d')
 
         const bubbleLabelsPlugin = {
@@ -1526,8 +1542,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
             )
 
             cardServidor = `
-        <tr class="linha-servidor servidor-${status_servidor}" data-status="${status_servidor}">
-                                                        <td><span class="status-dot ${status_servidor}"></span></td>
+        <tr class="linha-servidor servidor-estavel" data-status="${status_servidor}">
+                                                        <td><span class="status-dot estavel"></span></td>
                                                         <td>
                                                             <div class="flex-column d-flex">
                                                                 <span id="horaColeta">${ultima_coleta}</span>
@@ -1544,7 +1560,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                         
 
                                         <td>
-                                            <button macA="${macAddress}" onclick="acessarRam(this)" class="btn btn-componente ${cpu_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
+                                            <button macA="${macAddress}" onclick="acessarCpu(this)" class="btn btn-componente ${cpu_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
 
                                                 <div class="d-flex flex-column flex-grow-1 gap-1">
 
