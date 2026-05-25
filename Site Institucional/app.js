@@ -7,6 +7,12 @@ var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
 
 require("dotenv").config({ path: caminho_env });
 
+console.log("AWS_ACCESS_KEY_ID:", process.env.AWS_ACCESS_KEY_ID);
+console.log("AWS_SECRET_ACCESS_KEY:", process.env.AWS_SECRET_ACCESS_KEY);
+console.log("AWS_SESSION_TOKEN:", process.env.AWS_SESSION_TOKEN);
+console.log("AWS_REGION:", process.env.AWS_REGION);
+console.log("S3_BUCKET_NAME:", process.env.S3_BUCKET_NAME);
+
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
@@ -21,8 +27,10 @@ var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var servidorRouter = require("./src/routes/servidor");
 var empresasRouter = require("./src/routes/empresas");
-var aiServiceRouter = require("./src/routes/aiService")
+var aiServiceRouter = require("./src/routes/aiService");
 var analistaRouter = require("./src/routes/analista");
+var jiraRouter = require("./src/routes/jira");
+var relatorioRouter = require("./src/routes/relatorio");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -38,6 +46,8 @@ app.use("/medidas", medidasRouter);
 app.use("/servidor", servidorRouter);
 app.use("/empresas", empresasRouter);
 app.use("/analista", analistaRouter);
+app.use("/jira", jiraRouter);
+app.use("/relatorios", relatorioRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

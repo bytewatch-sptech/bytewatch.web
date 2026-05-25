@@ -10,11 +10,29 @@ const streamToString = (stream) =>
 
     })
 
-async function obterUsoServidor() {
+async function obterDadosS3() {
 
     const params = {
         Bucket: process.env.S3_BUCKET_NAME,
-        Key: "client/client.json"
+        Key: "client/dashboard_geral.json"
+    }
+
+    try {
+        const { Body } = await s3Client.send(new GetObjectCommand(params))
+        const conteudo = await streamToString(Body)
+        return JSON.parse(conteudo);
+    } catch(err) {
+        console.error("Erro ao puxar dados do S3:", err)
+        throw err;
+    }
+}
+
+
+async function obterUsoServidor(macAddress) {
+
+    const params = {
+        Bucket: process.env.S3_BUCKET_NAME,
+        Key: "client/dashboard_geral.json"
     }
 
     try{
@@ -43,4 +61,5 @@ async function obterUsoServidor() {
     }
 }
 
-module.exports = { obterUsoServidor }
+
+module.exports = { obterDadosS3, obterUsoServidor }
