@@ -208,7 +208,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                     </defs>
                                                                 </svg>
                                                             </div>
-                                                            
+
                                                         </div>
                                                         <p class="text-secondary mb-1 texto-pequeno">Máquinas Críticas
                                                         </p>
@@ -1401,22 +1401,44 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     let menorTempoMinutos = 999999;
 
 
-                    dados.servidores.forEach(servidor => {
+                    for (const servidor of dados.servidores) {
                         if (servidor.dados_tempo_real) {
-                            console.log(`gráfico para : ${servidor.nome_db}`)
+                            console.log(`gráfico para : ${servidor.nome_db}`);
 
-                            renderizarServidorTela(servidor)
+                            renderizarServidorTela(servidor);
 
-                            const status_servidor = servidor.dados_tempo_real.status_servidor
-                            const nome = servidor.dados_tempo_real.nome;
-                            const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
+                            const status_servidor = servidor.dados_tempo_real.status_servidor;
+                            let nome = servidor.dados_tempo_real.nome;
+                            const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords;
                             const regiao = servidor.dados_tempo_real.regiao;
 
-                            const endereco_ip = servidor.endereco_ip
-                            console.log("endereco ip: ", endereco_ip);
+                            const macAddress = servidor.dados_tempo_real.macAddress;
+
+                            console.log("mapa mac", macAddress);
                             
 
-                            const formatoMapa = [coordenadas[0], coordenadas[1], nome, status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL', regiao]
+                            const resultado = await ObterNomeServidor(macAddress)
+                            const nomeServidor = resultado[0].nome_servidor
+                            nome = nomeServidor
+
+                            console.log("nome", nome);
+                            
+
+                            const endereco_ip = servidor.endereco_ip;
+                            console.log("endereco ip: ", endereco_ip);
+
+                            const localizacao = await buscarLocalizacao(endereco_ip);
+
+                            console.log("loc", localizacao);
+                            console.log("lat: ", localizacao.lat, "lon: ", localizacao.lon);
+
+                            const formatoMapa = [
+                                localizacao.lon,
+                                localizacao.lat,
+                                nome,
+                                status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL',
+                                localizacao.country
+                            ];
 
                             if (status_servidor.toLowerCase() === 'critico') {
                                 novosInstaveis.push(formatoMapa);
@@ -1429,14 +1451,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             }
 
                             if (servidor.dados_tempo_real.matriz_priorizacao) {
-                                const matriz = servidor.dados_tempo_real.matriz_priorizacao
+                                const matriz = servidor.dados_tempo_real.matriz_priorizacao;
 
                                 const pontosBolha = {
                                     x: parseFloat(matriz.x.toFixed(1)),
                                     y: parseFloat(matriz.y.toFixed(1)),
                                     valor: Math.round(matriz.tamanho_bolha),
                                     r: Math.max(6, Math.round(matriz.tamanho_bolha / 5))
-                                }
+                                };
 
                                 if (status_servidor.toLowerCase() === 'critico') {
                                     bolhasCriticas.push(pontosBolha);
@@ -1446,26 +1468,25 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             }
 
                             if (servidor.dados_tempo_real.previsao_esgotamento) {
-                                const predicao = servidor.dados_tempo_real.previsao_esgotamento
+                                const predicao = servidor.dados_tempo_real.previsao_esgotamento;
 
                                 if (predicao.minutos < menorTempoMinutos) {
                                     menorTempoMinutos = predicao.minutos;
 
                                     if (predicao.minutos === 0) {
-                                        servidorMaisPropenso = `${nome} (Crítico)`
+                                        servidorMaisPropenso = `${nome} (Crítico)`;
                                     } else if (predicao.minutos === 999999) {
-                                        servidorMaisPropenso = "Todos Estáveis"
+                                        servidorMaisPropenso = "Todos Estáveis";
                                     } else {
-                                        servidorMaisPropenso = `${nome} (${predicao.texto})`
+                                        servidorMaisPropenso = `${nome} (${predicao.texto})`;
                                     }
                                 }
                             }
 
-
                         } else {
-                            console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`)
+                            console.warn(`Servidor ${servidor.nome_db} cadastrado porem desligado ou sem dados no S3`);
                         }
-                    })
+                    }
 
                     myChart.setOption({
                         series: [
@@ -1477,7 +1498,6 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     matrizChart.data.datasets[0].data = bolhasEstaveis;
                     matrizChart.data.datasets[1].data = bolhasCriticas;
                     matrizChart.update();
-
                     let variacao = 0;
                     if (totalCriticos24hAtras > 0) {
                         variacao = Math.round(((totalCriticosAgora - totalCriticos24hAtras) / totalCriticos24hAtras) * 100);
@@ -1505,6 +1525,18 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
         carregarDadosDashboard(sessionStorage.ID_EMPRESA, sessionStorage.ID_USUARIO)
 
+        async function buscarLocalizacao(endereco_ip) {
+            let localizacaoFinal = await fetch(`http://ip-api.com/json/${endereco_ip}`).then(
+                dados => dados.json().then((localizacao) => {
+                    console.log("loc: ", localizacao.lat);
+                    return localizacao
+                    // localizacaoFinal = localizacao 
+                }))
+                .catch(erro => console.error('Erro', erro))
+            console.log("final ", localizacaoFinal);
+
+            return localizacaoFinal
+        }
 
         async function renderizarServidorTela(servidor) {
             const container = document.getElementById('lista-servidores')
@@ -1548,7 +1580,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
             cardServidor = `
         <tr class="linha-servidor servidor-estavel" data-status="${status_servidor}">
-                                                        <td><span class="status-dot estavel"></span></td>
+                                                        <td><span class="status-dot ${status_servidor}"></span></td>
                                                         <td>
                                                             <div class="flex-column d-flex">
                                                                 <span id="horaColeta">${ultima_coleta}</span>
