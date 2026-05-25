@@ -1412,6 +1412,10 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords
                             const regiao = servidor.dados_tempo_real.regiao;
 
+                            const endereco_ip = servidor.endereco_ip
+                            console.log("endereco ip: ", endereco_ip);
+                            
+
                             const formatoMapa = [coordenadas[0], coordenadas[1], nome, status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL', regiao]
 
                             if (status_servidor.toLowerCase() === 'critico') {

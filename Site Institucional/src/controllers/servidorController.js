@@ -167,6 +167,7 @@ async function buscarDashboardHome(req, res) {
         id_servidor: servidorDB.id_servidor,
         nome_db: servidorDB.nome_servidor,
         mac_address: servidorDB.mac_address,
+        endereco_ip: servidorDB.endereco_ip,
         idEmpresa: idEmpresa,
         dados_tempo_real: metricasS3 ? metricasS3 : null,
       };
