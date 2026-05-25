@@ -1270,6 +1270,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
     </div>
 
     <script src="./services/api.js"></script>
+    <script src="./services/serviceMetricasAlertas.js"></script>
     <script src="./services/servidorService.js"></script>
     <script>
 
@@ -1501,11 +1502,15 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
         carregarDadosDashboard(sessionStorage.ID_EMPRESA, sessionStorage.ID_USUARIO)
 
 
-        function renderizarServidorTela(servidor) {
+        async function renderizarServidorTela(servidor) {
             const container = document.getElementById('lista-servidores')
 
             const macAddress = servidor.dados_tempo_real.macAddress;
-            const nome = servidor.dados_tempo_real.nome;
+
+            const resultado = await ObterNomeServidor(macAddress)
+            const nomeServidor = resultado[0].nome_servidor
+
+            const nome = nomeServidor;
             const regiao = servidor.dados_tempo_real.regiao;
             const ultima_coleta = servidor.dados_tempo_real.ultimaColeta;
             const status_servidor = servidor.dados_tempo_real.status_servidor
