@@ -55,6 +55,6 @@ class Api {
     }
 }
 
-const url = "http://3.223.199.1"
+const url = "./"
 
 const api = new Api(url)
