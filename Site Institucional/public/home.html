@@ -1401,7 +1401,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     let menorTempoMinutos = 999999;
 
 
-                    dados.servidores.forEach(servidor => {
+                    dados.servidores.forEach(async(servidor) => {
                         if (servidor.dados_tempo_real) {
                             console.log(`gráfico para : ${servidor.nome_db}`)
 
@@ -1415,8 +1415,12 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             const endereco_ip = servidor.endereco_ip
                             console.log("endereco ip: ", endereco_ip);
                             
-
-                            const formatoMapa = [coordenadas[0], coordenadas[1], nome, status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL', regiao]
+                            const localizacao = await buscarLocalizacao(endereco_ip)
+                            
+                            console.log("loc",localizacao)
+                            console.log("lat: ", localizacao.lat, "lon: ", localizacao.lon);
+                            
+                            const formatoMapa = [localizacao.lon, localizacao.lat, nome, status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL', localizacao.country]
 
                             if (status_servidor.toLowerCase() === 'critico') {
                                 novosInstaveis.push(formatoMapa);
@@ -1502,9 +1506,21 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 console.error("Erro no fetch do dashboard:", erro);
             }
         }
-
+        
         carregarDadosDashboard(sessionStorage.ID_EMPRESA, sessionStorage.ID_USUARIO)
 
+        async function buscarLocalizacao(endereco_ip){
+            let localizacaoFinal = await fetch(`http://ip-api.com/json/${endereco_ip}`).then(
+                dados => dados.json().then((localizacao) => {
+                    console.log("loc: ", localizacao.lat);
+                    return localizacao
+                    // localizacaoFinal = localizacao 
+                }))
+                .catch(erro => console.error('Erro', erro))
+                console.log("final ", localizacaoFinal);
+                
+return localizacaoFinal
+        }
 
         async function renderizarServidorTela(servidor) {
             const container = document.getElementById('lista-servidores')
@@ -1548,7 +1564,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
             cardServidor = `
         <tr class="linha-servidor servidor-estavel" data-status="${status_servidor}">
-                                                        <td><span class="status-dot estavel"></span></td>
+                                                        <td><span class="status-dot ${status_servidor}"></span></td>
                                                         <td>
                                                             <div class="flex-column d-flex">
                                                                 <span id="horaColeta">${ultima_coleta}</span>
