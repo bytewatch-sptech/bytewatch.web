@@ -44,6 +44,7 @@ function listarServidoresAnalista(idEmpresa, idUsuario) {
   var instrucaoSql = `
     SELECT 
       s.id_servidor, 
+      s.endereco_ip,
       s.mac_address, 
       CONCAT(s.nome, " — ", z.codigo_zona) AS "nome_servidor" 
     FROM datacenter AS d 
