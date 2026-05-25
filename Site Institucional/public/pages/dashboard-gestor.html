@@ -202,7 +202,7 @@
                             </div>
 
                             <div class="card-parametro">
-                                <div class="col d-flex flex-column align-items-center">
+                                <div class="col d-flex w-100 flex-column align-items-center">
                                     <span>Risco</span>
                                     <div class="line-component rounded"
                                         style="background-color: #FFD500; width: 100%; height: 5px; ">
@@ -446,34 +446,35 @@
 
     }
 
-
-    // --- ATUALIZADO: Agora recebe macAddress e textoNomeId ---
+    
     function plotarGaugeRam(valor, macAddress, textoNomeId) {
         criarGauge("gaugePicoRAM", valor, null, "statusGaugeRam", macAddress, textoNomeId)
     }
 
-    // --- ATUALIZADO: Agora recebe macAddress e textoNomeId ---
     function plotarGaugeCpu(valor, macAddress, textoNomeId) {
         criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu", macAddress, textoNomeId)
     }
 
-    // --- ATUALIZADO: Adicionado 'async' e os novos parâmetros no final ---
     async function criarGauge(canvasId, valor, cor, cardId, macAddress, textoNomeId) {
         const ctx = document.getElementById(canvasId)
         const gaugeCor = document.getElementById(cardId)
         const elementoTexto = document.getElementById(textoNomeId)
 
-        // --- NOVO BLOCO: Busca o nome do servidor por API e injeta no HTML ---
         if (elementoTexto && macAddress) {
             try {
                 const dadosServidor = await ObterNomeServidor(macAddress)
-                // Se a API retornar um objeto ex: { nome: "Servidor 01" }, mude para dadosServidor.nome
-                elementoTexto.innerText = dadosServidor.nome || dadosServidor;
+                let nomeServidor = dadosServidor[0].nome_servidor
+                elementoTexto.innerText = nomeServidor;
+
+                console.log("NOME DO SERVIDOR: " +  dadosServidor[0].nome_servidor)
+                console.log(macAddress)
             } catch (erro) {
                 console.error("Erro ao buscar nome do servidor:", erro)
                 elementoTexto.innerText = "Erro"
             }
         }
+
+        
 
         if (!ctx) {
             console.error("Canvas não encontrado:", canvasId)
@@ -525,15 +526,16 @@
         criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu", macAddress, textoNomeId)
     }
 
-    function criarRanking(ranking) {
+    async function criarRanking(ranking) {
         const container = document.getElementById("rankingContainer")
 
         container.innerHTML = ""
 
         for (var i = 0; i < 3 && i < ranking.length; i++) {
-            const nomeMac = ObterNomeServidor()
-
             const item = ranking[i]
+            const dadosServidor = await ObterNomeServidor(item.macAddress)
+                let nomeServidor = dadosServidor[0].nome_servidor
+
 
             var classe = "badge-custom"
 
@@ -549,7 +551,7 @@
             container.innerHTML += `
         <div class="alert-item">
             <span>${item.posicao}°</span>
-            <span>Servidor - ${item.nomeMac}</span>
+            <span>${nomeServidor}</span>
             <span class="${classe}">${item.picoRam.toFixed(1)}%</span>
         </div>
     `
