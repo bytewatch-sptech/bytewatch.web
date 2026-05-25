@@ -202,13 +202,13 @@
                             <div class="col-lg-3 col-12">
 
                                 <div class="card-custom card-gauge mb-2" id="statusGaugeRam">
-                                    <h6 class="mb-0">servidor 000 - Pico de RAM</h6>
+                                    <h6 class="mb-0"><span id="nomeServerRam"></span> Pico de RAM</h6>
                                     <canvas id="gaugePicoRAM"></canvas>
                                     <div id="valorRam" class="gauge kpi-yellow"></div>
                                 </div>
 
                                 <div class="card-custom card-gauge" id="statusGaugeCpu">
-                                    <h6 class="mb-0">servidor 000 - Pico de CPU</h6>
+                                    <h6 class="mb-0"><span id="nomeServerCpu"></span> Pico de CPU</h6>
                                     <canvas id="gaugePicoCPU"></canvas>
                                     <div id="valorCpu" class="gauge kpi-yellow"></div>
                                 </div>
@@ -239,6 +239,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../services/api.js"></script>
 <script src="../services/serviceGestorDash.js"></script>
+<script src="../services/serviceMetricasAlertas.js"></script>
 <!-- <script src="../js/scriptAI.js"></script> -->
 
 <script>
@@ -252,14 +253,22 @@
 
         console.log("ServidorEmPico:", resultado?.dadosMaquina.ServidorEmPico);
 
+
+
         if (!resultado) {
             console.error("Sem dados");
             return;
         }
 
         try {
-            const picoRamGauge = resultado.dadosMaquina.ServidorEmPico?.servidorPicoRAM?.valor;
-            const picoCpu = resultado.dadosMaquina.ServidorEmPico?.servidorPicoCPU?.valor;
+            const servidorPicoRAM = resultado.dadosMaquina.ServidorEmPico?.servidorPicoRAM;
+            const servidorPicoCPU = resultado.dadosMaquina.ServidorEmPico?.servidorPicoCPU;
+
+            const picoRamGauge = servidorPicoRAM?.valor;
+            const picoCpu = servidorPicoCPU?.valor;
+
+            const macRam = servidorPicoRAM?.macAddress;
+            const macCpu = servidorPicoCPU?.macAddress;
 
             console.log("RAM:", picoRamGauge);
             console.log("CPU:", picoCpu);
@@ -276,8 +285,8 @@
 
             console.log("Picos:", picosDia);
 
-            plotarGaugeRam(picoRamGauge);
-            plotarGaugeCpu(picoCpu);
+            plotarGaugeRam(picoRamGauge, macRam, "nomeServerRam");
+            plotarGaugeCpu(picoCpu, macCpu, "nomeServerCpu");
 
             document.getElementById("valorRam").innerText = picoRamGauge + "%"
             document.getElementById("valorCpu").innerText = picoCpu + "%"
@@ -399,17 +408,40 @@
     }
 
 
-    function criarGauge(canvasId, valor, cor, cardId) {
+    // --- ATUALIZADO: Agora recebe macAddress e textoNomeId ---
+    function plotarGaugeRam(valor, macAddress, textoNomeId) {
+        criarGauge("gaugePicoRAM", valor, null, "statusGaugeRam", macAddress, textoNomeId)
+    }
+
+    // --- ATUALIZADO: Agora recebe macAddress e textoNomeId ---
+    function plotarGaugeCpu(valor, macAddress, textoNomeId) {
+        criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu", macAddress, textoNomeId)
+    }
+
+    // --- ATUALIZADO: Adicionado 'async' e os novos parâmetros no final ---
+    async function criarGauge(canvasId, valor, cor, cardId, macAddress, textoNomeId) {
         const ctx = document.getElementById(canvasId)
         const gaugeCor = document.getElementById(cardId)
-        gaugeCor.classList.remove("card-normal", "card-alerta", "card-critico")
+        const elementoTexto = document.getElementById(textoNomeId)
 
-        console.log("Classes antes:", gaugeCor.className)
+        // --- NOVO BLOCO: Busca o nome do servidor por API e injeta no HTML ---
+        if (elementoTexto && macAddress) {
+            try {
+                const dadosServidor = await ObterNomeServidor(macAddress)
+                // Se a API retornar um objeto ex: { nome: "Servidor 01" }, mude para dadosServidor.nome
+                elementoTexto.innerText = dadosServidor.nome || dadosServidor;
+            } catch (erro) {
+                console.error("Erro ao buscar nome do servidor:", erro)
+                elementoTexto.innerText = "Erro"
+            }
+        }
 
         if (!ctx) {
             console.error("Canvas não encontrado:", canvasId)
             return
         }
+
+        gaugeCor.classList.remove("card-normal", "card-alerta", "card-critico")
 
         if (valor >= 85) {
             cor = "red"
@@ -421,8 +453,6 @@
             cor = "white"
             gaugeCor.classList.add("card-normal")
         }
-
-        console.log("Classes depois:", gaugeCor.className)
 
         new Chart(ctx, {
             type: "doughnut",
@@ -447,12 +477,13 @@
         })
     }
 
-    function plotarGaugeRam(valor) {
-        criarGauge("gaugePicoRAM", valor, null, "statusGaugeRam")
+
+    function plotarGaugeRam(valor, macAddress, textoNomeId) {
+        criarGauge("gaugePicoRAM", valor, null, "statusGaugeRam", macAddress, textoNomeId)
     }
 
-    function plotarGaugeCpu(valor) {
-        criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu")
+    function plotarGaugeCpu(valor, macAddress, textoNomeId) {
+        criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu", macAddress, textoNomeId)
     }
 
     function criarRanking(ranking) {
@@ -461,8 +492,9 @@
         container.innerHTML = ""
 
         for (var i = 0; i < 3 && i < ranking.length; i++) {
+            const nomeMac = ObterNomeServidor()
 
-            var item = ranking[i]
+            const item = ranking[i]
 
             var classe = "badge-custom"
 
@@ -478,7 +510,7 @@
             container.innerHTML += `
         <div class="alert-item">
             <span>${item.posicao}°</span>
-            <span>Servidor - ${item.macAddress}</span>
+            <span>Servidor - ${item.nomeMac}</span>
             <span class="${classe}">${item.picoRam.toFixed(1)}%</span>
         </div>
     `
@@ -487,7 +519,7 @@
     }
 
     function plotarComparativo(dados) {
-        const barras= document.getElementById("visaoMacro");
+        const barras = document.getElementById("visaoMacro");
 
         if (!barras) {
             console.error("Canvas não encontrado");
@@ -562,41 +594,41 @@
     //         }
     //     });
 
-        // const gauge = document.getElementById("gaugePicoRAM")
-        // const gaugeCPU = document.getElementById("gaugePicoCPU")
+    // const gauge = document.getElementById("gaugePicoRAM")
+    // const gaugeCPU = document.getElementById("gaugePicoCPU")
 
-        // const valor = 78
+    // const valor = 78
 
-        // const data = {
-        //     labels: ["Usado", "Livre"],
-        //     datasets: [{
-        //         data: [valor, 100 - valor],
-        //         backgroundColor: ["#f59e0b", "#1f2937"],
-        //         borderWidth: 0
-        //     }]
-        // }
+    // const data = {
+    //     labels: ["Usado", "Livre"],
+    //     datasets: [{
+    //         data: [valor, 100 - valor],
+    //         backgroundColor: ["#f59e0b", "#1f2937"],
+    //         borderWidth: 0
+    //     }]
+    // }
 
-        // new Chart(gauge, {
-        //     type: 'doughnut',
-        //     data: data,
-        //     options: {
-        //         aspectRatio: 2,
-        //         circumference: 180,
-        //         rotation: -90,
-        //         cutout: "70%"
-        //     }
-        // })
+    // new Chart(gauge, {
+    //     type: 'doughnut',
+    //     data: data,
+    //     options: {
+    //         aspectRatio: 2,
+    //         circumference: 180,
+    //         rotation: -90,
+    //         cutout: "70%"
+    //     }
+    // })
 
-        // new Chart(gaugeCPU, {
-        //     type: 'doughnut',
-        //     data: data,
-        //     options: {
-        //         aspectRatio: 2,
-        //         circumference: 180,
-        //         rotation: -90,
-        //         cutout: "70%"
-        //     }
-        // })
+    // new Chart(gaugeCPU, {
+    //     type: 'doughnut',
+    //     data: data,
+    //     options: {
+    //         aspectRatio: 2,
+    //         circumference: 180,
+    //         rotation: -90,
+    //         cutout: "70%"
+    //     }
+    // })
 
 
 
