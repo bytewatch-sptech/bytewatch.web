@@ -141,21 +141,23 @@
                 </ul>
 
                 <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
-                    <div class="container_user d-flex gap-2">
-                        <a class="d-flex gap-3 align-items-center" href="">
-                            <div class="icon-profile">FB</div>
+                <div class="container_user d-flex gap-2">
+                    <a class="d-flex gap-3 align-items-center" href="">
+                        <div class="icon-profile">BP</div>
 
-                            <div class="box ms-2 d-none d-sm-inline">
-                                <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
-                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Admin Técnico</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="button-sair mt-2 text-center">
-                        <p style="margin: 0;">Sair</p>
-                    </div>
+                        <div class="box ms-2 d-none d-sm-inline">
+                            <p id="nome_usuario_header" style="font-size: 16px; margin: 0;">Carregando...</p>
+                            <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Gestora
+                        </div>
+                    </a>
                 </div>
+
+                <div class="button-sair mt-2 text-center">
+                    <a href="../login.html" class="button" style="text-decoration: none; color: white;">
+                        Sair
+                    </a>
+                </div>
+            </div>
             </nav>
             <main class="col-md-9 col-xl-10 d-flex flex-column p-4 conteudo-principal">
                 <header class="d-flex align-items-center mb-4">
@@ -351,6 +353,21 @@
 </html>
 
 <script>
+
+      const API_BASE_URL = "http://3.223.199.1";
+    window.addEventListener('DOMContentLoaded', () => {
+        const elementoNome = document.getElementById("nome_usuario_header");
+
+        if (elementoNome) {
+            const nomeSalvo = sessionStorage.getItem("NOME_USUARIO");
+            if (nomeSalvo) {
+                elementoNome.innerHTML = nomeSalvo;
+            } else {
+                elementoNome.innerHTML = "Usuário Desconhecido";
+            }
+        }
+    });
+
     Chart.defaults.color = '#8A92A6';
     Chart.defaults.font.family = "'Inter', sans-serif";
 
