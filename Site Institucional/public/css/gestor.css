@@ -59,6 +59,21 @@
         font-size: 12px;
     }
 
+    .critico {
+        background: #7f1d1d;
+        color: #fff;
+    }
+
+    .atencao {
+        background: #78350f;
+        color: #fff;
+    }
+
+    .info {
+        background: #1e3a8a;
+        color: #fff;
+    }
+
     .gauge {
         text-align: center;
         font-size: 22px;
