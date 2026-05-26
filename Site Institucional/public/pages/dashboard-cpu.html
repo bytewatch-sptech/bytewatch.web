@@ -803,20 +803,22 @@
     let grafico = ''; 
 
     async function obterDados() {
-        sessionStorage.setItem('MAC_ADDRESS', "e2-0a-f6-64-a3-b5");
+        // sessionStorage.setItem('MAC_ADDRESS', "00:2b:67:e7:9f:72");
         const mac_address = sessionStorage.getItem('MAC_ADDRESS');
         return await buscarComponenteCpuService(mac_address);
     }
 
     async function alinharDados() {
         const dados = await obterDados();
+        console.log(dados);
+        
         if (!dados) {
             console.error('Nenhum dado retornado');
             return false;
         }
         
-        const metricas = dados.metricas;
-        processos = dados.processos;
+        const metricas = dados.dadosMaquina.metricas;
+        processos = dados.dadosMaquina.processos;
 
         KpiUsado = metricas.kpiUso.percentualUsado;
         KpiLivre = metricas.kpiUso.percentualLivre;
