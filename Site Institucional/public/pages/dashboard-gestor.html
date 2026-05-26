@@ -202,7 +202,7 @@
 
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
-                                    <p><img src="../assets/walvar.png" style="height: 25px;"> Custo Mensal Estimado</p>
+                                    <p><img src="../assets/calendar.png" style="height: 25px;"> Custo Mensal Estimado</p>
                                     <div class="kpi-value" style="font-size: 30px;">
                                         <span id="custoMes"></span>
                                     </div>
@@ -265,7 +265,7 @@
                                             style="color: white; gap: 10px;">
 
                                         </div>
-                                        <canvas id="visaoMacro" style="height:300px;"></canvas>
+                                        <canvas id="visaoMacro" style="height:300px;">Comapração picos</canvas>
                                     </div>
 
                                 </div>
@@ -625,10 +625,19 @@
             options: {
                 responsive: true,
                 plugins: {
-                    legend: {
-                        labels: {
-                            color: 'white'
+                    title: {
+                        display: true,
+                        text: 'Comparação de Picos',
+                        color: 'white',
+                        font: {
+                            size: 18
+                        },
+                        legend: {
+                            labels: {
+                                color: 'white'
                         }
+                    }
+
                     }
                 },
                 scales: {
