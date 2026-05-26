@@ -25,9 +25,8 @@ var aiServiceRouter = require("./src/routes/aiService");
 var analistaRouter = require("./src/routes/analista");
 var jiraRouter = require("./src/routes/jira");
 var relatorioRouter = require("./src/routes/relatorio");
+var alertaGestorRouter = require("./src/routes/alertaGestor");
 
-// var alertaGestorRouter = require("./src/routes/alertaGestorController");
-var alertaGestorRouter = require("./src/controllers/alertaGestorController");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

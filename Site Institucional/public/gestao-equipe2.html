@@ -123,7 +123,9 @@
                     </div>
                     <div>
                         <h2 class="text-white fs-4 fw-bold mb-1">Gestão de Equipe</h2>
-                        <span class="text-secondary texto-pequeno">Atualizado: 14 de Mai 2026, 14:30</span>
+                        <span class="text-secondary texto-pequeno">
+                            Atualizado: <span id="dataHoraAtualizacao">0</span>
+                        </span>
                     </div>
                 </header>
 
@@ -179,7 +181,7 @@
                                     <i class="bi bi-graph-up-arrow"></i> +8% vs sem. ant.
                                 </span> -->
                             </div>
-                            <p class="text-secondary mb-1 texto-pequeno">Alertas Processados (7d)</p>
+                            <p class="text-secondary mb-1 texto-pequeno">Alertas Processados(hoje)</p>
                             <h3 class="text-white fw-bold mb-0" id="kpi_total_alertas_todos">0</h3>
                         </div>
                     </div>
@@ -193,7 +195,7 @@
                                     <i class="bi bi-graph-up-arrow"></i> +12% vs sem. ant.
                                 </span> -->
                             </div>
-                            <p class="text-secondary mb-1 texto-pequeno">Alertas em abertos</p>
+                            <p class="text-secondary mb-1 texto-pequeno">Alertas em abertos(hoje)</p>
                             <h3 class="text-white fw-bold mb-0" id="kpi_alertas_abertos">0</h3>
                         </div>
                     </div>
@@ -308,6 +310,12 @@
 <script>
     Chart.defaults.color = '#8A92A6';
     Chart.defaults.font.family = "'Inter', sans-serif";
+
+    const agora = new Date();
+
+    const dataHoraAtualizacao = agora.toLocaleString('pt-BR');
+    document.getElementById('dataHoraAtualizacao').textContent = dataHoraAtualizacao;
+
 
     var dadosDoDashboard = null;
     var dadosS3 = null;
@@ -424,6 +432,7 @@
         var categorias = dadosGrafico.categorias;
         var alertasTratados = dadosGrafico.series[0].dados;
         var alertasCriticos = dadosGrafico.series[1].dados;
+
 
         var contextoProporcao = document.getElementById('graficoProporcao').getContext('2d');
 
