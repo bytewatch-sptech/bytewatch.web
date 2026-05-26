@@ -355,38 +355,59 @@
         }
 
         try {
-            const servidorPicoRAM = resultado.dadosMaquina.ServidorEmPico?.servidorPicoRAM;
-            const servidorPicoCPU = resultado.dadosMaquina.ServidorEmPico?.servidorPicoCPU;
+            const hojeStr = new Date().toLocaleDateString('sv-SE');
 
-            const picoRamGauge = servidorPicoRAM?.valor;
-            const picoCpu = servidorPicoCPU?.valor;
+            let picoRamGauge = null;
+            let picoCpu = null;
+            let macRam = null;
+            let macCpu = null;
 
-            const macRam = servidorPicoRAM?.macAddress;
-            const macCpu = servidorPicoCPU?.macAddress;
+            const chavesIgnoradas = ["primeiraColeta", "ultimaColeta", "diasDecorridos", "ramTotal", "discoTotal", "custoTotalAteAgora", "custoTotalNoMes", "custoDoDia", "graficoComparativo", "ServidorEmPico", "rankingRam"];
+            const chavesServidores = Object.keys(resultado.dadosMaquina).filter(chave => !chavesIgnoradas.includes(chave));
 
-            console.log("RAM:", picoRamGauge);
-            console.log("CPU:", picoCpu);
+            chavesServidores.forEach(mac => {
+                const metricas = resultado.dadosMaquina[mac]?.metricas || [];
 
-            if (picoRamGauge == null || picoCpu == null) {
-                console.error("Dados de pico inválidos");
-                return;
+                metricas.forEach(metrica => {
+                    const momentoPico = metrica.grafico?.momentoPico;
+
+                    if (momentoPico && momentoPico.startsWith(hojeStr)) {
+                        const valorPico = metrica.grafico.pico;
+
+                        if (metrica.tipoDado === "ram") {
+                            if (picoRamGauge === null || valorPico > picoRamGauge) {
+                                picoRamGauge = valorPico;
+                                macRam = mac;
+                            }
+                        } else if (metrica.tipoDado === "cpu") {
+                            if (picoCpu === null || valorPico > picoCpu) {
+                                picoCpu = valorPico;
+                                macCpu = mac;
+                            }
+                        }
+                    }
+                });
+            });
+
+            if (picoRamGauge === null || picoCpu === null) {
+                console.warn("Nenhum pico registrado para o dia de hoje. Zerando gauges.");
+                picoRamGauge = 0;
+                picoCpu = 0;
             }
 
-
-
+            console.log("RAM (Pico de Hoje):", picoRamGauge, "Mac:", macRam);
+            console.log("CPU (Pico de Hoje):", picoCpu, "Mac:", macCpu);
 
             const picosDia = [picoRamGauge, picoCpu];
-
             console.log("Picos:", picosDia);
 
             plotarGaugeRam(picoRamGauge, macRam, "nomeServerRam");
             plotarGaugeCpu(picoCpu, macCpu, "nomeServerCpu");
 
-            document.getElementById("valorRam").innerText = picoRamGauge + "%"
-            document.getElementById("valorCpu").innerText = picoCpu + "%"
+            document.getElementById("valorRam").innerText = picoRamGauge + "%";
+            document.getElementById("valorCpu").innerText = picoCpu + "%";
 
 
-            // Pegando os dados da KPI de financeiro
 
             const custoAtual = resultado.dadosMaquina.custoTotalAteAgora
             const custoMes = resultado.dadosMaquina.custoTotalNoMes
@@ -430,15 +451,15 @@
             // kpi numero 1 ////////////////////////////////////////////
             document.getElementById("custoMes").innerText =
                 `R$ ${custoMes.toFixed(2)}`;
-            
+
             document.getElementById("progressoMes").style.color = corProg;
-            
+
             document.getElementById("progressoMes").innerText =
                 `${progresso.toFixed(1)}%`;
 
             ///////////////////////////////////////////////////////////
-                
-                
+
+
             // kpi numero 2 ///////////////////////////////////////////
             document.getElementById("custoAtual").innerText =
                 `R$ ${custoAtual.toFixed(2)}`;
