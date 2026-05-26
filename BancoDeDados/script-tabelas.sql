@@ -75,9 +75,6 @@
 	  FOREIGN KEY (fk_datacenter) REFERENCES datacenter(id_datacenter)
 	);
 
-	INSERT INTO servidor 
-	VALUES (default, "a", "a", "a", "a", '8c:b0:e9:c2:04:27', 1, 1);
-
 	CREATE TABLE componente_servidor (
 	id_componente_servidor INT auto_increment,
 	  fk_id_servidor INT NOT NULL,
@@ -122,7 +119,7 @@
 SELECT id_alerta, valor_leitura, status_alerta, data_abertura, data_resolucao, jira_key 
 FROM historico_alertas WHERE jira_key = 'KAN-25';
 
-	INSERT INTO tipo_usuario (tipo) VALUES ('adm'), ('user');
+	INSERT INTO tipo_usuario (tipo) VALUES ('Analista'), ('Gestor');
 
 	INSERT INTO empresa (nome_fantasia, cnpj, telefone, email) VALUES 
 	('Tiktok', '1289657564', '123456789', 'tiktok@corporation.com');
@@ -152,5 +149,27 @@ FROM historico_alertas WHERE jira_key = 'KAN-25';
 	('DC-SP-02', 'ByteDance', '06454-000', 2),
 	('DC-VA-ORACLE', 'Oracle Cloud', '20147', 3),       
 	('DC-SG-01', 'ByteDance', '188067', 5);   
+    
+    INSERT INTO servidor(nome, endereco_ip, tipo, status, mac_address, fk_id_empresa, fk_datacenter) VALUES 
+    ("Iada", "5.11.11.5", "Database", "Ativo", "8c:b0:e9:c2:04:27", 1, 1),
+    ("Beatriz", "179.60.192.36", "DNS", "Ativo", "38-14-28-4e-8b-6a", 1, 2),
+    ("Mendes", "41.77.112.61", "WEB", "Ativo", "70-b5-e8-fc-b5-fa", 1, 3),
+    ("Cordeiro", "61.9.133.193", "Backup", "Ativo", "e2-0a-f6-64-a3-b5", 1, 4),
+    ("Luis - Idea", "203.50.2.71", "Proxy", "Ativo", "24:fe:9a:06:99:2f", 1, 1),
+    ("Tiktok - Xeon", "94.140.14.14", "Machine Learning", "Ativo", "22:09:4d:12:44:ac", 1, 2),
+    ("Luis - TK", "195.46.39.39", "API REST", "Ativo", "00:2b:67:e7:9f:72", 1, 3),
+    ("Rian", "64.6.64.6", "Security", "Ativo", "00-26-b9-ec-6c-b6", 1, 4);
+    
+    INSERT INTO usuario (nome, senha, email, cpf, fk_tipo_usuario, fk_usuario_empresa) 
+    VALUES ('Bruna', 'bruna123','bruna@email.com', '12345678901', 2, 1);
 
 	select * from servidor;
+    
+
+CREATE USER 'bytewatch'@'%' IDENTIFIED BY '@Bytewatch2026';
+GRANT ALL PRIVILEGES ON *.* TO 'bytewatch'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+# DROP USER 'bytewatch'@'%';
+# FLUSH PRIVILEGES;

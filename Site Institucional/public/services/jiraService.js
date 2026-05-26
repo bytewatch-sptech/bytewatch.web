@@ -16,7 +16,8 @@ async function buscarIssues(fkEmpresa) {
             `${JIRA_BASE_URL}/rest/api/3/search/jql`,
             {
                 params: {
-                    jql: "created >= -365d ORDER BY created DESC", //A JQL (Jira Query Language) é a linguagem de consulta mais poderosa e flexível que o Jira oferece para buscar issues (tarefas)
+                    jql: "created >= startOfDay() ORDER BY created DESC", //A JQL (Jira Query Language) é a linguagem de consulta mais poderosa e flexível que o Jira oferece para buscar issues (tarefas)
+                    maxResults: 300,
                     fields: [
                         "summary",
                         "status",
@@ -93,8 +94,23 @@ async function buscarIssues(fkEmpresa) {
     }
 }
 
-async function filtrarDashboard(fkEmpresa) {
+async function filtrarDashboard(fkEmpresa, nomeAnalistaBuscado, macServidorBuscado) {
     var incidentes = await buscarIssues(fkEmpresa);
+
+    if (nomeAnalistaBuscado) {
+        var nomeFormatado = nomeAnalistaBuscado.toLowerCase().trim();
+        incidentes = incidentes.filter(i =>
+            i.analista.toLowerCase().trim() === nomeFormatado
+        );
+    }
+
+    if (macServidorBuscado) {
+        var labelBuscada = "MAC:" + macServidorBuscado;
+        incidentes = incidentes.filter(i =>
+            i.labels_crudas && i.labels_crudas.includes(labelBuscada)
+        );
+    }
+
 
     var labelsDias = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
     var contagemAlertas = [0, 0, 0, 0, 0, 0, 0];
@@ -114,7 +130,23 @@ async function filtrarDashboard(fkEmpresa) {
         }
 
 
-        if (incidente.prioridade === "Highest" || incidente.titulo.toLowerCase().includes("90%")) {
+        var ehCritico = false;
+
+        if (incidente.prioridade === "Highest" || incidente.prioridade === "High") {
+            ehCritico = true;
+        } else {
+            var partesDoTitulo = incidente.titulo.split(":");
+
+            if (partesDoTitulo.length > 1) {
+                var valorDaPorcentagem = parseFloat(partesDoTitulo[1]);
+
+                if (valorDaPorcentagem >= 90) {
+                    ehCritico = true;
+                }
+            }
+        }
+
+        if (ehCritico == true) {
             contagemIncidentes[diaIndex]++;
         } else {
             contagemAlertas[diaIndex]++;
@@ -152,15 +184,13 @@ async function filtrarDashboard(fkEmpresa) {
 
     var somaTempoReconhecimento = 0;
 
-    var somaTempoReconhecimento = 0;
-
     for (var i = 0; i < chamadosEmAndamento.length; i++) {
         var chamado = chamadosEmAndamento[i];
 
         var dataCriacao = new Date(chamado.criadoEm);
         var dataAtualizacao = new Date(chamado.atualizadoEm);
 
-        var diferencaMinutos = (dataAtualizacao - dataCriacao) / (1000 * 60); //conversão de milissegundos para minutos
+        var diferencaMinutos = (dataAtualizacao - dataCriacao) / (1000 * 60);
 
         somaTempoReconhecimento += diferencaMinutos;
     }
@@ -188,7 +218,15 @@ async function filtrarDashboard(fkEmpresa) {
         var dataResolucao = new Date(chamado.resolvidoEm);
 
         var diferencaMinutos = (dataResolucao - dataCriacao) / (1000 * 60);
-        somaTempoResolucao += diferencaMinutos;
+        if (diferencaMinutos < 60) {
+            somaTempoResolucao += diferencaMinutos;
+        } else {
+            var diferencahoras = (dataResolucao - dataCriacao) / (1000 / 60);
+            somaTempoResolucao += diferencahoras;
+        }
+
+
+
     }
 
     var mttrCalculado = 0;
