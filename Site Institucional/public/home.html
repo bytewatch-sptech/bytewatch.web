@@ -1388,17 +1388,29 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 if (resposta.ok) {
                     const dados = await resposta.json()
                     console.log("Dados recebidos da API", dados)
-
-                    const novosEstaveis = [];
-                    const novosInstaveis = [];
-
+                    
                     const bolhasEstaveis = []
                     const bolhasCriticas = []
-
+                    
                     let totalCriticosAgora = 0;
                     let totalCriticos24hAtras = 0;
                     
-
+                    const prioridadeStatus = { 'critico': 3, 'risco': 2, 'estavel': 1 };
+                    
+                    dados.servidores.sort((a, b) => {
+                        
+                        const statusA = a.dados_tempo_real ? a.dados_tempo_real.status_servidor.toLowerCase() : '';
+                        const statusB = b.dados_tempo_real ? b.dados_tempo_real.status_servidor.toLowerCase() : '';
+                        
+                        
+                        const pesoA = prioridadeStatus[statusA] || 0;
+                        const pesoB = prioridadeStatus[statusB] || 0;
+                        return pesoB - pesoA;
+                    });
+                    
+                                        const novosEstaveis = [];
+                                        const novosInstaveis = [];
+                    
                     let servidorMaisPropenso = "Nenhuma previsão";
                     let menorTempoMinutos = 999999;
 
@@ -1411,10 +1423,10 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                             const status_servidor = servidor.dados_tempo_real.status_servidor;
 
-                            if(status_servidor.toLowerCase() === 'critico'){
+                            if (status_servidor.toLowerCase() === 'critico') {
                                 totalCriticosAgora++
                             }
-                                
+
                             let nome = servidor.dados_tempo_real.nome;
                             const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords;
                             const regiao = servidor.dados_tempo_real.regiao;
@@ -1422,14 +1434,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             const macAddress = servidor.dados_tempo_real.macAddress;
 
                             console.log("mapa mac", macAddress);
-                            
+
 
                             const resultado = await ObterNomeServidor(macAddress)
                             const nomeServidor = resultado[0].nome_servidor
                             nome = nomeServidor
 
                             console.log("nome", nome);
-                            
+
 
                             const endereco_ip = servidor.endereco_ip;
                             console.log("endereco ip: ", endereco_ip);
@@ -1505,7 +1517,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     matrizChart.data.datasets[0].data = bolhasEstaveis;
                     matrizChart.data.datasets[1].data = bolhasCriticas;
                     matrizChart.update();
-                   
+
 
                     const qtdCriticos = dados.resumo_global.servidores_criticos
                     const totalServidores = dados.resumo_global.total_servidores
@@ -1629,7 +1641,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                     </div>
 
                                                     <div class="progress-track ${cpu_status_ui}">
-                                                        <div class="progress-fill ${cpu_status_ui} style="width: ${cpu_uso};">
+                                                        <div class="progress-fill ${cpu_status_ui}" style="width: ${cpu_uso}%;">
                                                         </div>
                                                     </div>
 
@@ -1779,7 +1791,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 const corRam = descobrirStatusComponente(ram).cor;
                 const corDisco = descobrirStatusComponente(disco).cor;
 
-                
+
 
                 console.log(borda + 'a' + cor)
                 conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
