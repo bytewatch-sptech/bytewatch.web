@@ -11,7 +11,7 @@ const streamToString = (stream) =>
 
 async function obterDashboardEquipe() {
     const params = {
-        Bucket: process.env.AWS_BUCKET_NAME,
+        Bucket: process.env.S3_BUCKET_NAME,
         Key: "client/dashboard_equipe_tela.json"
     }
 
