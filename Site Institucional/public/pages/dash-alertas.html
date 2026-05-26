@@ -772,59 +772,95 @@
             const container = document.getElementById('containerListaAlertas');
             const titulo = document.getElementById('tituloListaAlertas');
 
+
             if (!container || !titulo) return;
+
 
             titulo.innerHTML = `Lista de Alertas (${alertas.length})`;
             container.innerHTML = "";
+
 
             if (alertas.length === 0) {
                 container.innerHTML = "<p class='text-muted'>Nenhum alerta gerado.</p>";
                 return;
             }
 
+
+            const pesoCriticidade = { "CRÍTICO": 1, "CRITICO": 1,"ALERTA": 2, "RISCO": 2};
+
             for (let i = 0; i < alertas.length; i++) {
+                for (let j = 0; j < alertas.length - 1 - i; j++) {
+                    const pesoA = pesoCriticidade[alertas[j].nivel.toUpperCase()] || 3;
+                    const pesoB = pesoCriticidade[alertas[j + 1].nivel.toUpperCase()] || 3;
+
+
+                    let trocar = false;
+                    if (pesoA > pesoB) {
+                        trocar = true;
+                    } else if (pesoA === pesoB) {
+                        if (new Date(alertas[j].horario) < new Date(alertas[j + 1].horario)) {
+                            trocar = true;
+                        }
+                    }
+
+                    if (trocar) {
+                        let aux = alertas[j];
+                        alertas[j] = alertas[j + 1];
+                        alertas[j + 1] = aux;
+                    }
+                }
+            }
+            
+            const LIMITE_CARDS = 10;
+            const quantidadeParaRenderizar = Math.min(alertas.length, LIMITE_CARDS);
+
+
+            for (let i = 0; i < quantidadeParaRenderizar; i++) {
                 const alerta = alertas[i];
                 const respostaNome = await ObterNomeServidor(alerta.mac);
                 const nomeServidor = respostaNome && respostaNome.length > 0 ? respostaNome[0].nome_servidor : "Desconhecido";
 
+
                 let corClasse = "border-warning";
                 let corBadge = "bg-warning text-dark";
-                let iconeCaminho = '<i class="fas fa-server" style="color: yellow;"></i>'
+                let iconeCaminho = '<i class="fas fa-server" style="color: yellow;"></i>';
+
 
                 if (alerta.nivel.toUpperCase() === "CRÍTICO" || alerta.nivel.toUpperCase() === "CRITICO") {
-                    corClasse = "border-warning";
+                    corClasse = "border-danger";
                     corBadge = "bg-danger";
-                    iconeCaminho = '<i class="fas fa-server" style="color: red;"></i>'
+                    iconeCaminho = '<i class="fas fa-server" style="color: red;"></i>';
                 }
+
 
                 const dataObj = new Date(alerta.horario.replace(" ", "T"));
                 const dataFormatada = dataObj.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
                 const horaFormatada = dataObj.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
                 const dataFinal = `${dataFormatada} às ${horaFormatada}`;
 
+
                 const cardHTML = `
-            <div class="alerta ${corClasse}">
-                <div class="conteudo-alerta">
-                    <div class="alert-left d-flex gap-3 align-items-start">
-                        <div class="icon ${corClasse}-icon">
-                        ${iconeCaminho}
-                        </div>
-                        <div>
-                            <div class="linha-topo ">
-                                <strong>${nomeServidor}</strong>
-                                <span class="badge ${corBadge}">${alerta.nivel}</span>
-                                <span class="badge bg-secondary">${alerta.componente}</span>
-                            </div>
-                            <p>${alerta.mensagem}</p>
-                            <small>${dataFinal}</small>
-                        </div>
-                    </div>
-                    <button class="btn-visualizar">Visualizar</button>
-                </div>
-            </div>
-        `;
-            container.innerHTML += cardHTML;
-        }
+           <div class="alerta ${corClasse}">
+               <div class="conteudo-alerta">
+                   <div class="alert-left d-flex gap-3 align-items-start">
+                       <div class="icon ${corClasse}-icon">
+                           ${iconeCaminho}
+                       </div>
+                       <div>
+                           <div class="linha-topo">
+                               <strong>${nomeServidor}</strong>
+                               <span class="badge ${corBadge}">${alerta.nivel}</span>
+                               <span class="badge bg-secondary">${alerta.componente}</span>
+                           </div>
+                           <p>${alerta.mensagem}</p>
+                           <small>${dataFinal}</small>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       `;
+                container.innerHTML += cardHTML;
+            }
         }
     }
 </script>
