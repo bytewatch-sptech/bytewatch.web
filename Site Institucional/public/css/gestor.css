@@ -1,8 +1,8 @@
     body {
         background: #0d0d0d;
         color: #e6edf3;
-        font-family: Arial, sans-serif;
-        
+        font-family: 'Aerial', sans-serif;  
+        overflow-x: hidden;
     }
 
     .sidebar {
@@ -32,6 +32,17 @@
         border-radius: 12px;
         padding: 10px;
         width: 100%;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .card-custom h5,
+    .card-custom h6 {
+        font-weight: 600;
+    }
+
+    .card-custom span,
+    .card-custom div {
+        font-weight: 500;
     }
 
     .alert-item {
@@ -110,15 +121,15 @@
         justify-content: space-between;
     }
 
-    
 
-    
+
+
     .card-alerta {
-        box-shadow:0px 0px 10px 1px yellow
+        box-shadow: 0px 0px 10px 1px yellow
     }
-    
+
     .card-critico {
-        box-shadow:0px 0px 10px 1px red
+        box-shadow: 0px 0px 10px 1px red
     }
 
 

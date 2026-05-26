@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/gestor.css">
     <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="../assets/logo-cd.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -18,7 +20,7 @@
 
     <div class="row flex-nowrap">
         <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
-            style="min-height: 100vh;">
+            style="min-height: 100vh; transition: 0.3s;">
 
             <div class="d-flex justify-content-center mb-5">
                 <img id="logo" class="d-none d-sm-block" width="150" src="../assets/logo-versao2.png" alt="Logo">
@@ -27,7 +29,8 @@
 
             <ul class="nav nav-pills flex-column mb-auto gap-2">
                 <li class="nav-item">
-                    <a href="/home.html" class="nav-link active bg-success d-flex align-items-center">
+                    <a href="../pages/dashboard-gestor.html"
+                        class="nav-link active d-flex align-items-center text-white">
                         <div class="icon_side d-flex align-items-center justify-content-center">
                             <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -40,15 +43,15 @@
                                     stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-
                         </div>
-                        <span class="ms-2 d-none d-sm-inline">Home</span>
+                        <span class="ms-2 d-none d-sm-inline">Painel</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="/gestao-equipe2.html" class="nav-link d-flex align-items-center text-white">
+                    <a href="../gestao-equipe2.html" class="nav-link d-flex align-items-center text-white">
                         <div class="icon_side d-flex align-items-center justify-content-center">
-                            <svg width="18" height="18  " viewBox="0 0 16 16" fill="none"
+                            <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M10.6663 14V12.6667C10.6663 11.9594 10.3854 11.2811 9.88529 10.781C9.3852 10.281 8.70692 10 7.99967 10H3.99967C3.29243 10 2.61415 10.281 2.11406 10.781C1.61396 11.2811 1.33301 11.9594 1.33301 12.6667V14"
@@ -67,45 +70,85 @@
                                     stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-
                         </div>
                         <span class="ms-2 d-none d-sm-inline">Gestão Equipe</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="dash-alertas.html" class="nav-link d-flex align-items-center text-white">
-                        <div class="icon_side d-flex align-items-center justify-content-center">
+
+                <li class="nav-item w-100">
+                    <a href="#submenuAnalista" data-bs-toggle="collapse"
+                        class="nav-link d-flex align-items-center text-white w-100" aria-expanded="false">
+
+                        <div class="icon_side d-flex align-items-center justify-content-center flex-shrink-0">
                             <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M14.4866 12L9.15329 2.66665C9.037 2.46146 8.86836 2.29078 8.66457 2.17203C8.46078 2.05329 8.22914 1.99072 7.99329 1.99072C7.75743 1.99072 7.52579 2.05329 7.322 2.17203C7.11822 2.29078 6.94958 2.46146 6.83329 2.66665L1.49995 12C1.38241 12.2036 1.32077 12.4346 1.32129 12.6697C1.32181 12.9047 1.38447 13.1355 1.50292 13.3385C1.62136 13.5416 1.79138 13.7097 1.99575 13.8259C2.20011 13.942 2.43156 14.0021 2.66662 14H13.3333C13.5672 13.9997 13.797 13.938 13.9995 13.8208C14.202 13.7037 14.3701 13.5354 14.487 13.3327C14.6038 13.1301 14.6653 12.9002 14.6653 12.6663C14.6652 12.4324 14.6036 12.2026 14.4866 12Z"
-                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path d="M8 6V8.66667" stroke="currentColor" stroke-width="1.33333"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M8 11.3334H8.00667" stroke="currentColor" stroke-width="1.33333"
-                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <g clip-path="url(#clip0_111_8530)">
+                                    <path
+                                        d="M13.334 1.33334H2.66732C1.93094 1.33334 1.33398 1.93029 1.33398 2.66667V5.33334C1.33398 6.06972 1.93094 6.66667 2.66732 6.66667H13.334C14.0704 6.66667 14.6673 6.06972 14.6673 5.33334V2.66667C14.6673 1.93029 14.0704 1.33334 13.334 1.33334Z"
+                                        stroke="#A0A0A0" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M13.334 9.33334H2.66732C1.93094 9.33334 1.33398 9.93029 1.33398 10.6667V13.3333C1.33398 14.0697 1.93094 14.6667 2.66732 14.6667H13.334C14.0704 14.6667 14.6673 14.0697 14.6673 13.3333V10.6667C14.6673 9.93029 14.0704 9.33334 13.334 9.33334Z"
+                                        stroke="#A0A0A0" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M4 4H4.00667" stroke="#A0A0A0" stroke-width="1.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M4 12H4.00667" stroke="#A0A0A0" stroke-width="1.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_111_8530">
+                                        <rect width="16" height="16" fill="white" />
+                                    </clipPath>
+                                </defs>
                             </svg>
                         </div>
-                        <span class="ms-2 d-none d-sm-inline">Logs de Alerta</span>
+
+                        <span class="ms-2 d-none d-sm-flex justify-content-between align-items-center flex-grow-1">
+                            Opções Administrativas
+                            <i class="fa-solid fa-chevron-down ms-2" style="font-size: 0.7em; color: var(--cor12);"></i>
+                        </span>
                     </a>
+
+                    <ul class="collapse nav flex-column ms-3 mt-1" id="submenuAnalista">
+                        <li class="nav-item w-100">
+                            <a href="../adicionar-servidor.html" class="nav-link text-white ps-4 py-2">
+                                <span class="d-none d-sm-inline"
+                                    style="font-size: 0.9em; color: var(--cor12); transition: color 0.2s;"
+                                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--cor12)'">
+                                    - Adicionar Servidor
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a href="../atribuir-analista.html" class="nav-link text-white ps-4 py-2">
+                                <span class="d-none d-sm-inline"
+                                    style="font-size: 0.9em; color: var(--cor12); transition: color 0.2s;"
+                                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--cor12)'">
+                                    - Atribuir Analista
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
 
             <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
                 <div class="container_user d-flex gap-2">
                     <a class="d-flex gap-3 align-items-center" href="">
-                        <div class="icon-profile">FB</div>
+                        <div class="icon-profile">BP</div>
 
                         <div class="box ms-2 d-none d-sm-inline">
-                            <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
-                            <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Admin Técnico</p>
+                            <p id="nome_usuario_header" style="font-size: 16px; margin: 0;">Carregando...</p>
+                            <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Gestora
                         </div>
                     </a>
                 </div>
 
                 <div class="button-sair mt-2 text-center">
-                    <p style="margin: 0;">Sair</p>
+                    <a href="../login.html" class="button" style="text-decoration: none; color: white;">
+                        Sair
+                    </a>
                 </div>
             </div>
         </nav>
@@ -118,6 +161,41 @@
 
                     <!-- MAIN -->
                     <div class="col-lg-10 col-10">
+                        <button id="chat-toggle" class="btn rounded-circle shadow"
+                        style="position: fixed; bottom: 310px; right: 10px;background-color: #3a3434; width: 60px; height: 60px; z-index: 9999;">
+                        <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g filter="url(#filter0_dd_886_23)">
+                                <path
+                                    d="M22.713 11.1291L22.467 11.6951C22.4286 11.7872 22.3637 11.866 22.2806 11.9214C22.1975 11.9767 22.0999 12.0063 22 12.0063C21.9001 12.0063 21.8025 11.9767 21.7194 11.9214C21.6363 11.866 21.5714 11.7872 21.533 11.6951L21.287 11.1291C20.8545 10.1278 20.0624 9.325 19.067 8.87908L18.308 8.54008C18.2159 8.49772 18.1379 8.42985 18.0832 8.34451C18.0286 8.25917 17.9995 8.15994 17.9995 8.05858C17.9995 7.95722 18.0286 7.85799 18.0832 7.77265C18.1379 7.68731 18.2159 7.61944 18.308 7.57708L19.025 7.25808C20.0454 6.79946 20.8511 5.96696 21.276 4.93208L21.529 4.32108C21.5662 4.22643 21.631 4.14518 21.715 4.08791C21.799 4.03063 21.8983 4 22 4C22.1017 4 22.201 4.03063 22.285 4.08791C22.369 4.14518 22.4338 4.22643 22.471 4.32108L22.724 4.93108C23.1485 5.96616 23.9538 6.79901 24.974 7.25808L25.692 7.57808C25.7838 7.62056 25.8615 7.68842 25.916 7.77365C25.9705 7.85889 25.9994 7.95793 25.9994 8.05908C25.9994 8.16023 25.9705 8.25928 25.916 8.34451C25.8615 8.42974 25.7838 8.4976 25.692 8.54008L24.932 8.87808C23.9368 9.32445 23.1451 10.1276 22.713 11.1291ZM22 14.0011C22.6787 14.0016 23.3526 13.887 23.993 13.6621C23.9977 13.7754 24 13.8884 24 14.0011C24 16.1228 23.1571 18.1576 21.6569 19.6579C20.1566 21.1582 18.1217 22.0011 16 22.0011V25.5011C11 23.5011 4 20.5011 4 14.0011C4 11.8793 4.84285 9.84452 6.34315 8.34423C7.84344 6.84394 9.87827 6.00108 12 6.00108H16C16.1133 6.00108 16.2263 6.00341 16.339 6.00808C16.0203 6.913 15.9233 7.88115 16.056 8.83132C16.1888 9.78149 16.5475 10.686 17.102 11.4689C17.6565 12.2518 18.3906 12.8904 19.2429 13.331C20.0951 13.7715 21.0406 14.0013 22 14.0011Z"
+                                    fill="black" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_dd_886_23" x="0" y="0" width="27.999" height="28.5011"
+                                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dx="-4" dy="3" />
+                                    <feComposite in2="hardAlpha" operator="out" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0.94902 0 0 0 0 0.917647 0 0 0 1 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                        result="effect1_dropShadow_886_23" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dx="2" dy="-4" />
+                                    <feComposite in2="hardAlpha" operator="out" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 1 0 0 0 0 0 0 0 0 0 0.313726 0 0 0 1 0" />
+                                    <feBlend mode="normal" in2="effect1_dropShadow_886_23"
+                                        result="effect2_dropShadow_886_23" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_886_23"
+                                        result="shape" />
+                                </filter>
+                            </defs>
+                        </svg>
+
+                    </button>
 
                         <h3>Painel Executivo</h3>
                         <p class="text-secondary">Visão macro da infraestrutura</p>
@@ -128,7 +206,7 @@
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
                                     <p><img src="../assets/walvar.png" style="height: 25px;"> Custo Mensal Estimado</p>
-                                    <div class="kpi-value">
+                                    <div class="kpi-value" style="font-size: 30px;">
                                         <span id="custoMes"></span>
                                     </div>
                                     <small class="kpi-green">
@@ -140,7 +218,7 @@
                             <div class="col-md-3">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
                                     <p><img src="../assets/goal.png" style="height: 25px;"> Custo até o momento</p>
-                                    <div class="kpi-value">
+                                    <div class="kpi-value" style="font-size: 30px;">
                                         <span id="custoAtual"></span>
                                     </div>
                                     <small class="kpi-green">
@@ -152,7 +230,7 @@
                             <div class="col-md-3 me-2">
                                 <div class="card-custom" style="box-shadow:0px 0px 10px 1px #22F1E7;">
                                     <p><img src="../assets/calendar.png" style="height: 25px;"> Custo do dia</p>
-                                    <div class="kpi-value">
+                                    <div class="kpi-value" style="font-size: 30px;">
                                         <span id="custoDia"></span>
                                     </div>
                                     <small class="kpi-green">
@@ -162,7 +240,7 @@
                             </div>
 
                             <div class="card-parametro">
-                                <div class="col d-flex flex-column align-items-center">
+                                <div class="col d-flex w-100 flex-column align-items-center">
                                     <span>Risco</span>
                                     <div class="line-component rounded"
                                         style="background-color: #FFD500; width: 100%; height: 5px; ">
@@ -200,13 +278,13 @@
                             <div class="col-lg-3 col-12">
 
                                 <div class="card-custom card-gauge mb-2" id="statusGaugeRam">
-                                    <h6 class="mb-0">servidor 000 - Pico de RAM</h6>
+                                    <h6 class="mb-0"><span id="nomeServerRam"></span> Pico de RAM</h6>
                                     <canvas id="gaugePicoRAM"></canvas>
                                     <div id="valorRam" class="gauge kpi-yellow"></div>
                                 </div>
 
                                 <div class="card-custom card-gauge" id="statusGaugeCpu">
-                                    <h6 class="mb-0">servidor 000 - Pico de CPU</h6>
+                                    <h6 class="mb-0"><span id="nomeServerCpu"></span> Pico de CPU</h6>
                                     <canvas id="gaugePicoCPU"></canvas>
                                     <div id="valorCpu" class="gauge kpi-yellow"></div>
                                 </div>
@@ -235,11 +313,30 @@
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../services/api.js"></script>
 <script src="../services/serviceGestorDash.js"></script>
+<script src="../services/serviceMetricasAlertas.js"></script>
 <!-- <script src="../js/scriptAI.js"></script> -->
 
 <script>
+
+    const API_BASE_URL = "http://3.223.199.1";
+    window.addEventListener('DOMContentLoaded', () => {
+        const elementoNome = document.getElementById("nome_usuario_header");
+
+        if (elementoNome) {
+            const nomeSalvo = sessionStorage.getItem("NOME_USUARIO");
+            if (nomeSalvo) {
+                elementoNome.innerHTML = nomeSalvo;
+            } else {
+                elementoNome.innerHTML = "Usuário Desconhecido";
+            }
+        }
+    });
+
+
+
     window.onload = () => {
         ObterDadosGrafico();
     }
@@ -250,14 +347,22 @@
 
         console.log("ServidorEmPico:", resultado?.dadosMaquina.ServidorEmPico);
 
+
+
         if (!resultado) {
             console.error("Sem dados");
             return;
         }
 
         try {
-            const picoRamGauge = resultado.dadosMaquina.ServidorEmPico?.servidorPicoRAM?.valor;
-            const picoCpu = resultado.dadosMaquina.ServidorEmPico?.servidorPicoCPU?.valor;
+            const servidorPicoRAM = resultado.dadosMaquina.ServidorEmPico?.servidorPicoRAM;
+            const servidorPicoCPU = resultado.dadosMaquina.ServidorEmPico?.servidorPicoCPU;
+
+            const picoRamGauge = servidorPicoRAM?.valor;
+            const picoCpu = servidorPicoCPU?.valor;
+
+            const macRam = servidorPicoRAM?.macAddress;
+            const macCpu = servidorPicoCPU?.macAddress;
 
             console.log("RAM:", picoRamGauge);
             console.log("CPU:", picoCpu);
@@ -274,8 +379,8 @@
 
             console.log("Picos:", picosDia);
 
-            plotarGaugeRam(picoRamGauge);
-            plotarGaugeCpu(picoCpu);
+            plotarGaugeRam(picoRamGauge, macRam, "nomeServerRam");
+            plotarGaugeCpu(picoCpu, macCpu, "nomeServerCpu");
 
             document.getElementById("valorRam").innerText = picoRamGauge + "%"
             document.getElementById("valorCpu").innerText = picoCpu + "%"
@@ -302,7 +407,8 @@
             const estimativaAteHoje = custoEsperado * dias
 
             var status = "Dentro do esperado"
-            var cor = "white"
+            var cor = "green"
+            var corProg = "green"
 
             const diferenca = custoAtual - estimativaAteHoje;
             const percentual = (diferenca / estimativaAteHoje) * 100;
@@ -315,6 +421,12 @@
                 cor = "green"
             }
 
+            if (progresso > 80) {
+                corProg = "red"
+            } else {
+                corProg = "green"
+            }
+
             document.getElementById("custoAtual").innerText =
                 `R$ ${custoAtual.toFixed(2)}`;
 
@@ -324,6 +436,8 @@
             document.getElementById("progressoMes").innerText =
                 `${progresso.toFixed(1)}%`;
 
+            document.getElementById("progressoMes").style.color = corProg;
+
             document.getElementById("statusCusto").innerText =
                 `${percentual.toFixed(1)}% ${status}`;
 
@@ -331,6 +445,9 @@
 
             document.getElementById("custoDia").innerText =
                 `R$ ${custoDia.toFixed(2)}`;
+
+            document.getElementById("infoDia").innerText =
+                `Dias decorrido: ${dias}`
 
 
             //Pegando os dados do Ranking de consumo de RAM
@@ -351,8 +468,20 @@
                 alert("ranking não encontrado")
             }
 
+            // comparação de dias QUE DEUS ME AJUDE COM ISSO
+
+            const grafico = resultado.dadosMaquina.graficoComparativo;
+
+            if (grafico) {
+                plotarComparativo(grafico);
+            }
+
 
             console.log("RANKING: ", ranking)
+
+
+
+
 
 
         } catch (erro) {
@@ -373,17 +502,41 @@
     }
 
 
-    function criarGauge(canvasId, valor, cor, cardId) {
+    function plotarGaugeRam(valor, macAddress, textoNomeId) {
+        criarGauge("gaugePicoRAM", valor, null, "statusGaugeRam", macAddress, textoNomeId)
+    }
+
+    function plotarGaugeCpu(valor, macAddress, textoNomeId) {
+        criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu", macAddress, textoNomeId)
+    }
+
+    async function criarGauge(canvasId, valor, cor, cardId, macAddress, textoNomeId) {
         const ctx = document.getElementById(canvasId)
         const gaugeCor = document.getElementById(cardId)
-        gaugeCor.classList.remove("card-normal", "card-alerta", "card-critico")
+        const elementoTexto = document.getElementById(textoNomeId)
 
-        console.log("Classes antes:", gaugeCor.className)
+        if (elementoTexto && macAddress) {
+            try {
+                const dadosServidor = await ObterNomeServidor(macAddress)
+                let nomeServidor = dadosServidor[0].nome_servidor
+                elementoTexto.innerText = nomeServidor;
+
+                console.log("NOME DO SERVIDOR: " + dadosServidor[0].nome_servidor)
+                console.log(macAddress)
+            } catch (erro) {
+                console.error("Erro ao buscar nome do servidor:", erro)
+                elementoTexto.innerText = "Erro"
+            }
+        }
+
+
 
         if (!ctx) {
             console.error("Canvas não encontrado:", canvasId)
             return
         }
+
+        gaugeCor.classList.remove("card-normal", "card-alerta", "card-critico")
 
         if (valor >= 85) {
             cor = "red"
@@ -395,8 +548,6 @@
             cor = "white"
             gaugeCor.classList.add("card-normal")
         }
-
-        console.log("Classes depois:", gaugeCor.className)
 
         new Chart(ctx, {
             type: "doughnut",
@@ -421,22 +572,25 @@
         })
     }
 
-    function plotarGaugeRam(valor) {
-        criarGauge("gaugePicoRAM", valor, null, "statusGaugeRam")
+
+    function plotarGaugeRam(valor, macAddress, textoNomeId) {
+        criarGauge("gaugePicoRAM", valor, null, "statusGaugeRam", macAddress, textoNomeId)
     }
 
-    function plotarGaugeCpu(valor) {
-        criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu")
+    function plotarGaugeCpu(valor, macAddress, textoNomeId) {
+        criarGauge("gaugePicoCPU", valor, null, "statusGaugeCpu", macAddress, textoNomeId)
     }
 
-    function criarRanking(ranking) {
+    async function criarRanking(ranking) {
         const container = document.getElementById("rankingContainer")
 
         container.innerHTML = ""
 
         for (var i = 0; i < 3 && i < ranking.length; i++) {
+            const item = ranking[i]
+            const dadosServidor = await ObterNomeServidor(item.macAddress)
+            let nomeServidor = dadosServidor[0].nome_servidor
 
-            var item = ranking[i]
 
             var classe = "badge-custom"
 
@@ -452,7 +606,7 @@
             container.innerHTML += `
         <div class="alert-item">
             <span>${item.posicao}°</span>
-            <span>Servidor - ${item.macAddress}</span>
+            <span>${nomeServidor}</span>
             <span class="${classe}">${item.picoRam.toFixed(1)}%</span>
         </div>
     `
@@ -460,77 +614,124 @@
 
     }
 
+    function plotarComparativo(dados) {
+        const barras = document.getElementById("visaoMacro");
 
-    document.addEventListener("DOMContentLoaded", function () {
-
-        const linhas = document.getElementById('visaoMacro')
-
-        if (!linhas) {
-            console.error("Canvas não encontrado!")
-            return
+        if (!barras) {
+            console.error("Canvas não encontrado");
+            return;
         }
 
-        new Chart(linhas, {
-            type: 'line',
+
+        new Chart(barras, {
+            type: 'bar',
             data: {
-                labels: ["00h", "04h", "08h", "12h", "16h", "20h", "23h"],
+                labels: dados.labels,
                 datasets: [
                     {
-                        label: "ONTEM",
-                        data: [45, 50, 65, 80, 75, 70, 60],
-                        borderColor: "#22c55e",
-                        tension: 0.4
+                        label: 'Ontem',
+                        data: dados.ontem,
+                        backgroundColor: "#1591DC",
+                        borderWidth: 1
                     },
                     {
-                        label: "HOJE",
-                        data: [30, 40, 55, 70, 65, 60, 50],
-                        borderColor: "#f59e0b",
-                        tension: 0.4
+                        label: 'Hoje',
+                        data: dados.hoje,
+                        backgroundColor: "#FF61F8",
+                        borderWidth: 1
                     }
                 ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: 'white' }
+                    },
+                    y: {
+                        ticks: { color: 'white' },
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
             }
-        })
-
-        // const gauge = document.getElementById("gaugePicoRAM")
-        // const gaugeCPU = document.getElementById("gaugePicoCPU")
-
-        // const valor = 78
-
-        // const data = {
-        //     labels: ["Usado", "Livre"],
-        //     datasets: [{
-        //         data: [valor, 100 - valor],
-        //         backgroundColor: ["#f59e0b", "#1f2937"],
-        //         borderWidth: 0
-        //     }]
-        // }
-
-        // new Chart(gauge, {
-        //     type: 'doughnut',
-        //     data: data,
-        //     options: {
-        //         aspectRatio: 2,
-        //         circumference: 180,
-        //         rotation: -90,
-        //         cutout: "70%"
-        //     }
-        // })
-
-        // new Chart(gaugeCPU, {
-        //     type: 'doughnut',
-        //     data: data,
-        //     options: {
-        //         aspectRatio: 2,
-        //         circumference: 180,
-        //         rotation: -90,
-        //         cutout: "70%"
-        //     }
-        // })
+        });
+    }
 
 
+    // document.addEventListener("DOMContentLoaded", function () {
+
+    //     const linhas = document.getElementById('visaoMacro')
+
+    //     if (!linhas) {
+    //         console.error("Canvas não encontrado!")
+    //         return
+    //     }
+
+    //     new Chart(linhas, {
+    //         type: 'bar',
+    //         data: {
+    //             labels: ['00h', '04h', '08h', '12h', '16h', '20h', '23h'],
+    //             datasets: [
+    //                 {
+    //                     label: 'Ontem',
+    //                     data: [45, 50, 65, 80, 75, 70, 60]
+    //                 },
+    //                 {
+    //                     label: 'Hoje',
+    //                     data: [30, 40, 55, 70, 65, 60, 50]
+    //                 }
+    //             ]
+    //         }
+    //     });
+
+    // const gauge = document.getElementById("gaugePicoRAM")
+    // const gaugeCPU = document.getElementById("gaugePicoCPU")
+
+    // const valor = 78
+
+    // const data = {
+    //     labels: ["Usado", "Livre"],
+    //     datasets: [{
+    //         data: [valor, 100 - valor],
+    //         backgroundColor: ["#f59e0b", "#1f2937"],
+    //         borderWidth: 0
+    //     }]
+    // }
+
+    // new Chart(gauge, {
+    //     type: 'doughnut',
+    //     data: data,
+    //     options: {
+    //         aspectRatio: 2,
+    //         circumference: 180,
+    //         rotation: -90,
+    //         cutout: "70%"
+    //     }
+    // })
+
+    // new Chart(gaugeCPU, {
+    //     type: 'doughnut',
+    //     data: data,
+    //     options: {
+    //         aspectRatio: 2,
+    //         circumference: 180,
+    //         rotation: -90,
+    //         cutout: "70%"
+    //     }
+    // })
 
 
 
 
-    });
+
+
+    // });
 </script>

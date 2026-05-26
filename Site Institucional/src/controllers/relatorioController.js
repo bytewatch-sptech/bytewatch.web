@@ -4,7 +4,7 @@ const { s3Client } = require("../../src/config/s3Config");
 async function obterRelatorio(req, res) {
     const params = {
         Bucket: process.env.S3_BUCKET_NAME,
-        Key: "relatorios/relatorio_final_projeto.csv"
+        Key: "relatorios/relatorio.csv"
     }
 
     try {

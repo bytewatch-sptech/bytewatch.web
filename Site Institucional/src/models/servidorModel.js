@@ -44,6 +44,7 @@ function listarServidoresAnalista(idEmpresa, idUsuario) {
   var instrucaoSql = `
     SELECT 
       s.id_servidor, 
+      s.endereco_ip,
       s.mac_address, 
       CONCAT(s.nome, " — ", z.codigo_zona) AS "nome_servidor" 
     FROM datacenter AS d 
@@ -62,6 +63,14 @@ function listarServidoresAnalista(idEmpresa, idUsuario) {
 function buscarDatacenters(id_empresa) {
   var instrucaoSql = `SELECT id_datacenter, CONCAT(d.nome, " — ", z.codigo_zona) AS "nome_datacenters" FROM datacenter AS d 
     JOIN zona_disponibilidade AS z ON fk_zona_disponibilidade = id_zona_disponibilidade;
+`;
+  return database.executar(instrucaoSql);
+}
+
+function buscarServidores() {
+  var instrucaoSql = `SELECT id_servidor, CONCAT(s.nome, " — ", z.codigo_zona) AS "nome_datacenters" FROM datacenter AS d 
+    JOIN zona_disponibilidade AS z ON fk_zona_disponibilidade = id_zona_disponibilidade
+    JOIN servidor AS s ON id_datacenter = fk_datacenter;
 `;
   return database.executar(instrucaoSql);
 }
@@ -108,4 +117,5 @@ module.exports = {
   removerServidor,
   atualizarServidor,
   buscarNomeServidor,
+  buscarServidores
 };

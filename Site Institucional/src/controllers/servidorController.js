@@ -38,6 +38,12 @@ async function buscarDatacenters(req, res) {
   res.status(200).json(resultado);
 }
 
+async function buscarTodosServidores(req, res) {
+  
+  const resultado = await servidorModel.buscarServidores();
+  res.status(200).json(resultado);
+}
+
 async function removerServidor(req, res) {
   const { id_servidor } = req.params;
 
@@ -161,6 +167,7 @@ async function buscarDashboardHome(req, res) {
         id_servidor: servidorDB.id_servidor,
         nome_db: servidorDB.nome_servidor,
         mac_address: servidorDB.mac_address,
+        endereco_ip: servidorDB.endereco_ip,
         idEmpresa: idEmpresa,
         dados_tempo_real: metricasS3 ? metricasS3 : null,
       };
@@ -185,4 +192,5 @@ module.exports = {
   atualizarServidor,
   buscarNomeServidor,
   buscarUsoS3,
+  buscarTodosServidores
 };

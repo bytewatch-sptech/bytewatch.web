@@ -95,21 +95,15 @@
                     </li>
                 </ul>
 
-                <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
-                    <div class="container_user d-flex gap-2">
-                        <a class="d-flex gap-3 align-items-center" href="">
-                            <div class="icon-profile">FB</div>
+                <div class="container_user d-flex gap-2">
+                    <a class="d-flex gap-3 align-items-center" href="">
+                        <div class="icon-profile">BP</div>
 
-                            <div class="box ms-2 d-none d-sm-inline">
-                                <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
-                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Admin Técnico</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="button-sair mt-2 text-center">
-                        <p style="margin: 0;">Sair</p>
-                    </div>
+                        <div class="box ms-2 d-none d-sm-inline">
+                            <p id="nome_usuario_header" style="font-size: 16px; margin: 0;">Carregando...</p>
+                            <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Gestora
+                        </div>
+                    </a>
                 </div>
             </nav>
 
@@ -199,84 +193,6 @@
                                 </div>
 
                             </div>
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle m-0" data-bs-toggle="dropdown" aria-expanded="false"
-                                    data-bs-auto-close="outside"><svg width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M19 17V11.8C18.5 11.9 18 12 17.5 12H17V18H7V11C7 8.2 9.2 6 12 6C12.1 4.7 12.7 3.6 13.5 2.7C13.2 2.3 12.6 2 12 2C10.9 2 10 2.9 10 4V4.3C7 5.2 5 7.9 5 11V17L3 19V20H21V19L19 17ZM10 21C10 22.1 10.9 23 12 23C13.1 23 14 22.1 14 21H10ZM21 6.5C21 8.4 19.4 10 17.5 10C15.6 10 14 8.4 14 6.5C14 4.6 15.6 3 17.5 3C19.4 3 21 4.6 21 6.5Z"
-                                            fill="#FFD500" />
-                                    </svg>
-                                </button>
-                                <div class="dropdown-menu" style="padding-bottom: 0;">
-                                    <div class=" flex-column" style="width: 350px; height: 450px;">
-                                        <div class="text-center">
-                                            Histórico de Alertas <span id="alertNotifications">4</span>
-                                        </div>
-                                        <div class="box-notification critical  p-2 d-flex gap-1">
-                                            <div class="mb-3 pt-1 pb-1 p-2 critical" style="border-radius: 5px;">
-                                                CPU</div>
-                                            <div class="d-flex flex-column">
-                                                <span>Uso da <span>CPU</span> excedeu <span>90%</span></span>
-                                                <span style="font-size: 12px;">29/03/2026</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="box-notification risk  p-2 d-flex gap-1">
-                                            <div class="mb-3 pt-1 pb-1 p-2 risk" style="border-radius: 5px;">
-                                                DISCO</div>
-                                            <div class="d-flex flex-column">
-                                                <span>Uso da <span>DISCO</span> excedeu <span>90%</span></span>
-                                                <span style="font-size: 12px;">29/03/2026</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="box-notification critical  p-2 d-flex gap-1">
-                                            <div class="mb-3 pt-1 pb-1 p-2 critical" style="border-radius: 5px;">
-                                                CPU</div>
-                                            <div class="d-flex flex-column">
-                                                <span>Uso da <span>CPU</span> excedeu <span>90%</span></span>
-                                                <span style="font-size: 12px;">29/03/2026</span>
-                                            </div>
-
-                                        </div>
-                                        <div class="box-notification risk  p-2 d-flex gap-1">
-                                            <div class="mb-3 pt-1 pb-1 p-2 risk" style="border-radius: 5px;">
-                                                DISCO</div>
-                                            <div class="d-flex flex-column">
-                                                <span>Uso da <span>DISCO</span> excedeu <span>90%</span></span>
-                                                <span style="font-size: 12px;">29/03/2026</span>
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-                                    <a href="#"
-                                        class="dropdown-item align-items-center justify-content-center d-flex py-2 h-100 gap-1">
-                                        <svg width="18" height="18" viewBox="0 0 14 14" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_557_1121)">
-                                                <path
-                                                    d="M1.18784 7.10946C1.13986 6.9802 1.13986 6.838 1.18784 6.70873C1.65519 5.57556 2.44847 4.60667 3.46714 3.92489C4.4858 3.24311 5.68396 2.87915 6.90972 2.87915C8.13548 2.87915 9.33365 3.24311 10.3523 3.92489C11.371 4.60667 12.1643 5.57556 12.6316 6.70873C12.6796 6.838 12.6796 6.9802 12.6316 7.10946C12.1643 8.24264 11.371 9.21153 10.3523 9.89331C9.33365 10.5751 8.13548 10.939 6.90972 10.939C5.68396 10.939 4.4858 10.5751 3.46714 9.89331C2.44847 9.21153 1.65519 8.24264 1.18784 7.10946Z"
-                                                    stroke="currentColor" stroke-width="1.15152" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                                <path
-                                                    d="M6.9094 8.63637C7.86335 8.63637 8.63667 7.86304 8.63667 6.9091C8.63667 5.95515 7.86335 5.18182 6.9094 5.18182C5.95546 5.18182 5.18213 5.95515 5.18213 6.9091C5.18213 7.86304 5.95546 8.63637 6.9094 8.63637Z"
-                                                    stroke="currentColor" stroke-width="1.15152" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
-                                            </g>
-                                            <defs>
-                                                <clipPath id="clip0_557_1121">
-                                                    <rect width="13.8182" height="13.8182" fill="currentColor" />
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                        Mostrar Todos
-                                    </a>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -299,7 +215,7 @@
                                     </div>
                                     <div class="col"
                                         style="padding-left: 0px; padding-right: 0px; display: flex; justify-content: center;">
-                                        <span class="display-6 graph-titles mt-2" style="font-size: 55px;">78%</span>
+                                        <span class="display-6 graph-titles mt-2" style="font-size: 55px;" id="porcentagemUso">N/A</span>
                                     </div>
                                 </div>
                                 <div class="div-legends">
@@ -308,14 +224,14 @@
                                             <span class="span-circle" style="background-color: #C167C7;"></span>
                                             <span class="span-legend">Em uso</span>
                                         </div>
-                                        <span class="span-percent">78%</span>
+                                        <span class="span-percent" id="porcentagemUsoLegenda">N/A</span>
                                     </div>
                                     <div class="legend-container">
                                         <div>
                                             <span class="span-circle"></span>
                                             <span class="span-legend">Restante</span>
                                         </div>
-                                        <span class="span-percent">22%</span>
+                                        <span class="span-percent" id="porcentagemRestante">N/A</span>
                                     </div>
                                 </div>
                             </div>
@@ -325,7 +241,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="risco card-kpi child-2 p-3" id="kpi_pico">
+                    <div class="card-kpi child-2 p-3" id="kpi_pico">
                         <div class="d-flex column align-items-start gap-2">
                             <svg width="16" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10.8401 15.6906L4.84005 15.6906L4.84005 7.76604L5.34058e-05 7.76604L7.84005 9.53674e-07L15.6801 7.76604L10.8401 7.76604V15.6906Z" fill="#C167C7"/>
@@ -334,10 +250,13 @@
                             <p class="card-title kpi-titles">PICO</p>
                         </div>
                         <div class="kpi-info">
-                            <span class="display-6 status-percent" style="font-size: 50px;">90%</span>
+                            <span class="display-6 status-percent" id="picoValor" style="font-size: 40px;">N/A</span>
+                        </div>
+                        <div class="d-flex justify-content-center" style="font-size: 14px; color: #999;">
+                            <span id="picoHorario">Registrado às N/A</span>
                         </div>
                     </div>
-                    <div class="critico card-kpi child-3 p-3" id="kpi_temperatura">
+                    <div class="card-kpi child-3 p-3" id="kpi_temperatura">
                         <div class="d-flex column align-items-start gap-2">
                             <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 10.1725C0 8.28917 0.558334 6.48084 1.675 4.74751C2.79167 3.01417 4.325 1.49751 6.275 0.197507C6.64167 -0.0524929 7.021 -0.0651597 7.413 0.159507C7.805 0.384174 8.00067 0.72184 8 1.17251V2.47251C8 3.03917 8.196 3.51417 8.588 3.89751C8.98 4.28084 9.459 4.47251 10.025 4.47251C10.3083 4.47251 10.5793 4.40984 10.838 4.28451C11.0967 4.15917 11.3257 3.98017 11.525 3.74751C11.6583 3.58084 11.8293 3.47684 12.038 3.43551C12.2467 3.39417 12.4423 3.43984 12.625 3.57251C13.675 4.32251 14.5 5.28084 15.1 6.44751C15.7 7.61417 16 8.85584 16 10.1725C16 11.6392 15.6417 12.9768 14.925 14.1855C14.2083 15.3942 13.2667 16.3478 12.1 17.0465C12.3833 16.6465 12.6043 16.2092 12.763 15.7345C12.9217 15.2598 13.0007 14.7558 13 14.2225C13 13.5558 12.875 12.9265 12.625 12.3345C12.375 11.7425 12.0167 11.2135 11.55 10.7475L8 7.27251L4.475 10.7475C3.99167 11.2308 3.625 11.7642 3.375 12.3475C3.125 12.9308 3 13.5558 3 14.2225C3 14.7558 3.07933 15.2602 3.238 15.7355C3.39667 16.2108 3.61733 16.6482 3.9 17.0475C2.73333 16.3475 1.79167 15.3932 1.075 14.1845C0.358333 12.9758 0 11.6385 0 10.1725ZM8 10.0725L10.125 12.1475C10.4083 12.4308 10.625 12.7475 10.775 13.0975C10.925 13.4475 11 13.8225 11 14.2225C11 15.0392 10.7083 15.7352 10.125 16.3105C9.54167 16.8858 8.83333 17.1732 8 17.1725C7.16667 17.1718 6.45833 16.8845 5.875 16.3105C5.29167 15.7365 5 15.0405 5 14.2225C5 13.8392 5.075 13.4685 5.225 13.1105C5.375 12.7525 5.59167 12.4315 5.875 12.1475L8 10.0725Z" fill="#C167C7"/>
@@ -345,7 +264,7 @@
                             <p class="card-title kpi-titles">TEMPERATURA</p>
                         </div>
                         <div class="kpi-info">
-                            <span class="display-6 status-percent" style="font-size: 50px;">68°C</span>
+                            <span class="display-6 status-percent" id="tempValor" style="font-size: 40px;">N/A</span>
                         </div>
                     </div>
                     <div class="card-kpi child-4 p-3" id="kpi_frequencia">
@@ -356,34 +275,39 @@
                             <p class="card-title kpi-titles">FREQUÊNCIA</p>
                         </div>
                         <div class="kpi-info">
-                            <span class="display-6 status-percent" style="font-size: 50px;">80%</span>
+                            <span class="display-6 status-percent" id="freqValor" style="font-size: 40px;">N/A</span>
+                        </div>
+                        <div class="d-flex justify-content-center" style="font-size: 14px; color: #999;">
+                            <span id="freqSub">de N/A GHz máx</span>
                         </div>
                     </div>
                     <div class="information-container child-5" id="informacoes">
                                     <h1>Informações</h1>
-                                    <div class="div-line">
-                                        <label>Última Coleta</label>
-                                        <span>29/03/2026</span>
-                                    </div>
-                                    <div class="div-line">
-                                        <label>Nome</label>
-                                        <span>Xeon E5-2697 v4</span>
-                                    </div>
-                                    <div class="div-line">
-                                        <label>IP Externo</label>
-                                        <span>192.1.1.0</span>
-                                    </div>
-                                    <div class="div-line">
-                                        <label>IP Interno</label>
-                                        <span>10.128.0.5</span>
-                                    </div>
-                                    <div class="div-line">
-                                        <label>Cores Físicos</label>
-                                        <span>18</span>
-                                    </div>
-                                    <div class="div-line">
-                                        <label>Cores Lógicos</label>
-                                        <span>36</span>
+                                    <div id="infoContainer">
+                                        <div class="div-line">
+                                            <label>Última Coleta</label>
+                                            <span>N/A</span>
+                                        </div>
+                                        <div class="div-line">
+                                            <label>Nome</label>
+                                            <span>N/A</span>
+                                        </div>
+                                        <div class="div-line">
+                                            <label>Processador</label>
+                                            <span>N/A</span>
+                                        </div>
+                                        <div class="div-line">
+                                            <label>MAC Address</label>
+                                            <span>N/A</span>
+                                        </div>
+                                        <div class="div-line">
+                                            <label>Núcleos Físicos</label>
+                                            <span>N/A</span>
+                                        </div>
+                                        <div class="div-line">
+                                            <label>Núcleos Lógicos</label>
+                                            <span>N/A</span>
+                                        </div>
                                     </div>
                                 </div>
                     <div class="card-kpi child-6 p-3" id="distribuicao">
@@ -398,7 +322,7 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <div style="height: 90%;">
+                                    <div  style="height: 85%; ">
                                         <canvas id="dashboardComponentes" ></canvas>
                                     </div>
                                 </div>
@@ -410,12 +334,17 @@
                                 </svg>
 
                                 <p>FILA DE PROCESSAMENTO</p>
+                                <button type="button" class=" btn btn-link d-flex p-0 border-0" data-bs-toggle="modal" data-bs-target="#modalAmpliado"onclick="grafico = 'filaProcessos'">
+                                    <svg width="20" height="20" viewBox="0 0 14 14" fill="none"xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z" fill="#A0A0A0" />
+                                    </svg>
+                                </button>
                             </div>
                             <div style="position: relative;">
                                 <canvas id="gauge_queue"></canvas>
                             </div>
                             <div class="d-flex align-items-center justify-content-center" style="color: white; gap: 10px;">
-                                <h1>1.6</h1>
+                                <h1 id="filaValor">N/A</h1>
                             </div>
                         </div>
                     </div>
@@ -434,173 +363,12 @@
                                         <th>PID</th>
                                         <th>NOME</th>
                                         <th>CPU%</th>
-                                        <th>INSTANCIAS</th>
+                                        <th>INSTÂNCIAS</th>
+                                        <th>STATUS</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1239</td>
-                                        <td>watermark</td>
-                                        <td class="tdCenter">
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width: 91%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent critical">91%</span>
-                                            </div>
-                                        </td>
-                                        <td>3</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3651</td>
-                                        <td>h265</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width: 80%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">80%</span>
-                                            </div>
-                                        </td>
-                                        <td>10</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>4532</td>
-                                        <td>ffmpeg</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width: 50%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">50%</span>
-                                            </div>
-                                        </td>
-                                        <td>Ativo</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1235</td>
-                                        <td>nginx</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width: 31%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">31%</span>
-                                            </div>
-                                        </td>
-                                        <td>Ativo</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1679</td>
-                                        <td>thumbnail</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width: 21%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">21%</span>
-                                            </div>
-                                        </td>
-                                        <td>Ativo</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>2346</td>
-                                        <td>firefox</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width:16%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">16%</span>
-                                            </div>
-                                        </td>
-                                        <td>Ativo</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>6354</td>
-                                        <td>proxy</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width:16%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">16%</span>
-                                            </div>
-                                        </td>
-                                        <td>Ativo</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>7456</td>
-                                        <td>manes</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width: 15.5%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">15.5%</span>
-                                            </div>
-                                        </td>
-                                        <td>7856</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>4625</td>
-                                        <td>fever</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width: 10%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">10%</span>
-                                            </div>
-                                        </td>
-                                        <td>9456</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>1364</td>
-                                        <td>prolt</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width: 6%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">6%</span>
-                                            </div>
-                                        </td>
-                                        <td>Ativo</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>6458</td>
-                                        <td>fence</td>
-                                        <td>
-                                            <div class="progress-item-table">
-                                                <div class="progress-bg">
-                                                    <div class="progress-fill" style="width: 2%;">
-                                                    </div>
-                                                </div>
-                                                <span class="percent">2%</span>
-                                            </div>
-                                        </td>
-                                        <td>Ativo</td>
-                                    </tr>
+                                <tbody id="processosTbody">
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -1039,60 +807,319 @@
 
                     </div>
                 </div>
+            </div>
+</body>
+</html>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../services/api.js"></script>
+<script src="../services/serviceComponenteCpu.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script>
     
-    async function mudarCorKpi(valor, idComponente) {
-        const meuElemento = document.querySelector(`#${idComponente}`);
+  const API_BASE_URL = "http://3.223.199.1";
+    window.addEventListener('DOMContentLoaded', () => {
+        const elementoNome = document.getElementById("nome_usuario_header");
 
-        valor = parseInt(valor)
-        if(idComponente == "kpi_pico") {
-            if (valor >= 90) {
-            meuElemento.classList.add('critico');
+        if (elementoNome) {
+            const nomeSalvo = sessionStorage.getItem("NOME_USUARIO");
+            if (nomeSalvo) {
+                elementoNome.innerHTML = nomeSalvo;
+            } else {
+                elementoNome.innerHTML = "Usuário Desconhecido";
             }
-            else if (valor >= 70) {
-                meuElemento.classList.add('risco');
+        }
+    });
+
+
+    let KpiUsado, KpiLivre, KpiPico, KpiHorarioPico, KpiTemp, KpiFrequenciaAtual, KpiFrequenciaMax;
+    let KpiInformações, macAddress, ultimaColeta, nomeMaquina, processador, nucleosFisicos, nucleosLogicos;
+    let indiceFila, graficoUso, graficoMomentos, processos;
+    
+    let configDashboard, queueConfig;
+    let graficoAberto = null;
+    let grafico = ''; 
+
+    async function obterDados() {
+        // sessionStorage.setItem('MAC_ADDRESS', "00:2b:67:e7:9f:72");
+        const mac_address = sessionStorage.getItem('MAC_ADDRESS');
+        return await buscarComponenteCpuService(mac_address);
+    }
+
+    async function alinharDados() {
+        const dados = await obterDados();
+        console.log(dados);
+        
+        if (!dados) {
+            console.error('Nenhum dado retornado');
+            return false;
+        }
+        
+        const metricas = dados.dadosMaquina.metricas;
+        processos = dados.dadosMaquina.processos;
+
+        KpiUsado = metricas.kpiUso.percentualUsado;
+        KpiLivre = metricas.kpiUso.percentualLivre;
+        
+        KpiPico = metricas.kpiPico.picoHoje;
+        KpiHorarioPico = metricas.kpiPico.horarioPico;
+
+        KpiTemp = metricas.kpiTemperatura.temperaturaAtual;
+
+        KpiFrequenciaAtual = metricas.kpiFrequencia.frequenciaAtual;
+        KpiFrequenciaMax = metricas.kpiFrequencia.frequenciaMax;
+
+        KpiInformações = metricas.kpiInformacao;
+        macAddress = KpiInformações.macAddress;
+        ultimaColeta = KpiInformações.ultimaColeta;
+        nomeMaquina = KpiInformações.nomeMaquina;
+        processador = KpiInformações.processador;
+        nucleosFisicos = KpiInformações.nucleosFisicos;
+        nucleosLogicos = KpiInformações.nucleosLogicos;
+
+        indiceFila = metricas.kpiIndiceProcessosCores.indice;
+
+        graficoUso = metricas.grafico.percentualUsado;
+        graficoMomentos = metricas.grafico.momento;
+
+        return true;
+    }
+
+    async function plotarKpis() {
+        document.getElementById('porcentagemUso').innerText = `${KpiUsado}%`;
+        document.getElementById('porcentagemUsoLegenda').innerText = `${KpiUsado}%`;
+        document.getElementById('porcentagemRestante').innerText = `${KpiLivre}%`;
+        mudarCorKpi(KpiUsado, 'grafico_uso');
+
+        document.getElementById('picoValor').innerText = `${KpiPico}%`;
+        document.getElementById('picoHorario').innerText = `Registrado às ${KpiHorarioPico}`;
+        mudarCorKpi(KpiPico, 'kpi_pico');
+
+        document.getElementById('tempValor').innerText = `${KpiTemp}°C`;
+        mudarCorKpi(KpiTemp, 'kpi_temperatura');
+
+        document.getElementById('freqValor').innerText = `${KpiFrequenciaAtual} GHz`;
+        document.getElementById('freqSub').innerText = `de ${KpiFrequenciaMax} GHz máx`;
+        mudarCorKpi(KpiFrequenciaAtual, 'kpi_frequencia');
+
+        document.getElementById('filaValor').innerText = indiceFila.toFixed(1);
+        mudarCorKpi(indiceFila, 'fila_processos');
+
+        const camposInfo = [
+            ['Última Coleta', ultimaColeta],
+            ['Nome', nomeMaquina],
+            ['MAC Address', macAddress],
+            ['Processador', processador],
+            ['Núcleos Físicos', nucleosFisicos],
+            ['Núcleos Lógicos', nucleosLogicos],
+        ];
+        document.getElementById('infoContainer').innerHTML = camposInfo.map(([label, valor]) =>
+            `<div class="div-line"><label>${label}</label><span>${valor}</span></div>`
+        ).join('');
+
+        if (processos) {
+            const processosOrdenados = [...processos].sort((a, b) => b.percentualCpu - a.percentualCpu);
+
+            document.getElementById('processosTbody').innerHTML = processosOrdenados.map(p => `
+                <tr>
+                    <td>${p.pid}</td>
+                    <td>${p.nomeProcesso}</td>
+                    <td class="tdCenter">
+                        <div class="progress-item-table">
+                            <div class="progress-bg">
+                                <div class="progress-fill" style="width:${Math.min(p.percentualCpu, 100)}%;"></div>
+                            </div>
+                            <span class="percent ${p.percentualCpu >= 90 ? 'critical' : ''}">${p.percentualCpu}%</span>
+                        </div>
+                    </td>
+                    <td>${p.instancias}</td>
+                    <td>${p.status}</td>
+                </tr>
+            `).join('');
+        }
+
+        checarStatusServidor();
+    }
+
+    async function plotarGraficos() {
+        const cpu = document.getElementById('doughnut_cpu');
+        const cpuData = {
+            datasets: [{
+                data: [KpiUsado, KpiLivre],
+                backgroundColor: ['#C167C7', "#212121"],
+                borderColor: ['#C167C7', '#FFFFFF14'],
+                borderWidth: 2,
+                hoverOffset: 4
+            }]
+        };
+        
+        const cpuConfig = {
+            type: 'doughnut',
+            data: cpuData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                elements: {
+                    arc: { borderWidth: 0 }
+                }
             }
-            else {
-                meuElemento.classList.remove('risco');
-                meuElemento.classList.remove('critico');
+        };
+        new Chart(cpu, cpuConfig);
+        
+        const queue = document.getElementById('gauge_queue');
+        const valorGauge = Math.min(indiceFila, 2);
+
+        const queueData = {
+            datasets: [{
+                data: [valorGauge, 2 - valorGauge],
+                backgroundColor: ['#C167C7', "#212121"],
+                borderColor: ['#C167C7', '#FFFFFF14'],
+                borderWidth: 2
+            }]
+        };
+
+        queueConfig = {
+            type: 'doughnut',
+            data: queueData,
+            options: {
+                aspectRatio: 2,
+                circumference: 180,
+                rotation: -90,
+                cutout: '80%',
+                plugins: {
+                    legend: { display: false }
+                }
             }
-        } else if (idComponente == "kpi_temperatura") {
-            if (valor >= 85) {
-                meuElemento.classList.add('critico');
+        };
+        new Chart(queue, queueConfig);
+
+        configDashboard = {
+            type: 'line',
+            data: {
+                labels: graficoMomentos,
+                datasets: [{
+                    label: 'Uso CPU %',
+                    data: graficoUso,
+                    fill: false,
+                    borderColor: '#C167C7',
+                    backgroundColor: 'rgba(193,103,199,0.08)',
+                    borderWidth: 1.9,
+                    tension: 0.4,
+                    radius: 0,
+                    interaction: { intersect: false }
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1c1c1c',
+                        borderColor: '#333',
+                        borderWidth: 1,
+                        titleColor: '#C167C7',
+                        bodyColor: '#e8e8e8'
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: 'Horário', color: '#dddddd', font: { size: 12, weight: 'bold' } },
+                        ticks: { color: '#dddddd', maxTicksLimit: 8 },
+                        grid: { color: 'rgba(255,255,255,0.04)' }
+                    },
+                    y: {
+                        min: 0, max: 100,
+                        title: { display: true, text: 'Consumo (%)', color: '#dddddd', font: { size: 12, weight: 'bold' } },
+                        ticks: { color: '#dddddd', callback: v => v + '%' },
+                        grid: { color: 'rgba(255,255,255,0.04)' }
+                    }
+                }
             }
-            else if (valor >= 70) {
-                meuElemento.classList.add('risco');
-            }
-            else {
-                meuElemento.classList.remove('risco');
-                meuElemento.classList.remove('critico');
-            }
-        } else if (idComponente == "kpi_frequencia") {
-            
+        };
+
+        new Chart(document.getElementById('dashboardComponentes'), configDashboard);
+    }
+
+    function checarStatusServidor() {
+        if (KpiUsado >= 90 || KpiPico >= 90 || KpiTemp >= 85 || KpiFrequenciaAtual >= KpiFrequenciaMax * 0.85 || indiceFila > 1.2) {
+            document.getElementById('serverAlert').innerHTML = 'Crítico';
+            document.getElementById('serverAlert').style.color = '#FF0050';
+        } else if (KpiUsado >= 70 || KpiPico >= 70 || KpiTemp >= 70 || KpiFrequenciaAtual >= KpiFrequenciaMax * 0.7 || indiceFila > 0.8) {
+            document.getElementById('serverAlert').innerHTML = 'Risco';
+            document.getElementById('serverAlert').style.color = '#FFD700';
+        } else {
+            document.getElementById('serverAlert').innerHTML = 'Estável';
+            document.getElementById('serverAlert').style.color = '#00F2EA';
         }
     }
 
-    
+    function mudarCorKpi(valor, idComponente) {
+        const meuElemento = document.querySelector(`#${idComponente}`);
+        if (!meuElemento) return;
 
+        valor = parseFloat(valor);
+        meuElemento.classList.remove('risco', 'critico');
 
-
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</body>
-</html>
-<script src="../services/api.js"></script>
-<script src="../services/serviceComponenteCpu.js"></script>
-<script>
-    async function obterDados() {
-        sessionStorage.setItem('MAC_ADDRESS', "24:fe:9a:06:99:2f"); // REMOVER 
-        const mac_address = sessionStorage.getItem('MAC_ADDRESS');
-        const resultado = await buscarComponenteCpuService(mac_address)
-        console.log(resultado);
+        if (idComponente == "grafico_uso" || idComponente == "kpi_pico") {
+            if (valor >= 90) meuElemento.classList.add('critico');
+            else if (valor >= 70) meuElemento.classList.add('risco');
+        } 
+        else if (idComponente == "kpi_temperatura") {
+            if (valor >= 85) meuElemento.classList.add('critico');
+            else if (valor >= 70) meuElemento.classList.add('risco');
+        } 
+        else if (idComponente == "kpi_frequencia") {
+            if (valor >= KpiFrequenciaMax * 0.85) meuElemento.classList.add('critico');
+            else if (valor >= KpiFrequenciaMax * 0.7) meuElemento.classList.add('risco');
+        } 
+        else if (idComponente == "fila_processos") {
+            if (valor > 1.2) meuElemento.classList.add('critico');
+            else if (valor > 0.8) meuElemento.classList.add('risco');
+        }
     }
 
-    obterDados()
+    async function inicializarDashboard() {
+        const sucesso = await alinharDados();
+        if (sucesso) {
+            await plotarKpis();
+            await plotarGraficos();
+        }
+    }
 
-    // Lógica aqui
+    inicializarDashboard();
+
+    const ctxModal = document.getElementById('canvasGrande');
+    const modalElement = document.getElementById('modalAmpliado');
     
+    if (modalElement) {
+        modalElement.addEventListener('shown.bs.modal', function () {
+            if (graficoAberto) {
+                graficoAberto.destroy();
+            }
+
+            if (grafico == 'usoTempo' && configDashboard) {
+                document.getElementById('tituloModal').innerText = 'Linha do Tempo de Uso (Distribuição)';
+                document.getElementById('textoModal').innerHTML = `
+                    <strong>Importância:</strong> Este gráfico analisa o comportamento histórico e a constância do consumo da sua CPU ao longo do tempo. 
+                    <br><br>
+                    Ele é fundamental para identificar <strong>padrões de uso</strong>, gargalos recorrentes em horários específicos ou processos que passam longos períodos prendendo o processador.
+                `;
+                graficoAberto = new Chart(ctxModal, configDashboard);
+
+            } else if (grafico == 'filaProcessos' && queueConfig) {
+                document.getElementById('tituloModal').innerText = 'Índice de Fila de Processos';
+                document.getElementById('textoModal').innerHTML = `
+                    <strong>Fórmula do Índice:</strong> <br>
+                    <code style="background: #2b2b2b; padding: 2px 6px; color: #C167C7; border-radius: 4px;">Índice = Processos em Fila / Núcleos Lógicos</code>
+                    <br><br>
+                    <strong>Importância:</strong> Indica o nível de concorrência pelos recursos da CPU. Se for <strong>maior que 1</strong>, há mais processos aguardando execução do que núcleos disponíveis.
+                `;
+                graficoAberto = new Chart(ctxModal, queueConfig);
+            }
+        });
+    }
 </script>
