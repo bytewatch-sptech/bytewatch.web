@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
-<body style="overflow: auto;">
+<body class="dashboard-cpu-page">
     <div class="container-fluid">
-        <div class="row flex-nowrap">
+        <div class="row flex-nowrap align-items-start">
             <nav class="sidebar col-auto col-md-3 col-xl-2 d-none d-lg-flex flex-column p-3 bg-dark"
                 style="min-height: 100vh; transition: 0.3s;">
 
@@ -30,7 +30,7 @@
 
                 <ul class="nav nav-pills flex-column mb-auto gap-2">
                     <li class="nav-item">
-                        <a href="./home.html" class="nav-link active bg-success d-flex align-items-center">
+                        <a href="../home.html" class="nav-link active bg-success d-flex align-items-center">
                             <div class="icon_side d-flex align-items-center justify-content-center">
                                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +89,7 @@
 
             </nav>
 
-            <main class="col ps-md-4 pt-3">
+            <main class="col ps-md-4 pt-3 w-100 pb-5" >
                 <div class="d-flex ">
 
                     <div class="container-info-local flex-wrap justify-content-between w-100 mb-2">
@@ -232,10 +232,10 @@
                             <p style="font-size: 14px; color: #999; padding-left: 50%;">24h</p>
                         </div>
                         <div class="kpi-info">
-                            <span class="display-6 status-percent" id="picoValor" style="font-size: 40px;">N/A</span>
+                            <span class="display-6 status-percent" id="picoValor" style="font-size: 35px;">N/A</span>
                         </div>
                         <div class="d-flex justify-content-center" style="font-size: 14px; color: #999;">
-                            <span id="picoHorario">Registrado às N/A</span>
+                            <span class="pb-3" id="picoHorario">Registrado às N/A</span>
                         </div>
                     </div>
                     <div class="card-kpi child-3 p-3" id="kpi_temperatura">
@@ -246,7 +246,7 @@
                             <p class="card-title kpi-titles">TEMPERATURA</p>
                         </div>
                         <div class="kpi-info">
-                            <span class="display-6 status-percent" id="tempValor" style="font-size: 40px;">N/A</span>
+                            <span class="display-6 status-percent" id="tempValor" style="font-size: 35px;">N/A</span>
                         </div>
                     </div>
                     <div class="card-kpi child-4 p-3" id="kpi_frequencia">
@@ -257,57 +257,57 @@
                             <p class="card-title kpi-titles">FREQUÊNCIA</p>
                         </div>
                         <div class="kpi-info">
-                            <span class="display-6 status-percent" id="freqValor" style="font-size: 40px;">N/A</span>
+                            <span class="display-6 status-percent" id="freqValor" style="font-size: 35px;">N/A</span>
                         </div>
                         <div class="d-flex justify-content-center" style="font-size: 14px; color: #999;">
-                            <span id="freqSub">de N/A GHz máx</span>
+                            <span class="pb-3" id="freqSub">de N/A GHz máx</span>
                         </div>
                     </div>
                     <div class="information-container child-5" id="informacoes">
-                                    <h1>Informações</h1>
-                                    <div id="infoContainer">
-                                        <div class="div-line">
-                                            <label>Última Coleta</label>
-                                            <span>N/A</span>
-                                        </div>
-                                        <div class="div-line">
-                                            <label>Nome</label>
-                                            <span>N/A</span>
-                                        </div>
-                                        <div class="div-line">
-                                            <label>Processador</label>
-                                            <span>N/A</span>
-                                        </div>
-                                        <div class="div-line">
-                                            <label>MAC Address</label>
-                                            <span>N/A</span>
-                                        </div>
-                                        <div class="div-line">
-                                            <label>Núcleos Físicos</label>
-                                            <span>N/A</span>
-                                        </div>
-                                        <div class="div-line">
-                                            <label>Núcleos Lógicos</label>
-                                            <span>N/A</span>
-                                        </div>
-                                    </div>
-                                </div>
+                    <h1>Informações</h1>
+                        <div id="infoContainer">
+                            <div class="div-line">
+                                <label>Última Coleta</label>
+                                <span>N/A</span>
+                            </div>
+                            <div class="div-line">
+                                <label>Nome</label>
+                                <span>N/A</span>
+                            </div>
+                            <div class="div-line">
+                                <label>Processador</label>
+                                <span>N/A</span>
+                            </div>
+                            <div class="div-line">
+                                <label>MAC Address</label>
+                                <span>N/A</span>
+                            </div>
+                            <div class="div-line">
+                                <label>Núcleos Físicos</label>
+                                <span>N/A</span>
+                            </div>
+                            <div class="div-line">
+                                <label>Núcleos Lógicos</label>
+                                <span>N/A</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-kpi child-6 p-3" id="distribuicao">
-                                    <div class="d-flex align-items-start justify-content-start" style="color: white; gap: 10px;">
-                                        <svg width="20" height="20" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M15 0H1C0.45 0 0 0.45 0 1V13C0 13.55 0.45 14 1 14H15C15.55 14 16 13.55 16 13V1C16 0.45 15.55 0 15 0ZM15.02 5.85L13.02 8.85C12.79 9.2 12.21 9.2 11.98 8.85L9.5 5.13L6.02 10.35C5.79 10.7 5.21 10.7 4.98 10.35L3.5 8.13L2.02 10.35C1.9 10.53 1.7 10.62 1.5 10.62C1.38 10.62 1.26 10.59 1.15 10.52C1.08163 10.4741 1.02298 10.4152 0.977419 10.3466C0.931857 10.278 0.900276 10.2011 0.884484 10.1203C0.868692 10.0395 0.869 9.95632 0.885391 9.87562C0.901781 9.79492 0.933931 9.71825 0.98 9.65L2.98 6.65C3.21 6.3 3.79 6.3 4.02 6.65L5.5 8.87L8.98 3.65C9.21 3.3 9.79 3.3 10.02 3.65L12.5 7.37L13.98 5.15C14.17 4.86 14.56 4.78 14.85 4.98C15.13 5.17 15.21 5.56 15.02 5.85Z" fill="#C167C7"/>
-                                        </svg>
-                                        <p class="card-title kpi-titles">DISTRIBUIÇÃO DE USO</p>
-                                        <button type="button" class=" btn btn-link d-flex p-0 border-0" data-bs-toggle="modal" data-bs-target="#modalAmpliado"onclick="grafico = 'usoTempo'">
-                                            <svg width="20" height="20" viewBox="0 0 14 14" fill="none"xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z" fill="#A0A0A0" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    <div style="height: 85%;">
-                                        <canvas id="dashboardComponentes"></canvas>
-                                    </div>
-                                </div>
+                        <div class="d-flex align-items-start justify-content-start" style="color: white; gap: 10px;">
+                            <svg width="20" height="20" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 0H1C0.45 0 0 0.45 0 1V13C0 13.55 0.45 14 1 14H15C15.55 14 16 13.55 16 13V1C16 0.45 15.55 0 15 0ZM15.02 5.85L13.02 8.85C12.79 9.2 12.21 9.2 11.98 8.85L9.5 5.13L6.02 10.35C5.79 10.7 5.21 10.7 4.98 10.35L3.5 8.13L2.02 10.35C1.9 10.53 1.7 10.62 1.5 10.62C1.38 10.62 1.26 10.59 1.15 10.52C1.08163 10.4741 1.02298 10.4152 0.977419 10.3466C0.931857 10.278 0.900276 10.2011 0.884484 10.1203C0.868692 10.0395 0.869 9.95632 0.885391 9.87562C0.901781 9.79492 0.933931 9.71825 0.98 9.65L2.98 6.65C3.21 6.3 3.79 6.3 4.02 6.65L5.5 8.87L8.98 3.65C9.21 3.3 9.79 3.3 10.02 3.65L12.5 7.37L13.98 5.15C14.17 4.86 14.56 4.78 14.85 4.98C15.13 5.17 15.21 5.56 15.02 5.85Z" fill="#C167C7"/>
+                            </svg>
+                            <p class="card-title kpi-titles">DISTRIBUIÇÃO DE USO</p>
+                            <button type="button" class=" btn btn-link d-flex p-0 border-0" data-bs-toggle="modal" data-bs-target="#modalAmpliado"onclick="grafico = 'usoTempo'">
+                                <svg width="20" height="20" viewBox="0 0 14 14" fill="none"xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.41624 9.74933C7.52785 9.63733 7.58366 9.49869 7.58366 9.33341V7.00008C7.58366 6.8348 7.52766 6.69636 7.41566 6.58475C7.30366 6.47314 7.16521 6.41714 7.00033 6.41675C6.83544 6.41636 6.69699 6.47236 6.58499 6.58475C6.47299 6.69714 6.41699 6.83558 6.41699 7.00008V9.33341C6.41699 9.49869 6.47299 9.63733 6.58499 9.74933C6.69699 9.86133 6.83544 9.91714 7.00033 9.91675C7.16521 9.91636 7.30385 9.86094 7.41624 9.74933ZM7.41624 5.08208C7.52785 4.97047 7.58366 4.83203 7.58366 4.66675C7.58366 4.50147 7.52766 4.36303 7.41566 4.25141C7.30366 4.1398 7.16521 4.0838 7.00033 4.08341C6.83544 4.08303 6.69699 4.13903 6.58499 4.25141C6.47299 4.3638 6.41699 4.50225 6.41699 4.66675C6.41699 4.83125 6.47299 4.96989 6.58499 5.08266C6.69699 5.19544 6.83544 5.25125 7.00033 5.25008C7.16521 5.24891 7.30385 5.19291 7.41624 5.08208ZM7.00033 12.8334C6.19338 12.8334 5.43505 12.6802 4.72533 12.3737C4.0156 12.0673 3.39824 11.6518 2.87324 11.1272C2.34824 10.6026 1.93272 9.98519 1.62666 9.27508C1.3206 8.56497 1.16738 7.80664 1.16699 7.00008C1.1666 6.19353 1.31983 5.43519 1.62666 4.72508C1.93349 4.01497 2.34902 3.39761 2.87324 2.873C3.39747 2.34839 4.01483 1.93286 4.72533 1.62641C5.43583 1.31997 6.19416 1.16675 7.00033 1.16675C7.80649 1.16675 8.56483 1.31997 9.27533 1.62641C9.98583 1.93286 10.6032 2.34839 11.1274 2.873C11.6516 3.39761 12.0674 4.01497 12.3746 4.72508C12.6818 5.43519 12.8348 6.19353 12.8337 7.00008C12.8325 7.80664 12.6793 8.56497 12.374 9.27508C12.0687 9.98519 11.6532 10.6026 11.1274 11.1272C10.6016 11.6518 9.98427 12.0675 9.27533 12.3743C8.56638 12.6812 7.80805 12.8342 7.00033 12.8334Z" fill="#A0A0A0" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div style="height: 85%;">
+                            <canvas id="dashboardComponentes"></canvas>
+                        </div>
+                    </div>
                     <div class="card-kpi px-4 py-3 child-7" id="fila_processos">
                         <div style="height: 100%;" class="column align-items-center flex-nowrap gap-2">
                             <div class="kpi-titles d-flex column align-items-start gap-2"" >
@@ -979,6 +979,9 @@
         };
         new Chart(queue, queueConfig);
 
+        const limiteRisco = Array(graficoMomentos.length).fill(70);
+        const limiteCritico = Array(graficoMomentos.length).fill(90);
+
         configDashboard = {
             type: 'line',
             data: {
@@ -995,7 +998,7 @@
                     interaction: { intersect: false }
                 },{
                     label: 'Limite Risco',
-                    data: [70, 70, 70, 70, 70, 70, 70],
+                    data: limiteRisco,
                     fill: false,
                     borderColor: 'rgba(255, 213, 0, 0.9)',
                     borderWidth: 1.5,
@@ -1008,7 +1011,7 @@
                 },
                 {
                     label: 'Limite Crítico',
-                    data: [90, 90, 90, 90, 90, 90, 90],
+                    data: limiteCritico,
                     fill: false,
                     borderColor: 'rgba(255, 0, 31, 0.9)',
                     borderWidth: 1.5,
