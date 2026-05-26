@@ -310,10 +310,24 @@
     Chart.defaults.font.family = "'Inter', sans-serif";
 
     var dadosDoDashboard = null;
+    var dadosS3 = null;
     var analistasUnicos = [];
 
     let filtroAnalistaAtual = '';
     let filtroMacAtual = '';
+
+    async function carregarDadosS3() {
+        try {
+            var resposta = await fetch('http://localhost:3333/dashboard/equipe');
+            if (resposta.ok) {
+                var json = await resposta.json();
+                dadosS3 = json;
+                plotarGraficoProporcao();
+            }
+        } catch (erro) {
+            console.error("Erro ao buscar dados do S3:", erro);
+        }
+    }
 
     async function carregarDadosJira() {
         var fkEmpresa = sessionStorage.getItem("ID_EMPRESA") || 1;
@@ -375,7 +389,7 @@
                     kpiMttr.innerHTML = `${dadosJira.mttr} <span class="fs-6 text-secondary fw-normal">min</span>`;
                 }
 
-                plotarGraficoProporcao(dadosJira.graficoBarras.alertas, dadosJira.graficoBarras.incidentes);
+                plotarGraficoProporcao();
                 preencherTabelaAlertas(dadosJira.incidentes);
                 await montarDropdownServidores(dadosJira.incidentes);
 
@@ -389,7 +403,28 @@
 
     var graficoProporcaoInstancia = null;
 
-    function plotarGraficoProporcao(alertas, incidentes) {
+    var graficoProporcaoInstancia = null;
+
+    function plotarGraficoProporcao() {
+        if (dadosS3 == null) {
+            return;
+        }
+
+        var dadosGrafico = null;
+        if (filtroMacAtual == '') {
+            dadosGrafico = dadosS3.geral;
+        } else {
+            if (dadosS3.por_servidor[filtroMacAtual] != null) {
+                dadosGrafico = dadosS3.por_servidor[filtroMacAtual];
+            } else {
+                dadosGrafico = dadosS3.geral;
+            }
+        }
+
+        var categorias = dadosGrafico.categorias;
+        var alertasTratados = dadosGrafico.series[0].dados;
+        var alertasCriticos = dadosGrafico.series[1].dados;
+
         var contextoProporcao = document.getElementById('graficoProporcao').getContext('2d');
 
         if (graficoProporcaoInstancia) {
@@ -399,18 +434,18 @@
         graficoProporcaoInstancia = new Chart(contextoProporcao, {
             type: 'bar',
             data: {
-                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                labels: categorias,
                 datasets: [
                     {
                         label: 'Alertas Tratados',
-                        data: alertas,
+                        data: alertasTratados,
                         backgroundColor: '#FFD600',
                         borderRadius: 4,
                         barPercentage: 0.4
                     },
                     {
                         label: 'Alertas Críticos',
-                        data: incidentes,
+                        data: alertasCriticos,
                         backgroundColor: '#FF2D56',
                         borderRadius: 4,
                         barPercentage: 0.4
@@ -429,7 +464,6 @@
                     y: {
                         stacked: true,
                         min: 0,
-                        // max: 100,
                         ticks: { stepSize: 10, color: '#8A92A6' },
                         grid: {
                             color: 'rgba(255, 255, 255, 0.05)',
@@ -460,27 +494,39 @@
 
         if (modalBarras) {
             modalBarras.addEventListener('shown.bs.modal', function () {
+                if (dadosS3 == null) {
+                    return;
+                }
                 var contextoExpandido = document.getElementById('graficoBarrasExpandido').getContext('2d');
 
                 if (instanciaGraficoExpandido) {
                     instanciaGraficoExpandido.destroy();
                 }
 
+                var dadosGraficoModal = null;
+                if (filtroMacAtual == '') {
+                    dadosGraficoModal = dadosS3.geral;
+                } else if (dadosS3.por_servidor[filtroMacAtual] != null) {
+                    dadosGraficoModal = dadosS3.por_servidor[filtroMacAtual];
+                } else {
+                    dadosGraficoModal = dadosS3.geral;
+                }
+
                 instanciaGraficoExpandido = new Chart(contextoExpandido, {
                     type: 'bar',
                     data: {
-                        labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                        labels: dadosGraficoModal.categorias,
                         datasets: [
                             {
                                 label: 'Alertas Tratados',
-                                data: dadosDoDashboard.graficoBarras.alertas,
+                                data: dadosGraficoModal.series[0].dados,
                                 backgroundColor: '#FFD600',
                                 borderRadius: 5,
                                 barPercentage: 0.5
                             },
                             {
                                 label: 'Incidentes Reais',
-                                data: dadosDoDashboard.graficoBarras.incidentes,
+                                data: dadosGraficoModal.series[1].dados,
                                 backgroundColor: '#FF2D56',
                                 borderRadius: 5,
                                 barPercentage: 0.5
@@ -831,9 +877,12 @@
         var kpiMttr = document.getElementById('kpi_mttr');
         if (kpiMttr) kpiMttr.innerHTML = `${dados.mttr} <span class="fs-6 text-secondary fw-normal">min</span>`;
 
-        plotarGraficoProporcao(dados.graficoBarras.alertas, dados.graficoBarras.incidentes);
+        plotarGraficoProporcao();
         preencherTabelaAlertas(dados.incidentes);
     }
 
-    window.addEventListener('DOMContentLoaded', carregarDadosJira);
+    window.addEventListener('DOMContentLoaded', function () {
+        carregarDadosS3();
+        carregarDadosJira();
+    });
 </script>
