@@ -23,6 +23,10 @@ router.get("/listar-servidores/:id_empresa", (req, res) => {
   servidorController.listarServidores(req, res)
 })
 
+router.get("/listarServidoresAnalista/:idEmpresa/:idUsuario", (req, res) => {
+  servidorController.listarServidoresAnalista(req, res);
+});
+
 router.delete("/remover-servidor/:id_servidor", (req, res) => {
   servidorController.removerServidor(req, res)
 })
