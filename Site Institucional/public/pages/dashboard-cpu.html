@@ -820,21 +820,24 @@
     let grafico = ''; 
 
     async function obterDados() {
-        // sessionStorage.setItem('MAC_ADDRESS', "00:2b:67:e7:9f:72");
+        // sessionStorage.setItem('MAC_ADDRESS', "e2-0a-f6-64-a3-b5");
         const mac_address = sessionStorage.getItem('MAC_ADDRESS');
         return await buscarComponenteCpuService(mac_address);
     }
 
     async function alinharDados() {
         const dados = await obterDados();
+
+        console.log("Dados recebidos:");
         console.log(dados);
+
         
         if (!dados) {
             console.error('Nenhum dado retornado');
             return false;
         }
-        
-        const metricas = dados.dadosMaquina.metricas;
+
+        metricas = dados.dadosMaquina.metricas;
         processos = dados.dadosMaquina.processos;
 
         KpiUsado = metricas.kpiUso.percentualUsado;
@@ -990,7 +993,33 @@
                     tension: 0.4,
                     radius: 0,
                     interaction: { intersect: false }
-                }]
+                },{
+                    label: 'Limite Risco',
+                    data: [70, 70, 70, 70, 70, 70, 70],
+                    fill: false,
+                    borderColor: 'rgba(255, 213, 0, 0.9)',
+                    borderWidth: 1.5,
+                    borderDash: [5, 5],
+                    tension: 0.3,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                },
+                {
+                    label: 'Limite Crítico',
+                    data: [90, 90, 90, 90, 90, 90, 90],
+                    fill: false,
+                    borderColor: 'rgba(255, 0, 31, 0.9)',
+                    borderWidth: 1.5,
+                    borderDash: [5, 5],
+                    tension: 0.3,
+                    interaction: {
+                        intersect: false
+                    },
+                    radius: 0,
+                }
+            ]
             },
             options: {
                 responsive: true,
