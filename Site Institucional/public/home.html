@@ -1326,6 +1326,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                         borderWidth: 2
                     },
                     {
+                        label: 'Servidores Risco',
+                        data: [],
+                        backgroundColor: 'rgba(255, 204, 0, 0.2)',
+                        borderColor: '#ffcc00',
+                        borderWidth: 2,
+                        borderDash: [6, 4]
+                    },
+                    {
                         label: 'Servidores Critícos',
                         data: [],
                         backgroundColor: 'rgba(255, 59, 48, 0.2)',
@@ -1396,6 +1404,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     console.log("Dados recebidos da API", dados)
 
                     const bolhasEstaveis = []
+                    const bolhasRisco = []
                     const bolhasCriticas = []
 
                     let totalCriticosAgora = 0;
@@ -1463,6 +1472,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                             if (statusMap === 'CRITICO') {
                                 statusLabel = 'CRÍTICO'
+
                             } else if (statusMap === 'RISCO') {
                                 statusLabel = 'RISCO'
                             }
@@ -1499,8 +1509,11 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                     nome: nomeServidor
                                 };
 
-                                if (status_servidor.toLowerCase() === 'critico') {
+                                const statusMap = status_servidor.toUpperCase();
+                                if (statusMap === 'CRITICO') {
                                     bolhasCriticas.push(pontosBolha);
+                                } else if (statusMap === 'RISCO') {
+                                    bolhasRisco.push(pontosBolha);
                                 } else {
                                     bolhasEstaveis.push(pontosBolha);
                                 }
@@ -1536,7 +1549,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     });
 
                     matrizChart.data.datasets[0].data = bolhasEstaveis;
-                    matrizChart.data.datasets[1].data = bolhasCriticas;
+                    matrizChart.data.datasets[1].data = bolhasRisco;
+                    matrizChart.data.datasets[2].data = bolhasCriticas;
                     matrizChart.update();
 
 
@@ -1818,7 +1832,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                 series: [
                     { name: 'Servidores Estáveis', type: 'scatter', coordinateSystem: 'geo', symbolSize: 8, itemStyle: { color: '#00f0ff', shadowBlur: 6, shadowColor: '#00f0ff' }, data: [] },
-                    { name: 'Servidores Instáveis', type: 'effectScatter', coordinateSystem: 'geo', symbolSize: 10, rippleEffect: { brushType: 'stroke', scale: 3, period: 4 }, itemStyle: { color: '#ffcc00', shadowBlur: 8, shadowColor: '#ffcc00' }, data: []},
+                    { name: 'Servidores Instáveis', type: 'effectScatter', coordinateSystem: 'geo', symbolSize: 10, rippleEffect: { brushType: 'stroke', scale: 3, period: 4 }, itemStyle: { color: '#ffcc00', shadowBlur: 8, shadowColor: '#ffcc00' }, data: [] },
                     { name: 'Servidores Instáveis', type: 'effectScatter', coordinateSystem: 'geo', symbolSize: 12, rippleEffect: { brushType: 'stroke', scale: 5, period: 3 }, itemStyle: { color: '#ff3b30', shadowBlur: 10, shadowColor: '#ff3b30' }, data: [] },
                 ]
 
