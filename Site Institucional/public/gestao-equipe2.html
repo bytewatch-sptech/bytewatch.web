@@ -411,30 +411,41 @@
 
     var graficoProporcaoInstancia = null;
 
-    var graficoProporcaoInstancia = null;
-
     function plotarGraficoProporcao() {
-        if (dadosS3 == null) {
-            return;
-        }
+        if (dadosS3 == null) return;
 
-        var dadosGrafico = null;
-        if (filtroMacAtual == '') {
-            dadosGrafico = dadosS3.geral;
-        } else {
-            if (dadosS3.por_servidor[filtroMacAtual] != null) {
-                dadosGrafico = dadosS3.por_servidor[filtroMacAtual];
-            } else {
-                dadosGrafico = dadosS3.geral;
-            }
-        }
+        var dadosGrafico = (filtroMacAtual !== '' && dadosS3.por_servidor[filtroMacAtual])
+            ? dadosS3.por_servidor[filtroMacAtual]
+            : dadosS3.geral;
 
         var categorias = dadosGrafico.categorias;
         var alertasTratados = dadosGrafico.series[0].dados;
         var alertasCriticos = dadosGrafico.series[1].dados;
 
+        const hoje = new Date();
+        const inicioDaSemana = new Date(hoje);
+        inicioDaSemana.setDate(hoje.getDate() - hoje.getDay());
+        inicioDaSemana.setHours(0, 0, 0, 0);
 
-        var contextoProporcao = document.getElementById('graficoProporcao').getContext('2d');
+        var categoriasFiltradas = [];
+        var tratadosFiltrados = [];
+        var criticosFiltradas = [];
+
+
+        for (var i = 0; i < categorias.length; i++) {
+            var dataItem = new Date(categorias[i]);
+
+            if (dataItem >= inicioDaSemana) {
+                categoriasFiltradas.push(categorias[i]);
+                tratadosFiltrados.push(alertasTratados[i]);
+                criticosFiltradas.push(alertasCriticos[i]);
+            }
+        }
+
+        var canvas = document.getElementById('graficoProporcao');
+        if (!canvas) return;
+
+        var contextoProporcao = canvas.getContext('2d');
 
         if (graficoProporcaoInstancia) {
             graficoProporcaoInstancia.destroy();
@@ -443,18 +454,18 @@
         graficoProporcaoInstancia = new Chart(contextoProporcao, {
             type: 'bar',
             data: {
-                labels: categorias,
+                labels: categoriasFiltradas,
                 datasets: [
                     {
                         label: 'Alertas Tratados',
-                        data: alertasTratados,
+                        data: tratadosFiltrados,
                         backgroundColor: '#FFD600',
                         borderRadius: 4,
                         barPercentage: 0.4
                     },
                     {
                         label: 'Alertas Críticos',
-                        data: alertasCriticos,
+                        data: criticosFiltradas,
                         backgroundColor: '#FF2D56',
                         borderRadius: 4,
                         barPercentage: 0.4
