@@ -1,7 +1,7 @@
     body {
         background: #0d0d0d;
         color: #e6edf3;
-        font-family: 'Aerial', sans-serif;  
+        font-family: 'Aerial', sans-serif;
         overflow-x: hidden;
     }
 
@@ -57,21 +57,6 @@
         padding: 4px 8px;
         border-radius: 6px;
         font-size: 12px;
-    }
-
-    .critico {
-        background: #7f1d1d;
-        color: #fff;
-    }
-
-    .atencao {
-        background: #78350f;
-        color: #fff;
-    }
-
-    .info {
-        background: #1e3a8a;
-        color: #fff;
     }
 
     .gauge {
@@ -132,7 +117,20 @@
         box-shadow: 0px 0px 10px 1px red
     }
 
+    .ranking-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
 
+    .alert-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 8px 0;
+    }
 
     /* #gaugePicoRAM {
         width: 320px !important;
