@@ -13,3 +13,4 @@ async function buscarComponenteCpuService(mac_address){
         return null;
     }
 }
+ 

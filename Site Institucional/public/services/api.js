@@ -56,5 +56,6 @@ class Api {
 }
 
 const url = "http://localhost:3333"
+// const url = "./"
 
 const api = new Api(url)
