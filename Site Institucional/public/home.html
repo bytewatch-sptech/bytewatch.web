@@ -1506,7 +1506,6 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     matrizChart.data.datasets[1].data = bolhasCriticas;
                     matrizChart.update();
                    
-                    const sinal = variacao > 0 ? "+" : "";
 
                     const qtdCriticos = dados.resumo_global.servidores_criticos
                     const totalServidores = dados.resumo_global.total_servidores
@@ -1780,6 +1779,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 const corRam = descobrirStatusComponente(ram).cor;
                 const corDisco = descobrirStatusComponente(disco).cor;
 
+                
+
                 console.log(borda + 'a' + cor)
                 conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
                                                     <div class="card h-100 cartao-servidor borda-${borda}">
@@ -1851,7 +1852,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
 
             }
-            document.getElementById("kpiMaquinasRisco").innerHTML = qtdMaquinasEmRisco;
+            document.getElementById("kpiMaquinasRisco").innerHTML = totalCriticosAgora;
             document.getElementById("kpiComponentesRisco").innerHTML = qtdComponentesEmRisco;
 
             document.getElementById("servidoresAlerta").innerHTML = conteudoCards;
