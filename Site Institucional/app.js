@@ -32,6 +32,9 @@ var analistaRouter = require("./src/routes/analista");
 var jiraRouter = require("./src/routes/jira");
 var relatorioRouter = require("./src/routes/relatorio");
 
+// var alertaGestorRouter = require("./src/routes/alertaGestorController");
+var alertaGestorRouter = require("./src/controllers/alertaGestorController");
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -48,6 +51,7 @@ app.use("/empresas", empresasRouter);
 app.use("/analista", analistaRouter);
 app.use("/jira", jiraRouter);
 app.use("/relatorios", relatorioRouter);
+app.use("/", alertaGestorRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
