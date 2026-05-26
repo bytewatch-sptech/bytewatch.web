@@ -557,6 +557,12 @@ body {
   color: #151515;
 }
 
+.btn-componente.critico {
+  border-color: #ba0c46;
+}
+.btn-componente.risco {
+  border-color: #ffd600;
+}
 .btn-componente.estavel {
   border-color: #00f2ea;
 }

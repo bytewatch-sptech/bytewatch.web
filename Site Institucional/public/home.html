@@ -212,7 +212,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         </div>
                                                         <p class="text-secondary mb-1 texto-pequeno">Máquinas Críticas
                                                         </p>
-                                                        <h3 class="text-white fw-bold mb-0" id="kpiMaquinasRisco">3</h3>
+                                                        <h3 class="text-white fw-bold mb-0" id="kpiMaquinasRisco"></h3>
                                                     </div>
 
 
@@ -263,6 +263,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                                             <div class="col-md-4 d-flex flex-column">
                                                 <div class="card-mapa d-flex flex-column flex-fill w-100 p-2">
+                                                    <span class="text-white mb-2 fw-semibold">Localização</span>
                                                     <div id="mapa" class="flex-fill w-100 h-100"></div>
                                                 </div>
                                             </div>
@@ -1296,6 +1297,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 ctx.font = '9px Arial'
                 ctx.fillStyle = 'white'
                 ctx.textBaseline = 'middle'
+                ctx.textAlign = 'center'
 
                 chart.data.datasets.forEach((dataset, i) => {
                     const meta = chart.getDatasetMeta(i)
@@ -1339,7 +1341,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     tooltip: {
                         callbacks: {
                             label: function (context) {
-                                return `Risco: ${context.raw.valor} | CPU/RAM: ${context.raw.x}% | Latência: ${context.raw.y}ms`
+                                
+                                return `Nome: ${context.raw.nome} | Risco: ${context.raw.valor} | CPU/RAM: ${context.raw.x}% `
                             }
                         }
                     }
@@ -1387,16 +1390,29 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 if (resposta.ok) {
                     const dados = await resposta.json()
                     console.log("Dados recebidos da API", dados)
-
-                    const novosEstaveis = [];
-                    const novosInstaveis = [];
-
+                    
                     const bolhasEstaveis = []
                     const bolhasCriticas = []
-
+                    
                     let totalCriticosAgora = 0;
                     let totalCriticos24hAtras = 0;
-
+                    
+                    const prioridadeStatus = { 'critico': 3, 'risco': 2, 'estavel': 1 };
+                    
+                    dados.servidores.sort((a, b) => {
+                        
+                        const statusA = a.dados_tempo_real ? a.dados_tempo_real.status_servidor.toLowerCase() : '';
+                        const statusB = b.dados_tempo_real ? b.dados_tempo_real.status_servidor.toLowerCase() : '';
+                        
+                        
+                        const pesoA = prioridadeStatus[statusA] || 0;
+                        const pesoB = prioridadeStatus[statusB] || 0;
+                        return pesoB - pesoA;
+                    });
+                    
+                                        const novosEstaveis = [];
+                                        const novosInstaveis = [];
+                    
                     let servidorMaisPropenso = "Nenhuma previsão";
                     let menorTempoMinutos = 999999;
 
@@ -1408,6 +1424,11 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             renderizarServidorTela(servidor);
 
                             const status_servidor = servidor.dados_tempo_real.status_servidor;
+
+                            if (status_servidor.toLowerCase() === 'critico') {
+                                totalCriticosAgora++
+                            }
+
                             let nome = servidor.dados_tempo_real.nome;
                             const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords;
                             const regiao = servidor.dados_tempo_real.regiao;
@@ -1415,14 +1436,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             const macAddress = servidor.dados_tempo_real.macAddress;
 
                             console.log("mapa mac", macAddress);
-                            
+
 
                             const resultado = await ObterNomeServidor(macAddress)
                             const nomeServidor = resultado[0].nome_servidor
                             nome = nomeServidor
 
                             console.log("nome", nome);
-                            
+
 
                             const endereco_ip = servidor.endereco_ip;
                             console.log("endereco ip: ", endereco_ip);
@@ -1457,7 +1478,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                     x: parseFloat(matriz.x.toFixed(1)),
                                     y: parseFloat(matriz.y.toFixed(1)),
                                     valor: Math.round(matriz.tamanho_bolha),
-                                    r: Math.max(6, Math.round(matriz.tamanho_bolha / 5))
+                                    r: Math.max(6, Math.round(matriz.tamanho_bolha / 5)),
+                                    nome: nomeServidor
                                 };
 
                                 if (status_servidor.toLowerCase() === 'critico') {
@@ -1498,13 +1520,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     matrizChart.data.datasets[0].data = bolhasEstaveis;
                     matrizChart.data.datasets[1].data = bolhasCriticas;
                     matrizChart.update();
-                    let variacao = 0;
-                    if (totalCriticos24hAtras > 0) {
-                        variacao = Math.round(((totalCriticosAgora - totalCriticos24hAtras) / totalCriticos24hAtras) * 100);
-                    } else if (totalCriticosAgora > 0) {
-                        variacao = 100;
-                    }
-                    const sinal = variacao > 0 ? "+" : "";
+
 
                     const qtdCriticos = dados.resumo_global.servidores_criticos
                     const totalServidores = dados.resumo_global.total_servidores
@@ -1512,7 +1528,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     document.getElementById('kpiServidorPropenso').innerText = servidorMaisPropenso;
 
                     console.log("qtd critícos:", qtdCriticos, "total sevidores:", totalServidores)
-                    document.getElementById('kpiMaquinasRisco').innerText = qtdCriticos;
+                    document.getElementById('kpiMaquinasRisco').innerText = totalCriticosAgora;
                     console.log("Total de servidores em estado crítico:", qtdCriticos);
                     console.log("Servidor mapeado com maior propensão a falhas:", servidorMaisPropenso);
                 } else {
@@ -1579,7 +1595,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
             )
 
             cardServidor = `
-        <tr class="linha-servidor servidor-estavel" data-status="${status_servidor}">
+        <tr class="linha-servidor servidor-${status_servidor}" data-status="${status_servidor}">
                                                         <td><span class="status-dot ${status_servidor}"></span></td>
                                                         <td>
                                                             <div class="flex-column d-flex">
@@ -1628,7 +1644,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                     </div>
 
                                                     <div class="progress-track ${cpu_status_ui}">
-                                                        <div class="progress-fill ${cpu_status_ui}% style="width: ${cpu_uso};">
+                                                        <div class="progress-fill ${cpu_status_ui}" style="width: ${cpu_uso}%;">
                                                         </div>
                                                     </div>
 
@@ -1778,6 +1794,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 const corRam = descobrirStatusComponente(ram).cor;
                 const corDisco = descobrirStatusComponente(disco).cor;
 
+
+
                 console.log(borda + 'a' + cor)
                 conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
                                                     <div class="card h-100 cartao-servidor borda-${borda}">
@@ -1849,7 +1867,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
 
             }
-            document.getElementById("kpiMaquinasRisco").innerHTML = qtdMaquinasEmRisco;
+            document.getElementById("kpiMaquinasRisco").innerHTML = totalCriticosAgora;
             document.getElementById("kpiComponentesRisco").innerHTML = qtdComponentesEmRisco;
 
             document.getElementById("servidoresAlerta").innerHTML = conteudoCards;
