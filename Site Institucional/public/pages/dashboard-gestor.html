@@ -388,7 +388,7 @@
             const estimativaAteHoje = custoEsperado * dias
 
             var status = "Dentro do esperado"
-            var cor = "green"
+            var cor = "white"
             var corProg = "green"
 
             const diferenca = custoAtual - estimativaAteHoje;
@@ -402,33 +402,44 @@
                 cor = "green"
             }
 
-            if (progresso > 80) {
+            if (progresso > 20) {
                 corProg = "red"
             } else {
                 corProg = "green"
             }
 
-            document.getElementById("custoAtual").innerText =
-                `R$ ${custoAtual.toFixed(2)}`;
-
+            // kpi numero 1 ////////////////////////////////////////////
             document.getElementById("custoMes").innerText =
                 `R$ ${custoMes.toFixed(2)}`;
-
+            
+            document.getElementById("progressoMes").style.color = corProg;
+            
             document.getElementById("progressoMes").innerText =
                 `${progresso.toFixed(1)}%`;
 
-            document.getElementById("progressoMes").style.color = corProg;
+            ///////////////////////////////////////////////////////////
+                
+                
+            // kpi numero 2 ///////////////////////////////////////////
+            document.getElementById("custoAtual").innerText =
+                `R$ ${custoAtual.toFixed(2)}`;
 
             document.getElementById("statusCusto").innerText =
                 `${percentual.toFixed(1)}% ${status}`;
 
             document.getElementById("statusCusto").style.color = cor;
 
+            ///////////////////////////////////////////////////////////
+
+
+            // kpi numero 3 ///////////////////////////////////////////
             document.getElementById("custoDia").innerText =
                 `R$ ${custoDia.toFixed(2)}`;
 
             document.getElementById("infoDia").innerText =
                 `Dias decorrido: ${dias}`
+
+            ///////////////////////////////////////////////////////////
 
 
             //Pegando os dados do Ranking de consumo de RAM
