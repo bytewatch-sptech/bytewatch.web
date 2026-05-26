@@ -576,7 +576,9 @@
 
         function agruparGeradosPorHora(incidentesDoJira) {
             const contagemGerados = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            const limite24h = new Date(Date.now() - (24 * 60 * 60 * 1000));
+
+            const inicioDoDia = new Date();
+            inicioDoDia.setHours(0, 0, 0, 0);
 
             for (let i = 0; i < incidentesDoJira.length; i++) {
                 const chamado = incidentesDoJira[i];
@@ -584,7 +586,7 @@
                 if (chamado.criadoEm) {
                     const dataCriacao = new Date(chamado.criadoEm);
 
-                    if (dataCriacao >= limite24h) {
+                    if (dataCriacao >= inicioDoDia) {
                         const hora = dataCriacao.getHours();
                         const index = Math.floor(hora / 2);
                         contagemGerados[index]++;
@@ -597,7 +599,11 @@
 
         function agruparResolvidosPorHora(incidentesDoJira) {
             const contagemResolvidos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            const limite24h = new Date(Date.now() - (24 * 60 * 60 * 1000));
+
+            // 👇 AJUSTE AQUI: Define o limite exatamente para a 00:00 de hoje
+            const inicioDoDia = new Date();
+            inicioDoDia.setHours(0, 0, 0, 0);
+
             const chamadosResolvidos = [];
 
             for (let i = 0; i < incidentesDoJira.length; i++) {
@@ -611,7 +617,7 @@
                 const ticket = chamadosResolvidos[i];
                 const dataResolucao = new Date(ticket.resolvidoEm);
 
-                if (dataResolucao >= limite24h) {
+                if (dataResolucao >= inicioDoDia) {
                     const hora = dataResolucao.getHours();
                     const index = Math.floor(hora / 2);
                     contagemResolvidos[index]++;
@@ -634,11 +640,12 @@
                 gradienteVerde.addColorStop(0, 'rgba(0, 200, 83, 0.4)');
                 gradienteVerde.addColorStop(1, 'rgba(0, 200, 83, 0)');
 
-                if (graficoAlertasTicketsInstance) {
+                if (typeof graficoAlertasTicketsInstance !== 'undefined' && graficoAlertasTicketsInstance) {
                     graficoAlertasTicketsInstance.destroy();
                 }
 
-                graficoAlertasTicketsInstance = new Chart(ctx, {
+                // Variável global presumida, ajuste conforme o seu escopo
+                window.graficoAlertasTicketsInstance = new Chart(ctx, {
                     type: 'line',
                     data: {
                         labels: ['00h', '02h', '04h', '06h', '08h', '10h', '12h', '14h', '16h', '18h', '20h', '22h'],
@@ -786,7 +793,7 @@
             }
 
 
-            const pesoCriticidade = { "CRÍTICO": 1, "CRITICO": 1,"ALERTA": 2, "RISCO": 2};
+            const pesoCriticidade = { "CRÍTICO": 1, "CRITICO": 1, "ALERTA": 2, "RISCO": 2 };
 
             for (let i = 0; i < alertas.length; i++) {
                 for (let j = 0; j < alertas.length - 1 - i; j++) {
@@ -810,7 +817,7 @@
                     }
                 }
             }
-            
+
             const LIMITE_CARDS = 10;
             const quantidadeParaRenderizar = Math.min(alertas.length, LIMITE_CARDS);
 
