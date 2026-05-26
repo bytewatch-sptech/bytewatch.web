@@ -105,7 +105,8 @@ canvas {
 
 .information-container span {
     color: #FFFFFF;
-    font-size: 14px;
+    font-size: 12px;
+    text-align: right;
 }
 
 .div-line {

@@ -9,6 +9,10 @@
   padding-top: 15px;
   background-color: #151515;
   font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 .process-table {
   width: 100%;
@@ -55,15 +59,19 @@
 .progress-item-table {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 12px;
+  width: 100%;
 }
 
 .progress-item-table .progress-bg {
+  display: flex;
   background-color: #222;
   height: 8px;
   border-radius: 10px;
   overflow: hidden;
-  width: 100px;
+  flex: 1;
+  min-width: 0;
 }
 
 .progress-bg {
@@ -144,7 +152,37 @@
   padding: 5px 20px;
   margin-left: 0 !important;
   border: 1px solid #ffffff00;
+
 }
+
+.alert-critico {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px; 
+  color: #FF0050; 
+  background-color: #FF00501A; 
+  gap: 5px; 
+  margin-left: 10px;
+}
+
+.alert-risco {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px; 
+  color: #FFD600; 
+  background-color: #FFD6001A; 
+  gap: 5px; 
+  margin-left: 10px;
+}
+
+.alert-estavel {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px; 
+  color: #00F2EA; 
+  background-color: #00F2EA1A; 
+  gap: 5px; 
+  margin-left: 10px;
+}
+
+
 
 #statusInfo {
   cursor: pointer;
@@ -219,3 +257,161 @@
 .dropdown-toggle:after{
   color: #FFD600;
 }
+
+#doughnut_cpu {
+  pointer-events: none
+}
+
+.grid-container {
+   width: 100%;
+   height: 90%;
+   display: grid;
+   gap: 10px;
+   align-items: stretch;
+   justify-items: stretch;
+   grid-auto-flow: dense;
+
+   grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr;
+   grid-template-rows: 1fr 0.25fr 1.45fr 1.5fr;
+
+
+   grid-template-areas:
+      "use peak temperature frequency info"
+      "use distribution distribution distribution info"
+      "process_index distribution distribution distribution info"
+      "active_processes active_processes active_processes active_processes active_processes"
+   ;
+}
+
+.grid-container > div {
+   min-width: 0;
+   min-height: 0;
+}
+
+/* .grid-container div {
+   border-radius: 10px;
+} */
+
+.child-1 {
+   grid-area: use;
+   height: 100%;
+   /* background-color: red; */
+
+}
+
+.child-2 {
+   grid-area: peak;
+   /* background-color: blue; */
+   height: 100%;
+}
+
+.child-3 {
+   grid-area: temperature;
+   background-color: green;
+}
+
+.child-4 {
+   grid-area: frequency;
+   background-color: pink;
+}
+
+.child-5 {
+   grid-area: info;
+}
+
+.child-6 {
+   grid-area: distribution;
+   background-color: aqua;
+}
+
+.child-7 {
+   grid-area: process_index;
+   background-color: rebeccapurple;
+}
+
+.child-8 {
+   grid-area: active_processes;
+   display: flex;
+   flex-direction: column;
+   
+}
+
+@media (max-width: 1024px) {
+   .grid-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-areas:
+         "use"
+         "peak"
+         "temperature"
+         "frequency"
+         "info"
+         "distribution"
+         "process_index"
+         "active_processes"
+      ;
+   }
+}
+
+.kpi-titles {
+   font-size: 14px;
+   font-weight: 600;
+   font-family: Poppins, sans-serif;
+   color: #CECECE;
+   margin-bottom: 10px;
+}
+
+.kpi-info {
+  display: flex;
+  height: 70%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.graph-titles {
+  font-size: 35px;
+  font-weight: bold;
+  color: #CECECE;
+  font-family: Poppins, sans-serif;
+}
+
+body.dashboard-cpu-page .row.flex-nowrap {
+  align-items: flex-start;
+}
+
+body.dashboard-cpu-page .sidebar {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+}
+
+@media (max-width: 992px) {
+  body.dashboard-cpu-page .sidebar {
+    position: static;
+    height: auto;
+  }
+}
+
+
+.risco {
+  border: 1px solid #FFD500 !important;
+  box-shadow: inset 0 0 5px 1px #FFD500 !important;
+}
+
+/* .risco span {
+  color: #FFD500 !important;
+ 
+} */
+
+.critico {
+  border: 1px solid #FF0050 !important;
+  box-shadow: inset 0 0 5px 1px #FF0050 !important;
+}
+
+/* .critico span {
+  color: #FF0050 !important;
+ 
+} */

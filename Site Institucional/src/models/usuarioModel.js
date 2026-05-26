@@ -12,7 +12,7 @@ function autenticar(email, senha) {
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nome, email, senha, cpf, fk_tipo_usuario) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha, cpf, fk_tipo_usuario);
-    
+
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
@@ -22,7 +22,42 @@ function cadastrar(nome, email, senha, cpf, fk_tipo_usuario) {
     return database.executar(instrucaoSql);
 }
 
+function deletar(idUsuario) {
+    console.log("Executando função no id: ", idUsuario);
+
+    var instrucaoSql = `
+        DELETE FROM usuario WHERE id_usuario = ${idUsuario};
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function listar() {
+    var instrucaoSql = `
+        SELECT 
+        u.id_usuario, 
+        u.nome, 
+        tu.tipo AS cargo
+        FROM usuario u
+        JOIN tipo_usuario tu ON u.fk_tipo_usuario = tu.id_tipo_usuario;
+    `;
+    return database.executar(instrucaoSql);
+}
+
+function atribuirServidor(fk_usuario, fk_servidor) {
+    var instrucaoSql = `
+        INSERT INTO responsavel (fk_id_usuario, fk_id_servidor)
+            VALUES 
+                (${fk_usuario}, ${fk_servidor});
+    `;
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    deletar,
+    listar,
+    atribuirServidor
 };

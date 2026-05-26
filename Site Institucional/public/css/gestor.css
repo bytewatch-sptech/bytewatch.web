@@ -1,0 +1,153 @@
+    body {
+        background: #0d0d0d;
+        color: #e6edf3;
+        font-family: 'Aerial', sans-serif;
+        overflow-x: hidden;
+    }
+
+    .sidebar {
+        height: 100vh;
+        background: #111827;
+        padding: 20px;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 10px;
+        color: #9ca3af;
+        text-decoration: none;
+        border-radius: 8px;
+    }
+
+    .sidebar a.active,
+    .sidebar a:hover {
+        background: #1f2937;
+        color: #fff;
+    }
+
+    .card-custom {
+        background: #151515;
+        border: 1px solid #21262d;
+        transition: 0.3s;
+        border-radius: 12px;
+        padding: 10px;
+        width: 100%;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .card-custom h5,
+    .card-custom h6 {
+        font-weight: 600;
+    }
+
+    .card-custom span,
+    .card-custom div {
+        font-weight: 500;
+    }
+
+    .alert-item {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #21262d;
+    }
+
+    .badge-custom {
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+    }
+
+    .critico {
+        background: #7f1d1d;
+        color: #fff;
+    }
+
+    .atencao {
+        background: #78350f;
+        color: #fff;
+    }
+
+    .info {
+        background: #1e3a8a;
+        color: #fff;
+    }
+
+    .gauge {
+        text-align: center;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 4px;
+    }
+
+
+    .kpi-critico {
+        border-color: var(--cor02);
+        box-shadow: 0 0 15px rgba(255, 251, 0, 0.6);
+        border: 1px solid #FFD500;
+    }
+
+    .kpi-risco {
+        border-color: var(--cor02);
+        box-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+        border: 1px solid #FF0050;
+    }
+
+    .card-gauge {
+        width: 220px;
+        margin: auto;
+    }
+
+    .card-gauge canvas {
+        width: 100% !important;
+        height: 150px !important;
+    }
+
+    .card-kpi {
+        width: 100%;
+        height: 390px;
+    }
+
+    .card-parametro {
+        background: #151515;
+        border: 1px solid #21262d;
+        width: 11%;
+        margin-bottom: 6px;
+        border-radius: 15px;
+    }
+
+    #rankingContainer {
+        justify-content: space-between;
+    }
+
+
+
+
+    .card-alerta {
+        box-shadow: 0px 0px 10px 1px yellow
+    }
+
+    .card-critico {
+        box-shadow: 0px 0px 10px 1px red
+    }
+
+    .ranking-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .alert-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 8px 0;
+    }
+
+    /* #gaugePicoRAM {
+        width: 320px !important;
+        height: 130px !important;
+    } */
