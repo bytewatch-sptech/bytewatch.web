@@ -152,7 +152,37 @@
   padding: 5px 20px;
   margin-left: 0 !important;
   border: 1px solid #ffffff00;
+
 }
+
+.alert-critico {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px; 
+  color: #FF0050; 
+  background-color: #FF00501A; 
+  gap: 5px; 
+  margin-left: 10px;
+}
+
+.alert-risco {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px; 
+  color: #FFD600; 
+  background-color: #FFD6001A; 
+  gap: 5px; 
+  margin-left: 10px;
+}
+
+.alert-estavel {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px; 
+  color: #00F2EA; 
+  background-color: #00F2EA1A; 
+  gap: 5px; 
+  margin-left: 10px;
+}
+
+
 
 #statusInfo {
   cursor: pointer;

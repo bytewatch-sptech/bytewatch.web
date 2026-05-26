@@ -160,18 +160,17 @@
 
                                 <div id="statusInfo" class="info-alert d-flex align-items-center" data-bs-toggle="modal"
                                     data-bs-target="#modalLegenda">
-                                    <div class="icon">
+                                    <div class="icon" >
                                         <img src="../assets/Icon-info.svg" alt="">
                                     </div>
-                                    <span>Status</span>
+                                    <span>Legenda</span>
                                 </div>
 
-                                <div class="info-alert d-flex align-items-center"
-                                    style=" border-bottom-right-radius: 10px; border-top-right-radius: 10px; color: var(--tok); background-color: #FF00501A; gap: 5px; margin-left: 10px;">
-                                    <div class="icon">
-                                        <img src="../assets/info-danger.svg" alt="">
+                                <div class="info-alert d-flex align-items-center" id="kpi_Alert">
+                                    <div class="icon" id="statusIcon">
+                                        <img src="../assets/info-danger.svg" alt="" >
                                     </div>
-                                    <span id="serverAlert">Critíco</span>
+                                    <span id="serverAlert">N/A</span>
                                 </div>
 
                             </div>
@@ -228,8 +227,9 @@
                             <svg width="16" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M10.8401 15.6906L4.84005 15.6906L4.84005 7.76604L5.34058e-05 7.76604L7.84005 9.53674e-07L15.6801 7.76604L10.8401 7.76604V15.6906Z" fill="#C167C7"/>
                             </svg>
-
                             <p class="card-title kpi-titles">PICO</p>
+
+                            <p style="font-size: 14px; color: #999; padding-left: 50%;">24h</p>
                         </div>
                         <div class="kpi-info">
                             <span class="display-6 status-percent" id="picoValor" style="font-size: 40px;">N/A</span>
@@ -304,8 +304,8 @@
                                             </svg>
                                         </button>
                                     </div>
-                                    <div  style="height: 85%; ">
-                                        <canvas id="dashboardComponentes" ></canvas>
+                                    <div style="height: 85%;">
+                                        <canvas id="dashboardComponentes"></canvas>
                                     </div>
                                 </div>
                     <div class="card-kpi px-4 py-3 child-7" id="fila_processos">
@@ -536,8 +536,8 @@
                                                         </svg>
                                                     </div>
                                                     <div class="d-flex flex-column">
-                                                        <span class="text-light fw-medium">Todos os Componentes</span>
-                                                        <span style="color: #00F2EA;">Estáveis</span>
+                                                        <span class="text-light fw-medium">Todos os Componentes saudáveis.</span>
+                                                        <span style="color: #00F2EA;">Estável</span>
                                                     </div>
                                                 </div>
 
@@ -563,8 +563,7 @@
                                                         </svg>
                                                     </div>
                                                     <div class="d-flex flex-column">
-                                                        <span class="text-light fw-medium">Pelo menos um
-                                                            componente</span>
+                                                        <span class="text-light fw-medium">Ao menos um componente excedido.</span>
                                                         <span style="color: #FFD700;">Em Risco</span>
                                                     </div>
                                                 </div>
@@ -591,8 +590,7 @@
                                                         </svg>
                                                     </div>
                                                     <div class="d-flex flex-column">
-                                                        <span class="text-light fw-medium">Dois componentes em risco ou
-                                                            um</span>
+                                                        <span class="text-light fw-medium">Dois ou mais componentes em risco.</span>
                                                         <span style="color: #ff0050;">Em Crítico</span>
                                                     </div>
                                                 </div>
@@ -706,7 +704,7 @@
 
 
 
-                                                        <h5 style="margin: 0;">CPU</h5>
+                                                        <h5 style="margin: 0;">RAM</h5>
 
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
@@ -751,7 +749,7 @@
                                                         </svg>
 
 
-                                                        <h5 style="margin: 0;">CPU</h5>
+                                                        <h5 style="margin: 0;">DISK</h5>
 
                                                     </div>
                                                     <div class="col d-flex flex-column align-items-center">
@@ -782,8 +780,8 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                Você consegue alterar os parâmetros do <br> componente na tela de adição e <br> edição
-                                de servidor.
+                                Os parâmetros de alertas são definidos com base em análises históricas e benchmarks de servidor <br> 
+                                garantindo que os alertas sejam acionados de acordo com a necessidade real de monitoramento.
                             </div>
                         </div>
 
@@ -1010,7 +1008,7 @@
                 scales: {
                     x: {
                         title: { display: true, text: 'Horário', color: '#dddddd', font: { size: 12, weight: 'bold' } },
-                        ticks: { color: '#dddddd', maxTicksLimit: 8 },
+                        ticks: { color: '#dddddd', maxTicksLimit: 12 },
                         grid: { color: 'rgba(255,255,255,0.04)' }
                     },
                     y: {
@@ -1027,15 +1025,35 @@
     }
 
     function checarStatusServidor() {
-        if (KpiUsado >= 90 || KpiPico >= 90 || KpiTemp >= 85 || KpiFrequenciaAtual >= KpiFrequenciaMax * 0.85 || indiceFila > 1.2) {
+        const alertaElemento = document.getElementById('kpi_Alert');
+        if (!alertaElemento) return;
+
+        qtdAlertas = 0;
+
+        alertaElemento.classList.remove('alert-estavel', 'alert-risco', 'alert-critico');
+
+        for (let i = 0; i < 5; i++) {
+            if (i == 0 && KpiUsado >= 70) qtdAlertas++;
+            else if (i == 1 && KpiPico >= 70) qtdAlertas++;
+            else if (i == 2 && KpiTemp >= 70) qtdAlertas++;
+            else if (i == 3 && KpiFrequenciaAtual >= KpiFrequenciaMax * 0.7) qtdAlertas++;
+            else if (i == 4 && indiceFila > 0.8) qtdAlertas++;
+        }
+
+        if (qtdAlertas >= 2) {
             document.getElementById('serverAlert').innerHTML = 'Crítico';
-            document.getElementById('serverAlert').style.color = '#FF0050';
-        } else if (KpiUsado >= 70 || KpiPico >= 70 || KpiTemp >= 70 || KpiFrequenciaAtual >= KpiFrequenciaMax * 0.7 || indiceFila > 0.8) {
-            document.getElementById('serverAlert').innerHTML = 'Risco';
-            document.getElementById('serverAlert').style.color = '#FFD700';
+            document.getElementById('statusIcon').innerHTML = `<img src="../assets/info-danger.svg" alt="" width="14" height="14">`;
+            alertaElemento.classList.add('alert-critico');
+            
+        } else if (qtdAlertas >= 1) {
+            document.getElementById('serverAlert').innerHTML = 'Alerta';
+            document.getElementById('statusIcon').innerHTML = `<img src="../assets/info-risk.svg" alt="" width="14" height="14">`;
+            alertaElemento.classList.add('alert-risco');
         } else {
             document.getElementById('serverAlert').innerHTML = 'Estável';
-            document.getElementById('serverAlert').style.color = '#00F2EA';
+            document.getElementById('statusIcon').innerHTML = `<img src="../assets/info-stable.svg" alt="" width="14" height="14">`;
+            alertaElemento.classList.add('alert-estavel');
+            
         }
     }
 
@@ -1095,6 +1113,7 @@
             } else if (grafico == 'filaProcessos' && queueConfig) {
                 document.getElementById('tituloModal').innerText = 'Índice de Fila de Processos';
                 document.getElementById('textoModal').innerHTML = `
+                    <h1 style="color: #FFFFFF; padding: 0px 0px 10px 0px;">${indiceFila}</h1>
                     <strong>Fórmula do Índice:</strong> <br>
                     <code style="background: #2b2b2b; padding: 2px 6px; color: #C167C7; border-radius: 4px;">Índice = Processos em Fila / Núcleos Lógicos</code>
                     <br><br>
