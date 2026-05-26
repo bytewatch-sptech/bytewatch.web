@@ -1,7 +1,7 @@
     body {
         background: #0d0d0d;
         color: #e6edf3;
-        font-family: 'Aerial', sans-serif;  
+        font-family: 'Aerial', sans-serif;
         overflow-x: hidden;
     }
 
@@ -132,7 +132,20 @@
         box-shadow: 0px 0px 10px 1px red
     }
 
+    .ranking-lista {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
 
+    .alert-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 8px 0;
+    }
 
     /* #gaugePicoRAM {
         width: 320px !important;
