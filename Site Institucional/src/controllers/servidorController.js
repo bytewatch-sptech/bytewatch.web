@@ -39,7 +39,7 @@ async function buscarDatacenters(req, res) {
 }
 
 async function buscarTodosServidores(req, res) {
-  
+
   const resultado = await servidorModel.buscarServidores();
   res.status(200).json(resultado);
 }
@@ -183,6 +183,28 @@ async function buscarDashboardHome(req, res) {
   }
 }
 
+async function listarServidoresAnalista(req, res) {
+  const idEmpresa = req.params.idEmpresa;
+  const idUsuario = req.params.idUsuario;
+
+  if (!idEmpresa || !idUsuario) {
+    return res.status(400).json("ID da empresa ou do usuário inválido!");
+  }
+
+  try {
+    const resultado = await servidorModel.listarServidoresAnalista(idEmpresa, idUsuario);
+
+    if (resultado.length > 0) {
+      res.status(200).json(resultado);
+    } else {
+      res.status(204).send("Nenhum servidor vinculado a este analista!");
+    }
+  } catch (erro) {
+    console.log("Erro ao buscar servidores do analista: ", erro);
+    res.status(500).json(erro.sqlMessage || "Erro interno no servidor");
+  }
+}
+
 module.exports = {
   buscarDashboardHome,
   cadastrar,
@@ -192,5 +214,6 @@ module.exports = {
   atualizarServidor,
   buscarNomeServidor,
   buscarUsoS3,
-  buscarTodosServidores
+  buscarTodosServidores,
+  listarServidoresAnalista
 };
