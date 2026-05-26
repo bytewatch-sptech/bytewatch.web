@@ -139,23 +139,23 @@
                 </ul>
 
                 <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
-                <div class="container_user d-flex gap-2">
-                    <a class="d-flex gap-3 align-items-center" href="">
-                        <div class="icon-profile">BP</div>
+                    <div class="container_user d-flex gap-2">
+                        <a class="d-flex gap-3 align-items-center" href="">
+                            <div class="icon-profile">BP</div>
 
-                        <div class="box ms-2 d-none d-sm-inline">
-                            <p id="nome_usuario_header" style="font-size: 16px; margin: 0;">Carregando...</p>
-                            <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Gestora
-                        </div>
-                    </a>
-                </div>
+                            <div class="box ms-2 d-none d-sm-inline">
+                                <p id="nome_usuario_header" style="font-size: 16px; margin: 0;">Carregando...</p>
+                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Gestora
+                            </div>
+                        </a>
+                    </div>
 
-                <div class="button-sair mt-2 text-center">
-                    <a href="../login.html" class="button" style="text-decoration: none; color: white;">
-                        Sair
-                    </a>
+                    <div class="button-sair mt-2 text-center">
+                        <a href="../login.html" class="button" style="text-decoration: none; color: white;">
+                            Sair
+                        </a>
+                    </div>
                 </div>
-            </div>
             </nav>
 
             <main class="col d-flex flex-column painel-principal">
@@ -354,7 +354,7 @@
 
             <ul class="nav nav-pills flex-column mb-auto gap-2">
                 <li class="nav-item">
-                    <a href="./home.html" class="nav-link active bg-success d-flex align-items-center">
+                    <a href="./pages/dashboard-gestor.html" class="nav-link d-flex align-items-center text-white">
                         <div class="icon_side d-flex align-items-center justify-content-center">
                             <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -367,12 +367,13 @@
                                     stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
+
                         </div>
-                        <span class="ms-2">Home</span>
+                        <span class="ms-2 d-none d-sm-inline">Painel</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./gestao-equipe.html" class="nav-link d-flex align-items-center text-white">
+                    <a href="./gestao-equipe2.html" class="nav-link d-flex align-items-center text-white">
                         <div class="icon_side d-flex align-items-center justify-content-center">
                             <svg width="18" height="18  " viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -393,46 +394,88 @@
                                     stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
+
                         </div>
-                        <span class="ms-2">Gestão Equipe</span>
+                        <span class="ms-2 d-none d-sm-inline">Gestão Equipe</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="./pages/alertas.html" class="nav-link d-flex align-items-center text-white">
-                        <div class="icon_side d-flex align-items-center justify-content-center">
+
+                <li class="nav-item w-100">
+                    <a href="#submenuAnalista" data-bs-toggle="collapse"
+                        class="nav-link active d-flex align-items-center text-white w-100" aria-expanded="false">
+
+                        <div class="icon_side d-flex align-items-center justify-content-center flex-shrink-0">
                             <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M14.4866 12L9.15329 2.66665C9.037 2.46146 8.86836 2.29078 8.66457 2.17203C8.46078 2.05329 8.22914 1.99072 7.99329 1.99072C7.75743 1.99072 7.52579 2.05329 7.322 2.17203C7.11822 2.29078 6.94958 2.46146 6.83329 2.66665L1.49995 12C1.38241 12.2036 1.32077 12.4346 1.32129 12.6697C1.32181 12.9047 1.38447 13.1355 1.50292 13.3385C1.62136 13.5416 1.79138 13.7097 1.99575 13.8259C2.20011 13.942 2.43156 14.0021 2.66662 14H13.3333C13.5672 13.9997 13.797 13.938 13.9995 13.8208C14.202 13.7037 14.3701 13.5354 14.487 13.3327C14.6038 13.1301 14.6653 12.9002 14.6653 12.6663C14.6652 12.4324 14.6036 12.2026 14.4866 12Z"
-                                    stroke="currentColor" stroke-width="1.33333" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                <path d="M8 6V8.66667" stroke="currentColor" stroke-width="1.33333"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                <path d="M8 11.3334H8.00667" stroke="currentColor" stroke-width="1.33333"
-                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <g clip-path="url(#clip0_111_8530)">
+                                    <path
+                                        d="M13.334 1.33334H2.66732C1.93094 1.33334 1.33398 1.93029 1.33398 2.66667V5.33334C1.33398 6.06972 1.93094 6.66667 2.66732 6.66667H13.334C14.0704 6.66667 14.6673 6.06972 14.6673 5.33334V2.66667C14.6673 1.93029 14.0704 1.33334 13.334 1.33334Z"
+                                        stroke="#A0A0A0" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M13.334 9.33334H2.66732C1.93094 9.33334 1.33398 9.93029 1.33398 10.6667V13.3333C1.33398 14.0697 1.93094 14.6667 2.66732 14.6667H13.334C14.0704 14.6667 14.6673 14.0697 14.6673 13.3333V10.6667C14.6673 9.93029 14.0704 9.33334 13.334 9.33334Z"
+                                        stroke="#A0A0A0" stroke-width="1.33333" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M4 4H4.00667" stroke="#A0A0A0" stroke-width="1.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M4 12H4.00667" stroke="#A0A0A0" stroke-width="1.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_111_8530">
+                                        <rect width="16" height="16" fill="white" />
+                                    </clipPath>
+                                </defs>
                             </svg>
                         </div>
-                        <span class="ms-2">Logs de Alerta</span>
+
+                        <span class="ms-2 d-none d-sm-flex justify-content-between align-items-center flex-grow-1">
+                            Opções Administrativas
+                            <i class="fa-solid fa-chevron-down ms-2" style="font-size: 0.7em; color: #fff;"></i>
+                        </span>
                     </a>
+
+                    <ul class="collapse nav flex-column ms-3 mt-1" id="submenuAnalista">
+                        <li class="nav-item w-100">
+                            <a href="./adicionar-servidor.html" class="nav-link text-white ps-4 py-2">
+                                <span class="d-none d-sm-inline text-white"
+                                    style="font-size: 0.9em; transition: opacity 0.2s;"
+                                    onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                    - Adicionar Servidor
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item w-100">
+                            <a href="./atribuir-analista.html" class="nav-link text-white ps-4 py-2">
+                                <span class="d-none d-sm-inline text-white"
+                                    style="font-size: 0.9em; transition: opacity 0.2s;"
+                                    onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                                    - Atribuir Analista
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
 
             <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
                 <div class="container_user d-flex gap-2">
-                    <a class="d-flex gap-3 align-items-center text-decoration-none text-white" href="">
-                        <div class="icon-profile">FB</div>
-                        <div class="box ms-2">
-                            <p style="font-size: 16px; margin: 0;">Fernando Brandão</p>
-                            <p style="font-size: 13px; margin-bottom: 0px; color: #aaa;">Admin Técnico</p>
+                    <a class="d-flex gap-3 align-items-center" href="">
+                        <div class="icon-profile">BP</div>
+
+                        <div class="box ms-2 d-none d-sm-inline">
+                            <p id="nome_usuario_header" style="font-size: 16px; margin: 0;">Carregando...</p>
+                            <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Gestora
                         </div>
                     </a>
                 </div>
-                <div class="button-sair mt-3 mb-2 text-center"
-                    style="cursor: pointer; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px;">
-                    <p style="margin: 0; color: #ff0050;">Sair</p>
+
+                <div class="button-sair mt-2 text-center">
+                    <a href="../login.html" class="button" style="text-decoration: none; color: white;">
+                        Sair
+                    </a>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -447,7 +490,7 @@
 <script src="./services/servidorService.js"></script>
 <script>
 
-      const API_BASE_URL = "http://3.223.199.1";
+    const API_BASE_URL = "http://3.223.199.1";
     window.addEventListener('DOMContentLoaded', () => {
         const elementoNome = document.getElementById("nome_usuario_header");
 
