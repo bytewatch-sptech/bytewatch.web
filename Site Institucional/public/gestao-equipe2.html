@@ -327,7 +327,7 @@
 
     async function carregarDadosS3() {
         try {
-            var resposta = await fetch('http://localhost:3333/dashboard/equipe');
+            var resposta = await fetch('http://3.223.199.1/dashboard/equipe');
             if (resposta.ok) {
                 var json = await resposta.json();
                 dadosS3 = json;
