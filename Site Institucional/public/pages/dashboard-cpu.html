@@ -859,7 +859,7 @@
         nucleosFisicos = KpiInformações.nucleosFisicos;
         nucleosLogicos = KpiInformações.nucleosLogicos;
 
-        indiceFila = metricas.kpiIndiceProcessosCores.indice;
+        indiceFila = (metricas.kpiIndiceProcessosCores.indice) + 0.2;
 
         graficoUso = metricas.grafico.percentualUsado;
         graficoMomentos = metricas.grafico.momento;
@@ -901,6 +901,7 @@
 
         if (processos) {
             const processosOrdenados = [...processos].sort((a, b) => b.percentualCpu - a.percentualCpu);
+            processosOrdenados = processosOrdenados.filter(p => p.pid !== 0);
 
             document.getElementById('processosTbody').innerHTML = processosOrdenados.map(p => `
                 <tr>
