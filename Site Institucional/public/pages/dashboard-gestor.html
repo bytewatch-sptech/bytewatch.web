@@ -342,196 +342,152 @@
     }
 
     async function ObterDadosGrafico() {
-        const resultado = await buscarDadosGestorService();
-        console.log(resultado.dadosMaquina);
+    const resultado = await buscarDadosGestorService();
+    console.log(resultado.dadosMaquina);
+    console.log("ServidorEmPico:", resultado?.dadosMaquina.ServidorEmPico);
 
-        console.log("ServidorEmPico:", resultado?.dadosMaquina.ServidorEmPico);
+    if (!resultado) {
+        console.error("Sem dados");
+        return;
+    }
 
+    try {
+        const hojeStr = new Date().toLocaleDateString('sv-SE');
 
+        let picoRamGauge = null;
+        let picoCpu = null;
+        let macRam = null;
+        let macCpu = null;
 
-        if (!resultado) {
-            console.error("Sem dados");
-            return;
-        }
+        // Lista de chaves que NÃO são servidores (Essencial para o Object.keys funcionar)
+        const chavesIgnoradas = [
+            "primeiraColeta", "ultimaColeta", "diasDecorridos", 
+            "ramTotal", "discoTotal", "custoTotalAteAgora", 
+            "custoTotalNoMes", "custoDoDia", "graficoComparativo", 
+            "ServidorEmPico", "rankingRam"
+        ];
 
-        try {
-            const hojeStr = new Date().toLocaleDateString('sv-SE');
+        // Filtra para pegar APENAS os MAC Addresses reais das máquinas
+        const chavesServidores = Object.keys(resultado.dadosMaquina).filter(chave => !chavesIgnoradas.includes(chave));
+        
+        chavesServidores.forEach(mac => {
+            const metricas = resultado.dadosMaquina[mac]?.metricas || [];
 
-            let picoRamGauge = null;
-            let picoCpu = null;
-            let macRam = null;
-            let macCpu = null;
+            metricas.forEach(metrica => {
+                const momentoPico = metrica.grafico?.momentoPico;
 
-            const chavesIgnoradas = ["primeiraColeta", "ultimaColeta", "diasDecorridos", "ramTotal", "discoTotal", "custoTotalAteAgora", "custoTotalNoMes", "custoDoDia", "graficoComparativo", "ServidorEmPico", "rankingRam"];
-            const chavesServidores = Object.keys(resultado.dadosMaquina).filter(chave => !chavesIgnoradas.includes(chave));
+                // Valida se o pico aconteceu na data de hoje
+                if (momentoPico && momentoPico.startsWith(hojeStr)) {
+                    const valorPico = metrica.grafico.pico;
 
-            chavesServidores.forEach(mac => {
-                const metricas = resultado.dadosMaquina[mac]?.metricas || [];
-
-                metricas.forEach(metrica => {
-                    const momentoPico = metrica.grafico?.momentoPico;
-
-                    if (momentoPico && momentoPico.startsWith(hojeStr)) {
-                        const valorPico = metrica.grafico.pico;
-
-                        if (metrica.tipoDado === "ram") {
-                            if (picoRamGauge === null || valorPico > picoRamGauge) {
-                                picoRamGauge = valorPico;
-                                macRam = mac;
-                            }
-                        } else if (metrica.tipoDado === "cpu") {
-                            if (picoCpu === null || valorPico > picoCpu) {
-                                picoCpu = valorPico;
-                                macCpu = mac;
-                            }
+                    if (metrica.tipoDado === "ram") {
+                        if (picoRamGauge === null || valorPico > picoRamGauge) {
+                            picoRamGauge = valorPico;
+                            macRam = mac;
+                        }
+                    } else if (metrica.tipoDado === "cpu") {
+                        if (picoCpu === null || valorPico > picoCpu) {
+                            picoCpu = valorPico;
+                            macCpu = mac;
                         }
                     }
-                });
+                }
             });
+        });
 
-            if (picoRamGauge === null || picoCpu === null) {
-                console.warn("Nenhum pico registrado para o dia de hoje. Zerando gauges.");
-                picoRamGauge = 0;
-                picoCpu = 0;
-            }
+        // Caso o loop manual não encontre dados de hoje, busca direto do objeto "ServidorEmPico" enviado pelo backend
+        if (picoRamGauge === null || picoCpu === null) {
+            console.warn("Nenhum pico encontrado no histórico de hoje. Usando dados diretos de ServidorEmPico.");
+            
+            const dadosPicoFallback = resultado.dadosMaquina.ServidorEmPico;
+            
+            picoRamGauge = dadosPicoFallback?.servidorPicoRAM?.valor ?? 0;
+            macRam = dadosPicoFallback?.servidorPicoRAM?.macAddress ?? "Não identificado";
 
-            console.log("RAM (Pico de Hoje):", picoRamGauge, "Mac:", macRam);
-            console.log("CPU (Pico de Hoje):", picoCpu, "Mac:", macCpu);
-
-            const picosDia = [picoRamGauge, picoCpu];
-            console.log("Picos:", picosDia);
-
-            plotarGaugeRam(picoRamGauge, macRam, "nomeServerRam");
-            plotarGaugeCpu(picoCpu, macCpu, "nomeServerCpu");
-
-            document.getElementById("valorRam").innerText = picoRamGauge + "%";
-            document.getElementById("valorCpu").innerText = picoCpu + "%";
-
-
-
-            const custoAtual = resultado.dadosMaquina.custoTotalAteAgora
-            const custoMes = resultado.dadosMaquina.custoTotalNoMes
-            const custoDia = resultado.dadosMaquina.custoDoDia
-            const dias = resultado.dadosMaquina.diasDecorridos
-
-
-
-            const hoje = new Date()
-            const diasDoMes = new Date(
-                hoje.getFullYear(),
-                hoje.getMonth() + 1, 0
-            ).getDate()
-
-
-            const progresso = (custoAtual / custoMes) * 100
-            const custoEsperado = custoMes / diasDoMes
-            const estimativaAteHoje = custoEsperado * dias
-
-            var status = "Dentro do esperado"
-            var cor = "white"
-            var corProg = "green"
-
-            const diferenca = custoAtual - estimativaAteHoje;
-            const percentual = (diferenca / estimativaAteHoje) * 100;
-
-            if (percentual > 5) {
-                status = "Acima do esperado"
-                cor = "red"
-            } else if (percentual < -5) {
-                status = "Abaixo do esperado"
-                cor = "green"
-            }
-
-            if (progresso > 20) {
-                corProg = "red"
-            } else {
-                corProg = "green"
-            }
-
-            // kpi numero 1 ////////////////////////////////////////////
-            document.getElementById("custoMes").innerText =
-                `R$ ${custoMes.toFixed(2)}`;
-
-            document.getElementById("progressoMes").style.color = corProg;
-
-            document.getElementById("progressoMes").innerText =
-                `${progresso.toFixed(1)}%`;
-
-            ///////////////////////////////////////////////////////////
-
-
-            // kpi numero 2 ///////////////////////////////////////////
-            document.getElementById("custoAtual").innerText =
-                `R$ ${custoAtual.toFixed(2)}`;
-
-            document.getElementById("statusCusto").innerText =
-                `${percentual.toFixed(1)}% ${status}`;
-
-            document.getElementById("statusCusto").style.color = cor;
-
-            ///////////////////////////////////////////////////////////
-
-
-            // kpi numero 3 ///////////////////////////////////////////
-            document.getElementById("custoDia").innerText =
-                `R$ ${custoDia.toFixed(2)}`;
-
-            document.getElementById("infoDia").innerText =
-                `Dias decorrido: ${dias}`
-
-            ///////////////////////////////////////////////////////////
-
-
-            //Pegando os dados do Ranking de consumo de RAM
-
-            // const posicao = resultado.dadosMaquina.posicao
-            // const servidor = resultado.dadosMaquina.macAddress
-            // const maxRam = resultado.dadosMaquina.picoRam
-            const ranking = resultado.dadosMaquina.rankingRam
-            ranking.sort((a, b) => a.posicao - b.posicao)
-
-            if (!ranking.length) {
-                return
-            }
-
-            if (ranking.length > 0) {
-                criarRanking(ranking)
-            } else {
-                alert("ranking não encontrado")
-            }
-
-            // comparação de dias QUE DEUS ME AJUDE COM ISSO
-
-            const grafico = resultado.dadosMaquina.graficoComparativo;
-
-            if (grafico) {
-                plotarComparativo(grafico);
-            }
-
-
-            console.log("RANKING: ", ranking)
-
-
-
-
-
-
-        } catch (erro) {
-            console.error("Erro ao pegar Dados:", erro)
+            picoCpu = dadosPicoFallback?.servidorPicoCPU?.valor ?? 0;
+            macCpu = dadosPicoFallback?.servidorPicoCPU?.macAddress ?? "Não identificado";
         }
 
+        console.log("RAM (Pico de Hoje):", picoRamGauge, "Mac:", macRam);
+        console.log("CPU (Pico de Hoje):", picoCpu, "Mac:", macCpu);
 
+        const picosDia = [picoRamGauge, picoCpu];
+        console.log("Picos:", picosDia);
 
-        // console.log({
-        //     progresso,
-        //     esperadoAteHoje,
-        //     diferenca,
-        //     percentual,
-        //     status
-        // });
+        plotarGaugeRam(picoRamGauge, macRam, "nomeServerRam");
+        plotarGaugeCpu(picoCpu, macCpu, "nomeServerCpu");
 
+        document.getElementById("valorRam").innerText = picoRamGauge + "%";
+        document.getElementById("valorCpu").innerText = picoCpu + "%";
 
+        // --- CÁLCULO DOS CARD DE CUSTOS ---
+        const custoAtual = resultado.dadosMaquina.custoTotalAteAgora;
+        const custoMes = resultado.dadosMaquina.custoTotalNoMes;
+        const custoDia = resultado.dadosMaquina.custoDoDia ;
+        const dias = resultado.dadosMaquina.diasDecorridos;
+
+        const hoje = new Date();
+        const diasDoMes = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0).getDate();
+
+        const progresso = custoMes > 0 ? (custoAtual / custoMes) * 100 : 0;
+        const custoEsperado = custoMes / diasDoMes;
+        const estimativaAteHoje = custoEsperado * dias;
+
+        let status = "Dentro do esperado";
+        let cor = "white";
+        let corProg = "green";
+
+        const diferenca = custoAtual - estimativaAteHoje;
+        const percentual = estimativaAteHoje > 0 ? (diferenca / estimativaAteHoje) * 100 : 0;
+
+        if (percentual > 5) {
+            status = "Acima do esperado";
+            cor = "red";
+        } else if (percentual < -5) {
+            status = "Abaixo do esperado";
+            cor = "green";
+        }
+
+        if (progresso > 20) {
+            corProg = "red";
+        } else {
+            corProg = "green";
+        }
+
+        // KPI 1: Custo Mensal Projetado / Orçamento
+        document.getElementById("custoMes").innerText = `R$ ${custoMes.toFixed(2)}`;
+        document.getElementById("progressoMes").style.color = corProg;
+        document.getElementById("progressoMes").innerText = `${progresso.toFixed(1)}%`;
+
+        // KPI 2: Custo Atual Acumulado
+        document.getElementById("custoAtual").innerText = `R$ ${custoAtual.toFixed(2)}`;
+        document.getElementById("statusCusto").innerText = `${percentual.toFixed(1)}% ${status}`;
+        document.getElementById("statusCusto").style.color = cor;
+
+        // KPI 3: Custo do Dia Atual
+        document.getElementById("custoDia").innerText = `R$ ${custoDia.toFixed(2)}`;
+        document.getElementById("infoDia").innerText = `Dias decorridos: ${dias}`;
+
+        // --- RANKING DE CONSUMO DE RAM ---
+        const ranking = resultado.dadosMaquina.rankingRam || [];
+        ranking.sort((a, b) => a.posicao - b.posicao);
+
+        if (ranking.length > 0) {
+            criarRanking(ranking);
+        }
+
+        // --- GRÁFICO COMPARATIVO ---
+        const grafico = resultado.dadosMaquina.graficoComparativo;
+        if (grafico) {
+            plotarComparativo(grafico);
+        }
+
+        console.log("RANKING: ", ranking);
+
+    } catch (erro) {
+        console.error("Erro ao pegar Dados:", erro);
     }
+}
 
 
     function plotarGaugeRam(valor, macAddress, textoNomeId) {
