@@ -34,7 +34,7 @@
 
                 <ul class="nav nav-pills flex-column mb-auto gap-2">
                     <li class="nav-item">
-                        <a href="./pages/dashboard-gestor.html" class="nav-link d-flex align-items-center text-white">
+                        <a href="../pages/dashboard-gestor.html" class="nav-link d-flex align-items-center text-white">
                             <div class="icon_side d-flex align-items-center justify-content-center">
                                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -53,8 +53,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="./gestao-equipe2.html" class="nav-link active d-flex align-items-center text-white">
-                            <div class="icon_side d-flex align-items-center justify-content-center">
+                        <a href="../gestao-equipe2.html" class="nav-link d-flex align-items-center text-white">
+                            <div class="icon_side active d-flex align-items-center justify-content-center">
                                 <svg width="18" height="18" viewBox="0 0 16 16" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -117,7 +117,7 @@
 
                         <ul class="collapse nav flex-column ms-3 mt-1" id="submenuAnalista">
                             <li class="nav-item w-100">
-                                <a href="./adicionar-servidor.html" class="nav-link text-white ps-4 py-2">
+                                <a href="../adicionar-servidor.html" class="nav-link text-white ps-4 py-2">
                                     <span class="d-none d-sm-inline"
                                         style="font-size: 0.9em; color: var(--cor12); transition: color 0.2s;"
                                         onmouseover="this.style.color='#fff'"
@@ -127,7 +127,7 @@
                                 </a>
                             </li>
                             <li class="nav-item w-100">
-                                <a href="./atribuir-analista.html" class="nav-link text-white ps-4 py-2">
+                                <a href="../atribuir-analista.html" class="nav-link text-white ps-4 py-2">
                                     <span class="d-none d-sm-inline"
                                         style="font-size: 0.9em; color: var(--cor12); transition: color 0.2s;"
                                         onmouseover="this.style.color='#fff'"
@@ -141,24 +141,25 @@
                 </ul>
 
                 <div class="user-profile mt-auto d-flex flex-column border-top pt-3 border-secondary">
-                <div class="container_user d-flex gap-2">
-                    <a class="d-flex gap-3 align-items-center" href="">
-                        <div class="icon-profile">BP</div>
+                    <div class="container_user d-flex gap-2">
+                        <a class="d-flex gap-3 align-items-center" href="">
+                            <div class="icon-profile">BP</div>
 
-                        <div class="box ms-2 d-none d-sm-inline">
-                            <p id="nome_usuario_header" style="font-size: 16px; margin: 0;">Carregando...</p>
-                            <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Gestora
-                        </div>
-                    </a>
-                </div>
+                            <div class="box ms-2 d-none d-sm-inline">
+                                <p id="nome_usuario_header" style="font-size: 16px; margin: 0;">Carregando...</p>
+                                <p style="font-size: 13px; margin-bottom: 0px; padding-bottom: 0px;">Gestora
+                            </div>
+                        </a>
+                    </div>
 
-                <div class="button-sair mt-2 text-center">
-                    <a href="../login.html" class="button" style="text-decoration: none; color: white;">
-                        Sair
-                    </a>
+                    <div class="button-sair mt-2 text-center">
+                        <a href="../login.html" class="button" style="text-decoration: none; color: white;">
+                            Sair
+                        </a>
+                    </div>
                 </div>
-            </div>
             </nav>
+
             <main class="col-md-9 col-xl-10 d-flex flex-column p-4 conteudo-principal">
                 <header class="d-flex align-items-center mb-4">
                     <div class="p-2 rounded me-3 fundo-icone-cabecalho">
@@ -166,7 +167,9 @@
                     </div>
                     <div>
                         <h2 class="text-white fs-4 fw-bold mb-1">Gestão de Equipe</h2>
-                        <span class="text-secondary texto-pequeno">Atualizado: 14 de Mai 2026, 14:30</span>
+                        <span class="text-secondary texto-pequeno">
+                            Atualizado: <span id="dataHoraAtualizacao">0</span>
+                        </span>
                     </div>
                 </header>
 
@@ -222,8 +225,8 @@
                                     <i class="bi bi-graph-up-arrow"></i> +8% vs sem. ant.
                                 </span> -->
                             </div>
-                            <p class="text-secondary mb-1 texto-pequeno">Alertas Processados (7d)</p>
-                            <h3 class="text-white fw-bold mb-0" id="kpi_total_alertas_todos">0</h3>
+                            <p class="text-secondary mb-1 texto-pequeno">Alertas em abertos(hoje)</p>
+                            <h3 class="text-white fw-bold mb-0" id="kpi_alertas_abertos">0</h3>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-xl-3">
@@ -235,9 +238,10 @@
                                 <!-- <span class="emblema-tendencia tendencia-alta-verde">
                                     <i class="bi bi-graph-up-arrow"></i> +12% vs sem. ant.
                                 </span> -->
+
                             </div>
-                            <p class="text-secondary mb-1 texto-pequeno">Alertas em abertos</p>
-                            <h3 class="text-white fw-bold mb-0" id="kpi_alertas_abertos">0</h3>
+                            <p class="text-secondary mb-1 texto-pequeno">Alertas Processados(hoje)</p>
+                            <h3 class="text-white fw-bold mb-0" id="kpi_total_alertas_todos">0</h3>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 col-xl-3">
@@ -296,14 +300,14 @@
                     <div class="col-12 col-xl-8">
                         <div class="cartao-tabela p-4 rounded-4 h-100 d-flex flex-column">
                             <h6 class="text-white fw-bold mb-1">Log de Alertas Recentes</h6>
-                            <p class="text-secondary texto-pequeno mb-4">Últimos alertas tratados pela equipe NOC</p>
+                            <p class="text-secondary texto-pequeno mb-4">Últimos alertas tratados pela equipe</p>
 
                             <div class="rolagem-tabela flex-grow-1">
                                 <table class="table table-dark table-hover tabela-personalizada align-middle mb-0">
                                     <thead>
                                         <tr>
                                             <th>DATA / HORA</th>
-                                            <th>SERVIÇO</th>
+                                            <th>SERVIDOR</th>
                                             <th>TIPO DE ALERTA</th>
                                             <th>ANALISTA</th>
                                             <th>SEVERIDADE</th>
@@ -350,7 +354,6 @@
 
 <script>
 
-      const API_BASE_URL = "http://3.223.199.1";
     window.addEventListener('DOMContentLoaded', () => {
         const elementoNome = document.getElementById("nome_usuario_header");
 
@@ -367,6 +370,12 @@
     Chart.defaults.color = '#8A92A6';
     Chart.defaults.font.family = "'Inter', sans-serif";
 
+    const agora = new Date();
+
+    const dataHoraAtualizacao = agora.toLocaleString('pt-BR');
+    document.getElementById('dataHoraAtualizacao').textContent = dataHoraAtualizacao;
+
+
     var dadosDoDashboard = null;
     var dadosS3 = null;
     var analistasUnicos = [];
@@ -376,7 +385,7 @@
 
     async function carregarDadosS3() {
         try {
-            var resposta = await fetch('http://localhost:3333/dashboard/equipe');
+            var resposta = await fetch('http://3.223.199.1/dashboard/equipe');
             if (resposta.ok) {
                 var json = await resposta.json();
                 dadosS3 = json;
@@ -461,29 +470,37 @@
 
     var graficoProporcaoInstancia = null;
 
-    var graficoProporcaoInstancia = null;
-
     function plotarGraficoProporcao() {
-        if (dadosS3 == null) {
-            return;
-        }
+        if (dadosS3 == null) return;
 
         var dadosGrafico = null;
+
         if (filtroMacAtual == '') {
+
             dadosGrafico = dadosS3.geral;
+
         } else {
+
             if (dadosS3.por_servidor[filtroMacAtual] != null) {
+
                 dadosGrafico = dadosS3.por_servidor[filtroMacAtual];
+
             } else {
+
                 dadosGrafico = dadosS3.geral;
+
             }
+
         }
 
         var categorias = dadosGrafico.categorias;
         var alertasTratados = dadosGrafico.series[0].dados;
         var alertasCriticos = dadosGrafico.series[1].dados;
 
-        var contextoProporcao = document.getElementById('graficoProporcao').getContext('2d');
+        var canvas = document.getElementById('graficoProporcao');
+        if (!canvas) return;
+
+        var contextoProporcao = canvas.getContext('2d');
 
         if (graficoProporcaoInstancia) {
             graficoProporcaoInstancia.destroy();

@@ -317,10 +317,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                     <th scope="col" class="ps-3 border-0">STATUS</th>
                                                                     <th scope="col" class="border-0">ÚLTIMA COLETA</th>
                                                                     <th scope="col" class="border-0">SERVIDOR</th>
-                                                                    <th scope="col" class="border-0">CPU</th>
-                                                                    <th scope="col" class="border-0">RAM</th>
-                                                                    <th scope="col" class="border-0">DISCO</th>
-                                                                    <th scope="col" class="border-0">REDE</th>
+                                                                    <th scope="col" class="border-0">CPU - UTILIZAÇÃO
+                                                                    </th>
+                                                                    <th scope="col" class="border-0">RAM - UTILIZAÇÃO
+                                                                    </th>
+                                                                    <th scope="col" class="border-0">DISCO - UTILIZAÇÃO
+                                                                    </th>
+                                                                    <th scope="col" class="border-0">PERCENTUAL REDE
+                                                                    </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="lista-servidores">
@@ -1322,6 +1326,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                         borderWidth: 2
                     },
                     {
+                        label: 'Servidores Risco',
+                        data: [],
+                        backgroundColor: 'rgba(255, 204, 0, 0.2)',
+                        borderColor: '#ffcc00',
+                        borderWidth: 2,
+                        borderDash: [6, 4]
+                    },
+                    {
                         label: 'Servidores Critícos',
                         data: [],
                         backgroundColor: 'rgba(255, 59, 48, 0.2)',
@@ -1341,7 +1353,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     tooltip: {
                         callbacks: {
                             label: function (context) {
-                                
+
                                 return `Nome: ${context.raw.nome} | Risco: ${context.raw.valor} | CPU/RAM: ${context.raw.x}% `
                             }
                         }
@@ -1349,7 +1361,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 },
                 scales: {
                     x: {
-                        min: 0,
+                        min: -20,
                         max: 100,
                         ticks: {
                             stepSize: 25,
@@ -1361,10 +1373,10 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                         }
                     },
                     y: {
-                        min: 0,
-                        max: 650,
+                        min: -20,
+                        max: 150,
                         ticks: {
-                            stepSize: 150,
+                            stepSize: 50,
                             callback: function (value) { return value + 'ms'; },
                             color: '#888'
                         },
@@ -1390,29 +1402,31 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                 if (resposta.ok) {
                     const dados = await resposta.json()
                     console.log("Dados recebidos da API", dados)
-                    
+
                     const bolhasEstaveis = []
+                    const bolhasRisco = []
                     const bolhasCriticas = []
-                    
+
                     let totalCriticosAgora = 0;
                     let totalCriticos24hAtras = 0;
-                    
+
                     const prioridadeStatus = { 'critico': 3, 'risco': 2, 'estavel': 1 };
-                    
+
                     dados.servidores.sort((a, b) => {
-                        
+
                         const statusA = a.dados_tempo_real ? a.dados_tempo_real.status_servidor.toLowerCase() : '';
                         const statusB = b.dados_tempo_real ? b.dados_tempo_real.status_servidor.toLowerCase() : '';
-                        
-                        
+
+
                         const pesoA = prioridadeStatus[statusA] || 0;
                         const pesoB = prioridadeStatus[statusB] || 0;
                         return pesoB - pesoA;
                     });
-                    
-                                        const novosEstaveis = [];
-                                        const novosInstaveis = [];
-                    
+
+                    const novosEstaveis = [];
+                    const novosRisco = [];
+                    const novosInstaveis = [];
+
                     let servidorMaisPropenso = "Nenhuma previsão";
                     let menorTempoMinutos = 999999;
 
@@ -1453,17 +1467,30 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             console.log("loc", localizacao);
                             console.log("lat: ", localizacao.lat, "lon: ", localizacao.lon);
 
+                            const statusMap = status_servidor.toUpperCase()
+                            let statusLabel = 'ESTÁVEL'
+
+                            if (statusMap === 'CRITICO') {
+                                statusLabel = 'CRÍTICO'
+
+                            } else if (statusMap === 'RISCO') {
+                                statusLabel = 'RISCO'
+                            }
+
                             const formatoMapa = [
                                 localizacao.lon,
                                 localizacao.lat,
                                 nome,
-                                status_servidor.toUpperCase() === 'CRITICO' ? 'CRÍTICO' : 'OPERACIONAL',
+                                statusLabel,
                                 localizacao.country
                             ];
 
-                            if (status_servidor.toLowerCase() === 'critico') {
+                            if (statusMap === 'CRITICO') {
                                 novosInstaveis.push(formatoMapa);
+                            } else if (statusMap === 'RISCO') {
+                                novosRisco.push(formatoMapa)
                             } else {
+
                                 novosEstaveis.push(formatoMapa);
                             }
 
@@ -1482,8 +1509,11 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                     nome: nomeServidor
                                 };
 
-                                if (status_servidor.toLowerCase() === 'critico') {
+                                const statusMap = status_servidor.toUpperCase();
+                                if (statusMap === 'CRITICO') {
                                     bolhasCriticas.push(pontosBolha);
+                                } else if (statusMap === 'RISCO') {
+                                    bolhasRisco.push(pontosBolha);
                                 } else {
                                     bolhasEstaveis.push(pontosBolha);
                                 }
@@ -1513,12 +1543,14 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     myChart.setOption({
                         series: [
                             { name: 'Servidores Estáveis', data: novosEstaveis },
-                            { name: 'Servidores Instáveis', data: novosInstaveis }
+                            { name: 'Servidores Risco', data: novosRisco },
+                            { name: 'Servidores Críticos', data: novosInstaveis }
                         ]
                     });
 
                     matrizChart.data.datasets[0].data = bolhasEstaveis;
-                    matrizChart.data.datasets[1].data = bolhasCriticas;
+                    matrizChart.data.datasets[1].data = bolhasRisco;
+                    matrizChart.data.datasets[2].data = bolhasCriticas;
                     matrizChart.update();
 
 
@@ -1613,7 +1645,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                         
 
                                         <td>
-                                            <button macA="${macAddress}" onclick="acessarCpu(this)" class="btn btn-componente ${cpu_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4" id="${cpu_acao_permitida}">
+                                            <button macA="${macAddress}" onclick="acessarCpu(this)" class="btn btn-componente ${cpu_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-2" id="${cpu_acao_permitida}">
 
                                                 <div class="d-flex flex-column flex-grow-1 gap-1">
 
@@ -1650,8 +1682,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                                                 </div>
 
-                                                <div class="d-flex align-items-center gap-1 texto-destaque ${cpu_status_ui} fw-bold fs-6">
-                                                    ABRIR
+                                                <div class="d-flex align-items-center gap-1 texto-destaque ${cpu_status_ui} fw-bold">
+                                                    <div class="d-flex flex-column" style="font-size:12px;">VER MAIS <span style="font-size:10px;">Detalhes</span></div>
                                                     <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                                     </svg>
@@ -1660,7 +1692,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                             </button>
                                         </td>
                                         <td>
-                                            <button macA="${macAddress}" onclick="acessarRam(this)" class="btn btn-componente ${ram_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-4">
+                                            <button macA="${macAddress}" onclick="acessarRam(this)" class="btn btn-componente ${ram_status_ui} btn-dark-custom d-flex align-items-center justify-content-between gap-2">
 
                                                 <div class="d-flex flex-column w-100 gap-1">
 
@@ -1688,8 +1720,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                                                 </div>
 
-                                                <div class="d-flex align-items-center gap-1 texto-destaque ${ram_status_ui} fw-bold fs-6">
-                                                    ABRIR
+                                                <div class="d-flex align-items-center gap-1 texto-destaque ${ram_status_ui} fw-bold">
+                                                    <div class="d-flex flex-column" style="font-size:12px;">VER MAIS <span style="font-size:10px;">Detalhes</span></div>
                                                     <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M7.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V13.5C3 13.8978 3.15804 14.2794 3.43934 14.5607C3.72064 14.842 4.10218 15 4.5 15H13.5C13.8978 15 14.2794 14.842 14.5607 14.5607C14.842 14.2794 15 13.8978 15 13.5V10.5M9 9L15 3M11.25 3H15V6.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                                     </svg>
@@ -1745,135 +1777,6 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
             window.location.href = `/pages/dashboard-cpu.html`
         }
 
-        async function mostrarServidores() {
-            var idEmpresa = sessionStorage.ID_EMPRESA;
-
-            const resultado = await buscarServidoresService(idEmpresa);
-
-            let conteudoCards = ""
-
-            let qtdMaquinasEmRisco = 0;
-            let qtdComponentesEmRisco = 0;
-
-
-
-        for (const servidor of resultado) {
-            const responseS3 = await fetch(`http://3.223.199.1/servidor/uso-s3/${servidor.mac_address}`);
-            const dadosS3 = await responseS3.json()
-
-                const cpu = dadosS3?.usoAtual?.cpu || 0;
-                const ram = dadosS3?.usoAtual?.ram || 0;
-                const disco = dadosS3?.usoAtual?.disco || 0;
-
-                const status = descobrirStatusServidor(cpu, ram, disco)
-
-                if (status !== 'normal') {
-                    qtdMaquinasEmRisco++;
-                }
-
-                if (cpu >= 70) qtdComponentesEmRisco++;
-                if (ram >= 70) qtdComponentesEmRisco++;
-                if (disco >= 70) qtdComponentesEmRisco++;
-
-                let borda
-                let cor
-                let statusCor
-                if (status == 'critico') {
-                    borda = 'vermelha'
-                    statusCor = 'vermelho'
-                    cor = '#FF0050'
-                } else if (status == 'risco') {
-                    borda = 'amarela'
-                    cor = '#FFD600'
-                } else {
-                    borda = 'azul'
-                    cor = '#01F2EA'
-                }
-
-                const corCpu = descobrirStatusComponente(cpu).cor;
-                const corRam = descobrirStatusComponente(ram).cor;
-                const corDisco = descobrirStatusComponente(disco).cor;
-
-
-
-                console.log(borda + 'a' + cor)
-                conteudoCards += `<div class="col-12 col-md-6 col-xl-4">
-                                                    <div class="card h-100 cartao-servidor borda-${borda}">
-                                                        <a href="./pages/dashboard-servidor.html" style="text-decoration: none;">
-                                                        <div class="card-body d-flex flex-column gap-3">
-                                                            <div class="cabecalho-do-card">
-                                                                <div
-                                                                    class="d-flex justify-content-between align-items-center">
-                                                                    <span
-                                                                        class="nome-servidor fw-bold text-white">${servidor.nome_servidor}
-                                                            ${servidor.localizacao_servidor || 'localização indisponível'}</span>
-                                                                    <span class="bolinha-status status-${statusCor} "></span>
-                                                                </div>
-                                                                <span class="localizacao-servidor text-secondary"
-                                                                    style="font-size: 0.85rem">California, USA</span>
-                                                            </div>
-
-                                                            <div class="area-metricas d-flex flex-column gap-3 mt-2">
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">CPU</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">${cpu}%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        
-                                                                        <div class="line-component" 
-                                                                            style="background-color: ${corCpu}; width: ${cpu}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">RAM</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">${ram}%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        
-                                                                        <div class="line-component"
-                                                                            style="background-color: ${corRam}; width: ${ram}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="item-metrica">
-                                                                    <div
-                                                                        class="d-flex justify-content-between align-items-center mb-1">
-                                                                        <span class="label-metrica text-secondary"
-                                                                            style="font-size: 0.85rem">DISCO</span>
-                                                                        <span
-                                                                            class="valor-metrica text-white fw-bold">${disco}%</span>
-                                                                    </div>
-                                                                    <div class="d-flex w-100 gap-1">
-                                                                        
-                                                                        <div class="line-component"
-                                                                            style="background-color: ${corDisco}; width: ${disco}%; height: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        </a>
-                                                    </div>
-                                                </div>`
-
-
-            }
-            document.getElementById("kpiMaquinasRisco").innerHTML = totalCriticosAgora;
-            document.getElementById("kpiComponentesRisco").innerHTML = qtdComponentesEmRisco;
-
-            document.getElementById("servidoresAlerta").innerHTML = conteudoCards;
-            document.getElementById("totalMaquinas").innerHTML = resultado.length
-        }
-        mostrarServidores();
 
 
 
@@ -1896,7 +1799,9 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                         if (params.seriesType === 'effectScatter' || params.seriesType === 'scatter') {
                             const servidor = params.data[2];
                             const status = params.data[3];
-                            const corStatus = status === 'CRÍTICO' ? '#ff3b30' : '#00f0ff';
+                            let corStatus = '#00f0ff';
+                            if (status === 'CRÍTICO') corStatus = '#ff3b30';
+                            if (status === 'RISCO') corStatus = '#ffcc00';
                             const regiao = params.data[4]
 
                             return `
@@ -1927,7 +1832,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
 
                 series: [
                     { name: 'Servidores Estáveis', type: 'scatter', coordinateSystem: 'geo', symbolSize: 8, itemStyle: { color: '#00f0ff', shadowBlur: 6, shadowColor: '#00f0ff' }, data: [] },
-                    { name: 'Servidores Instáveis', type: 'effectScatter', coordinateSystem: 'geo', symbolSize: 12, rippleEffect: { brushType: 'stroke', scale: 5, period: 3 }, itemStyle: { color: '#ff3b30', shadowBlur: 10, shadowColor: '#ff3b30' }, data: [] }
+                    { name: 'Servidores Instáveis', type: 'effectScatter', coordinateSystem: 'geo', symbolSize: 10, rippleEffect: { brushType: 'stroke', scale: 3, period: 4 }, itemStyle: { color: '#ffcc00', shadowBlur: 8, shadowColor: '#ffcc00' }, data: [] },
+                    { name: 'Servidores Instáveis', type: 'effectScatter', coordinateSystem: 'geo', symbolSize: 12, rippleEffect: { brushType: 'stroke', scale: 5, period: 3 }, itemStyle: { color: '#ff3b30', shadowBlur: 10, shadowColor: '#ff3b30' }, data: [] },
                 ]
 
             }

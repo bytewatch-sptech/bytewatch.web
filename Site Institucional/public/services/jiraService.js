@@ -16,8 +16,8 @@ async function buscarIssues(fkEmpresa) {
             `${JIRA_BASE_URL}/rest/api/3/search/jql`,
             {
                 params: {
-                    jql: "created >= -365d ORDER BY created DESC", //A JQL (Jira Query Language) é a linguagem de consulta mais poderosa e flexível que o Jira oferece para buscar issues (tarefas)
-                    maxResults: 100,
+                    jql: "created >= startOfDay() ORDER BY created DESC", //A JQL (Jira Query Language) é a linguagem de consulta mais poderosa e flexível que o Jira oferece para buscar issues (tarefas)
+                    maxResults: 300,
                     fields: [
                         "summary",
                         "status",
@@ -184,8 +184,6 @@ async function filtrarDashboard(fkEmpresa, nomeAnalistaBuscado, macServidorBusca
 
     var somaTempoReconhecimento = 0;
 
-    var somaTempoReconhecimento = 0;
-
     for (var i = 0; i < chamadosEmAndamento.length; i++) {
         var chamado = chamadosEmAndamento[i];
 
@@ -220,7 +218,15 @@ async function filtrarDashboard(fkEmpresa, nomeAnalistaBuscado, macServidorBusca
         var dataResolucao = new Date(chamado.resolvidoEm);
 
         var diferencaMinutos = (dataResolucao - dataCriacao) / (1000 * 60);
-        somaTempoResolucao += diferencaMinutos;
+        if (diferencaMinutos < 60) {
+            somaTempoResolucao += diferencaMinutos;
+        } else {
+            var diferencahoras = (dataResolucao - dataCriacao) / (1000 / 60);
+            somaTempoResolucao += diferencahoras;
+        }
+
+
+
     }
 
     var mttrCalculado = 0;
