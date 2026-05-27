@@ -901,7 +901,6 @@
 
         if (processos) {
             const processosOrdenados = [...processos].sort((a, b) => b.percentualCpu - a.percentualCpu);
-            processosOrdenados = processosOrdenados.filter(p => p.pid !== 0);
 
             document.getElementById('processosTbody').innerHTML = processosOrdenados.map(p => `
                 <tr>
