@@ -212,39 +212,17 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                         </div>
                                                         <p class="text-secondary mb-1 texto-pequeno">Máquinas Críticas
                                                         </p>
-                                                        <h3 class="text-white fw-bold mb-0" id="kpiMaquinasRisco"></h3>
+                                                        <h3 class="fw-bold mb-0" style="color: #ff0050;" id="kpiMaquinasRisco"></h3>
+                                                        <p class="text-secondary mb-1 texto-pequeno">Máquinas Risco
+                                                        </p>
+                                                        <h3 class="fw-bold mb-0" style="color: #FFD500;" id="kpiMaquinasRiscoREAL"></h3>
+                                                        <p class="text-secondary mb-1 texto-pequeno">Máquinas Estáveis
+                                                        </p>
+                                                        <h3 class="fw-bold mb-0" style="color: #00F2EA;" id="kpiMaquinasEstaveiss"></h3>
                                                     </div>
 
 
-                                                    <div
-                                                        class="cartao-indicador p-3 rounded-4 flex-fill d-flex flex-column justify-content-center">
-                                                        <div
-                                                            class="d-flex justify-content-between align-items-start mb-2 gap-1">
-                                                            <div class="caixa-icone icone-vermelho">
-                                                                <svg width="24" height="24" viewBox="0 0 12 12"
-                                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <g clip-path="url(#clip0_1241_38)">
-                                                                        <path
-                                                                            d="M3 5H2C1.73478 5 1.48043 4.89464 1.29289 4.70711C1.10536 4.51957 1 4.26522 1 4V2C1 1.73478 1.10536 1.48043 1.29289 1.29289C1.48043 1.10536 1.73478 1 2 1H10C10.2652 1 10.5196 1.10536 10.7071 1.29289C10.8946 1.48043 11 1.73478 11 2V4C11 4.26522 10.8946 4.51957 10.7071 4.70711C10.5196 4.89464 10.2652 5 10 5H9M3 7H2C1.73478 7 1.48043 7.10536 1.29289 7.29289C1.10536 7.48043 1 7.73478 1 8V10C1 10.2652 1.10536 10.5196 1.29289 10.7071C1.48043 10.8946 1.73478 11 2 11H10C10.2652 11 10.5196 10.8946 10.7071 10.7071C10.8946 10.5196 11 10.2652 11 10V8C11 7.73478 10.8946 7.48043 10.7071 7.29289C10.5196 7.10536 10.2652 7 10 7H9M3 3H3.005M3 9H3.005"
-                                                                            stroke="#FF0050" stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                        <path d="M6.5 3L4.5 6H7.5L5.5 9"
-                                                                            stroke="#FF0050" stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                    </g>
-                                                                    <defs>
-                                                                        <clipPath id="clip0_1241_38">
-                                                                            <rect width="12" height="12" fill="white" />
-                                                                        </clipPath>
-                                                                    </defs>
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                        <p class="text-secondary mb-1 texto-pequeno text-truncate">
-                                                            Servidor Mais Propenso a Falha</p>
-                                                        <h3 class="text-white fw-bold mb-0" id="kpiServidorPropenso">
-                                                        </h3>
-                                                    </div>
+                                                   
 
                                                 </div>
                                             </div>
@@ -323,7 +301,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                     </th>
                                                                     <th scope="col" class="border-0">DISCO - UTILIZAÇÃO
                                                                     </th>
-                                                                    <th scope="col" class="border-0">PERCENTUAL REDE
+                                                                    <th scope="col" class="border-0">EFICIÊNCIA - REDE
                                                                     </th>
                                                                 </tr>
                                                             </thead>
@@ -824,11 +802,7 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="text-center mt-4 text-secondary pb-2"
-                                                            style="font-size: 0.9rem">
-                                                            Você consegue alterar os parâmetros do componente<br>na tela
-                                                            de adição e edição de servidor.
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -1408,6 +1382,8 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     const bolhasCriticas = []
 
                     let totalCriticosAgora = 0;
+                    let totalRiscoAgora = 0;
+                    let totalEstavelAgora = 0;
                     let totalCriticos24hAtras = 0;
 
                     const prioridadeStatus = { 'critico': 3, 'risco': 2, 'estavel': 1 };
@@ -1442,7 +1418,13 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                             if (status_servidor.toLowerCase() === 'critico') {
                                 totalCriticosAgora++
                             }
-
+                            if (status_servidor.toLowerCase() === 'risco') {
+                                totalRiscoAgora++
+                            }
+                            if (status_servidor.toLowerCase() === 'estavel') {
+                                totalEstavelAgora++
+                            }
+                            console.log("TOTAL RISCO",totalRiscoAgora)
                             let nome = servidor.dados_tempo_real.nome;
                             const coordenadas = servidor.dados_tempo_real.geolocalizacao.coords;
                             const regiao = servidor.dados_tempo_real.regiao;
@@ -1557,10 +1539,13 @@ https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js
                     const qtdCriticos = dados.resumo_global.servidores_criticos
                     const totalServidores = dados.resumo_global.total_servidores
 
-                    document.getElementById('kpiServidorPropenso').innerText = servidorMaisPropenso;
 
                     console.log("qtd critícos:", qtdCriticos, "total sevidores:", totalServidores)
+
                     document.getElementById('kpiMaquinasRisco').innerText = totalCriticosAgora;
+                    document.getElementById('kpiMaquinasRiscoREAL').innerText = totalRiscoAgora;
+                    document.getElementById('kpiMaquinasEstaveiss').innerText = totalEstavelAgora;
+
                     console.log("Total de servidores em estado crítico:", qtdCriticos);
                     console.log("Servidor mapeado com maior propensão a falhas:", servidorMaisPropenso);
                 } else {
